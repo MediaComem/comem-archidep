@@ -19,27 +19,24 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 ## Plan
 
 * Introduction
-* Tooling
-  * [Command line](https://mediacomem.github.io/comem-webdev-docs/2017-2018/subjects/cli?home=MediaComem%2Fcomem-webserv%23readme)
-  * Client/server reminder
-  * SSH
+  * [Command line](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Secure Shell (SSH)](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
 * Version control
-  * [Version control with Git](https://mediacomem.github.io/comem-webdev-docs/2017-2018/subjects/git?home=MediaComem%2Fcomem-webserv%23readme)
-  * [Git branching](https://mediacomem.github.io/comem-webdev-docs/2017-2018/subjects/git-branching?home=MediaComem%2Fcomem-webserv%23readme)
-  * [Collaborating with Git](https://mediacomem.github.io/comem-webdev-docs/2017-2018/subjects/git-collaborating?home=MediaComem%2Fcomem-webserv%23readme)
+  * [Version control with Git](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Git branching](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Collaborating with Git](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
 * Basic deployment
-  * Linux basics (filesystem, users, sudo, permissions, processes, ports)
-  * Useful commands (inspect storage, cpu, memory, processes)
-  * Package management (apt)
+  * [Linux](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
   * PHP server
+  * Environment (database connection)
+  * Process management (systemd)
   * HTTP reminder (dns, request/response syntax)
-  * Process management
-  * **Bonus:** ansible
-* Reverse proxying
-  * Nginx basics (reverse proxying, load balancing)
-  * **Bonus:** SSL certificate
+  * DNS
+* Reverse proxy
+  * [Nginx](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/nginx?home=MediaComem%2Fcomem-archidep%23readme)
+  * SSL certificate
 * Automated deployment
-  * Shell scripting
+  * Scripting & shell scripting
   * Git hooks
 * Cloud computing
   * Service models
