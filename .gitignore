@@ -2,6 +2,7 @@
 *.retry
 .vagrant
 .vscode
+config.yml
 inventory
 node_modules
 secret.txt
