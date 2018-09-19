@@ -1,0 +1,27 @@
+{
+  "name": "comem-archidep",
+  "version": "1.0.0",
+  "description": "COMEM+ architecture & deployment course",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MediaComem/comem-archidep.git"
+  },
+  "author": "Simon Oulevay <simon.oulevay@heig-vd.ch>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MediaComem/comem-archidep/issues"
+  },
+  "homepage": "https://github.com/MediaComem/comem-archidep#readme",
+  "scripts": {
+    "start": "node scripts/process-students-data.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "csv-parse": "^3.0.0",
+    "fs-extra": "^7.0.0",
+    "js-yaml": "^3.12.0",
+    "sha512crypt-node": "^0.1.0",
+    "uuid": "^3.3.2"
+  }
+}

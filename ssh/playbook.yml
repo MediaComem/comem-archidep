@@ -1,0 +1,84 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no # See first 2 tasks.
+
+  vars:
+    server_name: comem-archidep-ssh
+    ssh_password_authentication: false
+    ssh_regenerate_host_keys: false
+
+  vars_files:
+    - ./data.yml
+
+  tasks:
+
+    # Make sure python 2 is installed before doing anything
+    # (this is not the case by default on Ubuntu Bionic).
+    - name: Install Python
+      raw: command -v python || { apt-get update && apt-get install -y python; }
+      changed_when: false
+      tags: [ always ]
+
+    # Gather ansible facts (requires python).
+    # Facts are required for many Ansible modules to work correctly.
+    - name: Gather facts
+      setup:
+      tags: [ always ]
+
+    - name: Upgrade all packages
+      apt:
+        name: "*"
+        autoremove: true
+        force_apt_get: true
+        state: latest
+
+    - name: Set hostname
+      hostname:
+        name: "{{ server_name }}"
+
+    - name: Create students
+      user:
+        name: "{{ student.username }}"
+        password: "{{ student.hashedPassword }}"
+        shell: /bin/bash
+      loop: "{{ students }}"
+      loop_control:
+        label: "{{ student.username }}"
+        loop_var: student
+
+    - name: Enable SSH password authentication
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PasswordAuthentication '
+        line: 'PasswordAuthentication {{ ssh_password_authentication }}'
+      when: ssh_password_authentication is defined and ssh_password_authentication
+      tags: [ ssh ]
+
+    - name: Find SSH server host keys
+      command: find /etc/ssh -name ssh_host_*
+      register: find_ssh_keys_command
+      when: ssh_regenerate_host_keys is defined and ssh_regenerate_host_keys
+      tags: [ ssh ]
+
+    - name: Delete SSH server host keys
+      file:
+        path: "{{ key_file }}"
+        state: absent
+      loop: "{{ find_ssh_keys_command.stdout.split('\n') }}"
+      loop_control:
+        loop_var: key_file
+      when: ssh_regenerate_host_keys is defined and ssh_regenerate_host_keys and find_ssh_keys_command.stdout != ''
+      tags: [ ssh ]
+
+    - name: Regenerate SSH server host keys
+      command: dpkg-reconfigure openssh-server
+      when: ssh_regenerate_host_keys is defined and ssh_regenerate_host_keys
+      tags: [ ssh ]
+
+    - name: Restart SSH server
+      service:
+        name: ssh
+        state: restarted
+      when: ssh_password_authentication or ssh_regenerate_host_keys
+      tags: [ ssh ]
