@@ -3,7 +3,7 @@
 .vagrant
 .vscode
 config.yml
-inventory
+inventory*
 node_modules
 secret.txt
 ssh/data.yml

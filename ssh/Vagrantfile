@@ -12,9 +12,5 @@ Vagrant.configure('2') do |config|
 
   config.vm.provision 'ansible' do |ansible|
     ansible.playbook = 'playbook.yml'
-    ansible.extra_vars = {
-      ssh_password_authentication: ENV['SSH_PASSWORD_AUTHENTICATION'] || false,
-      ssh_regenerate_host_keys: ENV['SSH_REGENERATE_HOST_KEYS'] || false
-    }
   end
 end

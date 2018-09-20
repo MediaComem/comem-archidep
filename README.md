@@ -1,6 +1,12 @@
 # COMEM+ Architecture & Deployment course
 
-The goal of this course is ...
+The goal of this course is to learn:
+
+* How to use the command line and version control.
+* The basics of system administration and cloud computing architectures.
+* How to deploy applications on a Linux server on an IaaS platform (Amazon Web Services).
+* How to deploy applications on a PaaS platform (Heroku).
+* Continuous integration and continuous delivery (Travis CI).
 
 This course is a [COMEM+][comem] [web development course][comem-webdev] taught at [HEIG-VD][heig].
 
@@ -26,22 +32,21 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Git branching](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
   * [Collaborating with Git](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
 * Basic deployment
-  * [Linux](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
-  * PHP server
-  * Environment (database connection)
-  * Process management (systemd)
-  * HTTP reminder (dns, request/response syntax)
-  * DNS
-* Reverse proxy
-  * [Nginx](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/nginx?home=MediaComem%2Fcomem-archidep%23readme)
+  * Cloud computing
+  * Linux
+  * Twelve-factor app
+* Reverse proxying
+  * Nginx
+  * Domain Name System (DNS)
   * SSL certificate
 * Automated deployment
-  * Scripting & shell scripting
+  * Scripting
   * Git hooks
-* Cloud computing
-  * Service models
-  * Heroku deployment
-* Continuous integration & delivery
+* Continuous integration
+  * Automated testing
+* Continuous delivery
+  * Heroku
+  * Travis
 
 
 
