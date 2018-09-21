@@ -1,12 +1,16 @@
 # COMEM+ Architecture & Deployment course
 
-The goal of this course is to learn:
+In this course you will learn:
 
-* How to use the command line and version control.
-* The basics of system administration and cloud computing architectures.
 * How to deploy applications on a Linux server on an IaaS platform (Amazon Web Services).
 * How to deploy applications on a PaaS platform (Heroku).
-* Continuous integration and continuous delivery (Travis CI).
+* Automated testing, continuous integration and continuous delivery (Travis CI).
+
+In pursuit of this goal, you will learn:
+
+* How to use the command line and version control.
+* The basics of Unix system administration and cloud computing architectures.
+* Good security practices related to system administration and web applications.
 
 This course is a [COMEM+][comem] [web development course][comem-webdev] taught at [HEIG-VD][heig].
 
