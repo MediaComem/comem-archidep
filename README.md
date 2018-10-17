@@ -20,6 +20,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 
 - [Plan](#plan)
 - [What you will need](#what-you-will-need)
+- [Exercises](#exercises)
 - [Useful links](#useful-links)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -62,6 +63,14 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 * [Google Chrome][chrome] (recommended, any browser with developer tools will do)
 * A free [Heroku][heroku] account
 * The [Heroku CLI][heroku-cli]
+
+
+
+## Exercises
+
+The list of exercises can be found [here](EXERCISES.md).
+
+Some exercises are part of the course's evaluation.
 
 
 
