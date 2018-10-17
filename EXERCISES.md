@@ -41,7 +41,7 @@ Perform the following tasks:
   * If you have not completed the collaborative exercise, you can clone the [base repository][php-todo-ex] instead with the `git clone` command, and move into that.
 * Add a new remote pointing to the repository you created on the exercise server.
   * *Hint:* the command to add a remote is `git remote add <name> <url>`
-  * *Hint:* the URL syntax for an SSH remote is `ssh://user@host:path/to/repo`
+  * *Hint:* the URL syntax for an SSH remote is `ssh://user@host/path/to/repo`
 * Push the `master` branch to the new remote
   * *Hint:* the syntax of the push command is `git push [origin] [branch]`
 
