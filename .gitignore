@@ -3,6 +3,9 @@
 .vagrant
 .vscode
 config.yml
+data.yml
+id_rsa
+id_rsa.pub
 inventory*
 node_modules
 secret.txt

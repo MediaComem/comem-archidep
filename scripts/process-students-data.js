@@ -5,7 +5,7 @@ const { join: joinPath } = require('path');
 
 const { loadData, studentsFile } = require('./utils');
 
-const targetDirs = [ 'ssh' ];
+const targetDirs = [ '.', 'ssh' ];
 
 Promise
   .resolve()
