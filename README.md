@@ -36,9 +36,14 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Version control with Git](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
   * [Git branching](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
   * [Collaborating with Git](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
+* Security
+  * [Open Web Application Security Project][owasp]
+  * [OWASP Top 10 - The Ten Most Critical Web Application Security Risks][owasp-top10]
 * Basic deployment
-  * Cloud computing
-  * Linux
+  * [Cloud computing](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Linux](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Unix basics](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Unix processes](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
   * Twelve-factor app
 * Reverse proxying
   * Nginx
@@ -91,3 +96,5 @@ Some exercises are part of the course's evaluation.
 [heroku]: https://www.heroku.com/home
 [heroku-cli]: https://devcenter.heroku.com/articles/heroku-cli
 [heig]: http://www.heig-vd.ch
+[owasp]: https://www.owasp.org/
+[owasp-top10]: https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf
