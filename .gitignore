@@ -4,6 +4,7 @@
 .vscode
 config.yml
 data.yml
+ec2/inventory
 id_rsa
 id_rsa.pub
 inventory*

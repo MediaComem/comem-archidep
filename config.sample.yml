@@ -1,5 +1,6 @@
 aws_access_key_id: "changeme"
 aws_secret_access_key: "changeme"
+aws_base_domain: archidep-2018.media
 aws_image: ami-0ac019f4fcb7cb7e6
 aws_instance_type: t3.small
 aws_key_name: ArchiDep

@@ -1,12 +1,19 @@
 const chalk = require('chalk');
 const commander = require('commander');
+const { writeFile } = require('fs-extra');
 const inquirer = require('inquirer');
+const { safeDump: dumpYaml } = require('js-yaml');
 const { difference, isArray, isPlainObject, isString } = require('lodash');
 const ora = require('ora');
+const { join: joinPath, relative: relativePath, resolve: resolvePath } = require('path');
 const { table } = require('table');
 
 const { allocateAddress, associateAddress, createTags, listAddresses, listInstances, rebootInstances, releaseAddress, runInstance, startInstances, stopInstances, terminateInstances, waitForInstances } = require('./aws-ec2');
-const { confirm, loadConfigProperty, loadProcessedData } = require('./utils');
+const { confirm, loadConfigProperty, loadProcessedData, sendMail } = require('./utils');
+
+const root = resolvePath(joinPath(__dirname, '..'));
+const inventoryFile = resolvePath(joinPath(root, 'ec2', 'inventory'));
+const sshPrivateKeyFile = resolvePath(joinPath(root, 'id_rsa'));
 
 const rebootStudentInstances = studentInstancesActionFactory(rebootInstances, 'Rebooting instances');
 const startStudentInstances = studentInstancesActionFactory(startInstances, 'Starting instances');
@@ -20,32 +27,48 @@ commander
 
 commander
   .command('status')
+  .description('Check status of AWS EC2 instances and elastic IP addresses')
   .action(actionRunner(displayStatus));
 
 commander
+  .command('inventory')
+  .description('Generate Ansible inventory for students\' AWS EC2 instances')
+  .action(actionRunner(generateInventory));
+
+commander
+  .command('mail [student...]')
+  .description('Send AWS EC2 instance credentials to students by email')
+  .action(actionRunner(sendStudentMails));
+
+commander
   .command('up [student...]')
+  .description('Make sure all AWS EC2 instances are running and associated with elastic IP addresses')
   .action(actionRunner(runStudentInstances));
 
 commander
   .command('start [student...]')
+  .description('Start AWS EC2 instances for students')
   .action(actionRunner(startStudentInstances))
 
 commander
   .command('stop [student...]')
+  .description('Stop AWS EC2 instances for students')
   .action(actionRunner(stopStudentInstances))
 
 commander
   .command('reboot [student...]')
+  .description('Reboot AWS EC2 instances for students')
   .action(actionRunner(rebootStudentInstances))
+
+commander
+  .command('terminate [student...]')
+  .description('Terminate AWS EC2 instances for students')
+  .action(actionRunner(terminateStudentInstances))
 
 commander
   .command('release')
   .description('Release dangling elastic IP addresses')
   .action(actionRunner(releaseDanglingElasticIpAddresses));
-
-commander
-  .command('terminate [student...]')
-  .action(actionRunner(terminateStudentInstances))
 
 commander.parse(process.argv);
 
@@ -61,6 +84,48 @@ async function displayStatus() {
 
   console.log();
   printStatusTableData(state);
+}
+
+async function generateInventory() {
+  console.log();
+
+  const state = await loadState();
+  console.log();
+
+  const selectedItems = state.items.filter(item => item.address);
+  if (!selectedItems.length) {
+    throw new Error('No student has an instance with an associated elastic IP address');
+  }
+
+  const baseDomain = await loadConfigProperty('aws_base_domain');
+
+  const inventory = {
+    all: {
+      hosts: selectedItems.reduce((memo, item) => {
+
+        memo[item.student.username] = {
+          ansible_become: true,
+          ansible_host: item.address.PublicIp,
+          ansible_ssh_private_key_file: sshPrivateKeyFile,
+          ansible_user: 'ubuntu',
+          base_domain: baseDomain,
+          student_email: item.student.email,
+          student_hashed_password: item.student.hashedPassword,
+          student_name: item.student.name,
+          student_username: item.student.username
+        };
+
+        return memo;
+      }, {})
+    }
+  };
+
+  await loading(
+    writeFile(inventoryFile, `# vi: ft=yml\n${dumpYaml(inventory)}`, 'utf8'),
+    `Saving inventory to ${relativePath(root, inventoryFile)}`
+  );
+
+  console.log();
 }
 
 async function releaseDanglingElasticIpAddresses() {
@@ -133,6 +198,7 @@ async function runStudentInstances(students) {
     throw new Error(`AWS elastic IP address allocation canceled by user`);
   }
 
+  console.log();
   for (const item of missingInstances) {
     const params = await getInstanceRunParams(item.student);
     item.instance = await loading(runInstance(params), `Running new AWS EC2 instance for student ${item.student.username}`);
@@ -175,6 +241,49 @@ async function runStudentInstances(students) {
       `Associating elastic IP address ${address.AllocationId} with instance ${instance.InstanceId} for student ${item.student.username}`
     );
   }
+
+  console.log();
+}
+
+async function sendStudentMails(students) {
+  console.log();
+
+  const state = await loadState();
+  console.log();
+
+  const selectedItems = selectItemsByStudentUsername(state.items, students);
+
+  const missingAddresses = selectedItems.filter(item => !item.address);
+  if (missingAddresses.length) {
+    throw new Error(`Students ${missingAddresses.map(item => `"${item.student.username}"`).join(', ')} have no corresponding instance or associated elastic IP address`);
+  } else if (!selectedItems.length) {
+    console.log(chalk.green('No elastic IP addresses available'));
+    console.log();
+    return;
+  } else if (!(await confirm(`${selectedItems.length} emails will be sent`))) {
+    throw new Error('Emails canceled by user');
+  }
+
+  console.log();
+  for (const item of selectedItems) {
+
+    const mail = {
+      to: item.student.email,
+      subject: 'ArchiDep 2018 Virtual Server',
+      text: [
+        `IP address: ${item.address.PublicIp}`,
+        `Username: ${item.student.username}`,
+        `Password: ${item.student.password}`
+      ].join('\n')
+    };
+
+    await loading(
+      sendMail(mail),
+      `Sending email to ${item.student.email}`
+    );
+  }
+
+  console.log();
 }
 
 function actionRunner(func) {
@@ -312,9 +421,9 @@ function loading(promise, ...args) {
 
 async function loadState() {
 
-  const { students } = await loading(loadProcessedData(), 'Loading student data...');
-  const addresses = await loading(listAddresses(), 'Listing AWS EC2 elastic IP addresses...');
-  const instances = await loading(listInstances(), 'Listing AWS EC2 instances...');
+  const { students } = await loading(loadProcessedData(), 'Loading student data');
+  const addresses = await loading(listAddresses(), 'Listing AWS EC2 elastic IP addresses');
+  const instances = await loading(listInstances(), 'Listing AWS EC2 instances');
 
   const state = {
     items: students.map(student => {
@@ -370,7 +479,8 @@ function printStatusTableData(state) {
 }
 
 function studentIs(student, searchTerm) {
-  return student.name.indexOf(searchTerm) >= 0 || student.email.indexOf(searchTerm) >= 0 || student.username.indexOf(searchTerm) >= 0;
+  const term = searchTerm.toLowerCase();
+  return [ student.name, student.email, student.username ].some(text => text.toLowerCase().indexOf(term) >= 0);
 }
 
 function selectItemsByStudentUsername(items, studentSearchTerms) {
@@ -416,7 +526,7 @@ function studentInstancesActionFactory(ec2Func, description) {
 
     const missingInstances = selectedItems.filter(item => !item.instance);
     if (missingInstances.length) {
-      throw new Error(`Students ${missingInstances.map(item => item.student.username)} have no corresponding instance`);
+      throw new Error(`Students ${missingInstances.map(item => `"${item.student.username}"`).join(', ')} have no corresponding instance`);
     } else if (!selectedItems.length) {
       console.log(chalk.green('No instances available'));
       console.log();

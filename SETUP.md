@@ -17,3 +17,6 @@
   * HTTPS (port 443)
 * Put the security group ID in the `config.yml` file
 * Configure access policy
+* `node scripts/manage-instances.js inventory`
+* `ANSIBLE_HOST_KEY_CHECKING=false ansible-playbook -vv -D -i ec2/inventory ec2/playbook.yml`
+* `ansible-playbook -vv -D -i ec2/inventory ec2/playbook.yml`

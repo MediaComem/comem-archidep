@@ -1,0 +1,58 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no # See first 2 tasks.
+
+  vars: {}
+  vars_files:
+    - ../data.yml
+
+  tasks:
+
+    # Make sure python 2 is installed before doing anything
+    # (this is not the case by default on Ubuntu Bionic).
+    - name: Install Python
+      raw: command -v python || { apt-get update && apt-get install -y python; }
+      changed_when: false
+      tags: [ always ]
+
+    # Gather ansible facts (requires python).
+    # Facts are required for many Ansible modules to work correctly.
+    - name: Gather facts
+      setup:
+      tags: [ always ]
+
+    - name: Upgrade all packages
+      apt:
+        name: "*"
+        autoremove: true
+        force_apt_get: true
+        state: latest
+      tags: [ setup ]
+
+    - name: Set hostname
+      hostname:
+        name: "{{ student_username }}.{{ base_domain }}"
+      tags: [ setup ]
+
+    - name: Create students
+      user:
+        name: "{{ student_username }}"
+        password: "{{ student_hashed_password }}"
+        shell: /bin/bash
+      tags: [ setup ]
+
+    - name: Enable SSH password authentication
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PasswordAuthentication '
+        line: 'PasswordAuthentication yes'
+      register: enable_ssh_password_authentication
+      tags: [ ssh, setup ]
+
+    - name: Restart SSH server
+      service:
+        name: ssh
+        state: restarted
+      when: enable_ssh_password_authentication is changed
+      tags: [ ssh, setup ]
