@@ -44,7 +44,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Linux](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
   * [Unix basics](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
   * [Unix processes](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
-  * Twelve-factor app
+  * [Twelve-factor app][12factor]
 * Reverse proxying
   * Nginx
   * Domain Name System (DNS)
@@ -86,6 +86,7 @@ Some exercises are part of the course's evaluation.
 
 
 
+[12factor]: https://12factor.net
 [chrome]: https://www.google.com/chrome/
 [cli-cheatsheet]: https://github.com/MediaComem/comem-webdev/blob/master/CLI-CHEATSHEET.md
 [comem]: http://www.heig-vd.ch/comem
