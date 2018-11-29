@@ -66,6 +66,13 @@
         shell: /bin/bash
       tags: [ setup ]
 
+    - name: Ensure permissions of alice's home directory
+      file:
+        path: /home/alice
+        mode: 0750
+        state: directory
+      tags: [ setup ]
+
     - name: Reboot
       reboot:
       when: (reboot is defined and reboot) or (upgrade_packages is defined and upgrade_packages is changed)
