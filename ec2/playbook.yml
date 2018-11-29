@@ -36,13 +36,6 @@
         name: "{{ student_username }}.{{ base_domain }}"
       tags: [ setup ]
 
-    - name: Create students
-      user:
-        name: "{{ student_username }}"
-        password: "{{ student_hashed_password }}"
-        shell: /bin/bash
-      tags: [ setup ]
-
     - name: Enable SSH password authentication
       lineinfile:
         path: /etc/ssh/sshd_config
@@ -57,6 +50,21 @@
         state: restarted
       when: enable_ssh_password_authentication is changed
       tags: [ ssh, setup ]
+
+    - name: Create student user
+      user:
+        name: "{{ student_username }}"
+        password: "{{ student_hashed_password }}"
+        groups: "{{ [ 'sudo' ] if sudo is defined and sudo else None }}"
+        shell: /bin/bash
+      tags: [ setup ]
+
+    - name: Create alice user
+      user:
+        name: alice
+        password: "{{ alice_hashed_password }}"
+        shell: /bin/bash
+      tags: [ setup ]
 
     - name: Reboot
       reboot:

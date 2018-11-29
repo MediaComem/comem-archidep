@@ -9,7 +9,7 @@ const { join: joinPath, relative: relativePath, resolve: resolvePath } = require
 const { table } = require('table');
 
 const { allocateAddress, associateAddress, createTags, listAddresses, listInstances, rebootInstances, releaseAddress, runInstance, startInstances, stopInstances, terminateInstances, waitForInstances } = require('./aws-ec2');
-const { confirm, loadConfigProperty, loadProcessedData, sendMail } = require('./utils');
+const { confirm, loadConfigProperty, loadProcessedData, sendMail, unixEncryptPassword } = require('./utils');
 
 const root = resolvePath(joinPath(__dirname, '..'));
 const inventoryFile = resolvePath(joinPath(root, 'ec2', 'inventory'));
@@ -98,12 +98,14 @@ async function generateInventory() {
   }
 
   const baseDomain = await loadConfigProperty('aws_base_domain');
+  const aliceHashedPassword = unixEncryptPassword(await loadConfigProperty('aws_alice_password'));
 
   const inventory = {
     all: {
       hosts: selectedItems.reduce((memo, item) => {
 
         memo[item.student.username] = {
+          alice_hashed_password: aliceHashedPassword,
           ansible_become: true,
           ansible_host: item.address.PublicIp,
           ansible_ssh_private_key_file: sshPrivateKeyFile,
