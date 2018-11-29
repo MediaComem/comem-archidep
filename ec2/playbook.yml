@@ -28,7 +28,8 @@
         autoremove: true
         force_apt_get: true
         state: latest
-      tags: [ setup ]
+      register: upgrade_packages
+      tags: [ setup, upgrade ]
 
     - name: Set hostname
       hostname:
@@ -56,3 +57,8 @@
         state: restarted
       when: enable_ssh_password_authentication is changed
       tags: [ ssh, setup ]
+
+    - name: Reboot
+      reboot:
+      when: (reboot is defined and reboot) or (upgrade_packages is defined and upgrade_packages is changed)
+      tags: [ reboot, setup, upgrade ]
