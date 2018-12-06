@@ -15,6 +15,8 @@
   * SSH (port 22)
   * HTTP (port 80)
   * HTTPS (port 443)
+  * Port 3000
+  * Port 3001
 * Put the security group ID in the `config.yml` file
 * Configure access policy
 * `node scripts/manage-instances.js inventory`
