@@ -78,7 +78,7 @@ exports.loadData = async function() {
       // The goal is not to generate a secure password, or to have a good quality random distribution,
       // but just to set an initial password for each student that looks random and is different from the others.
       student.password = createHmac('sha1', secret).update(student.username).digest('base64').slice(0, 10);
-      student.hashedPassword = unixEncryptPassword(student.password);
+      student.hashedPassword = exports.unixEncryptPassword(student.password);
 
       const i = passwords.indexOf(student.password);
       if (i >= 0) {

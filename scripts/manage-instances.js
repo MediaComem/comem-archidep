@@ -3,13 +3,15 @@ const commander = require('commander');
 const { writeFile } = require('fs-extra');
 const inquirer = require('inquirer');
 const { safeDump: dumpYaml } = require('js-yaml');
-const { difference, isArray, isPlainObject, isString } = require('lodash');
+const { difference, includes, isArray, isEmpty, isPlainObject, isString, times, uniq } = require('lodash');
 const ora = require('ora');
 const { join: joinPath, relative: relativePath, resolve: resolvePath } = require('path');
 const { table } = require('table');
 
-const { allocateAddress, associateAddress, createTags, listAddresses, listInstances, rebootInstances, releaseAddress, runInstance, startInstances, stopInstances, terminateInstances, waitForInstances } = require('./aws-ec2');
+const { allocateAddress, associateAddress, createTags, getRegionName, listAddresses, listInstances, loadRegionImage, loadRegionLimit, loadRegions, loadRegionSecurityGroup, rebootInstances, releaseAddress, runInstance, startInstances, stopInstances, terminateInstances, waitForInstances } = require('./aws-ec2');
 const { confirm, loadConfigProperty, loadProcessedData, sendMail, unixEncryptPassword } = require('./utils');
+
+const SELECTED = Symbol('selected');
 
 const root = resolvePath(joinPath(__dirname, '..'));
 const inventoryFile = resolvePath(joinPath(root, 'ec2', 'inventory'));
@@ -26,7 +28,7 @@ commander
   .version('1.0.0');
 
 commander
-  .command('status')
+  .command('status [student...]')
   .description('Check status of AWS EC2 instances and elastic IP addresses')
   .action(actionRunner(displayStatus));
 
@@ -77,10 +79,11 @@ Promise
   .then(action)
   .catch(err => console.error(chalk.red(err.stack)));
 
-async function displayStatus() {
+async function displayStatus(studentUsernames) {
   console.log();
 
   const state = await loadState();
+  selectStudentsByUsername(state.students, studentUsernames);
 
   console.log();
   printStatusTableData(state);
@@ -92,35 +95,44 @@ async function generateInventory() {
   const state = await loadState();
   console.log();
 
-  const selectedItems = state.items.filter(item => item.address);
-  if (!selectedItems.length) {
-    throw new Error('No student has an instance with an associated elastic IP address');
-  }
-
   const baseDomain = await loadConfigProperty('aws_base_domain');
   const aliceHashedPassword = unixEncryptPassword(await loadConfigProperty('aws_alice_password'));
 
   const inventory = {
     all: {
-      hosts: selectedItems.reduce((memo, item) => {
+      hosts: state.students.reduce((memo, student) => {
 
-        memo[item.student.username] = {
+        const instance = getStudentInstance(student, state.instances);
+        if (!instance) {
+          return memo;
+        }
+
+        const address = getInstanceAddress(instance, state.addresses);
+        if (!address) {
+          return memo;
+        }
+
+        memo[student.username] = {
           alice_hashed_password: aliceHashedPassword,
           ansible_become: true,
-          ansible_host: item.address.PublicIp,
+          ansible_host: address.PublicIp,
           ansible_ssh_private_key_file: sshPrivateKeyFile,
           ansible_user: 'ubuntu',
           base_domain: baseDomain,
-          student_email: item.student.email,
-          student_hashed_password: item.student.hashedPassword,
-          student_name: item.student.name,
-          student_username: item.student.username
+          student_email: student.email,
+          student_hashed_password: student.hashedPassword,
+          student_name: student.name,
+          student_username: student.username
         };
 
         return memo;
       }, {})
     }
   };
+
+  if (isEmpty(inventory.all.hosts)) {
+    throw new Error('No student has an instance with an associated elastic IP address');
+  }
 
   await loading(
     writeFile(inventoryFile, `# vi: ft=yml\n${dumpYaml(inventory)}`, 'utf8'),
@@ -136,7 +148,7 @@ async function releaseDanglingElasticIpAddresses() {
   const state = await loadState();
   console.log();
 
-  const danglingAddresses = state.danglingAddresses;
+  const danglingAddresses = getDanglingAddresses(state);
   if (!danglingAddresses.length) {
     console.log(chalk.green('No dangling elastic IP addresses found'));
     console.log();
@@ -158,26 +170,37 @@ async function releaseDanglingElasticIpAddresses() {
   console.log();
 }
 
-async function runStudentInstances(students) {
+async function runStudentInstances(studentUsernames) {
   console.log();
 
   const state = await loadState();
   console.log();
 
-  const selectedItems = selectItemsByStudentUsername(state.items, students);
+  const selectedStudents = selectStudentsByUsername(state.students, studentUsernames);
 
-  const missingAddresses = selectedItems.filter(item => !item.address);
+  const missingAddresses = selectedStudents.filter(student => !getInstanceAddress(getStudentInstance(student, state.instances), state.addresses));
   const missingAddressesCount = missingAddresses.length;
 
-  const missingInstances = selectedItems.filter(item => !item.instance);
+  const missingInstances = selectedStudents.filter(student => !getStudentInstance(student, state.instances));
   const missingInstancesCount = missingInstances.length;
 
-  const unassociatedAddresses = state.danglingAddresses.filter(address => !address.AssociationId);
+  const regions = await loadRegions();
+  const nextRegions = await getNextInstanceRegions(missingInstances.length, state.instances);
 
-  const addressesToAssociate = unassociatedAddresses.slice(0, Math.min(missingAddressesCount, unassociatedAddresses.length));
+  const danglingAddresses = getDanglingAddresses(state);
+  const addressesToAssociate = regions.reduce((memo, region) => {
+
+    const instancesWithMissingAddressCount = state.students.map(student => getStudentInstance(student, state.instances)).filter(instance => instance && instance.Region === region && !getInstanceAddress(instance, state.addresses)).length;
+
+    const newInstancesCount = nextRegions.filter(nextRegion => nextRegion === region).length;
+
+    memo.push(...danglingAddresses.filter(address => address.Region === region && !address.AssociationId).slice(0, instancesWithMissingAddressCount + newInstancesCount));
+
+    return memo;
+  }, []);
   const addressesToAssociateCount = addressesToAssociate.length;
 
-  const newAddressesCount = Math.max(0, missingAddressesCount - unassociatedAddresses.length);
+  const newAddressesCount = Math.max(0, missingAddressesCount - addressesToAssociateCount);
 
   if (!missingAddressesCount && !missingInstancesCount) {
     printStatusTableData(state);
@@ -201,87 +224,105 @@ async function runStudentInstances(students) {
   }
 
   console.log();
-  for (const item of missingInstances) {
-    const params = await getInstanceRunParams(item.student);
-    item.instance = await loading(runInstance(params), `Running new AWS EC2 instance for student ${item.student.username}`);
+  for (const student of missingInstances) {
+    const region = nextRegions.shift();
+    const params = await getInstanceRunParams(region, student);
+    const instance = await loading(runInstance(region, params), `Running new AWS EC2 instance in region ${getRegionName(region)} for student ${student.username}`);
+    state.instances.push(instance);
   }
 
   if (missingInstances.length) {
     await loading(
-      waitForInstances(missingInstances.map(item => item.instance)),
+      waitForInstances(state.instances.slice(state.instances.length - missingInstances.length)),
       `Waiting for ${missingInstances.length} instances to run`
     );
   }
 
   for (const address of addressesToAssociate) {
 
-    const item = missingAddresses.pop();
-    const instance = item.instance;
+    const student = state.students.find(student => {
+      const instance = getStudentInstance(student, state.instances);
+      return instance.Region === address.Region && !getInstanceAddress(instance, state.addresses);
+    });
+
+    const instance = getStudentInstance(student, state.instances);
 
     await loading(
-      createTags([ address.AllocationId ], getAddressTags(item.student)),
-      `Tagging elastic IP address ${address.AllocationId} for student ${item.student.username}`
+      createTags(address.Region, [ address.AllocationId ], getAddressTags(student)),
+      `Tagging elastic IP address ${address.AllocationId} for student ${student.username}`
     );
 
-    instance.address = await loading(
+    await loading(
       associateAddress(address, instance),
-      `Associating elastic IP address ${address.AllocationId} with instance ${instance.InstanceId} for student ${item.student.username}`
+      `Associating elastic IP address ${address.AllocationId} with instance ${instance.InstanceId} for student ${student.username}`
     );
+
+    missingAddresses.splice(missingAddresses.indexOf(student), 1);
   }
 
-  for (const item of missingAddresses) {
+  for (const student of missingAddresses) {
 
-    const address = await loading(allocateAddress(), `Allocating new elastic IP address for student ${item.student.username}`);
+    const instance = getStudentInstance(student, state.instances);
+
+    const address = await loading(
+      allocateAddress(instance.Region),
+      `Allocating new elastic IP address in region ${getRegionName(instance.Region)} for student ${student.username}`
+    );
+
     await loading(
-      createTags([ address.AllocationId ], getAddressTags(item.student)),
-      `Tagging elastic IP address ${address.AllocationId} for student ${item.student.username}`
+      createTags(instance.Region, [ address.AllocationId ], getAddressTags(student)),
+      `Tagging elastic IP address ${address.AllocationId} for student ${student.username}`
     );
 
-    const instance = item.instance;
-    instance.address = await loading(
+    await loading(
       associateAddress(address, instance),
-      `Associating elastic IP address ${address.AllocationId} with instance ${instance.InstanceId} for student ${item.student.username}`
+      `Associating elastic IP address ${address.AllocationId} with instance ${instance.InstanceId} for student ${student.username}`
     );
+
+    state.addresses.push(address);
   }
 
   console.log();
 }
 
-async function sendStudentMails(students) {
+async function sendStudentMails(studentUsernames) {
   console.log();
 
   const state = await loadState();
   console.log();
 
-  const selectedItems = selectItemsByStudentUsername(state.items, students);
+  const selectedStudents = selectStudentsByUsername(state.students, studentUsernames);
 
-  const missingAddresses = selectedItems.filter(item => !item.address);
+  const missingAddresses = selectedStudents.filter(student => !getInstanceAddress(getStudentInstance(student, state.instances), state.addresses));
   if (missingAddresses.length) {
-    throw new Error(`Students ${missingAddresses.map(item => `"${item.student.username}"`).join(', ')} have no corresponding instance or associated elastic IP address`);
-  } else if (!selectedItems.length) {
+    throw new Error(`Students ${missingAddresses.map(student => `"${student.username}"`).join(', ')} have no corresponding instance or associated elastic IP address`);
+  } else if (!selectedStudents.length) {
     console.log(chalk.green('No elastic IP addresses available'));
     console.log();
     return;
-  } else if (!(await confirm(`${selectedItems.length} emails will be sent`))) {
+  } else if (!(await confirm(`${selectedStudents.length} emails will be sent`))) {
     throw new Error('Emails canceled by user');
   }
 
   console.log();
-  for (const item of selectedItems) {
+  for (const student of selectedStudents) {
+
+    const instance = getStudentInstance(student, state.instances);
+    const address = getInstanceAddress(instance, state.addresses);
 
     const mail = {
-      to: item.student.email,
+      to: student.email,
       subject: 'ArchiDep 2018 Virtual Server',
       text: [
-        `IP address: ${item.address.PublicIp}`,
-        `Username: ${item.student.username}`,
-        `Password: ${item.student.password}`
+        `IP address: ${address.PublicIp}`,
+        `Username: ${student.username}`,
+        `Password: ${student.password}`
       ].join('\n')
     };
 
     await loading(
       sendMail(mail),
-      `Sending email to ${item.student.email}`
+      `Sending email to ${student.email}`
     );
   }
 
@@ -290,6 +331,14 @@ async function sendStudentMails(students) {
 
 function actionRunner(func) {
   return (...args) => action = () => func(...[ ...args, commander ]);
+}
+
+function getAddressDescription(address) {
+  if (!address) {
+    return chalk.gray('-');
+  }
+
+  return address.PublicIp;
 }
 
 function getAddressTags(student) {
@@ -309,8 +358,20 @@ function getAddressTags(student) {
   ];
 }
 
+function getDanglingAddresses(state) {
+  const instanceIds = state.instances.map(instance => instance.InstanceId);
+  return state.addresses.filter(address => !includes(instanceIds, address.InstanceId));
+}
+
+function getExtraInstances(state) {
+  const studentUsernames = state.students.map(student => student.username);
+  return state.instances.filter(instance => instance.Tags.every(tag => tag.Key !== 'Student' || !includes(studentUsernames, tag.Value)));
+}
+
 function getInstanceAddress(instance, addresses) {
-  if (!isPlainObject(instance)) {
+  if (instance === undefined) {
+    return;
+  } else if (!isPlainObject(instance)) {
     throw new Error('Instance must be an object');
   } else if (!isString(instance.InstanceId)) {
     throw new Error('Instance must have an "InstanceId" property that is a string');
@@ -321,13 +382,13 @@ function getInstanceAddress(instance, addresses) {
   return addresses.find(address => address.InstanceId === instance.InstanceId);
 }
 
-async function getInstanceRunParams(student) {
+async function getInstanceRunParams(region, student) {
   return {
-    ImageId: await loadConfigProperty('aws_image'),
+    ImageId: await loadRegionImage(region),
     InstanceType: await loadConfigProperty('aws_instance_type'),
     KeyName: await loadConfigProperty('aws_key_name'),
     SecurityGroupIds: [
-      await loadConfigProperty('aws_security_group')
+      await loadRegionSecurityGroup(region)
     ],
     TagSpecifications: [
       {
@@ -351,30 +412,7 @@ async function getInstanceRunParams(student) {
   };
 }
 
-function getItemAddressDescription(item) {
-
-  const address = item.address;
-  if (!address) {
-    return chalk.gray('-');
-  }
-
-  return address.PublicIp;
-}
-
-function getItemDescription(item, descriptionFactory, ...args) {
-  const description = descriptionFactory(item, ...args);
-  if (item.selected === true) {
-    return chalk.cyan(description);
-  } else if (item.selected === false) {
-    return chalk.gray(description);
-  } else {
-    return description;
-  }
-}
-
-function getItemInstanceDescription(item) {
-
-  const instance = item.instance;
+function getInstanceDescription(instance) {
   if (!instance) {
     return chalk.gray('-');
   }
@@ -382,9 +420,16 @@ function getItemInstanceDescription(item) {
   return `${instance.InstanceId} (${instance.InstanceType})`;
 }
 
-function getItemInstanceStatus(item) {
+function getInstanceName(instance) {
+  if (!instance) {
+    return '-';
+  }
 
-  const instance = item.instance;
+  const nameTag = instance.Tags.find(tag => tag.Key === 'Name');
+  return nameTag ? nameTag.Value : '-';
+}
+
+function getInstanceStatus(instance) {
   if (!instance) {
     return chalk.red('MISSING');
   }
@@ -400,8 +445,42 @@ function getItemInstanceStatus(item) {
   }
 }
 
-function getItemStudentDescription(item) {
-  return item.student.name;
+function getItemRegion(item) {
+  return getRegionName(item.Region);
+}
+
+async function getNextInstanceRegions(count, instances) {
+
+  const regions = await loadRegions();
+  const instanceCountByRegion = regions.reduce((memo, region) => ({
+    ...memo,
+    [region]: instances.filter(instance => instance.Region === region).length
+  }), {});
+
+  const nextRegions = [];
+
+  do {
+
+    const region = regions[0];
+    if (!region) {
+      throw new Error(`The instance limits have been reached in all regions (${(await loadRegions()).join(', ')})`);
+    }
+
+    const limit = await loadRegionLimit(region);
+    if (limit <= 0 || instanceCountByRegion[region] >= limit) {
+      regions.shift();
+      continue;
+    }
+
+    nextRegions.push(region);
+    instanceCountByRegion[region]++;
+  } while (nextRegions.length < count);
+
+  return nextRegions;
+}
+
+function getStudentDescription(student) {
+  return student.name;
 }
 
 function getStudentInstance(student, instances) {
@@ -427,48 +506,42 @@ async function loadState() {
   const addresses = await loading(listAddresses(), 'Listing AWS EC2 elastic IP addresses');
   const instances = await loading(listInstances(), 'Listing AWS EC2 instances');
 
-  const state = {
-    items: students.map(student => {
-
-      const instance = getStudentInstance(student, instances);
-
-      return {
-        instance,
-        student,
-        address: instance ? getInstanceAddress(instance, addresses) : undefined
-      };
-    })
-  };
-
-  state.danglingAddresses = addresses.filter(address => state.items.every(item => item.address !== address));
-  state.extraInstances = instances.filter(instance => state.items.every(item => item.instance !== instance));
-
-  return state;
+  return { addresses, instances, students };
 }
 
 function printStatusTableData(state) {
 
-  const tableData = state.items.map(item => [
-    getItemDescription(item, getItemStudentDescription),
-    getItemDescription(item, getItemInstanceDescription),
-    getItemDescription(item, getItemAddressDescription),
-    getItemDescription(item, getItemInstanceStatus)
-  ]);
+  const tableData = state.students.map(student => {
 
-  tableData.unshift([ `Students (${state.items.length})`, 'Instance', 'Address', 'Status' ].map(title => chalk.bold(title)));
+    const instance = getStudentInstance(student, state.instances);
+    const address = getInstanceAddress(instance, state.addresses);
+
+    return [
+      ...styleSelection(student, [
+        getStudentDescription(student),
+        getInstanceDescription(instance),
+        getInstanceName(instance),
+        getAddressDescription(address)
+      ]),
+      getInstanceStatus(instance)
+    ];
+  });
+
+  tableData.unshift([ `Students (${state.students.length})`, 'Instance', 'Name', 'Address', 'Status' ].map(title => chalk.bold(title)));
 
   console.log(table(tableData));
 
-  const danglingAddresses = state.danglingAddresses;
+  const danglingAddresses = getDanglingAddresses(state);
   if (danglingAddresses.length) {
 
-    const danglingAddressesTableData = state.danglingAddresses.map(address => [
+    const danglingAddressesTableData = danglingAddresses.map(address => [
       address.AllocationId,
       address.PublicIp,
+      getRegionName(address.Region),
       chalk.red('dangling')
     ]);
 
-    danglingAddressesTableData.unshift([ 'Elastic IP', 'Address', 'Status' ].map(title => chalk.bold(title)));
+    danglingAddressesTableData.unshift([ 'Elastic IP', 'Address', 'Region', 'Status' ].map(title => chalk.bold(title)));
 
     console.log(chalk.red('The following elastic IP addresses are billed for nothing'));
     console.log(chalk.red('because they are not associated with a running instance.'));
@@ -477,7 +550,28 @@ function printStatusTableData(state) {
     console.log(table(danglingAddressesTableData));
   }
 
-  // FIXME: display dangling instances
+  const extraInstances = getExtraInstances(state);
+  if (extraInstances.length) {
+
+    const extraInstancesTableDate = extraInstances.map(instance => {
+
+      const address = getInstanceAddress(instance, state.addresses);
+
+      return [
+        getInstanceDescription(instance),
+        getInstanceName(instance),
+        getAddressDescription(address),
+        getItemRegion(instance),
+        getInstanceStatus(instance)
+      ];
+    });
+
+    extraInstancesTableDate.unshift([ 'Instance', 'Name', 'Address', 'Region', 'Status' ].map(title => chalk.bold(title)));
+
+    console.log(chalk.yellow('The following other instances have been found.'));
+    console.log();
+    console.log(table(extraInstancesTableDate));
+  }
 }
 
 function studentIs(student, searchTerm) {
@@ -485,66 +579,76 @@ function studentIs(student, searchTerm) {
   return [ student.name, student.email, student.username ].some(text => text.toLowerCase().indexOf(term) >= 0);
 }
 
-function selectItemsByStudentUsername(items, studentSearchTerms) {
-  if (!studentSearchTerms.length) {
-    return items;
+function selectStudentsByUsername(students, searchTerms) {
+  if (!searchTerms || !searchTerms.length) {
+    return students;
   }
 
-  const selectedItems = [];
+  const selectedStudents = [];
   const knownSearchTerms = [];
 
-  for (const item of items) {
-    const matchingSearchTerms = studentSearchTerms.filter(searchTerm => studentIs(item.student, searchTerm));
-    item.selected = matchingSearchTerms.length >= 1;
-    if (item.selected) {
-      selectedItems.push(item);
+  for (const student of students) {
+    const matchingSearchTerms = searchTerms.filter(searchTerm => studentIs(student, searchTerm));
+    student[SELECTED] = matchingSearchTerms.length >= 1;
+    if (student[SELECTED]) {
+      selectedStudents.push(student);
       knownSearchTerms.push(...matchingSearchTerms);
     }
   }
 
-  if (!selectedItems.length) {
-    throw new Error(`Search terms ${studentSearchTerms.map(term => `"${term}"`).join(', ')} match no students`);
-  } else if (selectedItems.length === items.length) {
-    throw new Error(`Search terms ${studentSearchTerms.map(term => `"${term}"`).join(', ')} match all students; use more precise search terms`);
+  if (!selectedStudents.length) {
+    throw new Error(`Search terms ${searchTerms.map(term => `"${term}"`).join(', ')} match no students`);
+  } else if (selectedStudents.length === students.length) {
+    throw new Error(`Search terms ${searchTerms.map(term => `"${term}"`).join(', ')} match all students; use more precise search terms`);
   }
 
-  const unknownSearchTerms = difference(studentSearchTerms, knownSearchTerms);
+  const unknownSearchTerms = difference(searchTerms, knownSearchTerms);
   if (unknownSearchTerms.length) {
     throw new Error(`Unknown student usernames: ${unknownSearchTerms.join(', ')}`);
   }
 
-  return selectedItems;
+  return selectedStudents;
 }
 
 function studentInstancesActionFactory(ec2Func, description) {
-  return async students => {
+  return async studentUsernames => {
 
     console.log();
 
     const state = await loadState();
     console.log();
 
-    const selectedItems = students.length ? selectItemsByStudentUsername(state.items, students) : state.items.filter(item => item.instance);
+    const selectedStudents = studentUsernames.length ? selectStudentsByUsername(state.students, studentUsernames) : state.students.filter(student => getStudentInstance(student, state.instances));
 
-    const missingInstances = selectedItems.filter(item => !item.instance);
+    const missingInstances = selectedStudents.filter(student => !getStudentInstance(student, state.instances));
     if (missingInstances.length) {
-      throw new Error(`Students ${missingInstances.map(item => `"${item.student.username}"`).join(', ')} have no corresponding instance`);
-    } else if (!selectedItems.length) {
+      throw new Error(`Students ${missingInstances.map(student => `"${student.username}"`).join(', ')} have no corresponding instance`);
+    } else if (!selectedStudents.length) {
       console.log(chalk.green('No instances available'));
       console.log();
       return;
-    } else if (!(await confirm(`${selectedItems.length} instances will be affected`))) {
+    } else if (!(await confirm(`${selectedStudents.length} instances will be affected`))) {
       throw new Error('Instance action canceled by user');
     }
 
     console.log();
 
     await loading(
-      ec2Func(selectedItems.map(item => item.instance)),
-      `${description} ${selectedItems.map(item => `"${item.instance.InstanceId}"`).join(', ')} for students ${selectedItems.map(item => `"${item.student.username}"`).join(', ')}`
+      ec2Func(selectedStudents.map(student => getStudentInstance(student, state.instances))),
+      `${description} ${selectedStudents.map(student => `"${getStudentInstance(student, state.instances).InstanceId}"`).join(', ')} for students ${selectedStudents.map(student => `"${student.username}"`).join(', ')}`
     );
 
     console.log();
     printStatusTableData(state);
   };
+}
+
+function styleSelection(selectedItem, itemsToStyle) {
+  if (selectedItem === true || selectedItem[SELECTED] === true) {
+    return itemsToStyle.map(item => chalk.cyan(item));
+  } else if (selectedItem === false || selectedItem[SELECTED] === false) {
+    return itemsToStyle.map(item => chalk.gray(item));
+  } else {
+    return itemsToStyle;
+  }
 }
