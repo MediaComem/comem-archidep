@@ -268,8 +268,7 @@ Use command pipelines and stream redirections to:
 
     ![AWS Launch](images/aws-step-7-launch.png)
 
-    Select the public key you imported or create a new one.
-    If you create a new one, you will have to download it and use it to connect to the server.
+    Select the public key you imported.
 
     ![AWS Key Pair](images/aws-step-7-key.png)
 * Go to **Elastic IPs** in the menu, and allocate a new IP address.
@@ -278,7 +277,7 @@ Use command pipelines and stream redirections to:
   ![AWS Associate Address](images/aws-associate-address-1.png)
 
   Select the instance you just launched and its private IP address
-  (*the identifiers will _not be the same_ as in this screenshot*):
+  (*the values will _not be the same_ as in this screenshot*):
 
   ![AWS Associate Address](images/aws-associate-address-2.png)
 
@@ -289,9 +288,10 @@ Use command pipelines and stream redirections to:
 
   Assuming the instance's public IP address is `2.2.2.2` (replace with the elastic IP address you allocated):
 
-  * If you imported your own public key, connect with `ssh ubuntu@2.2.2.2`.
-  * Or, if you created and downloaded a new key pair when launching the instance, connect with `ssh -i path/to/key.pem ubuntu@2.2.2.2`.
-* Once you are connected as `ubuntu`, run the following command to give the teacher access to your instance:
+  ```bash
+  $> ssh ubuntu@2.2.2.2
+  ```
+* Once you are connected as `ubuntu`, run the following command to give the teacher access to your instance (be sure to copy the whole line):
 
   ```bash
   $> echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQC4kSxG07ffvlSRaQkiq3j14gSz9Fm8eCREGBBOJQ9O2BUj64qUw2m7hYIP+m0vdl81uBg0TAl1Hp0GO/g3SuVRbrbM6Rms5RSTIcfQyErMKU2asJIjNjWsJoHMlAaOrHATKWEm2C48c4XuBnemzrT0bIddpElggfHZg95Xo9GAYWpAeHT+LJAJLPYsh+m2QGOI9SEcFXfcKSIeuDoSIA0nrIF3FXkjKYZAj3HhPFGi+S2P3eJO3ss/bJ61lCT0fsij/ZFWms2aGWMKEOAFcxBgFc4DGU9lC5XmVdquJvgebKJVydXQ92G/Vxo6KoAr+UWPUpI4lM7mYrqMdF5hTxcJj+OkXXBjjqO+4YGBhQMr3ayXd5g+GXM+ZBNv5B26anB4M39fzK8jlSQJ3MBiylsFW3CxpWOJcZ3Po4fmPdHI1JCsxNf1IZNyRGjl1NyQF9ANRi0xViy56LrewcKCD2IImVLa0WIikl9KcQnvpjACNT55P3lPadmTeUZhYPxNweIpRYrw6JjKKwBA5HX+vzFursZAnTOjhgxV0SXI1gQSWHpd+Rk1iKnWBbK9rQORb98/W6a/t+u9evv2gm3m5SXou+DdM5D936ERoI2DZMBplKxkNLzMeBUZoyVDSAAmjL2jwnHLomYP1GrHf7ZQGSnqPCvFAchVtoTwLjGzY5aixnxZZVD6q49tKLutDO1ZX9XSa1/E3WjFBDZbnIqFYMqHJM8Xo8PFKCCD3de9gGHomeA2giOAJ1bPv4tkE3IDfvOuzvLWrAOFweihNvTcSHjLOwfDac88RXJ0oruNOEUaf6Z7xLzPE92XJTx9tW+voRJguqVjKW/S5MlSFJzbQYnKc063t+hTCnDZB+GdSuJi9W+mAIrzm8Gl4CvQprYJ4HrbPZjcBpvNZH3VzDZdLDQwjiGTzJXRC2GZh95ksPvBNbatsuEbiKmzJxB74n1/7A+5JzB43dAZRIaqQR7Xv3jHOM5tLw65Q2Km9nG9vqqxZMdbjqCpMg81wEB0uUX6fncjOCG11Hc7DDoHPyS6y9wZaxOQS5w3ksURDJfx6a3Skl3FCKKlABHrLO2KCcZ0dxFb0xkzF7wX/isGQgTyjDFbj1NpSt2aFwnq7TSBWX0TSikAi/ZTLmnI5EJEe1FyQlqFB2nXX5YLz1lTaDQtw0BQozTL9icarDi/9qtkuQM0V8leaHawiEBYAb8omgWauQWBt+FoQTQqTgM/Uko+ts2oWA1ecg9Y9zmmKASL3DceBWXIFJs9LwWQ8JgDtC3SBhYHdgbCZbVdGqXRbXBSjrHVd815g/0NnEluwGxudzYjhG2nLblLC+ngAaqKBJu9z5wKF/GYbBzcCHdO7fhjdPrr ArchiDep" >> sudo tee --append /home/ubuntu/.ssh/authorized_keys
@@ -344,7 +344,7 @@ Use command pipelines and stream redirections to:
   $> sudo hostname john-doe.archidep-2018.media
   ```
 
-  Also save your new hostname to the `/etc/hostname` file so that it will persist if you reboot the server:
+  Also save your new hostname to the `/etc/hostname` file so that it will persist when you reboot the server:
 
   ```bash
   $> echo "john-doe.archidep-2018.media" | sudo tee /etc/hostname
@@ -365,6 +365,7 @@ Use command pipelines and stream redirections to:
   $> hostname
   john-doe.archidep-2018.media
   ```
+* Send your instance's public IP address to the teacher.
 
 
 
