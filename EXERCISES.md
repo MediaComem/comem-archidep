@@ -68,7 +68,7 @@ Perform the following tasks:
 
 ### Permissions
 
-* Create `/home/YOURUSER/alice` directory.
+* Create a `/home/YOURUSER/alice` directory.
 
   **Solution:**
 
@@ -113,13 +113,6 @@ Perform the following tasks:
   $> sudo chown alice writable.txt
   ```
 
-Useful commands:
-
-* Create a directory: `mkdir directory-name`
-* Create a file with some content: `echo "some content" > file.txt`
-* Change a file's or a directory's permissions: `sudo chmod u+rx filename` or `sudo chmod 755 filename`
-* Change a file's or a directory's owner: `sudo chown owner filename`
-
 ### Pipelines
 
 Download the exercice file to your computer with the following command:
@@ -136,7 +129,7 @@ Somewhere over the rainbow
 ...
 ```
 
-**Use command pipelines and stream redirections to**:
+Use command pipelines and stream redirections to:
 
 * Count the number of lines and characters in the text.
 
@@ -149,10 +142,11 @@ Somewhere over the rainbow
   1284
   ```
 
-  **Solution not counting new lines:**
+  **Solution counting the number of characters excluding new lines:**
 
   ```bash
   $> cat rainbow.txt | fold -w 1 | wc -l
+  1242
   ```
 * Print the lines of the text containing the word `rainbow`.
 
@@ -190,6 +184,7 @@ Somewhere over the rainbow
 
   over
   fly
+  ...
   ```
 * Compress the text and save it to `rainbow.txt.gz`.
 
