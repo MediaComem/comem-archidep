@@ -227,9 +227,9 @@ Use command pipelines and stream redirections to:
 ### Run your own virtual server on Amazon Web Services (bonus)
 
 * Apply for [AWS Educate](https://aws.amazon.com/education/awseducate/apply/) if you are a student.
-  * If you have a credit card, you can instead register a personal [AWS account](https://portal.aws.amazon.com/billing/signup#/start).
+  * If you have a credit card, you can register a [standard AWS account](https://portal.aws.amazon.com/billing/signup#/start) instead.
 
-    You will be able to run a small free server that is sufficient for the needs of this course.
+    You will be able to run a small *free* server that is sufficient for the needs of this course.
 * Access the [EC2 Dashboard](https://eu-west-1.console.aws.amazon.com/ec2).
 * Select the **EU Ireland region** at the top right of the screen in the menu bar.
   It is the cheapest european region.
@@ -243,6 +243,8 @@ Use command pipelines and stream redirections to:
 
   This will make it simpler for you to connect to your virtual server once it's launched.
 * Go to [**Instances**](https://eu-west-1.console.aws.amazon.com/ec2) and **launch an instance**.
+
+  ![AWS Launch Instance](images/aws-launch-instance.png)
   * **Step 1:** Search and select the following Ubuntu AMI: `Ubuntu Server 18.04 LTS (HVM), SSD Volume Type`.
     Use the default 64-bit (x86) version.
 
