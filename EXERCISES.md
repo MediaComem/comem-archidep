@@ -8,6 +8,9 @@
   - [Collaborative exercise (graded)](#collaborative-exercise-graded)
   - [Clone a repository from a server](#clone-a-repository-from-a-server)
   - [Push a repository to a server](#push-a-repository-to-a-server)
+- [Unix](#unix)
+  - [Permissions](#permissions)
+  - [Pipelines](#pipelines)
 - [Basic deployment](#basic-deployment)
   - [Run your own virtual server on Amazon Web Services](#run-your-own-virtual-server-on-amazon-web-services)
   - [Run a simple PHP application on the server](#run-a-simple-php-application-on-the-server)
@@ -61,20 +64,164 @@ Perform the following tasks:
 
 
 
-## Unix administration
+## Unix
 
 ### Permissions
 
 * Create `/home/YOURUSER/alice` directory.
+
+  **Solution:**
+
+  ```bash
+  $> cd ~
+  $> mkdir alice
+  ```
 * The `alice` user must be able to traverse, but not read this directory.
+
+  **Solution with symbolic mode:**
+
+  ```bash
+  $> chmod o-x alice
+  ```
+
+  **Solution with octal mode:**
+
+  ```bash
+  $> chmod 751 alice
+  ```
 * The directory must contain a `readable.txt` file that `alice` can read from, but not write to.
+
+  **Solution:**
+
+  ```bash
+  $> echo "some content" > readable.txt
+  ```
 * The directory must contain a `writable.txt` file that `alice` can read from and write to.
+
+  **Solution with chmod with symbolic or octal mode:**
+
+  ```bash
+  $> echo "some other content" > writable.txt
+  $> chmod o+w writable.txt
+  $> chmod 666 writable.txt
+  ```
+
+  **Solution with chown:**
+
+  ```bash
+  $> echo "some other content" > writable.txt
+  $> sudo chown alice writable.txt
+  ```
 
 Useful commands:
 
 * Create a directory: `mkdir directory-name`
 * Create a file with some content: `echo "some content" > file.txt`
 * Change a file's or a directory's permissions: `sudo chmod u+rx filename` or `sudo chmod 755 filename`
+* Change a file's or a directory's owner: `sudo chown owner filename`
+
+### Pipelines
+
+Download the exercice file to your computer with the following command:
+
+```bash
+$> curl -L https://git.io/fAjRa > rainbow.txt
+```
+
+Display the file:
+
+```bash
+$> cat rainbow.txt
+Somewhere over the rainbow
+...
+```
+
+**Use command pipelines and stream redirections to**:
+
+* Count the number of lines and characters in the text.
+
+  **Solution:**
+
+  ```bash
+  $> cat rainbow.txt | wc -l
+  50
+  $> cat rainbow.txt | wc -m
+  1284
+  ```
+
+  **Solution not counting new lines:**
+
+  ```bash
+  $> cat rainbow.txt | fold -w 1 | wc -l
+  ```
+* Print the lines of the text containing the word `rainbow`.
+
+  **Solution:**
+
+  ```bash
+  $> cat rainbow.txt | grep rainbow
+  Somewhere over the rainbow
+  Somewhere over the rainbow
+  Somewhere over the rainbow
+  The colors of the rainbow so pretty in the sky
+  Oh, somewhere over the rainbow
+  ```
+
+* Do the same but without any duplicates.
+
+  **Solution:**
+
+  ```bash
+  $> cat rainbow.txt | grep rainbow | sort | uniq
+  Oh, somewhere over the rainbow
+  Somewhere over the rainbow
+  The colors of the rainbow so pretty in the sky
+  ```
+* Print the second word of each line in the text.
+
+  **Solution:**
+
+  ```bash
+  $> cat rainbow.txt | cut -d ' ' -f 2
+  over
+  up
+  the
+  in
+
+  over
+  fly
+  ```
+* Compress the text and save it to `rainbow.txt.gz`.
+
+  **Solution:**
+
+  ```bash
+  $> cat rainbow.txt | gzip -c > rainbow.txt.gz
+  ```
+* Count the number of times the letter `e` or the word `the` is used.
+
+  **Solution for the letter `e`:**
+
+  ```bash
+  $> cat rainbow.txt | fold -w 1 | grep e | wc -l
+  131
+  ```
+
+  **Solution for the word `the`:**
+
+  ```bash
+  $> cat rainbow.txt | tr '[:upper:]' '[:lower:]' | tr -s '[[:punct:][:space:]]' '\n' | grep -w the | wc -l
+  ```
+* Display a list of the unique words in the text along with the number of times each word is used,
+  sorted from the least used to the most used.
+
+  **Solution:**
+
+  ```bash
+  cat rainbow.txt | tr '[:upper:]' '[:lower:]' | tr -s '[[:punct:][:space:]]' '\n' | sort | uniq -c | sort -bn
+  ```
+
+
 
 
 
