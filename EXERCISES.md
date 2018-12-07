@@ -82,8 +82,8 @@ Useful commands:
 
 ### Run your own virtual server on Amazon Web Services
 
-* Register an [AWS account](https://portal.aws.amazon.com/billing/signup#/start).
-  * Apply for [AWS Educate](https://aws.amazon.com/education/awseducate/apply/) if you are a student.
+* Apply for [AWS Educate](https://aws.amazon.com/education/awseducate/apply/) if you are a student.
+  * If you have a credit card, you can instead register a personal [AWS account](https://portal.aws.amazon.com/billing/signup#/start).
 * Access the [EC2 Dashboard](https://eu-west-1.console.aws.amazon.com/ec2).
 * Select the **EU Ireland region** at the top right of the screen in the menu bar.
   It is the cheapest european region.
