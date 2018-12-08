@@ -317,15 +317,15 @@ Use command pipelines and stream redirections to:
   Copy the `ubuntu` user's SSH authorized keys to your new user:
 
   ```bash
-  $> mkdir -p /home/john_doe/.ssh
+  $> sudo mkdir -p /home/john_doe/.ssh
 
-  $> chown john_doe:john_doe /home/john_doe/.ssh
+  $> sudo chown john_doe:john_doe /home/john_doe/.ssh
 
-  $> chmod 700 /home/john_doe/.ssh
+  $> sudo chmod 700 /home/john_doe/.ssh
 
-  $> cp /home/ubuntu/.ssh/authorized_keys /home/john_doe/.ssh/authorized_keys
+  $> sudo cp /home/ubuntu/.ssh/authorized_keys /home/john_doe/.ssh/authorized_keys
 
-  $> chown john_doe:john_doe /home/john_doe/.ssh/authorized_keys
+  $> sudo chown john_doe:john_doe /home/john_doe/.ssh/authorized_keys
   ```
 
   Disconnect once you are done:
