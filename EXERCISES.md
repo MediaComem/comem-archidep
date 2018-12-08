@@ -352,7 +352,7 @@ Use command pipelines and stream redirections to:
 * Reboot the server.
 
   ```bash
-  $> reboot
+  $> sudo reboot
   ```
 
   *After a couple of minutes*, check that you can still connect and that your hostname is correct:
