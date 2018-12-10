@@ -231,8 +231,10 @@ Use command pipelines and stream redirections to:
 
     You will be able to run a small *free* server that is sufficient for the needs of this course.
 * Access the [EC2 Dashboard](https://eu-west-1.console.aws.amazon.com/ec2).
-* Select the **EU Ireland region** at the top right of the screen in the menu bar.
+* Select the **EU Ireland region** if you have a standard account at the top right of the screen in the menu bar.
   It is the cheapest european region.
+
+  If you have a student account, you can use whatever region is available to you instead.
 
   ![AWS Region](images/aws-region.png)
 * [Import your public key](https://eu-west-1.console.aws.amazon.com/ec2) under **Key Pairs** so that you don't have to create a new one.
