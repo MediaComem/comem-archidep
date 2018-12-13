@@ -45,8 +45,9 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Unix basics & administration](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
   * [Unix processes](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
   * [Unix networking](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Unix environment variables](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
+  * [APT](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
   * [Twelve-factor app][12factor]
+  * [Unix environment variables](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
 * Reverse proxying
   * Nginx
   * Domain Name System (DNS)
