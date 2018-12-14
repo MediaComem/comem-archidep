@@ -61,7 +61,7 @@ $> sudo mysql < todolist.sql
 Also in the uploaded directory on the server, run a PHP development server on port 3000:
 
 ```bash
-$> php -S 3000
+$> php -S 0.0.0.0:3000
 ```
 
 You should be able to access the application in a browser at the correct IP address and port (e.g. `1.1.1.1:3000`).
