@@ -13,6 +13,7 @@
   - [Pipelines](#pipelines)
 - [Basic deployment](#basic-deployment)
   - [Run your own virtual server on Amazon Web Services (bonus)](#run-your-own-virtual-server-on-amazon-web-services-bonus)
+  - [Deploy a PHP application with SFTP](#deploy-a-php-application-with-sftp)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
