@@ -12,52 +12,52 @@ This guide describes how to run a virtual server appropriate for the COMEM+ Arch
 
   If you have a student account, you can use whatever region is available to you instead.
 
-  ![AWS Region](images/aws-region.png)
+  ![AWS Region](../images/aws-region.png)
 * [Import your public key](https://eu-west-1.console.aws.amazon.com/ec2) under **Key Pairs** so that you don't have to create a new one.
 
   You can display your public key by running the following command in your terminal: `cat ~/.ssh/id_rsa.pub`.
 
-  ![AWS Import Public Key](images/aws-import-public-key.png)
+  ![AWS Import Public Key](../images/aws-import-public-key.png)
 
   This will make it simpler for you to connect to your virtual server once it's launched.
 * Go to [**Instances**](https://eu-west-1.console.aws.amazon.com/ec2) and **launch an instance**.
 
-  ![AWS Launch Instance](images/aws-launch-instance.png)
+  ![AWS Launch Instance](../images/aws-launch-instance.png)
   * **Step 1:** Search and select the following Ubuntu AMI: `Ubuntu Server 18.04 LTS (HVM), SSD Volume Type`.
     Use the default 64-bit (x86) version.
 
-    ![AWS AMI](images/aws-step-1-ami.png)
+    ![AWS AMI](../images/aws-step-1-ami.png)
   * **Step 2:** Select the `t2.micro` instance type.
 
-    ![AWS Instance Type](images/aws-step-2-instance-type.png)
+    ![AWS Instance Type](../images/aws-step-2-instance-type.png)
   * **Step 3:** Leave the default instance details.
   * **Step 4:** Leave the default storage configuration.
   * **Step 5:** Add a `Name` tag to easily identify your instance.
 
-    ![AWS Tags](images/aws-step-5-tags.png)
+    ![AWS Tags](../images/aws-step-5-tags.png)
   * **Step 6:** Create a security group with the following inbound ports open: 22, 80, 443, 3000 & 3001.
 
-    ![AWS Security Group](images/aws-step-6-security-group.png)
+    ![AWS Security Group](../images/aws-step-6-security-group.png)
 
     The security warning indicates that it's good practice
     to limit the IP addresses authorized to access your virtual server.
     You may do so if you wish, but it's not necessary for this course.
   * **Step 7:** Launch the virtual server.
 
-    ![AWS Launch](images/aws-step-7-launch.png)
+    ![AWS Launch](../images/aws-step-7-launch.png)
 
     Select the public key you imported.
 
-    ![AWS Key Pair](images/aws-step-7-key.png)
+    ![AWS Key Pair](../images/aws-step-7-key.png)
 * Go to **Elastic IPs** in the menu, and allocate a new IP address.
 * Select the new IP address and associate it.
 
-  ![AWS Associate Address](images/aws-associate-address-1.png)
+  ![AWS Associate Address](../images/aws-associate-address-1.png)
 
   Select the instance you just launched and its private IP address
   (*the values will _not be the same_ as in this screenshot*):
 
-  ![AWS Associate Address](images/aws-associate-address-2.png)
+  ![AWS Associate Address](../images/aws-associate-address-2.png)
 
   Your instance now has a fixed public IP address on the Internet.
 * Connect to your new instance over SSH.

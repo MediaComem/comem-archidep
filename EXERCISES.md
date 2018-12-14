@@ -226,7 +226,7 @@ Use command pipelines and stream redirections to:
 
 ### Run your own virtual server on Amazon Web Services (bonus)
 
-Follow the [instructions](ex/aws-setup.md)
+Follow the [instructions](ex/aws-setup.md).
 
 ### Deploy a PHP application with SFTP
 
