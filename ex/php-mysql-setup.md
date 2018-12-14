@@ -35,7 +35,7 @@ $> sudo systemctl status mysql
 Secure your installation:
 
 ```bash
-$> mysql_secure_installation
+$> sudo mysql_secure_installation
 
 Securing the MySQL server deployment.
 
