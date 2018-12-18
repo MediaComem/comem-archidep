@@ -2,6 +2,9 @@
 
 This guide describes how to run a virtual server appropriate for the COMEM+ Architecture & Deployment course on the Amazon Web Services cloud platform.
 
+<!-- START doctoc -->
+<!-- END doctoc -->
+
 * Apply for [AWS Educate](https://aws.amazon.com/education/awseducate/apply/) if you are a student.
   * If you have a credit card, you can register a [standard AWS account](https://portal.aws.amazon.com/billing/signup#/start) instead.
 

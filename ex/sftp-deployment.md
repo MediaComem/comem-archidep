@@ -10,6 +10,7 @@ using the PHP development server.
 - [Setup](#setup)
 - [Upload the application](#upload-the-application)
 - [Initialize the database](#initialize-the-database)
+- [Update the configuration](#update-the-configuration)
 - [Run the PHP development server](#run-the-php-development-server)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -51,6 +52,21 @@ Execute the project's SQL file to create the database and table:
 
 ```bash
 $> sudo mysql < todolist.sql
+```
+
+
+
+## Update the configuration
+
+Update the first few lines of the `index.php` file with the correct configuration:
+
+```php
+define('BASE_URL', '/');
+define('DB_USER', 'todolist');
+define('DB_PASS', 'chAngeMeN0w!');
+define('DB_NAME', 'todolist');
+define('DB_HOST', '127.0.0.1');
+define('DB_PORT', '3306');
 ```
 
 

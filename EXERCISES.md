@@ -14,6 +14,8 @@
 - [Basic deployment](#basic-deployment)
   - [Run your own virtual server on Amazon Web Services (bonus)](#run-your-own-virtual-server-on-amazon-web-services-bonus)
   - [Deploy a PHP application with SFTP](#deploy-a-php-application-with-sftp)
+  - [Deploy a PHP application with Git](#deploy-a-php-application-with-git)
+  - [Configure a PHP application through environment variables](#configure-a-php-application-through-environment-variables)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -232,6 +234,14 @@ Follow the [instructions](ex/aws-setup.md).
 ### Deploy a PHP application with SFTP
 
 Follow the [instructions](ex/sftp-deployment.md).
+
+### Deploy a PHP application with Git
+
+Follow the [instrutions](ex/git-clone-deployment.md).
+
+### Configure a PHP application through environment variables
+
+Follow the [instructions](ex/config-through-environment.md).
 
 
 
