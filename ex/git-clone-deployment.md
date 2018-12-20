@@ -1,7 +1,7 @@
 # Deployment with Git
 
 This guide describes how to deploy a PHP application much like the [previous exercise](sftp-deployment.md)
-but with Git to put the code on the server instead of SFTP.
+but using Git to put the code on the server instead of SFTP.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -39,6 +39,8 @@ $> cd
 
 $> git clone https://github.com/MyUser/comem-archidep-php-todo-exercise.git todolist-repo
 ```
+
+Those commands will create a new `todolist-repo` directory in your home directory.
 
 
 

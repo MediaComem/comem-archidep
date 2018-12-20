@@ -46,19 +46,21 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Unix processes](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
   * [Unix networking](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
   * [APT](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
+* Advanced deployment
   * [Twelve-factor app][12factor]
   * [Unix environment variables](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
-* Reverse proxying
-  * Nginx
-  * Domain Name System (DNS)
+  * [Linux process management](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Domain Name System (DNS)](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Reverse proxying](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
   * SSL certificate
 * Automated deployment
   * Scripting
   * Git hooks
+* Platform-as-a-Service (PaaS)
+  * Heroku
 * Continuous integration
   * Automated testing
 * Continuous delivery
-  * Heroku
   * Travis
 
 

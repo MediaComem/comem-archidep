@@ -16,6 +16,8 @@
   - [Deploy a PHP application with SFTP](#deploy-a-php-application-with-sftp)
   - [Deploy a PHP application with Git](#deploy-a-php-application-with-git)
   - [Configure a PHP application through environment variables](#configure-a-php-application-through-environment-variables)
+  - [Manage the PHP application's process with systemd](#manage-the-php-applications-process-with-systemd)
+  - [Configure a domain name](#configure-a-domain-name)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -242,6 +244,14 @@ Follow the [instrutions](ex/git-clone-deployment.md).
 ### Configure a PHP application through environment variables
 
 Follow the [instructions](ex/config-through-environment.md).
+
+### Manage the PHP application's process with systemd
+
+Follow the [instructions](ex/systemd-deployment.md).
+
+### Configure a domain name
+
+Follow the [instructions](ex/dns-configuration.md).
 
 
 
