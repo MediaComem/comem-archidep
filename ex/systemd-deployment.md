@@ -46,6 +46,9 @@ WantedBy=mysql.service
 
 Save it to `/etc/systemd/system/todolist.service` on the server.
 
+> You can edit this file with `nano` on the server with the following command:
+> `sudo nano /etc/systemd/system/todolist.service`.
+
 
 
 ## Enable and start the todolist service
