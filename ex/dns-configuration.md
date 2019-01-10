@@ -41,9 +41,12 @@ john-doe 1800 IN A 1.2.3.4
 
 ## Access the domain name
 
-Once you have configured it correctly, you should be able to access the todolist application at `john-doe.archidep-2018.media` in your browser.
+Once you have configured it correctly,
+you should be able to access the todolist application at http://john-doe.archidep-2018.media:3000 in your browser
+(provided you did the previous exercises).
 
-*You might have to wait a few minutes for the change to take effect, especially if you make a mistake in configuring the DNS record and then fix it.*
+*You might have to wait a few minutes for the change to take effect,
+especially if you make a mistake in configuring the DNS record and then fix it.*
 
 
 
