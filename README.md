@@ -54,8 +54,8 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Reverse proxying](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
   * SSL certificate
 * Automated deployment
-  * Scripting
-  * Git hooks
+  * [Shell scripting](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Git hooks](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
 * Platform-as-a-Service (PaaS)
   * Heroku
 * Continuous integration
