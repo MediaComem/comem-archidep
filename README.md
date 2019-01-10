@@ -94,6 +94,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Configure a domain name](ex/dns-configuration.md)
 * **Advanced deployment**
   * [Deploy a static site with nginx](ex/nginx-static-deployment.md)
+  * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
 
 
 
