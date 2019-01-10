@@ -4,8 +4,21 @@ The goal of this exercice is to put in practice the knowledge acquired during pr
 
 **This exercise is part of the course evaluation.**
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [The goal](#the-goal)
+  - [The application](#the-application)
+- [Getting started](#getting-started)
+- [Create a systemd service](#create-a-systemd-service)
+- [Serve the application through nginx](#serve-the-application-through-nginx)
+- [Set up an automated deployment with Git hooks](#set-up-an-automated-deployment-with-git-hooks)
+  - [Allow your user to restart the service without a password](#allow-your-user-to-restart-the-service-without-a-password)
+  - [Test the automated deployment](#test-the-automated-deployment)
+- [Complete the exercise](#complete-the-exercise)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 
@@ -176,12 +189,18 @@ Exit with `Ctrl-X` and save when prompted.
 > That line allows any user in the `one-chat-room` group to execute the listed commands with `sudo`
 > without having to enter a password (hence the `NOPASSWD` option).
 
-## Test the automated deployment
+### Test the automated deployment
 
 If you are using your own fork of the repository,
 you can make and commit a change to test the automated deployment.
 
 For example, the main title of the page is [in the file `views/components/app.pug`][one-chat-room-title].
+
+
+
+## Complete the exercise
+
+Send an email to the teacher with the URL to your deployed application.
 
 
 
