@@ -29,6 +29,14 @@ Connect to [Gandi.net](https://gandi.net) with the provided user account and cre
 2. Then, create a wildcard subdomain using `*.john-doe` as the **name of the DNS record**, and the same IP address.
    This will direct any second-level subdomain like `foo.john-doe.archidep-2018.media` to your server.
 
+Assuming your server's IP address is `1.2.3.4` and your username is `john-doe`,
+you should have the following DNS records (among others) in your zone file:
+
+```
+*.john-doe 1800 IN A 1.2.3.4
+john-doe 1800 IN A 1.2.3.4
+```
+
 
 
 ## Access the domain name
