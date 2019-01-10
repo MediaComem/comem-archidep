@@ -52,28 +52,10 @@ Use the following command to create and edit this file:
 $> sudo nano /etc/nginx/sites-available/clock
 ```
 
-Paste the following configuration into the file
-(**replacing `john-doe` in the `server_name` directive and `john_doe` in the `root` directive by appropriate values for your server**):
+Take the static configuration that was [presented during the course][nginx-static-conf] and put it in the file.
 
-```
-server {
-
-  listen 80;
-  server_name john-doe.archidep-2018.media;
-
-  # Serve files from this directory.
-  root /home/john_doe/static-clock-website;
-
-  # Serve the following index page by default.
-  index index.html;
-
-  # Cache images, icons, video, audio, HTC, etc.
-  location ~* \.(?:jpg|jpeg|gif|png|ico|cur|gz|svg|mp4|ogg|ogv|webm|htc)$ {
-    access_log off;
-    add_header Cache-Control "max-age=2592000";
-  }
-}
-```
+**You should use `john-doe.archidep-2018.media` for the `server_name` directive (replacing `john-doe` with your username),
+and you should set the `root` directive to the correct directory (the `static-clock-website` repository in your home directory).**.
 
 ### Enable the nginx configuration
 
@@ -143,6 +125,7 @@ and you should see the website working.
 [nginx]: http://nginx.org/
 [nginx-signals]: http://nginx.org/en/docs/control.html
 [nginx-static]: https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/
+[nginx-static-conf]: https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#27
 [previous-ex]: dns-configuration.md
 [repo]: https://github.com/MediaComem/static-clock-website
 [slides]: https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#1
