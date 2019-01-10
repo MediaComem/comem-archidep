@@ -78,9 +78,20 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 
 ## Exercises
 
-The list of exercises can be found [here](EXERCISES.md).
-
-Some exercises are part of the course's evaluation.
+* **Version control**
+  * [Collaborative exercice (**graded**)](https://github.com/MediaComem/comem-archidep-php-todo-exercise)
+  * [Clone a repository from a server](ex/git-clone-from-server.md)
+  * [Push a repository to a server](ex/git-push-to-server.md)
+* **Unix**
+  * [Permissions](ex/unix-permissions.md)
+  * [Pipeline](ex/unix-pipeline.md)
+* **Basic deployment**
+  * [Run your own virtual server on Amazon Web Services (*bonus*)](ex/aws-setup.md)
+  * [Deploy a PHP application with SFTP](ex/sftp-deployment.md)
+  * [Deploy a PHP application with Git](ex/git-clone-deployment.md)
+  * [Configure a PHP application through environment variables](ex/config-through-environment.md)
+  * [Manage the PHP application's process with systemd](ex/systemd-deployment.md)
+  * [Configure a domain name](ex/dns-configuration.md)
 
 
 
