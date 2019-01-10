@@ -1,5 +1,8 @@
 # Unix Pipeline
 
+<!-- START doctoc -->
+<!-- END doctoc -->
+
 Download the exercice file to your computer with the following command:
 
 ```bash

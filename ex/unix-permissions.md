@@ -1,5 +1,8 @@
 # Unix Permissions
 
+<!-- START doctoc -->
+<!-- END doctoc -->
+
 * Create a `/home/YOURUSER/alice` directory.
 
   **Solution:**

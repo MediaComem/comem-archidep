@@ -14,6 +14,7 @@
   },
   "homepage": "https://github.com/MediaComem/comem-archidep#readme",
   "scripts": {
+    "doctoc": "doctoc --notitle --github README.md ex",
     "ec2": "node scripts/manage-instances.js",
     "mails": "node scripts/send-students-data.js",
     "start": "node scripts/process-students-data.js"
@@ -23,6 +24,7 @@
     "chalk": "^2.4.1",
     "commander": "^2.19.0",
     "csv-parse": "^3.0.0",
+    "doctoc": "^1.4.0",
     "fs-extra": "^7.0.0",
     "inquirer": "^6.2.0",
     "js-yaml": "^3.12.0",

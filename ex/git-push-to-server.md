@@ -1,5 +1,8 @@
 # Push a Git repository to a server
 
+<!-- START doctoc -->
+<!-- END doctoc -->
+
 The goal of this exercise is to demonstrate how to push a project's source code to a server with Git, from your local machine.
 
 Perform the following tasks:

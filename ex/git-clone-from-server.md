@@ -1,5 +1,8 @@
 # Clone a repository from a server
 
+<!-- START doctoc -->
+<!-- END doctoc -->
+
 The goal of this exercise is to demonstrate how to retrieve a project's source code with Git while connected to a remote server.
 
 Perform the following tasks:
