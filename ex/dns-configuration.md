@@ -24,10 +24,10 @@ Make sure you have done the [previous exercise](systemd-deployment.md).
 
 Connect to [Gandi.net](https://gandi.net) with the provided user account and create two new `A` record to map subdomains to your server's IP address:
 
-* Your first subdomain should be `john-doe.archidep-2018.media`, where `john-doe` is your name on your server,
-  meaning that you should use `john-doe` (your username) as the **name of the DNS record**.
-* Then, create a wildcard subdomain using `*.john-doe` as the **name of the DNS record**, and the same IP address.
-  This will direct any second-level subdomain like `foo.john-doe.archidep-2018.media` to your server.
+1. Your first subdomain should be `john-doe.archidep-2018.media`, where `john-doe` is your name on your server,
+   meaning that you should use `john-doe` (your username) as the **name of the DNS record**.
+2. Then, create a wildcard subdomain using `*.john-doe` as the **name of the DNS record**, and the same IP address.
+   This will direct any second-level subdomain like `foo.john-doe.archidep-2018.media` to your server.
 
 
 
