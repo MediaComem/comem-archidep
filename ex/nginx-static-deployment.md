@@ -3,7 +3,7 @@
 This guide describes how to deploy a static website with [nginx][nginx].
 
 It assumes that you are familiar with [reverse proxying][slides]
-and that you have done the [previous DNS configuration exercice][previous-ex],
+and that you have done the [previous DNS configuration exercise][previous-ex],
 where you configured an A record for your server.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->

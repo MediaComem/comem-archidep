@@ -79,7 +79,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 ## Exercises
 
 * **Version control**
-  * [Collaborative exercice (**graded**)](https://github.com/MediaComem/comem-archidep-php-todo-exercise)
+  * [Collaborative exercise (**graded**)](https://github.com/MediaComem/comem-archidep-php-todo-exercise)
   * [Clone a repository from a server](ex/git-clone-from-server.md)
   * [Push a repository to a server](ex/git-push-to-server.md)
 * **Unix**
@@ -96,6 +96,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Deploy a static site with nginx](ex/nginx-static-deployment.md)
   * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
   * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
+  * [Deploy a Node.js application with a MongoDB database (**graded**)](ex/one-chat-room-deployment.md)
 
 
 

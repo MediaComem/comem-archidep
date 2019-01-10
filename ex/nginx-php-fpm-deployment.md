@@ -1,12 +1,12 @@
 # Deploy a PHP website with nginx and the FastCGI process manager
 
-This guide describes how to deploy the same [PHP Todolist][repo] as in previous exercices,
+This guide describes how to deploy the same [PHP Todolist][repo] as in previous exercises,
 but this time behind nginx acting a reverse proxy,
 and with [FastCGI Process Manager (FPM)][php-fpm] instead of the PHP development server
 (which is more suitable for production).
 
 This guide assumes that you are familiar with [reverse proxying][slides],
-that you have nginx installed, and that you have done the [DNS exercice][dns-ex] and the [systemd exercice][systemd-ex].
+that you have nginx installed, and that you have done the [DNS exercise][dns-ex] and the [systemd exercise][systemd-ex].
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -26,13 +26,13 @@ that you have nginx installed, and that you have done the [DNS exercice][dns-ex]
 
 ## Using PHP FPM instead of the PHP development server
 
-When you did the [systemd exercice][systemd-ex],
+When you did the [systemd exercise][systemd-ex],
 you used the PHP development server (with the command `/usr/bin/php -S 0.0.0.0:3000`).
 
 As [its documentation states][php-dev-server], it is meant for development, not to be used on a production server.
 One of the main reasons it's a bad idea to use it on a server is beacuse it is **single-threaded**, and can only serve *one request at a time*.
 
-During the [SFTP exercice][sftp-ex], you installed the `php-fpm` package,
+During the [SFTP exercise][sftp-ex], you installed the `php-fpm` package,
 which provides the [FastCGI Process Manager (FPM)][php-fpm].
 
 It is both a **process manager** and a **FastCGI server**:
@@ -61,7 +61,7 @@ $> sudo systemctl status php7.2-fpm
 ## Add a the `TODOLIST_DB_PASS` environment variable to PHP FPM
 
 The PHP todolist application requires the `TODOLIST_DB_PASS` environment variable to successfully connect to its database.
-You previously set that variable in the systemd service file you created during the [systemd exercice][systemd-ex]: `/etc/systemd/system/todolist.service`.
+You previously set that variable in the systemd service file you created during the [systemd exercise][systemd-ex]: `/etc/systemd/system/todolist.service`.
 
 Now that [PHP FPM][php-fpm] will be running the application, you need to tell it to add this variable.
 

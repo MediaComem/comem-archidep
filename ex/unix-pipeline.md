@@ -3,7 +3,7 @@
 <!-- START doctoc -->
 <!-- END doctoc -->
 
-Download the exercice file to your computer with the following command:
+Download the exercise file to your computer with the following command:
 
 ```bash
 $> curl -L https://git.io/fAjRa > rainbow.txt

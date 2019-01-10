@@ -2,7 +2,7 @@
 
 This guide describes how to automatically deploy a PHP application when pushing commits to a server.
 
-It assumes that you have performed the previous [nginx & PHP FPM exercice][php-fpm-ex].
+It assumes that you have performed the previous [nginx & PHP FPM exercise][php-fpm-ex].
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -43,7 +43,7 @@ The goal is that every time you push commits to the repository, this directory i
 
 ## Update the todolist nginx configuration
 
-In previous exercices you configured nginx to serve the PHP application from the `todolist-repo` directory.
+In previous exercises you configured nginx to serve the PHP application from the `todolist-repo` directory.
 Edit that configuration:
 
 ```bash
