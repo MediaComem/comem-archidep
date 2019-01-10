@@ -145,10 +145,9 @@ server {
 
 > Here you are using nginx as a **reverse proxy**.
 > The [`fastcgi_pass` directive][nginx-fastcgi] instructs nginx to forward all requests to a FastCGI server.
->
 > The `/var/run/php/php7.2-fpm.sock` file is a [Unix socket][unix-socket]
 > allowing nginx to communicate with PHP FPM
-> (i.e. send and receive binary data using the FastCGI protocol).
+> (i.e. send and receive binary data).
 >
 > When a request arrives for the subdomain `todolist.john-doe.archidep-2018.media`,
 > nginx will forward that request to PHP FPM through the socket file.
