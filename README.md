@@ -92,6 +92,8 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Configure a PHP application through environment variables](ex/config-through-environment.md)
   * [Manage the PHP application's process with systemd](ex/systemd-deployment.md)
   * [Configure a domain name](ex/dns-configuration.md)
+* **Advanced deployment**
+  * [Deploy a static site with nginx](ex/nginx-static-deployment.md)
 
 
 
