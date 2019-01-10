@@ -95,6 +95,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 * **Advanced deployment**
   * [Deploy a static site with nginx](ex/nginx-static-deployment.md)
   * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
+  * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
 
 
 
