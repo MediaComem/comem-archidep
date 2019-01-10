@@ -2,12 +2,9 @@
 
 This guide describes how to deploy a static website with [nginx][nginx].
 
-It assumes that:
-
-* You are familiar with [reverse proxying][slides].
-* You have done the [previous DNS configuration exercice][previous-ex]
-  where you configured a wildcard `*.john-doe` A record for your server
-  (where `john-doe` is your username).
+It assumes that you are familiar with [reverse proxying][slides]
+and that you have done the [previous DNS configuration exercice][previous-ex],
+where you configured an A record for your server.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -55,7 +52,8 @@ Use the following command to create and edit this file:
 $> sudo nano /etc/nginx/sites-available/clock
 ```
 
-Paste the following configuration into the file (**replacing `john-doe` in the `server_name` directive and `john_doe` in the `root` directive by appropriate values**):
+Paste the following configuration into the file
+(**replacing `john-doe` in the `server_name` directive and `john_doe` in the `root` directive by appropriate values for your server**):
 
 ```
 server {
@@ -125,7 +123,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 Nginx reloads its configuration [when it receives the `HUP` signal][nginx-signals].
 You could find the process ID of the `nginx` master process and send the signal with `kill -s HUP <ID>`.
 
-The `nginx` command helpfully allows you to do that in a much simpler way:
+However, the `nginx` command helpfully allows you to do that in a much simpler way:
 
 ```bash
 $> sudo nginx -s reload
@@ -137,8 +135,8 @@ Nginx should have reloaded its configuration.
 
 ## See it in action
 
-Visit `http://john-doe.archidep-2018.media`.
-You should see the static website working.
+Visit http://john-doe.archidep-2018.media (replacing `john-doe` with your username)
+and you should see the website working.
 
 
 
