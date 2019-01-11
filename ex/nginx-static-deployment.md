@@ -100,7 +100,16 @@ nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
 
-> If an error occurs here, you have made a mistake in the configuration.
+> If an error occurs here, you may have made a mistake in the configuration.
+>
+> If you get an error about `server_names_hash_bucket_size`,
+> it may be because your domain name (the value of your `server_name` directive)
+> is too long for nginx's default settings.
+>
+> In that case, edit the main nginx configuration with `sudo nano /etc/nginx/nginx.conf`
+> and add the following line **in the `http` section**:
+>
+>     server_names_hash_bucket_size 256;
 
 Nginx reloads its configuration [when it receives the `HUP` signal][nginx-signals].
 You could find the process ID of the `nginx` master process and send the signal with `kill -s HUP <ID>`.
