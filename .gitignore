@@ -5,6 +5,7 @@
 config.yml
 data.yml
 ec2/inventory
+heroku.csv
 id_rsa
 id_rsa.pub
 inventory*
