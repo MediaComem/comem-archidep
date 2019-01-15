@@ -17,7 +17,7 @@ but this time on Heroku instead of the Amazon Web Services cloud.
 ## Deploy the PHP todolist application
 
 > The changes and commands below must be done **on your local machine**
-> in the Git repository where you have your PHP todolist.
+> in the Git repository where you have your PHP todolist application.
 
 * Add the **free** [ClearDB MySQL addon](https://devcenter.heroku.com/articles/cleardb) to your Heroku app's resources
   (you can do this on the command line or in Heroku's web dashboard in your application's *Resources* tab).
@@ -41,7 +41,7 @@ but this time on Heroku instead of the Amazon Web Services cloud.
 * Add the `heroku` remote to your application:
 
   ```bash
-  heroku git:remote -a "my-app-name"
+  heroku git:remote -a ad-john-doe-todo
   ```
 * Deploy the application to Heroku:
 
@@ -94,5 +94,23 @@ but this time on Heroku instead of the Amazon Web Services cloud.
 
 ## Deploy the Node.js one chat room application
 
+> The changes and commands below must be done **on your local machine**
+> in the Git repository where you have the One Chat Room application.
+
 * Add the *free* [mLab MongoDB addon](https://elements.heroku.com/addons/mongolab) in your Heroku app's *Resources* tab.
-* Deploy the application to Heroku.
+* Add the `heroku` remote to your application:
+
+  ```bash
+  heroku git:remote -a ad-john-doe-chat
+  ```
+* Deploy the application to Heroku:
+
+  ```bash
+  git push heroku master
+  ```
+
+  The application should be functional and accessible at the URL indicated in the deployment log.
+
+  > You do not need to configure the database for this application.
+  > This is because MongoDB is a schema-less NoSQL database;
+  > Databases and collections are created automatically on-the-fly when first accessed.
