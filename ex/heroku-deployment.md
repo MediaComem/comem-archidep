@@ -16,7 +16,11 @@ but this time on Heroku instead of the Amazon Web Services cloud.
 
 ## Deploy the PHP todolist application
 
-* Add the **free** [ClearDB MySQL addon](https://devcenter.heroku.com/articles/cleardb) in your Heroku app's *Resources* tab.
+> The changes and commands below must be done **on your local machine**
+> in the Git repository where you have your PHP todolist.
+
+* Add the **free** [ClearDB MySQL addon](https://devcenter.heroku.com/articles/cleardb) to your Heroku app's resources
+  (you can do this on the command line or in Heroku's web dashboard in your application's *Resources* tab).
 * Update the configuration section at the start of `index.php` with this code:
 
   ```php
@@ -39,7 +43,51 @@ but this time on Heroku instead of the Amazon Web Services cloud.
   ```bash
   heroku git:remote -a "my-app-name"
   ```
-* Deploy the application to Heroku.
+* Deploy the application to Heroku:
+
+  ```bash
+  git push heroku master
+  ```
+
+  The application's main page should be accessible at the URL indicated in the deployment log.
+  However, adding todo items will not work because the database has not yet been initialized.
+* Retrieve your database credentials:
+
+  ```bash
+  $> heroku config
+  === ad-john_doe-todo Config Vars
+  CLEARDB_DATABASE_URL: mysql://b2f75923a99dc2:letmein@us-cdbr-iron-east-01.cleardb.net/heroku_d8804d429adb0e0?reconnect=true
+  ```
+
+  > The `$CLEARDB_DATABASE_URL` variable contains all the database credentials in a single URL.
+  > In this example:
+  >
+  > * `b2f75923a99dc2` is the **username**.
+  > * `letmein` is the **password**.
+  > * `us-cdbr-iron-east-01.cleardb.net` is the address of the **host** server where the database is running.
+  > * `heroku_d8804d429adb0e0` is the **database name**.
+  >
+  > Since the port is not specified in this connection URL, it is the default MySQL port: `3306`.
+* Create the `todolist` table in the database.
+
+  > The database created by the ClearDB addon is empty.
+  > You must create the `todolist` table for the application to work.
+  >
+  > The following instructions indicate how to do this with [TeamSQL](https://teamsql.io),
+  > a free cross-platform SQL client, but you can do it with your favorite SQL client.
+
+  * Install [TeamSQL](https://teamsql.io) and open it.
+    Create an account if asked.
+  * Create a new TeamSQL connection with your database credentials:
+
+    ![Create TeamSQL connection](../images/teamsql-connection.png)
+  * Execute a query in the database:
+
+    ![Execute TeamSQL query](../images/teamsql.png)
+
+    > You can find this query in the repository's `todolist.sql` file.
+
+  The application should work fine now.
 
 ## Deploy the Node.js one chat room application
 
