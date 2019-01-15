@@ -57,7 +57,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Shell scripting](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
   * [Git hooks](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
 * Platform-as-a-Service (PaaS)
-  * Heroku
+  * [Heroku](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/heroku?home=MediaComem%2Fcomem-archidep%23readme)
 * Continuous integration
   * Automated testing
 * Continuous delivery
