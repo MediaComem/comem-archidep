@@ -97,7 +97,8 @@ but this time on Heroku instead of the Amazon Web Services cloud.
 > The changes and commands below must be done **on your local machine**
 > in the Git repository where you have the One Chat Room application.
 
-* Add the *free* [mLab MongoDB addon](https://elements.heroku.com/addons/mongolab) in your Heroku app's *Resources* tab.
+* Add the **free** [mLab MongoDB addon](https://elements.heroku.com/addons/mongolab) to your Heroku app's resources
+  (you can do this on the command line or in Heroku's web dashboard in your application's *Resources* tab).
 * Add the `heroku` remote to your application:
 
   ```bash
