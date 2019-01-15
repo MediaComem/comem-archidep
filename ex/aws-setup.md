@@ -89,6 +89,12 @@ This guide describes how to run a virtual server appropriate for the COMEM+ Arch
   passwd: password updated successfully
   ```
 
+  Set your shell to Bash:
+
+  ```bash
+  $> sudo usermod -s /bin/bash john_doe
+  ```
+
   Make your new user an administrator by adding it to the `sudo` group:
 
   ```bash
