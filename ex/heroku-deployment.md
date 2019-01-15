@@ -60,6 +60,10 @@ but this time on Heroku instead of the Amazon Web Services cloud.
   ```
 
   > The `$CLEARDB_DATABASE_URL` variable contains all the database credentials in a single URL.
+  > The format is:
+  >
+  >     mysql://[username]:[password]@[host]:[port]/[database_name]
+  >
   > In this example:
   >
   > * `b2f75923a99dc2` is the **username**.
@@ -70,22 +74,21 @@ but this time on Heroku instead of the Amazon Web Services cloud.
   > Since the port is not specified in this connection URL, it is the default MySQL port: `3306`.
 * Create the `todolist` table in the database.
 
-  > The database created by the ClearDB addon is empty.
-  > You must create the `todolist` table for the application to work.
-  >
-  > The following instructions indicate how to do this with [TeamSQL](https://teamsql.io),
-  > a free cross-platform SQL client, but you can do it with your favorite SQL client.
+  The database created by the ClearDB addon is empty.
+  You must create the `todolist` table for the application to work.
+  The following instructions indicate how to do this with [TeamSQL](https://teamsql.io),
+  a free cross-platform SQL client, but you can do it with your favorite SQL client.
 
   * Install [TeamSQL](https://teamsql.io) and open it.
     Create an account if asked.
   * Create a new TeamSQL connection with your database credentials:
 
     ![Create TeamSQL connection](../images/teamsql-connection.png)
-  * Execute a query in the database:
+  * Execute the correct `CREATE TABLE` query in the database:
 
     ![Execute TeamSQL query](../images/teamsql.png)
 
-    > You can find this query in the repository's `todolist.sql` file.
+    > You can find the correct query in the repository's `todolist.sql` file.
 
   The application should work fine now.
 
