@@ -52,7 +52,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Linux process management](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
   * [Domain Name System (DNS)](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
   * [Reverse proxying](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
-  * SSL certificate
+  * [TLS/SSL certificates](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
 * Automated deployment
   * [Shell scripting](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
   * [Git hooks](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
