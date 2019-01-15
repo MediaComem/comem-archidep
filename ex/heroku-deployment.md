@@ -32,6 +32,13 @@ but this time on Heroku instead of the Amazon Web Services cloud.
 
   > This code allows the application to be configured through the `$CLEARDB_DATABASE_URL` environment variable,
   > as specified in the [plugin's documentation](https://devcenter.heroku.com/articles/cleardb#using-cleardb-with-php).
+
+  Add and commit your changes with `git add index.php` and `git commit -m "Allow configuration with database URL"`.
+* Add the `heroku` remote to your application:
+
+  ```bash
+  heroku git:remote -a "my-app-name"
+  ```
 * Deploy the application to Heroku.
 
 ## Deploy the Node.js one chat room application
