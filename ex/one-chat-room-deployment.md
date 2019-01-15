@@ -89,6 +89,12 @@ Stop the application with `Ctrl-C` once you are done.
 
 
 
+## Enable MongoDB to start at boot
+
+Run `sudo systemctl enable mongod`.
+
+
+
 ## Create a systemd service
 
 Create and enable a systemd service file like in the [systemd exercise][systemd-ex],
@@ -132,6 +138,8 @@ Make it so that the application can be automatically deployed via a Git hook lik
 with the following changes:
 
 * Update the directory names (use `one-chat-room` instead of `todolist`).
+* Update your `one-chat-room.service` systemd file to point to the new `one-chat-room-automated` directory.
+  * Run `sudo systemctl daemon-reload` and `sudo systemctl restart one-chat-room` to restart the service.
 * Update the `post-receive` hook.
   Compared to the PHP todolist, there are two additional steps which must be performed in the script for the application to run correctly:
 
