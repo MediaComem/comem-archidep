@@ -11,6 +11,7 @@ The goal of this exercice is to put in practice the knowledge acquired during pr
 - [The goal](#the-goal)
   - [The application](#the-application)
 - [Getting started](#getting-started)
+- [Enable MongoDB to start at boot](#enable-mongodb-to-start-at-boot)
 - [Create a systemd service](#create-a-systemd-service)
 - [Serve the application through nginx](#serve-the-application-through-nginx)
 - [Set up an automated deployment with Git hooks](#set-up-an-automated-deployment-with-git-hooks)
