@@ -40,6 +40,8 @@ The purpose of the exercise is to configure `systemd`, Nginx and PM2 so that you
 
 The idea being that `systemd` starts PM2, which, in turn, will spawn the three app's instances, used by Nginx for the load balancing.
 
-To configure PM2 to launch three instances of the same app, you'll need to take a look at the **Ecosystem file** of the PM2 documentation.
+> For `systemd` to start pm2 at startup, you might want to take a look at the **Startup Hook** guide from the PM2 documentation.
 
-For you to visually check that the load balancer redirects the traffic to different instances of the app, you can set a environment variable for each instance that will change the color of the app's background, as stated in the [app's documentation](https://github.com/MediaComem/load-balanceable-locator#configuration).
+> To configure PM2 to launch three instances of the same app, you'll need to take a look at the **Ecosystem file** of the PM2 documentation.
+
+As stated in the [load-balanceable-locator app's documentation](https://github.com/MediaComem/load-balanceable-locator#configuration), you can define a per-instance environement variable named `BACKGROUD_COLOR`, that will be used by the app to set the color of its background. By setting a different background color for each of your three instances, you'll be able to see, when accesing your app multiple time on your browser, that it's not always the same instance.
