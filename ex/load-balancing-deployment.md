@@ -82,7 +82,6 @@ Read [PM2's ecosystem file documentation][pm2-ecosystem].
 
 Create a PM2 ecosystem file to run 3 instances of your application
 on 3 different ports and with 3 different background colors.
-
 You can do this by setting the correct environment variables for each instance.
 Read the [locator's configuration documentation][locator-config] to find the correct variables to set.
 
@@ -90,7 +89,7 @@ Once your exosystem file is ready, run it with PM2.
 
 ### Configure systemd to run PM2
 
-PM2 can automatically configure systemd for you.
+PM2 can automatically create a systemd service for you.
 Follow [PM2's startup hook documentation][pm2-startup].
 
 You will need to install the hook, then save your process list.
