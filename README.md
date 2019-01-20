@@ -97,7 +97,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
   * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
   * [Deploy a Node.js application with a MongoDB database (**graded**)](ex/one-chat-room-deployment.md)
-  * [Provision a Let's Encrypt SSL certificate with Certbot](ex/certbot-deployment.md)
+  * [Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
 * **Platform-as-a-Service deployment**
   * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
   * [Deploy PHP and Node.js applications to Heroku](ex/heroku-deployment.md)
@@ -108,6 +108,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 
 * [Command line cheatsheet][cli-cheatsheet]
 * [Git cheatsheet][git-cheatsheet]
+* [Final Test Matter](TEST-MATTER.md)
 
 
 
