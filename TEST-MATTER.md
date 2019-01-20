@@ -61,14 +61,12 @@ It also indicates what you do not need to remember by heart.
     You must know:
 
     * What Git branching is and why it is useful.
-    * What are the Git subcommands used for branching (`branch`, `checkout` and `merge`)
-      and what they do in principle.
-    * What a fast-forward is.
-    * What a conflict and a conflict marker is.
+    * That any repository has a `master` branch by default.
 
     You do not need to know:
 
-    * The precise syntax of the Git subcommands used to manage branches or resolve conflicts.
+    * How to work with branches.
+    * How to manage merge conflicts.
   * [Collaborating with Git](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
@@ -113,7 +111,7 @@ It also indicates what you do not need to remember by heart.
 
     * What are private clouds, hybrid clouds or other cloud deployment models.
     * The Faas and MBaaS service models.
-    * The diagrams on the "How does IaaS/PaaS/FaaS/MBaaS" slides.
+    * The diagrams on the "How does IaaS/PaaS/FaaS/MBaaS work?" slides.
     * Service-oriented architecture (SOA), microservices or serverless computing.
   * [Linux](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
 
@@ -155,7 +153,6 @@ It also indicates what you do not need to remember by heart.
       and exit status of zero and a non-zero exit status.
     * What a Unix stream is and what are the 3 standard streams
       (standard input, standard output and standard error).
-    * What stream redirection is.
     * What a Unix pipeline is and the syntax used to pipe commands together.
     * What a Unix signal is and what the `kill` command does.
 
@@ -164,7 +161,7 @@ It also indicates what you do not need to remember by heart.
     * The options of the `ps` command or the syntax of its output.
     * The `top`, `htop` and `free` commands.
     * How to retrieve the exit status from code.
-    * The syntax of stream redirection.
+    * What stream redirection is.
     * The commands used in the pipeline exercice.
     * The list of Unix signals, or how to trap signals.
   * [Unix networking](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
@@ -184,15 +181,24 @@ It also indicates what you do not need to remember by heart.
     * The Unix networking commands (`ip`, `ping`, etc).
   * [APT](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
 
-    You must know what APT is.
+    You must know:
 
-    You do not need to know the other package managers or how to use the `apt` command line.
+    * What APT is.
+
+    You do not need to know
+
+    * The other package managers.
+    * How to use the `apt` command line.
 * Advanced deployment
   * [Twelve-factor app][12factor]
 
-    You must know why it is a good practice to store configuration in the environment rather than in code (factor 3).
+    You must know:
 
-    You do not need to know about the other 11 factors.
+    * Why it is a good practice to store configuration in the environment rather than in code (factor 3).
+
+    You do not need to know:
+
+    * The other 11 factors.
   * [Unix environment variables](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
@@ -301,8 +307,8 @@ It also indicates what you do not need to remember by heart.
 
     You must know:
 
-    * What continuous software development is and what are its 4 main practices:
-      continuous integration, continuous testing, continuous delivery and continuous deployment.
+    * What continuous software development is and what are its 4 main practices.
+    * What are continuous integration, continuous testing, continuous delivery and continuous deployment.
   * [Automated testing](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
@@ -358,3 +364,9 @@ during the following exercices:
 
 * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
 * [Deploy PHP and Node.js applications to Heroku](ex/heroku-deployment.md)
+
+
+
+[12factor]: https://12factor.net
+[owasp]: https://www.owasp.org/
+[owasp-top10]: https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf
