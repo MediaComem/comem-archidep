@@ -103,6 +103,8 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 * **Platform-as-a-Service deployment**
   * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
   * [Deploy PHP and Node.js applications to Heroku](ex/heroku-deployment.md)
+* **Automated deployment pipeline**
+  * [Set up an automated deployment pipeline with GitHub, Travis CI and Heroku](ex/deployment-pipeline.md)
 
 
 
