@@ -165,4 +165,6 @@ It may improve your final grade, but is not required to obtain the maximum grade
 
 ## End result
 
-![Diagram](aws-setup.pdf)
+![Diagram](aws-setup.png)
+
+> [PDF version](aws-setup.pdf).
