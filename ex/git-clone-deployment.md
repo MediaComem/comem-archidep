@@ -82,5 +82,15 @@ You should be able to access the application in a browser at the correct IP addr
 
 
 
+## End result
+
+![Diagram](git-clone-deployment.png)
+
+> [PDF version](git-clone-deployment.pdf).
+
+
+
+
+
 [cyberduck]: https://cyberduck.io
 [php-todolist]: https://github.com/MediaComem/comem-archidep-php-todo-exercise

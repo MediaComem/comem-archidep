@@ -131,6 +131,14 @@ and you should see the website working.
 
 
 
+## End result
+
+![Diagram](nginx-static-deployment.png)
+
+> [PDF version](nginx-static-deployment.pdf).
+
+
+
 [nginx]: http://nginx.org/
 [nginx-signals]: http://nginx.org/en/docs/control.html
 [nginx-static]: https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/

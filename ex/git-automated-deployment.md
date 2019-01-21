@@ -207,5 +207,13 @@ Your changes should have been deployed automatically!
 
 
 
+## End result
+
+![Diagram](git-automated-deployment.png)
+
+> [PDF version](git-automated-deployment.pdf).
+
+
+
 [git-ssh-protocol]: https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_ssh_protocol
 [php-fpm-ex]: nginx-php-fpm-deployment.md

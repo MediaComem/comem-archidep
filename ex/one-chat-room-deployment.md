@@ -213,6 +213,14 @@ Send an email to the teacher with the URL to your deployed application.
 
 
 
+## End result
+
+![Diagram](one-chat-room-deployment.png)
+
+> [PDF version](one-chat-room-deployment.pdf).
+
+
+
 [app]: https://one-chat-room.herokuapp.com
 [previous-ex]: git-automated-deployment.md
 [default-db]: https://github.com/MediaComem/one-chat-room/blob/158d7ff1aaaf9bd760e395405c3e743e59f505e0/config.js#L4

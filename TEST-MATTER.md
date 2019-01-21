@@ -338,25 +338,25 @@ You must know how to deploy a PHP web application on a cloud platform
 with the Infrastructure-as-a-Service (IaaS) service model,
 which you put in practice during the following exercices:
 
-* [Deploy a PHP application with SFTP](ex/sftp-deployment.md)
-* [Deploy a PHP application with Git](ex/git-clone-deployment.md)
-* [Configure a PHP application through environment variables](ex/config-through-environment.md)
-* [Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md)
+* [Deploy a PHP application with SFTP](ex/sftp-deployment.md) [(diagram)](ex/sftp-deployment.pdf)
+* [Deploy a PHP application with Git](ex/git-clone-deployment.md) [(diagram)](ex/git-clone-deployment.pdf)
+* [Configure a PHP application through environment variables](ex/config-through-environment.md) [(diagram)](ex/config-through-environment.pdf)
+* [Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md) [(diagram)](ex/systemd-deployment.pdf)
 * [Configure a domain name](ex/dns-configuration.md)
-* [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
+* [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(diagram)](ex/nginx-php-fpm-deployment.pdf)
 
 You must understand how to use a reverse proxy to deploy several web sites or applications
 on the same server, which you put in practice during the following exercices:
 
-* [Deploy a static site with nginx](ex/nginx-static-deployment.md)
-* [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
-* [Deploy a Node.js application with a MongoDB database (**graded**)](ex/one-chat-room-deployment.md)
+* [Deploy a static site with nginx](ex/nginx-static-deployment.md) [(diagram)](ex/nginx-static-deployment.pdf)
+* [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(diagram)](ex/nginx-php-fpm-deployment.pdf)
+* [Deploy a Node.js application with a MongoDB database (**graded**)](ex/one-chat-room-deployment.md) [(diagram)](ex/one-chat-room-deployment.pdf)
 
 You must understand how to set up automated deployments with Git hooks,
 which you put in practice during the following exercices:
 
-* [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
-* [Deploy a Node.js application with a MongoDB database (**graded**)](ex/one-chat-room-deployment.md)
+* [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md) [(diagram)](ex/git-automated-deployment.pdf)
+* [Deploy a Node.js application with a MongoDB database (**graded**)](ex/one-chat-room-deployment.md) [(diagram)](ex/one-chat-room-deployment.pdf)
 
 You must understand how to deploy various applications to a cloud platform
 with the Platform-as-a-Service (PaaS) service model, which you put in practice

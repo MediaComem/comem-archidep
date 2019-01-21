@@ -194,6 +194,14 @@ and you should see the PHP todolist working.
 
 
 
+## End result
+
+![Diagram](nginx-php-fpm-deployment.png)
+
+> [PDF version](nginx-php-fpm-deployment.pdf).
+
+
+
 [dns-ex]: dns-configuration.md
 [fastcgi]: https://en.wikipedia.org/wiki/FastCGI
 [php-dev-server]: http://php.net/manual/en/features.commandline.webserver.php

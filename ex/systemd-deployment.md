@@ -86,4 +86,12 @@ $> sudo systemctl status todolist
 
 
 
+## End result
+
+![Diagram](systemd-deployment.png)
+
+> [PDF version](systemd-deployment.pdf).
+
+
+
 [systemd]: https://en.wikipedia.org/wiki/Systemd
