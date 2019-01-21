@@ -8,6 +8,10 @@ It may improve your final grade, but is not required to obtain the maximum grade
 <!-- START doctoc -->
 <!-- END doctoc -->
 
+
+
+## Procedure
+
 * Apply for [AWS Educate](https://aws.amazon.com/education/awseducate/apply/) if you are a student.
   * If you have a credit card, you can register a [standard AWS account](https://portal.aws.amazon.com/billing/signup#/start) instead.
 
@@ -156,3 +160,9 @@ It may improve your final grade, but is not required to obtain the maximum grade
   john-doe.archidep-2018.media
   ```
 * Send your instance's public IP address to the teacher.
+
+
+
+## End result
+
+![Diagram](aws-setup.pdf)

@@ -1,4 +1,4 @@
-# Deployment with Git
+# Configure a PHP application through environment variables
 
 This guide describes how to improve the configuration step of the [previous exercise](git-clone-deployment.md)
 by using environment variables instead of hardcoding configuration values.

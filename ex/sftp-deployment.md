@@ -1,4 +1,4 @@
-# Basic SFTP Deployment
+# Deploy a PHP application with SFTP
 
 This guide describes how to deploy a PHP application over SFTP on a server with PHP and MySQL installed,
 using the PHP development server.

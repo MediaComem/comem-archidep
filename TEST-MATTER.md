@@ -341,7 +341,7 @@ which you put in practice during the following exercices:
 * [Deploy a PHP application with SFTP](ex/sftp-deployment.md)
 * [Deploy a PHP application with Git](ex/git-clone-deployment.md)
 * [Configure a PHP application through environment variables](ex/config-through-environment.md)
-* [Manage the PHP application's process with systemd](ex/systemd-deployment.md)
+* [Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md)
 * [Configure a domain name](ex/dns-configuration.md)
 * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
 

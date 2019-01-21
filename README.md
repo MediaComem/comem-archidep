@@ -90,7 +90,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Deploy a PHP application with SFTP](ex/sftp-deployment.md)
   * [Deploy a PHP application with Git](ex/git-clone-deployment.md)
   * [Configure a PHP application through environment variables](ex/config-through-environment.md)
-  * [Manage the PHP application's process with systemd](ex/systemd-deployment.md)
+  * [Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md)
   * [Configure a domain name](ex/dns-configuration.md)
 * **Advanced deployment**
   * [Deploy a static site with nginx](ex/nginx-static-deployment.md)

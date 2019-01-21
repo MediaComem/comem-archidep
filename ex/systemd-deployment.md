@@ -1,4 +1,4 @@
-# Deployment with systemd as a Process Manager
+# Manage a PHP application with systemd as a Process Manager
 
 This guide describes how to create a [systemd][systemd] service to run the PHP application.
 
