@@ -358,6 +358,8 @@ which you put in practice during the following exercices:
 * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md) [(diagram)](ex/git-automated-deployment.pdf)
 * [Deploy a Node.js application with a MongoDB database (**graded**)](ex/one-chat-room-deployment.md) [(diagram)](ex/one-chat-room-deployment.pdf)
 
+This [diagram](ex/end-result.pdf) shows the end result of previous exercices.
+
 You must understand how to deploy various applications to a cloud platform
 with the Platform-as-a-Service (PaaS) service model, which you put in practice
 during the following exercices:

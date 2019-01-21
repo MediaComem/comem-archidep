@@ -99,6 +99,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Deploy a Node.js application with a MongoDB database (**graded**)](ex/one-chat-room-deployment.md) [(diagram)](ex/one-chat-room-deployment.pdf)
   * [Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
   * [Configure nginx as a load balancer (*bonus*)](ex/load-balancing-deployment.md)
+  * [*End result diagram*](ex/end-result.pdf)
 * **Platform-as-a-Service deployment**
   * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
   * [Deploy PHP and Node.js applications to Heroku](ex/heroku-deployment.md)
