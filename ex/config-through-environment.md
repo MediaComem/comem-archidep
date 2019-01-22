@@ -109,9 +109,9 @@ You should be able to access the application in a browser at the correct IP addr
 
 ## End result
 
-![Diagram](configuration-through-environment.png)
+![Diagram](config-through-environment.png)
 
-> [PDF version](configuration-through-environment.pdf).
+> [PDF version](config-through-environment.pdf).
 
 
 
