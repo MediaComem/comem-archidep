@@ -161,7 +161,7 @@ It also indicates what you do not need to remember by heart.
     * The `top`, `htop` and `free` commands.
     * How to retrieve the exit status from code.
     * What stream redirection is.
-    * The commands used in the pipeline exercice.
+    * The commands used in the pipeline exercise.
     * The list of Unix signals, or how to trap signals.
   * [Unix networking](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
 
@@ -329,13 +329,13 @@ It also indicates what you do not need to remember by heart.
 
 ## Exercices
 
-> The exercices of this course illustrate the theoretical concepts.
-> You should understand the concepts behind what you did during the exercices,
+> The exercises of this course illustrate the theoretical concepts.
+> You should understand the concepts behind what you did during the exercises,
 > but you do not need to remember the exact commands used.
 
 You must know how to deploy a PHP web application on a cloud platform
 with the Infrastructure-as-a-Service (IaaS) service model,
-which you put in practice during the following exercices:
+which you put in practice during the following exercises:
 
 * [Deploy a PHP application with SFTP](ex/sftp-deployment.md) [(diagram)](ex/sftp-deployment.pdf)
 * [Deploy a PHP application with Git](ex/git-clone-deployment.md) [(diagram)](ex/git-clone-deployment.pdf)
@@ -345,23 +345,23 @@ which you put in practice during the following exercices:
 * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(diagram)](ex/nginx-php-fpm-deployment.pdf)
 
 You must understand how to use a reverse proxy to deploy several web sites or applications
-on the same server, which you put in practice during the following exercices:
+on the same server, which you put in practice during the following exercises:
 
 * [Deploy a static site with nginx](ex/nginx-static-deployment.md) [(diagram)](ex/nginx-static-deployment.pdf)
 * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(diagram)](ex/nginx-php-fpm-deployment.pdf)
 * [Deploy a Node.js application with a MongoDB database (**graded**)](ex/one-chat-room-deployment.md) [(diagram)](ex/one-chat-room-deployment.pdf)
 
 You must understand how to set up automated deployments with Git hooks,
-which you put in practice during the following exercices:
+which you put in practice during the following exercises:
 
 * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md) [(diagram)](ex/git-automated-deployment.pdf)
 * [Deploy a Node.js application with a MongoDB database (**graded**)](ex/one-chat-room-deployment.md) [(diagram)](ex/one-chat-room-deployment.pdf)
 
-This [diagram](ex/end-result.pdf) shows the end result of previous exercices.
+This [diagram](ex/end-result.pdf) shows the end result of previous exercises.
 
 You must understand how to deploy various applications to a cloud platform
 with the Platform-as-a-Service (PaaS) service model, which you put in practice
-during the following exercices:
+during the following exercises:
 
 * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
 * [Deploy PHP and Node.js applications to Heroku](ex/heroku-deployment.md)
