@@ -88,12 +88,11 @@ It also indicates what you do not need to remember by heart.
 
     You must know:
 
-    * Why the provided PHP todolist exercice is vulnerable to injection (A1)
-      and cross-site scripting (A7) attacks, and how to protect against those vulnerabilities.
+    * That the OWASP Top 10 list exists and that it lists the ten most critical web application security risks.
 
     You do not need to know:
 
-    * The details of those two attacks or of other attacks in the OWASP Top 10.
+    * The list of attacks or the details of those attacks.
 * Basic deployment
   * [Cloud computing](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
 
