@@ -61,7 +61,6 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 * Software development
   * [Continuous software development](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
   * [Automated testing](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
-  * Travis CI
 
 
 
