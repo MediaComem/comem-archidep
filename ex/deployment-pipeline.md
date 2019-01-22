@@ -315,7 +315,7 @@ ruby 2.3.3p222 ...
 Install the Travis CI command line tool with this command:
 
 ```bash
-$> gem install travis --no-rdoc --no-ri
+$> gem install travis
 ```
 
 Make sure it was installed correctly:
