@@ -85,6 +85,13 @@ on 3 different ports and with 3 different background colors.
 You can do this by setting the correct environment variables for each instance.
 Read the [locator's configuration documentation][locator-config] to find the correct variables to set.
 
+* *Hint:* the `script` key in the PM2 ecosystem file defines the file PM2 will execute to launch the application.
+  Look at the `start` script in the application's `package.json` file to find the right file to execute.
+* *Hint:* the `watch` key should be false or be removed.
+  Watching is for development, when you want the application to automatically reload its code if it changes.
+  You do not want this for a production deployment, as it might take a few seconds to restart,
+  during which clients will get errors.
+
 Once your exosystem file is ready, run it with PM2.
 
 ### Configure systemd to run PM2
