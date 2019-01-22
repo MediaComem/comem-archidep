@@ -209,6 +209,7 @@ and you should see the PHP todolist working.
 [repo]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
 [nginx-ex]: nginx-static-deployment.md
 [nginx-fastcgi]: http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
+[slides]: https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#1
 [sftp-ex]: sftp-deployment.md
 [systemd-ex]: systemd-deployment.md
 [unix-socket]: https://en.wikipedia.org/wiki/Unix_domain_socket
