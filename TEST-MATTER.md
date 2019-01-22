@@ -370,7 +370,7 @@ You must understand what an automated/continuous deployment pipeline is,
 which you put in practice during the following exercises:
 
 * [Run automated tests on Travis CI](https://github.com/MediaComem/travis-ci-demo)
-* [Set up an automated deployment pipeline with GitHub, Travis CI and Heroku](ex/deployment-pipeline.md)
+* [Set up an automated deployment pipeline with GitHub, Travis CI and Heroku](ex/deployment-pipeline.md) [(diagram)](ex/deployment-pipeline.pdf)
 
 
 

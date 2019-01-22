@@ -104,7 +104,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Deploy PHP and Node.js applications to Heroku](ex/heroku-deployment.md)
 * **Automated deployment pipeline**
   * [Run automated tests on Travis CI](https://github.com/MediaComem/travis-ci-demo)
-  * [Set up an automated deployment pipeline with GitHub, Travis CI and Heroku](ex/deployment-pipeline.md)
+  * [Set up an automated deployment pipeline with GitHub, Travis CI and Heroku](ex/deployment-pipeline.md) [(diagram)](ex/deployment-pipeline.pdf)
 
 
 

@@ -488,6 +488,14 @@ Go to [Travis CI][travis-ci] and make sure your latest build passes.
 
 
 
+## End result
+
+![Diagram](deployment-pipeline.png)
+
+> [PDF version](deployment-pipeline.pdf).
+
+
+
 [automated-testing-e2e]: https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/automated-testing/?home=MediaComem%2Fcomem-archidep%23readme#50
 [automated-testing-js]: https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/automated-testing/?home=MediaComem%2Fcomem-archidep%23readme#23
 [node]: https://nodejs.org
