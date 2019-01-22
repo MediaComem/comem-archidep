@@ -16,7 +16,8 @@ Except for the push to GitHub, all remaining steps should be automated.
 
 ## Clone the One Chat Room application locally
 
-Make sure you have forked the [One Chat Room repository][one-chat-room-repo] to your own account by clicking the fork button:
+Make sure you have forked the [One Chat Room repository][one-chat-room-repo]
+to your own account by clicking the **Fork** button at the top:
 
 ![Fork](../images/fork.png)
 
@@ -505,6 +506,6 @@ Go to [Travis CI][travis-ci] and make sure your latest build passes.
 [travis-ci-job-lifecycle]: https://docs.travis-ci.com/user/job-lifecycle/
 [travis-ci-mongob]: https://docs.travis-ci.com/user/database-setup/#mongodb
 [travis-ci-node]: https://docs.travis-ci.com/user/languages/javascript-with-nodejs/
-[tracis-ci-repos]: https://travis-ci.org/account/repositories
+[travis-ci-repos]: https://travis-ci.org/account/repositories
 [travis-ci-xvfb]: https://docs.travis-ci.com/user/gui-and-headless-browsers/#using-xvfb-to-run-tests-that-require-a-gui
 [xvfb]: https://en.wikipedia.org/wiki/Xvfb
