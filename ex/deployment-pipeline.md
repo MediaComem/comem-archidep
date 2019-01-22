@@ -495,7 +495,7 @@ Go to [Travis CI][travis-ci] and make sure your latest build passes.
 [travis-ci-chrome]: https://docs.travis-ci.com/user/chrome
 [travis-ci-heroku]: https://docs.travis-ci.com/user/deployment/heroku/
 [travis-ci-job-lifecycle]: https://docs.travis-ci.com/user/job-lifecycle/
-[travis-ci-mongob]: https://docs.travis-ci.com/user/database-setup/#mongodb
+[travis-ci-mongodb]: https://docs.travis-ci.com/user/database-setup/#mongodb
 [travis-ci-node]: https://docs.travis-ci.com/user/languages/javascript-with-nodejs/
 [travis-ci-repos]: https://travis-ci.org/account/repositories
 [travis-ci-xvfb]: https://docs.travis-ci.com/user/gui-and-headless-browsers/#using-xvfb-to-run-tests-that-require-a-gui
