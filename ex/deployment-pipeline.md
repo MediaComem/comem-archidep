@@ -78,15 +78,6 @@ If it's not listed, run this command to add it:
 $> heroku addons:create mongolab:sandbox
 ```
 
-Retrieve your MongoDB connection URL with the following command:
-
-```bash
-$> heroku config:get MONGODB_URI
-mongodb://heroku_12345:changeme@23456.mlab.com:61134/heroku_34567
-```
-
-Copy this URL, you will need it for the next step.
-
 
 
 ## Run the application on your local machine
