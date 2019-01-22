@@ -84,6 +84,12 @@ $> heroku addons:create mongolab:sandbox
 
 Install [Node.js][node] 10.x on your machine if you do not have it already.
 
+Install the application's dependencies:
+
+```bash
+$> npm ci
+```
+
 Run this command to retrieve your MongoDB connection URL from Heroku and export it into a `$MONGODB_URI` environment variable:
 
 ```bash
