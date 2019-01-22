@@ -366,6 +366,12 @@ during the following exercises:
 * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
 * [Deploy PHP and Node.js applications to Heroku](ex/heroku-deployment.md)
 
+You must understand what an automated/continuous deployment pipeline is,
+which you put in practice during the following exercises:
+
+* [Run automated tests on Travis CI](https://github.com/MediaComem/travis-ci-demo)
+* [Set up an automated deployment pipeline with GitHub, Travis CI and Heroku](ex/deployment-pipeline.md)
+
 
 
 [12factor]: https://12factor.net
