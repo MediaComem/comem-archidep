@@ -239,7 +239,7 @@ you will see that you can run a list of commands by adding a `before_script` key
 
 ```yml
 before_script:
-  - npm start &   # Run the application
+  - npm start &   # Run the application in the background
   - sleep 5       # Give it time to start
 ```
 
@@ -265,7 +265,7 @@ As soon as a Travis CI virtual machine is available,
 your automated build should execute.
 It should:
 
-* Run a MongoDB database.
+* Run a MongoDB database on the standard port.
 * Install your dependencies with `npm ci`.
 * Execute any additional commands you have defined in `before_script`.
 * Run your tests with `npm test`.
