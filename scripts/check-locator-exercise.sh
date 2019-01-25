@@ -18,6 +18,7 @@ fail() {
 }
 
 custom_student_id=
+custom_student_web_id=
 nginx_config_name=locator
 repo_name=load-balanceable-locator
 subdomain=locator
@@ -43,6 +44,10 @@ while [[ $# -gt 0 ]]; do
     ;;
     -s|--subdomain)
       subdomain="$1"
+      shift
+    ;;
+    -w|--web)
+      custom_student_web_id="$1"
       shift
     ;;
   esac
@@ -87,7 +92,12 @@ else
   student_id="$(echo "$student_email"|sed 's/@.*//'|tr -d '[:space:]'|sed 's/\./_/')"
 fi
 
-student_web_id="$(echo "$student_id"|sed 's/_/-/')"
+if test -n "$custom_student_web_id"; then
+  student_web_id="$custom_student_web_id"
+else
+  student_web_id="$(echo "$student_id"|sed 's/_/-/')"
+fi
+
 url="http://${subdomain}.${student_web_id}.archidep-2018.media"
 ssh="ssh -i id_rsa ubuntu@$ip_address"
 
