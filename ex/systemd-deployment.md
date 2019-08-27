@@ -33,15 +33,17 @@ Copy the following configuration, replacing the following values:
 ```
 [Unit]
 Description=PHP TodoList
+After=mysql.service
 
 [Service]
 ExecStart=/usr/bin/php -S 0.0.0.0:3000
 User=john_doe
 WorkingDirectory=/home/john_doe/todolist-repo
 Environment=TODOLIST_DB_PASS=chAngeMeN0w!
+Restart=always
 
 [Install]
-WantedBy=mysql.service
+WantedBy=multi-user.target
 ```
 
 Save it to `/etc/systemd/system/todolist.service` on the server.
