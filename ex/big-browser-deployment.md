@@ -117,7 +117,7 @@ exercise][systemd-ex], with the following changes:
   instead of the `TODOLIST_DB_PASS` variable.
   * *Hint:* you can use 3001 for tests (publicly accessible), but use 4000 (or
     any other port that is not exposed) to complete the exercise.
-* Update the `WantedBy` parameter.
+* Update the `After` parameter.
   * *Hint:* use `systemctl list-unit-files|grep redis` to find the correct
     service.
 
