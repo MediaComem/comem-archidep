@@ -35,9 +35,9 @@ and One Chat Room application deployed during the course:
 Additionally:
 
 * The application must be accessible **only through nginx**.  It **must not**
-  be exposed directly on a publicly accessible port (in the AWS virtual
-  machines used for this exercise, the publicly accessible ports are 22, 80, 443,
-  3000 and 3001, some of them already used by SSH or nginx).
+  be exposed directly on a publicly accessible port other than 80 or 443
+  through nginx (in the AWS virtual machines used for this exercise, the
+  publicly accessible ports are 3000 and 3001).
 
 ### The application
 
