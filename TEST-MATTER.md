@@ -104,7 +104,7 @@ It also indicates what you do not need to remember by heart.
       (shared hosting, dedicated hosting and virtual hosting).
     * What cloud computing is and why it is useful.
     * What a public cloud is.
-    * What are the 3 most popular cloud service models (IaaS, PaaS and Saas),
+    * What are the 3 most popular cloud service models (IaaS, PaaS and SaaS),
       what the difference between them are, and what are their advantages and disadvantages.
 
     You do not need to know:
