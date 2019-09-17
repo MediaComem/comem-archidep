@@ -84,7 +84,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Permissions](ex/unix-permissions.md)
   * [Pipeline](ex/unix-pipeline.md)
 * **Basic deployment**
-  * [Run your own virtual server on Amazon Web Services (*bonus*)](ex/aws-setup.md) [(diagram)](ex/aws-setup.pdf)
+  * [Run your own virtual server on Amazon Web Services](ex/aws-setup.md) [(diagram)](ex/aws-setup.pdf)
   * [Deploy a PHP application with SFTP](ex/sftp-deployment.md) [(diagram)](ex/sftp-deployment.pdf)
   * [Deploy a PHP application with Git](ex/git-clone-deployment.md) [(diagram)](ex/git-clone-deployment.pdf)
   * [Configure a PHP application through environment variables](ex/config-through-environment.md) [(diagram)](ex/config-through-environment.pdf)

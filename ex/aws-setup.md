@@ -2,9 +2,6 @@
 
 This guide describes how to run a virtual server appropriate for the COMEM+ Architecture & Deployment course on the Amazon Web Services cloud platform.
 
-**This is a bonus exercice.**
-It may improve your final grade, but is not required to obtain the maximum grade.
-
 <!-- START doctoc -->
 <!-- END doctoc -->
 
