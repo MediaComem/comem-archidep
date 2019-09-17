@@ -15,6 +15,7 @@ It also indicates what you do not need to remember by heart.
     * What a command line interface is, what a command is, and general command syntax.
     * What the Unix paths `.`, `..` and `~` are.
     * What the `PATH` is and how it works.
+    * What the following commands do and their basic syntax (not their options): `cd`, `ls`, `pwd`.
 
     You do not need to know:
 
