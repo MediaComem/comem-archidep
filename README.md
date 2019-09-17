@@ -60,7 +60,6 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Heroku](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/heroku?home=MediaComem%2Fcomem-archidep%23readme)
 * Software development
   * [Continuous software development](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Automated testing](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
 
 
 
@@ -102,9 +101,6 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 * **Platform-as-a-Service deployment**
   * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
   * [Deploy PHP and Node.js applications to Heroku](ex/heroku-deployment.md)
-* **Automated deployment pipeline**
-  * [Run automated tests on Travis CI](https://github.com/MediaComem/travis-ci-demo)
-  * [Set up an automated deployment pipeline with GitHub, Travis CI and Heroku](ex/deployment-pipeline.md) [(diagram)](ex/deployment-pipeline.pdf)
 
 
 

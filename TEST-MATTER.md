@@ -294,36 +294,13 @@ It also indicates what you do not need to remember by heart.
 
     You must know:
 
-    * What Heroku is.
+    * What Heroku is and how the platform works on principle.
     * That you can configure environment variables for your Heroku applications.
 
     You do not need to know:
 
     * The getting started procedure.
     * The precise commands used to configure environment variables.
-* Software development
-  * [Continuous software development](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
-
-    You must know:
-
-    * What continuous software development is and what are its 4 main practices.
-    * What are continuous integration, continuous testing, continuous delivery and continuous deployment.
-  * [Automated testing](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
-
-    You must know:
-
-    * What automated testing is and why it is useful.
-    * The difference between the 3 main types of automated tests:
-      unit tests, integration tests (including API tests) and end-to-end tests.
-    * What an assertion is.
-    * What Test-Driven Development (TDD) is.
-
-    You do not need to know:
-
-    * The list of test frameworks.
-    * How to write PHP or JavaScript tests.
-    * What mocking and mock objects are.
-    * What Behavior-Driven Development (BDD) is.
 
 
 
@@ -365,12 +342,6 @@ during the following exercises:
 
 * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
 * [Deploy PHP and Node.js applications to Heroku](ex/heroku-deployment.md)
-
-You must understand what an automated/continuous deployment pipeline is,
-which you put in practice during the following exercises:
-
-* [Run automated tests on Travis CI](https://github.com/MediaComem/travis-ci-demo)
-* [Set up an automated deployment pipeline with GitHub, Travis CI and Heroku](ex/deployment-pipeline.md) [(diagram)](ex/deployment-pipeline.pdf)
 
 
 
