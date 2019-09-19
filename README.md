@@ -58,8 +58,9 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Git hooks](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
 * Platform-as-a-Service (PaaS)
   * [Heroku](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/heroku?home=MediaComem%2Fcomem-archidep%23readme)
-* Software development
+* *Software development (extra)*
   * [Continuous software development](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Automated testing](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
 
 
 
