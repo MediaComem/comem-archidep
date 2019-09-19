@@ -16,7 +16,7 @@
     # Make sure python 2 is installed before doing anything
     # (this is not the case by default on Ubuntu Bionic).
     - name: Install Python
-      raw: command -v python || { apt-get update && apt-get install -y python; }
+      raw: command -v python3 || { apt-get update && apt-get install -y python3; }
       changed_when: false
       tags: [ always ]
 
