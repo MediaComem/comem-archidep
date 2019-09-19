@@ -3,7 +3,6 @@ const parseCsvNode = require('csv-parse');
 const { readFile } = require('fs-extra');
 const inquirer = require('inquirer');
 const { safeLoad: loadYaml } = require('js-yaml');
-const { pick } = require('lodash');
 const nodemailer = require('nodemailer');
 const { resolve: resolvePath } = require('path');
 const { sha512crypt } = require('sha512crypt-node');

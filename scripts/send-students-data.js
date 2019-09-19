@@ -1,5 +1,4 @@
 const chalk = require('chalk');
-const { join: joinPath } = require('path');
 
 const { loadData, sendMail } = require('./utils');
 

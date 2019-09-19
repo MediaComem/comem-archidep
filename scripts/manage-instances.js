@@ -1,7 +1,6 @@
 const chalk = require('chalk');
 const commander = require('commander');
 const { writeFile } = require('fs-extra');
-const inquirer = require('inquirer');
 const { safeDump: dumpYaml } = require('js-yaml');
 const { difference, includes, isArray, isEmpty, isPlainObject, isString, times, uniq } = require('lodash');
 const ora = require('ora');
