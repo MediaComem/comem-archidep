@@ -7,8 +7,8 @@ config.yml
 data.yml
 ec2/inventory
 heroku.csv
-id_rsa
-id_rsa.pub
+id_ed25519*
+id_rsa*
 inventory*
 node_modules
 secret.txt
