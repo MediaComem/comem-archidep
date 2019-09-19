@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>COMEM+ Web Development</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400i,700i);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400i);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+
+      h1, h2, h3, h4 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+
+      li ul {
+        margin-bottom: 1em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+<h1 id="comem-architecture-deployment-course">COMEM+ Architecture &amp; Deployment course</h1>
+<p>In this course you will learn:</p>
+<ul>
+<li>How to deploy applications on a Linux server on an IaaS platform (Amazon Web Services).</li>
+<li>How to deploy applications on a PaaS platform (Heroku).</li>
+<li>Automated testing, continuous integration and continuous delivery (Travis CI).</li>
+</ul>
+<p>In pursuit of this goal, you will learn:</p>
+<ul>
+<li>How to use the command line and version control.</li>
+<li>The basics of Unix system administration and cloud computing architectures.</li>
+<li>Good security practices related to system administration and web applications.</li>
+</ul>
+<p>This course is a <a href="http://www.heig-vd.ch/comem">COMEM+</a> <a href="https://github.com/MediaComem/comem-webdev">web development course</a> taught at <a href="http://www.heig-vd.ch">HEIG-VD</a>.</p>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<ul>
+<li><a href="#plan">Plan</a></li>
+<li><a href="#what-you-will-need">What you will need</a></li>
+<li><a href="#exercises">Exercises</a></li>
+<li><a href="#useful-links">Useful links</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<h2 id="plan">Plan</h2>
+<ul>
+<li>Introduction<ul>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme">Command line</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme">Secure Shell (SSH)</a></li>
+</ul>
+</li>
+<li>Version control<ul>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/git?home=MediaComem%2Fcomem-archidep%23readme">Version control with Git</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme">Git branching</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme">Collaborating with Git</a></li>
+</ul>
+</li>
+<li>Security<ul>
+<li><a href="https://www.owasp.org/">Open Web Application Security Project</a></li>
+<li><a href="https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf">OWASP Top 10 - The Ten Most Critical Web Application Security Risks</a></li>
+</ul>
+</li>
+<li>Basic deployment<ul>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme">Cloud computing</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme">Linux</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme">Unix basics &amp; administration</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme">Unix processes</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme">Unix networking</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme">APT</a></li>
+</ul>
+</li>
+<li>Advanced deployment<ul>
+<li><a href="https://12factor.net">Twelve-factor app</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme">Unix environment variables</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme">Linux process management</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme">Domain Name System (DNS)</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme">Reverse proxying</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme">TLS/SSL certificates</a></li>
+</ul>
+</li>
+<li>Automated deployment<ul>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme">Shell scripting</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme">Git hooks</a></li>
+</ul>
+</li>
+<li>Platform-as-a-Service (PaaS)<ul>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/heroku?home=MediaComem%2Fcomem-archidep%23readme">Heroku</a></li>
+</ul>
+</li>
+<li><em>Software development (extra)</em><ul>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme">Continuous software development</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2019-2020/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme">Automated testing</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="what-you-will-need">What you will need</h2>
+<ul>
+<li>A Unix CLI (Git Bash is included with Git on Windows)</li>
+<li><a href="https://git-scm.com/downloads">Git</a></li>
+<li>A free <a href="https://github.com">GitHub</a> account</li>
+<li><a href="https://www.google.com/chrome/">Google Chrome</a> (recommended, any browser with developer tools will do)</li>
+<li>A free <a href="https://www.heroku.com/home">Heroku</a> account</li>
+<li>The <a href="https://devcenter.heroku.com/articles/heroku-cli">Heroku CLI</a></li>
+</ul>
+<h2 id="exercises">Exercises</h2>
+<ul>
+<li><strong>Version control</strong><ul>
+<li><a href="https://github.com/MediaComem/comem-archidep-php-todo-exercise">Collaborative exercise (<strong>graded</strong>)</a></li>
+<li><a href="ex/git-clone-from-server.md">Clone a repository from a server</a></li>
+<li><a href="ex/git-push-to-server.md">Push a repository to a server</a></li>
+</ul>
+</li>
+<li><strong>Unix</strong><ul>
+<li><a href="ex/unix-permissions.md">Permissions</a></li>
+<li><a href="ex/unix-pipeline.md">Pipeline</a></li>
+</ul>
+</li>
+<li><strong>Basic deployment</strong><ul>
+<li><a href="ex/aws-setup.md">Run your own virtual server on Amazon Web Services</a> <a href="ex/aws-setup.pdf">(diagram)</a></li>
+<li><a href="ex/sftp-deployment.md">Deploy a PHP application with SFTP</a> <a href="ex/sftp-deployment.pdf">(diagram)</a></li>
+<li><a href="ex/git-clone-deployment.md">Deploy a PHP application with Git</a> <a href="ex/git-clone-deployment.pdf">(diagram)</a></li>
+<li><a href="ex/config-through-environment.md">Configure a PHP application through environment variables</a> <a href="ex/config-through-environment.pdf">(diagram)</a></li>
+<li><a href="ex/systemd-deployment.md">Manage a PHP application with systemd as a Process Manager</a> <a href="ex/systemd-deployment.pdf">(diagram)</a></li>
+<li><a href="ex/dns-configuration.md">Configure a domain name</a></li>
+</ul>
+</li>
+<li><strong>Advanced deployment</strong><ul>
+<li><a href="ex/nginx-static-deployment.md">Deploy a static site with nginx</a> <a href="ex/nginx-static-deployment.pdf">(diagram)</a></li>
+<li><a href="ex/nginx-php-fpm-deployment.md">Deploy a PHP application with nginx and the FastCGI process manager</a> <a href="ex/nginx-php-fpm-deployment.pdf">(diagram)</a></li>
+<li><a href="ex/git-automated-deployment.md">Set up an automated deployment with Git hooks</a> <a href="ex/git-automated-deployment.pdf">(diagram)</a></li>
+<li>Deploy a web application with a database (<strong>graded</strong>, not yet available)</li>
+<li><a href="ex/one-chat-room-deployment.md">Deploy a Node.js application with a MongoDB database (<em>extra</em>)</a></li>
+<li><a href="ex/big-browser-deployment.md">Deploy a Node.js application with a Redis database (<em>extra</em>)</a></li>
+<li><a href="ex/certbot-deployment.md">Provision a Let&#39;s Encrypt TLS certificate with Certbot</a></li>
+<li><a href="ex/load-balancing-deployment.md">Configure nginx as a load balancer (<em>extra</em>)</a></li>
+<li><em>Bonus exercise</em> (not yet available)</li>
+<li><a href="ex/end-result.pdf"><em>End result diagram</em></a></li>
+</ul>
+</li>
+<li><strong>Platform-as-a-Service deployment</strong><ul>
+<li><a href="https://github.com/MediaComem/php-hello-world-form">Deploy a PHP web page to Heroku</a></li>
+<li><a href="ex/heroku-deployment.md">Deploy PHP and Node.js applications to Heroku</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="useful-links">Useful links</h2>
+<ul>
+<li><a href="https://github.com/MediaComem/comem-webdev/blob/master/CLI-CHEATSHEET.md">Command line cheatsheet</a></li>
+<li><a href="https://github.com/MediaComem/comem-webdev/blob/master/GIT-CHEATSHEET.md">Git cheatsheet</a></li>
+<li><a href="TEST-MATTER.md">Final Test Matter</a></li>
+</ul>
+
+    </div>
+    
+  </body>
+</html>
