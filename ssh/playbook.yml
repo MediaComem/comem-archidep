@@ -51,8 +51,8 @@
       lineinfile:
         path: /etc/ssh/sshd_config
         regexp: '^PasswordAuthentication '
-        line: 'PasswordAuthentication {{ ssh_password_authentication }}'
-      when: ssh_password_authentication is defined and ssh_password_authentication
+        line: 'PasswordAuthentication {{ "yes" if (ssh_password_authentication | bool) else "no" }}'
+      when: ssh_password_authentication is defined
       tags: [ ssh ]
 
     - name: Find SSH server host keys
