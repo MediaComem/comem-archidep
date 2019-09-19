@@ -13,5 +13,5 @@ inventory*
 node_modules
 secret.txt
 ssh/data.yml
-students.csv
+students.csv*
 tmp
