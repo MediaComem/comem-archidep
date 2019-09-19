@@ -14,25 +14,34 @@
   },
   "homepage": "https://github.com/MediaComem/comem-archidep#readme",
   "scripts": {
+    "build": "courses-md build",
+    "deploy": "courses-md publish",
     "doctoc": "doctoc --notitle --github README.md ex",
     "ec2": "node scripts/manage-instances.js",
     "mails": "node scripts/send-students-data.js",
-    "start": "node scripts/process-students-data.js"
+    "setup": "node scripts/process-students-data.js",
+    "start": "courses-md",
+    "watch": "courses-md watch"
   },
   "dependencies": {
-    "aws-sdk": "^2.346.0",
-    "chalk": "^2.4.1",
-    "commander": "^2.19.0",
-    "csv-parse": "^3.0.0",
+    "aws-sdk": "^2.531.0",
+    "chalk": "^2.4.2",
+    "commander": "^3.0.1",
+    "courses-md": "~0.5.0",
+    "csv-parse": "^4.4.6",
     "doctoc": "^1.4.0",
-    "fs-extra": "^7.0.0",
-    "inquirer": "^6.2.0",
-    "js-yaml": "^3.12.0",
-    "lodash": "^4.17.11",
-    "nodemailer": "^4.6.8",
-    "ora": "^3.0.0",
+    "font-awesome": "^4.7.0",
+    "fs-extra": "^8.1.0",
+    "git-memoir": "~0.3.0",
+    "inquirer": "^7.0.0",
+    "js-yaml": "^3.13.1",
+    "lodash": "^4.17.15",
+    "micromodal": "^0.4.2",
+    "nodemailer": "^6.3.0",
+    "ora": "^3.4.0",
     "sha512crypt-node": "^0.1.0",
-    "table": "^5.1.0",
-    "uuid": "^3.3.2"
+    "table": "^5.4.6",
+    "tippy.js": "^4.3.5",
+    "uuid": "^3.3.3"
   }
 }
