@@ -4,7 +4,7 @@
   gather_facts: no # See first 2 tasks.
 
   vars:
-    server_name: archidep-2018.media
+    server_name: archidep.media
     ssh_password_authentication: false
     ssh_regenerate_host_keys: false
 

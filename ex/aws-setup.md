@@ -132,13 +132,13 @@ This guide describes how to run a virtual server appropriate for the COMEM+ Arch
 * Change your hostname (note that you cannot use the `_` character in a hostname, use `-` instead):
 
   ```bash
-  $> sudo hostname john-doe.archidep-2018.media
+  $> sudo hostname john-doe.archidep.media
   ```
 
   Also save your new hostname to the `/etc/hostname` file so that it will persist when you reboot the server:
 
   ```bash
-  $> echo "john-doe.archidep-2018.media" | sudo tee /etc/hostname
+  $> echo "john-doe.archidep.media" | sudo tee /etc/hostname
   ```
 * Reboot the server.
 
@@ -154,7 +154,7 @@ This guide describes how to run a virtual server appropriate for the COMEM+ Arch
   ...
 
   $> hostname
-  john-doe.archidep-2018.media
+  john-doe.archidep.media
   ```
 * Send your instance's public IP address to the teacher.
 

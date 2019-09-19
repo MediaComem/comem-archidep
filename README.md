@@ -30,37 +30,37 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 ## Plan
 
 * Introduction
-  * [Command line](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Secure Shell (SSH)](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Command line](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
 * Version control
-  * [Version control with Git](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Git branching](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Collaborating with Git](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Version control with Git](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Git branching](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Collaborating with Git](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
 * Security
   * [Open Web Application Security Project][owasp]
   * [OWASP Top 10 - The Ten Most Critical Web Application Security Risks][owasp-top10]
 * Basic deployment
-  * [Cloud computing](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Linux](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Unix basics & administration](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Unix processes](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Unix networking](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
-  * [APT](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Cloud computing](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Linux](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Unix basics & administration](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Unix processes](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Unix networking](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
+  * [APT](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
 * Advanced deployment
   * [Twelve-factor app][12factor]
-  * [Unix environment variables](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Linux process management](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Domain Name System (DNS)](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Reverse proxying](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
-  * [TLS/SSL certificates](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Unix environment variables](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Linux process management](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Domain Name System (DNS)](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Reverse proxying](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
+  * [TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
 * Automated deployment
-  * [Shell scripting](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Git hooks](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Shell scripting](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Git hooks](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
 * Platform-as-a-Service (PaaS)
-  * [Heroku](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/heroku?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Heroku](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/heroku?home=MediaComem%2Fcomem-archidep%23readme)
 * *Software development (extra)*
-  * [Continuous software development](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Automated testing](https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Continuous software development](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Automated testing](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
 
 
 

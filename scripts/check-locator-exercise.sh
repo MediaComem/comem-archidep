@@ -98,7 +98,7 @@ else
   student_web_id="$(echo "$student_id"|sed 's/_/-/')"
 fi
 
-url="http://${subdomain}.${student_web_id}.archidep-2018.media"
+url="http://${subdomain}.${student_web_id}.archidep.media"
 ssh="ssh -i id_rsa ubuntu@$ip_address"
 
 echo

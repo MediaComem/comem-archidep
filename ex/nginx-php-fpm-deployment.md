@@ -132,7 +132,7 @@ Use the following configuration
 ```
 server {
   listen 80;
-  server_name todolist.john-doe.archidep-2018.media;
+  server_name todolist.john-doe.archidep.media;
   root /home/john_doe/todolist-repo;
 
   # Proxy requests for dynamic content to PHP FPM.
@@ -149,7 +149,7 @@ server {
 > allowing nginx to communicate with PHP FPM
 > (i.e. send and receive binary data).
 >
-> When a request arrives for the subdomain `todolist.john-doe.archidep-2018.media`,
+> When a request arrives for the subdomain `todolist.john-doe.archidep.media`,
 > nginx will forward that request to PHP FPM through the socket file.
 > PHP FPM will then execute the PHP files in `/home/john_doe/todolist-repo`
 > and give the result back to nginx to serve to the client.
@@ -189,7 +189,7 @@ $> sudo nginx -s reload
 
 ## See it in action
 
-Visit http://todolist.john-doe.archidep-2018.media (replacing `john-doe` with your username)
+Visit http://todolist.john-doe.archidep.media (replacing `john-doe` with your username)
 and you should see the PHP todolist working.
 
 
@@ -209,7 +209,7 @@ and you should see the PHP todolist working.
 [repo]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
 [nginx-ex]: nginx-static-deployment.md
 [nginx-fastcgi]: http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
-[slides]: https://mediacomem.github.io/comem-webdev-docs/2018-2019/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#1
+[slides]: https://mediacomem.github.io/comem-archidep/2019-2020/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#1
 [sftp-ex]: sftp-deployment.md
 [systemd-ex]: systemd-deployment.md
 [unix-socket]: https://en.wikipedia.org/wiki/Unix_domain_socket

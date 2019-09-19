@@ -142,7 +142,7 @@ Go into the uploaded directory on the server:
 
 ```bash
 $> hostname
-my-name.archidep-2018.media
+my-name.archidep.media
 
 $> cd /path/to/uploaded/application
 ```
