@@ -50,6 +50,7 @@ It also indicates what you do not need to remember by heart.
       (the Git directory, the staging area and the working directory).
     * The basic Git workflow.
     * The main Git subcommands used to perform that workflow (`add` and `commit`).
+    * The purpose (but not the syntax or options) of the other basic Git commands: `checkout`, `init` and `log`.
     * How to ignore files with Git.
 
     You do not need to know:
