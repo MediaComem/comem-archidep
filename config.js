@@ -8,7 +8,12 @@ const config = {
   remark: {
     highlightLines: true,
     highlightSpans: true,
-    countIncrementalSlides: false
+    countIncrementalSlides: false,
+    navigation: {
+      click: false,
+      scroll: false,
+      touch: false
+    }
   },
   publish: {
     gitUrl: 'git@github.com:MediaComem/comem-archidep.git',

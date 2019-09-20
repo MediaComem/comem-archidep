@@ -1,0 +1,53 @@
+git-memoir {
+  display: block;
+  border: 1px solid #c0c0c0;
+  border-radius: 10px;
+}
+
+git-memoir svg {
+  display: block;
+  margin: 0.4em;
+  width: calc(100% - 0.8em);
+}
+
+git-memoir .controls {
+  display: block;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+git-memoir .controls::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+git-memoir .controls button {
+  float: right;
+  display: inline-block;
+  margin: 0 0 0 0;
+  padding: 0.4em 0.8em;
+  font-size: 1em;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 0;
+  background-color: #000000;
+  border: 0;
+  border-left: 1px solid #777777;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+git-memoir .controls button:first-child {
+  border-bottom-right-radius: 10px;
+}
+
+git-memoir .controls button:hover {
+  color: #ffff55;
+}
+
+git-memoir .controls button.disabled {
+  color: #333333;
+}
