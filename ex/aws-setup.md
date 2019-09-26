@@ -36,13 +36,13 @@ Once you have a working AWS account, you can launch the virtual server you will
 be using for the rest of the course.
 
 * Access the [EC2 Dashboard](https://eu-west-1.console.aws.amazon.com/ec2).
-* Most of the AWS resources you will use must located in a
+* Most of the AWS resources you will use must be located in a
   [region](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
   If you are student, you probably only have access to one region. Use whatever
   region is selected by default.
 
-  If you have standard account, you can select the **EU Ireland region**, the
+  If you have standard account, you may select the **EU Ireland region**, the
   cheapest European region.
 
   ![AWS Region](../images/aws-region.png)
@@ -85,12 +85,13 @@ be using for the rest of the course.
     > traffic to your virtual server on specific ports. If you do not do this,
     > it will not be reachable from outside the AWS network. For example, for a
     > web application running on your virtual server to be reachable, ports 80
-    > (HTTP) and 443 (HTTPS) must accept incoming requests.
+    > (HTTP) and 443 (HTTPS) must accept incoming requests. Port 22 is for SSH
+    > connections. Ports 3000 & 3001 will be used in various exercises.
 
-    > The security warning indicates that it's good practice to limit the IP
-    > addresses authorized to access your virtual server. For the purposes of
-    > this course, it's simpler to allow anyone to connect from any source IP
-    > address (which is what `0.0.0.0, ::/0` means).
+    > You may ignore the security warning. It indicates that it's good practice
+    > to limit the IP addresses authorized to access your virtual server. For
+    > the purposes of this course, it's simpler to allow anyone to connect from
+    > any source IP address (which is what `0.0.0.0, ::/0` means).
   * **Step 7:** Launch the virtual server.
 
     ![AWS Launch](../images/aws-step-7-launch.png)
@@ -155,8 +156,8 @@ address which persists across restarts.
   ```
 
   > This adds the teacher's public SSH key to the `ubuntu` user's
-  > `~/.ssh/authorized_keys`, allowing the teacher to also authenticate with his
-  > private SSH key.
+  > `~/.ssh/authorized_keys`, allowing the teacher to also authenticate to your
+  > virtual server with his private SSH key.
 * Create your own user and set a password. Assuming your username is `john_doe`
   (replace with your actual name):
 
@@ -178,7 +179,8 @@ address which persists across restarts.
   ```bash
   $> sudo usermod -a -G sudo john_doe
   ```
-* Copy the `ubuntu` user's authorized SSH keys to your new user:
+* Copy the `ubuntu` user's authorized SSH keys file to your new user and fix its
+  permissions:
 
   ```bash
   $> sudo mkdir -p /home/john_doe/.ssh
@@ -191,6 +193,11 @@ address which persists across restarts.
 
   $> sudo chown john_doe:john_doe /home/john_doe/.ssh/authorized_keys
   ```
+
+  > This will allow you to use the same private SSH key to authenticate as your
+  > new user. The `chmod` and `chown` commands are used to set the correct
+  > permissions on the file, as SSH will refuse to read an `authorized_keys`
+  > file that is accessible to other users.
 * Disconnect once you are done:
 
   ```bash
@@ -218,7 +225,8 @@ address which persists across restarts.
   $> sudo reboot
   ```
 
-  *After a couple of minutes*, check that you can still connect and that your hostname is correct:
+* *Once the server has restarted* (it might take a couple of minutes), check
+  that you can still connect and that your hostname is correct:
 
   ```bash
   $> ssh john_doe@2.2.2.2
@@ -228,7 +236,8 @@ address which persists across restarts.
   $> hostname
   john-doe.archidep.media
   ```
-* Send your instance's public IP address (the Elastic IP address you allocated) to the teacher.
+* Send your instance's public IP address (the Elastic IP address you allocated)
+  to the teacher.
 
 
 
