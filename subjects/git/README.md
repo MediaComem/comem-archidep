@@ -48,6 +48,7 @@ This is a condensed version of the first chapters of the [Git Book](https://git-
   - [Unmodifying a modified file](#unmodifying-a-modified-file)
   - [Unstaging a staged file](#unstaging-a-staged-file)
   - [Changing the commit message](#changing-the-commit-message)
+  - [Adding changes to a commit](#adding-changes-to-a-commit)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -984,25 +985,49 @@ If you want to completely get rid of them, you can use `git checkout` as shown b
 
 ### Changing the commit message
 
-Oops, you've used the wrong commit message and want to change it?
+Commit a new change:
 
 ```bash
+$> echo Wolf >> people.txt
+$> git add people.txt
 $> git commit -m "Fix teh prblme"
-
-$> git commit --amend -m "Fix the problem"
 ```
 
-If you notice that you've forgotten to stage a file into the commit, you can also amend the commit to include it.
-The following commands will only create one commit:
+Oops, you've used the wrong commit message. Want to change it?
 
 ```bash
-$> git commit -m "Fix the problem"
-$> git add TheFix.java
 $> git commit --amend -m "Fix the problem"
 ```
 
-**Be careful:** this changes the commit and its SHA-1 hash.
-You should not do this if you have already shared this commit with others.
+> **Be careful:** this changes the commit and its SHA-1 hash. You should not do
+> this if you have already shared this commit with others.
+
+
+
+### Adding changes to a commit
+
+Make two changes but only commit one of them:
+
+```bash
+$> echo a > a.txt
+$> echo b > b.txt
+$> git add a.txt
+$> git commit -m "Add a & b"
+```
+
+Oops, you forgot to stage one file. Want to add it to the last commit?
+
+```bash
+$> git add b.txt
+$> git commit --amend
+```
+
+Your editor will open to give you the opportunity to change the message if you
+want, but you do not have to. Simply save and exit the editor. The changes to
+`b.txt` will now also be in the last commit.
+
+> **Be careful:** this changes the commit and its SHA-1 hash. You should not do
+> this if you have already shared this commit with others.
 
 
 
