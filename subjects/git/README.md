@@ -206,8 +206,9 @@ Often you will only see a prefix (the first 6-7 characters):
 24b9da6
 ```
 
-Because all content is hashed, it's impossible for files to be lost or corrupted without Git knowing about it.
-This functionality is built into Git at the lowest levels and is integral to its philosophy.
+Because all content is hashed, it's virtually impossible for files to be lost or
+corrupted without Git knowing about it. This functionality is built into Git at
+the lowest levels and is integral to its philosophy.
 
 
 
@@ -713,12 +714,17 @@ $> git commit -m "New lines in hello.txt and hi.txt"
 
 ### Moving and removing files
 
-Git has a `git mv` and `git rm` command, but nobody uses them for day-to-day work on files.
-It's simpler to just move or remove the files yourself:
+Git has a `git mv` and `git rm` command, but nobody uses them for day-to-day
+work on files. It's simpler to just move or remove the files yourself. Rename
+`hi.txt` to `people.txt` in your editor or with this command:
 
 ```bash
 $> mv hi.txt people.txt
+```
 
+Then see what Git tells you:
+
+```bash
 $> git status
 On branch master
 Changes not staged for commit:
@@ -750,7 +756,7 @@ Changes to be committed:
   renamed:    hi.txt -> people.txt
 ```
 
-Note that Git can tell that the file was moved.
+Note that Git can now tell that the file was moved.
 
 Many developers simply modify and manipulate files in their favorite editor or IDE, then use the command above.
 
