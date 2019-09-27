@@ -41,8 +41,9 @@ This is a condensed version of the first chapters of the [Git Book](https://git-
   - [Viewing the changes in the history](#viewing-the-changes-in-the-history)
   - [Other log options](#other-log-options)
 - [Ignoring files](#ignoring-files)
-  - [Status of ignored files](#status-of-ignored-files)
   - [Committing the ignore file](#committing-the-ignore-file)
+  - [Status of ignored files](#status-of-ignored-files)
+  - [Global ignore file](#global-ignore-file)
 - [Undoing things](#undoing-things)
   - [Unmodifying a modified file](#unmodifying-a-modified-file)
   - [Unstaging a staged file](#unstaging-a-staged-file)
@@ -858,6 +859,20 @@ Create it now with this content:
 
 
 
+### Committing the ignore file
+
+Do not forget to stage and commit the `.gitignore` file:
+
+```bash
+$> git add .gitignore
+$> git commit -m "Ignore file"
+```
+
+> That way, when you start collaborating with the other developers in your team,
+> the same files will be ignored on their machine.
+
+
+
 ### Status of ignored files
 
 Ignored files are no longer shown when using `git status`:
@@ -869,20 +884,6 @@ $> git status
 On branch master
 nothing to commit, working tree clean
 ```
-
-
-
-### Committing the ignore file
-
-Do not forget to add and commit the `.gitignore` file:
-
-```bash
-$> git add .gitignore
-$> git commit -m "Ignore file"
-```
-
-> That way, when you start collaborating with the other developers in your team,
-> the same files will be ignored on their machine.
 
 
 
