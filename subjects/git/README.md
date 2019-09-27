@@ -311,12 +311,14 @@ my-project:
 
 This is one of the **most important things to remember about Git**:
 
-<p class='center'><img src='images/areas.png' width='60%' /></p>
+<p class='center'><img src='images/workflow.png' width='60%' /></p>
 
-* You **check out** a specific version of your files into the *working directory*
-* You **modify** files (or add new files) in your *working directory*
-* You **stage** the files, adding snapshots of them to your *staging area*
-* You do a **commit**, which takes the files as they are in the *staging area* and stores that snapshot permanently to your *Git directory*
+* You **check out** a specific version of your files into the *working
+  directory*.
+* You **modify** files (or add new files) in your *working directory*.
+* You **stage** the files, adding snapshots of them to your *staging area*.
+* You make a **commit**, which takes the files as they are in the *staging area*
+  and stores these snapshots permanently to your *Git directory*.
 
 #### Using the staging area
 
