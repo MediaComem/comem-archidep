@@ -3,7 +3,7 @@
   <head>
     <title>Command Line Introduction (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/2cd3f38936e66b471de0883849aba6e3dd02b4e2/subjects/cli/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/c527b3e9530438277a6e2abcfdc739cdc1badfba/subjects/cli/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -1050,6 +1050,111 @@ From there, you can use some commands:
 
 
 ---
+class: center, middle, image-header
+## Nano
+
+.breadcrumbs[<a href="#1">Command Line Introduction</a>]
+
+
+
+<img src='images/nano.jpg' class='w40' />
+
+> Nano: a simpler CLI editor to keep your sanity.
+
+
+
+---
+### An alternative to Vim
+
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">Nano</a>]
+
+If vim is a bit too much for you, [Nano][nano] is another CLI editor that is
+much simpler to use and is also usually installed on most Unix-like systems (and
+in Git Bash).
+
+You can open a file with Nano in much the same way as vim, using the `nano`
+command instead:
+
+```bash
+$> nano test.txt
+```
+
+
+
+---
+### Editing files with Nano
+
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">Nano</a>]
+
+Editing files is much more straightforward and intuitive with Nano. Once the
+file is open, you can simply type your text and move around with arrow keys:
+
+<p class='center'><img src='images/nano.png' class='p80' /></p>
+
+> Nano also helpfully prints its main keyboard shortcuts at the bottom of the
+> window. The most important one is `^X` for Exit. In keyboard shortcut
+> parlance, the `^` symbol always represents the control key.
+
+So, **to exit from Nano, type `Ctrl-X`**.
+
+---
+#### Saving files
+
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">Nano</a> > <a href="#45">Editing files with Nano</a>]
+
+When you exit Nano with `Ctrl-X`, it will ask you whether you want to save your
+changes:
+
+<p class='center'><img src='images/nano-save.png' class='p80' /></p>
+
+Press the `y` key to save or the `n` key to discard your changes.
+
+---
+#### Confirming the filename
+
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">Nano</a> > <a href="#45">Editing files with Nano</a>]
+
+When saving changes, Nano will always ask you to **confirm the filename** where
+the changes should be saved:
+
+<p class='center'><img src='images/nano-filename.png' class='p80' /></p>
+
+As you can see, it tells you the name of the file you opened. Now you can:
+
+* Simply **press `Enter`** to save the file.
+* Or, change the name to save your changes to another file (and keep the
+  unmodified original).
+
+
+
+---
+### Setting Nano as the default editor
+
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">Nano</a>]
+
+On a standard Bash shell (which the default terminal shell on macOS and in Git
+Bash), you have to set the `$EDITOR` environment variable. You can do that by
+adding the following line to your `~/.bash_profile`:
+
+```
+export EDITOR=nano
+```
+
+Remember that you must relaunch your terminal for this change to take effect.
+
+> **Hint:** now that you know how to use Nano, you can edit your Bash profile
+> file with the following command: `nano ~/.bash_profile`.
+
+On Ubuntu, you can list available editors and choose the default one with the
+following command:
+
+```bash
+$> sudo update-alternatives --config editor
+```
+
+
+
+---
 ## The `PATH` variable
 
 .breadcrumbs[<a href="#1">Command Line Introduction</a>]
@@ -1076,7 +1181,7 @@ $> echo $PATH
 ---
 ### Understanding the `PATH`
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">The `PATH` variable</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#49">The `PATH` variable</a>]
 
 Assuming your `PATH` looks like this:
 
@@ -1107,7 +1212,7 @@ $> ls -a -l
 ---
 ### Using non-system commands
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">The `PATH` variable</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#49">The `PATH` variable</a>]
 
 Many development tools you install come with executables that you can run from the CLI (e.g. Git, Node.js, MongoDB).
 
@@ -1120,7 +1225,7 @@ However, sometimes you're downloading only an executable and saving it in a dire
 ---
 #### Custom command example
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">The `PATH` variable</a> > <a href="#45">Using non-system commands</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#49">The `PATH` variable</a> > <a href="#51">Using non-system commands</a>]
 
 Run the following commands to download a simple Hello World shell script and make it into an executable:
 
@@ -1147,7 +1252,7 @@ command not found: hello
 ---
 #### Executing a command in a directory that's not in the `PATH`
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">The `PATH` variable</a> > <a href="#45">Using non-system commands</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#49">The `PATH` variable</a> > <a href="#51">Using non-system commands</a>]
 
 You can run a command from anywhere by writing **the absolute path to the executable**:
 
@@ -1175,7 +1280,7 @@ For this, you need to **add the directory containing the executable** to your `P
 ---
 ### Updating the `PATH` variable
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">The `PATH` variable</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#49">The `PATH` variable</a>]
 
 To add a new path in your `PATH` variable, you have to edit a special file, used by your CLI interpreter (shell).
 This file depends upon the shell you are using:
@@ -1203,7 +1308,7 @@ If you're in Vim, press `Esc` when you're done typing, then `:wq` and `Enter` to
 ---
 #### Does it work?
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">The `PATH` variable</a> > <a href="#48">Updating the `PATH` variable</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#49">The `PATH` variable</a> > <a href="#54">Updating the `PATH` variable</a>]
 
 > Remember to **close and re-open your CLI** to have the shell reload its configuration file.
 
@@ -1229,7 +1334,7 @@ Hello World
 ---
 #### What have I done?
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">The `PATH` variable</a> > <a href="#48">Updating the `PATH` variable</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#49">The `PATH` variable</a> > <a href="#54">Updating the `PATH` variable</a>]
 
 You have **added a directory to the `PATH`**:
 
@@ -1269,6 +1374,7 @@ The next time you run a command, your shell will **first look** in this director
 [macos]: https://en.wikipedia.org/wiki/MacOS
 [mainframe]: https://en.wikipedia.org/wiki/Mainframe_computer
 [motion-sensing]: https://en.wikipedia.org/wiki/Motion_detection
+[nano]: https://en.wikipedia.org/wiki/GNU_nano
 [punched-card]: https://en.wikipedia.org/wiki/Punched_card
 [redirection]: https://en.wikipedia.org/wiki/Redirection_(computing)
 [slide-git]: ../git

@@ -3,7 +3,7 @@
   <head>
     <title>Git Introduction (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/2cd3f38936e66b471de0883849aba6e3dd02b4e2/subjects/git/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/c527b3e9530438277a6e2abcfdc739cdc1badfba/subjects/git/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -227,8 +227,9 @@ Often you will only see a prefix (the first 6-7 characters):
 24b9da6
 ```
 
-Because all content is hashed, it's impossible for files to be lost or corrupted without Git knowing about it.
-This functionality is built into Git at the lowest levels and is integral to its philosophy.
+Because all content is hashed, it's virtually impossible for files to be lost or
+corrupted without Git knowing about it. This functionality is built into Git at
+the lowest levels and is integral to its philosophy.
 
 
 
@@ -346,12 +347,14 @@ my-project:
 
 This is one of the **most important things to remember about Git**:
 
-<p class='center'><img src='images/areas.png' width='60%' /></p>
+<p class='center'><img src='images/workflow.png' width='60%' /></p>
 
-* You **check out** a specific version of your files into the *working directory*
-* You **modify** files (or add new files) in your *working directory*
-* You **stage** the files, adding snapshots of them to your *staging area*
-* You do a **commit**, which takes the files as they are in the *staging area* and stores that snapshot permanently to your *Git directory*
+* You **check out** a specific version of your files into the *working
+  directory*.
+* You **modify** files (or add new files) in your *working directory*.
+* You **stage** the files, adding snapshots of them to your *staging area*.
+* You make a **commit**, which takes the files as they are in the *staging area*
+  and stores these snapshots permanently to your *Git directory*.
 
 ---
 #### Using the staging area
@@ -810,12 +813,17 @@ $> git commit -m "New lines in hello.txt and hi.txt"
 
 .breadcrumbs[<a href="#1">Git Introduction</a> > <a href="#17">Getting started</a>]
 
-Git has a `git mv` and `git rm` command, but nobody uses them for day-to-day work on files.
-It's simpler to just move or remove the files yourself:
+Git has a `git mv` and `git rm` command, but nobody uses them for day-to-day
+work on files. It's simpler to just move or remove the files yourself. Rename
+`hi.txt` to `people.txt` in your editor or with this command:
 
 ```bash
 $> mv hi.txt people.txt
+```
 
+Then see what Git tells you:
+
+```bash
 $> git status
 On branch master
 Changes not staged for commit:
@@ -850,7 +858,7 @@ Changes to be committed:
   renamed:    hi.txt -> people.txt
 ```
 
-Note that Git can tell that the file was moved.
+Note that Git can now tell that the file was moved.
 
 Many developers simply modify and manipulate files in their favorite editor or IDE, then use the command above.
 
@@ -973,6 +981,23 @@ Create it now with this content:
 
 
 ---
+### Committing the ignore file
+
+.breadcrumbs[<a href="#1">Git Introduction</a> > <a href="#37">Ignoring files</a>]
+
+Do not forget to stage and commit the `.gitignore` file:
+
+```bash
+$> git add .gitignore
+$> git commit -m "Ignore file"
+```
+
+> That way, when you start collaborating with the other developers in your team,
+> the same files will be ignored on their machine.
+
+
+
+---
 ### Status of ignored files
 
 .breadcrumbs[<a href="#1">Git Introduction</a> > <a href="#37">Ignoring files</a>]
@@ -986,23 +1011,6 @@ $> git status
 On branch master
 nothing to commit, working tree clean
 ```
-
-
-
----
-### Committing the ignore file
-
-.breadcrumbs[<a href="#1">Git Introduction</a> > <a href="#37">Ignoring files</a>]
-
-Do not forget to add and commit the `.gitignore` file:
-
-```bash
-$> git add .gitignore
-$> git commit -m "Ignore file"
-```
-
-> That way, when you start collaborating with the other developers in your team,
-> the same files will be ignored on their machine.
 
 
 
@@ -1118,25 +1126,52 @@ If you want to completely get rid of them, you can use `git checkout` as shown b
 
 .breadcrumbs[<a href="#1">Git Introduction</a> > <a href="#41">Undoing things</a>]
 
-Oops, you've used the wrong commit message and want to change it?
+Commit a new change:
 
 ```bash
+$> echo Wolf >> people.txt
+$> git add people.txt
 $> git commit -m "Fix teh prblme"
-
-$> git commit --amend -m "Fix the problem"
 ```
 
-If you notice that you've forgotten to stage a file into the commit, you can also amend the commit to include it.
-The following commands will only create one commit:
+Oops, you've used the wrong commit message. Want to change it?
 
 ```bash
-$> git commit -m "Fix the problem"
-$> git add TheFix.java
 $> git commit --amend -m "Fix the problem"
 ```
 
-**Be careful:** this changes the commit and its SHA-1 hash.
-You should not do this if you have already shared this commit with others.
+> **Be careful:** this changes the commit and its SHA-1 hash. You should not do
+> this if you have already shared this commit with others.
+
+
+
+---
+### Adding changes to a commit
+
+.breadcrumbs[<a href="#1">Git Introduction</a> > <a href="#41">Undoing things</a>]
+
+Make two changes but only commit one of them:
+
+```bash
+$> echo a > a.txt
+$> echo b > b.txt
+$> git add a.txt
+$> git commit -m "Add a & b"
+```
+
+Oops, you forgot to stage one file. Want to add it to the last commit?
+
+```bash
+$> git add b.txt
+$> git commit --amend
+```
+
+Your editor will open to give you the opportunity to change the message if you
+want, but you do not have to. Simply save and exit the editor. The changes to
+`b.txt` will now also be in the last commit.
+
+> **Be careful:** this changes the commit and its SHA-1 hash. You should not do
+> this if you have already shared this commit with others.
 
 
 
