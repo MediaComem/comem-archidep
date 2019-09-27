@@ -42,6 +42,10 @@ and learn the basics of navigating and manipulating your filesystem in a Unix sh
   - [How vim works](#how-vim-works)
   - [Normal mode](#normal-mode)
   - [Command mode](#command-mode)
+- [Nano](#nano)
+  - [An alternative to Vim](#an-alternative-to-vim)
+  - [Editing files with Nano](#editing-files-with-nano)
+  - [Setting Nano as the default editor](#setting-nano-as-the-default-editor)
 - [The `PATH` variable](#the-path-variable)
   - [Understanding the `PATH`](#understanding-the-path)
   - [Using non-system commands](#using-non-system-commands)
@@ -891,6 +895,92 @@ From there, you can use some commands:
 
 
 
+## Nano
+
+<!-- slide-front-matter class: center, middle, image-header -->
+
+<img src='images/nano.jpg' class='w40' />
+
+> Nano: a simpler CLI editor to keep your sanity.
+
+
+
+### An alternative to Vim
+
+If vim is a bit too much for you, [Nano][nano] is another CLI editor that is
+much simpler to use and is also usually installed on most Unix-like systems (and
+in Git Bash).
+
+You can open a file with Nano in much the same way as vim, using the `nano`
+command instead:
+
+```bash
+$> nano test.txt
+```
+
+
+
+### Editing files with Nano
+
+Editing files is much more straightforward and intuitive with Nano. Once the
+file is open, you can simply type your text and move around with arrow keys:
+
+<p class='center'><img src='images/nano.png' class='p80' /></p>
+
+> Nano also helpfully prints its main keyboard shortcuts at the bottom of the
+> window. The most important one is `^X` for Exit. In keyboard shortcut
+> parlance, the `^` symbol always represents the control key.
+
+So, **to exit from Nano, type `Ctrl-X`**.
+
+#### Saving files
+
+When you exit Nano with `Ctrl-X`, it will ask you whether you want to save your
+changes:
+
+<p class='center'><img src='images/nano-save.png' class='p80' /></p>
+
+Press the `y` key to save or the `n` key to discard your changes.
+
+#### Confirming the filename
+
+When saving changes, Nano will always ask you to **confirm the filename** where
+the changes should be saved:
+
+<p class='center'><img src='images/nano-filename.png' class='p80' /></p>
+
+As you can see, it tells you the name of the file you opened. Now you can:
+
+* Simply **press `Enter`** to save the file.
+* Or, change the name to save your changes to another file (and keep the
+  unmodified original).
+
+
+
+### Setting Nano as the default editor
+
+On a standard Bash shell (which the default terminal shell on macOS and in Git
+Bash), you have to set the `$EDITOR` environment variable. You can do that by
+adding the following line to your `~/.bash_profile`:
+
+```
+export EDITOR=nano
+```
+
+Remember that you must relaunch your terminal for this change to take effect.
+
+> **Hint:** now that you know how to use Nano, you can edit your Bash profile
+> file with the following command: `nano ~/.bash_profile`.
+
+On Ubuntu, you can list available editors and choose the default one with the
+following command:
+
+```bash
+$> sudo update-alternatives --config editor
+```
+
+
+
 ## The `PATH` variable
 
 When you type a command in the CLI, it will try to see **if it knows this command** by looking in some directories to see if there is an **executable file that matches the command name**.
@@ -1087,6 +1177,7 @@ The next time you run a command, your shell will **first look** in this director
 [macos]: https://en.wikipedia.org/wiki/MacOS
 [mainframe]: https://en.wikipedia.org/wiki/Mainframe_computer
 [motion-sensing]: https://en.wikipedia.org/wiki/Motion_detection
+[nano]: https://en.wikipedia.org/wiki/GNU_nano
 [punched-card]: https://en.wikipedia.org/wiki/Punched_card
 [redirection]: https://en.wikipedia.org/wiki/Redirection_(computing)
 [slide-git]: ../git
