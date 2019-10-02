@@ -22,6 +22,9 @@ Apply for [AWS Educate](https://aws.amazon.com/education/awseducate/apply/),
 which will provide you with free AWS resources as a student. Note that your
 request must be approved manually, which may take a few days.
 
+You will receive an email to complete the registration process once your
+application has been approved.
+
 > If you have a credit card, you may instead register a [standard AWS
 > account](https://portal.aws.amazon.com/billing/signup#/start).
 >
@@ -32,15 +35,29 @@ request must be approved manually, which may take a few days.
 
 ## Launch a virtual server
 
-Once you have a working AWS account, you can launch the virtual server you will
-be using for the rest of the course.
+Once you have your AWS account, you can launch the virtual server you will be
+using for the rest of the course.
 
-* Access the [EC2 Dashboard](https://eu-west-1.console.aws.amazon.com/ec2).
+* Access the EC2 Dashboard.
+
+  If you are a student:
+
+  * Log in to the third-party platform of AWS's educational partner, Vocareum.
+    You should have received a link by email, or you can find it on the AWS
+    Educate website once logged in.
+  * Access the **AWS Console** from Vocareum. There should be a link in the home
+    page.
+  * Once you are in the AWS Console, find the **Services** menu at the top, and
+    select the **EC2** service.
+
+  > If you have a standard account with a credit card, you can follow [this
+  > link](https://eu-west-1.console.aws.amazon.com/ec2) and log in normally.
 * Most of the AWS resources you will use must be located in a
   [region](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
   If you are student, you probably only have access to one region. Use whatever
-  region is selected by default.
+  region is available to you, usually US East (N. Virginia), codenamed
+  `us-east-1`.
 
   If you have standard account, you may select the **EU Ireland region**, the
   cheapest European region.
