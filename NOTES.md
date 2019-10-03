@@ -20,13 +20,26 @@ Local netcat commands are then run to connect to each port and verify that the
 `OK` is received. This shows that the AWS firewall was correctly configured to
 open these ports.
 
-Finally, the `listen-server-ports.sh` script is killed and deleted from the
-server.
+The `listen-server-ports.sh` script is then killed and deleted from the server.
+
+Finally, the contents of all `/home/*/.ssh` directories is listed to check that
+the student has correctly created their own user, and that all SSH
+directory/file permissions are correct for the `ubuntu` user and the student's
+user.
 
 ```bash
 $> export STUDENT_IP=1.2.3.4
 
-$> scp -i id_rsa scripts/listen-server-ports.sh ubuntu@$STUDENT_IP:/home/ubuntu/listen-server-ports.sh && ssh -i id_rsa ubuntu@$STUDENT_IP chmod 755 /home/ubuntu/listen-server-ports.sh && ssh -i id_rsa ubuntu@$STUDENT_IP 'sudo nohup /home/ubuntu/listen-server-ports.sh &>/dev/null < /dev/null &' && echo && for port in 80 443 3000 3001; do echo $port; nc -w 1 $STUDENT_IP $port; done && ssh -i id_rsa ubuntu@$STUDENT_IP sudo killall listen-server-ports.sh && echo && for port in 80 443 3000 3001; do echo $port; nc -w 1 $STUDENT_IP $port && echo NOK || echo closed; done && ssh -i id_rsa ubuntu@$STUDENT_IP rm -f /home/ubuntu/listen-server-ports.sh && ssh -i id_rsa ubuntu@$STUDENT_IP "sudo ls -laR /home/*/.ssh"
+$> scp -i id_rsa scripts/listen-server-ports.sh ubuntu@$STUDENT_IP:/home/ubuntu/listen-server-ports.sh && \
+   ssh -i id_rsa ubuntu@$STUDENT_IP chmod 755 /home/ubuntu/listen-server-ports.sh && \
+   ssh -i id_rsa ubuntu@$STUDENT_IP 'sudo nohup /home/ubuntu/listen-server-ports.sh &>/dev/null < /dev/null &' && \
+   echo && \
+   for port in 80 443 3000 3001; do echo $port; nc -w 1 $STUDENT_IP $port; done && \
+   ssh -i id_rsa ubuntu@$STUDENT_IP sudo killall listen-server-ports.sh && \
+   echo && \
+   for port in 80 443 3000 3001; do echo $port; nc -w 1 $STUDENT_IP $port && echo NOK || echo closed; done && \
+   ssh -i id_rsa ubuntu@$STUDENT_IP rm -f /home/ubuntu/listen-server-ports.sh && \
+   ssh -i id_rsa ubuntu@$STUDENT_IP "sudo ls -laR /home/*/.ssh"
 ```
 
 > Note: each `nc` command must be stopped with `Ctrl-C` once after displaying
