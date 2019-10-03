@@ -212,9 +212,10 @@ address which persists across restarts.
   ```
 
   > This will allow you to use the same private SSH key to authenticate as your
-  > new user. The `chmod` and `chown` commands are used to set the correct
-  > permissions on the file, as SSH will refuse to read an `authorized_keys`
-  > file that is accessible to other users.
+  > new user. The `chmod` (**ch**ange **mod**e, i.e. permissions) and `chown`
+  > (**ch**ange **own**ership) commands are used to set the correct permissions
+  > on the file, as SSH will refuse to read an `authorized_keys` file that is
+  > accessible to other users.
 * Disconnect once you are done:
 
   ```bash
