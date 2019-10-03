@@ -82,7 +82,7 @@ It also indicates what you do not need to remember by heart.
     You must know:
 
     * What a Git remote is.
-    * What is the purpose of the `clone`, `push`, `fetch` and `pull` subcommands.
+    * The purpose of the `clone`, `push`, `fetch` and `pull` subcommands.
     * The reasons why GitHub may refuse a push
       (either your repository is out of date,
       or you have a divergent history that would not result in a fast-forward).
@@ -119,7 +119,7 @@ It also indicates what you do not need to remember by heart.
     You do not need to know:
 
     * What are private clouds, hybrid clouds or other cloud deployment models.
-    * The Faas and MBaaS service models.
+    * The FaaS and MBaaS service models.
     * The diagrams on the "How does IaaS/PaaS/FaaS/MBaaS work?" slides.
     * Service-oriented architecture (SOA), microservices or serverless computing.
   * [Linux](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
