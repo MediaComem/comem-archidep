@@ -31,13 +31,15 @@ It also indicates what you do not need to remember by heart.
     * The basic syntax of the SSH command: `ssh user@hostname`.
     * The difference between password authentication and public key authentication,
       and how to use a private and public key pair in the context of SSH authentication.
+    * That when SSH warns you that host authenticity cannot be established the
+      first time you connect to a server, it is your responsibility to verify
+      that the server's public key is the correct one before answering yes.
+      Otherwise, you expose yourself to a Man-in-the-Middle (MitM) attack.
 
     You do not need to know:
 
-    * How various cryptographic techniques are used to
-      establish SSH's secure channel, although you should understand what to do
-      if SSH warns you that host authenticity cannot be established, and what are
-      the risks involved in accepting to connect.
+    * How various cryptographic techniques are used to establish SSH's secure
+      channel.
     * The syntax of the `scp` command
     * How to use an SSH agent.
 * Version control
