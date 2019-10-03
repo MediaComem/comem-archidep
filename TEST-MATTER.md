@@ -127,11 +127,11 @@ It also indicates what you do not need to remember by heart.
     You must know:
 
     * What Linux is and how it relates to Unix.
+    * That Ubuntu is a Linux operating system.
 
     You do not need to know:
 
-    * The history of Unix or Linux distributions,
-      although you should know that Ubuntu is a Linux operating system.
+    * The history of Unix or Linux distributions.
   * [Unix basics & administration](https://mediacomem.github.io/comem-archidep/2019-2020/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
