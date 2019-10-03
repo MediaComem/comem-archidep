@@ -216,6 +216,8 @@ address which persists across restarts.
   > (**ch**ange **own**ership) commands are used to set the correct permissions
   > on the file, as SSH will refuse to read an `authorized_keys` file that is
   > accessible to other users.
+  >
+  > You will learn about Unix users, groups and permissions later in the course.
 * Disconnect once you are done:
 
   ```bash
