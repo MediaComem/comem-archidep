@@ -28,7 +28,7 @@ It also indicates what you do not need to remember by heart.
 
     * What SSH is and what is is used for.
     * The fact that establishing the secure channel and authenticating are 2 separate processes.
-    * The basic syntax of the SSH command.
+    * The basic syntax of the SSH command: `ssh user@hostname`.
     * The difference between password authentication and public key authentication,
       and how to use a private and public key pair in the context of SSH authentication.
 
