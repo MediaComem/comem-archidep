@@ -22,10 +22,12 @@ open these ports.
 
 The `listen-server-ports.sh` script is then killed and deleted from the server.
 
-Finally, the contents of all `/home/*/.ssh` directories is listed to check that
-the student has correctly created their own user, and that all SSH
-directory/file permissions are correct for the `ubuntu` user and the student's
-user.
+The contents of all `/home/*/.ssh` directories is listed to check that the
+student has correctly created their own user, and that all SSH directory/file
+permissions are correct for the `ubuntu` user and the student's user.
+
+The `hostname` and the contents of the `/etc/hostname` files are also displayed
+for validation.
 
 ```bash
 $> export STUDENT_IP=1.2.3.4
@@ -39,7 +41,10 @@ $> scp -i id_rsa scripts/listen-server-ports.sh ubuntu@$STUDENT_IP:/home/ubuntu/
    echo && \
    for port in 80 443 3000 3001; do echo $port; nc -w 1 $STUDENT_IP $port && echo NOK || echo closed; done && \
    ssh -i id_rsa ubuntu@$STUDENT_IP rm -f /home/ubuntu/listen-server-ports.sh && \
-   ssh -i id_rsa ubuntu@$STUDENT_IP "sudo ls -laR /home/*/.ssh"
+   ssh -i id_rsa ubuntu@$STUDENT_IP "sudo ls -laR /home/*/.ssh" && \
+   echo && \
+   ssh -i id_rsa ubuntu@$STUDENT_IP hostname && \
+   ssh -i id_rsa ubuntu@$STUDENT_IP cat /etc/hostname
 ```
 
 > Note: each `nc` command must be stopped with `Ctrl-C` once after displaying
