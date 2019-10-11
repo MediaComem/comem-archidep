@@ -133,6 +133,12 @@ which is why virtualization is heavily used in cloud computing.
 
 ## Cloud computing
 
+<!-- slide-front-matter class: center, middle -->
+
+<p class='center'><img src='images/someone-elses-computer.jpg' class='w60' /></p>
+
+### What is cloud computing?
+
 <!-- slide-column -->
 
 [Cloud computing][cloud] is nothing new.
