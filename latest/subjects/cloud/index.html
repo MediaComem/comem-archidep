@@ -3,7 +3,7 @@
   <head>
     <title>Cloud Computing (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/c527b3e9530438277a6e2abcfdc739cdc1badfba/subjects/cloud/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/bfcb37b6d1a65f2e2438ffcf204e5a88d3fdbf25/subjects/cloud/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -176,9 +176,19 @@ which is why virtualization is heavily used in cloud computing.
 
 ]
 ---
+class: center, middle
 ## Cloud computing
 
 .breadcrumbs[<a href="#1">Cloud Computing</a>]
+
+
+
+<p class='center'><img src='images/someone-elses-computer.jpg' class='w60' /></p>
+
+---
+### What is cloud computing?
+
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Cloud computing</a>]
 
 .grid-30[
 
@@ -262,7 +272,7 @@ However, costs are low and the solution is highly flexible.
 ---
 #### Other deployment models
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Cloud computing</a> > <a href="#11">Deployment models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Cloud computing</a> > <a href="#12">Deployment models</a>]
 
 .grid-45[
 
@@ -332,7 +342,7 @@ class: center, middle
 ---
 ### What can I get?
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#15">Service models</a>]
 
 These are the main service models offered by cloud providers.
 
@@ -347,7 +357,7 @@ Model                                | Acronym     | What is provided           
 ---
 ### On premise data center
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#15">Service models</a>]
 
 .grid-40[
 
@@ -371,7 +381,7 @@ so that you don't have to worry about them.
 ---
 ### Infrastructure as a Service (IaaS)
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#15">Service models</a>]
 
 .grid-40[
 
@@ -396,7 +406,7 @@ Setting up the runtime environment (databases, web servers, monitoring, etc) for
 ---
 #### How does IaaS work?
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a> > <a href="#17">Infrastructure as a Service (IaaS)</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#15">Service models</a> > <a href="#18">Infrastructure as a Service (IaaS)</a>]
 
 System administrators connect to virtual machines run by the provider in their data center.
 They have complete control over the operating system.
@@ -407,7 +417,7 @@ To run a website, they must set up the runtime environment themselves.
 ---
 ### Platform as a Service (PaaS)
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#15">Service models</a>]
 
 .grid-40[
 
@@ -436,7 +446,7 @@ It also tends to be more expensive at larger scales.
 ---
 #### How does PaaS work?
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a> > <a href="#19">Platform as a Service (PaaS)</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#15">Service models</a> > <a href="#20">Platform as a Service (PaaS)</a>]
 
 Developers send an application, for example a Laravel site written in PHP, to the provider, typically via Git.
 The managed runtime environment then detects the type of application and runs it, along with the necessary resources,
@@ -447,7 +457,7 @@ and serves it over the Internet.
 ---
 ### Function as a Service (FaaS)
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#15">Service models</a>]
 
 .grid-40[
 
@@ -476,7 +486,7 @@ The customer has little to no control over infrastructure, runtime and applicati
 ---
 #### How does FaaS work?
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a> > <a href="#21">Function as a Service (FaaS)</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#15">Service models</a> > <a href="#22">Function as a Service (FaaS)</a>]
 
 Developers write individual functions and publish them to the provider.
 The platform provides various services to connect these functions together and to various resources for storage, communication, monitoring, etc.
@@ -486,7 +496,7 @@ The platform provides various services to connect these functions together and t
 ---
 ### Mobile Backend as a Service (MBaas)
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#15">Service models</a>]
 
 .grid-40[
 
@@ -514,7 +524,7 @@ It also produces the most **vendor lock-in**: it would be difficult to switch a 
 ---
 #### How does MBaaS work?
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a> > <a href="#23">Mobile Backend as a Service (MBaas)</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#15">Service models</a> > <a href="#24">Mobile Backend as a Service (MBaas)</a>]
 
 .grid-60[
 
@@ -539,7 +549,7 @@ For example, Google's [Firebase][firebase] platform provides a real-time databas
 ---
 ### Software as a Service (SaaS)
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#15">Service models</a>]
 
 .grid-40[
 
@@ -562,7 +572,7 @@ and limited control over its configuration.
 ---
 ### Level of abstraction
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#15">Service models</a>]
 
 These models can be ordered by increasing level of abstraction,
 from IaaS being the lowest level and most flexible service model,
@@ -587,7 +597,7 @@ What's happening in the clouds?
 ---
 ### Service-oriented architecture (SOA)
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#27">Trends</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#28">Trends</a>]
 
 [Service-oriented architecture][soa] is a software design style where services are provided by application components over a network.
 This is popular in the cloud as it is easy to provision resources to deploy new components,
@@ -598,7 +608,7 @@ instead of having large monolithic applications.
 ---
 ### Microservices
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#27">Trends</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#28">Trends</a>]
 
 There is a tendency in recent years to try to **decompose** monolithic applications into smaller, more flexible [microservices][microservices]
 (a variant of service-oriented architecture).
@@ -609,7 +619,7 @@ The [Function-as-a-Service (FaaS)][faas] model is one more step in the same dire
 ---
 #### [Microservice architecture][microservices-in-practice]
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#27">Trends</a> > <a href="#29">Microservices</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#28">Trends</a> > <a href="#30">Microservices</a>]
 
 .grid-75[
 
@@ -637,7 +647,7 @@ It also faciliates [continous delivery][cd] as each component can be deployed in
 ---
 ### Serverless computing
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#27">Trends</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#28">Trends</a>]
 
 The [Function-as-a-Service (FaaS)][faas] and [Mobile-Backend-as-a-Service (MBaaS)][mbaas]
 are often considered to be part of the [**serverless computing**][serverless] model.
