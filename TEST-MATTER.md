@@ -158,10 +158,8 @@ It also indicates what you do not need to remember by heart.
 
     * What a process is.
     * What a process ID is and what the `ps` command does.
-    * What an exit status is and what is the difference between
-      and exit status of zero and a non-zero exit status.
-    * What a Unix stream is and what are the 3 standard streams
-      (standard input, standard output and standard error).
+    * What an exit status is and what is the difference between and exit status
+      of zero and a non-zero exit status.
     * What a Unix pipeline is and the syntax used to pipe commands together.
     * What a Unix signal is and what the `kill` command does.
 
@@ -170,6 +168,8 @@ It also indicates what you do not need to remember by heart.
     * The options of the `ps` command or the syntax of its output.
     * The `top`, `htop` and `free` commands.
     * How to retrieve the exit status from code.
+    * What a Unix stream is or what are the 3 standard streams (standard input,
+      standard output and standard error).
     * What stream redirection is.
     * The commands used in the pipeline exercise.
     * The list of Unix signals, or how to trap signals.
