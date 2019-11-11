@@ -111,6 +111,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 ## Useful links
 
 * [Command line cheatsheet](CLI-CHEATSHEET.md)
+* [System administration cheatsheet](SYSADMIN-CHEATSHEET.md)
 * [Git cheatsheet][git-cheatsheet]
 * [Final Test Matter](TEST-MATTER.md)
 

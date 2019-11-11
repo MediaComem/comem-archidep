@@ -16,7 +16,7 @@
   "scripts": {
     "build": "courses-md build",
     "deploy": "courses-md publish",
-    "doctoc": "doctoc --notitle --github README.md ex",
+    "doctoc": "doctoc --notitle --github README.md CLI-CHEATSHEET.md SYSADMIN-CHEATSHEET.md ex",
     "ec2": "node scripts/manage-instances.js",
     "mails": "node scripts/send-students-data.js",
     "setup": "node scripts/process-students-data.js",
