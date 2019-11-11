@@ -352,9 +352,9 @@ a DNS resolver on port 53, and an SSH server on port 22.
 The [**n**et**c**at (`nc`) command][nc] can read from and write to network connections using TCP or UDP.
 
 ```bash
-$> nc -zv -w 5 google.com 80
+$> nc -zv -w 2 google.com 80
 Connection to google.com 80 port [tcp/http] succeeded!
-$> nc -zv -w 5 google.com 81
+$> nc -zv -w 2 google.com 81
 nc: connect to google.com port 81 (tcp) timed out: Operation now in progress
 nc: connect to google.com port 81 (tcp) failed: Network is unreachable
 ```
