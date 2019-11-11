@@ -18,6 +18,7 @@ shell for most Linux distributions and macOS.
 - [Writing](#writing)
   - [Create a directory (`mkdir`)](#create-a-directory-mkdir)
   - [Create a file (`echo`, `touch`)](#create-a-file-echo-touch)
+  - [Edit a file (`nano`)](#edit-a-file-nano)
   - [Copy stuff (`cp`)](#copy-stuff-cp)
   - [Move stuff (`mv`)](#move-stuff-mv)
   - [Delete stuff (`rm`)](#delete-stuff-rm)
@@ -159,7 +160,7 @@ exist):
 $> echo "Hello World!" >> file.txt
 ```
 
-### Edit a file (`nano`)
+### Edit a file (`nano`)
 
 Edit a file with nano:
 
