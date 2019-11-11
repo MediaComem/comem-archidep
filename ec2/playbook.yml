@@ -33,7 +33,7 @@
 
     - name: Set hostname
       hostname:
-        name: "{{ student_username }}.{{ base_domain }}"
+        name: "{{ student_username | replace('_', '-') }}.{{ base_domain }}"
       tags: [ setup ]
 
     - name: Enable SSH password authentication
