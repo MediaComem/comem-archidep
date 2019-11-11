@@ -110,7 +110,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 
 ## Useful links
 
-* [Command line cheatsheet][cli-cheatsheet]
+* [Command line cheatsheet](CLI-CHEATSHEET.md)
 * [Git cheatsheet][git-cheatsheet]
 * [Final Test Matter](TEST-MATTER.md)
 
@@ -118,7 +118,6 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 
 [12factor]: https://12factor.net
 [chrome]: https://www.google.com/chrome/
-[cli-cheatsheet]: https://github.com/MediaComem/comem-webdev/blob/master/CLI-CHEATSHEET.md
 [comem]: http://www.heig-vd.ch/comem
 [comem-webdev]: https://github.com/MediaComem/comem-webdev
 [git-cheatsheet]: https://github.com/MediaComem/comem-webdev/blob/master/GIT-CHEATSHEET.md
