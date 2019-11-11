@@ -18,6 +18,7 @@ The goal of this exercice is to put in practice the knowledge acquired during pr
   - [Allow your user to restart the service without a password](#allow-your-user-to-restart-the-service-without-a-password)
   - [Test the automated deployment](#test-the-automated-deployment)
 - [Complete the exercise](#complete-the-exercise)
+- [End result](#end-result)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

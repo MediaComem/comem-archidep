@@ -11,6 +11,7 @@ by using environment variables instead of hardcoding configuration values.
 - [Update the configuration](#update-the-configuration)
 - [Pull the latest version from the server](#pull-the-latest-version-from-the-server)
 - [Run the PHP development server](#run-the-php-development-server)
+- [End result](#end-result)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

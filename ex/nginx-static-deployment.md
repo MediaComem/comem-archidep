@@ -15,6 +15,7 @@ where you configured an A record for your server.
   - [Enable the nginx configuration](#enable-the-nginx-configuration)
   - [Reload the nginx configuration](#reload-the-nginx-configuration)
 - [See it in action](#see-it-in-action)
+- [End result](#end-result)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

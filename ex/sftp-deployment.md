@@ -14,6 +14,7 @@ using the PHP development server.
 - [Initialize the database](#initialize-the-database)
 - [Update the configuration](#update-the-configuration)
 - [Run the PHP development server](#run-the-php-development-server)
+- [End result](#end-result)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

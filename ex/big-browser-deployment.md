@@ -9,13 +9,13 @@ from scratch on a server.
 
 
 - [The goal](#the-goal)
-    - [The application](#the-application)
+  - [The application](#the-application)
 - [Getting started](#getting-started)
 - [Create a systemd service](#create-a-systemd-service)
 - [Serve the application through nginx](#serve-the-application-through-nginx)
 - [Bonus: set up an automated deployment with Git hooks](#bonus-set-up-an-automated-deployment-with-git-hooks)
-    - [Allow your user to restart the service without a password](#allow-your-user-to-restart-the-service-without-a-password)
-    - [Test the automated deployment](#test-the-automated-deployment)
+  - [Allow your user to restart the service without a password](#allow-your-user-to-restart-the-service-without-a-password)
+  - [Test the automated deployment](#test-the-automated-deployment)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

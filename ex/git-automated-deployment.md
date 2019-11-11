@@ -15,6 +15,7 @@ It assumes that you have performed the previous [nginx & PHP FPM exercise][php-f
 - [Add the server's Git repository as a remote](#add-the-servers-git-repository-as-a-remote)
 - [Make an automated deployment](#make-an-automated-deployment)
 - [Commit a change to the project and deploy it](#commit-a-change-to-the-project-and-deploy-it)
+- [End result](#end-result)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

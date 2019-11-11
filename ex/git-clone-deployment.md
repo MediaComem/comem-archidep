@@ -11,6 +11,7 @@ but using Git to put the code on the server instead of SFTP.
 - [Clone the repository](#clone-the-repository)
 - [Update the configuration](#update-the-configuration)
 - [Run the PHP development server](#run-the-php-development-server)
+- [End result](#end-result)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
