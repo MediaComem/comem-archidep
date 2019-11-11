@@ -1091,7 +1091,7 @@ Many other tools follow this convention.
 * [I/O Redirection (The Linux Documentation Project)](https://www.tldp.org/LDP/abs/html/io-redirection.html)
 * [Here Documents (The Linux Documentation Project)][here-document]
 * [Unix/Linux - Shell Input/Output Redirections](https://www.tutorialspoint.com/unix/unix-io-redirections.htm)
-* [Signals - Unix fundamentals 201 - Ops School Curriculum](http://www.opsschool.org/en/latest/unix_signals.html)
+* [Signals - Unix fundamentals 201 - Ops School Curriculum](http://www.opsschool.org/unix_signals.html)
 
 
 
