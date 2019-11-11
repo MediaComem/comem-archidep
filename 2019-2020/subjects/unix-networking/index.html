@@ -3,7 +3,7 @@
   <head>
     <title>Unix Networking (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/ffe2cfd936de0d97d8a132678a5222de72c7d398/subjects/unix-networking/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/9437932ec08bb41d2576a60a22e81e73d776a995/subjects/unix-networking/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -205,9 +205,10 @@ For example, when a browser displays a web page, it could be making a TCP connec
 .grid-45[
 
 A typical computer only has one IP address.
-One client can only open one connection at a time on a given IP address and port on a server.
 
-However, ports allow the same client to initiate **multiple connections at the same time** as long as they are made to **different ports**.
+However, one client can **open many connections at the same time to a given IP
+address and server port** (up to 65535, one for each source port). A client can
+also open multiple connections to **different ports** at the same time.
 
 
 ]
@@ -219,11 +220,12 @@ However, ports allow the same client to initiate **multiple connections at the s
 ]
 .container[
 
-For example, a client may open 3 simultaneous TCP connections to a server:
+For example, a client may open 4 simultaneous TCP connections to a server:
 
 * On port 22 to connect with an SSH client.
 * On port 25 to retrieve mails with the SMTP protocol.
 * On port 80 to request a web page with a browser using the HTTP protocol.
+* On port 80 (again) to simultaneously retrieve a JavaScript file using the HTTP protocol.
 
 
 ]
@@ -443,9 +445,9 @@ a DNS resolver on port 53, and an SSH server on port 22.
 The [**n**et**c**at (`nc`) command][nc] can read from and write to network connections using TCP or UDP.
 
 ```bash
-$> nc -zv -w 5 google.com 80
+$> nc -zv -w 2 google.com 80
 Connection to google.com 80 port [tcp/http] succeeded!
-$> nc -zv -w 5 google.com 81
+$> nc -zv -w 2 google.com 81
 nc: connect to google.com port 81 (tcp) timed out: Operation now in progress
 nc: connect to google.com port 81 (tcp) failed: Network is unreachable
 ```
