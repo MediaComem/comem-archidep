@@ -17,9 +17,11 @@ Useful commands to manage a Unix system.
 
 ## How to I connect to my server with SSH?
 
-* `ssh 1.2.3.4` connects you to the server at the IP address `1.2.3.4` with the
-  same username as in your current terminal.
-* `ssh john_doe@1.2.3.4` connects you to the same server as the `john_doe` user.
+Connect to the server at the IP address `1.2.3.4` as the `john_doe` user:
+
+```bash
+$> ssh john_doe@1.2.3.4
+```
 
 
 
@@ -41,5 +43,5 @@ operations.
 ### How do I create another user?
 
 ```bash
-$> useradd --create-home --shell /bin/bash jane-doe
+$> useradd --create-home --shell /bin/bash jane_doe
 ```
