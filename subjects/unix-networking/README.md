@@ -156,9 +156,10 @@ For example, when a browser displays a web page, it could be making a TCP connec
 <!-- slide-column 45 -->
 
 A typical computer only has one IP address.
-One client can only open one connection at a time on a given IP address and port on a server.
 
-However, ports allow the same client to initiate **multiple connections at the same time** as long as they are made to **different ports**.
+However, one client can **open many connections at the same time to a given IP
+address and server port** (up to 65535, one for each source port). A client can
+also open multiple connections to **different ports** at the same time.
 
 <!-- slide-column -->
 
@@ -166,11 +167,12 @@ However, ports allow the same client to initiate **multiple connections at the s
 
 <!-- slide-container -->
 
-For example, a client may open 3 simultaneous TCP connections to a server:
+For example, a client may open 4 simultaneous TCP connections to a server:
 
 * On port 22 to connect with an SSH client.
 * On port 25 to retrieve mails with the SMTP protocol.
 * On port 80 to request a web page with a browser using the HTTP protocol.
+* On port 80 (again) to simultaneously retrieve a JavaScript file using the HTTP protocol.
 
 #### Registered port numbers
 
