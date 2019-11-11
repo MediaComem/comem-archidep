@@ -40,7 +40,7 @@
       lineinfile:
         path: /etc/ssh/sshd_config
         regexp: '^PasswordAuthentication '
-        line: 'PasswordAuthentication yes'
+        line: 'PasswordAuthentication {{ "yes" if password_authentication is defined and password_authentication else "no" }}'
       register: enable_ssh_password_authentication
       tags: [ ssh, setup ]
 
