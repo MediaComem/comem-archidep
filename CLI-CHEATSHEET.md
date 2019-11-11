@@ -159,6 +159,25 @@ exist):
 $> echo "Hello World!" >> file.txt
 ```
 
+### Edit a file (`nano`)
+
+Edit a file with nano:
+
+```bash
+$> nano /path/to/file.txt
+```
+
+> Nano will always display available commands at the bottom of the screen.
+> `Ctrl-X` is the one you will use most often, which saves and exits. Note that
+> **nano will ask you to confirm the filename** (in case you want to save the
+> changes you made to another file).
+
+If you need superuser privileges to access the file, you can use `sudo`:
+
+```bash
+$> sudo nano /path/to/file.txt
+```
+
 ### Copy stuff (`cp`)
 
 Copy a file to another location:
