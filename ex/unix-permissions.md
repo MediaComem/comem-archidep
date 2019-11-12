@@ -22,7 +22,7 @@ Replace `john_doe` by your actual username.
 Create a new `alice` user:
 
 ```bash
-$> useradd --create-home --shell /bin/bash alice
+$> sudo useradd --create-home --shell /bin/bash alice
 ```
 
 
