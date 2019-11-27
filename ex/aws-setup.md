@@ -62,7 +62,7 @@ using for the rest of the course.
   If you have standard account, you may select the **EU Ireland region**, the
   cheapest European region.
 
-  ![AWS Region](../images/aws-region.png)
+  ![AWS Region](../images/aws-region.png?)
 * [Import your public key](https://eu-west-1.console.aws.amazon.com/ec2) under
   **Key Pairs**.
 
