@@ -56,7 +56,7 @@ using for the rest of the course.
   [region](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
   If you are student, you probably only have access to one region. Use whatever
-  region is available to you, usually US East (N. Virginia), codenamed
+  region is available to you, usually **US East (N. Virginia)**, codenamed
   `us-east-1`.
 
   If you have standard account, you may select the **EU Ireland region**, the
