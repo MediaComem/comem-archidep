@@ -575,9 +575,9 @@ You should see the HTML text appear in your browser.
      * [Network Address Translation (NAT)][nat]
   * [Ports][port]
      * [List of TCP and UDP port numbers][registered-ports]
-* [Ops School Curriculum](http://www.opsschool.org/)
-  * [Networking 101](http://www.opsschool.org/en/latest/networking_101.html)
-  * [Networking 202](http://www.opsschool.org/en/latest/networking_201.html)
+* [Ops School Curriculum](http://www.opsschool.org)
+  * [Networking 101](http://www.opsschool.org/networking_101.html)
+  * [Networking 202](http://www.opsschool.org/networking_201.html)
 * [Unix Networking Basics for the Beginner](https://www.networkworld.com/article/2693416/unix-networking-basics-for-the-beginner.html)
 * [Unix Top Networking Commands and What They Tell You](https://www.networkworld.com/article/2697039/unix-top-networking-commands-and-what-they-tell-you.html)
 * [What happens when you type google.com into your browser and press enter?](https://github.com/alex/what-happens-when)
