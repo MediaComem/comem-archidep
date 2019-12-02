@@ -266,3 +266,18 @@ address which persists across restarts.
 ![Diagram](aws-setup.png)
 
 > [PDF version](aws-setup.pdf).
+
+
+
+## Note: saving AWS Educate credits
+
+In order to spend as few AWS Educate credits as possible, you may stop your EC2
+instance when you are done working, then re-start it when you need it again:
+
+![AWS Stop Instance To Save Credits](../images/aws-stop-instance-to-save-credits.png)
+
+**Do NOT terminate the instance**, as that will delete all your data.
+
+> Your EBS storage volume and unattached Elastic IP Address will still consume
+> credits with a stopped instance, but at about half the rate for the suggested
+> `t2.micro` instance with 8 gigabytes of storage.
