@@ -66,13 +66,15 @@ exports.loadData = async function() {
       }
     }
 
-    const students = await parseCsv(await readFile(exports.studentsFile, 'utf8'), { columns: [ 'name', 'email' ], from: 2 });
+    const students = await parseCsv(await readFile(exports.studentsFile, 'utf8'), { columns: [ 'name', 'email', 'ip', 'username' ], from: 2 });
 
     const passwords = [];
 
     for (const student of students) {
 
-      student.username = student.email.toLowerCase().replace(/@.*/, '').replace(/[^a-z0-9]/g, '_');
+      if (!student.username) {
+        student.username = student.email.toLowerCase().replace(/@.*/, '').replace(/[^a-z0-9]/g, '_');
+      }
 
       // The goal is not to generate a secure password, or to have a good quality random distribution,
       // but just to set an initial password for each student that looks random and is different from the others.
