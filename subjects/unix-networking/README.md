@@ -371,7 +371,7 @@ For example, the above 2 commands check whether port 80 and 81 are open on the c
 
 ### Raw TCP connection
 
-Assuming Bob's server has the public IP address `1.1.1.1` and Alice's server has the public IP address `2.2.2.2`.
+Assuming Bob's server has the public IP address `1.2.3.4` and Alice's server has the public IP address `2.3.4.5`.
 
 <!-- slide-column -->
 
@@ -395,13 +395,13 @@ World
 Alice should use `nc` to connect to TCP port 3000 on Bob's server:
 
 ```bash
-$> nc 1.1.1.1 3000
+$> nc 1.2.3.4 3000
 ```
 
 Similarly, if Alice types and sends some text, it should appear in Bob's terminal:
 
 ```bash
-$> nc 1.1.1.1 3000
+$> nc 1.2.3.4 3000
 Hello
 *World
 ```
@@ -415,12 +415,12 @@ You have a two-way TCP connection running.
 Playing with TCP is all well and good, but it's a little low level.
 Let's do something that your browser does every day: an HTTP request.
 
-Find out Google's IP address (`3.3.3.3` in this example):
+Find out Google's IP address (`3.4.5.6` in this example):
 
 ```bash
 $> ping -c 1 google.com
-PING google.com (`3.3.3.3`) 56(84) bytes of data.
-64 bytes from example.net (3.3.3.3): icmp_seq=1 ttl=53 time=0.890 ms
+PING google.com (`3.4.5.6`) 56(84) bytes of data.
+64 bytes from example.net (3.4.5.6): icmp_seq=1 ttl=53 time=0.890 ms
 ...
 ```
 
@@ -440,7 +440,7 @@ The next lines are [headers][http-headers] to send additional parameters to the 
 Open a TCP connection to the Google IP address you previously found:
 
 ```bash
-$> nc 3.3.3.3 80
+$> nc 3.4.5.6 80
 ```
 
 Type the following lines exactly, followed by **two new lines** to terminate the message:
@@ -501,10 +501,10 @@ $> nc -l 3000
 
 #### Making an HTTP request with a browser
 
-Assuming that your server has the public IP address `4.4.4.4`,
-visit `http://4.4.4.4:3000` in your browser.
+Assuming that your server has the public IP address `4.5.6.7`,
+visit `http://4.5.6.7:3000` in your browser.
 
-Your browser will make an HTTP request to the computer at IP address `4.4.4.4` on port `3000`.
+Your browser will make an HTTP request to the computer at IP address `4.5.6.7` on port `3000`.
 You should see the request in the terminal where netcat is running:
 
 ```
@@ -541,7 +541,7 @@ Re-run the netcat command on the server:
 $> nc -l 3000
 ```
 
-Re-visit `http://4.4.4.4:3000` in your browser,
+Re-visit `http://4.5.6.7:3000` in your browser,
 then type or copy-paste the following text into the terminal once you have received the request:
 
 ```

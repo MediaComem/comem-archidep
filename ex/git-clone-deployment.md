@@ -20,7 +20,11 @@ but using Git to put the code on the server instead of SFTP.
 
 ## Setup
 
-Make sure you have done the [previous exercise](sftp-deployment.md) and the [Git collaboration](https://github.com/MediaComem/comem-archidep-php-todo-exercise) exercise first.
+Make sure you have done the [previous exercise](sftp-deployment.md) and the [Git
+collaboration](https://github.com/MediaComem/comem-archidep-php-todo-exercise)
+exercise first. If you were not Bob during the collaboration exercise (i.e. the
+person who owns the fork), create your own fork of the repository so that you
+can modify it independently.
 
 Stop your `php -S` command if it is still running.
 
@@ -30,8 +34,8 @@ Stop your `php -S` command if it is still running.
 
 ## Clone the repository
 
-Instead of manually uploading files through SFTP,
-you will connect to the server through SSH and clone the repository from GitHub.
+Instead of manually uploading files through SFTP, you will connect to the server
+through SSH and clone the repository from GitHub.
 
 Copy your repository's public HTTP URL, and clone it (replace `MyUser`):
 
@@ -77,7 +81,8 @@ Still in the cloned repository, run a PHP development server on port 3000:
 $> php -S 0.0.0.0:3000
 ```
 
-You should be able to access the application in a browser at the correct IP address and port (e.g. `1.1.1.1:3000`).
+You should be able to access the application in a browser at the correct IP
+address and port (e.g. `1.2.3.4:3000`).
 
 
 

@@ -154,11 +154,11 @@ address which persists across restarts.
   By default, the Ubuntu image you selected when you launched the server creates
   an `ubuntu` user.
 
-  Assuming the instance's public IP address is `2.2.2.2` (replace with the
+  Assuming the instance's public IP address is `2.3.4.5` (replace with the
   elastic IP address you allocated):
 
   ```bash
-  $> ssh ubuntu@2.2.2.2
+  $> ssh ubuntu@2.3.4.5
   ```
 
   > You should be able to connect without a password. This works because you
@@ -224,10 +224,10 @@ address which persists across restarts.
   ```bash
   $> exit
   ```
-* Reconnect as your own user (again, replace `john_doe` and `2.2.2.2` by the appropriate values):
+* Reconnect as your own user (again, replace `john_doe` and `2.3.4.5` by the appropriate values):
 
   ```bash
-  $> ssh john_doe@2.2.2.2
+  $> ssh john_doe@2.3.4.5
   ```
 * Change your hostname (note that you cannot use the `_` character in a hostname, use `-` instead):
 
@@ -250,7 +250,7 @@ address which persists across restarts.
   that you can still connect and that your hostname is correct:
 
   ```bash
-  $> ssh john_doe@2.2.2.2
+  $> ssh john_doe@2.3.4.5
   Welcome to Ubuntu 18.04.1 LTS
   ...
 

@@ -1,7 +1,8 @@
 # Configure a PHP application through environment variables
 
-This guide describes how to improve the configuration step of the [previous exercise](git-clone-deployment.md)
-by using environment variables instead of hardcoding configuration values.
+This guide describes how to improve the configuration step of the [previous
+exercise](git-clone-deployment.md) by using environment variables instead of
+hardcoded configuration values.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -20,8 +21,10 @@ by using environment variables instead of hardcoding configuration values.
 
 ## Setup
 
-Make sure you have done the [previous exercise](git-clone-deployment.md)
-and the [Git collaboration](https://github.com/MediaComem/comem-archidep-php-todo-exercise) exercise first.
+Make sure you have done the [previous exercise](git-clone-deployment.md) and the
+[Git
+collaboration](https://github.com/MediaComem/comem-archidep-php-todo-exercise)
+exercise first.
 
 Stop your `php -S` command if it is still running.
 
@@ -31,8 +34,16 @@ Stop your `php -S` command if it is still running.
 
 ## Update the configuration
 
-**In your local repository (NOT on the server):**
-modify the first few lines of `index.php` to take configuration values from the environment if available.
+**On your local machine (NOT on the server):** clone the repository if you do
+not have it already:
+
+```bash
+$> cd /path/to/projects
+$> git clone https://github.com/MyUser/comem-archidep-php-todo-exercise.git
+```
+
+Modify the first few lines of `index.php` to take configuration values from the
+environment if available.
 
 For example, instead of:
 
@@ -46,11 +57,13 @@ Use this:
 define('BASE_URL', getenv('TODOLIST_BASE_URL') ?: '/');
 ```
 
-With this code, the `BASE_URL` variable will be equal to the value of the `TODOLIST_BASE_URL` environment variable if it has been set,
-or it will default to `/` if the environment variable is not available.
+With this code, the `BASE_URL` variable will be equal to the value of the
+`TODOLIST_BASE_URL` environment variable if it has been set, or it will default
+to `/` if the environment variable is not available. (This is accomplished with
+the [PHP shorthand ternary operator `?:`](php-shorthand-comparisons).)
 
-Do **not** set a default value for the password,
-as it is a bad practice to hardcode sensitive values.
+Do **not** set a default value for the password, as it is a bad practice to
+hardcode sensitive values.
 
 The full configuration section should look like this:
 
@@ -102,7 +115,8 @@ This time, add an environment variable to define the password when running it:
 $> TODOLIST_DB_PASS="chAngeMeN0w!" php -S 0.0.0.0:3000
 ```
 
-You should be able to access the application in a browser at the correct IP address and port (e.g. `1.1.1.1:3000`).
+You should be able to access the application in a browser at the correct IP
+address and port (e.g. `1.2.3.4:3000`).
 
 
 
@@ -119,4 +133,5 @@ You should be able to access the application in a browser at the correct IP addr
 
 
 [cyberduck]: https://cyberduck.io
+[php-shorthand-comparisons]: https://stitcher.io/blog/shorthand-comparisons-in-php
 [php-todolist]: https://github.com/MediaComem/comem-archidep-php-todo-exercise

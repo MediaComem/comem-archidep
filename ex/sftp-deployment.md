@@ -21,6 +21,7 @@ using the PHP development server.
 
 
 
+
 ## Setup
 
 Use the previous PHP Todolist Exercice.
@@ -131,7 +132,11 @@ $> sudo apt install php-fpm php-mysql
 
 ## Upload the application
 
-Use an SFTP client like [Cyberduck][cyberduck] to upload the application to the server.
+Use an SFTP client like [Cyberduck][cyberduck] to upload the application to the
+server.
+
+Connect to your server first, using your SSH public key for authentication. Then
+copy the application to `/home/john_doe/todolist`.
 
 
 
@@ -143,9 +148,9 @@ Go into the uploaded directory on the server:
 
 ```bash
 $> hostname
-my-name.archidep.media
+john-doe.archidep.media
 
-$> cd /path/to/uploaded/application
+$> cd /home/john_doe/todolist
 ```
 
 Execute the project's SQL file to create the database and table:
@@ -153,6 +158,8 @@ Execute the project's SQL file to create the database and table:
 ```bash
 $> sudo mysql < todolist.sql
 ```
+
+
 
 
 
@@ -172,15 +179,23 @@ define('DB_PORT', '3306');
 
 
 
+
 ## Run the PHP development server
 
-Also in the uploaded directory on the server, run a PHP development server on port 3000:
+Also in the uploaded directory on the server, run a PHP development server on
+port 3000:
 
 ```bash
 $> php -S 0.0.0.0:3000
 ```
 
-You should be able to access the application in a browser at the correct IP address and port (e.g. `1.1.1.1:3000`).
+> You **must really use `0.0.0.0` for the `php -S` command, and not your
+> server's IP address**. `0.0.0.0` is not an actual IP address; it is a special
+> notation that tells the PHP development server to accept connections from any
+> source.
+
+You should be able to access the application in a browser at your server's IP
+address and the correct port (e.g. `1.2.3.4:3000`).
 
 
 
