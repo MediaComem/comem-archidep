@@ -3,7 +3,7 @@ const { writeFile } = require('fs-extra');
 const { safeDump: dumpYaml } = require('js-yaml');
 const { join: joinPath } = require('path');
 
-const { loadData, studentsFile, unixEncryptPassword } = require('./utils');
+const { loadData, studentsFile } = require('./utils');
 
 const targetDirs = [ '.', 'ssh' ];
 
