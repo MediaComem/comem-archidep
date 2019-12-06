@@ -182,8 +182,8 @@ define('DB_PORT', '3306');
 
 ## Run the PHP development server
 
-Also in the uploaded directory on the server, run a PHP development server on
-port 3000:
+Also in the uploaded directory on the server, run a [PHP development
+server][php-dev-server] on port 3000:
 
 ```bash
 $> php -S 0.0.0.0:3000
@@ -212,4 +212,5 @@ address and the correct port (e.g. `1.2.3.4:3000`).
 
 
 [cyberduck]: https://cyberduck.io
+[php-dev-server]: https://www.php.net/manual/en/features.commandline.webserver.php
 [php-todolist]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
