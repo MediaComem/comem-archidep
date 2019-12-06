@@ -3,7 +3,7 @@
   <head>
     <title>Unix Networking (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/6cb37520c563c0af824ea3affcca38dfadfe2d6d/subjects/unix-networking/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/47d58659207210811f2cd3000d1135f2fd930d54/subjects/unix-networking/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -471,7 +471,7 @@ class: center, middle
 
 .breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#24">Making connections</a>]
 
-Assuming Bob's server has the public IP address `1.1.1.1` and Alice's server has the public IP address `2.2.2.2`.
+Assuming Bob's server has the public IP address `1.2.3.4` and Alice's server has the public IP address `2.3.4.5`.
 
 .grid-50[
 
@@ -497,13 +497,13 @@ World
 Alice should use `nc` to connect to TCP port 3000 on Bob's server:
 
 ```bash
-$> nc 1.1.1.1 3000
+$> nc 1.2.3.4 3000
 ```
 
 Similarly, if Alice types and sends some text, it should appear in Bob's terminal:
 
 ```bash
-$> nc 1.1.1.1 3000
+$> nc 1.2.3.4 3000
 Hello
 *World
 ```
@@ -524,12 +524,12 @@ You have a two-way TCP connection running.
 Playing with TCP is all well and good, but it's a little low level.
 Let's do something that your browser does every day: an HTTP request.
 
-Find out Google's IP address (`3.3.3.3` in this example):
+Find out Google's IP address (`3.4.5.6` in this example):
 
 ```bash
 $> ping -c 1 google.com
-PING google.com (`3.3.3.3`) 56(84) bytes of data.
-64 bytes from example.net (3.3.3.3): icmp_seq=1 ttl=53 time=0.890 ms
+PING google.com (`3.4.5.6`) 56(84) bytes of data.
+64 bytes from example.net (3.4.5.6): icmp_seq=1 ttl=53 time=0.890 ms
 ...
 ```
 
@@ -552,7 +552,7 @@ The next lines are [headers][http-headers] to send additional parameters to the 
 Open a TCP connection to the Google IP address you previously found:
 
 ```bash
-$> nc 3.3.3.3 80
+$> nc 3.4.5.6 80
 ```
 
 Type the following lines exactly, followed by **two new lines** to terminate the message:
@@ -622,10 +622,10 @@ $> nc -l 3000
 
 .breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#24">Making connections</a> > <a href="#29">HTTP response</a>]
 
-Assuming that your server has the public IP address `4.4.4.4`,
-visit `http://4.4.4.4:3000` in your browser.
+Assuming that your server has the public IP address `4.5.6.7`,
+visit `http://4.5.6.7:3000` in your browser.
 
-Your browser will make an HTTP request to the computer at IP address `4.4.4.4` on port `3000`.
+Your browser will make an HTTP request to the computer at IP address `4.5.6.7` on port `3000`.
 You should see the request in the terminal where netcat is running:
 
 ```
@@ -668,7 +668,7 @@ Re-run the netcat command on the server:
 $> nc -l 3000
 ```
 
-Re-visit `http://4.4.4.4:3000` in your browser,
+Re-visit `http://4.5.6.7:3000` in your browser,
 then type or copy-paste the following text into the terminal once you have received the request:
 
 ```
