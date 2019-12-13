@@ -153,7 +153,7 @@ Create (or overwrite) a file containing one line:
 $> echo "Hello World!" > file.txt
 ```
 
-> Do the same with the `tee` command if you need to create a file with
+> Do the same with the [`tee` command][tee] if you need to create a file with
 > administrative privileges:
 >
 > ```bash
@@ -327,4 +327,5 @@ foo not found
 
 
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
+[tee]: https://en.wikipedia.org/wiki/Tee_(command)
 [whee]: https://en.wiktionary.org/wiki/whee
