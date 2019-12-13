@@ -13,6 +13,8 @@ using the PHP development server.
 - [Use a real password](#use-a-real-password)
 - [Upload the application](#upload-the-application)
 - [Initialize the database](#initialize-the-database)
+  - [Make sure it worked](#make-sure-it-worked)
+  - [Troubleshooting](#troubleshooting)
 - [Update the configuration](#update-the-configuration)
 - [Run the PHP development server](#run-the-php-development-server)
 - [End result](#end-result)
@@ -25,10 +27,12 @@ using the PHP development server.
 
 ## Setup
 
-Use the previous PHP Todolist Exercice.
-Clone the [PHP Todolist Exercice][php-todolist] on your machine if you do not have it.
+Use the previous PHP Todolist Exercice. Clone the [PHP Todolist
+Exercice][php-todolist] on your machine if you do not have it.
 
 ### Install MySQL
+
+**Connect to your server.**
 
 Update your package lists and install the MySQL database server:
 
@@ -121,6 +125,9 @@ Here you will install the bare minimum:
 * The PHP FastCGI process manager.
 * The PHP MySQL extension.
 
+> In this exercise, you will execute your PHP application directly from the
+> command line, without using a web server like Apache.
+
 Simply run this command to install both:
 
 ```bash
@@ -180,6 +187,70 @@ Execute the project's SQL file to create the database and table:
 ```bash
 $> sudo mysql < todolist.sql
 ```
+
+### Make sure it worked
+
+To make sure everything worked, you can check that the table was created in the
+MySQL database server. You do not have a phpMyAdmin web interface to administer
+the database server, since you are installing everything on your server
+yourself, and you did not install that.
+
+Use the following command and SQL queries to first connect to the MySQL database
+server as the administrator (the MySQL `root` user), then display the `todo`
+table's schema:
+
+```bash
+$> sudo mysql -u root
+
+> connect todolist;
+
+> show create table todo;
++-------+----------------------------------------------------+
+| Table | Create Table                                       |
++-------+----------------------------------------------------+
+| todo  | CREATE TABLE `todo` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `title` varchar(2048) NOT NULL,
+  `done` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 |
++-------+----------------------------------------------------+
+1 row in set (0.00 sec)
+```
+
+> Everything went well if the table was created, since the creation of that
+> table is the last step of the `todolist.sql` script.
+
+You may exit the interactive MySQL console like most shells by typing `exit`.
+
+### Troubleshooting
+
+An error may occur here. For example, MySQL may tell you the `todolist` user's
+password in the script is not strong enough, depending on the settings you
+selected when securing the MySQL installation.
+
+To start over, connect to the MySQL server as an administrator and type the
+following queries:
+
+```bash
+$> sudo mysql -u root
+
+> drop table todolist.todo;
+> drop user todolist@localhost;
+> drop database todolist;
+```
+
+> Some of these commands may cause errors if the `todolist.sql` script could not
+> execute entirely. For example, if the script could not create the `todolist`
+> user and/or the `todo` table, the first `drop table todolist.todo;` query will
+> fail with:
+>
+> `ERROR 1051 (42S02): Unknown table 'todolist.todo'`
+>
+> That's fine. Running the 3 queries will make sure you have nothing left that
+> may have been created by the `todolist.sql` script, so you can start over with
+> a clean state.
 
 
 
