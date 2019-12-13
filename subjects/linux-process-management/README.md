@@ -18,7 +18,7 @@ Many processes must run for a computer to do its job.
 Which processes to run and when to run them depends on the use case:
 
 * On a desktop computer, you need processes to be launched to display the graphical user interface (GUI), for example.
-* On a web server, you probably need to run a database and a web server at least.
+* On a web-facing server, you probably need to run a database and a web server at least.
 
 Some processes may have **dependencies**:
 i.e. they might need other processes to be already running in order to run properly themselves.
