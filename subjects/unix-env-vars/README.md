@@ -250,6 +250,35 @@ Rust         | [`env::var("FOO")`](https://doc.rust-lang.org/std/env/fn.var.html
 
 
 
+### Environment variables are always strings
+
+You may put whatever kind of value you want into an environment variable:
+
+```bash
+export MEANING_OF_LIFE=42  # A number
+export PERSON='{"name":"John Doe","age":24}'  # Serialized JSON
+```
+
+In your programming language of choice, however, the value will **always** be a
+character string. It's up to you to parse it if you want to use it as another
+type, for example in Node.js:
+
+```js
+> console.log(process.env.MEANING_OF_LIFE);
+42
+*> process.env.MEANING_OF_LIFE + 2
+*'422'
+> typeof process.env.MEANING_OF_LIFE
+string
+> parseInt(process.env.MEANING_OF_LIFE, 10) + 2
+44
+
+> process.env.PERSON.name
+undefined
+> JSON.parse(process.env.PERSON).name
+'John Doe'
+```
+
 
 
 ## References
