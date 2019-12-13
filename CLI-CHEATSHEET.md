@@ -153,12 +153,26 @@ Create (or overwrite) a file containing one line:
 $> echo "Hello World!" > file.txt
 ```
 
+> Do the same with the `tee` command if you need to create a file with
+> administrative privileges:
+>
+> ```bash
+> $> echo "Hello World!" | sudo tee file.txt
+> ```
+
 Append one line at the end of a file (also creates the file if it does not
 exist):
 
 ```bash
 $> echo "Hello World!" >> file.txt
 ```
+
+> Again with the `tee` command if you need to create a file with
+> administrative privileges:
+>
+> ```bash
+> $> echo "Hello World!" | sudo tee -a file.txt
+> ```
 
 ### Edit a file (`nano`)
 
