@@ -90,7 +90,7 @@ define('DB_PORT', getenv('TODOLIST_DB_PORT') ?: '3306');
 $> cd ~/todolist-repo
 ```
 
-Discard the changes you made manually for the previous exercise:
+If you made any manual configuration changes during the previous exercise, discard them:
 
 ```bash
 $> git checkout index.php
