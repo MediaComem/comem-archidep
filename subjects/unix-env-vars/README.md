@@ -237,12 +237,16 @@ Every programming language has a simple way of retrieving the value of environme
 
 Language     | Code
 :---         | :---
-Java         | `System.getenv("FOO")`
-Node.js      | `process.env.FOO`
-PHP          | `getenv("FOO")`
-Python       | `os.environ["FOO"]`
-Ruby         | `ENV["FOO"]`
-Shell script | `echo $FOO`
+C            | [`getenv("PATH")`](http://man7.org/linux/man-pages/man3/getenv.3.html)
+Elixir       | [`System.get_env("FOO")`](https://hexdocs.pm/elixir/System.html#get_env/2)
+Erlang       | [`os.get_env("FOO")`](http://erlang.org/doc/man/os.html#getenv-1)
+Go           | [`os.Getenv("FOO")`](https://golang.org/pkg/os/#Getenv)
+Java         | [`System.getenv("FOO")`](https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/lang/System.html#getenv%28java.lang.String%29)
+Node.js      | [`process.env.FOO`](https://nodejs.org/api/process.html#process_process_env)
+PHP          | [`getenv("FOO")`](https://www.php.net/manual/en/function.getenv.php)
+Python       | [`os.getenv("FOO")`](https://docs.python.org/3/library/os.html#os.getenv)
+Ruby         | [`ENV["FOO"]`](https://ruby-doc.org/core-2.6.5/ENV.html#method-c-5B-5D)
+Rust         | [`env::var("FOO")`](https://doc.rust-lang.org/std/env/fn.var.html)
 
 
 
