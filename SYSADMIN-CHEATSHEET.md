@@ -53,8 +53,8 @@ $> useradd --create-home --shell /bin/bash jane_doe
 
 You might need this if you lost your SSH connection after you launched a process
 which listens on a port, e.g. 3000. If the process still runs, the port is no
-longer available. This could happen, for example, in the "Deploy a PHP
-application with SFTP" exercise.
+longer available. This could happen, for example, in the ["Deploy a PHP
+application with SFTP" exercise][sftp-deploy-ex].
 
 Find the process with `ps` and `grep`:
 
@@ -66,11 +66,11 @@ www-data 20961 20942  0 Dec06 ?        00:00:00 php-fpm: pool www
 john_doe 26378 26365  0 10:02 pts/0    00:00:00 php -S 0.0.0.0:3000
 ```
 
-In this example based on the "Deploy a PHP application with SFTP" exercise, the
-process that interests you is the fourth one, which was launched by the `php -S
-0.0.0.0:3000` command as shown in the last column, and has the Process ID
-`26378`. The other PHP processes are unrelated to what you were doing, so you
-should not touch them.
+In this example based on the ["Deploy a PHP application with SFTP"
+exercise][sftp-deploy-ex], the process that interests you is the fourth one,
+which was launched by the `php -S 0.0.0.0:3000` command as shown in the last
+column, and has the Process ID `26378`. The other PHP processes are unrelated to
+what you were doing, so you should not touch them.
 
 Now that you have the ID of the naughty process, you can kill it:
 
@@ -84,3 +84,7 @@ does not want to die, you can kill it more violently:
 ```bash
 $> kill -KILL 26378
 ```
+
+
+
+[sftp-deploy-ex]: ./ex/sftp-deployment.md
