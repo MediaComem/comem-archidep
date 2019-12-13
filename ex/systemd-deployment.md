@@ -80,7 +80,14 @@ Make sure it is running:
 $> sudo systemctl status todolist
 ```
 
-You should be able to access the running todolist application in your browser on your server's IP address and port 3000.
+You should be able to access the running todolist application in your browser on
+your server's IP address and port 3000 (e.g. `1.2.3.4:3000`).
+
+### Troubleshooting
+
+If `sudo systemctl status todolist` indicates a problem with your unit file, be
+sure to run `sudo systemctl daemon-reload` after fixing it to take the changes
+into account.
 
 
 
