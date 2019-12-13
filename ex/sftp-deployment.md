@@ -132,8 +132,8 @@ $> sudo apt install php-fpm php-mysql
 
 ## Upload the application
 
-Use an SFTP client like [Cyberduck][cyberduck] to upload the application to the
-server.
+Use an SFTP client like [FileZilla][filezilla] or [Cyberduck][cyberduck] to
+upload the application to the server.
 
 Connect to your server first, using your SSH public key for authentication. Then
 copy the application to `/home/john_doe/todolist`.
@@ -212,5 +212,6 @@ address and the correct port (e.g. `1.2.3.4:3000`).
 
 
 [cyberduck]: https://cyberduck.io
+[filezilla]: https://filezilla-project.org/
 [php-dev-server]: https://www.php.net/manual/en/features.commandline.webserver.php
 [php-todolist]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
