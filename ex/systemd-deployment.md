@@ -33,28 +33,36 @@ Copy the following configuration, replacing the following values:
 
 ```
 [Unit]
+
 Description=PHP TodoList
+
 # This application should start after MySQL.
 After=mysql.service
 
 [Service]
+
 # Command to execute to run the application (the
 # absolute path to the executable is required).
 ExecStart=/usr/bin/php -S 0.0.0.0:3000
+
 # User account to run the application as.
 User=john_doe
+
 # Working directory in which to run the application.
 WorkingDirectory=/home/john_doe/todolist-repo
+
 # Environment variables to define when running the
 # application (can be repeated).
 Environment=TODOLIST_DB_PASS=chAngeMeN0w!
+
 # The application should be restarted if it crashes.
 Restart=always
 
 [Install]
-# The application should be run once the operating system has
-# reached the multi-user runlevel (user management and networking
-# have been initialized).
+
+# The application should be run once the operating
+# system has reached the multi-user runlevel (user
+# management and networking have been initialized).
 WantedBy=multi-user.target
 ```
 
