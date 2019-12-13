@@ -10,6 +10,7 @@ using the PHP development server.
 - [Setup](#setup)
   - [Install MySQL](#install-mysql)
   - [Install PHP](#install-php)
+- [Use a real password](#use-a-real-password)
 - [Upload the application](#upload-the-application)
 - [Initialize the database](#initialize-the-database)
 - [Update the configuration](#update-the-configuration)
@@ -66,7 +67,7 @@ LOW    Length >= 8
 MEDIUM Length >= 8, numeric, mixed case, and special characters
 STRONG Length >= 8, numeric, mixed case, special characters and dictionary file
 
-Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 2
+Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 1
 Please set the password for root here.
 
 New password: ***
@@ -125,6 +126,27 @@ Simply run this command to install both:
 ```bash
 $> sudo apt install php-fpm php-mysql
 ```
+
+
+
+
+
+## Use a real password
+
+The `todolist.sql` creates a `todolist` user with the password `chAngeMeN0w!` by
+default. You should change the password to a more secure value. Make sure that
+the password you choose is strong enough per the minimum password requirements
+you chose when you secured the MySQL installation.
+
+> It is good practice to create a different user and password for each
+> application that connects to the MySQL database server. That way, if one of
+> the applications is compromised, it cannot access or modify the databases of
+> the other applications (provided you configured appropriate access
+> privileges).
+>
+> Notably, you should never use the MySQL root password to connect an
+> application to its database. You, the system administrator, should be the only
+> person who knows that password.
 
 
 
