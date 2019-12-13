@@ -3,7 +3,7 @@
   <head>
     <title>Unix Environment Variables (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/47d58659207210811f2cd3000d1135f2fd930d54/subjects/unix-env-vars/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/e3161cf7e7749e6e631d267e9bd15e367a8cec04/subjects/unix-env-vars/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -164,10 +164,10 @@ $> curl -sL https://git.io/fpdar > print-env-var.sh
 
 $> chmod 755 print-env-var.sh
 
-$> print-env-var.sh PATH
+$> ./print-env-var.sh PATH
 The value of $PATH is /usr/local/sbin:/usr/local/bin:...
 
-$> print-env-var.sh FOO
+$> ./print-env-var.sh FOO
 $FOO is not set
 ```
 
@@ -284,14 +284,50 @@ Every programming language has a simple way of retrieving the value of environme
 
 Language     | Code
 :---         | :---
-Java         | `System.getenv("FOO")`
-Node.js      | `process.env.FOO`
-PHP          | `getenv("FOO")`
-Python       | `os.environ["FOO"]`
-Ruby         | `ENV["FOO"]`
-Shell script | `echo $FOO`
+C            | [`getenv("PATH")`](http://man7.org/linux/man-pages/man3/getenv.3.html)
+Elixir       | [`System.get_env("FOO")`](https://hexdocs.pm/elixir/System.html#get_env/2)
+Erlang       | [`os.get_env("FOO")`](http://erlang.org/doc/man/os.html#getenv-1)
+Go           | [`os.Getenv("FOO")`](https://golang.org/pkg/os/#Getenv)
+Java         | [`System.getenv("FOO")`](https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/lang/System.html#getenv%28java.lang.String%29)
+Node.js      | [`process.env.FOO`](https://nodejs.org/api/process.html#process_process_env)
+PHP          | [`getenv("FOO")`](https://www.php.net/manual/en/function.getenv.php)
+Python       | [`os.getenv("FOO")`](https://docs.python.org/3/library/os.html#os.getenv)
+Ruby         | [`ENV["FOO"]`](https://ruby-doc.org/core-2.6.5/ENV.html#method-c-5B-5D)
+Rust         | [`env::var("FOO")`](https://doc.rust-lang.org/std/env/fn.var.html)
 
 
+
+---
+### Environment variables are always strings
+
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#5">Managing environment variables</a>]
+
+You may put whatever kind of value you want into an environment variable:
+
+```bash
+export MEANING_OF_LIFE=42  # A number
+export PERSON='{"name":"John Doe","age":24}'  # Serialized JSON
+```
+
+In your programming language of choice, however, the value will **always** be a
+character string. It's up to you to parse it if you want to use it as another
+type, for example in Node.js:
+
+```js
+> console.log(process.env.MEANING_OF_LIFE);
+42
+*> process.env.MEANING_OF_LIFE + 2
+*'422'
+> typeof process.env.MEANING_OF_LIFE
+string
+> parseInt(process.env.MEANING_OF_LIFE, 10) + 2
+44
+
+> process.env.PERSON.name
+undefined
+> JSON.parse(process.env.PERSON).name
+'John Doe'
+```
 
 
 
