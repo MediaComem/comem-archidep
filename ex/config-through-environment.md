@@ -60,7 +60,7 @@ define('BASE_URL', getenv('TODOLIST_BASE_URL') ?: '/');
 With this code, the `BASE_URL` variable will be equal to the value of the
 `TODOLIST_BASE_URL` environment variable if it has been set, or it will default
 to `/` if the environment variable is not available. (This is accomplished with
-the [PHP shorthand ternary operator `?:`](php-shorthand-comparisons).)
+the [PHP shorthand ternary operator `?:`][php-shorthand-comparisons].)
 
 Do **not** set a default value for the password, as it is a bad practice to
 hardcode sensitive values.
