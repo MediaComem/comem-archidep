@@ -132,10 +132,10 @@ $> curl -sL https://git.io/fpdar > print-env-var.sh
 
 $> chmod 755 print-env-var.sh
 
-$> print-env-var.sh PATH
+$> ./print-env-var.sh PATH
 The value of $PATH is /usr/local/sbin:/usr/local/bin:...
 
-$> print-env-var.sh FOO
+$> ./print-env-var.sh FOO
 $FOO is not set
 ```
 
