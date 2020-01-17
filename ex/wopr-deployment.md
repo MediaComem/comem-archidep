@@ -88,6 +88,8 @@ described in the [project's README][readme] on your server.
   ```bash
   node -e 'console.log(`Node.js ${process.version} is installed and working`)'
   ```
+* **Check your Redis installation:** step 2 of the article mentionned above
+  explains how to make sure your Redis server is running.
 
 ### Optional: test in development mode
 
@@ -122,7 +124,7 @@ service `wopr`.
 * **Absolute command path:** when setting the `ExecStart` directive in a systemd
   unit file, you must use the absolute path to the command your want to run
   (e.g. `/usr/bin/php` instead of just `php`). To find the path to a command,
-  you can use the following command:
+  you can use the `which` command:
 
   ```bash
   $> which php
