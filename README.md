@@ -95,7 +95,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Deploy a static site with nginx](ex/nginx-static-deployment.md) [(diagram)](ex/nginx-static-deployment.pdf)
   * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(diagram)](ex/nginx-php-fpm-deployment.pdf)
   * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md) [(diagram)](ex/git-automated-deployment.pdf)
-  * Deploy a web application with a database (**graded**, not yet available)
+  * [Deploy a Ruby application with a Redis database](ex/wopr-deployment.md) (**graded**)
   * [Deploy a Node.js application with a MongoDB database (*extra*)](ex/one-chat-room-deployment.md)
   * [Deploy a Node.js application with a Redis database (*extra*)](ex/big-browser-deployment.md)
   * [Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
