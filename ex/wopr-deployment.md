@@ -223,8 +223,8 @@ Exit with `Ctrl-X` and save when prompted.
 ### Test the automated deployment
 
 Commit a change and push it to your repository on the server to test the
-automated deployment. For example, the text of the main page's buttons is [in
-the file `src/app.svelte`][change].
+automated deployment. For example, some of the text displayed in the main page
+[in the file `src/app.svelte`][change].
 
 
 
@@ -235,7 +235,7 @@ Send an email to the teacher with the URL to your deployed application.
 
 
 [app]: https://comem-wopr.herokuapp.com
-[change]: https://github.com/MediaComem/comem-wopr/blob/master/src/app.svelte#L17
+[change]: https://github.com/MediaComem/comem-wopr/blob/4b75cc6c2c83c2fce1723ce655a12d5537c0bfbd/src/app.svelte#L26-L30
 [nginx-php-fpm-ex]: nginx-php-fpm-deployment.md
 [nginx-rp-conf]: https://mediacomem.github.io/comem-archidep/2019-2020/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29
 [node]: https://nodejs.org
