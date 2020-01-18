@@ -12,6 +12,7 @@ previous exercices to deploy a new application from scratch on your server.
 - [The goal](#the-goal)
   - [The application](#the-application)
 - [Getting started](#getting-started)
+  - [Install compilation tools](#install-compilation-tools)
   - [Optional: test in development mode](#optional-test-in-development-mode)
 - [Create a systemd service](#create-a-systemd-service)
 - [Serve the application through nginx](#serve-the-application-through-nginx)
@@ -90,6 +91,22 @@ described in the [project's README][readme] on your server.
   ```
 * **Check your Redis installation:** step 2 of the article mentionned above
   explains how to make sure your Redis server is running.
+
+### Install compilation tools
+
+When installing dependencies for the WOPR application, you will use the `npm`
+command to download packages from [npm][npm], a package manager for JavaScript
+and [Node.js][node]. Some of these packages may have components programmed in
+C/C++ that must be compiled. This is done automatically for you by the `npm`
+command, so you don't have to worry about it.
+
+But you do have to make sure that you have [make][make] and a C/C++ compiler
+installed so that npm can do its job. You can do that with the following
+command:
+
+```bash
+$> apt install -y g++ make
+```
 
 ### Optional: test in development mode
 
@@ -236,10 +253,12 @@ Send an email to the teacher with the URL to your deployed application.
 
 [app]: https://comem-wopr.herokuapp.com
 [change]: https://github.com/MediaComem/comem-wopr/blob/4b75cc6c2c83c2fce1723ce655a12d5537c0bfbd/src/app.svelte#L26-L30
+[make]: https://www.gnu.org/software/make/
 [nginx-php-fpm-ex]: nginx-php-fpm-deployment.md
 [nginx-rp-conf]: https://mediacomem.github.io/comem-archidep/2019-2020/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29
 [node]: https://nodejs.org
 [nosql]: https://en.wikipedia.org/wiki/NoSQL
+[npm]: https://www.npmjs.com
 [previous-ex]: git-automated-deployment.md
 [readme]: https://github.com/MediaComem/comem-wopr#readme
 [redis]: https://redis.io
