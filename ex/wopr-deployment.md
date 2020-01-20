@@ -182,7 +182,26 @@ like in the [previous exercise][previous-ex].
      so that changes to Svelte code are taken into account.
   2. Restart the application's systemd service so that changes to the Ruby code
      are taken into account. You can do that with `sudo systemctl restart
-     my-service`.
+     my-service`. You will need to give your user permission to do this without
+     entering a password, as explained in the next section.
+* **Tip**: if you decide to do this exercise by following the instructions from
+  previous exercises, note the following difference in behavior.
+
+  When [updating the nginx configuration to set up an automated
+  deployment][automated-deployment-nginx-update], it is stated that you should
+  get a `404 Not Found` page. This is not the case for this exercise. It will
+  keep working even after you change the nginx's `root` directive.
+
+  > The reason for this is that when using `fastcgi_pass`, nginx is asking the
+  > FastCGI Process Manager (PHP-FPM) to find and execute the PHP files in the
+  > `root` directory specified by the configuration. When you change that `root`
+  > to a directory that is empty (at that stage in the exercise), it will not
+  > find the PHP files anymore, and return a 404 Not Found error.
+  >
+  > When using `proxy_pass`, nginx is simply forwarding the request to the given
+  > address and port. The WORP application listens on that port and is capable
+  > of serving its own files, regardless of nginx's configuration. So the
+  > application will keep working even after changing the `root`.
 
 ### Allow your user to restart the service without a password
 
@@ -252,6 +271,7 @@ Send an email to the teacher with the URL to your deployed application.
 
 
 [app]: https://comem-wopr.herokuapp.com
+[automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md#update-the-todolist-nginx-configuration
 [change]: https://github.com/MediaComem/comem-wopr/blob/4b75cc6c2c83c2fce1723ce655a12d5537c0bfbd/src/app.svelte#L26-L30
 [make]: https://www.gnu.org/software/make/
 [nginx-php-fpm-ex]: nginx-php-fpm-deployment.md
