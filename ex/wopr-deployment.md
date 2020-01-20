@@ -192,7 +192,7 @@ like in the [previous exercise][previous-ex].
   get a `404 Not Found` page. This is not the case for this exercise. It will
   keep working even after you change the nginx's `root` directive.
 
-  > The reason for this is that when using `fastcgi_pass`, nginx is asking the
+  > The reason is that when using `fastcgi_pass`, nginx is asking the PHP
   > FastCGI Process Manager (PHP-FPM) to find and execute the PHP files in the
   > `root` directory specified by the configuration. When you change that `root`
   > to a directory that is empty (at that stage in the exercise), it will not
