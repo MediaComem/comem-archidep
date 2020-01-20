@@ -199,7 +199,7 @@ like in the [previous exercise][previous-ex].
   > find the PHP files anymore, and return a 404 Not Found error.
   >
   > When using `proxy_pass`, nginx is simply forwarding the request to the given
-  > address and port. The WORP application listens on that port and is capable
+  > address and port. The WOPR application listens on that port and is capable
   > of serving its own files, regardless of nginx's configuration. So the
   > application will keep working even after changing the `root`.
 
