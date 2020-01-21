@@ -20,6 +20,11 @@ previous exercices to deploy a new application from scratch on your server.
   - [Allow your user to restart the service without a password](#allow-your-user-to-restart-the-service-without-a-password)
   - [Test the automated deployment](#test-the-automated-deployment)
 - [Complete the exercise](#complete-the-exercise)
+- [Troubleshooting](#troubleshooting)
+  - [`ENOENT open package.json`](#enoent-open-packagejson)
+  - [`Could not locate Gemfile`](#could-not-locate-gemfile)
+  - [`Could not find concurrent-ruby-1.1.5 in any of the sources`](#could-not-find-concurrent-ruby-115-in-any-of-the-sources)
+  - [`rimraf: not found`](#rimraf-not-found)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -151,6 +156,11 @@ service `wopr`.
   remember that in the final setup, you must use a port that is not publicly
   exposed.
 
+> **Advanced tip:** if you know what you are doing, you can already set up the
+> automated deployment project structure, so that you can already point your
+> systemd configuration to the correct directory. That way you will not have to
+> modify it later.
+
 
 
 ## Serve the application through nginx
@@ -166,6 +176,10 @@ the nginx configuration to the application you are trying to deploy.
   For this exercise, you can remove the `include` and `fastcgi_pass` directives
   and use a simply `proxy_pass` as [presented during the course][nginx-rp-conf].
   Nginx will simply proxy the request to the specific host and port.
+
+> **Advanced tip:** similarly, you can also point the nginx configuration
+> directly to the automated deployment structure. That way you will not have to
+> modify it later.
 
 
 
@@ -267,6 +281,90 @@ automated deployment. For example, some of the text displayed in the main page
 ## Complete the exercise
 
 Send an email to the teacher with the URL to your deployed application.
+
+
+
+## Troubleshooting
+
+Here's a few tips about some problems you may encounter during this exercise.
+
+Note that many of these errors can happen in various situations:
+
+* When running a command manually from your terminal.
+* When systemd tries to start your service.
+* When your `post-receive` Git hook executes.
+
+### `ENOENT open package.json`
+
+If you see an error message similar to this:
+
+```
+npm ERR! code ENOENT
+npm ERR! syscall open
+npm ERR! path /path/to/package.json
+```
+
+You are probably executing the `npm ci` command in the wrong directory. It must
+be executed in a directory that contains both a `package.json` and
+`package-lock.json` files. These files describe a list of npm packages to
+install, which the `npm` package manager will download.
+
+For this exercise, you want to run this command in the directory where the WOPR
+application's files are located (as explained in the project's README).
+
+### `Could not locate Gemfile`
+
+If you see an error message similar to this:
+
+```
+Could not locate Gemfile
+```
+
+You are probably executing the `bundle install --path vendor/bundle` command in
+the wrong directory. It must be executed in a directory that contains a file
+named `Gemfile`. This file describes a list of ruby packages to install, which
+the `bundle` command will download.
+
+For this exercise, you want to run this command in the directory where the WOPR
+application's files are located (as explained in the project's README).
+
+### `Could not find concurrent-ruby-1.1.5 in any of the sources`
+
+If you see an error message similar to this:
+
+```
+Could not find concurrent-ruby-1.1.5 in any of the sources
+Run `bundle install` to install missing gems.
+```
+
+You are probably trying to execute the WOPR application without having installed
+its Ruby dependencies (with the `bundle install --path vendor/bundle` command).
+
+Note that this command downloads Ruby packages to a `vendor` directory in the
+current working directory. This means that you must run it in each directory
+from which you want to execute the WOPR application.
+
+### `rimraf: not found`
+
+If you see an error message similar to this:
+
+```
+> wopr@1.0.0 build /path/to/wopr
+> npm run clean && npm run webpack
+
+> wopr@1.0.0 clean /path/to/wopr
+> rimraf public
+
+sh: 1: rimraf: not found
+```
+
+You are probably trying to execute the `npm run build` command in the WOPR
+application without having installed its JavaScript dependencies (with the `npm
+ci` command).
+
+Note that the `npm ci` command downloads npm packages to a `node_modules`
+directory in the current working directory. This means that you must run it in
+each directory from which you want to execute the WOPR application.
 
 
 
