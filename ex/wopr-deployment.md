@@ -341,8 +341,8 @@ You are probably trying to execute the WOPR application without having installed
 its Ruby dependencies (with the `bundle install --path vendor/bundle` command).
 
 Note that this command downloads Ruby packages to a `vendor` directory in the
-current working directory. This means that you must run it in each directory
-from which you want to execute the WOPR application.
+current working directory. This means that you must run it at least once in each
+directory from which you want to execute the WOPR application.
 
 ### `rimraf: not found`
 
@@ -363,8 +363,9 @@ application without having installed its JavaScript dependencies (with the `npm
 ci` command).
 
 Note that the `npm ci` command downloads npm packages to a `node_modules`
-directory in the current working directory. This means that you must run it in
-each directory from which you want to execute the WOPR application.
+directory in the current working directory. This means that you must run it at
+least once in each directory from which you want to execute the WOPR
+application.
 
 
 
