@@ -288,7 +288,7 @@ Send an email to the teacher with the URL to your deployed application.
 
 Here's a few tips about some problems you may encounter during this exercise.
 
-Note that many of these errors can happen in various situations:
+Note that some of these errors can happen in various situations:
 
 * When running a command manually from your terminal.
 * When systemd tries to start your service.
