@@ -157,9 +157,9 @@ service `wopr`.
   exposed.
 
 > **Advanced tip:** if you know what you are doing, you can already set up the
-> automated deployment project structure, so that you can already point your
-> systemd configuration to the correct directory. That way you will not have to
-> modify it later.
+> automated deployment project structure, so that you can point your systemd
+> configuration to the correct directory. That way you will not have to modify
+> it later.
 
 
 
