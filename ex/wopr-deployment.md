@@ -307,7 +307,7 @@ npm ERR! path /path/to/package.json
 You are probably executing the `npm ci` command in the wrong directory. It must
 be executed in a directory that contains both a `package.json` and
 `package-lock.json` files. These files describe a list of npm packages to
-install, which the `npm` package manager will download.
+install, which the `npm` command will download.
 
 For this exercise, you want to run this command in the directory where the WOPR
 application's files are located (as explained in the project's README).
