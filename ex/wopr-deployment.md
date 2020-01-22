@@ -25,6 +25,9 @@ previous exercices to deploy a new application from scratch on your server.
   - [`Could not locate Gemfile`](#could-not-locate-gemfile)
   - [`Could not find concurrent-ruby-1.1.5 in any of the sources`](#could-not-find-concurrent-ruby-115-in-any-of-the-sources)
   - [`rimraf: not found`](#rimraf-not-found)
+  - [`remote: sudo: no tty present and no askpass program specified`](#remote-sudo-no-tty-present-and-no-askpass-program-specified)
+  - [`code=exited, status=200/CHDIR`](#codeexited-status200chdir)
+  - [`502 Bad Gateway`](#502-bad-gateway)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -367,6 +370,59 @@ ci` command).
 > directory in the current working directory. This means that you must run it at
 > least once in each directory from which you want to execute the WOPR
 > application.
+
+### `remote: sudo: no tty present and no askpass program specified`
+
+If you see an error message similar to this when your Git hook is triggered:
+
+```
+remote: sudo: no tty present and no askpass program specified
+```
+
+It means that you have not performed the following step correctly: [Allow your
+user to restart the service without a
+password](#allow-your-user-to-restart-the-service-without-a-password). Make sure
+that the list of authorized `systemctl` commands in the sudoers file match the
+name of your service (if you named your systemd configuration file something
+other than `wopr.service`, you must adapt the commands in the sudoers file to
+use the correct service name).
+
+> This error occurs because ordinarily, your own Unix user does not have the
+> right to execute `sudo systemctl restart wopr` without you entering your
+> password to gain administrative rights. A Git hook is executed in a
+> non-interactive context: it can only print information, and you cannot
+> interact with it (e.g. give it input) while it is running. This means that it
+> cannot ask for your password, so any `sudo` command will fail by default.
+>
+> This is what the error message indicates: `no tty present` means that there is
+> no interactive terminal (`tty` comes from the terminology of the 1970s: it
+> means a **t**ele**ty**pewriter, which was one of the first terminals).
+>
+> The instructions mentioned above grant your user the right to execute specific
+> `sudo` commands (like `sudo systemctl restart wopr`) without having to enter
+> your password. Once that is done, these commands will work from the Git hook
+> as well.
+
+### `code=exited, status=200/CHDIR`
+
+If you see an error message similar to this in your systemd service's status:
+
+```
+code=exited, status=200/CHDIR
+```
+
+It means that systemd failed to move into the directory you specified (`CHDIR`
+means **ch**ange **dir**ectory). Check your systemd configuration file to make
+sure that the working directory you have configured is the correct one and
+really exists.
+
+### `502 Bad Gateway`
+
+If you see this error in your browser when trying to access an nginx site you
+have configured, it means that nginx cannot reach the proxy address you have
+defined. Check your nginx configuration to make sure that you are using the
+correct IP address and port. Are you sure your application is actually listening
+on that port?
 
 
 
