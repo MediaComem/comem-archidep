@@ -421,8 +421,8 @@ really exists.
 If you see this error in your browser when trying to access an nginx site you
 have configured, it means that nginx cannot reach the proxy address you have
 defined. Check your nginx configuration to make sure that you are using the
-correct IP address and port. Are you sure your application is actually listening
-on that port?
+correct address and port. Are you sure your application is actually listening on
+that port?
 
 
 
