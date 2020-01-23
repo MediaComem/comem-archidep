@@ -10,7 +10,15 @@ applications used in previous exercices, but this time on Heroku
 
 
 - [Deploy the PHP Todolist application](#deploy-the-php-todolist-application)
-- [Deploy the Node.js one chat room application](#deploy-the-nodejs-one-chat-room-application)
+  - [Optional: create a Heroku application (if you have a credit card)](#optional-create-a-heroku-application-if-you-have-a-credit-card)
+  - [Add the free ClearDB MySQL addon to your application](#add-the-free-cleardb-mysql-addon-to-your-application)
+  - [Update the PHP Todolist to use the `$CLEARDB_DATABASE_URL` environment variable](#update-the-php-todolist-to-use-the-cleardb_database_url-environment-variable)
+  - [Deploy the application to Heroku](#deploy-the-application-to-heroku)
+  - [Create the `todolist` table in the database](#create-the-todolist-table-in-the-database)
+- [Deploy the WOPR application](#deploy-the-wopr-application)
+  - [Optional: create a Heroku application (if you have a credit card)](#optional-create-a-heroku-application-if-you-have-a-credit-card-1)
+  - [Add the free Heroku Redis addon to your application](#add-the-free-heroku-redis-addon-to-your-application)
+  - [Deploy the application to Heroku](#deploy-the-application-to-heroku-1)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
