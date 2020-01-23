@@ -1,8 +1,8 @@
+/*.csv
 /*.log
 /*.retry
 /.vagrant
 /.vscode
-/aws.csv
 /build
 /config.yml
 /data.yml
@@ -14,5 +14,4 @@
 /secret.txt
 /ssh/data.yml
 /ssh/inventory*
-/students.csv*
 /tmp
