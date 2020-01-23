@@ -26,9 +26,9 @@ applications used in previous exercices, but this time on Heroku
 
 ## Deploy the PHP Todolist application
 
-The commands below must be executed **on your local machine** in the Git
-repository where you have the PHP Todolist application. You do not need your AWS
-server for this exercise.
+The commands in this exercise must be executed **on your local machine** in the
+Git repository where you have the PHP Todolist application. You do not need your
+AWS server.
 
 ### Optional: create a Heroku application (if you have a credit card)
 
@@ -37,7 +37,7 @@ An existing Heroku application will be provided for you by the teacher.
 However, if you have a credit card, do not hesitate to create the application
 yourself in your Heroku account. We will only use free addons, so no money will
 be charged. (But Heroku requires the account to have a valid credit card to
-use database add-ons.)
+use database add-ons, even free ones.)
 
 You can create an application from the main Heroku page once logged in:
 
@@ -56,7 +56,8 @@ application's resources:
 ![Choose ClearDB Plan](../images/heroku-choose-cleardb-plan.png)
 
 > If you are using your own account and have not yet configured a credit card,
-> Heroku will require you to do so at this stage (even with the free plan).
+> Heroku will require you to do so at this stage (even with the free plan, but
+> no money will be charged).
 
 Go to your application's settings and reveal its configuration variables. These
 are environment variables configured by Heroku for your application:
@@ -87,7 +88,7 @@ define('DB_PORT', getenv('TODOLIST_DB_PORT') ?: '3306');
 ```
 
 This code expects to receive its database configuration in the form of various
-separate variables like `$TODOLIST_DB_HOST` or `TODOLIST_DB_PASS`. It will not
+separate variables like `$TODOLIST_DB_HOST` or `$TODOLIST_DB_PASS`. It will not
 be able to use the `$CLEARDB_DATABASE_URL` variable on Heroku.
 
 The documentation of the ClearDB MySQL addon [shows how to use the variable from
@@ -153,8 +154,8 @@ client, but you can do it with any SQL client.
   CLEARDB_DATABASE_URL: mysql://23fbfc668f39e2:letmein@eu-cdbr-west-02.cleardb.net/heroku_1a84deeaab9449e?reconnect=true
   ```
 
-  > The `$CLEARDB_DATABASE_URL` variable contains all the database credentials in a single URL.
-  > The format is:
+  > The `$CLEARDB_DATABASE_URL` variable contains all the database credentials
+  > and information in a single URL. The format is:
   >
   >     mysql://[username]:[password]@[host]:[port]/[database_name]
   >
@@ -179,7 +180,7 @@ client, but you can do it with any SQL client.
   ![Configure MySQL Workbench Connection](../images/workbench-connection-params.png)
 * Open the connection by double-clicking on it. It will ask you for the database
   password at this stage (which you will also find in the
-  `$CLEARDB_DATABASE_URL`):
+  `$CLEARDB_DATABASE_URL` variable):
 
   ![Open MySQL Workbench Connection](../images/workbench-connection-open.png)
 * Double-click on the table name in the Schemas tab on the left. Then execute
@@ -187,8 +188,9 @@ client, but you can do it with any SQL client.
 
   ![Create Todolist Table](../images/workbench-create-table.png)
 
-  > You can find the correct query in the PHP Todolist repository's
-  > `todolist.sql` file.
+  > You can find the correct query [in the PHP Todolist repository's
+  > `todolist.sql`
+  > file](https://github.com/MediaComem/comem-archidep-php-todo-exercise/blob/63ffa1067f17b76bb3cd7fca50fb62492c475c11/todolist.sql#L7-L13).
 
 The application should work fine now.
 
@@ -196,9 +198,9 @@ The application should work fine now.
 
 ## Deploy the WOPR application
 
-The commands below must be executed **on your local machine** in the Git
-repository where you have the WOPR application. You do not need your AWS server
-for this exercise.
+The commands in this exercise must be executed **on your local machine** in the
+Git repository where you have the WOPR application. You do not need your AWS
+server.
 
 ```bash
 $> cd /path/to/projects/comem-wopr
@@ -211,7 +213,7 @@ An existing Heroku application will be provided for you by the teacher.
 However, if you have a credit card, do not hesitate to create the application
 yourself in your Heroku account. We will only use free addons, so no money will
 be charged. (But Heroku requires the account to have a valid credit card to
-use database add-ons.)
+use database add-ons, even free ones.)
 
 You can create an application from the main Heroku page once logged in:
 
@@ -230,12 +232,12 @@ application's resources:
 ![Choose Redis Plan](../images/heroku-redis-plan.png)
 
 Go to your application's settings and reveal its configuration variables. You
-should see a `REDIS_DATABASE_URL` variable there:
+should see a `REDIS_URL` variable there:
 
 ![Redis Database URL](../images/heroku-redis-url.png)
 
-Fortunately, the WOPR application [already takes into account the
-`$REDIS_DATABASE_URL` environment
+Fortunately, the WOPR application [already takes into account the `$REDIS_URL`
+environment
 variable](https://github.com/MediaComem/comem-wopr/blob/7de462120783fdf771e68161ac21d5b51eca52d5/lib/wopr.rb#L64-L66),
 so you will not have to make any changes to the code this time.
 
@@ -260,9 +262,8 @@ $> git push heroku master
 ```
 
 The application's main page should be accessible at the URL indicated in the
-deployment log. However, adding todo items will not work because the database
-has not yet been initialized.
+deployment log. It should also work!
 
 > You do not need to configure the database for this application. This is
-> because Redis is a schema-less NoSQL database. Values are created
-> automatically on-the-fly when first accessed.
+> because Redis is a schema-less NoSQL database. Values can be stored without
+> having to create a database in advance.
