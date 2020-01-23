@@ -104,7 +104,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [*End result diagram*](ex/end-result.pdf)
 * **Platform-as-a-Service deployment**
   * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
-  * [Deploy PHP and Node.js applications to Heroku](ex/heroku-deployment.md)
+  * [Deploy web applications with a database to Heroku](ex/heroku-deployment.md)
 
 
 
