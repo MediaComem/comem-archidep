@@ -255,6 +255,24 @@ Add the `heroku` remote to your application:
 $> heroku git:remote -a ad-john-doe-wopr
 ```
 
+The WOPR repository contains both a `Gemfile` file for Ruby packages and a
+`package.json` file for npm packages. Heroku therefore cannot be sure whether
+this is a Ruby or Node.js application. You must tell it what to do by
+configuring buildpacks:
+
+```bash
+heroku buildpacks:set --index 1 heroku/ruby
+heroku buildpacks:set --index 2 heroku/nodejs
+```
+
+> This tells Heroku to use the standard Ruby buildpack (it will install
+> dependencies with `bundle install`), followed by the standard Node.js
+> buildpack (it will install dependencies with `npm install`).
+>
+> Note that the repository also contains a
+> [`Profile`](https://github.com/MediaComem/comem-wopr/blob/7de462120783fdf771e68161ac21d5b51eca52d5/Procfile)
+> which tells Heroku which command to execute to run the application.
+
 Push the application to Heroku:
 
 ```bash
