@@ -336,13 +336,13 @@ on the same server, which you put in practice during the following exercises:
 
 * [Deploy a static site with nginx](ex/nginx-static-deployment.md) [(diagram)](ex/nginx-static-deployment.pdf)
 * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(diagram)](ex/nginx-php-fpm-deployment.pdf)
-* [Deploy a Node.js application with a MongoDB database (**graded**)](ex/one-chat-room-deployment.md) [(diagram)](ex/one-chat-room-deployment.pdf)
+* [Deploy a Ruby application with a Redis database](ex/wopr-deployment.md)
 
 You must understand how to set up automated deployments with Git hooks,
 which you put in practice during the following exercises:
 
 * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md) [(diagram)](ex/git-automated-deployment.pdf)
-* [Deploy a Node.js application with a MongoDB database (**graded**)](ex/one-chat-room-deployment.md) [(diagram)](ex/one-chat-room-deployment.pdf)
+* [Deploy a Ruby application with a Redis database](ex/wopr-deployment.md)
 
 This [diagram](ex/end-result.pdf) shows the end result of previous exercises.
 
@@ -351,7 +351,7 @@ with the Platform-as-a-Service (PaaS) service model, which you put in practice
 during the following exercises:
 
 * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
-* [Deploy PHP and Node.js applications to Heroku](ex/heroku-deployment.md)
+* [Deploy web applications with a database to Heroku](ex/heroku-deployment.md)
 
 
 
