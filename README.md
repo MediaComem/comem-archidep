@@ -98,10 +98,10 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * Deploy a web application with a database (**graded**), *not yet available*
   * [Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
   * *Extra exercises*
-    * [Deploy the One Chat Room web application (Node.js & MongoDB)](ex/one-chat-room-deployment.md) (*extra*)
-    * [Deploy the Big Browser web application (Node.js & Redis)](ex/big-browser-deployment.md) (*extra*)
-    * [Deploy the WOPR web application (Ruby & Redis)](ex/wopr-deployment.md) (*extra*)
-    * [Configure nginx as a load balancer](ex/load-balancing-deployment.md) (*extra*)
+    * [Deploy the One Chat Room web application (Node.js & MongoDB)](ex/one-chat-room-deployment.md)
+    * [Deploy the Big Browser web application (Node.js & Redis)](ex/big-browser-deployment.md)
+    * [Deploy the WOPR web application (Ruby & Redis)](ex/wopr-deployment.md)
+    * [Configure nginx as a load balancer](ex/load-balancing-deployment.md)
   * *[End result diagram](ex/end-result.pdf) (assuming the One Chat Room application was deployed)*
 * **Platform-as-a-Service deployment**
   * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
