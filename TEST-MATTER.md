@@ -180,6 +180,7 @@ It also indicates what you do not need to remember by heart.
 
     * What HTTP and TCP are and how they are related.
     * What an IP address and a port is, and how they are related to TCP.
+    * What is the hostname `localhost` and the IP address `127.0.0.1`.
     * What the standard HTTP(S) ports.
     * What a well-known port or system port is and how they are different from other ports.
     * What the Domain Name System (DNS) is.

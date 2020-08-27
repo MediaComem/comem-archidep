@@ -116,12 +116,25 @@ First address | Last address    | [Netmask][subnet] | [CIDR][cidr]
 172.16.0.0    | 172.31.255.255  | 255.240.0.0       | /12
 192.168.0.0   | 192.168.255.255 | 255.255.0.0       | /16
 
-Additionally, the following range is **reserved for a virtual network interface**,
-allowing networking applications running on the same machine to communicate with one another:
+Additionally, the following range is **reserved for a virtual network
+interface**, allowing networking applications running on the same machine to
+communicate with one another:
 
 First address | Last address    | [Netmask][subnet] | [CIDR][cidr]
 :---          | :---            | :---              | :---
 127.0.0.1     | 127.255.255.255 | 255.0.0.0         | /8
+
+#### There's no place like 127.0.0.1
+
+`localhost` is a hostname that refers to the current computer used to access it.
+It normally resolves resolves to the IPv4 loopback address `127.0.0.1`, and to
+the IPv6 loopback address `::1`.
+
+When you or a program makes a request to `localhost` or `127.0.0.1`, you are
+contacting your own computer, bypassing network hardware but otherwise behaving
+the same way as any other network call.
+
+<p class='center'><img class='w50' src='images/localhost.jpg' /></p>
 
 #### Network address translation
 
