@@ -81,7 +81,7 @@ These are some of the most common:
 Type    | Description           | Function
 :---    | :---                  | :---
 `A`     | Address record        | Maps a domain name to an IPv4 address.
-`AAAA`  | IPv5 address record   | Maps a domain name to an IPv6 address.
+`AAAA`  | IPv6 address record   | Maps a domain name to an IPv6 address.
 `CNAME` | Canonical name record | Alias of one name to another (e.g. `www`).
 `MX`    | Mail exchange record  | Maps a domain name to a list of message transfer agents.
 `SOA`   | Start of authority    | Authoritative information about the zone, e.g. primary name server & email of the domain administrator.
@@ -101,7 +101,7 @@ here is how to read that record:
 * It is an Internet record (`IN`).
 * The `@` name indicates that it concerns the domain `example.com` itself.
 * It is an `A` record, meaning that it maps `example.com` to the IPv4 address `18.213.200.101`.
-* It defines a cache time of 1800 seconds (20 minutes) during which clients will not perform DNS resolution again if they have the mapping already.
+* It defines a cache time of 1800 seconds (30 minutes) during which clients will not perform DNS resolution again if they have the mapping already.
 
 #### DNS subdomain record example
 
@@ -117,7 +117,7 @@ here is how to read that record:
 * It is an Internet record (`IN`).
 * It concerns the subdomain `blog.example.com`.
 * It is an `A` record, meaning that it maps `blog.example.com` to the IPv4 address `3.120.180.32`.
-* It defines a cache time of 1800 seconds (20 minutes) during which clients will not perform DNS resolution again if they have the mapping already.
+* It defines a cache time of 1800 seconds (30 minutes) during which clients will not perform DNS resolution again if they have the mapping already.
 
 
 
