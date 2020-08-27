@@ -635,13 +635,14 @@ $> pwd
 #### Path reference
 
 Path        | Where
-:---        | :---
-`.`         | The current directory
-`..`        | The parent directory
-`foo/bar`   | The file/directory `bar` inside the directory `foo` in the current directory
-`/foo/bar`  | The file/directory `bar` inside the directory `foo` at the root of your filesystem
-`~`         | Your home directory
-`~/foo/bar` | The file/directory `bar` inside the directory `foo` in your home directory
+:---------- | :----------------------------------------------------------------------------------------------------------------
+`.`         | The current directory.
+`..`        | The parent directory.
+`foo/bar`   | The file/directory `bar` inside the directory `foo` in the current directory. This is a **relative path**.
+`./foo/bar` | *Same as the above*
+`/foo/bar`  | The file/directory `bar` inside the directory `foo` at the root of your filesystem. This is an **absolute path**.
+`~`         | Your home directory.
+`~/foo/bar` | The file/directory `bar` inside the directory `foo` in your home directory. This is an **absolute path**.
 
 #### Your projects directory
 
