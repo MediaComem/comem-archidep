@@ -21,6 +21,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 - [What you will need](#what-you-will-need)
 - [Exercises](#exercises)
 - [Useful links](#useful-links)
+- [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -112,6 +113,54 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 * [System administration cheatsheet](SYSADMIN-CHEATSHEET.md)
 * [Git cheatsheet][git-cheatsheet]
 * [Final Test Matter](TEST-MATTER.md)
+
+
+
+## References
+
+These are the main references used throughout this course. More detailed and
+additional links to various online articles and documentation can be found at
+the end of each subject.
+
+* [The Linux Documentation Project](https://tldp.org)
+  * [Advanced Bash-Scripting Guide](https://tldp.org/LDP/abs/html/)
+* [SSH, The Secure Shell: The Definitive Guide - Daniel J. Barrett, Richard E. Silverman, Robert G. Byrnes](https://books.google.ch/books/about/SSH_The_Secure_Shell_The_Definitive_Guid.html?id=9FSaScltd-kC&redir_esc=y)
+* [The Git Book](https://git-scm.com/book)
+  * [Chapter 1 - Getting Started](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
+  * [Chapter 2 - Git Basics](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository)
+  * [Chapter 3 - Git Branching](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
+  * [Chapter 5 - Distributed Git](https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows)
+  * [Chapter 8 - Customizing Git - Git Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)
+* [Open Web Application Security Project](https://www.owasp.org)
+  * [OWASP Top Ten](https://owasp.org/www-project-top-ten/)
+* [Ops School Curriculum](https://www.opsschool.org)
+  * [Sysadmin 101](https://www.opsschool.org/sysadmin_101.html)
+  * [Unix Fundamentals 101](https://www.opsschool.org/unix_101.html)
+  * [Unix Fundamentals 201](https://www.opsschool.org/unix_201.html)
+  * [Networking 101](https://www.opsschool.org/networking_101.html)
+  * [Networking 201](https://www.opsschool.org/networking_201.html)
+* [The Internet Explained From First Principles](https://ef1p.com/internet)
+* [The Twelve-Factor App](https://12factor.net)
+* [Systemd Manual](https://www.freedesktop.org/software/systemd/man/)
+  * [Unit Configuration](https://www.freedesktop.org/software/systemd/man/systemd.unit.html)
+  * [Service Configuration](https://www.freedesktop.org/software/systemd/man/systemd.service.html)
+* [nginx documentation](http://nginx.org/en/docs/)
+  * [Beginner's Guide](http://nginx.org/en/docs/beginners_guide.html)
+  * [Configuring HTTPS Servers](http://nginx.org/en/docs/http/configuring_https_servers.html)
+* [Heroku Dev Center](https://devcenter.heroku.com)
+
+[Wikipedia](https://www.wikipedia.org) is also often referenced, namely these
+and related articles:
+
+* [Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell)
+* [Cloud Computing](https://en.wikipedia.org/wiki/Cloud_computing)
+* [Internet Protocol](https://en.wikipedia.org/wiki/Internet_Protocol)
+  * [IP Address](https://en.wikipedia.org/wiki/IP_address)
+  * [Port (Computer Networking)](https://en.wikipedia.org/wiki/Port_(computer_networking))
+* [Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System)
+* [Environment Variable](https://en.wikipedia.org/wiki/Environment_variable)
+* [Reverse Proxy](https://en.wikipedia.org/wiki/Reverse_proxy)
+* [Public Key Certificate](https://en.wikipedia.org/wiki/Public_key_certificate)
 
 
 
