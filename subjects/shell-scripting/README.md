@@ -397,8 +397,8 @@ since `$name` is only defined within the `print_hello` function.
   * [Other Comparison Operators][bash-comparison-operators]
   * [Loops & Branches][bash-loops]
   * [Local Variables][bash-locals]
-* [Bash Special Variables][bash-special-vars]
-* [Shebang][shebang]
+  * [Special Shell Variables][bash-special-vars]
+  * [Starting Off With a Sha-Bang][bash-shebang]
 * [Shell Script][shell-script]
 
 
@@ -409,13 +409,13 @@ since `$name` is only defined within the `print_hello` function.
 [bash-locals]: https://www.tldp.org/LDP/abs/html/localvar.html
 [bash-loops]: https://www.tldp.org/LDP/abs/html/loops.html
 [bash-option-flags]: https://www.tldp.org/LDP/abs/html/options.html#OPTIONSREF
-[bash-special-vars]: https://www.mylinuxplace.com/bash-special-variables/
+[bash-shebang]: https://tldp.org/LDP/abs/html/sha-bang.html
+[bash-special-vars]: https://tldp.org/LDP/abs/html/refcards.html#AEN22402
 [bash-test-constructs]: https://www.tldp.org/LDP/abs/html/testconstructs.html
 [node]: https://nodejs.org
 [php]: http://php.net
 [python]: https://www.python.org
 [ruby]: https://www.ruby-lang.org
-[shebang]:https://en.wikipedia.org/wiki/Shebang_(Unix)
 [sh]: https://en.wikipedia.org/wiki/Bourne_shell
 [shell-script]: https://en.wikipedia.org/wiki/Shell_script
 [zsh]: https://en.wikipedia.org/wiki/Z_shell
