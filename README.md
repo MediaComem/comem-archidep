@@ -78,7 +78,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 ## Exercises
 
 * **Version control**
-  * [Collaborative exercise (**graded**)](https://github.com/MediaComem/comem-archidep-php-todo-exercise)
+  * [Collaborative exercise](https://github.com/MediaComem/comem-archidep-php-todo-exercise) (**graded**)
   * [Clone a repository from a server](ex/git-clone-from-server.md)
   * [Push a repository to a server](ex/git-push-to-server.md)
 * **Unix**
@@ -95,12 +95,14 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Deploy a static site with nginx](ex/nginx-static-deployment.md) [(diagram)](ex/nginx-static-deployment.pdf)
   * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(diagram)](ex/nginx-php-fpm-deployment.pdf)
   * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md) [(diagram)](ex/git-automated-deployment.pdf)
-  * [Deploy a Ruby application with a Redis database](ex/wopr-deployment.md) (**graded**)
+  * Deploy a web application with a database (**graded**), *not yet available*
   * [Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
-  * [Deploy a Node.js application with a MongoDB database (*extra*)](ex/one-chat-room-deployment.md)
-  * [Deploy a Node.js application with a Redis database (*extra*)](ex/big-browser-deployment.md)
-  * [Configure nginx as a load balancer (*extra*)](ex/load-balancing-deployment.md)
-  * [*End result diagram*](ex/end-result.pdf)
+  * *Extra exercises*
+    * [Deploy the One Chat Room web application (Node.js & MongoDB)](ex/one-chat-room-deployment.md) (*extra*)
+    * [Deploy the Big Browser web application (Node.js & Redis)](ex/big-browser-deployment.md) (*extra*)
+    * [Deploy the WOPR web application (Ruby & Redis)](ex/wopr-deployment.md) (*extra*)
+    * [Configure nginx as a load balancer](ex/load-balancing-deployment.md) (*extra*)
+  * *[End result diagram](ex/end-result.pdf) (assuming the One Chat Room application was deployed)*
 * **Platform-as-a-Service deployment**
   * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
   * [Deploy web applications with a database to Heroku](ex/heroku-deployment.md)
