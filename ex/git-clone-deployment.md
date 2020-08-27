@@ -98,5 +98,4 @@ address and port (e.g. `1.2.3.4:3000`).
 
 
 
-[cyberduck]: https://cyberduck.io
 [php-todolist]: https://github.com/MediaComem/comem-archidep-php-todo-exercise

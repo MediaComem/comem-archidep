@@ -1022,7 +1022,7 @@ SFTP is an alternative that goes through SSH's secure channel and therefore pose
 Most modern FTP clients support SFTP.
 Here's a couple:
 
-* [Cyberduck][cyberduck]
+* [FileZilla][filezilla]
 * [WinSCP][winscp]
 
 Many code editors also have SFTP support available through plugins.
@@ -1094,7 +1094,6 @@ $> ssh-add /path/to/custom_id_rsa
 [authorized_keys]: https://www.ssh.com/ssh/authorized_keys/openssh
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
 [brute-force]: https://en.wikipedia.org/wiki/Brute-force_attack
-[cyberduck]: https://cyberduck.io/
 [dh]: https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange
 [discrete-logarithm]: https://en.wikipedia.org/wiki/Discrete_logarithm
 [ecdsa]: https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm
@@ -1102,6 +1101,7 @@ $> ssh-add /path/to/custom_id_rsa
 [enigma]: https://en.wikipedia.org/wiki/Enigma_machine#Operation
 [enigma-operating-shortcomings]: https://en.wikipedia.org/wiki/Cryptanalysis_of_the_Enigma#Operating_shortcomings
 [entropy]: https://en.wikipedia.org/wiki/Password_strength#Entropy_as_a_measure_of_password_strength
+[filezilla]: https://filezilla-project.org/
 [forward-secrecy]: https://en.wikipedia.org/wiki/Forward_secrecy
 [ftp]: https://en.wikipedia.org/wiki/File_Transfer_Protocol
 [ftp-security]: https://en.wikipedia.org/wiki/File_Transfer_Protocol#Security
