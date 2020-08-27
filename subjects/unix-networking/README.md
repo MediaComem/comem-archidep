@@ -156,13 +156,27 @@ This technique helps conserve IPv4 address space.
 
 ### Ports
 
-In computer networking, a port is an **endpoint of communication** associated with an IP address and protocol type.
-The most commonly used protocols that use ports are the [Transmission Control Protocol (TCP)][tcp] and the [User Datagram Protocol (UDP)][udp],
-which are **transport layer** protocols (OSI layer 4).
+In computer networking, a port is an **endpoint of communication** associated
+with an IP address and protocol type. The most commonly used protocols that use
+ports are the [Transmission Control Protocol (TCP)][tcp] and the [User Datagram
+Protocol (UDP)][udp], which are **transport layer** protocols (OSI layer 4).
 
-A port is represented as an unsigned 16-bit number, from 0 to 65535.
+A port is represented as an unsigned 16-bit number, from 0 to 65,535
+(2<sup>16</sup> - 1).
 
-For example, when a browser displays a web page, it could be making a TCP connection to a computer with IP address 40.127.1.70 on port 80.
+A port number is always associated with an IP address and the type of transport
+protocol used for communication. For example, when a browser displays a web
+page, it is generally making a TCP connection to an IP address on port 80.
+
+You can see this information if you access a web page with a command-line HTTP
+client like [cURL][curl]:
+
+```bash
+$> curl -v http://google.com/
+...
+** Connected to google.com (216.58.215.238) port 80 (#0)
+...
+```
 
 #### Multiplexing
 
@@ -600,6 +614,7 @@ You should see the HTML text appear in your browser.
 
 [arpanet]: https://en.wikipedia.org/wiki/ARPANET
 [cidr]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
+[curl]: https://curl.haxx.se
 [dns]: https://en.wikipedia.org/wiki/Domain_Name_System
 [gtld]: https://en.wikipedia.org/wiki/Generic_top-level_domain
 [http-301]: https://httpstatuses.com/301
