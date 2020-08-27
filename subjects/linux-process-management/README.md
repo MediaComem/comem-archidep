@@ -169,7 +169,7 @@ Command                        | Description
 
 * [Systemd Unit Configuration][systemd-unit]
 * [Systemd Service Configuration][systemd-service]
-* [Creating and Modifying systemd Unit Files](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_files)
+* [Red Hat Enterprise Linux - System Administrator's Guide - Managing Services With Systemd](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/chap-managing_services_with_systemd)
 * [Systemd journald Service][systemd-journald]
 
 

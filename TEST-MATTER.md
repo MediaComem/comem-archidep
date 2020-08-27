@@ -357,4 +357,4 @@ during the following exercises:
 
 [12factor]: https://12factor.net
 [owasp]: https://www.owasp.org/
-[owasp-top10]: https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf
+[owasp-top10]: https://owasp.org/www-project-top-ten/

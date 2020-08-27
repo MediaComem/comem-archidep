@@ -363,7 +363,7 @@ It can be installed on any Linux server and will:
 [pki]: https://en.wikipedia.org/wiki/Public_key_infrastructure
 [pubkey]: https://en.wikipedia.org/wiki/Public-key_cryptography
 [pubkey-certificate]: https://en.wikipedia.org/wiki/Public_key_certificate
-[self-signed]: https://www.ibm.com/support/knowledgecenter/en/SSWHYP_4.0.0/com.ibm.apimgmt.cmc.doc/task_apionprem_gernerate_self_signed_openSSL.html
+[self-signed]: https://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.cmc.doc/task_apionprem_gernerate_self_signed_openSSL.html
 [tls]: https://en.wikipedia.org/wiki/Transport_Layer_Security
 [tls-certificate]: https://en.wikipedia.org/wiki/Public_key_certificate#TLS/SSL_server_certificate
 [tls-procedure]: https://en.wikipedia.org/wiki/Transport_Layer_Security#Description

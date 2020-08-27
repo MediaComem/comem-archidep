@@ -125,5 +125,5 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 [heroku]: https://www.heroku.com/home
 [heroku-cli]: https://devcenter.heroku.com/articles/heroku-cli
 [heig]: http://www.heig-vd.ch
-[owasp]: https://www.owasp.org/
-[owasp-top10]: https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf
+[owasp]: https://www.owasp.org
+[owasp-top10]: https://owasp.org/www-project-top-ten/
