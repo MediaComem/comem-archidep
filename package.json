@@ -24,24 +24,24 @@
     "watch": "courses-md watch"
   },
   "dependencies": {
-    "aws-sdk": "^2.691.0",
-    "chalk": "^4.0.0",
-    "commander": "^3.0.2",
+    "aws-sdk": "^2.740.0",
+    "chalk": "^4.1.0",
+    "commander": "^6.0.0",
     "courses-md": "~0.5.0",
-    "csv-parse": "^4.10.1",
+    "csv-parse": "^4.12.0",
     "doctoc": "^1.4.0",
     "font-awesome": "^4.7.0",
     "fs-extra": "^9.0.1",
     "git-memoir": "~0.3.0",
-    "inquirer": "^7.1.0",
+    "inquirer": "^7.3.3",
     "js-yaml": "^3.14.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
     "micromodal": "^0.4.6",
-    "nodemailer": "^6.4.8",
-    "ora": "^4.0.4",
+    "nodemailer": "^6.4.11",
+    "ora": "^5.0.0",
     "sha512crypt-node": "^0.1.0",
     "table": "^5.4.6",
     "tippy.js": "^1.4.1",
-    "uuid": "^3.4.0"
+    "uuid": "^8.3.0"
   }
 }
