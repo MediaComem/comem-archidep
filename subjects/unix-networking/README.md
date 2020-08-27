@@ -252,21 +252,22 @@ $> ip address
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet `127.0.0.1`/8 scope host lo
        valid_lft forever preferred_lft forever
-    inet6 `::1`/128 scope host 
+    inet6 `::1`/128 scope host
        valid_lft forever preferred_lft forever
 2: `eth0`: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9001 ...
     link/ether 06:5f:44:85:36:92 brd ff:ff:ff:ff:ff:ff
     inet `172.31.39.219`/20 brd 172.31.47.255 scope global dynamic eth0
        valid_lft 2665sec preferred_lft 2665sec
-    inet6 `fe80::45f:44ff:fe85:3692`/64 scope link 
+    inet6 `fe80::45f:44ff:fe85:3692`/64 scope link
        valid_lft forever preferred_lft forever
 ```
 
 In this sample output, there are **two network interfaces**:
 
-* The [virtual loopback interface][loopback] (`lo`) through which applications can communicate when executing on the computer itself.
-* A physical Ethernet interface (`eth0`), which has the private IP address `172.31.39.219`.
-  This is the computer's address in its local network.
+* The [virtual loopback interface][loopback] (`lo`) through which applications
+  can communicate on the computer itself without actually hitting the network.
+* A physical Ethernet interface (`eth0`), which has the private IP address
+  `172.31.39.219`. This is the computer's address in its local network.
 
 ### The `ping` command
 
