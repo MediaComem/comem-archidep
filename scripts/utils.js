@@ -6,7 +6,7 @@ const { safeLoad: loadYaml } = require('js-yaml');
 const nodemailer = require('nodemailer');
 const { resolve: resolvePath } = require('path');
 const { sha512crypt } = require('sha512crypt-node');
-const uuid = require('uuid/v4');
+const { v4: uuid } = require('uuid');
 
 let configCache;
 let dataCache;
