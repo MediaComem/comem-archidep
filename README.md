@@ -4,7 +4,6 @@ In this course you will learn:
 
 * How to deploy applications on a Linux server on an IaaS platform (Amazon Web Services).
 * How to deploy applications on a PaaS platform (Heroku).
-* Automated testing, continuous integration and continuous delivery (Travis CI).
 
 In pursuit of this goal, you will learn:
 
