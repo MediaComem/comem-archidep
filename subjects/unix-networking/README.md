@@ -57,8 +57,10 @@ The [Internet Protocol (IP)][ip] is the principal communications protocol of the
 It allows delivering packets from a source host to a destination host based solely on IP addresses.
 It is a **network layer** protocol (OSI layer 3).
 
-Version 4 of the protocol ([**IPv4**][ipv4]), in use since 1983, uses a 32-bit address space typically represented in 4 dotted decimal notation,
-with each octet containing a value between 0 and 255:
+Version 4 of the protocol ([**IPv4**][ipv4]), in use since 1983, uses a 32-bit
+address space typically represented in 4 dotted decimal notation, with each
+octet (8 bits) containing a value between 0 and 255 (i.e. 2<sup>8</sup>
+possibilities):
 
 ```
     `10.199.0.5`
