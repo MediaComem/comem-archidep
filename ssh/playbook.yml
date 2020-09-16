@@ -40,7 +40,7 @@
     - name: Create students
       user:
         name: "{{ student.username }}"
-        password: "{{ student.hashedPassword }}"
+        password: "{{ student.password | password_hash('sha512') }}"
         shell: /bin/bash
       loop: "{{ students }}"
       loop_control:

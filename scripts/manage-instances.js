@@ -8,7 +8,7 @@ const { join: joinPath, relative: relativePath, resolve: resolvePath } = require
 const { table } = require('table');
 
 const { allocateAddress, associateAddress, createTags, getRegionName, listAddresses, listInstances, loadRegionImage, loadRegionLimit, loadRegions, loadRegionSecurityGroup, rebootInstances, releaseAddress, runInstance, startInstances, stopInstances, terminateInstances, waitForInstances } = require('./aws-ec2');
-const { confirm, loadConfigProperty, loadProcessedData, sendMail, unixEncryptPassword } = require('./utils');
+const { confirm, loadConfigProperty, loadProcessedData, sendMail } = require('./utils');
 
 const SELECTED = Symbol('selected');
 
@@ -95,7 +95,7 @@ async function generateInventory() {
   console.log();
 
   const baseDomain = await loadConfigProperty('aws_base_domain');
-  const aliceHashedPassword = unixEncryptPassword(await loadConfigProperty('aws_alice_password'));
+  const alicePassword = await loadConfigProperty('aws_alice_password');
 
   const inventory = {
     all: {
@@ -112,15 +112,15 @@ async function generateInventory() {
         }
 
         memo[student.username] = {
-          alice_hashed_password: aliceHashedPassword,
+          alice_password: alicePassword,
           ansible_become: true,
           ansible_host: address.PublicIp,
           ansible_ssh_private_key_file: sshPrivateKeyFile,
           ansible_user: 'ubuntu',
           base_domain: baseDomain,
           student_email: student.email,
-          student_hashed_password: student.hashedPassword,
           student_name: student.name,
+          student_password: student.password,
           student_username: student.username
         };
 

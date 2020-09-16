@@ -54,7 +54,7 @@
     - name: Create student user
       user:
         name: "{{ student_username }}"
-        password: "{{ student_hashed_password }}"
+        password: "{{ student_password | password_hash('sha512') }}"
         groups: "{{ [ 'sudo' ] if sudo is defined and sudo else None }}"
         shell: /bin/bash
       tags: [ setup ]
@@ -62,7 +62,7 @@
     - name: Create alice user
       user:
         name: alice
-        password: "{{ alice_hashed_password }}"
+        password: "{{ alice_password | password_hash('sha512') }}"
         shell: /bin/bash
       tags: [ setup ]
 
