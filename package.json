@@ -24,9 +24,9 @@
     "watch": "courses-md watch"
   },
   "dependencies": {
-    "aws-sdk": "^2.740.0",
+    "aws-sdk": "^2.753.0",
     "chalk": "^4.1.0",
-    "commander": "^6.0.0",
+    "commander": "^6.1.0",
     "courses-md": "~0.5.0",
     "csv-parse": "^4.12.0",
     "doctoc": "^1.4.0",
@@ -38,8 +38,8 @@
     "lodash": "^4.17.20",
     "micromodal": "^0.4.6",
     "nodemailer": "^6.4.11",
-    "ora": "^5.0.0",
-    "table": "^5.4.6",
+    "ora": "^5.1.0",
+    "table": "^6.0.3",
     "tippy.js": "^1.4.1",
     "uuid": "^8.3.0"
   }
