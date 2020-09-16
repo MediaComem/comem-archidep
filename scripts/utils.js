@@ -65,7 +65,7 @@ exports.loadData = async function() {
       }
     }
 
-    const students = await parseCsv(await readFile(exports.studentsFile, 'utf8'), { columns: [ 'name', 'email', 'ip', 'username' ], from: 2 });
+    const students = await parseCsv(await readFile(exports.studentsFile, 'utf8'), { columns: [ 'name', 'orientation', 'mode', 'email', 'ip', 'username' ], from: 2 });
 
     const passwords = [];
 
