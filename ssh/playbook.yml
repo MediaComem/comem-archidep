@@ -58,7 +58,7 @@
     - name: Find SSH server host keys
       command: find /etc/ssh -name ssh_host_*
       register: find_ssh_keys_command
-      when: ssh_regenerate_host_keys is defined and ssh_regenerate_host_keys
+      when: ssh_regenerate_host_keys is defined and ssh_regenerate_host_keys | bool
       tags: [ ssh ]
 
     - name: Delete SSH server host keys
@@ -68,12 +68,12 @@
       loop: "{{ find_ssh_keys_command.stdout.split('\n') }}"
       loop_control:
         loop_var: key_file
-      when: ssh_regenerate_host_keys is defined and ssh_regenerate_host_keys and find_ssh_keys_command.stdout != ''
+      when: ssh_regenerate_host_keys is defined and ssh_regenerate_host_keys | bool and find_ssh_keys_command.stdout != ''
       tags: [ ssh ]
 
     - name: Regenerate SSH server host keys
       command: dpkg-reconfigure openssh-server
-      when: ssh_regenerate_host_keys is defined and ssh_regenerate_host_keys
+      when: ssh_regenerate_host_keys is defined and ssh_regenerate_host_keys | bool
       tags: [ ssh ]
 
     - name: Restart SSH server
