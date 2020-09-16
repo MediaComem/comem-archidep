@@ -311,7 +311,7 @@ async function sendStudentMails(studentUsernames) {
 
     const mail = {
       to: student.email,
-      subject: 'ArchiDep 2018 Virtual Server',
+      subject: `ArchiDep ${new Date().getFullYear()} Virtual Server`,
       text: [
         `IP address: ${address.PublicIp}`,
         `Username: ${student.username}`,
