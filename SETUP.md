@@ -1,14 +1,57 @@
 # Setup
 
-## Run AWS EC2 instances for students
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-* Put a secret in `secret.txt`
-* Download CSV student data
-* If necessary, convert it to UTF-8
+
+- [Initial setup](#initial-setup)
+- [Set up an EC2 instance for SSH exercises](#set-up-an-ec2-instance-for-ssh-exercises)
+  - [Enable/disable password authentication](#enabledisable-password-authentication)
+  - [Renegerate SSH host keys](#renegerate-ssh-host-keys)
+- [Run AWS EC2 instances for students](#run-aws-ec2-instances-for-students)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## Initial setup
+
+* Put a random secret in `secret.txt`
+* Download CSV student data to `students.csv`
+* Check CSV encoding with `file -I students.csv`
+* If necessary, convert it to UTF-8:
 
   ```bash
+  mv students.csv original.csv
   iconv -f macintosh -t UTF-8 < original.csv > students.csv
   ```
+* Make sure number and content of columns are as expected in `scripts/utils.js`,
+  update the script and/or the CSV file if required
+* Run `npm run setup`
+
+## Set up an EC2 instance for SSH exercises
+
+```bash
+cd ssh
+ansible-playbook -i ssh/inventory -vv -D ssh/playbook.yml
+```
+
+### Enable/disable password authentication
+
+```bash
+# Enable
+ansible-playbook -i ssh/inventory -vv -D -t ssh -e ssh_password_authentication=true ssh/playbook.yml
+
+# Disable
+ansible-playbook -i ssh/inventory -vv -D -t ssh -e ssh_password_authentication=false ssh/playbook.yml
+```
+
+### Renegerate SSH host keys
+
+```bash
+ansible-playbook -i ssh/inventory -vv -D -t ssh -e ssh_regenerate_host_keys=true ssh/playbook.yml
+```
+
+## Run AWS EC2 instances for students
+
 * Select VPC & subnet
 * Create a key pair named `ArchiDep` in the AWS console
 * Create a security group with the following inbound rules:
@@ -77,6 +120,6 @@
       ]
   }
   ```
-* `node scripts/manage-instances.js inventory`
+* `npm run inventory`
 * `ANSIBLE_HOST_KEY_CHECKING=false ansible-playbook -vv -D -i ec2/inventory ec2/playbook.yml`
 * `ansible-playbook -vv -D -i ec2/inventory ec2/playbook.yml`
