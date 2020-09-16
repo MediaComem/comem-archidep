@@ -59,7 +59,7 @@ Tell nginx to reload its configuration:
 $> sudo nginx -s reload
 ```
 
-The site at http://todolist.john-doe.archidep.media should not work anymore
+The site at http://todolist.john-doe.archidep.online should not work anymore
 You should get a `404 Not Found` error from nginx
 (since there are no files in the `todolist-automated` directory yet).
 
@@ -169,7 +169,7 @@ To 1.2.3.4:todolist-automated-repo
 > you will see its `echo` commands displayed when you run `git push`.
 > In the above example, they are the two lines starting with `remote:`.
 
-The site at http://todolist.john-doe.archidep.media should work again.
+The site at http://todolist.john-doe.archidep.online should work again.
 
 Additionally, if you **connect to the server**,
 the `todolist-automated` directory should contain the latest version of the project's files,
@@ -203,7 +203,7 @@ To 1.2.3.4:todolist-automated-repo
    4ea6994..2faf028  master -> master
 ```
 
-Visit http://todolist.john-doe.archidep.media again.
+Visit http://todolist.john-doe.archidep.online again.
 Your changes should have been deployed automatically!
 
 

@@ -232,13 +232,13 @@ address which persists across restarts.
 * Change your hostname (note that you cannot use the `_` character in a hostname, use `-` instead):
 
   ```bash
-  $> sudo hostname john-doe.archidep.media
+  $> sudo hostname john-doe.archidep.online
   ```
 
   Also save your new hostname to the `/etc/hostname` file so that it will persist when you reboot the server:
 
   ```bash
-  $> echo "john-doe.archidep.media" | sudo tee /etc/hostname
+  $> echo "john-doe.archidep.online" | sudo tee /etc/hostname
   ```
 * Reboot the server.
 
@@ -255,7 +255,7 @@ address which persists across restarts.
   ...
 
   $> hostname
-  john-doe.archidep.media
+  john-doe.archidep.online
   ```
 * Send your instance's public IP address (the Elastic IP address you allocated)
   to the teacher.

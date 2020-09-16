@@ -133,7 +133,7 @@ Use the following configuration
 ```
 server {
   listen 80;
-  server_name todolist.john-doe.archidep.media;
+  server_name todolist.john-doe.archidep.online;
   root /home/john_doe/todolist-repo;
 
   # Proxy requests for dynamic content to PHP FPM.
@@ -150,7 +150,7 @@ server {
 > allowing nginx to communicate with PHP FPM
 > (i.e. send and receive binary data).
 >
-> When a request arrives for the subdomain `todolist.john-doe.archidep.media`,
+> When a request arrives for the subdomain `todolist.john-doe.archidep.online`,
 > nginx will forward that request to PHP FPM through the socket file.
 > PHP FPM will then execute the PHP files in `/home/john_doe/todolist-repo`
 > and give the result back to nginx to serve to the client.
@@ -190,7 +190,7 @@ $> sudo nginx -s reload
 
 ## See it in action
 
-Visit http://todolist.john-doe.archidep.media (replacing `john-doe` with your username)
+Visit http://todolist.john-doe.archidep.online (replacing `john-doe` with your username)
 and you should see the PHP todolist working.
 
 

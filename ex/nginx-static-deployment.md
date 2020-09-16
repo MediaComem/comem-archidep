@@ -55,7 +55,7 @@ $> sudo nano /etc/nginx/sites-available/clock
 
 Take the static configuration that was [presented during the course][nginx-static-conf] and put it in the file.
 
-**You should use `john-doe.archidep.media` for the `server_name` directive (replacing `john-doe` with your username),
+**You should use `john-doe.archidep.online` for the `server_name` directive (replacing `john-doe` with your username),
 and you should set the `root` directive to the correct directory (the `static-clock-website` repository in your home directory).**.
 
 ### Enable the nginx configuration
@@ -127,7 +127,7 @@ Nginx should have reloaded its configuration.
 
 ## See it in action
 
-Visit http://john-doe.archidep.media (replacing `john-doe` with your username)
+Visit http://john-doe.archidep.online (replacing `john-doe` with your username)
 and you should see the website working.
 
 

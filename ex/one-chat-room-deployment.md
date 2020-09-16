@@ -125,7 +125,7 @@ with the following changes:
 
 * Skip all steps related to PHP FPM, since they are only valid for a PHP application.
 * Name the nginx configuration file `one-chat-room` instead of `todolist`.
-* Update the `server_name` directive to `chatroom.john-doe.archidep.media` instead of `todolist.john-doe.archidep.media`
+* Update the `server_name` directive to `chatroom.john-doe.archidep.online` instead of `todolist.john-doe.archidep.online`
   (replacing `john-doe` by your username).
 * Update the `root` directive to the correct directory.
 * Replace the `include` and `fastcgi_pass` directives by a `proxy_pass` directive.

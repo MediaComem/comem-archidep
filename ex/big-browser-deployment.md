@@ -135,7 +135,7 @@ following changes:
 * Skip all steps related to PHP FPM, since they are only relevant for a PHP
   application.
 * Name the nginx configuration file `big-browser` instead of `todolist`.
-* Update the `server_name` directive to `john-doe.remediations.archidep.media`
+* Update the `server_name` directive to `john-doe.archidep.online`
   (replacing `john-doe` by your username).
 * Update the `root` directive to the correct directory.
 * Replace the `include` and `fastcgi_pass` directives by a `proxy_pass`

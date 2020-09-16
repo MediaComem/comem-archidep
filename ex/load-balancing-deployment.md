@@ -30,7 +30,7 @@ It may improve your final grade, but is not required to obtain the maximum grade
 The application you must deploy is an [IP address locator][locator].
 Its source code is [available on GitHub][locator-repo].
 
-The end result you should obtain is this: http://locator.simon-oulevay.archidep.media/
+The end result you should obtain is this: http://locator.simon-oulevay.archidep.online/
 
 Refresh the page multiple times.
 Every time you refresh, nginx should direct your request to one of 3 application instances,
@@ -107,7 +107,7 @@ You will need to install the hook, then save your process list.
 
 Create an nginx site configuration file that does the following:
 
-* Serve the site on the subdomain `locator.john-doe.archidep.media`
+* Serve the site on the subdomain `locator.john-doe.archidep.online`
   (replacing `john-doe` with your username).
 * Use the path to the locator application's `public` directory as the site's root.
 * Configure load balancing to your 3 instances.
