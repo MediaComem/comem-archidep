@@ -256,7 +256,12 @@ export class GitMemoirController {
 
   createTooltips() {
     this.tooltips = tippy('git-memoir .tooltip[title]', {
-      hideOnClick: false
+      hideOnClick: false,
+      content(reference) {
+        const title = reference.getAttribute('title');
+        reference.removeAttribute('title');
+        return title;
+      }
     });
   }
 
