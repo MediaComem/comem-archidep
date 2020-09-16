@@ -4,6 +4,7 @@
 /.vagrant
 /.vscode
 /build
+/config.local.js
 /config.yml
 /data.yml
 /ec2/inventory
