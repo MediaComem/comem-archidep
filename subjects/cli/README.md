@@ -69,27 +69,21 @@ On the [ENIAC][eniac], this was done using function tables with **hundreds of te
 
 <p class='center'><img class='w75' src='images/eniac.jpg' /></p>
 
-### Punched cards for computers (1950)
+### Punched cards for computers (1950s)
 
 <!-- slide-column -->
 
 Later, many early general-purpose digital computers used [punched cards][punched-card] for data input, output and storage.
 
-<!-- slide-column 40 -->
-
-<img class='w100' src='images/punched-card.jpg' />
-
-<!-- slide-container -->
-
-<!-- slide-column -->
-
-You had to use a [keypunch][keypunch] machine to write your cards, then feed them to the computer.
+Someone had to use a [keypunch][keypunch] machine to write your cards, then feed them to the computer.
 
 This is what a **program** looked like:
 
 <p class='center'><img class='w80' src='images/punched-cards-program.jpg' /></p>
 
 <!-- slide-column 40 -->
+
+<img class='w100' src='images/punched-card.jpg' />
 
 <img class='w100' src='images/keypunch-machine.jpg' />
 
@@ -132,8 +126,10 @@ Unix is the ancestor of [Linux][linux].
 <!-- slide-column -->
 
 In Unix-like systems, The program serving as the **command line interpreter**
-(handling input/output from the terminal) is called a [**shell**][unix-shell]
-(because it wraps and hides the lower-level kernel interface).
+(handling input/output from the terminal) is called a [**shell**][unix-shell].
+
+> It is called this way because it is the outermost layer around the operating
+> system; it wraps and hides the lower-level kernel interface).
 
 <!-- slide-column 40 -->
 
@@ -147,6 +143,9 @@ Eventually, [graphical user interfaces (GUIs)][gui] were introduced
 in reaction to the perceived steep learning curve of command line interfaces.
 
 They are one of the most common end user computer interface today.
+
+> Note that the GUI of a computer is also a shell. It's simply a different way
+> to interact with the kernel.
 
 <!-- slide-column 60 -->
 
@@ -542,8 +541,8 @@ You can also go to a specific directory anywhere on your filesystem like this:
 $> cd /Users/Batman/Documents
 ```
 
-This is an **absolute path** because it starts with a `/` character.
-It is relative to the root of your filesystem.
+This is an **absolute path** because it starts with a `/` character. It starts
+at the root of your filesystem so it does not matter where you are now.
 
 > You also have **auto-completion** with the `cd` command. Hit the `Tab` key after entering some letters.
 
@@ -641,7 +640,7 @@ Path        | Where
 `foo/bar`   | The file/directory `bar` inside the directory `foo` in the current directory. This is a **relative path**.
 `./foo/bar` | *Same as the above*
 `/foo/bar`  | The file/directory `bar` inside the directory `foo` at the root of your filesystem. This is an **absolute path**.
-`~`         | Your home directory.
+`~`         | Your home directory. This is an **absolute path**.
 `~/foo/bar` | The file/directory `bar` inside the directory `foo` in your home directory. This is an **absolute path**.
 
 #### Your projects directory
@@ -649,15 +648,15 @@ Path        | Where
 Throughout this course, you will often see the following command (_or something resembling it_):
 
 ```bash
-$> cd /path/to/projects
+$> cd `/path/to/projects`
 ```
 
 This means that you use **the path to the directory in which you store your projects**.
 For example, on John Doe's macOS system, it could be `/Users/jdoe/Projects`.
 
-> You shouldn't **actually write** `/path/to/projects`.
->
-> It will obviously fail, unless you happen to have a `path` directory that contains a `to` directory that contains a `projects` directory...
+> Do not actually write `/path/to/projects`. It will obviously fail, unless you
+> happen to have a `path` directory that contains a `to` directory that contains
+> a `projects` directory...
 
 **WARNING:** if your Windows/Linux/macOS username contains **spaces** or **accents**, you should **NOT** store your projects under your home directory.
 You should find a path elsewhere on your filesystem.
@@ -1100,10 +1099,11 @@ This file depends upon the shell you are using:
 | Terminal / Git Bash | `~/.bash_profile` |
 | [ZSH][zsh-site]     | `~/.zshrc`        |
 
-Open the adequate file (`.bashrc` for this example) from the CLI with `vim` or your favorite editor if it can display hidden files:
+Open the adequate file (`.bashrc` for this example) from the CLI with `nano` or
+your favorite editor if it can display hidden files:
 
 ```bash
-$> vim ~/.bash_profile
+$> nano ~/.bash_profile
 ```
 
 Add this line at the bottom of your file
