@@ -410,7 +410,7 @@ The signature will be stored in the file `signature.rsa`.
 $> openssl dgst -sha256 -sign private.pem -out signature.rsa message.txt
 ```
 
-If you open the file, you can see that it's simly binary data.
+If you open the file, you can see that it's simply binary data.
 You can see it base64-encoded with the following command:
 
 ```bash
@@ -1105,7 +1105,7 @@ $> ssh-add /path/to/custom_id_rsa
 [forward-secrecy]: https://en.wikipedia.org/wiki/Forward_secrecy
 [ftp]: https://en.wikipedia.org/wiki/File_Transfer_Protocol
 [ftp-security]: https://en.wikipedia.org/wiki/File_Transfer_Protocol#Security
-[github-fingerprints]: https://help.github.com/articles/github-s-ssh-key-fingerprints/
+[github-fingerprints]: https://docs.github.com/en/github/authenticating-to-github/githubs-ssh-key-fingerprints
 [git]: https://git-scm.com
 [hash]: https://en.wikipedia.org/wiki/Cryptographic_hash_function
 [hash-non-crypto]: https://en.wikipedia.org/wiki/Hash_function
