@@ -15,7 +15,7 @@ async function send() {
 
     const mail = {
       to: student.email,
-      subject: 'ArchiDep Credentials',
+      subject: `ArchiDep ${new Date().getFullYear()} Credentials`,
       text: `Hello, your username is ${student.username} and your password is ${student.password}`
     };
 
