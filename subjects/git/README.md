@@ -235,7 +235,7 @@ A Git project has three main parts:
 
 * The Git directory
 * The working directory
-* The staging area
+* The staging area (also called the index)
 
 #### The Git directory
 
