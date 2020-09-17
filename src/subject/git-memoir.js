@@ -272,10 +272,18 @@ export class GitMemoirController {
     }
 
     if (this.tooltips) {
-      this.tooltips.destroyAll();
+      destroyTooltips(this.tooltips);
     }
 
     this.$element.children().remove();
+  }
+}
+
+function destroyTooltips(tooltips) {
+  if (Array.isArray(tooltips)) {
+    tooltips.forEach(destroyTooltips);
+  } else {
+    tooltips.destroy();
   }
 }
 
