@@ -227,7 +227,7 @@ Send an email to the teacher with the URL to your deployed application.
 [default-db]: https://github.com/MediaComem/one-chat-room/blob/158d7ff1aaaf9bd760e395405c3e743e59f505e0/config.js#L4
 [mongo]: https://www.mongodb.com
 [nginx-php-fpm-ex]: nginx-php-fpm-deployment.md
-[nginx-rp-conf]: https://mediacomem.github.io/comem-archidep/2019-2020/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29
+[nginx-rp-conf]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29
 [node]: https://nodejs.org
 [nosql]: https://en.wikipedia.org/wiki/NoSQL
 [one-chat-room-title]: https://github.com/MediaComem/one-chat-room/blob/158d7ff1aaaf9bd760e395405c3e743e59f505e0/views/components/app.pug#L7

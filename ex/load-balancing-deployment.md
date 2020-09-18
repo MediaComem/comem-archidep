@@ -130,7 +130,7 @@ Send an email to the teacher with the working URL.
 [locator-config]: https://github.com/MediaComem/load-balanceable-locator#configuration
 [locator-readme]: https://github.com/MediaComem/load-balanceable-locator#readme
 [locator-repo]: https://github.com/MediaComem/load-balanceable-locator
-[nginx-slides]: https://mediacomem.github.io/comem-archidep/2019-2020/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme
+[nginx-slides]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#30
 [node]: https://nodejs.org
 [one-chat-room-ex]: ./one-chat-room-deployment.md
 [pm2]: http://pm2.keymetrics.io

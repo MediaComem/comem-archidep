@@ -431,7 +431,7 @@ that port?
 [change]: https://github.com/MediaComem/comem-wopr/blob/4b75cc6c2c83c2fce1723ce655a12d5537c0bfbd/src/app.svelte#L26-L30
 [make]: https://www.gnu.org/software/make/
 [nginx-php-fpm-ex]: nginx-php-fpm-deployment.md
-[nginx-rp-conf]: https://mediacomem.github.io/comem-archidep/2019-2020/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29
+[nginx-rp-conf]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29
 [node]: https://nodejs.org
 [nosql]: https://en.wikipedia.org/wiki/NoSQL
 [npm]: https://www.npmjs.com
