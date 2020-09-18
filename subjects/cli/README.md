@@ -1171,7 +1171,7 @@ The next time you run a command, your shell will **first look** in this director
 [cli]: https://en.wikipedia.org/wiki/Command-line_interface
 [eniac]: https://en.wikipedia.org/wiki/ENIAC
 [freebsd]: https://en.wikipedia.org/wiki/FreeBSD
-[gitbash]: https://git-for-windows.github.io/
+[gitbash]: https://gitforwindows.org
 [gui]: https://en.wikipedia.org/wiki/Graphical_user_interface
 [keypunch]: https://en.wikipedia.org/wiki/Keypunch
 [linux]: https://en.wikipedia.org/wiki/Linux
