@@ -1017,16 +1017,20 @@ What happens when you run the following command?
 $> ls -a -l
 ```
 
-1. The shell will look in the `/usr/local/bin` directory.
-   *There is no executable named `ls` there, moving on...*
-2.  The shell will look in the `/bin` directory.
-   **There is an executable named `ls` there!**
-   Execute it with arguments `-a` and `-l`.
-3. We're done here.
-   No need to look at the rest of the `PATH`.
+1. The shell will look in the `/usr/local/bin` directory. *There is no
+   executable named `ls` there, moving on...*
+2.  The shell will look in the `/bin` directory. **There is an executable named
+    `ls` there!** Execute it with arguments `-a` and `-l`.
+3. We're done here. No need to look at the rest of the `PATH`. If there happens
+   to be an `ls` executable in the `/custom/dir` directory, it will **not be
+   used**.
 
-> Note that if there happens to be an `ls` executable in the `/custom/dir` directory which is last in the `PATH`,
-> it will **never be used** when typing `ls`, since the first matching executable is always selected.
+You can check where a command is with the `which` command:
+
+```bash
+$> which ls
+/bin/ls
+```
 
 
 
@@ -1130,12 +1134,17 @@ You don't even have to be in the correct directory:
 
 ```bash
 $> cd
-
 $> pwd
 /Users/jdoe
-
 $> hello
 Hello World
+```
+
+And your CLI knows where it is:
+
+```bash
+$> which hello
+/Users/jdoe/hello-program/bin/hello
 ```
 
 #### What have I done?
