@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const config = {
   title: 'Media Engineering Architecture & Deployment',
-  version: '2019-2020',
+  version: '2020-2021',
   repoUrl: 'https://github.com/MediaComem/comem-archidep',
   remark: {
     highlightLines: true,
@@ -19,7 +19,7 @@ const config = {
     gitUrl: 'git@github.com:MediaComem/comem-archidep.git',
     baseUrl: 'https://mediacomem.github.io/comem-archidep',
     branch: 'gh-pages',
-    version: '2019-2020'
+    version: '2020-2021'
   }
 };
 
