@@ -342,26 +342,37 @@ The rest of this documentation is a tutorial where you will learn how to:
 
 
 
-### Installing Git
+### Git and the command line
 
-There are a lot of different ways to use Git:
-the original **command line tools** and various **GUIs** of varying capabilities.
-But the command line is the only place you can run **all** Git commands with all their options.
+There are a lot of different ways to use Git: the original **command line
+tools** and various **GUIs** of varying capabilities. But the command line is
+the only place you can run **all** Git commands with all their options.
 
-If you know how to run the command line version,
-you can easily figure out how to use the GUI version,
-while the opposite is not necessarily true.
-So the **command line** is what we will use.
+If you know how to run the command line version, you can easily figure out how
+to use the GUI version, while the opposite is not necessarily true. So the
+**command line** is what we will use.
 
-Some of you may already have Git installed.
-Run the following command in a CLI to make sure:
+Some of you may already have Git installed. Run the following command in your
+CLI to make sure:
 
 ```bash
 $> git --version
 git version 2.11.0
 ```
 
-If you don't have it, follow these [installation instructions][install-git] to install Git on your machine.
+#### Installing Git
+
+On **macOS**, Git may already be installed. If not, it is part of the
+command-line tools, which you can install by running the following command:
+
+```bash
+$> xcode-select --install
+```
+
+On **Windows**, you should have Git if you have Git Bash installed. If not, you
+can download it directly from https://git-scm.com/download/win
+
+Otherwise, follow the [official installation instructions][install-git].
 
 
 
