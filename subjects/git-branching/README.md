@@ -388,8 +388,9 @@ Merge made by the 'recursive' strategy.
   1 file changed, 4 insertions(+), 1 deletion(-)
 ```
 
-Git will need to create a new commit when you run the merge command,
-so it will **open the configured editor** (vim by default) with a generated commit message:
+Git will need to create a new commit when you run the merge command, so it will
+**open the configured editor** (Vim by default if you have not changed it) with
+a generated commit message:
 
 ```txt
  Merge branch 'feature-sub'
@@ -401,7 +402,8 @@ so it will **open the configured editor** (vim by default) with a generated comm
  # the commit.
 ```
 
-Type `:wq` (**w**rite and **q**uit) to save and exit.
+If you are in Vim, type `:wq` (**w**rite and **q**uit) to save and exit. If you
+are in Nano, use `Ctrl-X`.
 
 #### Merge commit
 
@@ -625,8 +627,10 @@ Git tells you that all conflicts have been resolved but that you still need to *
 $> git commit -m "Merge better-sub into master"
 ```
 
-If you do not specify a commit message with `-m`, Git will generate one for you and open the configured editor (vim by default) for you to check and/or change the message.
-Type `:wq` to exit from vim and make the commit.
+If you do not specify a commit message with `-m`, Git will generate one for you
+and open the configured editor (Vim by default) for you to check and/or change
+the message. Type `:wq` to exit from Vim or `Ctrl-X` to exit from Nano, and make
+the commit.
 
 #### The state after merging
 
