@@ -154,11 +154,11 @@ address which persists across restarts.
   By default, the Ubuntu image you selected when you launched the server creates
   an `ubuntu` user.
 
-  Assuming the instance's public IP address is `2.3.4.5` (replace with the
+  Assuming the instance's public IP address is `W.X.Y.Z` (replace with the
   elastic IP address you allocated):
 
   ```bash
-  $> ssh ubuntu@2.3.4.5
+  $> ssh ubuntu@W.X.Y.Z
   ```
 
   > You should be able to connect without a password. This works because you
