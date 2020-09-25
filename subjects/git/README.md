@@ -206,9 +206,9 @@ Often you will only see a prefix (the first 6-7 characters):
 24b9da6
 ```
 
-Because all content is hashed, it's virtually impossible for files to be lost or
-corrupted without Git knowing about it. This functionality is built into Git at
-the lowest levels and is integral to its philosophy.
+Because all content is [hashed][hash], it's virtually impossible for files to be
+lost or corrupted without Git knowing about it. This functionality is built into
+Git at the lowest levels and is integral to its philosophy.
 
 
 
@@ -1057,6 +1057,7 @@ want, but you do not have to. Simply save and exit the editor. The changes to
 [git]: https://git-scm.com/
 [git-log]: https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
 [git-log-pretty-formats]: https://git-scm.com/docs/git-log#_pretty_formats
+[hash]: https://en.wikipedia.org/wiki/Hash_function
 [install-git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [mercurial]: https://www.mercurial-scm.org/
 [rcs]: https://en.wikipedia.org/wiki/Revision_Control_System
