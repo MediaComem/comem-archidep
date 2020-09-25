@@ -252,6 +252,8 @@ export class GitMemoirController {
       .find('i')
       .removeClass('fa-play-circle-o fa-pause-circle-o fa-check-circle-o')
       .addClass(`fa-${icon}`);
+
+    this.updateModeTooltip(title);
   }
 
   createTooltips() {
@@ -266,16 +268,33 @@ export class GitMemoirController {
   }
 
   destroy() {
-
     if (this.drawer) {
       this.drawer.clear();
     }
 
+    this.destroyTooltips();
+
+    this.$element.children().remove();
+  }
+
+  destroyTooltips() {
     if (this.tooltips) {
       destroyTooltips(this.tooltips);
     }
+  }
 
-    this.$element.children().remove();
+  updateModeTooltip(text) {
+    if (!this.tooltips) {
+      return;
+    }
+
+    const modeTooltip = this.tooltips.find(tooltip => $(tooltip.reference).is('button.mode'));
+    if (!modeTooltip) {
+      return;
+    }
+
+    modeTooltip.setContent(text);
+    modeTooltip.reference.removeAttribute('title');
   }
 }
 
