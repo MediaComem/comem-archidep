@@ -87,7 +87,7 @@ using for the rest of the course.
     LTS (HVM), SSD Volume Type`. Use the default 64-bit (x86) version.
 
     ![AWS AMI](../images/aws-step-1-ami.png)
-  * **Step 2:** Select the `t2.micro` instance type.
+  * **Step 2:** Select the `t3.micro` instance type.
 
     ![AWS Instance Type](../images/aws-step-2-instance-type.png)
   * **Step 3:** Leave the default instance details.
@@ -281,4 +281,4 @@ instance when you are done working, then re-start it when you need it again:
 
 > Your EBS storage volume and unattached Elastic IP Address will still consume
 > credits with a stopped instance, but at about half the rate for the suggested
-> `t2.micro` instance with 8 gigabytes of storage.
+> `t3.micro` instance with 8 gigabytes of storage.
