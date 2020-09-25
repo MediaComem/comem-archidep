@@ -83,7 +83,7 @@ using for the rest of the course.
   > AWS infrastructure. You will have full root access to the server once it's
   > launched.
 
-  * **Step 1:** Search and select the following Ubuntu AMI: `Ubuntu Server 18.04
+  * **Step 1:** Search and select the following Ubuntu AMI: `Ubuntu Server 20.04
     LTS (HVM), SSD Volume Type`. Use the default 64-bit (x86) version.
 
     ![AWS AMI](../images/aws-step-1-ami.png)
@@ -256,7 +256,7 @@ address which persists across restarts.
 
   ```bash
   $> ssh john_doe@2.3.4.5
-  Welcome to Ubuntu 18.04.1 LTS
+  Welcome to Ubuntu 20.04 LTS
   ...
 
   $> hostname
