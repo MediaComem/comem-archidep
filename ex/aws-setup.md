@@ -180,7 +180,7 @@ address which persists across restarts.
 
   > **WARNING:** your Unix username should not contain spaces, accented
   > characters (e.g. `é`), hyphens (`-`) or dots (`.`). It should start with a
-  > letter (a-z) and contain only alphanumeric characters (a-z or 0-9) and
+  > letter (a-z) and contain only alphanumeric characters (a-z and 0-9) and
   > underscores (`_`).
 
   Assuming your username is `john_doe` (replace with your actual name):
