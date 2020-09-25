@@ -234,7 +234,10 @@ address which persists across restarts.
   ```bash
   $> ssh john_doe@2.3.4.5
   ```
-* Change your hostname (note that you cannot use the `_` character in a hostname, use `-` instead):
+* Change the hostname of your server.
+
+  **WARNING:** you should not use underscores (`_`) in a hostname, use hyphens
+  (`-`) instead.
 
   ```bash
   $> sudo hostname john-doe.archidep.online
