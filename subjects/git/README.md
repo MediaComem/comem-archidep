@@ -759,7 +759,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 You can tell Git to add all changes (additions, modifications and removals):
 
 ```bash
-$> git add --all
+$> git add .
 
 $> git status
 On branch master

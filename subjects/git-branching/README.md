@@ -668,7 +668,7 @@ This time, this colleague decided to delete `subtraction.js` in his branch becau
 
 ```bash
 $> rm subtraction.js
-$> git add --all
+$> git add .
 $> git commit -m "Remove incomplete implementations"
 ```
 

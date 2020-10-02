@@ -336,7 +336,7 @@ so that you can know what the current state of the remote is.
 ```bash
 $> mv addition.js add.js
 $> mv subtraction.js sub.js
-$> git add --all
+$> git add .
 $> git commit -m "Shorter filenames"
 ```
 

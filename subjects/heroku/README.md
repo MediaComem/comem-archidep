@@ -169,7 +169,7 @@ node_modules
 Commit all the app's files:
 
 ```bash
-$> git add --all
+$> git add .
 $> git commit -m "Initial commit"
 ```
 
