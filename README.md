@@ -35,7 +35,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 * Version control
   * [Version control with Git](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git?home=MediaComem%2Fcomem-archidep%23readme) - ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3385742/mod_resource/content/2/ArchiDep%202020-09-25%20part%201%20Git%20Introduction.mp4))
   * [Git branching](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme) - ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3385746/mod_resource/content/1/ArchiDep%202020-09-25%20part%202%20Git%20Branching.mp4))
-  * [Collaborating with Git](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Collaborating with Git](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme) - ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3392793/mod_resource/content/1/ArchiDep%202020-10-02%20part%201%20Collaborating%20with%20Git.mp4))
 * Security
   * [Open Web Application Security Project][owasp]
   * [OWASP Top 10 - The Ten Most Critical Web Application Security Risks][owasp-top10]
@@ -78,7 +78,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 ## Exercises
 
 * **Version control**
-  * [Collaborative exercise](https://github.com/MediaComem/comem-archidep-php-todo-exercise) (**graded**)
+  * [Collaborative exercise](https://github.com/MediaComem/comem-archidep-php-todo-exercise) (**graded**, [video 1](https://cyberlearn.hes-so.ch/pluginfile.php/3392853/mod_resource/content/1/ArchiDep%202020-10-02%20part%202%20Collaborative%20Git%20Exercise%20A.mp4), [video 2](https://cyberlearn.hes-so.ch/pluginfile.php/3392856/mod_resource/content/1/ArchiDep%202020-10-02%20part%203%20Collaborative%20Git%20Exercise%20B.mp4))
   * [Clone a repository from a server](ex/git-clone-from-server.md)
   * [Push a repository to a server](ex/git-push-to-server.md)
 * **Unix**
