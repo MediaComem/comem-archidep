@@ -87,7 +87,9 @@ using for the rest of the course.
     LTS (HVM), SSD Volume Type`. Use the default 64-bit (x86) version.
 
     ![AWS AMI](../images/aws-step-1-ami.png)
-  * **Step 2:** Select the `t3.micro` instance type.
+  * **Step 2:** Select a **free-tier-eligible** instance type. It will be
+    **either `t2.micro` or `t3.micro`**, whichever is available, depending on
+    the region.
 
     ![AWS Instance Type](../images/aws-step-2-instance-type.png)
   * **Step 3:** Leave the default instance details.
