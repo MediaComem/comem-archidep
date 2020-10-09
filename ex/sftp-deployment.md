@@ -284,11 +284,11 @@ $> php -S 0.0.0.0:3000
 
 > You **must really use `0.0.0.0` for the `php -S` command, and not your
 > server's IP address**. `0.0.0.0` is not an actual IP address; it is a special
-> notation that tells the PHP development server to accept connections from any
-> source.
+> notation that tells the PHP development server to accept connections on any IP
+> address.
 
 You should be able to access the application in a browser at your server's IP
-address and the correct port (e.g. `1.2.3.4:3000`).
+address and the correct port (e.g. `W.X.Y.Z:3000`).
 
 
 

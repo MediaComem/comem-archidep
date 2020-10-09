@@ -79,8 +79,8 @@ $> PORT=3001 npm start
 > We suggest you set the `PORT` environment variable to `3001` for this simple test,
 > as that is one of the ports that should be open in your AWS virtual machine's firewall.
 
-Visit http://1.2.3.4:3001 to check that it works (replacing `1.2.3.4` by your server's IP address).
-Stop the application with `Ctrl-C` once you are done.
+Visit http://W.X.Y.Z:3001 to check that it works (replacing `W.X.Y.Z` by your
+server's IP address). Stop the application with `Ctrl-C` once you are done.
 
 > Note that you did not need to configure database access credentials as with the PHP todolist.
 > The application tries to connect to the `one-chat-room` MongoDB database [by default][default-db].

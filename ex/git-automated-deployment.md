@@ -137,10 +137,10 @@ $> cd /path/to/projects/comem-archidep-php-todo-exercise
 ```
 
 Git can communicate over SSH, so you can add an [SSH remote][git-ssh-protocol]
-(replace `john_doe` with your username and `1.2.3.4` with your server's IP address):
+(replace `john_doe` with your username and `W.X.Y.Z` with your server's IP address):
 
 ```bash
-$> git remote add archidep john_doe@1.2.3.4:todolist-automated-repo
+$> git remote add archidep john_doe@W.X.Y.Z:todolist-automated-repo
 ```
 
 
@@ -161,7 +161,7 @@ Total 36 (delta 16), reused 36 (delta 16)
 remote: Checking out latest version...
 remote: Deployment successful
 
-To 1.2.3.4:todolist-automated-repo
+To W.X.Y.Z:todolist-automated-repo
  * [new branch]      master -> master
 ```
 
@@ -199,7 +199,7 @@ $> git push archidep master
 ...
 remote: Checking out latest version...
 remote: Deployment successful
-To 1.2.3.4:todolist-automated-repo
+To W.X.Y.Z:todolist-automated-repo
    4ea6994..2faf028  master -> master
 ```
 

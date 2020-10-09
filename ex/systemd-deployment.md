@@ -90,7 +90,7 @@ $> sudo systemctl status todolist
 ```
 
 You should be able to access the running todolist application in your browser on
-your server's IP address and port 3000 (e.g. `1.2.3.4:3000`).
+your server's IP address and port 3000 (e.g. `W.X.Y.Z:3000`).
 
 ### Troubleshooting
 

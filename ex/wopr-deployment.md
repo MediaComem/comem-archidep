@@ -125,8 +125,8 @@ application and how to configure it.
 
 You can set the `PORT` environment variable to `3001` for this simple test, as
 that is one of the ports that should be open in your AWS instance's firewall.
-Run the application on that port and visit http://1.2.3.4:3001 to check that it
-works (replacing `1.2.3.4` by your server's IP address). Stop the application
+Run the application on that port and visit http://W.X.Y.Z:3001 to check that it
+works (replacing `W.X.Y.Z` by your server's IP address). Stop the application
 with `Ctrl-C` once you are done.
 
 > Note that you do not need to configure database access credentials as with the

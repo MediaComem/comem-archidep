@@ -87,7 +87,7 @@ $> PORT=3001 npm start
 > test, as that is one of the ports that should be open in your AWS virtual
 > machine's firewall.
 
-Visit http://1.2.3.4:3001 to check that it works (replacing `1.2.3.4` by your
+Visit http://W.X.Y.Z:3001 to check that it works (replacing `W.X.Y.Z` by your
 server's IP address).  Stop the application with `Ctrl-C` once you are done.
 
 > Note that you did not need to configure database access credentials as with

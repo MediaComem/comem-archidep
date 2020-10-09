@@ -82,7 +82,7 @@ $> php -S 0.0.0.0:3000
 ```
 
 You should be able to access the application in a browser at the correct IP
-address and port (e.g. `1.2.3.4:3000`).
+address and port (e.g. `W.X.Y.Z:3000`).
 
 
 

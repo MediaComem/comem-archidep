@@ -231,10 +231,11 @@ address which persists across restarts.
   ```bash
   $> exit
   ```
-* Reconnect as your own user (again, replace `john_doe` and `2.3.4.5` by the appropriate values):
+* Reconnect as your own user (again, replace `john_doe` and `W.X.Y.Z` by the
+  appropriate values):
 
   ```bash
-  $> ssh john_doe@2.3.4.5
+  $> ssh john_doe@W.X.Y.Z
   ```
 * Change the hostname of your server.
 
@@ -260,7 +261,7 @@ address which persists across restarts.
   that you can still connect and that your hostname is correct:
 
   ```bash
-  $> ssh john_doe@2.3.4.5
+  $> ssh john_doe@W.X.Y.Z
   Welcome to Ubuntu 20.04 LTS
   ...
 

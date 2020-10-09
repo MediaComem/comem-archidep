@@ -21,10 +21,10 @@ Useful commands to manage a Unix system.
 
 ## How to I connect to my server with SSH?
 
-Connect to the server at the IP address `1.2.3.4` as the `john_doe` user:
+Connect to the server at the IP address `W.X.Y.Z` as the `john_doe` user:
 
 ```bash
-$> ssh john_doe@1.2.3.4
+$> ssh john_doe@W.X.Y.Z
 ```
 
 
