@@ -3,7 +3,7 @@
   <head>
     <title>Unix Networking (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/1381ce0c9c70edfdbb5cc18e708f383e800ef622/subjects/unix-networking/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/2c960e32d6e9940b42c1be83349d304b7e89ba58/subjects/unix-networking/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -175,6 +175,24 @@ the same way as any other network call.
 <p class='center'><img class='w50' src='images/localhost.jpg' /></p>
 
 ---
+#### 0.0.0.0 is everyone
+
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#6">IP addressing</a>]
+
+You will sometimes encounter  [`0.0.0.0`][0000]. This is not an actual IP
+address.
+
+One computer can have several IP addresses. Processes that listen for incoming
+requests (e.g. a database or a web server) generally allow you to **restrict
+which IP address they can be reached on**. You may only want to accept requests
+to one specific address.
+
+When you want to allow anyone to reach the process on any IP address the
+computer may have, you can sometimes use **`0.0.0.0`** as a special notation
+that means "**all IP addresses on the local machine**". The IPv6 equivalent is
+`::`.
+
+---
 #### Network address translation
 
 .breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#6">IP addressing</a>]
@@ -231,7 +249,7 @@ $> curl -v http://google.com/
 ---
 #### Multiplexing
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#12">Ports</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#13">Ports</a>]
 
 .grid-45[
 
@@ -263,7 +281,7 @@ For example, a client may open 4 simultaneous TCP connections to a server:
 ---
 #### Registered port numbers
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#12">Ports</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#13">Ports</a>]
 
 The [Internet Assigned Numbers Authority (IANA)][iana] maintains a list of the [official assignments of port numbers][iana-ports] for specific uses,
 although this is not always respected in practice.
@@ -286,7 +304,7 @@ See the [full list][registered-ports].
 ---
 #### Well-known ports
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#12">Ports</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#13">Ports</a>]
 
 The port numbers in the range from 0 to 1023 are the **well-known ports** or **system ports**.
 They are used by system processes that provide widely used types of network services, such as SSH or DNS.
@@ -307,7 +325,7 @@ The Domain Name System has been an essential component of the functionality of t
 ---
 #### DNS hierarchy
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#16">Domain name system</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#17">Domain name system</a>]
 
 The [Internet Corporation for Assigned Names and Numbers (ICANN)][icann] is responsible for managing [top-level domains (TLDs)][tld] like `.com`.
 Management of second-level domains and so on is delegated to other organizations.
@@ -333,7 +351,7 @@ class: center, middle
 ---
 ### The `ip` command
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#18">Unix networking</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#19">Unix networking</a>]
 
 The **`ip`** command is used to manipulate and display IP network information.
 Type `ip address` to check your computer's IP address(es).
@@ -364,7 +382,7 @@ In this sample output, there are **two network interfaces**:
 ---
 ### The `ping` command
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#18">Unix networking</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#19">Unix networking</a>]
 
 The [`ping` command][ping] tests the reachability of a host on an IP network.
 It measures the round-trip time for messages sent to a computer and echoed back.
@@ -390,7 +408,7 @@ and that the round-trip to that computer took 1.12 milliseconds.
 ---
 ### The `traceroute` command
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#18">Unix networking</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#19">Unix networking</a>]
 
 The [`traceroute` command][traceroute] displays the path and transit delays of packets across an IP network.
 
@@ -424,7 +442,7 @@ This example shows a request from New Zealand to an IP in Massachusetts which ta
 ---
 ### The `mtr` command
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#18">Unix networking</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#19">Unix networking</a>]
 
 The `mtr` command, originally named **M**att's **tr**aceroute, combines the `ping` and `traceroute` utilities into a single network diagnostic tool.
 
@@ -449,7 +467,7 @@ ip-172-31-39-219 (172.31.39.219)                   2018-12-05T15:55:42+0000
 ---
 ### The `ss` command
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#18">Unix networking</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#19">Unix networking</a>]
 
 The [**s**ocket **s**tatistics (`ss`) command][ss] (or the older `netstat` command) displays information about the open [**network sockets**][socket] on the computer.
 
@@ -472,7 +490,7 @@ a DNS resolver on port 53, and an SSH server on port 22.
 ---
 ### The `nc` command
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#18">Unix networking</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#19">Unix networking</a>]
 
 The [**n**et**c**at (`nc`) command][nc] can read from and write to network connections using TCP or UDP.
 
@@ -501,9 +519,9 @@ class: center, middle
 ---
 ### Raw TCP connection
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#25">Making connections</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#26">Making connections</a>]
 
-Assuming Bob's server has the public IP address `1.2.3.4` and Alice's server has the public IP address `2.3.4.5`.
+Assuming Bob's server has the public IP address `W.X.Y.Z` and Alice's server has the public IP address `S.T.U.V`.
 
 .grid-50[
 
@@ -529,13 +547,13 @@ World
 Alice should use `nc` to connect to TCP port 3000 on Bob's server:
 
 ```bash
-$> nc 1.2.3.4 3000
+$> nc W.X.Y.Z 3000
 ```
 
 Similarly, if Alice types and sends some text, it should appear in Bob's terminal:
 
 ```bash
-$> nc 1.2.3.4 3000
+$> nc W.X.Y.Z 3000
 Hello
 *World
 ```
@@ -551,17 +569,17 @@ You have a two-way TCP connection running.
 ---
 ### HTTP request
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#25">Making connections</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#26">Making connections</a>]
 
 Playing with TCP is all well and good, but it's a little low level.
 Let's do something that your browser does every day: an HTTP request.
 
-Find out Google's IP address (`3.4.5.6` in this example):
+Find out Google's IP address (`O.P.Q.R` in this example):
 
 ```bash
 $> ping -c 1 google.com
-PING google.com (`3.4.5.6`) 56(84) bytes of data.
-64 bytes from example.net (3.4.5.6): icmp_seq=1 ttl=53 time=0.890 ms
+PING google.com (`O.P.Q.R`) 56(84) bytes of data.
+64 bytes from example.net (O.P.Q.R): icmp_seq=1 ttl=53 time=0.890 ms
 ...
 ```
 
@@ -579,12 +597,12 @@ The next lines are [headers][http-headers] to send additional parameters to the 
 ---
 #### Making an HTTP request to Google
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#25">Making connections</a> > <a href="#27">HTTP request</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#26">Making connections</a> > <a href="#28">HTTP request</a>]
 
 Open a TCP connection to the Google IP address you previously found:
 
 ```bash
-$> nc 3.4.5.6 80
+$> nc O.P.Q.R 80
 ```
 
 Type the following lines exactly, followed by **two new lines** to terminate the message:
@@ -610,7 +628,7 @@ Google's server is telling you that the website `google.com` has permanently mov
 ---
 #### Following Google's redirect
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#25">Making connections</a> > <a href="#27">HTTP request</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#26">Making connections</a> > <a href="#28">HTTP request</a>]
 
 The connection should still be open.
 You can make another request, this time to `www.google.com`,
@@ -639,7 +657,7 @@ Content-Type: text/html; charset=ISO-8859-1
 ---
 ### HTTP response
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#25">Making connections</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#26">Making connections</a>]
 
 Let's make a real-world request with an actual browser this time.
 
@@ -652,12 +670,12 @@ $> nc -l 3000
 ---
 #### Making an HTTP request with a browser
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#25">Making connections</a> > <a href="#30">HTTP response</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#26">Making connections</a> > <a href="#31">HTTP response</a>]
 
-Assuming that your server has the public IP address `4.5.6.7`,
-visit `http://4.5.6.7:3000` in your browser.
+Assuming that your server has the public IP address `K.L.M.N`,
+visit `http://K.L.M.N:3000` in your browser.
 
-Your browser will make an HTTP request to the computer at IP address `4.5.6.7` on port `3000`.
+Your browser will make an HTTP request to the computer at IP address `K.L.M.N` on port `3000`.
 You should see the request in the terminal where netcat is running:
 
 ```
@@ -675,7 +693,7 @@ Accept-Language: en-US,en;q=0.9,fr;q=0.8,pt;q=0.7
 ---
 #### Sending a plain text HTTP response
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#25">Making connections</a> > <a href="#30">HTTP response</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#26">Making connections</a> > <a href="#31">HTTP response</a>]
 
 Type or copy-paste the following text into the terminal:
 
@@ -692,7 +710,7 @@ The client should display the text once the connection has been closed.
 ---
 #### Sending an HTTP response with HTML
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#25">Making connections</a> > <a href="#30">HTTP response</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#26">Making connections</a> > <a href="#31">HTTP response</a>]
 
 Re-run the netcat command on the server:
 
@@ -700,7 +718,7 @@ Re-run the netcat command on the server:
 $> nc -l 3000
 ```
 
-Re-visit `http://4.5.6.7:3000` in your browser,
+Re-visit `http://K.L.M.N:3000` in your browser,
 then type or copy-paste the following text into the terminal once you have received the request:
 
 ```
@@ -746,6 +764,7 @@ You should see the HTML text appear in your browser.
 
 
 
+[0000]: https://en.wikipedia.org/wiki/0.0.0.0
 [arpanet]: https://en.wikipedia.org/wiki/ARPANET
 [cidr]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
 [curl]: https://curl.haxx.se
