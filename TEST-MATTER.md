@@ -83,7 +83,10 @@ It also indicates what you do not need to remember by heart.
     You must know:
 
     * What a Git remote is.
-    * The purpose of the `clone`, `push`, `fetch` and `pull` subcommands.
+    * The purpose (but not the syntax or options) of the Git subcommands used to work with remotes:
+      * `git clone`
+      * `git push`
+      * `git pull`
     * The reasons why GitHub may refuse a push
       (either your repository is out of date,
       or you have a divergent history that would not result in a fast-forward).
