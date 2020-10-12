@@ -162,7 +162,8 @@ That way, you will be able to see if the key fingerprint in the warning matches
 one of your instance's keys.
 
 You can follow this Amazon Web Services guide if you wish to do so: [Get the
-instance fingerprint](https://en.wikipedia.org/wiki/Man-in-the-middle_attack).
+instance
+fingerprint](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html#connection-prereqs-fingerprint).
 
 Note that this requires the installation and configuration of an additional
 tool, the [AWS Command Line Interface (AWS
