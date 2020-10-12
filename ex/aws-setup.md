@@ -9,6 +9,7 @@ This guide describes how to run a virtual server appropriate for the COMEM+ Arch
 - [Apply for AWS Educate](#apply-for-aws-educate)
 - [Launch a virtual server](#launch-a-virtual-server)
 - [Associate an Elastic IP address with your virtual server](#associate-an-elastic-ip-address-with-your-virtual-server)
+- [(Optional) Get your instance's public SSH key](#optional-get-your-instances-public-ssh-key)
 - [Configure your virtual server](#configure-your-virtual-server)
 - [End result](#end-result)
 - [Note: saving AWS Educate credits](#note-saving-aws-educate-credits)
@@ -146,6 +147,40 @@ address which persists across restarts.
   ![AWS Associate Address](../images/aws-associate-address-2.png)
 
   Your instance now has a fixed public IP address on the Internet.
+
+
+
+## (Optional) Get your instance's public SSH key
+
+When you connect to your instance over SSH for the first time, you will get the
+usual warning that its authenticity cannot be verified.
+
+To protect yourself from [man-in-the-middle
+attacks](https://en.wikipedia.org/wiki/Man-in-the-middle_attack), you can obtain
+the SSH host key fingerprints from your instance before attempting to connect.
+That way, you will be able to see if the key fingerprint in the warning matches
+one of your instance's keys.
+
+You can follow this Amazon Web Services guide if you wish to do so: [Get the
+instance fingerprint](https://en.wikipedia.org/wiki/Man-in-the-middle_attack).
+
+Note that this requires the installation and configuration of an additional
+tool, the [AWS Command Line Interface (AWS
+CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
+
+> You can skip this step if you consider the risk and impact of an attack low
+> enough.
+>
+> Understand that if you simply answer "yes" when the SSH client warns you, you
+> are exposing yourself to a potential man-in-the-middle attack. In all
+> likelihood, no one is trying to hack your AWS instance for this course, but
+> the possibility exists.
+>
+> Since you are using public key authentication and not password authentication,
+> your credentials should not be compromised (you will not send a password and
+> your private key will not leave your computer). However, anything you do on
+> that server could potentially be read and modified by an attacker if he
+> manages to intercept the initial connection.
 
 
 
