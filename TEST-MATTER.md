@@ -21,7 +21,7 @@ It also indicates what you do not need to remember by heart.
     You do not need to know:
 
     * The history of computer interfaces.
-    * Vim usage.
+    * Vim or nano usage.
     * The specifics of particular commands.
   * [Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
 
