@@ -38,11 +38,13 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Collaborating with Git](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme) - ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3392793/mod_resource/content/1/ArchiDep%202020-10-02%20part%201%20Collaborating%20with%20Git.mp4))
 * Security
   * [Open Web Application Security Project][owasp]
-  * [OWASP Top 10 - The Ten Most Critical Web Application Security Risks][owasp-top10]
+  * [OWASP Top 10 - The Ten Most Critical Web Application Security Risks][owasp-top10] - ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3400902/mod_resource/content/1/ArchiDep%202020-10-09%20part%201%20OWASP%20Top%20Ten.mp4))
+    * [Video: PHP TodoList Injection Vulnerability](https://cyberlearn.hes-so.ch/pluginfile.php/3400906/mod_resource/content/1/ArchiDep%202020-10-09%20part%202%20PHP%20TodoList%20Application%20Injection%20Vulnerability.mp4)
+    * [Video: PHP TodoList XSS Vulnerability](https://cyberlearn.hes-so.ch/pluginfile.php/3400908/mod_resource/content/1/ArchiDep%202020-10-09%20part%203%20PHP%20TodoList%20Application%20XSS%20Vulnerability.mp4)
 * Basic deployment
-  * [Cloud computing](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Linux](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Unix basics & administration](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Cloud computing](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme) - ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3400913/mod_resource/content/1/ArchiDep%202020-10-09%20part%204%20Cloud%20Computing.mp4))
+  * [Linux](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme) - ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3400914/mod_resource/content/1/ArchiDep%202020-10-09%20part%205%20Linux.mp4))
+  * [Unix basics & administration](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme) - ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3400918/mod_resource/content/1/ArchiDep%202020-10-09%20part%206%20Unix%20Administration.mp4))
   * [Unix processes](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
   * [Unix networking](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
   * [APT](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
