@@ -159,13 +159,13 @@ The system determines whether or not a user or group can access a file based on 
 There are **three different permissions** for file, directories and executables.
 They are represented by one character:
 
-| Permission | Description                                                                                  |
-| :---       | :---                                                                                         |
-| `r`        | A given category of user can **read** a file or list a directory.                            |
-| `w`        | A given category of user can **write** to a file or create/delete files in a directory.      |
-| `x`        | A given category of user can **execute** the contents of a file or **traverse** a directory. |
+| Permission | For files                                            | For directories                                  |
+| :--------- | :--------------------------------------------------- | :----------------------------------------------- |
+| `r`        | **Read** the contents of the file.                   | **List** the directory.                          |
+| `w`        | **Write** to the file (modify it).                   | **Create** or **delete** files in the directory. |
+| `x`        | **Execute** the file (if it's a binary or a script). | **Traverse** the directory.                      |
 
-Additionally, the symbol `-` (a hyphen) indicates that no access is permitted.
+The symbol `-` (a hyphen) indicates that no access is permitted.
 
 #### User categories
 
@@ -616,27 +616,29 @@ chmod [references][operator][modes] file
 The `[references]` correspond to user categories:
 
 | Reference | Category | Description                               |
-| :---      | :---     | :---                                      |
-| `u`       | Owner    | The user who owns the file                |
+| :-------- | :------- | :---------------------------------------- |
+| `u`       | User     | The user who owns the file (the owner).   |
 | `g`       | Group    | The group that owns the file.             |
 | `o`       | Others   | Any other user with access to the system. |
 | `a`       | All      | All three of the above, same as `ugo`.    |
 
 The available `[operators]` are:
 
-| Operator | Description                                                          |
-| :---     | :---                                                                 |
-| `+`      | Add the specified permissions to the specified category of users.    |
-| `-`      | Remove the specified modes from the specified category of users.     |
-| `=`      | Set exactly the specified modes for the specified category of users. |
+| Operator | Description                                                    |
+| :------- | :------------------------------------------------------------- |
+| `+`      | Add permissions (modes) to the specified category of users.    |
+| `-`      | Remove permissions from the specified category of users.       |
+| `=`      | Set the exact permissions for the specified category of users. |
 
 #### Using symbolic modes
 
 The symbolic syntax basically allows you to specify:
 
+* What category of user you want to change permissions for (`u`, `g`, `o` or
+  `a`).
+* What kind of change you want to do (add new permissions with `+`, remove some
+  with `-` or set exact permissions with `=`).
 * What permissions (modes) you want to change (`r`, `w` or `x`).
-* What kind of change you want to do (`+`, `-` or `=`).
-* What category of user you want to apply these changes to (`u`, `g`, `o` or `a`).
 
 For example, the following command adds `r` (read) and `w` (write) permissions to `u` (the owner of the file):
 
