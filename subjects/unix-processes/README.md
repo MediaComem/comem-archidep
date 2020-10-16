@@ -92,6 +92,8 @@ Each new process gets the next available PID.
 PIDs are sometimes reused as processes die and are created again,
 but **at any given time, a PID uniquely identifies a specific process**.
 
+### Parent processes
+
 The process with PID 0 is the **system process**,
 the most low-level process managed directly by the kernel.
 
