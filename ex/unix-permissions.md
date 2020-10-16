@@ -87,7 +87,7 @@ You should be able to read the `readable.txt` file in the `for_alice` directory:
 $> cat /home/john_doe/for_alice/readable.txt
 ```
 
-You should not be able to modify the `writable.txt` file in the `for_alice` directory:
+You should not be able to modify the `readable.txt` file in the `for_alice` directory:
 
 ```bash
 $> echo "Hello, I'm Alice" >> /home/john_doe/for_alice/readable.txt
