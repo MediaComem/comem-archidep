@@ -89,8 +89,8 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Clone a repository from a server](ex/git-clone-from-server.md)
   * [Push a repository to a server](ex/git-push-to-server.md)
 * **Unix**
-  * [Permissions](ex/unix-permissions.md)
-  * [Pipeline](ex/unix-pipeline.md)
+  * [Permissions](ex/unix-permissions.md) [(solutions)](ex/unix-permissions-solutions.md)
+  * [Pipeline](ex/unix-pipeline.md) [(solutions)](ex/unix-pipeline-solutions.md)
 * **Basic deployment**
   * [Run your own virtual server on Amazon Web Services](ex/aws-setup.md) [(diagram)](ex/aws-setup.pdf)
   * [Deploy a PHP application with SFTP](ex/sftp-deployment.md) [(diagram)](ex/sftp-deployment.pdf)
