@@ -22,8 +22,8 @@ hardcoded configuration values.
 
 ## Setup
 
-Make sure you have done the [previous exercise](git-clone-deployment.md) and the
-[Git
+Make sure you have completed the [previous exercise](git-clone-deployment.md)
+and the [Git
 collaboration](https://github.com/MediaComem/comem-archidep-php-todo-exercise)
 exercise first.
 

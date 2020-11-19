@@ -22,7 +22,8 @@ instead of SFTP.
 
 ## Setup
 
-Make sure you have done the [previous exercise](sftp-deployment.md) and the [Git
+Make sure you have completed the [previous exercise](sftp-deployment.md) and the
+[Git
 collaboration](https://github.com/MediaComem/comem-archidep-php-todo-exercise)
 exercise first. If you were not Bob during the collaboration exercise (i.e. the
 person who owns the fork), create your own fork of the repository so that you
