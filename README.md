@@ -94,10 +94,10 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 * **Basic deployment**
   * [Run your own virtual server on Amazon Web Services](ex/aws-setup.md) [(diagram)](ex/aws-setup.pdf)
   * [Deploy a PHP application with SFTP](ex/sftp-deployment.md)
-    * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3425348/mod_resource/content/2/ArchiDep%202020-11-06%20part%205%20Deploy%20a%20PHP%20Application%20with%20SFTP.mp4),
+    * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3425348/mod_resource/content/2/ArchiDep%202020-11-06%20part%205%20Deploy%20a%20PHP%20Application%20with%20SFTP.mp4)
     * [Video: architecture](https://cyberlearn.hes-so.ch/pluginfile.php/3438812/mod_resource/content/3/ArchiDep%202020-11-19%20part%201%20Architecture%20of%20the%20SFTP%20Deployment%20Exercise.mp4)
     * [Video: how to improve our deployment](https://cyberlearn.hes-so.ch/pluginfile.php/3438814/mod_resource/content/1/ArchiDep%202020-11-19%20part%202%20How%20To%20Improve%20Our%20Deployment.mp4)
-    * [Diagram](ex/sftp-deployment.pdf))
+    * [Diagram](ex/sftp-deployment.pdf)
   * [Deploy a PHP application with Git](ex/git-clone-deployment.md) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3438842/mod_resource/content/1/ArchiDep%202020-11-19%20part%205%20Deploy%20a%20PHP%20application%20with%20Git.mp4), [diagram](ex/git-clone-deployment.pdf))
   * [Configure a PHP application through environment variables](ex/config-through-environment.md) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3438844/mod_resource/content/2/ArchiDep%202020-11-19%20part%206%20Configure%20a%20PHP%20application%20through%20environment%20variables.mp4), [diagram](ex/config-through-environment.pdf))
   * [Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md) [(diagram)](ex/systemd-deployment.pdf)
