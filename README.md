@@ -51,8 +51,8 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Unix processes](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
     * [Video: process IDs & exit statuses](https://cyberlearn.hes-so.ch/pluginfile.php/3405425/mod_resource/content/1/ArchiDep%202020-10-16%20part%202%20Unix%20Processes%20A.mp4)
     * [Video: streams, pipelines & signals](https://cyberlearn.hes-so.ch/pluginfile.php/3405429/mod_resource/content/1/ArchiDep%202020-10-16%20part%203%20Unix%20Processes%20B.mp4)
-  * [Unix networking](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
-  * [APT](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Unix networking](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3425344/mod_resource/content/1/ArchiDep%202020-11-06%20part%203%20Unix%20Networking.mp4))
+  * [APT](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3425345/mod_resource/content/1/ArchiDep%202020-11-06%20part%204%20APT.mp4))
 * Advanced deployment
   * [Twelve-factor app][12factor]
   * [Unix environment variables](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
@@ -89,11 +89,11 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Clone a repository from a server](ex/git-clone-from-server.md)
   * [Push a repository to a server](ex/git-push-to-server.md)
 * **Unix**
-  * [Permissions](ex/unix-permissions.md)
-  * [Pipeline](ex/unix-pipeline.md)
+  * [Permissions](ex/unix-permissions.md) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3425330/mod_resource/content/2/ArchiDep%202020-11-06%20part%201%20Unix%20Permissions%20Exercise.mp4), [solutions](ex/unix-permissions-solutions.md))
+  * [Pipeline](ex/unix-pipeline.md) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3425339/mod_resource/content/1/ArchiDep%202020-11-06%20part%202%20Unix%20Pipeline%20Exercise.mp4), [solutions](ex/unix-pipeline-solutions.md))
 * **Basic deployment**
   * [Run your own virtual server on Amazon Web Services](ex/aws-setup.md) [(diagram)](ex/aws-setup.pdf)
-  * [Deploy a PHP application with SFTP](ex/sftp-deployment.md) [(diagram)](ex/sftp-deployment.pdf)
+  * [Deploy a PHP application with SFTP](ex/sftp-deployment.md) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3425348/mod_resource/content/2/ArchiDep%202020-11-06%20part%205%20Deploy%20a%20PHP%20Application%20with%20SFTP.mp4), [diagram](ex/sftp-deployment.pdf))
   * [Deploy a PHP application with Git](ex/git-clone-deployment.md) [(diagram)](ex/git-clone-deployment.pdf)
   * [Configure a PHP application through environment variables](ex/config-through-environment.md) [(diagram)](ex/config-through-environment.pdf)
   * [Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md) [(diagram)](ex/systemd-deployment.pdf)
