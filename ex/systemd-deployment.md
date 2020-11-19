@@ -49,11 +49,10 @@ You may find the following documentation useful to write your unit file:
   options](https://www.freedesktop.org/software/systemd/man/systemd.unit.html#%5BUnit%5D%20Section%20Options)
 * [`[Service]` section
   options](https://www.freedesktop.org/software/systemd/man/systemd.service.html#Options)
+  * [Environment](https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Environment)
+    (for the `Environment`, `User` and `WorkingDirectory` options)
 * [`[Install]` section
   options](https://www.freedesktop.org/software/systemd/man/systemd.unit.html#%5BInstall%5D%20Section%20Options)
-* [Environment](https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Environment)
-  (for the `Environment`, `User` and `WorkingDirectory` options in the `[Service]`
-  section)
 
 Here are a few hints:
 
