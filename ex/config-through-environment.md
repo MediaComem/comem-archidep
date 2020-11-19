@@ -1,6 +1,6 @@
 # Configure a PHP application through environment variables
 
-This guide describes how to improve the configuration step of the [previous
+The goal of this exercise is to improve the configuration step of the [previous
 exercise](git-clone-deployment.md) by using environment variables instead of
 hardcoded configuration values.
 
@@ -42,6 +42,10 @@ $> cd /path/to/projects
 $> git clone https://github.com/MyUser/comem-archidep-php-todo-exercise.git
 ```
 
+> Make sure that you are cloning a repository that belongs to you, because you
+> are going to modify it. [Fork](https://guides.github.com/activities/forking/)
+> one of your colleagues' repositories if necessary.
+
 Modify the first few lines of `index.php` to take configuration values from the
 environment if available.
 
@@ -62,19 +66,22 @@ With this code, the `BASE_URL` variable will be equal to the value of the
 to `/` if the environment variable is not available. (This is accomplished with
 the [PHP shorthand ternary operator `?:`][php-shorthand-comparisons].)
 
-Do **not** set a default value for the password, as it is a bad practice to
-hardcode sensitive values.
-
-The full configuration section should look like this:
+Do **NOT** set a default value for the password, as it is a bad practice to
+hardcode sensitive values (as mentionned in the [The Twelve-Factor
+App](https://12factor.net/config)). The definition of the `DB_PASS` variable
+should look like this:
 
 ```php
-define('BASE_URL', getenv('TODOLIST_BASE_URL') ?: '/');
-define('DB_USER', getenv('TODOLIST_DB_USER') ?: 'todolist');
 define('DB_PASS', getenv('TODOLIST_DB_PASS'));
-define('DB_NAME', getenv('TODOLIST_DB_NAME') ?: 'todolist');
-define('DB_HOST', getenv('TODOLIST_DB_HOST') ?: '127.0.0.1');
-define('DB_PORT', getenv('TODOLIST_DB_PORT') ?: '3306');
 ```
+
+Make sure to update the definitions of all other variables (`DB_USER`,
+`DB_NAME`, `DB_HOST` and `DB_PORT`) to take their value from the environment,
+with an appropriate default value.
+
+> **Hint:** Regarding the default values, you may assume that for a typical
+> deployment, a MySQL database server is available on the host machine itself
+> (`127.0.0.1`) and exposed on the default MySQL port (`3306`).
 
 **Commit and push your changes** to the remote repository on GitHub.
 
@@ -84,39 +91,45 @@ define('DB_PORT', getenv('TODOLIST_DB_PORT') ?: '3306');
 
 ## Pull the latest version from the server
 
-**Connect to your server** and go into the cloned repository (from the previous exercise):
+**Connect to your server** and go into the cloned repository from the previous
+exercise.
+
+You probably made manual configuration changes during the previous exercise. You
+must discard them with the `git restore <file>` command. This will discard any
+uncommitted changes and restore the latest version of the file that was
+committed in the repository:
 
 ```bash
-$> cd ~/todolist-repo
+$> git restore index.php
 ```
 
-If you made any manual configuration changes during the previous exercise, discard them:
+You can now pull the latest version of the code from GitHub.
 
-```bash
-$> git checkout index.php
-```
-
-Pull the latest version from GitHub:
-
-```bash
-$> git pull origin master
-```
+> **Reminder:** The command to pull the latest changes is `git pull <remote>
+> <branch>`. If you do not remember the name(s) of your remote(s), you can list
+> them with the `git remote` command (or `git remote -v` to also see their
+> URLs).
 
 
 
 
 ## Run the PHP development server
 
-Still in the cloned repository, run a PHP development server on port 3000.
+Still in the cloned repository, run a PHP development server on port 3000. Note
+that this time you must now provide the appropriate configuration through
+environment variables:
 
-This time, add an environment variable to define the password when running it:
+* You must provide the `TODOLIST_DB_PASS` environment variable which has no
+  default value.
+* If the default values you have hardcoded for other variables are not suitable
+  for your server's environment, you must also provided the corresponding
+  environment variables with suitable values.
 
-```bash
-$> TODOLIST_DB_PASS="chAngeMeN0w!" php -S 0.0.0.0:3000
-```
+> **Reminder:** You can execute a command with additional environment variables
+> using the following syntax: `EXAMPLE="value" ANOTHER="one" command arg1 arg2`.
 
-You should be able to access the application in a browser at the correct IP
-address and port (e.g. `W.X.Y.Z:3000`).
+You (and everybody else) should be able to access the application in a browser
+at the correct IP address and port (e.g. `W.X.Y.Z:3000`) and it should work.
 
 
 

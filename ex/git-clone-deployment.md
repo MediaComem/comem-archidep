@@ -1,7 +1,8 @@
 # Deploy a PHP application with Git
 
-This guide describes how to deploy a PHP application much like the [previous exercise](sftp-deployment.md)
-but using Git to put the code on the server instead of SFTP.
+The goal of this exercise is to deploy a PHP application much like the [previous
+exercise](sftp-deployment.md), but using Git to put the code on the server
+instead of SFTP.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
