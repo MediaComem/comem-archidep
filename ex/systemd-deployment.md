@@ -128,10 +128,15 @@ Enable and start your new service.
 > For example, if the unit file is "todolist.service", the name of your service
 > is "todolist".
 
-Check that the service is running properly and there were no errors.
+Check that the service is running properly and that there were no errors.
 
 > You can also use the `systemctl` command to check the status of your service
-> with its `status` operation (instead of `enable` or `start`).
+> with its `status` operation (instead of `enable` or `start`). It should also
+> show you the last few lines of its logs.
+>
+> To see the complete logs, you can use the `sudo journalctl -u <service-name>`
+> command. Pay attention to the timestamps at the beginning of each line, which
+> will let you know *when* each event occurred.
 
 You (and everybody else) should be able to access the running todolist
 application in your browser on your server's IP address and port 3000 (e.g.
