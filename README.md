@@ -98,6 +98,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
     * [Video: architecture](https://cyberlearn.hes-so.ch/pluginfile.php/3438812/mod_resource/content/3/ArchiDep%202020-11-19%20part%201%20Architecture%20of%20the%20SFTP%20Deployment%20Exercise.mp4)
     * [Video: how to improve our deployment](https://cyberlearn.hes-so.ch/pluginfile.php/3438814/mod_resource/content/1/ArchiDep%202020-11-19%20part%202%20How%20To%20Improve%20Our%20Deployment.mp4)
     * [Diagram](ex/sftp-deployment.pdf)
+  * [**How to improve our basic deployment**](#how-to-improve-our-basic-deployment)
   * [Deploy a PHP application with Git](ex/git-clone-deployment.md) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3438842/mod_resource/content/1/ArchiDep%202020-11-19%20part%205%20Deploy%20a%20PHP%20application%20with%20Git.mp4), [diagram](ex/git-clone-deployment.pdf))
   * [Configure a PHP application through environment variables](ex/config-through-environment.md) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3438844/mod_resource/content/2/ArchiDep%202020-11-19%20part%206%20Configure%20a%20PHP%20application%20through%20environment%20variables.mp4), [diagram](ex/config-through-environment.pdf))
   * [Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md) [(diagram)](ex/systemd-deployment.pdf)
@@ -126,6 +127,39 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 * [System administration cheatsheet](SYSADMIN-CHEATSHEET.md)
 * [Git cheatsheet][git-cheatsheet]
 * [Final Test Matter](TEST-MATTER.md)
+
+
+
+## How to improve our basic deployment
+
+The basic SFTP deployment of the PHP TodoList has several flaws which we will
+fix during the rest of the course:
+
+* Transfering files manually through SFTP is slow and error-prone. We will use
+  **Git** to reliably transfer files and easily keep our deployment up-to-date
+  over time.
+* Hardcoding configuration is a bad practice. We will use **environment
+  variables** so that our application can be dynamically configured in any
+  environment without changing its source code.
+* Starting our application manually is not suitable for a production deployment.
+  We will use a **process manager** to manage the lifecycle of our application:
+  starting it automatically when the server boots, and restarting it
+  automatically if it crashes.
+* Accessing a web application through an IP address is not user-friendly. We
+  will obtain a domain and configure its DNS zone file so that our application
+  is accessible with a human-readable domain name.
+* *Missing improvement*
+* Using a non-standard port is not user-friendly either. We will run the
+  application on port 80 or 443 so that the end user does not have to specify
+  the port in the browser.
+* Our application is not secure as indicated by the browser, because it is
+  served over HTTP and not HTTPS. We will obtain a TLS/SSL certificate signed by
+  a trusted certificate authority so that our application can be served over
+  HTTPS and recognized as secure by browsers.
+* The PHP Development Server is not meant to deploy applications in production
+  environments. We will use the [FastCGI Process
+  Manager](https://www.php.net/manual/en/install.fpm.php) to make our
+  application more resilient and able to serve more clients at the same time.
 
 
 
