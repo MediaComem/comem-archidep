@@ -12,6 +12,7 @@ instead of SFTP.
 - [Clone the repository](#clone-the-repository)
 - [Update the configuration](#update-the-configuration)
 - [Run the PHP development server](#run-the-php-development-server)
+- [What have I done?](#what-have-i-done)
 - [End result](#end-result)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -91,6 +92,24 @@ $> php -S 0.0.0.0:3000
 
 You (and everybody else) should be able to access the application in a browser
 at the correct IP address and port (e.g. `W.X.Y.Z:3000`).
+
+
+
+
+
+## What have I done?
+
+You are now transfering code to your deployment environment (your server) using
+a version control tool (Git) instead of manually, as recommended in the
+[Codebase section of The Twelve-Factory App](https://12factor.net/codebase).
+Always deploying from the same codebase makes it less likely that you will make
+a mistake like:
+
+* Copying an outdated version of the codebase from the wrong directory.
+* Forgetting to upload some of the modified files when you upload them by hand.
+
+Using Git now also allows you to use Git commands like `git pull` to easily pull
+the latest changes from the repository.
 
 
 

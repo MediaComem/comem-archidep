@@ -17,6 +17,7 @@ using the PHP development server.
   - [Troubleshooting](#troubleshooting)
 - [Update the configuration](#update-the-configuration)
 - [Run the PHP development server](#run-the-php-development-server)
+- [What have I done?](#what-have-i-done)
 - [End result](#end-result)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -287,8 +288,20 @@ $> php -S 0.0.0.0:3000
 > notation that tells the PHP development server to accept connections on any IP
 > address.
 
-You should be able to access the application in a browser at your server's IP
-address and the correct port (e.g. `W.X.Y.Z:3000`).
+You (and everbody else) should be able to access the application in a browser at
+your server's IP address and the correct port (e.g. `W.X.Y.Z:3000`).
+
+
+
+
+
+## What have I done?
+
+You have **deployed** a PHP application to a server running in the Amazon Web
+Services cloud.
+
+The application is now publicly accessible by anyone on the Internet, at your
+instance's elastic IP address.
 
 
 
