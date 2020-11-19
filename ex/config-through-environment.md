@@ -28,6 +28,9 @@ exercise first.
 
 Stop your `php -S` command if it is still running.
 
+> **Reminder:** You can use Ctrl-C to stop any command currently running in your
+> terminal.
+
 
 
 
