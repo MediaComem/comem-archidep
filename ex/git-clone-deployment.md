@@ -46,7 +46,7 @@ Copy your repository's public HTTP URL.
 >
 > To clone the repository with the SSH URL from your server, you need to have
 > SSH public key authentication set up on your server the same way you did on
-> your locale machine. You would need to generate an SSH key pair on the server,
+> your local machine. You would need to generate an SSH key pair on the server,
 > and add its public key to your GitHub account (or to the repository's Deploy
 > Keys).
 
@@ -57,6 +57,10 @@ directory.
 > **Reminder:** The command to clone a Git repository is `git clone <url>
 > [<directory-name>]`. The directory name is optional, and defaults to the last
 > component of the URL's path without the ".git" extension.
+>
+> For example, if the clone URL is "https://github.com/bob/awesome-repo.git",
+> the directory will be named "awesome-repo" by default, unless you specify
+> another name with the `<directory-name>` argument.
 
 
 
@@ -68,9 +72,9 @@ Since your configuration is still hardcoded, you need to update the first few
 lines of `index.php` with the same configuration as for the previous exercise
 (`BASE_URL`, `DB_USER`, `DB_PASS`, etc).
 
-Go into the cloned repository on the server and edit it with `nano`, or edit it
-with FileZilla, as you prefer. Make sure the configuration is appropriate to
-your server's environment.
+Go into the cloned repository on the server and edit `index.php` with `nano`, or
+edit it on your machine and overwrite it with FileZilla, as you prefer. Make
+sure the configuration is appropriate to your server's environment.
 
 
 
