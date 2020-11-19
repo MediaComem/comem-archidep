@@ -37,15 +37,26 @@ Stop your `php -S` command if it is still running.
 Instead of manually uploading files through SFTP, you will connect to the server
 through SSH and clone the repository from GitHub.
 
-Copy your repository's public HTTP URL, and clone it (replace `MyUser`):
+Copy your repository's public HTTP URL.
 
-```bash
-$> cd
+![HTTP Clone URL](../images/github-http-clone-url.png)
 
-$> git clone https://github.com/MyUser/comem-archidep-php-todo-exercise.git todolist-repo
-```
+> **Why the HTTP and not the SSH URL?** As long as your repository is public, it
+> is simpler to use the HTTP URL to clone it, since it requires no credentials.
+>
+> To clone the repository with the SSH URL from your server, you need to have
+> SSH public key authentication set up on your server the same way you did on
+> your locale machine. You would need to generate an SSH key pair on the server,
+> and add its public key to your GitHub account (or to the repository's Deploy
+> Keys).
 
-Those commands will create a new `todolist-repo` directory in your home directory.
+While connected to your server, you need to clone the repository somewhere. For
+example, you could clone it to the `todolist-repo` directory in your home
+directory.
+
+> **Reminder:** The command to clone a Git repository is `git clone <url>
+> [<directory-name>]`. The directory name is optional, and defaults to the last
+> component of the URL's path without the ".git" extension.
 
 
 
@@ -53,36 +64,28 @@ Those commands will create a new `todolist-repo` directory in your home director
 
 ## Update the configuration
 
-Go into the cloned repository:
+Since your configuration is still hardcoded, you need to update the first few
+lines of `index.php` with the same configuration as for the previous exercise
+(`BASE_URL`, `DB_USER`, `DB_PASS`, etc).
 
-```bash
-$> cd ~/todolist-repo
-```
-
-Update the first few lines of `index.php` with the same configuration as for the previous exercise:
-
-```php
-define('BASE_URL', '/');
-define('DB_USER', 'todolist');
-define('DB_PASS', 'chAngeMeN0w!');
-define('DB_NAME', 'todolist');
-define('DB_HOST', '127.0.0.1');
-define('DB_PORT', '3306');
-```
+Go into the cloned repository on the server and edit it with `nano`, or edit it
+with FileZilla, as you prefer. Make sure the configuration is appropriate to
+your server's environment.
 
 
 
 
 ## Run the PHP development server
 
-Still in the cloned repository, run a PHP development server on port 3000:
+Run a PHP development server on port 3000 like you did during the previous
+exercise, but do it in the cloned repository this time:
 
 ```bash
 $> php -S 0.0.0.0:3000
 ```
 
-You should be able to access the application in a browser at the correct IP
-address and port (e.g. `W.X.Y.Z:3000`).
+You (and everybody else) should be able to access the application in a browser
+at the correct IP address and port (e.g. `W.X.Y.Z:3000`).
 
 
 
