@@ -142,7 +142,7 @@ fix during the rest of the course:
   up-to-date over time.
 * [Hardcoding configuration is a bad practice](https://12factor.net/config). We
   will use **environment variables** so that our application can be dynamically
-  configured in any environment without changing its source code.
+  configured and deployed in any environment without changing its source code.
 * Starting our application manually is not suitable for a production deployment.
   We will use a **process manager** to manage the lifecycle of our application:
   starting it automatically when the server boots, and restarting it
@@ -153,7 +153,7 @@ fix during the rest of the course:
 * *Missing improvement*
 * Using a non-standard port is not user-friendly either. We will run the
   application on **port 80 or 443** so that the end user does not have to
-  specify the port in the browser.
+  specify a port in the browser's address bar.
 * Our application is not secure as indicated by the browser, because it is
   served over HTTP and not HTTPS. We will obtain a **TLS/SSL certificate**
   signed by a trusted certificate authority so that our application can be
@@ -162,7 +162,7 @@ fix during the rest of the course:
   environments. We will use the [**FastCGI Process
   Manager**](https://www.php.net/manual/en/install.fpm.php) to perform a
   production-grade deployment, making our application more resilient and able to
-  serve more clients at the same time.
+  serve more clients concurrently.
 
 
 
