@@ -74,9 +74,9 @@ Since your configuration is still hardcoded, you need to update the first few
 lines of `index.php` with the same configuration as for the previous exercise
 (`BASE_URL`, `DB_USER`, `DB_PASS`, etc).
 
-Go into the cloned repository on the server and edit `index.php` with `nano`, or
-edit it on your machine and overwrite it with FileZilla, as you prefer. Make
-sure the configuration is appropriate to your server's environment.
+Go into the cloned repository on the server and edit `index.php` with nano or
+Vim, or edit it on your machine and overwrite it with FileZilla, as you prefer.
+Make sure the configuration is appropriate to your server's environment.
 
 
 
