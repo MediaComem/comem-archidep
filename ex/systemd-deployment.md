@@ -155,7 +155,8 @@ application in your browser on your server's IP address and port 3000 (e.g.
 
 If the status indicates a problem with your unit file, you should fix the
 problem in your unit file. Then, be sure to run `sudo systemctl daemon-reload`
-to take the changes into account.
+to take the changes into account. You may also need to run `sudo systemctl
+restart todolist` to restart your application.
 
 
 
