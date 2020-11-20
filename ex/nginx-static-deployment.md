@@ -1,6 +1,7 @@
 # Deploy a static site with nginx
 
-This guide describes how to deploy a static website with [nginx][nginx].
+The goal of this exercise is to deploy a static website (only HTML, JavaScript
+and CSS) with [nginx][nginx].
 
 It assumes that you are familiar with [reverse proxying][slides]
 and that you have done the [previous DNS configuration exercise][previous-ex],
@@ -23,15 +24,11 @@ where you configured an A record for your server.
 
 ## Put the static website on the server
 
-It is suggested that you use the provided [HTML, JavaScript and CSS clock][repo]
-, but you could deploy any other static HTML website.
+It is suggested that you use the provided [HTML, JavaScript and CSS
+clock][repo], but you could deploy any other static HTML website.
 
-**Connect to your server**, then clone the repository into your home directory:
-
-```bash
-$> cd
-$> git clone https://github.com/MediaComem/static-clock-website.git
-```
+**Connect to your server**, then clone the following repository into your home
+directory: https://github.com/MediaComem/static-clock-website
 
 Make sure the files are there:
 
@@ -44,24 +41,23 @@ index.html  README.md  script.js  style.css
 
 ## Create an nginx configuration file to serve the website
 
-Create an nginx configuration file for the website.
-You will name the file `clock` and put it in nginx's `/etc/nginx/sites-available` directory.
+Create an nginx configuration file for the website. You may name the file
+`clock` and put it in nginx's `/etc/nginx/sites-available` directory. You can do
+that with nano or Vim. You will need to use `sudo` as that directory is only
+writable by `root`.
 
-Use the following command to create and edit this file:
+Take the static configuration that was [presented during the
+course][nginx-static-conf] and put it in the file. You should modify it to:
 
-```bash
-$> sudo nano /etc/nginx/sites-available/clock
-```
-
-Take the static configuration that was [presented during the course][nginx-static-conf] and put it in the file.
-
-**You should use `john-doe.archidep.online` for the `server_name` directive (replacing `john-doe` with your username),
-and you should set the `root` directive to the correct directory (the `static-clock-website` repository in your home directory).**.
+* Use the subdomain you configured for your server during the previous DNS
+  exercise.
+* Serve the files in the repository you just cloned.
 
 ### Enable the nginx configuration
 
-By default, configurations stored in the `sites-available` directory are available, but not enabled.
-Indeed, if you check which directories are included, you will see that `sites-enabled` is there, but not `sites-available`:
+By default, configurations stored in the `sites-available` directory are
+available, but not enabled. Indeed, if you check which directories are included,
+you will see that `sites-enabled` is there, but not `sites-available`:
 
 ```bash
 $> cat /etc/nginx/nginx.conf|grep include
@@ -71,8 +67,9 @@ include /etc/nginx/conf.d/*.conf;
 include /etc/nginx/sites-enabled/*;
 ```
 
-The convention is to create a symbolic link in `sites-enabled` to the actual configuration file in `sites-available`.
-This allows you to work on your configuration for a while before enabling it.
+The convention is to create a symbolic link in `sites-enabled` to the actual
+configuration file in `sites-available`. This allows you to work on your
+configuration for a while before enabling it.
 
 Enable the `clock` configuration by creating the correct symbolic link:
 
@@ -91,9 +88,9 @@ lrwxrwxrwx 1 root root 32 Jan 10 17:07 /etc/nginx/sites-enabled/clock -> /etc/ng
 
 Nginx does not automatically reload its configuration files when they change.
 
-First, you should check whether the changes you have made are valid.
-The `nginx -t` command loads all the nginx configuration (including files added with `include`)
-and checks that they are valid:
+First, you should check whether the changes you have made are valid. The `nginx
+-t` command loads all the nginx configuration (including files added with
+`include`) and checks that they are valid:
 
 ```bash
 $> sudo nginx -t
@@ -103,32 +100,40 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 
 > If an error occurs here, you may have made a mistake in the configuration.
 >
-> If you get an error about `server_names_hash_bucket_size`,
-> it may be because your domain name (the value of your `server_name` directive)
-> is too long for nginx's default settings.
+> If you get an error about `server_names_hash_bucket_size`, it may be because
+> your domain name (the value of your `server_name` directive) is too long for
+> nginx's default settings.
 >
-> In that case, edit the main nginx configuration with `sudo nano /etc/nginx/nginx.conf`
-> and add the following line **in the `http` section**:
+> In that case, edit the main nginx configuration with `sudo nano
+> /etc/nginx/nginx.conf` and add the following line **in the `http` section**:
 >
 >     server_names_hash_bucket_size 256;
 
-Nginx reloads its configuration [when it receives the `HUP` signal][nginx-signals].
-You could find the process ID of the `nginx` master process and send the signal with `kill -s HUP <ID>`.
+Nginx reloads its configuration [when it receives the `HUP`
+signal][nginx-signals]. You could find the process ID of the `nginx` master
+process and send the signal with `kill -s HUP <ID>`.
 
-However, the `nginx` command helpfully allows you to do that in a much simpler way:
+However, the `nginx` command helpfully allows you to do that in a much simpler
+way:
 
 ```bash
 $> sudo nginx -s reload
 ```
 
-Nginx should have reloaded its configuration.
+> You can also do the same thing through systemd with the following command:
+> `sudo systemctl nginx reload`. This will also ask nginx to reload its
+> configuration.
+
+If the command indicates no errors, nginx should have reloaded its
+configuration.
 
 
 
 ## See it in action
 
-Visit http://john-doe.archidep.online (replacing `john-doe` with your username)
-and you should see the website working.
+Visit the subdomain of your server, e.g. http://john-doe.archidep.online
+(replacing `john-doe` with your username) and you should see the website
+working.
 
 
 
