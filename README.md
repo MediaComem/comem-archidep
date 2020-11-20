@@ -109,7 +109,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
     * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3438844/mod_resource/content/3/ArchiDep%202020-11-19%20part%206%20Configure%20a%20PHP%20application%20through%20environment%20variables.mp4)
     * [Video: solution](https://cyberlearn.hes-so.ch/pluginfile.php/3439904/mod_resource/content/1/ArchiDep%202020-11-20%20part%202%20Solution%20-%20Configure%20a%20PHP%20Application%20through%20Environment%20Variables.mp4)
     * [Video: architecture](https://cyberlearn.hes-so.ch/pluginfile.php/3439911/mod_resource/content/1/ArchiDep%202020-11-20%20part%203%20Architecture%20of%20the%20PHP%20TodoList%20Application%20with%20Git%20_%20Environment%20Variables.mp4)
-    * [Diagram](ex/config-through-environment.pdf))
+    * [Diagram](ex/config-through-environment.pdf)
   * [Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md)
     * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3439921/mod_resource/content/1/ArchiDep%202020-11-20%20part%206%20Manage%20a%20PHP%20Application%20with%20Systemd%20as%20a%20Process%20Manager.mp4)
     * [Diagram](ex/systemd-deployment.pdf)
