@@ -54,7 +54,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
     * [Video: streams, pipelines & signals](https://cyberlearn.hes-so.ch/pluginfile.php/3405429/mod_resource/content/1/ArchiDep%202020-10-16%20part%203%20Unix%20Processes%20B.mp4)
   * [Unix networking](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3425344/mod_resource/content/1/ArchiDep%202020-11-06%20part%203%20Unix%20Networking.mp4))
   * [APT](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3425345/mod_resource/content/1/ArchiDep%202020-11-06%20part%204%20APT.mp4))
-* [How to improve our basic deployment](#how-to-improve-our-basic-deployment)
+* [How to improve our basic deployment](#how-to-improve-our-basic-deployment) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3438814/mod_resource/content/1/ArchiDep%202020-11-19%20part%202%20How%20To%20Improve%20Our%20Deployment.mp4))
 * Advanced deployment
   * [Twelve-factor app][12factor] ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3438838/mod_resource/content/1/ArchiDep%202020-11-19%20part%203%20The%20Twelve-Factor%20App.mp4))
   * [Unix environment variables](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3438841/mod_resource/content/1/ArchiDep%202020-11-19%20part%204%20Unix%20Environment%20Variables.mp4))
@@ -98,7 +98,6 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Deploy a PHP application with SFTP](ex/sftp-deployment.md)
     * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3425348/mod_resource/content/2/ArchiDep%202020-11-06%20part%205%20Deploy%20a%20PHP%20Application%20with%20SFTP.mp4)
     * [Video: architecture](https://cyberlearn.hes-so.ch/pluginfile.php/3438812/mod_resource/content/3/ArchiDep%202020-11-19%20part%201%20Architecture%20of%20the%20SFTP%20Deployment%20Exercise.mp4)
-    * [Video: how to improve our deployment](https://cyberlearn.hes-so.ch/pluginfile.php/3438814/mod_resource/content/1/ArchiDep%202020-11-19%20part%202%20How%20To%20Improve%20Our%20Deployment.mp4)
     * [Diagram](ex/sftp-deployment.pdf)
   * [Deploy a PHP application with Git](ex/git-clone-deployment.md) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3438842/mod_resource/content/1/ArchiDep%202020-11-19%20part%205%20Deploy%20a%20PHP%20application%20with%20Git.mp4), [diagram](ex/git-clone-deployment.pdf))
   * [Configure a PHP application through environment variables](ex/config-through-environment.md) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3438844/mod_resource/content/2/ArchiDep%202020-11-19%20part%206%20Configure%20a%20PHP%20application%20through%20environment%20variables.mp4), [diagram](ex/config-through-environment.pdf))
