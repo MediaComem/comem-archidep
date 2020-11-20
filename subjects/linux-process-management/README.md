@@ -169,6 +169,7 @@ Command                        | Description
 
 * [Systemd Unit Configuration][systemd-unit]
 * [Systemd Service Configuration][systemd-service]
+* [Systemd Execution Environment Configuration][systemd-exec]
 * [Red Hat Enterprise Linux - System Administrator's Guide - Managing Services With Systemd](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/chap-managing_services_with_systemd)
 * [Systemd journald Service][systemd-journald]
 
@@ -190,6 +191,7 @@ Command                        | Description
 [python]: https://www.python.org/
 [supervisord]: http://supervisord.org/
 [systemd]: https://en.wikipedia.org/wiki/Systemd
+[systemd-exec]: https://www.freedesktop.org/software/systemd/man/systemd.exec.html
 [systemd-journald]: https://www.freedesktop.org/software/systemd/man/systemd-journald.service.html
 [systemd-service]: https://www.freedesktop.org/software/systemd/man/systemd.service.html
 [systemd-service-options]: https://www.freedesktop.org/software/systemd/man/systemd.service.html#Options
