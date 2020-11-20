@@ -35,7 +35,7 @@
 
   <body>
     <div class="container">
-<h1 id="comem-architecture--deployment-course">COMEM+ Architecture &amp; Deployment course</h1>
+<h1 id="comem-architecture-deployment-course">COMEM+ Architecture &amp; Deployment course</h1>
 <p>In this course you will learn:</p>
 <ul>
 <li>How to deploy applications on a Linux server on an IaaS platform (Amazon Web Services).</li>
@@ -50,55 +50,101 @@
 <p>This course is a <a href="http://www.heig-vd.ch/comem">COMEM+</a> <a href="https://github.com/MediaComem/comem-webdev">web development course</a> taught at <a href="http://www.heig-vd.ch">HEIG-VD</a>.</p>
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-
 <ul>
 <li><a href="#plan">Plan</a></li>
 <li><a href="#what-you-will-need">What you will need</a></li>
 <li><a href="#exercises">Exercises</a></li>
 <li><a href="#useful-links">Useful links</a></li>
+<li><a href="#how-to-improve-our-basic-deployment">How to improve our basic deployment</a></li>
 <li><a href="#references">References</a></li>
 </ul>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-
-
 <h2 id="plan">Plan</h2>
 <ul>
 <li>Introduction<ul>
 <li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme">Command line</a></li>
-<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme">Secure Shell (SSH)</a> - (<a href="https://cyberlearn.hes-so.ch/pluginfile.php/3377846/mod_resource/content/1/ArchiDep%202020-09-18%20SSH.mp4">video</a>)</li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme">Secure Shell (SSH)</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3377846/mod_resource/content/1/ArchiDep%202020-09-18%20SSH.mp4">Video</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Version control<ul>
-<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git?home=MediaComem%2Fcomem-archidep%23readme">Version control with Git</a> - (<a href="https://cyberlearn.hes-so.ch/pluginfile.php/3385742/mod_resource/content/2/ArchiDep%202020-09-25%20part%201%20Git%20Introduction.mp4">video</a>)</li>
-<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme">Git branching</a> - (<a href="https://cyberlearn.hes-so.ch/pluginfile.php/3385746/mod_resource/content/1/ArchiDep%202020-09-25%20part%202%20Git%20Branching.mp4">video</a>)</li>
-<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme">Collaborating with Git</a> - (<a href="https://cyberlearn.hes-so.ch/pluginfile.php/3392793/mod_resource/content/1/ArchiDep%202020-10-02%20part%201%20Collaborating%20with%20Git.mp4">video</a>)</li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git?home=MediaComem%2Fcomem-archidep%23readme">Version control with Git</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3385742/mod_resource/content/2/ArchiDep%202020-09-25%20part%201%20Git%20Introduction.mp4">Video</a></li>
+</ul>
+</li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme">Git branching</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3385746/mod_resource/content/1/ArchiDep%202020-09-25%20part%202%20Git%20Branching.mp4">Video</a></li>
+</ul>
+</li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme">Collaborating with Git</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3392793/mod_resource/content/1/ArchiDep%202020-10-02%20part%201%20Collaborating%20with%20Git.mp4">Video</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Security<ul>
 <li><a href="https://www.owasp.org">Open Web Application Security Project</a></li>
-<li><a href="https://owasp.org/www-project-top-ten/">OWASP Top 10 - The Ten Most Critical Web Application Security Risks</a> - (<a href="https://cyberlearn.hes-so.ch/pluginfile.php/3400902/mod_resource/content/1/ArchiDep%202020-10-09%20part%201%20OWASP%20Top%20Ten.mp4">video</a>)<ul>
-<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3400906/mod_resource/content/1/ArchiDep%202020-10-09%20part%202%20PHP%20TodoList%20Application%20Injection%20Vulnerability.mp4">Video: PHP TodoList Injection Vulnerability</a></li>
-<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3400908/mod_resource/content/1/ArchiDep%202020-10-09%20part%203%20PHP%20TodoList%20Application%20XSS%20Vulnerability.mp4">Video: PHP TodoList XSS Vulnerability</a></li>
+<li><a href="https://owasp.org/www-project-top-ten/">OWASP Top 10 - The Ten Most Critical Web Application Security Risks</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3400902/mod_resource/content/1/ArchiDep%202020-10-09%20part%201%20OWASP%20Top%20Ten.mp4">Video: OWASP Top 10 &amp; exercise</a></li>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3400906/mod_resource/content/1/ArchiDep%202020-10-09%20part%202%20PHP%20TodoList%20Application%20Injection%20Vulnerability.mp4">Video: PHP TodoList injection vulnerability</a></li>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3400908/mod_resource/content/1/ArchiDep%202020-10-09%20part%203%20PHP%20TodoList%20Application%20XSS%20Vulnerability.mp4">Video: PHP TodoList XSS vulnerability</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li>Basic deployment<ul>
-<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme">Cloud computing</a> - (<a href="https://cyberlearn.hes-so.ch/pluginfile.php/3400913/mod_resource/content/1/ArchiDep%202020-10-09%20part%204%20Cloud%20Computing.mp4">video</a>)</li>
-<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme">Linux</a> - (<a href="https://cyberlearn.hes-so.ch/pluginfile.php/3400914/mod_resource/content/1/ArchiDep%202020-10-09%20part%205%20Linux.mp4">video</a>)</li>
-<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme">Unix basics &amp; administration</a> - (<a href="https://cyberlearn.hes-so.ch/pluginfile.php/3400918/mod_resource/content/1/ArchiDep%202020-10-09%20part%206%20Unix%20Administration.mp4">video</a>)</li>
-<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme">Unix processes</a></li>
-<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme">Unix networking</a></li>
-<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme">APT</a></li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme">Cloud computing</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3400913/mod_resource/content/1/ArchiDep%202020-10-09%20part%204%20Cloud%20Computing.mp4">Video</a></li>
+</ul>
+</li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme">Linux</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3400914/mod_resource/content/1/ArchiDep%202020-10-09%20part%205%20Linux.mp4">Video</a></li>
+</ul>
+</li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme">Unix basics &amp; administration</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3400918/mod_resource/content/1/ArchiDep%202020-10-09%20part%206%20Unix%20Administration.mp4">Video: file system, users, permissions &amp; administrative access</a></li>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3405423/mod_resource/content/1/ArchiDep%202020-10-16%20part%201%20Unix%20Administration.mp4">Video: user management &amp; permission management</a></li>
+</ul>
+</li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme">Unix processes</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3405425/mod_resource/content/1/ArchiDep%202020-10-16%20part%202%20Unix%20Processes%20A.mp4">Video: process IDs &amp; exit statuses</a></li>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3405429/mod_resource/content/1/ArchiDep%202020-10-16%20part%203%20Unix%20Processes%20B.mp4">Video: streams, pipelines &amp; signals</a></li>
+</ul>
+</li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme">Unix networking</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3425344/mod_resource/content/1/ArchiDep%202020-11-06%20part%203%20Unix%20Networking.mp4">Video</a></li>
+</ul>
+</li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme">APT</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3425345/mod_resource/content/1/ArchiDep%202020-11-06%20part%204%20APT.mp4">Video</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#how-to-improve-our-basic-deployment">How to improve our basic deployment</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3438814/mod_resource/content/1/ArchiDep%202020-11-19%20part%202%20How%20To%20Improve%20Our%20Deployment.mp4">Video 1</a></li>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3439914/mod_resource/content/1/ArchiDep%202020-11-20%20part%204%20How%20to%20further%20Improve%20our%20Deployment.mp4">Video 2</a></li>
 </ul>
 </li>
 <li>Advanced deployment<ul>
-<li><a href="https://12factor.net">Twelve-factor app</a></li>
-<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme">Unix environment variables</a></li>
-<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme">Linux process management</a></li>
-<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme">Domain Name System (DNS)</a></li>
+<li><a href="https://12factor.net">Twelve-factor app</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3438838/mod_resource/content/2/ArchiDep%202020-11-19%20part%203%20The%20Twelve-Factor%20App.mp4">Video</a></li>
+</ul>
+</li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme">Unix environment variables</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3438841/mod_resource/content/2/ArchiDep%202020-11-19%20part%204%20Unix%20Environment%20Variables.mp4">Video</a></li>
+</ul>
+</li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme">Linux process management</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3439918/mod_resource/content/2/ArchiDep%202020-11-20%20part%205%20Linux%20Process%20Management.mp4">Video</a></li>
+</ul>
+</li>
+<li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme">Domain Name System (DNS)</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3440023/mod_resource/content/1/ArchiDep%202020-11-20%20part%207%20Domain%20Name%20System%20%28DNS%29.mp4">Video</a></li>
+</ul>
+</li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme">Reverse proxying</a></li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2020-2021/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme">TLS/SSL certificates</a></li>
 </ul>
@@ -130,31 +176,74 @@
 <h2 id="exercises">Exercises</h2>
 <ul>
 <li><strong>Version control</strong><ul>
-<li><a href="https://github.com/MediaComem/comem-archidep-php-todo-exercise">Collaborative exercise</a> (<strong>graded</strong>, <a href="https://cyberlearn.hes-so.ch/pluginfile.php/3392853/mod_resource/content/1/ArchiDep%202020-10-02%20part%202%20Collaborative%20Git%20Exercise%20A.mp4">video 1</a>, <a href="https://cyberlearn.hes-so.ch/pluginfile.php/3392856/mod_resource/content/1/ArchiDep%202020-10-02%20part%203%20Collaborative%20Git%20Exercise%20B.mp4">video 2</a>)</li>
+<li><a href="https://github.com/MediaComem/comem-archidep-php-todo-exercise">Collaborative exercise</a> (<strong>graded</strong>)<ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3392853/mod_resource/content/1/ArchiDep%202020-10-02%20part%202%20Collaborative%20Git%20Exercise%20A.mp4">Video 1</a></li>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3392856/mod_resource/content/1/ArchiDep%202020-10-02%20part%203%20Collaborative%20Git%20Exercise%20B.mp4">Video 2</a></li>
+</ul>
+</li>
 <li><a href="ex/git-clone-from-server.md">Clone a repository from a server</a></li>
 <li><a href="ex/git-push-to-server.md">Push a repository to a server</a></li>
 </ul>
 </li>
 <li><strong>Unix</strong><ul>
-<li><a href="ex/unix-permissions.md">Permissions</a></li>
-<li><a href="ex/unix-pipeline.md">Pipeline</a></li>
+<li><a href="ex/unix-permissions.md">Permissions</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3425330/mod_resource/content/2/ArchiDep%202020-11-06%20part%201%20Unix%20Permissions%20Exercise.mp4">Video: instructions</a></li>
+<li><a href="ex/unix-permissions-solutions.md">Solutions</a></li>
+</ul>
+</li>
+<li><a href="ex/unix-pipeline.md">Pipeline</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3425339/mod_resource/content/1/ArchiDep%202020-11-06%20part%202%20Unix%20Pipeline%20Exercise.mp4">Video</a>, <a href="ex/unix-pipeline-solutions.md">solutions</a>)</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>Basic deployment</strong><ul>
-<li><a href="ex/aws-setup.md">Run your own virtual server on Amazon Web Services</a> <a href="ex/aws-setup.pdf">(diagram)</a></li>
-<li><a href="ex/sftp-deployment.md">Deploy a PHP application with SFTP</a> <a href="ex/sftp-deployment.pdf">(diagram)</a></li>
-<li><a href="ex/git-clone-deployment.md">Deploy a PHP application with Git</a> <a href="ex/git-clone-deployment.pdf">(diagram)</a></li>
-<li><a href="ex/config-through-environment.md">Configure a PHP application through environment variables</a> <a href="ex/config-through-environment.pdf">(diagram)</a></li>
-<li><a href="ex/systemd-deployment.md">Manage a PHP application with systemd as a Process Manager</a> <a href="ex/systemd-deployment.pdf">(diagram)</a></li>
-<li><a href="ex/dns-configuration.md">Configure a domain name</a></li>
+<li><a href="ex/aws-setup.md">Run your own virtual server on Amazon Web Services</a><ul>
+<li><a href="ex/aws-setup.pdf">Diagram</a></li>
+</ul>
+</li>
+<li><a href="ex/sftp-deployment.md">Deploy a PHP application with SFTP</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3425348/mod_resource/content/2/ArchiDep%202020-11-06%20part%205%20Deploy%20a%20PHP%20Application%20with%20SFTP.mp4">Video: instructions</a></li>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3438812/mod_resource/content/3/ArchiDep%202020-11-19%20part%201%20Architecture%20of%20the%20SFTP%20Deployment%20Exercise.mp4">Video: architecture</a></li>
+<li><a href="ex/sftp-deployment.pdf">Diagram</a></li>
+</ul>
+</li>
+<li><a href="ex/git-clone-deployment.md">Deploy a PHP application with Git</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3438842/mod_resource/content/2/ArchiDep%202020-11-19%20part%205%20Deploy%20a%20PHP%20application%20with%20Git.mp4">Video: instructions</a></li>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3439901/mod_resource/content/2/ArchiDep%202020-11-20%20part%201%20Solution%20-%20Deploy%20a%20PHP%20Application%20with%20Git.mp4">Video: solution</a></li>
+<li><a href="ex/git-clone-deployment.pdf">Diagram</a></li>
+</ul>
+</li>
+<li><a href="ex/config-through-environment.md">Configure a PHP application through environment variables</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3438844/mod_resource/content/3/ArchiDep%202020-11-19%20part%206%20Configure%20a%20PHP%20application%20through%20environment%20variables.mp4">Video: instructions</a></li>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3439904/mod_resource/content/1/ArchiDep%202020-11-20%20part%202%20Solution%20-%20Configure%20a%20PHP%20Application%20through%20Environment%20Variables.mp4">Video: solution</a></li>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3439911/mod_resource/content/1/ArchiDep%202020-11-20%20part%203%20Architecture%20of%20the%20PHP%20TodoList%20Application%20with%20Git%20_%20Environment%20Variables.mp4">Video: architecture</a></li>
+<li><a href="ex/config-through-environment.pdf">Diagram</a></li>
+</ul>
+</li>
+<li><a href="ex/systemd-deployment.md">Manage a PHP application with systemd as a Process Manager</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3439921/mod_resource/content/1/ArchiDep%202020-11-20%20part%206%20Manage%20a%20PHP%20Application%20with%20Systemd%20as%20a%20Process%20Manager.mp4">Video: instructions</a></li>
+<li><a href="ex/systemd-deployment.pdf">Diagram</a></li>
+</ul>
+</li>
+<li><a href="ex/dns-configuration.md">Configure a domain name</a><ul>
+<li><a href="https://cyberlearn.hes-so.ch/pluginfile.php/3440024/mod_resource/content/1/ArchiDep%202020-11-20%20part%208%20Configure%20a%20Domain%20Name.mp4">Video: instructions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>Advanced deployment</strong><ul>
 <li><a href="ex/nginx-static-deployment.md">Deploy a static site with nginx</a> <a href="ex/nginx-static-deployment.pdf">(diagram)</a></li>
-<li><a href="ex/nginx-php-fpm-deployment.md">Deploy a PHP application with nginx and the FastCGI process manager</a> <a href="ex/nginx-php-fpm-deployment.pdf">(diagram)</a></li>
-<li><a href="ex/git-automated-deployment.md">Set up an automated deployment with Git hooks</a> <a href="ex/git-automated-deployment.pdf">(diagram)</a></li>
-<li>Deploy a web application with a database (<strong>graded</strong>), <em>not yet available</em></li>
+<li><a href="ex/nginx-php-fpm-deployment.md">Deploy a PHP application with nginx and the FastCGI process manager</a><ul>
+<li><a href="ex/nginx-php-fpm-deployment.pdf">Diagram</a></li>
+</ul>
+</li>
 <li><a href="ex/certbot-deployment.md">Provision a Let&#39;s Encrypt TLS certificate with Certbot</a></li>
+<li><a href="ex/git-automated-deployment.md">Set up an automated deployment with Git hooks</a><ul>
+<li><a href="ex/git-automated-deployment.pdf">Diagram</a></li>
+</ul>
+</li>
+<li>Deploy a web application with a database (<strong>graded</strong>), <em>not yet available</em></li>
 <li><em>Extra exercises</em><ul>
 <li><a href="ex/one-chat-room-deployment.md">Deploy the One Chat Room web application (Node.js &amp; MongoDB)</a></li>
 <li><a href="ex/big-browser-deployment.md">Deploy the Big Browser web application (Node.js &amp; Redis)</a></li>
@@ -177,6 +266,42 @@
 <li><a href="SYSADMIN-CHEATSHEET.md">System administration cheatsheet</a></li>
 <li><a href="https://github.com/MediaComem/comem-webdev/blob/master/GIT-CHEATSHEET.md">Git cheatsheet</a></li>
 <li><a href="TEST-MATTER.md">Final Test Matter</a></li>
+</ul>
+<h2 id="how-to-improve-our-basic-deployment">How to improve our basic deployment</h2>
+<p>The basic SFTP deployment of the PHP TodoList has several flaws which we will
+fix during the rest of the course:</p>
+<ul>
+<li>Transfering files manually through SFTP is slow and error-prone. We will use
+<strong>Git</strong> to reliably transfer files <a href="https://12factor.net/codebase">from our central
+codebase</a> and easily keep our deployment
+up-to-date over time.</li>
+<li><a href="https://12factor.net/config">Hardcoding configuration is a bad practice</a>. We
+will use <strong>environment variables</strong> so that our application can be dynamically
+configured and deployed in any environment without changing its source code.</li>
+<li>Starting our application manually is not suitable for a production deployment.
+We will use a <strong>process manager</strong> to manage the lifecycle of our application:
+starting it automatically when the server boots, and restarting it
+automatically if it crashes.</li>
+<li>Accessing a web application through an IP address is not user-friendly. We
+will obtain a domain and configure its DNS zone file so that our application
+is accessible with a human-readable <strong>domain name</strong>.</li>
+<li>Using a non-standard port is not user-friendly either. We will run the
+application on <strong>port 80 or 443</strong> so that the end user does not have to
+specify a port in the browser&#39;s address bar.</li>
+<li>Running our application server directly on port 80 or 443 will cause a
+problem: only one process can listen on a given port at the same time. We need
+another tool to support <strong>multiple production deployments on the same
+server</strong>. That will be the job of a reverse proxy like
+<a href="https://httpd.apache.org">Apache</a> or <a href="https://www.nginx.com">nginx</a>.</li>
+<li>Our application is not secure as indicated by the browser, because it is
+served over HTTP and not HTTPS. We will obtain a <strong>TLS/SSL certificate</strong>
+signed by a trusted certificate authority so that our application can be
+served over HTTPS and recognized as secure by browsers.</li>
+<li>The PHP Development Server is not meant to deploy applications in production
+environments. We will use the <a href="https://www.php.net/manual/en/install.fpm.php"><strong>FastCGI Process
+Manager</strong></a> to perform a
+production-grade deployment, making our application more resilient and able to
+serve more clients concurrently.</li>
 </ul>
 <h2 id="references">References</h2>
 <p>These are the main references used throughout this course. More detailed and
@@ -229,7 +354,7 @@ and related articles:</p>
 <li><a href="https://en.wikipedia.org/wiki/Cloud_computing">Cloud Computing</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Internet_Protocol">Internet Protocol</a><ul>
 <li><a href="https://en.wikipedia.org/wiki/IP_address">IP Address</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Port_(computer_networking)">Port (Computer Networking)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Port_(computer_networking">Port (Computer Networking)</a>)</li>
 </ul>
 </li>
 <li><a href="https://en.wikipedia.org/wiki/Domain_Name_System">Domain Name System</a></li>
