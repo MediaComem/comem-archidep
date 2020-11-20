@@ -32,11 +32,15 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 
 * Introduction
   * [Command line](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme) - ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3377846/mod_resource/content/1/ArchiDep%202020-09-18%20SSH.mp4))
+  * [Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3377846/mod_resource/content/1/ArchiDep%202020-09-18%20SSH.mp4)
 * Version control
-  * [Version control with Git](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git?home=MediaComem%2Fcomem-archidep%23readme) - ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3385742/mod_resource/content/2/ArchiDep%202020-09-25%20part%201%20Git%20Introduction.mp4))
-  * [Git branching](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme) - ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3385746/mod_resource/content/1/ArchiDep%202020-09-25%20part%202%20Git%20Branching.mp4))
-  * [Collaborating with Git](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme) - ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3392793/mod_resource/content/1/ArchiDep%202020-10-02%20part%201%20Collaborating%20with%20Git.mp4))
+  * [Version control with Git](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3385742/mod_resource/content/2/ArchiDep%202020-09-25%20part%201%20Git%20Introduction.mp4)
+  * [Git branching](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3385746/mod_resource/content/1/ArchiDep%202020-09-25%20part%202%20Git%20Branching.mp4)
+  * [Collaborating with Git](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3392793/mod_resource/content/1/ArchiDep%202020-10-02%20part%201%20Collaborating%20with%20Git.mp4)
 * Security
   * [Open Web Application Security Project][owasp]
   * [OWASP Top 10 - The Ten Most Critical Web Application Security Risks][owasp-top10]
@@ -44,24 +48,32 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
     * [Video: PHP TodoList injection vulnerability](https://cyberlearn.hes-so.ch/pluginfile.php/3400906/mod_resource/content/1/ArchiDep%202020-10-09%20part%202%20PHP%20TodoList%20Application%20Injection%20Vulnerability.mp4)
     * [Video: PHP TodoList XSS vulnerability](https://cyberlearn.hes-so.ch/pluginfile.php/3400908/mod_resource/content/1/ArchiDep%202020-10-09%20part%203%20PHP%20TodoList%20Application%20XSS%20Vulnerability.mp4)
 * Basic deployment
-  * [Cloud computing](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme) - ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3400913/mod_resource/content/1/ArchiDep%202020-10-09%20part%204%20Cloud%20Computing.mp4))
-  * [Linux](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme) - ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3400914/mod_resource/content/1/ArchiDep%202020-10-09%20part%205%20Linux.mp4))
+  * [Cloud computing](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3400913/mod_resource/content/1/ArchiDep%202020-10-09%20part%204%20Cloud%20Computing.mp4)
+  * [Linux](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3400914/mod_resource/content/1/ArchiDep%202020-10-09%20part%205%20Linux.mp4)
   * [Unix basics & administration](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
     * [Video: file system, users, permissions & administrative access](https://cyberlearn.hes-so.ch/pluginfile.php/3400918/mod_resource/content/1/ArchiDep%202020-10-09%20part%206%20Unix%20Administration.mp4)
     * [Video: user management & permission management](https://cyberlearn.hes-so.ch/pluginfile.php/3405423/mod_resource/content/1/ArchiDep%202020-10-16%20part%201%20Unix%20Administration.mp4)
   * [Unix processes](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
     * [Video: process IDs & exit statuses](https://cyberlearn.hes-so.ch/pluginfile.php/3405425/mod_resource/content/1/ArchiDep%202020-10-16%20part%202%20Unix%20Processes%20A.mp4)
     * [Video: streams, pipelines & signals](https://cyberlearn.hes-so.ch/pluginfile.php/3405429/mod_resource/content/1/ArchiDep%202020-10-16%20part%203%20Unix%20Processes%20B.mp4)
-  * [Unix networking](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3425344/mod_resource/content/1/ArchiDep%202020-11-06%20part%203%20Unix%20Networking.mp4))
-  * [APT](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3425345/mod_resource/content/1/ArchiDep%202020-11-06%20part%204%20APT.mp4))
+  * [Unix networking](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3425344/mod_resource/content/1/ArchiDep%202020-11-06%20part%203%20Unix%20Networking.mp4)
+  * [APT](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3425345/mod_resource/content/1/ArchiDep%202020-11-06%20part%204%20APT.mp4)
 * [How to improve our basic deployment](#how-to-improve-our-basic-deployment)
   * [Video 1](https://cyberlearn.hes-so.ch/pluginfile.php/3438814/mod_resource/content/1/ArchiDep%202020-11-19%20part%202%20How%20To%20Improve%20Our%20Deployment.mp4)
   * [Video 2](https://cyberlearn.hes-so.ch/pluginfile.php/3439914/mod_resource/content/1/ArchiDep%202020-11-20%20part%204%20How%20to%20further%20Improve%20our%20Deployment.mp4)
 * Advanced deployment
-  * [Twelve-factor app][12factor] ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3438838/mod_resource/content/2/ArchiDep%202020-11-19%20part%203%20The%20Twelve-Factor%20App.mp4))
-  * [Unix environment variables](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3438841/mod_resource/content/2/ArchiDep%202020-11-19%20part%204%20Unix%20Environment%20Variables.mp4))
-  * [Linux process management](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3439918/mod_resource/content/2/ArchiDep%202020-11-20%20part%205%20Linux%20Process%20Management.mp4))
-  * [Domain Name System (DNS)](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3440023/mod_resource/content/1/ArchiDep%202020-11-20%20part%207%20Domain%20Name%20System%20%28DNS%29.mp4))
+  * [Twelve-factor app][12factor]
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3438838/mod_resource/content/2/ArchiDep%202020-11-19%20part%203%20The%20Twelve-Factor%20App.mp4)
+  * [Unix environment variables](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3438841/mod_resource/content/2/ArchiDep%202020-11-19%20part%204%20Unix%20Environment%20Variables.mp4)
+  * [Linux process management](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3439918/mod_resource/content/2/ArchiDep%202020-11-20%20part%205%20Linux%20Process%20Management.mp4)
+  * [Domain Name System (DNS)](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3440023/mod_resource/content/1/ArchiDep%202020-11-20%20part%207%20Domain%20Name%20System%20%28DNS%29.mp4)
   * [Reverse proxying](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
   * [TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
 * Automated deployment
@@ -89,14 +101,20 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 ## Exercises
 
 * **Version control**
-  * [Collaborative exercise](https://github.com/MediaComem/comem-archidep-php-todo-exercise) (**graded**, [video 1](https://cyberlearn.hes-so.ch/pluginfile.php/3392853/mod_resource/content/1/ArchiDep%202020-10-02%20part%202%20Collaborative%20Git%20Exercise%20A.mp4), [video 2](https://cyberlearn.hes-so.ch/pluginfile.php/3392856/mod_resource/content/1/ArchiDep%202020-10-02%20part%203%20Collaborative%20Git%20Exercise%20B.mp4))
+  * [Collaborative exercise](https://github.com/MediaComem/comem-archidep-php-todo-exercise) (**graded**)
+    * [Video 1](https://cyberlearn.hes-so.ch/pluginfile.php/3392853/mod_resource/content/1/ArchiDep%202020-10-02%20part%202%20Collaborative%20Git%20Exercise%20A.mp4)
+    * [Video 2](https://cyberlearn.hes-so.ch/pluginfile.php/3392856/mod_resource/content/1/ArchiDep%202020-10-02%20part%203%20Collaborative%20Git%20Exercise%20B.mp4)
   * [Clone a repository from a server](ex/git-clone-from-server.md)
   * [Push a repository to a server](ex/git-push-to-server.md)
 * **Unix**
-  * [Permissions](ex/unix-permissions.md) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3425330/mod_resource/content/2/ArchiDep%202020-11-06%20part%201%20Unix%20Permissions%20Exercise.mp4), [solutions](ex/unix-permissions-solutions.md))
-  * [Pipeline](ex/unix-pipeline.md) ([video](https://cyberlearn.hes-so.ch/pluginfile.php/3425339/mod_resource/content/1/ArchiDep%202020-11-06%20part%202%20Unix%20Pipeline%20Exercise.mp4), [solutions](ex/unix-pipeline-solutions.md))
+  * [Permissions](ex/unix-permissions.md)
+    * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3425330/mod_resource/content/2/ArchiDep%202020-11-06%20part%201%20Unix%20Permissions%20Exercise.mp4)
+    * [Solutions](ex/unix-permissions-solutions.md)
+  * [Pipeline](ex/unix-pipeline.md)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3425339/mod_resource/content/1/ArchiDep%202020-11-06%20part%202%20Unix%20Pipeline%20Exercise.mp4), [solutions](ex/unix-pipeline-solutions.md))
 * **Basic deployment**
-  * [Run your own virtual server on Amazon Web Services](ex/aws-setup.md) [(diagram)](ex/aws-setup.pdf)
+  * [Run your own virtual server on Amazon Web Services](ex/aws-setup.md)
+    * [Diagram](ex/aws-setup.pdf)
   * [Deploy a PHP application with SFTP](ex/sftp-deployment.md)
     * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3425348/mod_resource/content/2/ArchiDep%202020-11-06%20part%205%20Deploy%20a%20PHP%20Application%20with%20SFTP.mp4)
     * [Video: architecture](https://cyberlearn.hes-so.ch/pluginfile.php/3438812/mod_resource/content/3/ArchiDep%202020-11-19%20part%201%20Architecture%20of%20the%20SFTP%20Deployment%20Exercise.mp4)
@@ -117,9 +135,11 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
     * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3440024/mod_resource/content/1/ArchiDep%202020-11-20%20part%208%20Configure%20a%20Domain%20Name.mp4)
 * **Advanced deployment**
   * [Deploy a static site with nginx](ex/nginx-static-deployment.md) [(diagram)](ex/nginx-static-deployment.pdf)
-  * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(diagram)](ex/nginx-php-fpm-deployment.pdf)
+  * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
+    * [Diagram](ex/nginx-php-fpm-deployment.pdf)
   * [Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
-  * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md) [(diagram)](ex/git-automated-deployment.pdf)
+  * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
+    * [Diagram](ex/git-automated-deployment.pdf)
   * Deploy a web application with a database (**graded**), *not yet available*
   * *Extra exercises*
     * [Deploy the One Chat Room web application (Node.js & MongoDB)](ex/one-chat-room-deployment.md)
