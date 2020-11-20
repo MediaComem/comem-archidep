@@ -35,13 +35,13 @@ You will have to use nano (or Vim) to create and edit this file directly on the
 server. You cannot use an SFTP client.
 
 > **Reminder:** You can edit a file with nano by running the following command:
-> `nano <path>`. If the file does not exist, it will be created by nano when you
-> exit and save.
+> `sudo nano <path>`. If the file does not exist, it will be created by nano
+> when you exit and save. The `sudo` is necessary because the
+> `/etc/systemd/system` directory is only writable by `root`.
 >
-> You cannot use FileZilla because the `/etc/systemd/system` directory is owned
-> by the `root` user, and you cannot connect with `root` over SFTP as that is
-> considered insecure and therefore not allowed by the default configuration of
-> the SSH server.
+> You cannot use FileZilla because you cannot connect with `root` over SFTP as
+> that is considered insecure and therefore not allowed by the default
+> configuration of the SSH server.
 
 You may find the following documentation useful to write your unit file:
 
