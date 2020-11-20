@@ -112,6 +112,16 @@ Here are a few hints:
 > **Hint:** You should put comments in your unit file to explain what each
 > option is for. This can help you if you come back later and do not remember
 > what you did or why. Any line starting with `#` is considered a comment.
+>
+> To see an example of a unit file, you can look at the one for the MySQL server
+> you installed in previous exercises:
+>
+> ```bash
+> $> cat /lib/systemd/system/mysql.service
+> ```
+>
+> You will not use the same options as MySQL, but this shows you what a
+> functional unit file can look like.
 
 
 
