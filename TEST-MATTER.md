@@ -208,7 +208,8 @@ It also indicates what you do not need to remember by heart.
 
     You must know:
 
-    * Why it is a good practice to store configuration in the environment rather than in code (factor 3).
+    * Why it is a good practice to store configuration in the environment rather
+      than in code (factor 3).
 
     You do not need to know:
 
@@ -252,18 +253,18 @@ It also indicates what you do not need to remember by heart.
     You must know
 
     * What a reverse proxy is.
-    * The main uses of a reverse proxy
-      (hiding internal architecture or multi-component websites, SSL termination and load balancing).
+    * The main uses of a reverse proxy (hiding internal architecture or
+      multi-component websites, SSL termination and load balancing).
     * That nginx is a web server and reverse proxy.
-    * That nginx uses configuration files
-      and the difference between an available and an enabled configuration
-      (i.e. how to use the `sites-available` and `sites-enabled` directories).
 
     You do not need to know:
 
     * What tunneling proxies, gateways or forward proxies are.
     * Other uses of reverse proxies (e.g. caching or optimization).
     * The paths to nginx configuration files or their syntax and directives.
+    * That nginx uses configuration files and the difference between an
+      available and an enabled configuration (i.e. how to use the
+      `sites-available` and `sites-enabled` directories).
   * [TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
