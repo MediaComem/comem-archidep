@@ -181,10 +181,14 @@ fix during the rest of the course:
 * Accessing a web application through an IP address is not user-friendly. We
   will obtain a domain and configure its DNS zone file so that our application
   is accessible with a human-readable **domain name**.
-* *Missing improvement*
 * Using a non-standard port is not user-friendly either. We will run the
   application on **port 80 or 443** so that the end user does not have to
   specify a port in the browser's address bar.
+* Running our application server directly on port 80 or 443 will cause a
+  problem: only one process can listen on a given port at the same time. We need
+  another tool to support **multiple production deployments on the same
+  server**. That will be the job of a reverse proxy like
+  [Apache](https://httpd.apache.org) or [nginx](https://www.nginx.com).
 * Our application is not secure as indicated by the browser, because it is
   served over HTTP and not HTTPS. We will obtain a **TLS/SSL certificate**
   signed by a trusted certificate authority so that our application can be
