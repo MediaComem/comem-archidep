@@ -137,7 +137,8 @@ in nginx's `/etc/nginx/sites-available` directory like in the previous exercise.
 
 In this exercise, you want to configure nginx as a reverse proxy: when it
 receives a request for the PHP todolist, it should proxy it to PHP FPM (in other
-words, nginx should ask PHP FPM to execute the application's PHP code).
+words, nginx should ask PHP FPM to execute the application's PHP code; nginx
+itself does not know how to execute PHP code).
 
 You can start with the [reverse proxy
 configuration](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29),
@@ -146,8 +147,8 @@ but you need to make the following changes:
 * Like in the previous exercise, adapt the server name and root directory.
 
   > **Hint:** in the DNS exercise, you should have configured a wildcard domain
-  > name like `*.john-doe.archidep.online`. This means that any domain you want
-  > under `john-doe.archidep.online`, for example
+  > name like `*.john-doe.archidep.online`. This means that any subdomain you
+  > want under `john-doe.archidep.online`, for example
   > `todolist.john-doe.archidep.online`, should reach your server.
 * PHP FPM uses the [FastCGI protocol][fastcgi] to receive requests to execute
   PHP code. This means that you cannot use [nginx's `proxy_pass`
@@ -184,11 +185,11 @@ but you need to make the following changes:
 
     > PHP FPM either listens on a port or on a Unix socket depending on its
     > configuration. You can check the `/etc/php/7.4/fpm/pool.d/www.conf` file
-    > and look for the `listen = ...` directive which should be near the top.
+    > and look for the `listen = ...` option which should be near the top.
     >
-    > You can use this command to quickly find the `listen` parameter and
-    > display the few lines preceding it: `grep -B 11 -m 1 "listen ="
-    > /etc/php/7.4/fpm/pool.d/www.conf`.
+    > You can use the following command to quickly find the `listen` option and
+    > print it along with the few lines preceding it: `grep -B 10 -m 1 "listen
+    > =" /etc/php/7.4/fpm/pool.d/www.conf`.
 
 ### Enable the nginx configuration
 
@@ -236,7 +237,7 @@ You have replaced the [PHP development server][php-dev-server] you had been
 using until now with [PHP FPM][php-fpm], a production-grade PHP process manager
 and FastCGI implementation which is much more optimized and supports concurrent
 requests. This means, among other things, that many more clients can now access
-your application at the same time without having to wait on each other.
+the PHP todolist at the same time without having to wait on each other.
 
 You have also configured nginx to act as a reverse proxy, forwarding requests
 for the PHP todolist application to PHP FPM. When it receives an HTTP request,
