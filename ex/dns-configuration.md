@@ -58,17 +58,21 @@ your browser (if you have completed the previous exercises).
 
 ## What have I done?
 
-You have created a mapping in the domain name system between your custom
+You have created a mapping in the [domain name system][dns] between your custom
 subdomain (e.g. `john-doe.archidep.online`) and the IP address of your server.
 
-You have done this by modifying the DNS zone file for the course's domain
-(`archidep.online`). When a computer requests to know the IP address for your
-subdomain, the DNS servers of the domain provider (gandi.net) will give them the
-IP address in the mapping you have configured.
+You have done this by modifying the [DNS zone file][dns-zone-file] for the
+course's domain (`archidep.online`). When a computer requests to know the IP
+address for your subdomain, the [DNS name servers][dns-name-server] of the
+domain provider (gandi.net) will give them the IP address in the mapping you
+have configured.
 
 This allows your applications and websites to be accessible through a
 human-friendly domain name instead of an IP address.
 
 
 
+[dns]: https://en.wikipedia.org/wiki/Domain_Name_System
+[dns-name-server]: https://en.wikipedia.org/wiki/Name_server
+[dns-zone-file]: https://en.wikipedia.org/wiki/Zone_file
 [systemd]: https://en.wikipedia.org/wiki/Systemd
