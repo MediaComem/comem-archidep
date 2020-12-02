@@ -146,6 +146,10 @@ but you need to make the following changes:
 
 * Like in the previous exercise, adapt the server name and root directory.
 
+  > **Hint:** you can use the existing `todolist-repo` directory you have been
+  > using in previous PHP todolist exercises. There is no need to clone another
+  > copy.
+  >
   > **Hint:** in the DNS exercise, you should have configured a wildcard domain
   > name like `*.john-doe.archidep.online`. This means that any subdomain you
   > want under `john-doe.archidep.online`, for example
