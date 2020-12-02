@@ -1,12 +1,14 @@
 # Deploy a PHP website with nginx and the FastCGI process manager
 
-This guide describes how to deploy the same [PHP Todolist][repo] as in previous exercises,
-but this time behind nginx acting a reverse proxy,
-and with [FastCGI Process Manager (FPM)][php-fpm] instead of the PHP development server
-(which is more suitable for production).
+This guide describes how to deploy the same [PHP Todolist][repo] as in previous
+exercises, but this time behind nginx acting a reverse proxy, and with the
+[FastCGI Process Manager (FPM)][php-fpm] instead of the [PHP development
+server][php-dev-server], which is much more suitable for a production
+deployment.
 
-This guide assumes that you are familiar with [reverse proxying][slides],
-that you have nginx installed, and that you have done the [DNS exercise][dns-ex] and the [systemd exercise][systemd-ex].
+This guide assumes that you are familiar with [reverse proxying][slides], that
+you have nginx installed, and that you have done the [DNS exercise][dns-ex] and
+the [systemd exercise][systemd-ex].
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -19,6 +21,7 @@ that you have nginx installed, and that you have done the [DNS exercise][dns-ex]
   - [Enable the nginx configuration](#enable-the-nginx-configuration)
   - [Reload the nginx configuration](#reload-the-nginx-configuration)
 - [See it in action](#see-it-in-action)
+- [What have I done?](#what-have-i-done)
 - [End result](#end-result)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -27,32 +30,36 @@ that you have nginx installed, and that you have done the [DNS exercise][dns-ex]
 
 ## Using PHP FPM instead of the PHP development server
 
-When you did the [systemd exercise][systemd-ex],
-you used the PHP development server (with the command `/usr/bin/php -S 0.0.0.0:3000`).
-
-As [its documentation states][php-dev-server], it is meant for development, not to be used on a production server.
-One of the main reasons it's a bad idea to use it on a server is beacuse it is **single-threaded**, and can only serve *one request at a time*.
+When you did the [systemd exercise][systemd-ex], you used the PHP development
+server (with the command `/usr/bin/php -S 0.0.0.0:3000`). As [its documentation
+states][php-dev-server], it is meant for development, not to be used on a
+production server. One of the main reasons it's a bad idea to use it on a server
+is beacuse it is **single-threaded**, and can only serve *one request at a
+time*.
 
 During the [SFTP exercise][sftp-ex], you installed the `php-fpm` package,
 which provides the [FastCGI Process Manager (FPM)][php-fpm].
 
 It is both a **process manager** and a **FastCGI server**:
 
-* It will run multiple PHP processes to be able to serve requests from multiple clients at the same time.
-* A web server (such as nginx) can ask it to execute PHP files using the [FastCGI protocol][fastcgi].
+* It will run multiple PHP processes to be able to serve requests from multiple
+  clients at the same time.
+* A web server (such as nginx) can ask it to execute PHP files using the
+  [FastCGI protocol][fastcgi].
 
-> Use the following command for more information on how PHP FPM manages processes (for version 7.2):
+> Use the following command for more information on how PHP FPM manages
+> processes (for version 7.4):
 >
->     $> grep -A 50 -m 1 "child processes" /etc/php/7.2/fpm/pool.d/www.conf
+>     $> grep -A 50 -m 1 "child processes" /etc/php/7.4/fpm/pool.d/www.conf
 
-The `php-fpm` package is integrated with systemd out of the box
-(its service file is `/lib/systemd/system/php7.2-fpm.service` for version 7.2).
-It should already be running:
+The `php-fpm` package is integrated with systemd out of the box (its service
+file is `/lib/systemd/system/php7.4-fpm.service` for version 7.4). It should
+already be running:
 
 ```bash
-$> sudo systemctl status php7.2-fpm
-● php7.2-fpm.service - The PHP 7.2 FastCGI Process Manager
-   Loaded: loaded (/lib/systemd/system/php7.2-fpm.service; enabled; vendor preset: enabled)
+$> sudo systemctl status php7.4-fpm
+● php7.4-fpm.service - The PHP 7.4 FastCGI Process Manager
+   Loaded: loaded (/lib/systemd/system/php7.4-fpm.service; enabled; vendor preset: enabled)
    Active: active (running) since Thu 2019-01-10 17:58:07 UTC; 27min ago
    ...
 ```
@@ -61,16 +68,22 @@ $> sudo systemctl status php7.2-fpm
 
 ## Add a the `TODOLIST_DB_PASS` environment variable to PHP FPM
 
-The PHP todolist application requires the `TODOLIST_DB_PASS` environment variable to successfully connect to its database.
-You previously set that variable in the systemd service file you created during the [systemd exercise][systemd-ex]: `/etc/systemd/system/todolist.service`.
+The PHP todolist application requires the `TODOLIST_DB_PASS` environment
+variable to successfully connect to its database. You previously set that
+variable in the systemd service file you created during the [systemd
+exercise][systemd-ex]: `/etc/systemd/system/todolist.service`.
 
-Now that [PHP FPM][php-fpm] will be running the application, you need to tell it to add this variable.
+In this exercise, systemd will no longer be running your application directly.
+It runs [PHP FPM][php-fpm], which will in turn run your application. By default,
+PHP FPM does not pass environment variables from systemd to the application.
+Therefore, you need to configure PHP-FPM to add this variable to your
+application's environment.
 
-The PHP FPM configuration file which determines how processes are launched is `/etc/php/7.2/fpm/pool.d/www.conf` (for version 7.2).
-Edit this file:
+The PHP FPM configuration file which determines how processes are launched is
+`/etc/php/7.4/fpm/pool.d/www.conf` (for version 7.4). Edit this file:
 
 ```bash
-$> sudo nano /etc/php/7.2/fpm/pool.d/www.conf
+$> sudo nano /etc/php/7.4/fpm/pool.d/www.conf
 ```
 
 Find the environment section which looks like this:
@@ -86,31 +99,29 @@ Find the environment section which looks like this:
 ;env[TEMP] = /tmp
 ```
 
-> You can use `Ctrl-W` in nano to search for text.
-> For example, search for `env[` in this file.
+> **Hint:** you can use `Ctrl-W` in nano to search for text. For example, search
+> for `env[` in this file.
 
-Add the following line to define the `TODOLIST_DB_PASS` variable with the correct value (without a `;` at the beginning):
+Add a line to define the `TODOLIST_DB_PASS` variable with the correct value.
 
-```
-env[TODOLIST_DB_PASS] = "chAngeMeN0w!"
-```
-
-Exit with `Ctrl-X` and save when prompted.
+> **Hint:** you can quote the value with double quotes (`"`) if it contains
+> whitespace or special characters. Also, be sure to remove the leading `;`
+> which makes the line a comment.
 
 ### Reload PHP FPM
 
 For the change to take effect, you must restart the PHP FPM service:
 
 ```bash
-$> sudo systemctl restart php7.2-fpm
+$> sudo systemctl restart php7.4-fpm
 ```
 
 Make sure it is still running:
 
 ```bash
-$> sudo systemctl status php7.2-fpm
-● php7.2-fpm.service - The PHP 7.2 FastCGI Process Manager
-   Loaded: loaded (/lib/systemd/system/php7.2-fpm.service; enabled; vendor preset: enabled)
+$> sudo systemctl status php7.4-fpm
+● php7.4-fpm.service - The PHP 7.4 FastCGI Process Manager
+   Loaded: loaded (/lib/systemd/system/php7.4-fpm.service; enabled; vendor preset: enabled)
    Active: active (running) since Thu 2019-01-10 17:58:07 UTC; 3s ago
    ...
 ```
@@ -121,39 +132,63 @@ $> sudo systemctl status php7.2-fpm
 
 ## Create an nginx configuration file to serve the application
 
-Create an nginx configuration file named `todolist` for the application:
+Create an nginx configuration file named `todolist` for the application. Put it
+in nginx's `/etc/nginx/sites-available` directory like in the previous exercise.
 
-```bash
-$> sudo nano /etc/nginx/sites-available/todolist
-```
+In this exercise, you want to configure nginx as a reverse proxy: when it
+receives a request for the PHP todolist, it should proxy it to PHP FPM (in other
+words, nginx should ask PHP FPM to execute the application's PHP code).
 
-Use the following configuration
-(**replacing `john-doe` in the `server_name` directive and `john_doe` in the `root` directive with appropriate values**):
+You can start with the [reverse proxy
+configuration](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29),
+but you need to make the following changes:
 
-```
-server {
-  listen 80;
-  server_name todolist.john-doe.archidep.online;
-  root /home/john_doe/todolist-repo;
+* Like in the previous exercise, adapt the server name and root directory.
 
-  # Proxy requests for dynamic content to PHP FPM.
-  location / {
+  > **Hint:** in the DNS exercise, you should have configured a wildcard domain
+  > name like `*.john-doe.archidep.online`. This means that any domain you want
+  > under `john-doe.archidep.online`, for example
+  > `todolist.john-doe.archidep.online`, should reach your server.
+* PHP FPM uses the [FastCGI protocol][fastcgi] to receive requests to execute
+  PHP code. This means that you cannot use [nginx's `proxy_pass`
+  directive][nginx-proxy-pass] to define your proxy since it works with the HTTP
+  protocol. Instead, you must **replace** it with two other directives:
+
+  * You must configure nginx to set various FastCGI parameters. You could do
+    this yourself, but nginx helpfully provides a configuration snippet which
+    you can simply include like this:
+
+    ```
     include snippets/fastcgi-php.conf;
-    fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
-  }
-}
-```
+    ```
 
-> Here you are using nginx as a **reverse proxy**.
-> The [`fastcgi_pass` directive][nginx-fastcgi] instructs nginx to forward all requests to a FastCGI server.
-> The `/var/run/php/php7.2-fpm.sock` file is a [Unix socket][unix-socket]
-> allowing nginx to communicate with PHP FPM
-> (i.e. send and receive binary data).
->
-> When a request arrives for the subdomain `todolist.john-doe.archidep.online`,
-> nginx will forward that request to PHP FPM through the socket file.
-> PHP FPM will then execute the PHP files in `/home/john_doe/todolist-repo`
-> and give the result back to nginx to serve to the client.
+    > This will include the file `/etc/nginx/snippets/fastcgi-php.conf`, which
+    > will in turn include `/etc/nginx/fastcgi.conf`. If you want to know what
+    > is required to make nginx properly proxy a request with the FastCGI
+    > protocol, you can look at the contents of these two files.
+  * You must tell nginx to proxy requests with the FastCGI protocol, and where
+    to proxy them to, with its [`fastcgi_pass` directive][nginx-fastcgi-pass].
+    This allows you to proxy requests either to a domain and IP address (e.g.
+    `localhost:9000`) or to a [Unix domain socket][unix-socket] (a special kind
+    of Unix file which allows bidirectional communication between processes on
+    the same machine by reading and writing to it).
+
+    By default, PHP FPM is configured to listen on a Unix socket which is
+    located at `/var/run/php/php7.4-fpm.sock` (for version 7.4). Therefore,
+    according to the [documentation][nginx-fastcgi-pass], you should configure a
+    FastCGI proxy to `unix:/var/run/php/php7.4-fpm.sock`.
+
+    This will make nginx proxy HTTP requests to PHP FPM through the Unix socket.
+    PHP FPM will then execute the PHP code and give the result to nginx, which
+    will send it back to the client in the HTTP response.
+
+    > PHP FPM either listens on a port or on a Unix socket depending on its
+    > configuration. You can check the `/etc/php/7.4/fpm/pool.d/www.conf` file
+    > and look for the `listen = ...` directive which should be near the top.
+    >
+    > You can use this command to quickly find the `listen` parameter and
+    > display the few lines preceding it: `grep -B 11 -m 1 "listen ="
+    > /etc/php/7.4/fpm/pool.d/www.conf`.
 
 ### Enable the nginx configuration
 
@@ -190,8 +225,42 @@ $> sudo nginx -s reload
 
 ## See it in action
 
-Visit http://todolist.john-doe.archidep.online (replacing `john-doe` with your username)
-and you should see the PHP todolist working.
+Visit http://todolist.john-doe.archidep.online (replacing `john-doe` with your
+username) and you should see the PHP todolist working.
+
+
+
+## What have I done?
+
+You have replaced the [PHP development server][php-dev-server] you had been
+using until now with [PHP FPM][php-fpm], a production-grade PHP process manager
+and FastCGI implementation which is much more optimized and supports concurrent
+requests. This means, among other things, that many more clients can now access
+your application at the same time without having to wait on each other.
+
+You have also configured nginx to act as a reverse proxy, forwarding requests
+for the PHP todolist application to PHP FPM. When it receives an HTTP request,
+nginx will forward it to PHP FPM using the FastCGI protocol. PHP FPM will
+execute your application's PHP code and give the result to nginx, which will
+send it back to the client. The communication flow looks something like this:
+
+    Browser ↔ Nginx ↔ PHP FPM ↔ PHP todolist
+
+This is a bit more complex than what you had before:
+
+    Browser ↔ PHP development server ↔ PHP todolist
+
+But on the other hand, you are using PHP FPM which is much more suitable for a
+production deployment. You are also using nginx, which allows you to deploy
+other applications and websites on the same server in addition to the PHP
+todolist.
+
+In real production deployments, you will often find several processes plugged
+together to achieve the same goal. Here, nginx receives and dispatches the
+clients' requests, while PHP FPM manages your PHP application(s), and your
+application does what it's supposed to do. This allows each process to focus on
+one thing and do it well. The PHP todolist application does not have to know
+about the other applications and websites that might be running on the server.
 
 
 
@@ -209,7 +278,8 @@ and you should see the PHP todolist working.
 [php-fpm]: http://php.net/manual/en/install.fpm.php
 [repo]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
 [nginx-ex]: nginx-static-deployment.md
-[nginx-fastcgi]: http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
+[nginx-fastcgi-pass]: http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
+[nginx-proxy-pass]: http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
 [slides]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#1
 [sftp-ex]: sftp-deployment.md
 [systemd-ex]: systemd-deployment.md

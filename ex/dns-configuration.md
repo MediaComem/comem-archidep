@@ -9,6 +9,7 @@ The goal of this exercise is to set up a real domain name for your application.
 - [Setup](#setup)
 - [Connect to Gandi.net](#connect-to-gandinet)
 - [Access the domain name](#access-the-domain-name)
+- [What have I done?](#what-have-i-done)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -52,6 +53,21 @@ your browser (if you have completed the previous exercises).
 > if you make a mistake in configuring the DNS record and then fix it. This is
 > because DNS records are cached for a time (the TTL you configured), by all
 > intermediaries and also by your machine.
+
+
+
+## What have I done?
+
+You have created a mapping in the domain name system between your custom
+subdomain (e.g. `john-doe.archidep.online`) and the IP address of your server.
+
+You have done this by modifying the DNS zone file for the course's domain
+(`archidep.online`). When a computer requests to know the IP address for your
+subdomain, the DNS servers of the domain provider (gandi.net) will give them the
+IP address in the mapping you have configured.
+
+This allows your applications and websites to be accessible through a
+human-friendly domain name instead of an IP address.
 
 
 

@@ -3,9 +3,9 @@
 The goal of this exercise is to deploy a static website (only HTML, JavaScript
 and CSS) with [nginx][nginx].
 
-It assumes that you are familiar with [reverse proxying][slides]
-and that you have done the [previous DNS configuration exercise][previous-ex],
-where you configured an A record for your server.
+It assumes that you are familiar with [reverse proxying][slides] and that you
+have done the [previous DNS configuration exercise][previous-ex], where you
+configured an A record for your server.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -16,6 +16,7 @@ where you configured an A record for your server.
   - [Enable the nginx configuration](#enable-the-nginx-configuration)
   - [Reload the nginx configuration](#reload-the-nginx-configuration)
 - [See it in action](#see-it-in-action)
+- [What have I done?](#what-have-i-done)
 - [End result](#end-result)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -50,8 +51,18 @@ Take the static configuration that was [presented during the
 course][nginx-static-conf] and put it in the file. You should modify it to:
 
 * Use the subdomain you configured for your server during the previous DNS
-  exercise.
+  exercise (e.g. `john-doe.archidep.online`).
+
+  > This is done by customizing [nginx's `server_name`
+  > directive](http://nginx.org/en/docs/http/server_names.html) in your `server`
+  > block.
 * Serve the files in the repository you just cloned.
+
+  > This is done by customizing [nginx's `root`
+  > directive](http://nginx.org/en/docs/http/ngx_http_core_module.html#root).
+  > You can learn more about it in the [Serving Static Content section of the
+  > nginx Beginner's
+  > Guide](http://nginx.org/en/docs/beginners_guide.html#static).
 
 ### Enable the nginx configuration
 
@@ -134,6 +145,19 @@ configuration.
 Visit the subdomain of your server, e.g. http://john-doe.archidep.online
 (replacing `john-doe` with your username) and you should see the website
 working.
+
+
+
+## What have I done?
+
+You have configured nginx to act as a web server to serve static content (HTML,
+JavaScript and CSS that can be sent unmodified to the client) under your custom
+subdomain.
+
+You can serve any static web content this way. You can also make nginx serve as
+many separate websites as you want under different domains by creating multiple
+configuration files with different `server_name` directives, all on the same
+server (your AWS instance).
 
 
 
