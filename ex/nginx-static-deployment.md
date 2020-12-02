@@ -4,8 +4,8 @@ The goal of this exercise is to deploy a static website (only HTML, JavaScript
 and CSS) with [nginx][nginx].
 
 It assumes that you are familiar with [reverse proxying][slides] and that you
-have done the [previous DNS configuration exercise][previous-ex], where you
-configured an A record for your server.
+have completed the [previous DNS configuration exercise][previous-ex], where you
+configured an A record for your server in the domain name system.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -55,7 +55,9 @@ course][nginx-static-conf] and put it in the file. You should modify it to:
 
   > This is done by customizing [nginx's `server_name`
   > directive](http://nginx.org/en/docs/http/server_names.html) in your `server`
-  > block.
+  > block. Read [How nginx processes a
+  > request](http://nginx.org/en/docs/http/request_processing.html) if you want
+  > to know more.
 * Serve the files in the repository you just cloned.
 
   > This is done by customizing [nginx's `root`
@@ -67,8 +69,9 @@ course][nginx-static-conf] and put it in the file. You should modify it to:
 ### Enable the nginx configuration
 
 By default, configurations stored in the `sites-available` directory are
-available, but not enabled. Indeed, if you check which directories are included,
-you will see that `sites-enabled` is there, but not `sites-available`:
+available, but not enabled. Indeed, if you check what is included by the main
+`/etc/nginx/nginx.conf` file, you will see that `sites-enabled` is there, but
+not `sites-available`:
 
 ```bash
 $> cat /etc/nginx/nginx.conf|grep include
@@ -78,9 +81,13 @@ include /etc/nginx/conf.d/*.conf;
 include /etc/nginx/sites-enabled/*;
 ```
 
-The convention is to create a symbolic link in `sites-enabled` to the actual
-configuration file in `sites-available`. This allows you to work on your
-configuration for a while before enabling it.
+> The command pipeline above uses `cat` and `grep` to print all the lines which
+> contain the word "include" in the specified file.
+
+To enable a configuration file, the convention is to create a symbolic link in
+`sites-enabled`, which points to the actual configuration file in
+`sites-available`. This allows you to work on your configuration for a while
+before enabling it.
 
 Enable the `clock` configuration by creating the correct symbolic link:
 
@@ -113,19 +120,16 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 >
 > If you get an error about `server_names_hash_bucket_size`, it may be because
 > your domain name (the value of your `server_name` directive) is too long for
-> nginx's default settings.
->
-> In that case, edit the main nginx configuration with `sudo nano
-> /etc/nginx/nginx.conf` and add the following line **in the `http` section**:
+> nginx's default settings. In that case, edit the main nginx configuration with
+> `sudo nano /etc/nginx/nginx.conf` and add the following line **in the `http`
+> section**:
 >
 >     server_names_hash_bucket_size 256;
 
 Nginx reloads its configuration [when it receives the `HUP`
 signal][nginx-signals]. You could find the process ID of the `nginx` master
-process and send the signal with `kill -s HUP <ID>`.
-
-However, the `nginx` command helpfully allows you to do that in a much simpler
-way:
+process and send the signal with `kill -s HUP <ID>`. However, the `nginx`
+command helpfully allows you to do that in a much simpler way:
 
 ```bash
 $> sudo nginx -s reload
@@ -175,4 +179,4 @@ server (your AWS instance).
 [nginx-static-conf]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#28
 [previous-ex]: dns-configuration.md
 [repo]: https://github.com/MediaComem/static-clock-website
-[slides]: https://mediacomem.github.io/comem-archidep/2019-2020/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#1
+[slides]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#1
