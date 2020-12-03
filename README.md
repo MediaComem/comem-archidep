@@ -179,8 +179,8 @@ fix during the rest of the course:
   **Git** to reliably transfer files [from our central
   codebase](https://12factor.net/codebase) and easily keep our deployment
   up-to-date over time.
-* [Hardcoding configuration is a bad practice](https://12factor.net/config). We
-  will use **environment variables** so that our application can be dynamically
+* [Hardcoding configuration is a bad practice][12factor-config]. We will use
+  **environment variables** so that our application can be dynamically
   configured and deployed in any environment without changing its source code.
 * Starting our application manually is not suitable for a production deployment.
   We will use a **process manager** to manage the lifecycle of our application:
@@ -195,17 +195,16 @@ fix during the rest of the course:
 * Running our application server directly on port 80 or 443 will cause a
   problem: only one process can listen on a given port at the same time. We need
   another tool to support **multiple production deployments on the same
-  server**. That will be the job of a reverse proxy like
-  [Apache](https://httpd.apache.org) or [nginx](https://www.nginx.com).
+  server**. That will be the job of a reverse proxy like [Apache][apache] or
+  [nginx][nginx].
 * Our application is not secure as indicated by the browser, because it is
   served over HTTP and not HTTPS. We will obtain a **TLS/SSL certificate**
   signed by a trusted certificate authority so that our application can be
   served over HTTPS and recognized as secure by browsers.
-* The PHP Development Server is not meant to deploy applications in production
-  environments. We will use the [**FastCGI Process
-  Manager**](https://www.php.net/manual/en/install.fpm.php) to perform a
-  production-grade deployment, making our application more resilient and able to
-  serve more clients concurrently.
+* The [PHP Development Server][php-dev-server] is not meant to deploy
+  applications in production environments. We will use the [**FastCGI Process
+  Manager**][php-fpm] to perform a production-grade deployment, making our
+  application more resilient and able to serve more clients concurrently.
 
 
 
@@ -258,6 +257,8 @@ and related articles:
 
 
 [12factor]: https://12factor.net
+[12factor-config]: https://12factor.net/config
+[apache]: https://httpd.apache.org
 [chrome]: https://www.google.com/chrome/
 [comem]: http://www.heig-vd.ch/comem
 [comem-webdev]: https://github.com/MediaComem/comem-webdev
@@ -267,5 +268,8 @@ and related articles:
 [heroku]: https://www.heroku.com/home
 [heroku-cli]: https://devcenter.heroku.com/articles/heroku-cli
 [heig]: http://www.heig-vd.ch
+[nginx]: https://www.nginx.com
 [owasp]: https://www.owasp.org
 [owasp-top10]: https://owasp.org/www-project-top-ten/
+[php-dev-server]: https://www.php.net/manual/en/features.commandline.webserver.php
+[php-fpm]: https://www.php.net/manual/en/install.fpm.php
