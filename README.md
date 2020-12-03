@@ -177,8 +177,8 @@ fix during the rest of the course:
 
 * Transfering files manually through SFTP is slow and error-prone. We will use
   **Git** to reliably transfer files [from our central
-  codebase](https://12factor.net/codebase) and easily keep our deployment
-  up-to-date over time.
+  codebase][12factor-codebase] and easily keep our deployment up-to-date over
+  time.
 * [Hardcoding configuration is a bad practice][12factor-config]. We will use
   **environment variables** so that our application can be dynamically
   configured and deployed in any environment without changing its source code.
@@ -257,6 +257,7 @@ and related articles:
 
 
 [12factor]: https://12factor.net
+[12factor-codebase]: https://12factor.net/codebase
 [12factor-config]: https://12factor.net/config
 [apache]: https://httpd.apache.org
 [chrome]: https://www.google.com/chrome/
