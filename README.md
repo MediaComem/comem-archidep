@@ -75,6 +75,8 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Domain Name System (DNS)](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
     * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3440023/mod_resource/content/1/ArchiDep%202020-11-20%20part%207%20Domain%20Name%20System%20%28DNS%29.mp4)
   * [Reverse proxying](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3453123/mod_resource/content/1/ArchiDep%202020-12-03%20part%204%20Reverse%20proxying.mp4)
+    * [Video: symbolic links](https://cyberlearn.hes-so.ch/pluginfile.php/3453124/mod_resource/content/1/ArchiDep%202020-12-03%20part%205%20Symbolic%20links.mp4)
   * [TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
 * Automated deployment
   * [Shell scripting](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
