@@ -16,7 +16,7 @@
   "scripts": {
     "build": "courses-md build",
     "deploy": "courses-md publish",
-    "doctoc": "doctoc --notitle --github README.md CLI-CHEATSHEET.md SETUP.md SYSADMIN-CHEATSHEET.md ex",
+    "doctoc": "doctoc --notitle --github README.md CLI-CHEATSHEET.md SETUP.md SYSADMIN-CHEATSHEET.md TEST-MATTER.md ex",
     "ec2": "node scripts/manage-instances.js",
     "inventory": "node scripts/manage-instances.js inventory",
     "mails": "node scripts/send-students-data.js",

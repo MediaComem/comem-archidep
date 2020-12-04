@@ -3,6 +3,16 @@
 This guide describes the concepts you must know for this course's written evaluation.
 It also indicates what you do not need to remember by heart.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Plan](#plan)
+- [Exercices](#exercices)
+- [Architecture](#architecture)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 
 ## Plan
@@ -342,13 +352,13 @@ on the same server, which you put in practice during the following exercises:
 
 * [Deploy a static site with nginx](ex/nginx-static-deployment.md) [(diagram)](ex/nginx-static-deployment.pdf)
 * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(diagram)](ex/nginx-php-fpm-deployment.pdf)
-* [Deploy a Ruby application with a Redis database](ex/wopr-deployment.md)
+* Deploy a web application with a database (*not yet available*)
 
 You must understand how to set up automated deployments with Git hooks,
 which you put in practice during the following exercises:
 
 * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md) [(diagram)](ex/git-automated-deployment.pdf)
-* [Deploy a Ruby application with a Redis database](ex/wopr-deployment.md)
+* Deploy a web application with a database (*not yet available*)
 
 This [diagram](ex/end-result.pdf) shows the end result of previous exercises.
 
@@ -358,6 +368,35 @@ during the following exercises:
 
 * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
 * [Deploy web applications with a database to Heroku](ex/heroku-deployment.md)
+
+
+
+## Architecture
+
+You must be capable of drawing an architecture diagram representing the main
+processes involved in the deployments you have performed during the course, and
+how they communicate or affect each other. Such a diagram should contain:
+
+* The processes directly related to running and exposing the deployed
+  application or website (e.g. the application, the reverse proxy).
+* Processes that manage other processes (e.g. systemd).
+* Communication between processes (e.g. the application accesses the database),
+  and communication between processes and the outside world (e.g. a browser
+  makes a request on a port which is handled by a specific process).
+* Control relationships between processes (e.g. systemd manages the
+  application).
+
+You do not need to represent:
+
+* Short-lived processes (e.g. short-lived commands executed to set up the
+  deployment).
+* Processes related to accessing your server (e.g. your terminal, SSH-related
+  processes).
+* The commands used to run each process.
+* The configuration files involed.
+
+When drawing processes, you can simplify by assuming that each program runs only
+one process when executed.
 
 
 
