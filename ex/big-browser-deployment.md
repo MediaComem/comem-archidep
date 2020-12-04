@@ -28,17 +28,22 @@ in previous exercises:
 
 * You must install the language and database necessary to run the application,
   which are not the same as for the PHP todolist.
-* You must run the application as a systemd service, and make sure it restarts
-  correctly following a server reboot.
+* You must run the application as a systemd service.
 * You must serve the application through nginx acting as a reverse proxy.
+* You must provision a TLS certificate for the application and configure nginx
+  to use it.
 * You must set up an automated deployment via Git hooks for the application.
 
 Additionally:
 
+* The application must run in production mode (see its documentation).
+* The application must restart automatically if your server is rebooted (i.e.
+  your systemd service must be enabled).
 * The application must be accessible **only through nginx**. It **must not** be
   exposed directly on a publicly accessible port other than 80 or 443 (in the
   AWS instances used in this course, the other publicly accessible ports are 22,
   3000 and 3001, with port 22 being already used by SSH).
+* Clients accessing the application over HTTP must be redirected to HTTPS.
 
 ### The application
 
@@ -69,9 +74,11 @@ You should start by **forking** the [repository][repo] with the `Fork` button,
 and use your own copy of the repository instead of the provided one.  This will
 make it easier for you to test the automated deployment at the end.
 
-Then installed the required dependencies and perform the required setup as
+Then install the required dependencies and perform the required setup as
 indicated in the [project's `README`][readme]. Where necessary, you will need to
 find installation instructions for Ubuntu (version 20.04 Focal).
+
+### Optional: test in development mode
 
 Before attempting to set up the systemd service, nginx configuration and
 automated deployment, you might want to simply run the application manually in
@@ -109,7 +116,8 @@ application instead of the PHP todolist.
 > **Hints:**
 >
 > * You will find the correct command to run the application in [the project's
->   `README`][readme].
+>   `README`][readme]. Remember that systemd requires absolute paths to
+>   commands.
 > * You may want to set the `PORT` environment variable to choose the port on
 >   which the application will listen. You can use the publicly accessible 3001
 >   port temporarily for testing, but you should use another free port that is
@@ -118,6 +126,11 @@ application instead of the PHP todolist.
 
 Once you have enabled and started the service, it should start automatically the
 next time you restart the server with `sudo reboot`.
+
+> **Advanced hint:** if you know what you are doing, you can already set up the
+> automated deployment project structure at this point, so that you can point
+> your systemd configuration to the correct directory. That way you will not
+> have to modify it later.
 
 
 
@@ -138,6 +151,13 @@ PHP-FPM exercise][nginx-php-fpm-ex].
 
 
 
+## Provision a TLS certificate
+
+Obtain and configure a TLS certificate to serve the application over HTTPS like
+in the [certbot exercise][certbot-ex].
+
+
+
 ## Set up an automated deployment with Git hooks
 
 Change your deployment so that the application can be automatically updated via
@@ -147,7 +167,7 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 >
 > * Once you have set up the new directories, make sure to update your systemd
 >   unit file to point to the correct directory.
-> * Update the `post-receive` hook. Compared to the PHP todolist, there are two
+> * Update the `post-receive` hook. Compared to the PHP todolist, there are
 >   additional steps which must be performed in the script for the automated
 >   deployment to work correctly:
 >
@@ -160,16 +180,28 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 >   application will no longer work after changing the path to the repository in
 >   the nginx configuration. In the case of the Big Browser application, it will
 >   continue to work, because the application serves its static files on its
->   own, without nginx's help. Therefore, changing the path has no effect as
->   long as the `proxy_pass` directive still points to the correct port.
+>   own, without nginx's help.
+>
+>   When using `fastcgi_pass`, nginx is asking the PHP FastCGI Process Manager
+>   (PHP-FPM) to find and execute the PHP files in the `root` directory
+>   specified by the configuration. When you change that `root` to a directory
+>   that is empty (at that stage in the exercise), it will not find the PHP
+>   files anymore, and return a 404 Not Found error.
+>
+>   When using `proxy_pass`, nginx is simply forwarding the request to the given
+>   address and port. The application listens on that port and is capable of
+>   serving its own files, regardless of nginx's configuration. So the
+>   application will keep working even after changing the `root`.
 
 ### Allow your user to restart the service without a password
 
 In order for the new `post-receive` hook to work, your user must be able to run
 `sudo systemctl restart big-browser` (assuming you have named your service
 `big-browser`) without entering a password, otherwise it will not work in a Git
-hook. (A Git hook is not an interactive program, so you are not available to
-enter your password where prompted.)
+hook.
+
+> A Git hook is not an interactive program. You are not running it yourself, so
+> you are not available to enter your password where prompted.
 
 Create a `big-browser` Unix group:
 
@@ -238,6 +270,7 @@ file](https://github.com/mediacomem/big-browser/blob/8c38c2b3a2438374d7747169a52
 
 [app]: https://big-browser.herokuapp.com
 [auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md
+[certbot-ex]: certbot-deployment.md
 [nest]: https://nestjs.com
 [nginx-install]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#18
 [nginx-php-fpm-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/nginx-php-fpm-deployment.md

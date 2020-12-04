@@ -30,17 +30,22 @@ previous exercises:
 
 * You must install the language and database necessary to run the application,
   which are not the same as for the PHP todolist.
-* You must run this application as a systemd service, and make sure it restarts
-  correctly following a server reboot.
+* You must run this application as a systemd service.
 * You must serve this application through nginx acting as a reverse proxy.
+* You must provision a TLS certificate for the application and configure nginx
+  to use it.
 * You must set up an automated deployment via Git hooks for this application.
 
 Additionally:
 
+* The application must run in production mode (see its documentation).
+* The application must restart automatically if your server is rebooted (i.e.
+  your systemd service must be enabled).
 * The application must be accessible **only through nginx**. It **must not** be
   exposed directly on a publicly accessible port other than 80 or 443 (in the
   AWS instances used in this course, the other publicly accessible ports are 22,
   3000 and 3001, with port 22 being already used by SSH).
+* Clients accessing the application over HTTP must be redirected to HTTPS.
 
 ### The application
 
@@ -106,7 +111,8 @@ application instead of the PHP todolist.
 > **Hints:**
 >
 > * You will find the correct command to run the application in [the project's
->   `README`][readme].
+>   `README`][readme]. Remember that systemd requires absolute paths to
+>   commands.
 > * You may want to set the `PORT` environment variable to choose the port on
 >   which the application will listen. You can use the publicly accessible 3001
 >   port temporarily for testing, but you should use another free port that is
@@ -115,6 +121,11 @@ application instead of the PHP todolist.
 
 Once you have enabled and started the service, it should start automatically the
 next time you restart the server with `sudo reboot`.
+
+> **Advanced hint:** if you know what you are doing, you can already set up the
+> automated deployment project structure at this point, so that you can point
+> your systemd configuration to the correct directory. That way you will not
+> have to modify it later.
 
 
 
@@ -135,6 +146,13 @@ PHP-FPM exercise][nginx-php-fpm-ex].
 
 
 
+## Provision a TLS certificate
+
+Obtain and configure a TLS certificate to serve the application over HTTPS like
+in the [certbot exercise][certbot-ex].
+
+
+
 ## Set up an automated deployment with Git hooks
 
 Change your deployment so that the application can be automatically updated via
@@ -144,7 +162,7 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 >
 > * Once you have set up the new directories, make sure to update your systemd
 >   unit file to point to the correct directory.
-> * Update the `post-receive` hook. Compared to the PHP todolist, there are two
+> * Update the `post-receive` hook. Compared to the PHP todolist, there are
 >   additional steps which must be performed in the script for the automated
 >   deployment to work correctly:
 >
@@ -158,8 +176,10 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 In order for the new `post-receive` hook to work, your user must be able to run
 `sudo systemctl restart one-chat-room` (assuming you have named your service
 `one-chat-room`) without entering a password, otherwise it will not work in a
-Git hook. (A Git hook is not an interactive program, so you are not available to
-enter your password where prompted.)
+Git hook.
+
+> A Git hook is not an interactive program. You are not running it yourself, so
+> you are not available to enter your password where prompted.
 
 Create a `one-chat-room` Unix group:
 
@@ -236,6 +256,7 @@ For example, the main title of the page is [in the file
 
 [app]: https://one-chat-room.herokuapp.com
 [auto-deploy-ex]: git-automated-deployment.md
+[certbot-ex]: certbot-deployment.md
 [default-db]: https://github.com/MediaComem/one-chat-room/blob/158d7ff1aaaf9bd760e395405c3e743e59f505e0/config.js#L4
 [mongo]: https://www.mongodb.com
 [nginx-php-fpm-ex]: nginx-php-fpm-deployment.md

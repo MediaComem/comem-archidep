@@ -3,8 +3,6 @@
 The goal of this exercice is to put in practice the knowledge acquired during
 previous exercices to deploy a new application from scratch on your server.
 
-**This exercise is part of the course evaluation.**
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -80,11 +78,11 @@ described in the [project's README][readme] on your server.
 
 * **How to install:** there are several methods to install Ruby and Node.js. You
   should look for installation instructions specific to your operating system
-  (your AWS instance is running Ubuntu 18.04 Bionic). Where possible, you should
+  (your AWS instance is running Ubuntu 20.04 Focal). Where possible, you should
   find instructions to install with the apt package manager.
 
   For Redis, you may follow step 1 of this article:
-  https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-18-04.
+  https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-20-04.
 * **Check your ruby installation:** you can check that Ruby has been correctly
   installed with the following command:
 
@@ -113,7 +111,7 @@ installed so that npm can do its job. You can do that with the following
 command:
 
 ```bash
-$> apt install -y g++ make
+$> sudo apt install -y g++ make
 ```
 
 ### Optional: test in development mode
@@ -141,90 +139,102 @@ with `Ctrl-C` once you are done.
 
 ## Create a systemd service
 
-Create a systemd service file and enable this new service like in the [systemd
-exercise][systemd-ex]. You must of course adapt the information in the service
-file to the application you are trying to deploy. We suggest you name the
-service `wopr`.
+Create and enable a systemd unit file like in the [systemd
+exercise][systemd-ex]. Make the necessary changes to run the one chat room
+application instead of the PHP todolist.
 
-* **Absolute command path:** when setting the `ExecStart` directive in a systemd
-  unit file, you must use the absolute path to the command your want to run
-  (e.g. `/usr/bin/php` instead of just `php`). To find the path to a command,
-  you can use the `which` command:
+> **Hints:**
+>
+> * You will find the correct command to run the application in [the project's
+>   `README`][readme]. Remember that systemd requires absolute paths to
+>   commands.
+> * You may want to set the `PORT` environment variable to choose the port on
+>   which the application will listen. You can use the publicly accessible 3001
+>   port temporarily for testing, but you should use another free port that is
+>   not exposed to complete the exercise, since one of the requirements is to
+>   expose the application only through nginx.
 
-  ```bash
-  $> which php
-  /usr/bin/php
-  ```
-* **Use a private port:** you may use ports 3000 and 3001 for tests, but
-  remember that in the final setup, you must use a port that is not publicly
-  exposed.
+Once you have enabled and started the service, it should start automatically the
+next time you restart the server with `sudo reboot`.
 
-> **Advanced tip:** if you know what you are doing, you can already set up the
-> automated deployment project structure, so that you can point your systemd
-> configuration to the correct directory. That way you will not have to modify
-> it later.
+> **Advanced hint:** if you know what you are doing, you can already set up the
+> automated deployment project structure at this point, so that you can point
+> your systemd configuration to the correct directory. That way you will not
+> have to modify it later.
 
 
 
 ## Serve the application through nginx
 
 Create an nginx configuration to serve the application like in the [nginx
-PHP-FPM exercise][nginx-php-fpm-ex]. You must of course adapt the information in
-the nginx configuration to the application you are trying to deploy.
+PHP-FPM exercise][nginx-php-fpm-ex].
 
-* **Use a simple `proxy_pass` directive:** In the PHP-FPM exercise, you had to
-  use FasctCGI (nginx's `fastcgi_pass` directive) to get nginx to communicate
-  with the PHP Todolist, because PHP applications do not listen on a port.
+> **Hints:**
+>
+> * Skip all steps related to PHP FPM, since they are only valid for a PHP
+>   application.
+> * The `include` and `fastcgi_pass` directives used in the PHP FPM exercise
+>   make no sense for a non-PHP application. You should replace them with a
+>   [`proxy_pass`
+>   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
+>   as [presented during the course][nginx-rp-conf].
+> * Similarly, you can also point the nginx configuration directly to the
+>   automated deployment structure. That way you will not have to modify it
+>   later.
 
-  For this exercise, you can remove the `include` and `fastcgi_pass` directives
-  and use a simply `proxy_pass` as [presented during the course][nginx-rp-conf].
-  Nginx will simply proxy the request to the specific host and port.
 
-> **Advanced tip:** similarly, you can also point the nginx configuration
-> directly to the automated deployment structure. That way you will not have to
-> modify it later.
+
+## Provision a TLS certificate
+
+Obtain and configure a TLS certificate to serve the application over HTTPS like
+in the [certbot exercise][certbot-ex].
 
 
 
 ## Set up an automated deployment with Git hooks
 
-Make it so that the application can be automatically deployed via a Git hook
-like in the [previous exercise][previous-ex].
+Change your deployment so that the application can be automatically updated via
+a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 
-* **Update the `post-receive` hook:** Ruby and Node.js applications are loaded
-  into memory when they are started. In order for your automated deployment to
-  take source code changes into account, you must add the following steps to your script:
-
-  1. Re-build the application's web assets (see the [project's README][readme])
-     so that changes to Svelte code are taken into account.
-  2. Restart the application's systemd service so that changes to the Ruby code
-     are taken into account. You can do that with `sudo systemctl restart
-     my-service`. You will need to give your user permission to do this without
-     entering a password, as explained in the next section.
-* **Tip**: if you decide to do this exercise by following the instructions from
-  previous exercises, note the following difference in behavior.
-
-  When [updating the nginx configuration to set up an automated
-  deployment][automated-deployment-nginx-update], it is stated that you should
-  get a `404 Not Found` page. This is not the case for this exercise. It will
-  keep working even after you change the nginx's `root` directive.
-
-  > The reason is that when using `fastcgi_pass`, nginx is asking the PHP
-  > FastCGI Process Manager (PHP-FPM) to find and execute the PHP files in the
-  > `root` directory specified by the configuration. When you change that `root`
-  > to a directory that is empty (at that stage in the exercise), it will not
-  > find the PHP files anymore, and return a 404 Not Found error.
-  >
-  > When using `proxy_pass`, nginx is simply forwarding the request to the given
-  > address and port. The WOPR application listens on that port and is capable
-  > of serving its own files, regardless of nginx's configuration. So the
-  > application will keep working even after changing the `root`.
+> **Hints:**
+>
+> * Once you have set up the new directories, make sure to update your systemd
+>   unit file to point to the correct directory.
+> * Update the `post-receive` hook. Compared to the PHP todolist, there are
+>   additional steps which must be performed in the script for the automated
+>   deployment to work correctly:
+>
+>   1. Dependencies must be installed again (in case there are new ones).
+>   1. The web assets must be re-built so that changes to client-side code are
+>      taken into account.
+>   1. The systemd service must be restarted with `systemctl`. (Ruby code is not
+>      reinterpreted on-the-fly as with PHP; the process must be restarted so
+>      that the code is reloaded into memory).
+> * Note: in the automated deployment exercice, it is mentionned that the
+>   application will no longer work after changing the path to the repository in
+>   the nginx configuration. In the case of the WOPR application, it will
+>   continue to work, because the application serves its static files on its
+>   own, without nginx's help.
+>
+>   When using `fastcgi_pass`, nginx is asking the PHP FastCGI Process Manager
+>   (PHP-FPM) to find and execute the PHP files in the `root` directory
+>   specified by the configuration. When you change that `root` to a directory
+>   that is empty (at that stage in the exercise), it will not find the PHP
+>   files anymore, and return a 404 Not Found error.
+>
+>   When using `proxy_pass`, nginx is simply forwarding the request to the given
+>   address and port. The application listens on that port and is capable of
+>   serving its own files, regardless of nginx's configuration. So the
+>   application will keep working even after changing the `root`.
 
 ### Allow your user to restart the service without a password
 
 In order for the new `post-receive` hook to work, your user must be able to run
-`sudo systemctl restart my-service` without entering a password, since you will
-not be here to enter your password when the Git hook runs.
+`sudo systemctl restart wopr`  (assuming you have named your service `wopr`)
+without entering a password, otherwise it will not work in a Git hook.
+
+> A Git hook is not an interactive program. You are not running it yourself, so
+> you are not available to enter your password where prompted.
 
 Create a `wopr` Unix group:
 
@@ -238,7 +248,8 @@ Add your user to that group (replacing `john_doe` with your username):
 $> sudo usermod -a -G wopr john_doe
 ```
 
-Make sure that your user has been added to the group successfully by looking for it in the `/etc/group` file:
+Make sure that your user has been added to the group successfully by looking for
+it in the `/etc/group` file:
 
 ```bash
 $> cat /etc/group | grep wopr
@@ -270,27 +281,27 @@ Add the following line at the bottom of the file:
 
 Exit with `Ctrl-X` and save when prompted.
 
-> That line allows any user in the `wopr` group to execute the listed commands with `sudo`
-> without having to enter a password (hence the `NOPASSWD` option).
+> This line allows any user in the `wopr` group to execute the listed commands
+> with `sudo` without having to enter a password (hence the `NOPASSWD` option).
+>
+> You can test that it works by connecting to your server and running `sudo
+> systemctl status one-chat-room`. It should no longer ask you for your
+> password.
 
 ### Test the automated deployment
 
-Commit a change and push it to your repository on the server to test the
-automated deployment. For example, some of the text displayed in the main page
-[in the file `src/app.svelte`][change].
+Clone your fork of the repository to your local machine, make sure you have
+added a remote to your server, then commit and push a change to test the
+automated deployment.
 
-
-
-## Complete the exercise
-
-Send an email to the teacher with the URL to your deployed application.
+For example, some of the text displayed in the main page is [in the file
+`src/app.svelte`][change].
 
 
 
 ## Troubleshooting
 
 Here's a few tips about some problems you may encounter during this exercise.
-
 Note that some of these errors can happen in various situations:
 
 * When running a command manually from your terminal.
@@ -427,7 +438,9 @@ that port?
 
 
 [app]: https://comem-wopr.herokuapp.com
+[auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md
 [automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md#update-the-todolist-nginx-configuration
+[certbot-ex]: certbot-deployment.md
 [change]: https://github.com/MediaComem/comem-wopr/blob/4b75cc6c2c83c2fce1723ce655a12d5537c0bfbd/src/app.svelte#L26-L30
 [make]: https://www.gnu.org/software/make/
 [nginx-php-fpm-ex]: nginx-php-fpm-deployment.md
@@ -435,7 +448,6 @@ that port?
 [node]: https://nodejs.org
 [nosql]: https://en.wikipedia.org/wiki/NoSQL
 [npm]: https://www.npmjs.com
-[previous-ex]: git-automated-deployment.md
 [readme]: https://github.com/MediaComem/comem-wopr#readme
 [redis]: https://redis.io
 [repo]: https://github.com/MediaComem/comem-wopr
