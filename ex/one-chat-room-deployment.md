@@ -30,7 +30,7 @@ previous exercises:
 
 * You must install the language and database necessary to run the application,
   which are not the same as for the PHP todolist.
-* You must run this application as a systemd service and make sure it restarts
+* You must run this application as a systemd service, and make sure it restarts
   correctly following a server reboot.
 * You must serve this application through nginx acting as a reverse proxy.
 * You must set up an automated deployment via Git hooks for this application.
@@ -38,9 +38,9 @@ previous exercises:
 Additionally:
 
 * The application must be accessible **only through nginx**. It **must not** be
-  exposed directly on a publicly accessible port (in the AWS virtual machines
-  used in this course, the publicly accessible ports are 22, 80, 443, 3000 and
-  3001, some of them already used by SSH or nginx).
+  exposed directly on a publicly accessible port other than 80 or 443 (in the
+  AWS instances used in this course, the other publicly accessible ports are 22,
+  3000 and 3001, with port 22 being already used by SSH).
 
 ### The application
 
@@ -105,13 +105,16 @@ application instead of the PHP todolist.
 
 > **Hints:**
 >
-> * You will find the command required to run the application in [the project's
+> * You will find the correct command to run the application in [the project's
 >   `README`][readme].
 > * You may want to set the `PORT` environment variable to choose the port on
 >   which the application will listen. You can use the publicly accessible 3001
 >   port temporarily for testing, but you should use another free port that is
 >   not exposed to complete the exercise, since one of the requirements is to
 >   expose the application only through nginx.
+
+Once you have enabled and started the service, it should start automatically the
+next time you restart the server with `sudo reboot`.
 
 
 
@@ -134,8 +137,8 @@ PHP-FPM exercise][nginx-php-fpm-ex].
 
 ## Set up an automated deployment with Git hooks
 
-Make it so that the application can be automatically deployed via a Git hook
-like in the [previous exercise][previous-ex].
+Change your deployment so that the application can be automatically updated via
+a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 
 > **Hints:**
 >
@@ -146,7 +149,7 @@ like in the [previous exercise][previous-ex].
 >   deployment to work correctly:
 >
 >   1. Dependencies must be installed again (in case there are new ones).
->   2. The systemd service must be restarted with `systemctl`. (Node.js code is
+>   1. The systemd service must be restarted with `systemctl`. (Node.js code is
 >      not reinterpreted on-the-fly as with PHP; the process must be restarted
 >      so that the code is reloaded into memory).
 
@@ -214,8 +217,9 @@ Exit with `Ctrl-X` and save when prompted.
 
 ### Test the automated deployment
 
-If you are using your own fork of the repository, you can make and commit a
-change to test the automated deployment.
+Clone your fork of the repository to your local machine, make sure you have
+added a remote to your server, then commit and push a change to test the
+automated deployment.
 
 For example, the main title of the page is [in the file
 `views/components/app.pug`][one-chat-room-title].
@@ -231,7 +235,7 @@ For example, the main title of the page is [in the file
 
 
 [app]: https://one-chat-room.herokuapp.com
-[previous-ex]: git-automated-deployment.md
+[auto-deploy-ex]: git-automated-deployment.md
 [default-db]: https://github.com/MediaComem/one-chat-room/blob/158d7ff1aaaf9bd760e395405c3e743e59f505e0/config.js#L4
 [mongo]: https://www.mongodb.com
 [nginx-php-fpm-ex]: nginx-php-fpm-deployment.md

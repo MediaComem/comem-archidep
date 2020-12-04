@@ -13,7 +13,7 @@ from scratch on a server.
 - [Getting started](#getting-started)
 - [Create a systemd service](#create-a-systemd-service)
 - [Serve the application through nginx](#serve-the-application-through-nginx)
-- [Bonus: set up an automated deployment with Git hooks](#bonus-set-up-an-automated-deployment-with-git-hooks)
+- [Set up an automated deployment with Git hooks](#bonus-set-up-an-automated-deployment-with-git-hooks)
   - [Allow your user to restart the service without a password](#allow-your-user-to-restart-the-service-without-a-password)
   - [Test the automated deployment](#test-the-automated-deployment)
 
@@ -23,26 +23,27 @@ from scratch on a server.
 
 ## The goal
 
-You must deploy the provided application in a similar way as the PHP Todo List
-and One Chat Room application deployed during the course:
+You must deploy the provided application in a similar way as the PHP todolist
+in previous exercises:
 
-* You must install the language and database necessary to run the application.
-* You must run the application as a systemd service.
+* You must install the language and database necessary to run the application,
+  which are not the same as for the PHP todolist.
+* You must run the application as a systemd service, and make sure it restarts
+  correctly following a server reboot.
 * You must serve the application through nginx acting as a reverse proxy.
-* *Bonus:* you can set up an automated deployment via Git hooks for the
-  application.
+* You must set up an automated deployment via Git hooks for the application.
 
 Additionally:
 
-* The application must be accessible **only through nginx**.  It **must not**
-  be exposed directly on a publicly accessible port other than 80 or 443
-  through nginx (in the AWS virtual machines used for this exercise, the
-  publicly accessible ports are 3000 and 3001).
+* The application must be accessible **only through nginx**. It **must not** be
+  exposed directly on a publicly accessible port other than 80 or 443 (in the
+  AWS instances used in this course, the other publicly accessible ports are 22,
+  3000 and 3001, with port 22 being already used by SSH).
 
 ### The application
 
-The application you must deploy is [Big Browser][app].
-Its code is [available on GitHub][repo].
+The application you must deploy is [Big Browser][app]. Its code is [available on
+GitHub][repo].
 
 It is developed with:
 
@@ -57,8 +58,8 @@ It is developed with:
 
   > Redis is an in-memory [NoSQL][nosql] database, cache and message broker.
 
-You do not need to know any of these technologies,
-as your goal is only to install and run the application, not modify it.
+You do not need to know any of these technologies, as your goal is only to
+install and run the application, not modify it.
 
 
 
@@ -68,9 +69,9 @@ You should start by **forking** the [repository][repo] with the `Fork` button,
 and use your own copy of the repository instead of the provided one.  This will
 make it easier for you to test the automated deployment at the end.
 
-Then perform the required setup as described in the [project's
-`README`][readme].  Where necessary, you will need to find installation
-instructions for Ubuntu (version 18.04 Bionic).
+Then installed the required dependencies and perform the required setup as
+indicated in the [project's `README`][readme]. Where necessary, you will need to
+find installation instructions for Ubuntu (version 20.04 Focal).
 
 Before attempting to set up the systemd service, nginx configuration and
 automated deployment, you might want to simply run the application manually in
@@ -83,9 +84,9 @@ $> cd /path/to/application
 $> PORT=3001 npm start
 ```
 
-> We suggest you set the `PORT` environment variable to `3001` for this simple
-> test, as that is one of the ports that should be open in your AWS virtual
-> machine's firewall.
+> You can set the `PORT` environment variable to `3001` for this simple test, as
+> that is one of the ports that should be open in your AWS virtual machine's
+> firewall.
 
 Visit http://W.X.Y.Z:3001 to check that it works (replacing `W.X.Y.Z` by your
 server's IP address).  Stop the application with `Ctrl-C` once you are done.
@@ -93,96 +94,82 @@ server's IP address).  Stop the application with `Ctrl-C` once you are done.
 > Note that you did not need to configure database access credentials as with
 > the PHP Todo List.
 >
-> It works out of the box for two reasons: Redis requires no user or password
-> by default, and it's also a schema-less NoSQL database (databases and keys
-> are created on-the-fly as they are accessed the first time).
+> It works out of the box for two reasons: Redis requires no user or password by
+> default, and it's also a schema-less NoSQL database (databases and keys are
+> created on-the-fly as they are accessed the first time).
 
 
 
 ## Create a systemd service
 
-Create and enable a systemd service file like in the [systemd
-exercise][systemd-ex], with the following changes:
+Create and enable a systemd unit file like in the [systemd
+exercise][systemd-ex]. Make the necessary changes to run the one chat room
+application instead of the PHP todolist.
 
-* Name the file `big-browser.service` instead of `todolist.service`.
-* Update the `Description` parameter.
-* Update the `ExecStart` parameter with the correct command to start the
-  application (the production command indicated the the [project's
-  `README`][readme]).
+> **Hints:**
+>
+> * You will find the correct command to run the application in [the project's
+>   `README`][readme].
+> * You may want to set the `PORT` environment variable to choose the port on
+>   which the application will listen. You can use the publicly accessible 3001
+>   port temporarily for testing, but you should use another free port that is
+>   not exposed to complete the exercise, since one of the requirements is to
+>   expose the application only through nginx.
 
-  * *Hint:* `ExecStart` only accepts absolute command paths.
-    Use `which <command>` to find the absolute path of `<command>`.
-* Update the `WorkingDirectory` parameter with the correct directory.
-* Update the `Environment` parameter to set the `BIG_BROWSER_PORT` variable
-  instead of the `TODOLIST_DB_PASS` variable.
-  * *Hint:* you can use 3001 for tests (publicly accessible), but use 4000 (or
-    any other port that is not exposed) to complete the exercise.
-* Update the `After` parameter.
-  * *Hint:* use `systemctl list-unit-files|grep redis` to find the correct
-    service.
-
-> Once you have enabled the service, it should start automatically the next
-> time you restart the server with `sudo reboot`.
+Once you have enabled and started the service, it should start automatically the
+next time you restart the server with `sudo reboot`.
 
 
 
 ## Serve the application through nginx
 
-[Install nginx][nginx-install] and create an nginx configuration to serve the
-application like in the [nginx PHP-FPM exercise][nginx-php-fpm-ex], with the
-following changes:
+Create an nginx configuration to serve the application like in the [nginx
+PHP-FPM exercise][nginx-php-fpm-ex].
 
-* Skip all steps related to PHP FPM, since they are only relevant for a PHP
-  application.
-* Name the nginx configuration file `big-browser` instead of `todolist`.
-* Update the `server_name` directive to `john-doe.archidep.online`
-  (replacing `john-doe` by your username).
-* Update the `root` directive to the correct directory.
-* Replace the `include` and `fastcgi_pass` directives by a `proxy_pass`
-  directive.  You can look at the example provided [presented during the
-  course][nginx-rp-conf].  Use the port number you configured at the previous
-  step.
-
-> If you used port 3000 or 3001 until now, remember that the application must
-> only be accessible through nginx. You should change the port to a non-public
-> port like 4000, and update and [reload the systemd unit file][systemd-reload]
-> and nginx configuration file.
+> **Hints:**
+>
+> * Skip all steps related to PHP FPM, since they are only valid for a PHP
+>   application.
+> * The `include` and `fastcgi_pass` directives used in the PHP FPM exercise
+>   make no sense for a non-PHP application. You should replace them with a
+>   [`proxy_pass`
+>   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
+>   as [presented during the course][nginx-rp-conf].
 
 
 
-## Bonus: set up an automated deployment with Git hooks
+## Set up an automated deployment with Git hooks
 
-Make it so that the application can be automatically deployed via a Git hook
-like in the [Git automated deployment exercise][auto-deploy-ex], with the
-following changes:
+Change your deployment so that the application can be automatically updated via
+a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 
-* Update the directory names (use `big-browser` instead of `todolist`).
-* Update your `big-browser.service` systemd file to point to the new
-  `big-browser-automated` directory.
-  * Run `sudo systemctl daemon-reload` and `sudo systemctl restart big-browser`
-    to restart the service.
-* Update the `post-receive` hook.  Compared to the PHP todolist, there are
-  three additional steps which must be performed in the script for the
-  application to run correctly:
-
-  1. Dependencies must be installed with `npm ci`.
-  2. The application must be built with `npm run build`.
-  3. The systemd service must be restarted with `sudo systemctl restart
-     big-browser` (Node.js code is not reinterpreted on-the-fly as with PHP;
-     the process must be restarted so that the code is reloaded into memory).
-
-> Note: in the Git automated deployment exercice, it is mentionned that the
-> application will no longer work after changing the path to the repository in
-> the nginx configuration. In the case of the Big Browser application, it will
-> continue to work, because the application serves its static files on its own,
-> without nginx's help. Therefore, changing the path has no effect as long as
-> the `proxy_pass` directive still points to the correct port.
+> **Hints:**
+>
+> * Once you have set up the new directories, make sure to update your systemd
+>   unit file to point to the correct directory.
+> * Update the `post-receive` hook. Compared to the PHP todolist, there are two
+>   additional steps which must be performed in the script for the automated
+>   deployment to work correctly:
+>
+>   1. Dependencies must be installed again (in case there are new ones).
+>   1. The application must be re-built.
+>   1. The systemd service must be restarted with `systemctl`. (Node.js code is
+>      not reinterpreted on-the-fly as with PHP; the process must be restarted
+>      so that the code is reloaded into memory).
+> * Note: in the automated deployment exercice, it is mentionned that the
+>   application will no longer work after changing the path to the repository in
+>   the nginx configuration. In the case of the Big Browser application, it will
+>   continue to work, because the application serves its static files on its
+>   own, without nginx's help. Therefore, changing the path has no effect as
+>   long as the `proxy_pass` directive still points to the correct port.
 
 ### Allow your user to restart the service without a password
 
 In order for the new `post-receive` hook to work, your user must be able to run
-`sudo systemctl restart big-browser` without entering a password, as that will
-not work well in a Git hook.
+`sudo systemctl restart big-browser` (assuming you have named your service
+`big-browser`) without entering a password, otherwise it will not work in a Git
+hook. (A Git hook is not an interactive program, so you are not available to
+enter your password where prompted.)
 
 Create a `big-browser` Unix group:
 
@@ -229,9 +216,13 @@ Add the following line at the bottom of the file:
 
 Exit with `Ctrl-X` and save when prompted.
 
-> That line allows any user in the `big-browser` group to execute the listed
+> This line allows any user in the `big-browser` group to execute the listed
 > commands with `sudo` without having to enter a password (hence the `NOPASSWD`
 > option).
+>
+> You can test that it works by connecting to your server and running `sudo
+> systemctl status one-chat-room`. It should no longer ask you for your
+> password.
 
 ### Test the automated deployment
 
