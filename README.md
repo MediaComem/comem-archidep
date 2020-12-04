@@ -78,6 +78,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
     * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3453123/mod_resource/content/1/ArchiDep%202020-12-03%20part%204%20Reverse%20proxying.mp4)
     * [Video: symbolic links](https://cyberlearn.hes-so.ch/pluginfile.php/3453124/mod_resource/content/1/ArchiDep%202020-12-03%20part%205%20Symbolic%20links.mp4)
   * [TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3454718/mod_resource/content/1/ArchiDep%202020-12-04%20part%203%20TLSSSL%20certificates.mp4)
 * Automated deployment
   * [Shell scripting](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
   * [Git hooks](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
@@ -141,11 +142,14 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
     * [Video: architecture](https://cyberlearn.hes-so.ch/pluginfile.php/3453116/mod_resource/content/3/ArchiDep%202020-12-03%20part%203%20Discussion%20-%20Architecture%20of%20the%20systemd%20%20DNS%20exercises.mp4)
   * [Deploy a static site with nginx](ex/nginx-static-deployment.md)
     * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3453126/mod_resource/content/2/ArchiDep%202020-12-03%20part%206%20Exercise%20-%20Deploy%20a%20static%20website%20with%20nginx.mp4)
+    * [Video: solution](https://cyberlearn.hes-so.ch/pluginfile.php/3454709/mod_resource/content/1/ArchiDep%202020-12-04%20part%201%20Solution%20-%20Deploy%20a%20static%20site%20with%20nginx.mp4)
     * [Diagram](ex/nginx-static-deployment.pdf)
   * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
     * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3453128/mod_resource/content/1/ArchiDep%202020-12-03%20part%207%20Exercise%20-%20Deploy%20a%20PHP%20application%20with%20nginx%20and%20the%20FastCGI%20process%20manager.mp4)
+    * [Video: solution](https://cyberlearn.hes-so.ch/pluginfile.php/3454711/mod_resource/content/2/ArchiDep%202020-12-04%20part%202%20Solution%20-%20Deploy%20a%20PHP%20application%20with%20nginx%20and%20the%20FastCGI%20process%20manager.mp4)
     * [Diagram](ex/nginx-php-fpm-deployment.pdf)
   * [Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
+    * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3454721/mod_resource/content/1/ArchiDep%202020-12-04%20part%204%20Exercise%20-%20Provision%20a%20Lets%20Encrypt%20TLS%20certificate%20with%20Certbot.mp4)
   * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
     * [Diagram](ex/git-automated-deployment.pdf)
   * Deploy a web application with a database (**graded**), *not yet available*
