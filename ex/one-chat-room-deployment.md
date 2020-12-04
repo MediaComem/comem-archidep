@@ -1,8 +1,7 @@
 # Deploy a Node.js application with a MongoDB database
 
-The goal of this exercice is to put in practice the knowledge acquired during previous exercices to deploy a new application from scratch on your server.
-
-**This exercise is part of the course evaluation.**
+The goal of this exercice is to put in practice the knowledge acquired during
+previous exercices to deploy a new application from scratch on your server.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -26,25 +25,27 @@ The goal of this exercice is to put in practice the knowledge acquired during pr
 
 ## The goal
 
-You must deploy the provided application in a similar way as the PHP todolist in previous exercises:
+You must deploy the provided application in a similar way as the PHP todolist in
+previous exercises:
 
 * You must install the language and database necessary to run the application,
   which are not the same as for the PHP todolist.
-* You must run this application as a systemd service.
+* You must run this application as a systemd service and make sure it restarts
+  correctly following a server reboot.
 * You must serve this application through nginx acting as a reverse proxy.
 * You must set up an automated deployment via Git hooks for this application.
 
 Additionally:
 
-* The application must be accessible **only through nginx**.
-  It **must not** be exposed directly on a publicly accessible port
-  (in the AWS virtual machines used in this course, the publicly accessible ports are 22, 80, 443, 3000 and 3001,
-  some of them already used by SSH or nginx).
+* The application must be accessible **only through nginx**. It **must not** be
+  exposed directly on a publicly accessible port (in the AWS virtual machines
+  used in this course, the publicly accessible ports are 22, 80, 443, 3000 and
+  3001, some of them already used by SSH or nginx).
 
 ### The application
 
-The application you must deploy is a [real-time chatroom demo][app].
-Its code is [available on GitHub][repo].
+The application you must deploy is a [real-time chatroom demo][app]. Its code is
+[available on GitHub][repo].
 
 It is developed with:
 
@@ -52,22 +53,25 @@ It is developed with:
 * [Vue.js (client-side JavaScript)][vue] for the frontend
 * [MongoDB][mongo] for the database (a non-relational, [NoSQL][nosql] database)
 
-You do not need to know any of these technologies,
-as your goal is only to install and run the application, not modify it.
+You do not need to know any of these technologies, as your goal is only to
+install and run the application, not modify it.
 
 
 
 ## Getting started
 
 You should start by **forking** the [repository][repo] with the `Fork` button,
-and use your own copy of the repository instead of the provided one.
-This will make it easier for you to test the automated deployment at the end.
+and use your own copy of the repository instead of the provided one. This will
+make it easier for you to test the automated deployment at the end.
 
-You may then want to start by performing the required setup as described in the [project's `README`][readme].
-Where necessary, you will need to find installation instructions for Ubuntu (version 18.04 Bionic).
+You must then follow the instructions in the [project's `README`][readme] to
+install the necessary requirements and perform the initial setup. Where
+necessary, you will need to find installation instructions for Ubuntu (version
+20.04 Focal).
 
-Before attempting to set up the systemd service, nginx configuration and automated deployment,
-you might want to simply run the application manually to make sure it works.
+Before attempting to set up the systemd service, nginx configuration and
+automated deployment, you might want to simply run the application manually to
+make sure it works.
 
 You can do that with the following command on your server:
 
@@ -76,84 +80,83 @@ $> cd /path/to/application
 $> PORT=3001 npm start
 ```
 
-> We suggest you set the `PORT` environment variable to `3001` for this simple test,
-> as that is one of the ports that should be open in your AWS virtual machine's firewall.
+> You can set the `PORT` environment variable to `3001` for this simple test, as
+> that is one of the ports that should be open in your AWS virtual machine's
+> firewall.
 
 Visit http://W.X.Y.Z:3001 to check that it works (replacing `W.X.Y.Z` by your
 server's IP address). Stop the application with `Ctrl-C` once you are done.
 
-> Note that you did not need to configure database access credentials as with the PHP todolist.
-> The application tries to connect to the `one-chat-room` MongoDB database [by default][default-db].
+> Note that you did not need to configure database access credentials as with
+> the PHP todolist. The application tries to connect to the `one-chat-room`
+> MongoDB database [by default][default-db].
 >
-> It works out of the box for two reasons: MongoDB requires no user or password by default,
-> and it's also a schema-less NoSQL database
-> (databases and collections are created on-the-fly as they are accessed the first time).
-
-
-
-## Enable MongoDB to start at boot
-
-Run `sudo systemctl enable mongod`.
+> It works out of the box for two reasons: MongoDB requires no user or password
+> by default, and it's also a schema-less NoSQL database (databases and
+> collections are created on-the-fly when they are accessed the first time).
 
 
 
 ## Create a systemd service
 
-Create and enable a systemd service file like in the [systemd exercise][systemd-ex],
-with the following changes:
+Create and enable a systemd unit file like in the [systemd
+exercise][systemd-ex]. Make the necessary changes to run the one chat room
+application instead of the PHP todolist.
 
-* Name the file `one-chat-room.service` instead of `todolist.service`.
-* Update the `Description` parameter.
-* Update the `ExecStart` parameter with the correct command to start the application
-  (the production command indicated the the [project's `README`][readme]).
-
-  * *Hint:* `ExecStart` only accepts absolute command paths.
-    Use `which <command>` to find the absolute path of `<command>`.
-* Update the `WorkingDirectory` parameter with the correct directory.
-* Update the `Environment` parameter to set the `PORT` variable instead of the `TODOLIST_DB_PASS` variable.
-  * *Hint:* you can use 3001 for tests (publicly accessible),
-    but use 4000 (or any other port that is not exposed) to complete the exercice.
-* Update the `After` parameter.
-  * *Hint:* use `systemctl list-unit-files|grep mongo` to find the correct service.
+> **Hints:**
+>
+> * You will find the command required to run the application in [the project's
+>   `README`][readme].
+> * You may want to set the `PORT` environment variable to choose the port on
+>   which the application will listen. You can use the publicly accessible 3001
+>   port temporarily for testing, but you should use another free port that is
+>   not exposed to complete the exercise, since one of the requirements is to
+>   expose the application only through nginx.
 
 
 
 ## Serve the application through nginx
 
-Create an nginx configuration to serve the application like in the [nginx PHP-FPM exercise][nginx-php-fpm-ex],
-with the following changes:
+Create an nginx configuration to serve the application like in the [nginx
+PHP-FPM exercise][nginx-php-fpm-ex].
 
-* Skip all steps related to PHP FPM, since they are only valid for a PHP application.
-* Name the nginx configuration file `one-chat-room` instead of `todolist`.
-* Update the `server_name` directive to `chatroom.john-doe.archidep.online` instead of `todolist.john-doe.archidep.online`
-  (replacing `john-doe` by your username).
-* Update the `root` directive to the correct directory.
-* Replace the `include` and `fastcgi_pass` directives by a `proxy_pass` directive.
-  You can look at the example provided [presented during the course][nginx-rp-conf].
-  Use the port number you configured at the previous step.
+> **Hints:**
+>
+> * Skip all steps related to PHP FPM, since they are only valid for a PHP
+>   application.
+> * The `include` and `fastcgi_pass` directives used in the PHP FPM exercise
+>   make no sense for a non-PHP application. You should replace them with a
+>   [`proxy_pass`
+>   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
+>   as [presented during the course][nginx-rp-conf].
 
 
 
 ## Set up an automated deployment with Git hooks
 
-Make it so that the application can be automatically deployed via a Git hook like in the [previous exercise][previous-ex],
-with the following changes:
+Make it so that the application can be automatically deployed via a Git hook
+like in the [previous exercise][previous-ex].
 
-* Update the directory names (use `one-chat-room` instead of `todolist`).
-* Update your `one-chat-room.service` systemd file to point to the new `one-chat-room-automated` directory.
-  * Run `sudo systemctl daemon-reload` and `sudo systemctl restart one-chat-room` to restart the service.
-* Update the `post-receive` hook.
-  Compared to the PHP todolist, there are two additional steps which must be performed in the script for the application to run correctly:
-
-  1. Dependencies must be installed with `npm install`.
-  2. The systemd service must be restarted with `sudo systemctl restart one-chat-room`
-     (Node.js code is not reinterpreted on-the-fly as with PHP; the process must be restarted so that the code is reloaded into memory).
+> **Hints:**
+>
+> * Once you have set up the new directories, make sure to update your systemd
+>   unit file to point to the correct directory.
+> * Update the `post-receive` hook. Compared to the PHP todolist, there are two
+>   additional steps which must be performed in the script for the automated
+>   deployment to work correctly:
+>
+>   1. Dependencies must be installed again (in case there are new ones).
+>   2. The systemd service must be restarted with `systemctl`. (Node.js code is
+>      not reinterpreted on-the-fly as with PHP; the process must be restarted
+>      so that the code is reloaded into memory).
 
 ### Allow your user to restart the service without a password
 
-In order for the new `post-receive` hook to work,
-your user must be able to run `sudo systemctl restart one-chat-room` without entering a password,
-as that will not work well in a Git hook.
+In order for the new `post-receive` hook to work, your user must be able to run
+`sudo systemctl restart one-chat-room` (assuming you have named your service
+`one-chat-room`) without entering a password, otherwise it will not work in a
+Git hook. (A Git hook is not an interactive program, so you are not available to
+enter your password where prompted.)
 
 Create a `one-chat-room` Unix group:
 
@@ -167,28 +170,33 @@ Add your user to that group (replacing `john_doe` with your username):
 $> sudo usermod -a -G one-chat-room john_doe
 ```
 
-Make sure that your user has been added to the group successfully by looking for it in the `/etc/group` file:
+Make sure that your user has been added to the group successfully by looking for
+it in the `/etc/group` file:
 
 ```bash
 $> cat /etc/group | grep one-chat-room
 one-chat-room:x:1005:john_doe
 ```
 
-Make sure your default editor is `nano` (or whichever you are more comfortable with):
+Make sure your default editor is `nano` (or whichever you are more comfortable
+with):
 
 ```bash
 $> sudo update-alternatives --config editor
 ```
 
-Now you will edit the `sudoers` file to allow your user to run some specific commands without a password.
+Now you will edit the `sudoers` file to allow your user to run some specific
+commands without a password.
 
-**WARNING: be VERY careful when editing the `sudoers` file, as you may corrupt your system if you introduce syntax errors.**
+**WARNING: be VERY careful when editing the `sudoers` file, as you may corrupt
+your system if you introduce syntax errors.**
 
 ```bash
 $> sudo visudo
 ```
 
-Add the following line at the bottom of the file:
+Add the following line at the bottom of the file (assuming you have named your
+service `one-chat-room`):
 
 ```
 %one-chat-room ALL=(ALL:ALL) NOPASSWD: /bin/systemctl restart one-chat-room, /bin/systemctl status one-chat-room, /bin/systemctl start one-chat-room, /bin/systemctl stop one-chat-room
@@ -196,21 +204,21 @@ Add the following line at the bottom of the file:
 
 Exit with `Ctrl-X` and save when prompted.
 
-> That line allows any user in the `one-chat-room` group to execute the listed commands with `sudo`
-> without having to enter a password (hence the `NOPASSWD` option).
+> This line allows any user in the `one-chat-room` group to execute the listed
+> commands with `sudo` without having to enter a password (hence the `NOPASSWD`
+> option).
+>
+> You can test that it works by connecting to your server and running `sudo
+> systemctl status one-chat-room`. It should no longer ask you for your
+> password.
 
 ### Test the automated deployment
 
-If you are using your own fork of the repository,
-you can make and commit a change to test the automated deployment.
+If you are using your own fork of the repository, you can make and commit a
+change to test the automated deployment.
 
-For example, the main title of the page is [in the file `views/components/app.pug`][one-chat-room-title].
-
-
-
-## Complete the exercise
-
-Send an email to the teacher with the URL to your deployed application.
+For example, the main title of the page is [in the file
+`views/components/app.pug`][one-chat-room-title].
 
 
 
