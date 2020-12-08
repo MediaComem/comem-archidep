@@ -94,7 +94,7 @@ set.
 >   if it changes. You do not want this for a production deployment, as it might
 >   take a few seconds to restart, during which clients will get errors.
 
-Once your exosystem file is ready, run it with PM2.
+Once your ecosystem file is ready, run it with PM2.
 
 ### Configure systemd to run PM2
 
