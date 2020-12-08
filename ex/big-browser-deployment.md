@@ -11,9 +11,11 @@ from scratch on a server.
 - [The goal](#the-goal)
   - [The application](#the-application)
 - [Getting started](#getting-started)
+  - [Optional: test in development mode](#optional-test-in-development-mode)
 - [Create a systemd service](#create-a-systemd-service)
 - [Serve the application through nginx](#serve-the-application-through-nginx)
-- [Set up an automated deployment with Git hooks](#bonus-set-up-an-automated-deployment-with-git-hooks)
+- [Provision a TLS certificate](#provision-a-tls-certificate)
+- [Set up an automated deployment with Git hooks](#set-up-an-automated-deployment-with-git-hooks)
   - [Allow your user to restart the service without a password](#allow-your-user-to-restart-the-service-without-a-password)
   - [Test the automated deployment](#test-the-automated-deployment)
 

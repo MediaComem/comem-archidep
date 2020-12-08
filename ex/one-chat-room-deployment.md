@@ -10,13 +10,13 @@ previous exercices to deploy a new application from scratch on your server.
 - [The goal](#the-goal)
   - [The application](#the-application)
 - [Getting started](#getting-started)
-- [Enable MongoDB to start at boot](#enable-mongodb-to-start-at-boot)
+  - [Optional: test in development mode](#optional-test-in-development-mode)
 - [Create a systemd service](#create-a-systemd-service)
 - [Serve the application through nginx](#serve-the-application-through-nginx)
+- [Provision a TLS certificate](#provision-a-tls-certificate)
 - [Set up an automated deployment with Git hooks](#set-up-an-automated-deployment-with-git-hooks)
   - [Allow your user to restart the service without a password](#allow-your-user-to-restart-the-service-without-a-password)
   - [Test the automated deployment](#test-the-automated-deployment)
-- [Complete the exercise](#complete-the-exercise)
 - [End result](#end-result)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -73,6 +73,8 @@ You must then follow the instructions in the [project's `README`][readme] to
 install the necessary requirements and perform the initial setup. Where
 necessary, you will need to find installation instructions for Ubuntu (version
 20.04 Focal).
+
+### Optional: test in development mode
 
 Before attempting to set up the systemd service, nginx configuration and
 automated deployment, you might want to simply run the application manually to
