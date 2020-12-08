@@ -158,7 +158,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Deploy web applications with a database to Heroku](ex/heroku-deployment.md)
 * *Extra*
   * [Deploy the One Chat Room web application (Node.js & MongoDB)](ex/one-chat-room-deployment.md)
-    * *[Diagram](ex/end-result.pdf)
+    * [Diagram](ex/end-result.pdf)
   * [Deploy the Big Browser web application (Node.js & Redis)](ex/big-browser-deployment.md)
   * [Deploy the WOPR web application (Ruby & Redis)](ex/wopr-deployment.md)
   * [Configure nginx as a load balancer](ex/load-balancing-deployment.md)
