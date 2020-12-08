@@ -32,9 +32,6 @@ code is [available on GitHub][locator-repo].
 not work due to rate limiting issues. However, it is deployable and still
 illustrates the load balancing capabilities of nginx.
 
-The deployed application looks like this:
-https://load-balanceable-locator.herokuapp.com
-
 When a proper load balancing configuration is performed, nginx should direct
 your request to one of 3 application instances, each with a different background
 color, every time you refresh the page. (This does not work on the Heroku
