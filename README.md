@@ -153,15 +153,15 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
     * [Diagram](ex/git-automated-deployment.pdf)
   * Deploy a web application with a database (**graded**), *not yet available*
-  * *Extra exercises*
-    * [Deploy the One Chat Room web application (Node.js & MongoDB)](ex/one-chat-room-deployment.md)
-    * [Deploy the Big Browser web application (Node.js & Redis)](ex/big-browser-deployment.md)
-    * [Deploy the WOPR web application (Ruby & Redis)](ex/wopr-deployment.md)
-    * [Configure nginx as a load balancer](ex/load-balancing-deployment.md)
-  * *[End result diagram](ex/end-result.pdf) (assuming the One Chat Room application was deployed)*
 * **Platform-as-a-Service deployment**
   * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
   * [Deploy web applications with a database to Heroku](ex/heroku-deployment.md)
+* *Extra*
+  * [Deploy the One Chat Room web application (Node.js & MongoDB)](ex/one-chat-room-deployment.md)
+    * *[Diagram](ex/end-result.pdf)
+  * [Deploy the Big Browser web application (Node.js & Redis)](ex/big-browser-deployment.md)
+  * [Deploy the WOPR web application (Ruby & Redis)](ex/wopr-deployment.md)
+  * [Configure nginx as a load balancer](ex/load-balancing-deployment.md)
 
 
 
