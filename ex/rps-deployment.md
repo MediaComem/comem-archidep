@@ -369,6 +369,24 @@ install, which the `npm` command will download.
 For this exercise, you want to run this command in the directory where the RPS
 application's files are located (as explained in the project's README).
 
+### `error: password authentication failed for user`
+
+If you see an error similar to this when migrating the database or starting the
+application:
+
+```
+error: password authentication failed for user "rps"
+```
+
+It means that the database migration scripts or the application cannot connect
+to the database. Are you sure that you followed all the setup instructions and
+performed all necessary configuration? Did you properly configure the PostgreSQL
+connection settings?
+
+> Just like the PHP todolist required the correct configuration to successfully
+> connect to its MySQL database, the RPS application also requires configuration
+> to connect to its PostgreSQL database.
+
 ### `remote: sudo: no tty present and no askpass program specified`
 
 If you see an error message similar to this when your Git hook is triggered:
