@@ -156,7 +156,8 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
     * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3460298/mod_resource/content/2/ArchiDep%202020-12-11%20part%204%20Exercice%20-%20Set%20up%20an%20automated%20deployment%20with%20Git%20hooks.mp4)
     * [Diagram](ex/git-automated-deployment.pdf)
-  * [Deploy a web application with a database](ex/rps-deployment.md) (**graded**)
+  * [Deploy a Node.js & Svelte application with a PostgreSQL database](ex/rps-deployment.md) (**graded**)
+    * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3460494/mod_resource/content/1/ArchiDep%202020-12-11%20part%205%20Exercice%20-%20Deploy%20a%20Node.js%20%20Svelte%20application%20with%20a%20PostgreSQL%20database.mp4)
 * **Platform-as-a-Service deployment**
   * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
   * [Deploy web applications with a database to Heroku](ex/heroku-deployment.md)
