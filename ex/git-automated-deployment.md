@@ -85,7 +85,7 @@ Initialized empty Git repository in /home/john_doe/todolist-automated-repo/
 Copy this script and replace `john_doe` by your username:
 
 ```
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
 echo Checking out latest version...
