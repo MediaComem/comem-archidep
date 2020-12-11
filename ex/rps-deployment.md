@@ -137,9 +137,12 @@ You must also perform the **initial setup** instructions indicated in the
 >   line:
 >
 >   * The `createuser --pwprompt rps` command creates a PostgreSQL user named
->     "rps".
+>     "rps" and asks you to define a password for that user. The application
+>     should use this PostgreSQL username and password to connect to the
+>     database.
 >   * The `createdb --owner rps rps` command creates an empty PostgreSQL
->     database named "rps" and owned by the "rps" user.
+>     database named "rps" and owned by the "rps" user. This is the database
+>     that the application will use.
 >
 >   This is equivalent to [part of the `todolist.sql`
 >   script](https://github.com/MediaComem/comem-archidep-php-todo-exercise/blob/5d46e9fcf974d3d74d5eec838c512798f02581e1/todolist.sql#L1-L8)
