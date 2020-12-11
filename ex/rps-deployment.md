@@ -106,23 +106,41 @@ described in the [project's README][readme] on your server:
 You must also perform the **initial setup** instructions indicated in the
 [project's README][readme].
 
-> **Note:** the setup instructions use the `createuser` and `createdb` commands.
-> These commands are binaries that come with the PostgreSQL server and can be
-> used to manage PostgreSQL users and databases on the command line.
+> * **Note:** the setup instructions use the `createuser` and `createdb`
+>   commands. These commands are binaries that come with the PostgreSQL server
+>   and can be used to manage PostgreSQL users and databases on the command
+>   line:
 >
-> On the command line, PostgreSQL uses [peer
-> authentication](https://www.postgresql.org/docs/13/auth-peer.html) based on
-> your Unix username by default. This is why the commands are prefixed with
-> `sudo -u postgres`, which executes them as the `postgres` Unix user which was
-> created when you installed PostgreSQL. You can verify the existence of this
-> user with the command `cat /etc/passwd | grep postgres`.
+>   * The `createuser --pwprompt rps` command creates a PostgreSQL user named
+>     "rps".
+>   * The `createdb --owner rps rps` command creates an empty PostgreSQL
+>     database named "rps" and owned by the "rps" user.
 >
-> If you prefer using SQL, you could instead connect to the database as the
-> `postgres` user (equivalent to MySQL's `root` user) with `sudo -u postgres
-> psql` and run equivalent [`CREATE
-> USER`](https://www.postgresql.org/docs/13/sql-createuser.html) and [`CREATE
-> DATABASE`](https://www.postgresql.org/docs/13/sql-createdatabase.html)
-> queries.
+>   This is equivalent to [part of the `todolist.sql`
+>   script](https://github.com/MediaComem/comem-archidep-php-todo-exercise/blob/5d46e9fcf974d3d74d5eec838c512798f02581e1/todolist.sql#L1-L8)
+>   you executed when first deploying the PHP todolist.
+>
+>   If you prefer using SQL, you could instead connect to the database as the
+>   `postgres` user (equivalent to MySQL's `root` user) with `sudo -u postgres
+>   psql` and run equivalent [`CREATE
+>   USER`](https://www.postgresql.org/docs/13/sql-createuser.html) and [`CREATE
+>   DATABASE`](https://www.postgresql.org/docs/13/sql-createdatabase.html)
+>   queries.
+> * **Note:** the `npm run migrate` command you are asked to run will execute
+>   [the RPS application's database
+>   migrations](https://github.com/MediaComem/rps/blob/627e80fcdfa8e5e4b4cfe66b9ff372a0d25e889f/src/server/migrations/20201209165252_init.ts)
+>   which are written in code. This will create the necessary table(s) in the
+>   database.
+>
+>   This is equivalent to the [rest of the `todolist.sql`
+>   script](https://github.com/MediaComem/comem-archidep-php-todo-exercise/blob/5d46e9fcf974d3d74d5eec838c512798f02581e1/todolist.sql#L12-L18)
+>   you executed when first deploying to the PHP todolist.
+> * **Note:** on the command line, PostgreSQL uses [peer
+>   authentication](https://www.postgresql.org/docs/13/auth-peer.html) based on
+>   your Unix username by default. This is why the commands are prefixed with
+>   `sudo -u postgres`, which executes them as the `postgres` Unix user which
+>   was created when you installed PostgreSQL. You can verify the existence of
+>   this user with the command `cat /etc/passwd | grep postgres`.
 
 ### Optional: test in development mode
 
