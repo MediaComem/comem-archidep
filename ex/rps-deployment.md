@@ -157,8 +157,8 @@ You must also perform the **initial setup** instructions indicated in the
 > * **Note:** the `npm run migrate` command you are asked to run will execute
 >   [the RPS application's database
 >   migrations](https://github.com/MediaComem/rps/blob/627e80fcdfa8e5e4b4cfe66b9ff372a0d25e889f/src/server/migrations/20201209165252_init.ts)
->   which are written in code. This will create the necessary table(s) in the
->   database.
+>   which are written in code. The migration scripts will connect to the
+>   database and create the necessary table(s).
 >
 >   This is equivalent to the [rest of the `todolist.sql`
 >   script](https://github.com/MediaComem/comem-archidep-php-todo-exercise/blob/5d46e9fcf974d3d74d5eec838c512798f02581e1/todolist.sql#L12-L18)
