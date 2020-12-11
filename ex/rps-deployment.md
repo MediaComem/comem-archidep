@@ -406,7 +406,7 @@ that port?
 
 
 
-[app]: https://rps.simon-oulevay.archidep.online
+[app]: http://rps.simon-oulevay.archidep.online
 [auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md
 [automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md#update-the-todolist-nginx-configuration
 [certbot-ex]: certbot-deployment.md
