@@ -34,11 +34,13 @@ Learn the basics of Git hooks.
 
 ## What is a Git hook?
 
-A Git hook is **custom script** that can be **triggered when certain actions occur**.
-Hooks can be any script, e.g. a shell script, a Ruby script, a Python script, etc.
+A Git hook is **an executable file** that can be **triggered when certain
+actions occur**. Hooks can be any kind of executable file, e.g. a compiled
+binary program, a shell script, a Ruby script, a Python script, etc.
 
-Hooks must be executable files in the `hooks` directory inside a repository's Git directory
-(inside the `.git` directory in a normal repository).
+Hooks must be executable files with a specific name in the `hooks` directory
+inside a repository's Git directory (inside the `.git` directory in a normal
+repository).
 
 You can find example hook files in most Git repositores:
 

@@ -46,10 +46,12 @@ Learn the basics of shell scripting with Bash.
 
 ## What is a script?
 
-Unix-like operating system can execute two main types of file:
+In a Unix-like operating system, a file that can be executed (someone has the
+`x` permission on it) should be one of the following:
 
-* **Binaries**, which contain machine-readable binary code that has been compiled from source code.
-* **Scripts**, which are text files containing code that is dynamically interpreted.
+* A **binary file**, which contains machine-readable binary code that has been
+  compiled from source code.
+* A **script**, which is a file containing code that is dynamically interpreted.
 
 ### How is a script executed?
 
@@ -131,9 +133,13 @@ Shebang             | Script contents
 
 ## What is shell scripting?
 
-**Shell scripting** is the practice of writing scripts that contain series of shell commands that you want to be able to reuse.
+**Shell scripting** is the practice of writing scripts that contain series of
+shell commands that you want to be able to reuse.
 
-Any script with a shell as the interpreter is a shell script.
+Any script with a shell as the interpreter is a "shell script".
+
+> A script using PHP as the interpreter is still a script, but it's not a "shell
+> script". It's a PHP script.
 
 
 
