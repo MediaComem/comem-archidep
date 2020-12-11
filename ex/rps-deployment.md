@@ -5,6 +5,25 @@ previous exercices to deploy a new application from scratch on your server.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [The goal](#the-goal)
+  - [The application](#the-application)
+- [Getting started](#getting-started)
+  - [Optional: test in development mode](#optional-test-in-development-mode)
+- [Create a systemd service](#create-a-systemd-service)
+- [Serve the application through nginx](#serve-the-application-through-nginx)
+- [Provision a TLS certificate](#provision-a-tls-certificate)
+- [Set up an automated deployment with Git hooks](#set-up-an-automated-deployment-with-git-hooks)
+  - [Allow your user to restart the service without a password](#allow-your-user-to-restart-the-service-without-a-password)
+  - [Test the automated deployment](#test-the-automated-deployment)
+- [Troubleshooting](#troubleshooting)
+  - [`ENOENT open package.json`](#enoent-open-packagejson)
+  - [`error: password authentication failed for user`](#error-password-authentication-failed-for-user)
+  - [`remote: sudo: no tty present and no askpass program specified`](#remote-sudo-no-tty-present-and-no-askpass-program-specified)
+  - [`code=exited, status=200/CHDIR`](#codeexited-status200chdir)
+  - [`502 Bad Gateway`](#502-bad-gateway)
+
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
