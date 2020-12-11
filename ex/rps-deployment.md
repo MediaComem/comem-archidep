@@ -131,6 +131,7 @@ described in the [project's README][readme] on your server:
 You must also perform the **initial setup** instructions indicated in the
 [project's README][readme].
 
+> * **Note:** PostgreSQL listens on port 5432 by default.
 > * **Note:** the setup instructions use the `createuser` and `createdb`
 >   commands. These commands are binaries that come with the PostgreSQL server
 >   and can be used to manage PostgreSQL users and databases on the command
