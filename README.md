@@ -81,7 +81,9 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
     * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3454718/mod_resource/content/1/ArchiDep%202020-12-04%20part%203%20TLSSSL%20certificates.mp4)
 * Automated deployment
   * [Shell scripting](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3460294/mod_resource/content/1/ArchiDep%202020-12-11%20part%202%20Shell%20Scripting.mp4)
   * [Git hooks](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3460295/mod_resource/content/2/ArchiDep%202020-12-11%20part%203%20Git%20Hooks.mp4)
 * Platform-as-a-Service (PaaS)
   * [Heroku](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/heroku?home=MediaComem%2Fcomem-archidep%23readme)
 * *Software development (extra)*
@@ -150,7 +152,9 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
     * [Diagram](ex/nginx-php-fpm-deployment.pdf)
   * [Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
     * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3454721/mod_resource/content/1/ArchiDep%202020-12-04%20part%204%20Exercise%20-%20Provision%20a%20Lets%20Encrypt%20TLS%20certificate%20with%20Certbot.mp4)
+    * [Video: solution](https://cyberlearn.hes-so.ch/pluginfile.php/3460292/mod_resource/content/2/ArchiDep%202020-12-11%20part%201%20Solution%20-%20Provision%20a%20Lets%20Encrypt%20TLS%20certificate%20with%20Certbot.mp4)
   * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
+    * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3460298/mod_resource/content/2/ArchiDep%202020-12-11%20part%204%20Exercice%20-%20Set%20up%20an%20automated%20deployment%20with%20Git%20hooks.mp4)
     * [Diagram](ex/git-automated-deployment.pdf)
   * Deploy a web application with a database (**graded**), *not yet available*
 * **Platform-as-a-Service deployment**
