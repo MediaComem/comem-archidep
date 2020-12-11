@@ -408,10 +408,10 @@ application:
 error: password authentication failed for user "rps"
 ```
 
-It means that the database migration scripts or the application cannot connect
-to the database. Are you sure that you followed all the setup instructions and
-performed all necessary configuration? Did you properly configure the PostgreSQL
-connection settings?
+It means that the RPS application or its database migration scripts cannot
+connect to the database. Are you sure that you followed all the setup
+instructions and performed all necessary configuration? Did you properly
+configure the PostgreSQL connection settings?
 
 > Just like the PHP todolist required the correct configuration to successfully
 > connect to its MySQL database, the RPS application also requires configuration
