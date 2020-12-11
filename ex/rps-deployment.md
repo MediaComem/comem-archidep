@@ -20,7 +20,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [Allow your user to restart the service without a password](#allow-your-user-to-restart-the-service-without-a-password)
   - [Test the automated deployment](#test-the-automated-deployment)
 - [Troubleshooting](#troubleshooting)
-  - [`ENOENT open package.json`](#enoent-open-packagejson)
+  - [`ENOENT`](#enoent)
   - [`error: password authentication failed for user`](#error-password-authentication-failed-for-user)
   - [`remote: sudo: no tty present and no askpass program specified`](#remote-sudo-no-tty-present-and-no-askpass-program-specified)
   - [`code=exited, status=200/CHDIR`](#codeexited-status200chdir)
@@ -379,9 +379,10 @@ Note that some of these errors can happen in various situations:
 * When systemd tries to start your service.
 * When your `post-receive` Git hook executes.
 
-### `ENOENT open package.json`
+### `ENOENT`
 
-If you see an error message similar to this:
+If you see an error message similar to this, or generally any `ENOENT` error
+message when running an `npm` command:
 
 ```
 npm ERR! code ENOENT
@@ -389,10 +390,11 @@ npm ERR! syscall open
 npm ERR! path /path/to/package.json
 ```
 
-You are probably executing the `npm ci` command in the wrong directory. It must
-be executed in a directory that contains both a `package.json` and
-`package-lock.json` files. These files describe a list of npm packages to
-install, which the `npm` command will download.
+You are probably executing an `npm` command (such as `npm ci` or `npm start`) in
+the wrong directory. `npm` commands should generally be executed in a directory
+that contains the project's `package.json` file. This file describes project
+information required by the various `npm` commands, such as the list of packages
+to install or appropriate commands to run.
 
 For this exercise, you want to run this command in the directory where the RPS
 application's files are located (as explained in the project's README).
