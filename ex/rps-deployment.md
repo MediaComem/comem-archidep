@@ -10,6 +10,8 @@ previous exercices to deploy a new application from scratch on your server.
 - [The goal](#the-goal)
   - [The application](#the-application)
 - [Getting started](#getting-started)
+  - [Install the requirements](#install-the-requirements)
+  - [Perform the initial setup](#perform-the-initial-setup)
   - [Optional: test in development mode](#optional-test-in-development-mode)
 - [Create a systemd service](#create-a-systemd-service)
 - [Serve the application through nginx](#serve-the-application-through-nginx)
@@ -70,6 +72,8 @@ to deploy the application, not modify it.
 
 ## Getting started
 
+### Install the requirements
+
 You may want to start by making sure you have installed all the requirements
 described in the [project's README][readme] on your server:
 
@@ -121,6 +125,8 @@ described in the [project's README][readme] on your server:
              |          |          |         |         | postgres=CTc/postgres
   (3 rows)
   ```
+
+### Perform the initial setup
 
 You must also perform the **initial setup** instructions indicated in the
 [project's README][readme].
