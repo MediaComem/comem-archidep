@@ -351,8 +351,7 @@ Exit with `Ctrl-X` and save when prompted.
 > with `sudo` without having to enter a password (hence the `NOPASSWD` option).
 >
 > You can test that it works by connecting to your server and running `sudo
-> systemctl status one-chat-room`. It should no longer ask you for your
-> password.
+> systemctl status rps`. It should no longer ask you for your password.
 
 ### Test the automated deployment
 
