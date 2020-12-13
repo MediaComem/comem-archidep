@@ -263,10 +263,11 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 > * Once you have set up the new directories, make sure to update your systemd
 >   unit file to point to the correct directory.
 >
->   Note that you must repeat part of the [initial setup][initial-setup] you
->   performed in the original directory. You do not have to create or migrate
->   the database again, but you must configure the `.env` file in this new
->   deployment directory.
+>   Note that the new directory is a fresh deployment, so you have to repeat
+>   part of the [initial setup][initial-setup] you performed in the original
+>   directory. You do not have to create or migrate the database again, and your
+>   hook will handle most of the setup, but you must manually configure the
+>   `.env` file in this new deployment directory as well.
 > * Update the `post-receive` hook. Compared to the PHP todolist, there are
 >   additional steps which must be performed in the script for the automated
 >   deployment to work correctly:
