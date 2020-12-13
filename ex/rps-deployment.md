@@ -453,8 +453,9 @@ $> git pull
 $> npm run build:precompiled
 ```
 
-> **If you have forked the repository**, you must update your fork before
-> pulling the latest changes on the server.
+> **If you have forked the repository and cloned your fork on your server
+> instead of the original repository**, you must update your fork before pulling
+> the latest changes on the server.
 >
 > **On your local machine,** clone your own RPS repository (replacing `JohnDoe`
 > with your GitHub username), add the original RPS repository as a remote, merge
