@@ -12,7 +12,7 @@ previous exercices to deploy a new application from scratch on your server.
 - [Getting started](#getting-started)
   - [Install the requirements](#install-the-requirements)
   - [Perform the initial setup](#perform-the-initial-setup)
-  - [Optional: test in development mode](#optional-test-in-development-mode)
+  - [Optional: test the application](#optional-test-the-application)
 - [Create a systemd service](#create-a-systemd-service)
 - [Serve the application through nginx](#serve-the-application-through-nginx)
 - [Provision a TLS certificate](#provision-a-tls-certificate)
@@ -171,12 +171,12 @@ You must also perform the **initial setup** instructions indicated in the
 >   was created when you installed PostgreSQL. You can verify the existence of
 >   this user with the command `cat /etc/passwd | grep postgres`.
 
-### Optional: test in development mode
+### Optional: test the application
 
 Before attempting to set up the systemd service, nginx configuration and
-automated deployment, you can run the application manually in development mode
-to make sure it works. The [project's README][readme] explains how to run the
-application and how to configure it.
+automated deployment, you can run the application manually to make sure it
+works. The [project's README][readme] explains how to run the application and
+how to configure it.
 
 You can set the `PORT` environment variable to `3001` for this simple test, as
 that is one of the ports that should be open in your AWS instance's firewall.
