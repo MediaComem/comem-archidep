@@ -22,6 +22,7 @@ previous exercices to deploy a new application from scratch on your server.
 - [Troubleshooting](#troubleshooting)
   - [`ENOENT`](#enoent)
   - [`error: password authentication failed for user`](#error-password-authentication-failed-for-user)
+  - [`permission denied to create extension "uuid-ossp"`](#permission-denied-to-create-extension-uuid-ossp)
   - [`remote: sudo: no tty present and no askpass program specified`](#remote-sudo-no-tty-present-and-no-askpass-program-specified)
   - [`code=exited, status=200/CHDIR`](#codeexited-status200chdir)
   - [`502 Bad Gateway`](#502-bad-gateway)
@@ -417,6 +418,70 @@ configure the PostgreSQL connection settings?
 > Just like the PHP todolist required the correct configuration to successfully
 > connect to its MySQL database, the RPS application also requires configuration
 > to connect to its PostgreSQL database.
+
+### `permission denied to create extension "uuid-ossp"`
+
+If you see an error similar to this when migrating the database:
+
+```
+migration file "20201209165252_init.js" failed
+migration failed with error: CREATE EXTENSION "uuid-ossp"; - permission denied to create extension "uuid-ossp"
+error: CREATE EXTENSION "uuid-ossp"; - permission denied to create extension "uuid-ossp"
+```
+
+It is due to a difference in behavior between versions 12 and 13 of PostgreSQL.
+You have probably installed version 12 which requires more permissions to create
+this extension than version 13. The original instructions of the exercise did
+not take this into account.
+
+To fix the issue, create the extension yourself, as is now indicated in the
+[initial setup instructions of the RPS
+repository](https://github.com/MediaComem/rps#initial-setup):
+
+```bash
+$> sudo -u postgres psql -d rps -c 'CREATE EXTENSION "uuid-ossp"'
+```
+
+You also need to update the RPS application to the latest version to get a fix
+of the migration script. If you cloned the application directly from
+`https://github.com/MediaComem/rps`, you can simply go into the repository, pull
+the latest changes, and download the precompiled build again:
+
+```bash
+$> cd /path/to/rps
+$> git pull
+$> npm run build:precompiled
+```
+
+> **If you have forked the repository**, you must update your fork before
+> pulling the latest changes on the server.
+>
+> **On your local machine,** clone your own RPS repository (replacing `JohnDoe`
+> with your GitHub username), add the original RPS repository as a remote, merge
+> the latest changes into your master branch, and push those changes to update
+> your fork on GitHub:
+>
+> ```bash
+> $> cd /path/to/projects
+> $> git clone git@github.com:JohnDoe/rps.git
+> $> cd rps
+> $> git remote add upstream https://github.com/MediaComem/rps.git
+> $> git checkout master
+> $> git merge upstream/master
+> $> git push origin master
+> ```
+>
+> Then, **connect to your server** and perform the same instructions as
+> previously mentionned (pull the latest changes and download the precompiled
+> build):
+>
+> ```bash
+> $> cd /path/to/rps
+> $> git pull
+> $> npm run build:precompiled
+> ```
+
+You should then be able to run `npm run migrate` successfully.
 
 ### `remote: sudo: no tty present and no askpass program specified`
 
