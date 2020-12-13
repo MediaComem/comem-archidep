@@ -262,6 +262,11 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 >
 > * Once you have set up the new directories, make sure to update your systemd
 >   unit file to point to the correct directory.
+>
+>   Note that you must repeat part of the [initial setup][initial-setup] you
+>   performed in the original directory. You do not have to create or migrate
+>   the database again, but you must configure the `.env` file in this new
+>   deployment directory.
 > * Update the `post-receive` hook. Compared to the PHP todolist, there are
 >   additional steps which must be performed in the script for the automated
 >   deployment to work correctly:
@@ -544,6 +549,7 @@ that port?
 [certbot-ex]: certbot-deployment.md
 [change]: https://github.com/MediaComem/rps/blob/369c511ce013b760fba8d2f9663b5d951370ae7e/package.json#L3
 [express]: https://expressjs.com
+[initial-setup]: https://github.com/MediaComem/rps#initial-setup
 [make]: https://www.gnu.org/software/make/
 [nginx-php-fpm-ex]: nginx-php-fpm-deployment.md
 [nginx-rp-conf]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29
