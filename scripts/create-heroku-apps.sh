@@ -74,17 +74,21 @@ for student in $csv; do
   # Column 0: human-readable name
   name="$(echo "${fields[0]}"|tr -d '[:space:]')"
 
-  # Column 1: email address
-  email="$(echo "${fields[1]}"|tr -d '[:space:]')"
+  # Columns 1-2: unused
 
-  # Column 2 (optional): Heroku account email address (if different)
-  heroku_email="$(echo "${fields[2]}"|tr -d '[:space:]')"
+  # Column 3: email address
+  email="$(echo "${fields[3]}"|tr -d '[:space:]')"
+
+  # Columns 4-5: unused
+
+  # Column 6 (optional): Heroku account email address (if different)
+  heroku_email="$(echo "${fields[6]}"|tr -d '[:space:]')"
   id="$(echo "$email"|sed 's/@.*//'|sed 's/\./-/')"
 
-  # Column 3 (optional): custom ID (useful if default ID is too long)
+  # Column 7 (optional): custom ID (useful if default ID is too long)
   # The default ID is the name portion of the email address,
   # with dots replaced by hyphens.
-  short_id="$(echo "${fields[3]}"|tr -d '[:space:]')"
+  short_id="$(echo "${fields[7]}"|tr -d '[:space:]')"
   if test -n "$short_id"; then
     id="$short_id"
   fi
