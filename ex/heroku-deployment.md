@@ -1,9 +1,9 @@
 # Deploy web applications with a database to Heroku
 
-The goal of this exercice is to deploy the PHP Todolist and Ruby WOPR
-applications used in previous exercices, but this time on Heroku
-(Platform-as-a-Service) instead of the Amazon Web Services cloud
-(Infrastructure-as-a-Service).
+The goal of this exercice is to deploy various applications with a database
+component in the Heroku Platform-as-a-Service (PaaS) cloud instead of your own
+server in the Infrastructure-as-a-Service (IaaS) Amazon Web Services cloud. This
+illustrates the difference between the two cloud service models.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -30,6 +30,9 @@ applications used in previous exercices, but this time on Heroku
 
 
 ## Deploy the PHP Todolist application
+
+This section explains how to deploy the PHP todolist used during the course on
+Heroku.
 
 The commands in this exercise must be executed **on your local machine** in the
 Git repository where you have the PHP Todolist application. You do not need your
