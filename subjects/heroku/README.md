@@ -177,17 +177,16 @@ $> git commit -m "Initial commit"
 
 ### Do you have a credit card?
 
-Some of the following steps **are different depending on whether or not you have a credit card**:
+Some of the following steps **are different depending on whether or not you have
+a credit card**:
 
-* **If you have a credit card**,
-  you will need to enter your credit card details to provision a **free database add-on**
-  (Heroku will not debit your card unless you explicitly choose a paying plan)
-* **If you DO NOT have a credit card**,
-  you will need someone who has a credit card to give you the name of an **existing Heroku application** with the database add-on already provisioned,
-  and to which you have been given access
-
-This tutorial assumes that you are using a [MongoDB][mongodb] database.
-If not, adjust the instructions as appropriate for you database (i.e. when provisioning an add-on).
+* **If you have a credit card**, you will need to enter your credit card details
+  to provision **add-ons** (even free add-ons require your account to have a
+  payment method, but Heroku will not debit your card unless you explicitly
+  choose a paying plan).
+* **If you DO NOT have a credit card**, you will need someone who has a credit
+  card to give you the name of an **existing Heroku application** with the
+  database add-on already provisioned, and to which you have been given access.
 
 
 
@@ -220,50 +219,17 @@ Your app is **almost ready** to deploy.
 
 
 
-### Go to your dashboard (**with credit card**)
-
-Go to [heroku.com][heroku-dashboard], sign in, and find your new application in the dashboard:
-
-<p class='center'><img src='images/heroku-dashboard.png' /></p>
-
-
-
-### Provision a database add-on (**with credit card**)
-
-Go to your app's **Resources** tab and add the [mLab MongoDB][mlab-mongodb] add-on:
-
-<p class='center'><img src='images/heroku-mlab.png' class='w80' /></p>
-
-
-
-### Add the mLab add-on (**with credit card**)
-
-Choose the free sandbox version of the add-on (which should be selected by default) and click **Provision**:
-Heroku will probably **ask for your credit card details at this point**:
-
-<!-- slide-column -->
-
-<p class='center'><img src='images/heroku-mlab-provision.png' class='w90' /></p>
-
-<!-- slide-column -->
-
-<p class='center'><img src='images/heroku-verify.png' class='w90' /></p>
-
-<!-- slide-container -->
-
-If that is the case, click the **verify link**, fill and submit the form, **come back to this screen** and try again.
-It should work this time.
-
-
-
 ### Use an existing Heroku app (**without credit card**)
 
-Assuming someone has created a Heroku app and provisioned the correct database add-on for you,
-they will have given you the application name, e.g. `salty-inlet-82680`.
+Assuming someone has created a Heroku app and provisioned the correct database
+add-on for you, they will have given you the application name, e.g.
+`salty-inlet-82680`.
 
 Add it to your Git repository with the Heroku CLI:
 
 ```bash
+$> cd /path/to/repo
+
 $> heroku git:remote -a salty-inlet-82680
 Enter your Heroku credentials.
 Email: john.doe@example.com
@@ -274,30 +240,38 @@ set git remote heroku to https://git.heroku.com/salty-inlet-82680.git
 
 
 
+### Go to your dashboard
+
+Go to [heroku.com][heroku-dashboard], sign in, and find your application in the
+dashboard:
+
+<p class='center'><img src='images/heroku-dashboard.png' /></p>
+
+
+
+### Provision database add-ons
+
+You can provision database add-ons from your app's **Resources** tab. For
+example, the [ClearDB add-on][heroku-cleardb] attaches a MySQL database to your
+application:
+
+<p class='center'><img src='images/heroku-cleardb.png' class='w70' /></p>
+
+
+
 ### Configure your database URL from the environment
 
-Make sure your database URL is **not hardcoded**, but **taken from the environment** (we'll see more about this later).
+Make sure your database URL is **not hardcoded**, but **taken from the
+environment** (we'll see more about this later).
 
 Heroku database add-ons provide the database URL in an **environment variable**.
-For **mLab**, the variable is `$MONGODB_URI`.
-For other add-ons, it's often `$DATABASE_URL`.
+For the [ClearDB add-on][heroku-cleardb], the variable is
+`$CLEARDB_DATABASE_URL`. For other add-ons, it's often `$DATABASE_URL`.
 
-For example, if you're using Mongoose,
-change the call to `connect` to take the environment variable into account if present
-(it's probably in `app.js`):
+You can retrieve this environment from code, for example with [`getenv` in
+PHP][php-getenv] code or [`process.env` in Node.js][node-process-env] code, and
+use it to configure your application.
 
-```js
-mongoose.connect(`process.env.MONGODB_URI ||` 'mongodb://localhost/my-db-name');
-```
-
-Do not forget to stage and commit this change:
-
-```bash
-$> git add app.js
-$> git commit -m "Use $MONGODB_URI as the database connection URL if available"
-```
-
-You're now **ready to deploy**.
 
 
 
@@ -367,14 +341,14 @@ You can of course [pay][pricing] to get production-quality resources.
 
 ### Databases
 
-Heroku provides several databases as addons, for example:
+Heroku provides several databases as add-ons, for example:
 
+* [Heroku ClearDB (MySQL)][heroku-cleardb] (free version limited to 5 MB)
 * [Heroku Postgres][heroku-postgres] (free version limited to 10,000 rows)
-* [mLab MongoDB][mlab-mongodb] (free version limited to 496 MB)
 * [Heroku Redis][heroku-redis] (free version limited to 25 MB)
 
-The pricing model is usually similar to Heroku dynos:
-there are free versions available that are restricted, but more powerful versions can be purchased.
+The pricing model is usually similar to Heroku dynos: there are free versions
+available that are restricted, but more powerful versions can be purchased.
 
 
 
@@ -525,14 +499,15 @@ Typically, **database add-ons** will add an environment variable with the **data
 [git]: https://git-scm.com
 [git-hooks]: https://git-scm.com/book/gr/v2/Customizing-Git-Git-Hooks
 [heroku]: https://www.heroku.com/home
+[heroku-cleardb]: https://devcenter.heroku.com/articles/cleardb
 [heroku-cli]: https://devcenter.heroku.com/articles/heroku-cli
 [heroku-dashboard]: https://dashboard.heroku.com
 [heroku-postgres]: https://devcenter.heroku.com/articles/heroku-postgresql
 [heroku-redis]: https://devcenter.heroku.com/articles/heroku-redis
 [iaas]: https://en.wikipedia.org/wiki/Cloud_computing
-[mlab-mongodb]: https://devcenter.heroku.com/articles/mongolab
-[mongodb]: https://www.mongodb.com
 [node]: https://nodejs.org/en/
+[node-process-env]: https://nodejs.org/api/process.html#process_process_env
 [paas]: https://en.wikipedia.org/wiki/Platform_as_a_service
+[php-getenv]: https://www.php.net/manual/en/function.getenv.php
 [pricing]: https://www.heroku.com/pricing
 [saas]: https://en.wikipedia.org/wiki/Software_as_a_service
