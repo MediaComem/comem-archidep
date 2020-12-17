@@ -36,7 +36,7 @@ Heroku.
 
 The commands in this exercise must be executed **on your local machine** in the
 Git repository where you have the PHP Todolist application. You do not need your
-AWS server.
+AWS server at all.
 
 ### Optional: create a Heroku application (if you have a credit card)
 
@@ -215,10 +215,6 @@ The commands in this exercise must be executed **on your local machine** in the
 Git repository where you have the RPS application. You do not need your AWS
 server at all.
 
-```bash
-$> cd /path/to/projects/rps
-```
-
 ### Optional: create a Heroku application (if you have a credit card)
 
 An existing Heroku application will be provided for you by the teacher.
@@ -248,12 +244,11 @@ should see a `DATABASE_URL` variable there:
 
 ![Postgres Database URL](../images/heroku-postgres-url.png)
 
-Fortunately, the RPS application [already takes into account the `$DATABASE_URL`
-environment
-variable](https://github.com/MediaComem/comem-wopr/blob/7de462120783fdf771e68161ac21d5b51eca52d5/lib/wopr.rb#L64-L66),
-so you will not have to make any changes to the code this time.
+As [documented by the Heroku Postgres add-on][heroku-postgres-database-url],
+this environment variable is how database connection settings are provided to
+your application.
 
-### Update your RPS repository to the latest version
+### Update your RPS application to the latest version
 
 The version of the RPS application you have deployed during the original
 exercise only supported [the `$RPS_DATABASE_URL` environment
@@ -262,9 +257,9 @@ to configure PostgreSQL connection settings.
 
 A new version has been published which also supports [the `$DATABASE_URL`
 environment
-variable](https://github.com/MediaComem/rps/blob/cf206818cc1db8125a3417573882dd4663672a9d/src/server/config.ts#L25),
+variable](https://github.com/MediaComem/rps/blob/6139da63bc2f9f382ea5beb0ffcc3aff393a54c1/src/server/config.ts#L25),
 so that it works out of the box with the [Heroku Postgres
-add-on][heroku-postgres] which provides that variable.
+add-on][heroku-postgres].
 
 **If you have a clone of the [original
 repository](https://github.com/MediaComem/rps)** on your machine, you can simply
@@ -353,7 +348,6 @@ database:
 
 ```
 $> heroku restart
-Restarting dynos on ⬢ ad-rps... done
 ```
 
 The application should now work!
@@ -372,11 +366,7 @@ on Heroku.
 
 The commands in this exercise must be executed **on your local machine** in the
 Git repository where you have the WOPR application. You do not need your AWS
-server.
-
-```bash
-$> cd /path/to/projects/comem-wopr
-```
+server at all.
 
 ### Optional: create a Heroku application (if you have a credit card)
 
@@ -461,3 +451,4 @@ deployment log. It should also work!
 
 
 [heroku-postgres]: https://elements.heroku.com/addons/heroku-postgresql
+[heroku-postgres-database-url]: https://devcenter.heroku.com/articles/heroku-postgresql#provisioning-heroku-postgres
