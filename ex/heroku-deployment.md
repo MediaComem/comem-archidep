@@ -18,6 +18,7 @@ illustrates the difference between the two cloud service models.
 - [Deploy the RPS application](#deploy-the-rps-application)
   - [Optional: create a Heroku application (if you have a credit card)](#optional-create-a-heroku-application-if-you-have-a-credit-card-1)
   - [Add the free Heroku Postgres add-on to your application](#add-the-free-heroku-postgres-add-on-to-your-application)
+  - [Update your RPS application to the latest version](#update-your-rps-application-to-the-latest-version)
   - [Deploy the application to Heroku](#deploy-the-application-to-heroku-1)
   - [Set up the database](#set-up-the-database)
 - [Deploy the WOPR application](#deploy-the-wopr-application)

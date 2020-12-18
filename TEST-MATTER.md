@@ -10,6 +10,7 @@ It also indicates what you do not need to remember by heart.
 - [Plan](#plan)
 - [Exercices](#exercices)
 - [Architecture](#architecture)
+  - [Examples](#examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -358,7 +359,7 @@ You must understand how to set up automated deployments with Git hooks,
 which you put in practice during the following exercises:
 
 * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md) [(diagram)](ex/git-automated-deployment.pdf)
-* Deploy a web application with a database (*not yet available*)
+* [Deploy a Node.js & Svelte application with a PostgreSQL database](ex/rps-deployment.md)
 
 This [diagram](ex/end-result.pdf) shows the end result of previous exercises.
 
@@ -373,9 +374,9 @@ during the following exercises:
 
 ## Architecture
 
-You must be capable of drawing an architecture diagram representing the main
-processes involved in the deployments you have performed during the course, and
-how they communicate or affect each other. Such a diagram should contain:
+You must be capable of drawing a simple architecture diagram representing the
+main processes involved in the deployments you have performed during the course,
+and how they communicate or affect each other. Such a diagram should contain:
 
 * The processes directly related to running and exposing the deployed
   application or website (e.g. the application, the reverse proxy).
@@ -383,6 +384,9 @@ how they communicate or affect each other. Such a diagram should contain:
 * Communication between processes (e.g. the application accesses the database),
   and communication between processes and the outside world (e.g. a browser
   makes a request on a port which is handled by a specific process).
+
+  > You do not need to know port numbers by heart except the two standard
+  > HTTP(S) port.
 * Control relationships between processes (e.g. systemd manages the
   application).
 
@@ -395,8 +399,32 @@ You do not need to represent:
 * The commands used to run each process.
 * The configuration files involed.
 
+You do not need to know how to represent a deployment using the PHP FastCGI
+Process Manager (PHP-FPM).
+
 When drawing processes, you can simplify by assuming that each program runs only
 one process when executed.
+
+### Examples
+
+This is a simple architecture diagram representing the deployment performend in
+the [*Deploy a PHP application with
+SFTP*](ex/sftp-deployment.md)
+exercise:
+
+![Diagram](images/simplified-architecture-sftp-deployment.png)
+
+This is a simple architecture diagram representing the deployment performed in
+the [*Manage a PHP application with systemd as a Process
+Manager*](ex/systemd-deployment.md) exercise:
+
+![Diagram](images/simplified-architecture-sftp-deployment.png)
+
+This is a simple architecture diagram representing the deployment performed in
+the [*Deploy a Node.js & Svelte application with a PostgreSQL
+database*](ex/rps-deployment.md) exercise:
+
+![Diagram](images/simplified-architecture-rps-deployment.png)
 
 
 
