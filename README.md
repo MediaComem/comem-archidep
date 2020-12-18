@@ -86,6 +86,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
     * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3460295/mod_resource/content/2/ArchiDep%202020-12-11%20part%203%20Git%20Hooks.mp4)
 * Platform-as-a-Service (PaaS)
   * [Heroku](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/heroku?home=MediaComem%2Fcomem-archidep%23readme)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3466351/mod_resource/content/1/ArchiDep%202020-12-18%20part%201%20Heroku.mp4)
 * *Software development (extra)*
   * [Continuous software development](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
   * [Automated testing](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
@@ -160,7 +161,9 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
     * [Video: instructions](https://cyberlearn.hes-so.ch/pluginfile.php/3460494/mod_resource/content/1/ArchiDep%202020-12-11%20part%205%20Exercice%20-%20Deploy%20a%20Node.js%20%20Svelte%20application%20with%20a%20PostgreSQL%20database.mp4)
 * **Platform-as-a-Service deployment**
   * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3466352/mod_resource/content/1/ArchiDep%202020-12-18%20part%202%20Exercise%20-%20Deploy%20a%20PHP%20web%20page%20to%20Heroku.mp4)
   * [Deploy web applications with a database to Heroku](ex/heroku-deployment.md)
+    * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3466354/mod_resource/content/1/ArchiDep%202020-12-18%20part%203%20Exercise%20-%20Deploy%20web%20applications%20with%20a%20database%20to%20Heroku.mp4)
 * *Extra*
   * [Deploy the One Chat Room web application (Node.js & MongoDB)](ex/one-chat-room-deployment.md)
     * [Diagram](ex/end-result.pdf)
