@@ -386,7 +386,7 @@ and how they communicate or affect each other. Such a diagram should contain:
   makes a request on a port which is handled by a specific process).
 
   > You do not need to know port numbers by heart except the two standard
-  > HTTP(S) port.
+  > HTTP(S) port. Other port numbers will be provided.
 * Control relationships between processes (e.g. systemd manages the
   application).
 
