@@ -89,7 +89,11 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
     * [Video](https://cyberlearn.hes-so.ch/pluginfile.php/3466351/mod_resource/content/1/ArchiDep%202020-12-18%20part%201%20Heroku.mp4)
 * *Software development (extra)*
   * [Continuous software development](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Automated testing](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Automated testing (2018)](https://mediacomem.github.io/comem-archidep/2020-2021/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Automated testing (2020)](https://mediacomem.github.io/comem-archioweb/2020-2021/subjects/automated-testing/?home=MediaComem%2Fcomem-archioweb%23readme#1)
+    * [YouTube: Expecting Profesionnalism – Robert C. Martin](https://youtu.be/BSaAMQVq01E)
+    * [YouTube: GOTO 2017 – The Scribe's Oath – Robert C. Martin](https://youtu.be/Tng6Fox8EfI)
+    * [YouTube: The Future of Programming – Robert C. Martin](https://youtu.be/ecIWPzGEbFc)
 
 
 
