@@ -408,9 +408,9 @@ one process when executed.
 ### Examples
 
 This is a simple architecture diagram representing the deployment performend in
-the [*Deploy a PHP application with
-SFTP*](ex/sftp-deployment.md)
-exercise:
+the [*Deploy a PHP application with SFTP*](ex/sftp-deployment.md) exercise
+(assuming the PHP development server running the todolist is listening on port
+3000):
 
 ![Diagram](images/simplified-architecture-sftp-deployment.png)
 
@@ -418,11 +418,12 @@ This is a simple architecture diagram representing the deployment performed in
 the [*Manage a PHP application with systemd as a Process
 Manager*](ex/systemd-deployment.md) exercise:
 
-![Diagram](images/simplified-architecture-sftp-deployment.png)
+![Diagram](images/simplified-architecture-systemd-deployment.png)
 
 This is a simple architecture diagram representing the deployment performed in
 the [*Deploy a Node.js & Svelte application with a PostgreSQL
-database*](ex/rps-deployment.md) exercise:
+database*](ex/rps-deployment.md) exercise (assuming the RPS application is
+listening on port 4000):
 
 ![Diagram](images/simplified-architecture-rps-deployment.png)
 
