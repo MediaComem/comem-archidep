@@ -36,7 +36,7 @@
     "git-memoir": "~0.3.0",
     "inquirer": "^7.3.3",
     "js-yaml": "^3.14.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "nodemailer": "^6.4.11",
     "ora": "^5.1.0",
     "table": "^6.0.3",
