@@ -176,7 +176,7 @@ server (your AWS instance).
 [nginx]: http://nginx.org/
 [nginx-signals]: http://nginx.org/en/docs/control.html
 [nginx-static]: https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/
-[nginx-static-conf]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#28
+[nginx-static-conf]: https://mediacomem.github.io/comem-archidep/2021-2022/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#28
 [previous-ex]: dns-configuration.md
 [repo]: https://github.com/MediaComem/static-clock-website
-[slides]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#1
+[slides]: https://mediacomem.github.io/comem-archidep/2021-2022/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#1
