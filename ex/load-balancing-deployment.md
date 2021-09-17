@@ -8,7 +8,6 @@ instances.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [Goal](#goal)
 - [Requirements](#requirements)
 - [Install the application on your server](#install-the-application-on-your-server)

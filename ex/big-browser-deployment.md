@@ -7,7 +7,6 @@ from scratch on a server.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [The goal](#the-goal)
   - [The application](#the-application)
 - [Getting started](#getting-started)
