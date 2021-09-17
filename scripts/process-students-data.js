@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 const { writeFile } = require('fs-extra');
-const { safeDump: dumpYaml } = require('js-yaml');
+const { dump: dumpYaml } = require('js-yaml');
 const { join: joinPath } = require('path');
 
 const { loadData, studentsFile } = require('./utils');

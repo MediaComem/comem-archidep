@@ -2,10 +2,9 @@ const { createHmac } = require('crypto');
 const parseCsvNode = require('csv-parse');
 const { readFile } = require('fs-extra');
 const inquirer = require('inquirer');
-const { safeLoad: loadYaml } = require('js-yaml');
+const { load: loadYaml } = require('js-yaml');
 const nodemailer = require('nodemailer');
 const { resolve: resolvePath } = require('path');
-const { v4: uuid } = require('uuid');
 
 let configCache;
 let dataCache;

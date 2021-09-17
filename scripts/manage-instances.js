@@ -1,8 +1,8 @@
 const chalk = require('chalk');
 const commander = require('commander');
 const { writeFile } = require('fs-extra');
-const { safeDump: dumpYaml } = require('js-yaml');
-const { difference, includes, isArray, isEmpty, isPlainObject, isString, times, uniq } = require('lodash');
+const { dump: dumpYaml } = require('js-yaml');
+const { difference, includes, isArray, isEmpty, isPlainObject, isString } = require('lodash');
 const ora = require('ora');
 const { join: joinPath, relative: relativePath, resolve: resolvePath } = require('path');
 const { table } = require('table');
@@ -329,7 +329,7 @@ async function sendStudentMails(studentUsernames) {
 }
 
 function actionRunner(func) {
-  return (...args) => action = () => func(...[ ...args, commander ]);
+  return (...args) => action = () => func(...[ ...args, commander.opts() ]);
 }
 
 function getAddressDescription(address) {
