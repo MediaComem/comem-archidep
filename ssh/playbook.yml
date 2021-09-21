@@ -4,7 +4,7 @@
   gather_facts: no # See first 2 tasks.
 
   vars:
-    server_name: archidep.online
+    server_name: archidep.tech
     ssh_password_authentication: false
     ssh_regenerate_host_keys: false
 

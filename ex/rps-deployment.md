@@ -56,8 +56,8 @@ Additionally:
 
 ### The application
 
-The application you must deploy is a [rock-paper-scissors real-time web
-game][app]. Its code is [available on GitHub][repo].
+The application you must deploy is a rock-paper-scissors real-time web game. Its
+code is [available on GitHub][repo].
 
 It uses:
 
@@ -543,7 +543,6 @@ that port?
 
 
 
-[app]: http://rps.simon-oulevay.archidep.online
 [auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md
 [automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md#update-the-todolist-nginx-configuration
 [certbot-ex]: certbot-deployment.md

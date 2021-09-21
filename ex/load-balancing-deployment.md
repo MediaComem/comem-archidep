@@ -108,7 +108,7 @@ You will need to install the hook, then save your process list.
 
 Create an nginx site configuration file that does the following:
 
-* Serve the site on the subdomain `locator.john-doe.archidep.online` (replacing
+* Serve the site on the subdomain `locator.john-doe.archidep.tech` (replacing
   `john-doe` with your username).
 * Use the path to the locator application's `public` directory as the site's
   root.

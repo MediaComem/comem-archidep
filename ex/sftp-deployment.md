@@ -177,7 +177,7 @@ Go into the uploaded directory on the server:
 
 ```bash
 $> hostname
-john-doe.archidep.online
+john-doe.archidep.tech
 
 $> cd /home/john_doe/todolist
 ```

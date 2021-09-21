@@ -7,6 +7,6 @@ The goal of this exercise is to demonstrate how to retrieve a project's source c
 
 Perform the following tasks:
 
-* Connect to the `archidep.online` exercise server with SSH.
+* Connect to the `archidep.tech` exercise server with SSH.
 * Clone your team's solution repository from the collaborative exercise somewhere in your home directory.
   * If you have not completed the collaborative exercise, you can try doing the same with the [base repository](https://github.com/MediaComem/comem-archidep-php-todo-exercise).

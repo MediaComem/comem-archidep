@@ -1,6 +1,6 @@
 aws_access_key_id: "changeme"
 aws_secret_access_key: "changeme"
-aws_base_domain: archidep.online
+aws_base_domain: archidep.tech
 aws_instance_type: t3.small
 aws_key_name: ArchiDep
 aws_regions:

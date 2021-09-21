@@ -82,7 +82,7 @@ State or Province Name (full name) [Some-State]:Vaud
 Locality Name (eg, city) []:Yverdon
 Organization Name (eg, company) [Internet Widgits Pty Ltd]:HEIG-VD
 Organizational Unit Name (eg, section) []:
-Common Name (e.g. server FQDN or YOUR name) []:john-doe.archidep.online
+Common Name (e.g. server FQDN or YOUR name) []:john-doe.archidep.tech
 Email Address []:john.doe@heig-vd.ch
 ```
 
@@ -122,7 +122,7 @@ Certificate:
             ef:ea:3a:93:c5:74:a8:e7
     Signature Algorithm: sha256WithRSAEncryption
         Issuer: C = CH, ST = Vaud, L = Yverdon, O = HEIG-VD,
-                CN = john-doe.archidep.online,
+                CN = john-doe.archidep.tech,
                 emailAddress = john-doe@heig-vd.ch
         Validity
             Not Before: Jan 15 14:28:11 2019 GMT
@@ -144,7 +144,7 @@ server {
 * ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 * ssl_ciphers HIGH:!aNULL:!MD5;
 
-  server_name john-doe.archidep.online;
+  server_name john-doe.archidep.tech;
   root /home/john_doe/my-website;
   index index.html;
 }
