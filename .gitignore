@@ -1,18 +1,20 @@
-/*.csv
-/*.log
-/*.retry
-/.vagrant
-/.vscode
+# https://git-scm.com/docs/gitignore
 /build
 /config.local.js
 /config.yml
+/*.csv
 /data.yml
 /ec2/inventory
 /heroku.csv
 /id_ed25519*
 /id_rsa*
+/*.log
 /node_modules
+/*.retry
 /secret.txt
 /ssh/data.yml
 /ssh/inventory*
 /tmp
+/*.tmp
+/.vagrant
+/.vscode
