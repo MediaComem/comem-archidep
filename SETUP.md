@@ -33,6 +33,12 @@
 ansible-playbook -i ssh/inventory -vv -D ssh/playbook.yml
 ```
 
+### Send credentials to students
+
+```bash
+npm run mails
+```
+
 ### Enable/disable password authentication
 
 ```bash
