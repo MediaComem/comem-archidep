@@ -30,7 +30,6 @@
 ## Set up an EC2 instance for SSH exercises
 
 ```bash
-cd ssh
 ansible-playbook -i ssh/inventory -vv -D ssh/playbook.yml
 ```
 
