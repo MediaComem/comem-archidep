@@ -1,12 +1,6 @@
 # Notes
 
-## List a server's SSH key fingerprints
-
-```bash
-$> find /etc/ssh -name "*.pub" -exec ssh-keygen -l -f {} \;
-```
-
-# Check a student's EC2 virtual machine
+## Check a student's EC2 virtual machine
 
 This requires netcat to be installed locally and on the server. Install it with
 `brew install netcat` on macOS with [Homebrew](https://brew.sh).

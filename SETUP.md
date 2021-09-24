@@ -49,6 +49,12 @@ ansible-playbook -i ssh/inventory -vv -D -t ssh -e ssh_password_authentication=t
 ansible-playbook -i ssh/inventory -vv -D -t ssh -e ssh_password_authentication=false ssh/playbook.yml
 ```
 
+### List a server's SSH key fingerprints
+
+```bash
+$> find /etc/ssh -name "*.pub" -exec ssh-keygen -l -f {} \;
+```
+
 ### Renegerate SSH host keys
 
 ```bash
