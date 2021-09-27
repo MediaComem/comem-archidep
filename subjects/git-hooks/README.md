@@ -106,7 +106,7 @@ Note that hooks are not part of the working tree and thus **cannot be put under 
 
 ```bash
 $> git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -127,7 +127,7 @@ $> git commit -m "Test"
 
 You are about to commit...
 
-[master 14b306d] Test
+[main 14b306d] Test
  1 file changed, 1 insertion(+), 1 deletion(-)
 ```
 

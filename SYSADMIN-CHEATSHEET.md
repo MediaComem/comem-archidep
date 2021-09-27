@@ -133,7 +133,7 @@ If your service cannot start, you should be able to find an error from one of th
 When you push to a remote (`foo` in this example), you may get this message:
 
 ```bash
-$> git push foo master
+$> git push foo main
 Everything up-to-date
 ```
 

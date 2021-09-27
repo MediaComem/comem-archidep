@@ -26,7 +26,7 @@ Learn how to work on isolated, parallel lines of development with [Git][git] bra
   - [Create a new branch](#create-a-new-branch)
   - [Switch branches](#switch-branches)
   - [Commit on a branch](#commit-on-a-branch)
-  - [Switch back to `master`](#switch-back-to-master)
+  - [Switch back to `main`](#switch-back-to-main)
   - [Create another branch](#create-another-branch)
   - [Work on a separate branch](#work-on-a-separate-branch)
   - [Merging](#merging)
@@ -100,7 +100,7 @@ A branch is simply a lightweight, movable pointer to a commit.
 
 <git-memoir name='branchingOneLine' chapter='commits' svg-height='137px'></git-memoir>
 
-The default branch is `master`.
+The default branch is `main`.
 The special `HEAD` pointer indicates the current branch.
 
 As you start making commits, the current branch pointer **automatically moves** forward to your latest commit.
@@ -114,9 +114,9 @@ We will use a prepared repository to illustrate branching.
 ```bash
 $> cd /path/to/projects
 
-$> git clone https://github.com/MediaComem/comem-webdev-git-branching-ex.git
+$> git clone https://github.com/MediaComem/comem-archidep-git-branching.git
 
-$> cd comem-webdev-git-branching-ex
+$> cd comem-archidep-git-branching
 ```
 
 Remove the link to the remote repository (will we talk more about it in [Collaborating with Git](../git-collaborating/)):
@@ -142,7 +142,7 @@ The `git log` command can show you a representation of the commit graph and its 
 
 ```bash
 $> git log --oneline --decorate --graph --all
- * 4f94fa (HEAD -> master) Improve layout
+ * 4f94fa (HEAD -> main) Improve layout
  * 9ab3fd Fix addition
  * 387f12 First version
 ```
@@ -153,7 +153,7 @@ In fact, this command is so useful you should make an **alias**, as we will use 
 $> git config --global alias.graph "log --oneline --graph --decorate --all"
 
 $> git graph
- * 4f94fa (HEAD -> master) Improve layout
+ * 4f94fa (HEAD -> main) Improve layout
  * 9ab3fd Fix addition
  * 387f12 First version
 ```
@@ -174,7 +174,7 @@ $> git branch feature-sub
 <git-memoir name='branchingOneLine' chapter='branch' svg-height='137px'></git-memoir>
 
 There is now a new pointer to the current commit.
-Note that `HEAD` didn't move – we are still on the `master` branch.
+Note that `HEAD` didn't move – we are still on the `main` branch.
 
 #### Showing the current branch
 
@@ -182,7 +182,7 @@ You can use `git branch` without arguments to simply see the list of branches an
 
 ```bash
 $> git branch
- * master
+ * main
    feature-sub
 ```
 
@@ -201,7 +201,7 @@ Switched to branch 'feature-sub'
 
 This moves `HEAD` to point to the `feature-sub` branch.
 
-Nothing else happened because `HEAD` is still pointing to the same commit as `master`.
+Nothing else happened because `HEAD` is still pointing to the same commit as `main`.
 
 > **Exercise:** you can now implement the subtraction in `subtraction.js`.
 
@@ -222,25 +222,25 @@ As you commit, the current branch (the one pointed to by `HEAD`), moves forward 
 
 
 
-### Switch back to `master`
+### Switch back to `main`
 
 > **Exercise:** oops, you just noticed that addition is not working correctly.
 > You need to make a bugfix, but you don't want to mix that code with the new subtraction feature.
-> Let's **go back to `master`**.
+> Let's **go back to `main`**.
 
 ```bash
-$> git checkout master
-Switched to branch 'master'
+$> git checkout main
+Switched to branch 'main'
 ```
 
 #### Checkout behavior
 
-Two things happened when you ran `git checkout master`:
+Two things happened when you ran `git checkout main`:
 
-* The `HEAD` pointer was **moved** back to the `master` branch.
-* The files in your working directory were **reverted** back to the snapshot that `master` points to.
+* The `HEAD` pointer was **moved** back to the `main` branch.
+* The files in your working directory were **reverted** back to the snapshot that `main` points to.
 
-<git-memoir name='branchingOneLine' chapter='back-to-master' svg-height='137px'></git-memoir>
+<git-memoir name='branchingOneLine' chapter='back-to-main' svg-height='137px'></git-memoir>
 
 You have essentially **rewinded** the work you've done in `feature-sub`, and are working on an **older version** of the project.
 
@@ -259,7 +259,7 @@ Switched to a new branch 'fix-add'
 
 <git-memoir name='branchingOneLine' chapter='another-branch' svg-height='137px'></git-memoir>
 
-Nothing has changed yet because `fix-add` still points to the same commit as `master`.
+Nothing has changed yet because `fix-add` still points to the same commit as `main`.
 
 
 
@@ -293,16 +293,16 @@ the files in your **working directory** are updated to reflect the state of the 
 ### Merging
 
 Now that you've tested your fix and made sure it works,
-you want to **bring those changes** back **into the `master` branch**.
+you want to **bring those changes** back **into the `main` branch**.
 
 Git's `merge` command can do that for you,
 but it can only **bring changes** from another branch **into the current branch**,
 not the other way around.
 
-So you must first switch to the `master` branch:
+So you must first switch to the `main` branch:
 
 ```bash
-$> git checkout master
+$> git checkout main
 ```
 
 <git-memoir name='branching' chapter='fast-forward-merge-checkout' svg-height='200px'></git-memoir>
@@ -324,7 +324,7 @@ Notice the term **fast-forward**.
 
 ### Fast-forward
 
-The `fix-add` branch pointed to a commit **directly ahead** of the commit `master` pointed to.
+The `fix-add` branch pointed to a commit **directly ahead** of the commit `main` pointed to.
 There is no divergent history, so Git simply has to **moves the pointer forward**.
 This is what is called a **fast-forward**.
 
@@ -334,7 +334,7 @@ This is what is called a **fast-forward**.
 
 ### Delete a branch
 
-> **Exercise:** now that we've brought our fix back into `master`, we don't need the `fix-add` branch anymore.
+> **Exercise:** now that we've brought our fix back into `main`, we don't need the `fix-add` branch anymore.
   Let's delete it.
 
 ```bash
@@ -366,22 +366,22 @@ $> git commit -m "Comment subtract function"
 
 <git-memoir name='branching' chapter='work-on-feature-branch' controls='false' svg-height='200px'></git-memoir>
 
-Now that we're happy with our new subtraction feature, we want to **merge** it into `master` as well.
-But the `feature-sub` branch has **diverged from some older point compared to `master`**, so Git cannot do a fast-forward:
+Now that we're happy with our new subtraction feature, we want to **merge** it into `main` as well.
+But the `feature-sub` branch has **diverged from some older point compared to `main`**, so Git cannot do a fast-forward:
 
 * `feature-sub` points to commit `f92ab0` which contains our feature
-* `master` points to commit `2817bc` which contains the addition fix
+* `main` points to commit `2817bc` which contains the addition fix
 * Commit `4f94fa` is the common ancestor
 
-Git will do a **three-way merge** instead, combining together the changes of `master` and `feature-sub` (compared to the common ancestor).
+Git will do a **three-way merge** instead, combining together the changes of `main` and `feature-sub` (compared to the common ancestor).
 A **new commit** will be created representing that state.
 
 #### Merge commit message
 
-> **Exercise:** switch back to the `master` branch and merge `feature-sub` into it.
+> **Exercise:** switch back to the `main` branch and merge `feature-sub` into it.
 
 ```bash
-$> git checkout master
+$> git checkout main
 $> git merge feature-sub
 Merge made by the 'recursive' strategy.
  subtraction.js | 5 ++++-
@@ -441,13 +441,13 @@ Let's find the original starting point (the common ancestor where `feature-sub` 
 
 ```bash
 $> git graph
- *   04fb82 (HEAD -> master) Merge branch 'feature-sub'
+ *   04fb82 (HEAD -> main) Merge branch 'feature-sub'
  |\
  | * f92ab0 Comment subtract function
  * | 2817bc Fix addition
  | * 712ff2 Implement subtraction
  |/
- * `4f94fa` (origin/master, origin/HEAD) Comment add function
+ * `4f94fa` (origin/main, origin/HEAD) Comment add function
  * 9ab3fd Simplify addition and subtraction implementation
  * 387f12 First version
 ```
@@ -481,11 +481,11 @@ function subtract(a, b) {
 }
 ```
 
-Note that if you try to check out the `master` branch at this point,
+Note that if you try to check out the `main` branch at this point,
 Git won't let you do it because the state of `subtraction.js` is different in that branch:
 
 ```bash
-$> git checkout master
+$> git checkout main
 error: Your local changes to the following files would be overwritten by checkout:
   subtraction.js
 Please commit your changes or stash them before you switch branches.
@@ -509,10 +509,10 @@ Viewing the graph of commits, it's clear that the change has been made **in para
 
 ### Merge the conflicting branch
 
-Go back to `master` and merge `better-sub`:
+Go back to `main` and merge `better-sub`:
 
 ```bash
-$> git checkout master
+$> git checkout main
 $> git merge better-sub
 Auto-merging subtraction.js
 CONFLICT (content): Merge conflict in subtraction.js
@@ -532,7 +532,7 @@ Let's see what `git status` tells us:
 
 ```bash
 $> git status
-On branch master
+On branch main
 You have unmerged paths.
   (fix conflicts and run "git commit")
   (use "git merge --abort" to abort the merge)
@@ -612,7 +612,7 @@ Now that you have fixed the conflict, do as instructed by Git and add the file t
 ```bash
 $> git add subtraction.js
 $> git status
-On branch master
+On branch main
 All conflicts fixed but you are still merging.
   (use "git commit" to conclude merge)
 
@@ -624,7 +624,7 @@ Changes to be committed:
 Git tells you that all conflicts have been resolved but that you still need to **commit** to end the merge:
 
 ```bash
-$> git commit -m "Merge better-sub into master"
+$> git commit -m "Merge better-sub into main"
 ```
 
 If you do not specify a commit message with `-m`, Git will generate one for you
@@ -640,7 +640,7 @@ Finally, delete the branch:
 $> git branch -d better-sub
 ```
 
-The latest commit on `master` now includes the changes from all lines of development:
+The latest commit on `main` now includes the changes from all lines of development:
 
 <git-memoir name='branching' chapter='merge-conflicting-change' svg-height='300px'></git-memoir>
 
@@ -678,10 +678,10 @@ $> git commit -m "Remove incomplete implementations"
 
 ### Merge the conflicting branch
 
-Let's try to merge that branch into `master`:
+Let's try to merge that branch into `main`:
 
 ```bash
-$> git checkout master
+$> git checkout main
 $> git merge cleanup
 CONFLICT (modify/delete): subtraction.js deleted in cleanup
   and modified in HEAD. Version HEAD of subtraction.js left in tree.
@@ -702,7 +702,7 @@ Let's see what `git status` tells us:
 
 ```bash
 $> git status
-On branch master
+On branch main
 You have unmerged paths.
   (fix conflicts and run "git commit")
   (use "git merge --abort" to abort the merge)
@@ -735,7 +735,7 @@ Let's keep it:
 ```bash
 $> git add subtraction.js
 $> git status
-On branch master
+On branch main
 All conflicts fixed but you are still merging.
   (use "git commit" to conclude merge)
 ```

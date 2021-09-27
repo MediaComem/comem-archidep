@@ -146,10 +146,10 @@ $> git remote add archidep john_doe@W.X.Y.Z:todolist-automated-repo
 
 ## Make an automated deployment
 
-From your local machine, push the latest version of the `master` branch to the remote on your server:
+From your local machine, push the latest version of the `main` branch to the remote on your server:
 
 ```bash
-$> git push archidep master
+$> git push archidep main
 Enumerating objects: 36, done.
 Counting objects: 100% (36/36), done.
 Delta compression using up to 8 threads
@@ -161,7 +161,7 @@ remote: Checking out latest version...
 remote: Deployment successful
 
 To W.X.Y.Z:todolist-automated-repo
- * [new branch]      master -> master
+ * [new branch]      main -> main
 ```
 
 > If you have set up your `post-receive` hook correctly,
@@ -194,12 +194,12 @@ $> git add .
 
 $> git commit -m "Change title"
 
-$> git push archidep master
+$> git push archidep main
 ...
 remote: Checking out latest version...
 remote: Deployment successful
 To W.X.Y.Z:todolist-automated-repo
-   4ea6994..2faf028  master -> master
+   4ea6994..2faf028  main -> main
 ```
 
 Visit http://todolist.john-doe.archidep.tech again. Your changes should have

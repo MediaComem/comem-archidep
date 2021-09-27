@@ -220,7 +220,7 @@ and add the GitHub username of **Alice** as a collaborator:
 **Bob** should move into their local repository and add the GitHub repository as a remote:
 
 ```bash
-$> cd /path/to/projects/comem-webdev-git-branching-ex
+$> cd /path/to/projects/comem-archidep-git-branching
 
 $> git remote add origin git@github.com:bob/github-demo.git
 ```
@@ -243,7 +243,7 @@ It's time for **Bob** to put the code in the shared GitHub repository.
 This is done using the `git push` command:
 
 ```bash
-$> git push -u origin master
+$> git push -u origin main
 Counting objects: 35, done.
 Delta compression using up to 8 threads.
 Compressing objects: 100% (33/33), done.
@@ -251,7 +251,7 @@ Writing objects: 100% (35/35), 4.16 KiB | 0 bytes/s, done.
 Total 35 (delta 14), reused 11 (delta 2)
 remote: Resolving deltas: 100% (14/14), done.
 To github.com:bob/github-demo.git
- * [new branch]      master -> master
+ * [new branch]      main -> main
 ```
 
 The command `git push [remote] [branch]` tells Git to push the commit pointed to by `[branch]` to the remote named `[remote]`.
@@ -270,13 +270,13 @@ The `-u` option (or `--set-upstream`) tells Git to remember that you have linked
 
 The commit objects and file snapshots have been **pushed** (or uploaded) to the GitHub repository.
 
-This includes not only the commit pointed to by master, but also the **entire history** of the repository up to that commit.
+This includes not only the commit pointed to by main, but also the **entire history** of the repository up to that commit.
 
 <!-- slide-container -->
 
-Note the **origin/master** branch that has appeared in your local repository.
+Note the **origin/main** branch that has appeared in your local repository.
 This is a **remote-tracking branch**.
-It tells you where the **master** branch points to on the **origin** remote (the GitHub repository in this case).
+It tells you where the **main** branch points to on the **origin** remote (the GitHub repository in this case).
 
 
 
@@ -322,7 +322,7 @@ The `git clone [url]` command copies the **remote** repository to your machine.
 
 The entire history of the project is **pulled** (or downloaded) from the GitHub repository.
 
-Git will also automatically checkout the **master** branch in the working directory so you have something to work from.
+Git will also automatically checkout the **main** branch in the working directory so you have something to work from.
 
 Again, Git has created a **remote-tracking branch** in Alice's repository,
 so that you can know what the current state of the remote is.
@@ -361,7 +361,7 @@ There is a new commit in **Alice**'s repository that is not in the shared GitHub
 Push to update the shared repository:
 
 ```bash
-$> git push origin master
+$> git push origin main
 ```
 
 <git-memoir name='github' chapter='alice-push' svg-height='275px'></git-memoir>
@@ -379,13 +379,13 @@ $> git push origin master
 This is now the state from **Bob**'s perspective.
 
 Notice that the new commit is in the shared repository (on GitHub)
-but that the remote-tracking branch origin/master **is not up-to-date** in **Bob**'s repository.
+but that the remote-tracking branch origin/main **is not up-to-date** in **Bob**'s repository.
 
 <!-- slide-container -->
 
 Git does not automatically sync repositories.
 **As far as Bob knows** looking at information from their local repository,
-the master branch still points to `4f94ga` in the shared repository.
+the main branch still points to `4f94ga` in the shared repository.
 
 
 
@@ -400,7 +400,7 @@ remote: Compressing objects: 100% (1/1), done.
 remote: Total 2 (delta 1), reused 2 (delta 1), pack-reused 0
 Unpacking objects: 100% (2/2), done.
 From github.com:bob/github-demo
-   4f94ga..92fb8c  master     -> origin/master
+   4f94ga..92fb8c  main     -> origin/main
 ```
 
 <!-- slide-column 70 -->
@@ -411,16 +411,16 @@ From github.com:bob/github-demo
 
 The new commit is now here and the remote-tracking branch has been updated.
 
-However, the local master branch **has not moved** and the working directory has **not been updated**.
+However, the local main branch **has not moved** and the working directory has **not been updated**.
 
 
 
 ### Bob: check the state of branches
 
-Now you can use `git merge` like in the previous tutorial to bring the changes of origin/master into master:
+Now you can use `git merge` like in the previous tutorial to bring the changes of origin/main into main:
 
 ```bash
-$> git merge origin/master
+$> git merge origin/main
 Updating 4f94ga..92fb8c
 Fast-forward
  addition.js => add.js | 0
@@ -434,7 +434,7 @@ Fast-forward
 
 <!-- slide-column -->
 
-As expected, master has been fast-forwarded to the commit pointed to by origin/master and the working directory has been updated.
+As expected, main has been fast-forwarded to the commit pointed to by origin/main and the working directory has been updated.
 
 **Bob**'s repository is now up-to-date.
 
@@ -447,14 +447,14 @@ You can also use `git pull [remote] [branch]` to save time.
 The following command:
 
 ```bash
-$> git pull origin master
+$> git pull origin main
 ```
 
 Is equivalent to running the two commands we just used:
 
 ```bash
 $> git fetch origin
-$> git merge origin/master
+$> git merge origin/main
 ```
 
 
@@ -475,7 +475,7 @@ Fix that bug, then commit and push the change:
 (Make the fix...)
 $> git add index.html
 $> git commit -m "Fix bad <script> tags"
-$> git push origin master
+$> git push origin main
 ```
 
 <git-memoir name='github' chapter='bob-fix' svg-height='250px'></git-memoir>
@@ -509,7 +509,7 @@ Commit and push the changes:
 ```bash
 $> git add index.html
 $> git commit -m "Improve layout"
-$> git push origin master
+$> git push origin main
 ```
 
 <git-memoir name='github' chapter='alice-fix' svg-height='250px'></git-memoir>
@@ -520,7 +520,7 @@ $> git push origin master
 
 ```bash
 To github.com:bob/github-demo.git
- ! [rejected]        master -> master (fetch first)
+ ! [rejected]        main -> main (fetch first)
 error: failed to push some refs to 'git@github.com:bob/github-demo.git'
 hint: Updates were rejected because the remote contains work that you do
 hint: not have locally. This is usually caused by another repository pushing
@@ -552,9 +552,9 @@ $> git fetch origin
 #### Alice: try to push again
 
 ```bash
-$> git push origin master
+$> git push origin main
 To github.com:bob/github-demo.git
- ! [rejected]        master -> master (non-fast forward)
+ ! [rejected]        main -> main (non-fast forward)
 error: failed to push some refs to 'git@github.com:bob/github-demo.git'
 hint: Updates were rejected because the tip of your current branch is behind
 hint: its remote counterpart. Integrate the remote changes (e.g.
@@ -596,14 +596,14 @@ A remote repository will **only accept fast-forward pushes** by default.
 Let's use the `git pull` command:
 
 ```bash
-$> git pull origin master
+$> git pull origin main
 remote: Counting objects: 3, done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 1), reused 3 (delta 1), pack-reused 0
 Unpacking objects: 100% (3/3), done.
 From github.com:bob/github-demo
- * branch            master     -> FETCH_HEAD
-   92fb8c..3ff531    master     -> origin/master
+ * branch            main     -> FETCH_HEAD
+   92fb8c..3ff531    main     -> origin/main
 Auto-merging index.html
 CONFLICT (content): Merge conflict in index.html
 Automatic merge failed; fix conflicts and then commit the result.
@@ -636,7 +636,7 @@ Mark the conflict as resolved and finish the merge:
 
 ```bash
 $> git add index.html
-$> git commit -m "Merge origin/master"
+$> git commit -m "Merge origin/main"
 ```
 
 
@@ -644,7 +644,7 @@ $> git commit -m "Merge origin/master"
 ### Alice: check the state of branches
 
 Now the state of **Alice**'s local repository is consistent with the state of the shared repository:
-the commit pointed to by **master** is ahead of the commit pointed to by **origin/master**.
+the commit pointed to by **main** is ahead of the commit pointed to by **origin/main**.
 
 <git-memoir name='github' chapter='alice-pull-changes' svg-height='325px'></git-memoir>
 
@@ -655,7 +655,7 @@ the commit pointed to by **master** is ahead of the commit pointed to by **origi
 The push will be accepted now:
 
 ```bash
-$> git push origin master
+$> git push origin main
 ```
 
 <git-memoir name='github' chapter='alice-push-merge' svg-height='335px'></git-memoir>
@@ -667,7 +667,7 @@ $> git push origin master
 **Bob** can now pull those latest changes to keep up-to-date:
 
 ```bash
-$> git pull origin master
+$> git pull origin main
 ```
 
 <git-memoir name='github' chapter='bob-pull-merge' svg-height='335px'></git-memoir>

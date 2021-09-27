@@ -378,8 +378,9 @@ Otherwise, follow the [official installation instructions][install-git].
 
 ### First-time Git setup
 
-Now that you have Git, you must configure your **identity**: your user name and e-mail address.
-This is important because **every Git commit uses this information**, and it's *immutably* baked into every commit you make.
+Now that you have Git, you must configure your **identity**: your user name and
+e-mail address. This is important because **every Git commit uses this
+information**, and it's *immutably* baked into every commit you make.
 
 Use the `git config` command to do this:
 
@@ -388,7 +389,8 @@ $> git config --global user.name "John Doe"
 $> git config --global user.email john.doe@example.com
 ```
 
-You can also run the command with the `--list` option to check that the settings were successfully applied:
+You can also run the command with the `--list` option to check that the settings
+were successfully applied:
 
 ```bash
 $> git config --list
@@ -400,6 +402,34 @@ user.email=john.doe@example.com
 > so you only need to do this **once on any given computer**.
 > You can also change them at any time by running the commands again.
 > Run `cat ~/.gitconfig` to display this file.
+
+
+
+### Choosing a default branch name
+
+You should also configure a default branch name, like `main`, for all your
+repositories:
+
+```bash
+$> git config --global init.defaultBranch main
+```
+
+We will talk more about branches later. If you don't perform this configuration
+now, you may see this warning when creating your first repository:
+
+```bash
+$> git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: 	git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: 	git branch -m <name>
+```
 
 
 
@@ -425,33 +455,6 @@ At this point, nothing in your project is tracked yet.
 
 
 
-### Choosing a default branch name
-
-You may see this warning when creating your first repository:
-
-```bash
-$> git init
-hint: Using 'master' as the name for the initial branch. This default branch name
-hint: is subject to change. To configure the initial branch name to use in all
-hint: of your new repositories, which will suppress this warning, call:
-hint:
-hint: 	git config --global init.defaultBranch <name>
-hint:
-hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
-hint: 'development'. The just-created branch can be renamed via this command:
-hint:
-hint: 	git branch -m <name>
-```
-
-Simply configure the default branch names for your machine, e.g. `main`, to
-avoid the warning in the future:
-
-```bash
-$> git config --global init.defaultBranch main
-```
-
-
-
 ### Checking the status of your files
 
 The main tool you use to determine which files are in which state is the `git status` command.
@@ -459,7 +462,7 @@ If you run it in the repo you just created, you should see something like this:
 
 ```bash
 $> git status
-On branch master
+On branch main
 
 Initial commit
 
@@ -488,7 +491,7 @@ Re-run the `git status` command:
 
 ```bash
 $> git status
-On branch master
+On branch main
 
 Initial commit
 
@@ -512,7 +515,7 @@ In order to begin tracking a new file, you must use the `git add` command:
 $> git add hello.txt
 $> git add hi.txt
 $> git status
-On branch master
+On branch main
 
 Initial commit
 
@@ -565,7 +568,7 @@ This command takes a `--message` or `-m` option where you should put a short des
 ```bash
 $> git commit -m "Add hello and hi files"
 
-[master (root-commit) `c90aa36`] Add hello and hi files
+[main (root-commit) `c90aa36`] Add hello and hi files
  2 files changed, 2 insertions(+)
  create mode 100644 hello.txt
  create mode 100644 hi.txt
@@ -576,7 +579,7 @@ along with change statistics and other information.
 
 ```bash
 $> git status
-On branch master
+On branch main
 nothing to commit, working tree clean
 ```
 
@@ -596,7 +599,7 @@ And see what Git tells us:
 
 ```bash
 $> git status
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
@@ -618,7 +621,7 @@ Stage the changes on the `hello.txt` file and check the status:
 $> git add hello.txt
 
 $> git status
-On branch master
+On branch main
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 
@@ -641,7 +644,7 @@ Before committing, let's make another change to `hello.txt` and check the status
 $> echo "I see trees of green" >> hello.txt
 
 $> git status
-On branch master
+On branch main
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 
@@ -722,7 +725,7 @@ Commit now:
 
 ```bash
 $> git commit -m "The world is beautiful"
-[master b65ec9c] The world is beautiful
+[main b65ec9c] The world is beautiful
  1 file changed, 1 insertion(+)
 ```
 
@@ -730,7 +733,7 @@ As expected, the changes we did not stage are still **uncommitted**.
 
 ```bash
 $> git status
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
@@ -746,7 +749,7 @@ Let's fix that:
 ```bash
 $> git add .
 $> git commit -m "New lines in hello.txt and hi.txt"
-[master dfc6c75] New lines in hello.txt and hi.txt
+[main dfc6c75] New lines in hello.txt and hi.txt
  2 files changed, 2 insertions(+)
 ```
 
@@ -766,7 +769,7 @@ Then see what Git tells you:
 
 ```bash
 $> git status
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
@@ -789,7 +792,7 @@ You can tell Git to add all changes (additions, modifications and removals):
 $> git add .
 
 $> git status
-On branch master
+On branch main
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 
@@ -928,7 +931,7 @@ Ignored files are no longer shown when using `git status`:
 $> echo data > app.log
 
 $> git status
-On branch master
+On branch main
 nothing to commit, working tree clean
 ```
 
@@ -977,7 +980,7 @@ Git actually tells you what to do to discard that change:
 ```bash
 $> echo "Hi Steve" >> people.txt
 $> git status
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   `(use "git checkout -- <file>..." to discard changes in working directory)`
@@ -993,7 +996,7 @@ Simply use `git checkout` as instructed:
 $> git checkout people.txt
 
 $> git status
-On branch master
+On branch main
 nothing to commit, working tree clean
 ```
 
@@ -1009,7 +1012,7 @@ If you have staged a file but realize you don't want it in the next commit anymo
 $> echo "Hi Steve" >> people.txt
 $> git add people.txt
 $> git status
-On branch master
+On branch main
 Changes to be committed:
   `(use "git reset HEAD <file>..." to unstage)`
 

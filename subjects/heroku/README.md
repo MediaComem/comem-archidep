@@ -281,7 +281,7 @@ To deploy, simply push to the new `heroku` remote.
 Notice that **as you push**, Heroku **automatically deploys** your app:
 
 ```bash
-$> git push heroku master
+$> git push heroku main
 Counting objects: 18, done.
 Delta compression using up to 8 threads.
 Compressing objects: 100% (14/14), done.
@@ -299,7 +299,7 @@ remote: -----> Launching...
 remote:        `https://salty-inlet-82680.herokuapp.com/` deployed to Heroku
 remote: Verifying deploy... done.
 To https://git.heroku.com/salty-inlet-82680.git
- * [new branch]      master -> master
+ * [new branch]      main -> main
 ```
 
 Visit the URL Heroku gives you to see your deployed app.

@@ -82,7 +82,7 @@ It also indicates what you do not need to remember by heart.
     You must know:
 
     * What Git branching is and why it is useful.
-    * That any repository has a `master` branch by default.
+    * That any repository has a main branch (usually called `main` or `master`).
 
     You do not need to know:
 

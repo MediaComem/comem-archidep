@@ -137,7 +137,7 @@ $> heroku git:remote -a ad-john-doe-todo
 Push the application to Heroku:
 
 ```bash
-$> git push heroku master
+$> git push heroku main
 ```
 
 The application's main page should be accessible at the URL indicated in the
@@ -208,7 +208,7 @@ The application should work fine now.
 
 This section explains how to deploy the same application as in the [Rock Paper
 Scissors exercise
-(RPS)](https://github.com/MediaComem/comem-archidep/blob/master/ex/rps-deployment.md)
+(RPS)](https://github.com/MediaComem/comem-archidep/blob/main/ex/rps-deployment.md)
 on Heroku.
 
 The commands in this exercise must be executed **on your local machine** in the
@@ -278,15 +278,15 @@ fork:
   ```bash
   $> git remote add upstream https://github.com/MediaComem/rps.git
   ```
-* Merge the latest changes from the original repository into your master branch:
+* Merge the latest changes from the original repository into your main branch:
 
   ```bash
-  $> git checkout master
+  $> git checkout main
   $> git merge upstream/master
   ```
 
 Your fork should now be up-to-date. You can push the updates to GitHub with `git
-push origin master` if you want, then continue with this exercise.
+push origin main` if you want, then continue with this exercise.
 
 ### Deploy the application to Heroku
 
@@ -306,7 +306,7 @@ $> heroku git:remote -a ad-john-doe-rps
 Push the application to Heroku:
 
 ```bash
-$> git push heroku master
+$> git push heroku main
 ```
 
 The application should be deployed, but it will not work yet. As you saw when
@@ -438,7 +438,7 @@ heroku buildpacks:set --index 2 heroku/nodejs
 Push the application to Heroku:
 
 ```bash
-$> git push heroku master
+$> git push heroku main
 ```
 
 The application's main page should be accessible at the URL indicated in the
