@@ -16,7 +16,7 @@
           aspectRatio: 80 / 48
         }*/
       })
-      .repo('bob-project')
+      .repo('bob-project', { mainBranch: 'main' })
       .commit({ commit: { hash: '387f12' } })
       .commit({ commit: { hash: '9ab3fd' } })
       .commit({ commit: { hash: '4f94ba' } })
@@ -28,7 +28,7 @@
           aspectRatio: 1
         }*/
       })
-      .repo('shared-project', { bare: true })
+      .repo('shared-project', { bare: true, mainBranch: 'main' })
 
       .chapter('bob-remote')
       .fileSystem('bob')
@@ -36,7 +36,7 @@
       .remote.add('origin', 'github', 'shared-project')
 
       .chapter('bob-push')
-      .push('origin', 'master')
+      .push('origin', 'main')
 
       .chapter('alice-remote', {
         before: function(step, drawer) {
@@ -49,11 +49,11 @@
           aspectRatio: 80 / 48
         }*/
       })
-      .repo('alice-project')
+      .repo('alice-project', { mainBranch: 'main' })
       .remote.add('origin', 'github', 'shared-project')
 
       .chapter('alice-pull')
-      .pull('origin', 'master')
+      .pull('origin', 'main')
 
       .chapter('alice-commit-settings', {
         before: function(step, drawer) {
@@ -65,7 +65,7 @@
       .commit({ commit: { hash: '92fb8c' } })
 
       .chapter('alice-push')
-      .push('origin', 'master')
+      .push('origin', 'main')
 
       .chapter('bob-look', {
         before: function(step, drawer) {
@@ -79,7 +79,7 @@
       .fetch({ remote: 'origin' })
 
       .chapter('bob-merge')
-      .merge('origin/master')
+      .merge('origin/main')
 
       .chapter('box-fix-settings', {
         before: function(step, drawer) {
@@ -89,7 +89,7 @@
 
       .chapter('bob-fix')
       .commit({ commit: { hash: '55e12a' } })
-      .push('origin', 'master')
+      .push('origin', 'main')
 
       .chapter('alice-fix-prepare', {
         before: function(step, drawer) {
@@ -112,10 +112,10 @@
       })
 
       .chapter('alice-pull-changes')
-      .pull('origin', 'master')
+      .pull('origin', 'main')
 
       .chapter('alice-push-merge')
-      .push('origin', 'master')
+      .push('origin', 'main')
 
       .chapter('bob-pull-merge-prepare', {
         before: function(step, drawer) {
@@ -126,7 +126,7 @@
       .repo('bob-project')
 
       .chapter('bob-pull-merge')
-      .pull('origin', 'master')
+      .pull('origin', 'main')
 
       .memoir;
   };

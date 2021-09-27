@@ -4,7 +4,7 @@
     return new gitMemoir.MemoirBuilder()
 
       .fileSystem('demo', fs => {}, { showFiles: false })
-      .repo('demo', {}, { showInternals: false })
+      .repo('demo', { mainBranch: 'main' }, { showInternals: false })
 
       .chapter('setup', {
         before: function(step, drawer) {
@@ -34,8 +34,8 @@
       .chapter('commit-on-a-branch')
       .commit({ commit: { hash: '712ff2' } })
 
-      .chapter('back-to-master')
-      .checkout('master')
+      .chapter('back-to-main')
+      .checkout('main')
 
       .chapter('another-branch')
       .checkout('fix-add', { new: true });
@@ -99,7 +99,7 @@
       .checkout('fix-add')
 
       .chapter('fast-forward-merge-checkout')
-      .checkout('master')
+      .checkout('main')
 
       .chapter('fast-forward-merge')
       .merge('fix-add')
@@ -125,7 +125,7 @@
       })
 
       .chapter('merge-checkout')
-      .checkout('master')
+      .checkout('main')
 
       .chapter('merge-settings', {
         before: function(step, drawer) {
@@ -158,7 +158,7 @@
       })
 
       .chapter('merge-conflicting-change')
-      .checkout('master')
+      .checkout('main')
       .merge('better-sub')
       .branch('better-sub', { delete: true })
 
@@ -175,7 +175,7 @@
       .commit({ commit: { hash: '12ac65' } })
 
       .chapter('merge-conflicting-file-change-checkout')
-      .checkout('master')
+      .checkout('main')
 
       .chapter('merge-conflicting-file-change-settings', {
         before: function(step, drawer) {

@@ -3,7 +3,7 @@
   <head>
     <title>TLS/SSL Certificates (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/7b84fdddaf46af7bdcf45969e3dbd32539e37e04/subjects/ssl/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/fc8f965e5e38039d6478a9c854558ed508412967/subjects/ssl/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -103,7 +103,7 @@ State or Province Name (full name) [Some-State]:Vaud
 Locality Name (eg, city) []:Yverdon
 Organization Name (eg, company) [Internet Widgits Pty Ltd]:HEIG-VD
 Organizational Unit Name (eg, section) []:
-Common Name (e.g. server FQDN or YOUR name) []:john-doe.archidep.online
+Common Name (e.g. server FQDN or YOUR name) []:john-doe.archidep.tech
 Email Address []:john.doe@heig-vd.ch
 ```
 
@@ -149,7 +149,7 @@ Certificate:
             ef:ea:3a:93:c5:74:a8:e7
     Signature Algorithm: sha256WithRSAEncryption
         Issuer: C = CH, ST = Vaud, L = Yverdon, O = HEIG-VD,
-                CN = john-doe.archidep.online,
+                CN = john-doe.archidep.tech,
                 emailAddress = john-doe@heig-vd.ch
         Validity
             Not Before: Jan 15 14:28:11 2019 GMT
@@ -174,7 +174,7 @@ server {
 * ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 * ssl_ciphers HIGH:!aNULL:!MD5;
 
-  server_name john-doe.archidep.online;
+  server_name john-doe.archidep.tech;
   root /home/john_doe/my-website;
   index index.html;
 }
@@ -444,6 +444,6 @@ It can be installed on any Linux server and will:
 [tls-procedure]: https://en.wikipedia.org/wiki/Transport_Layer_Security#Description
 
     </textarea>
-    <script src='../../subject-e7641750fc3b81afe695.js'></script>
+    <script src='../../subject-12a9fce8565938771997.js'></script>
   </body>
 </html>
