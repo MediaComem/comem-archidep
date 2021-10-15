@@ -9,11 +9,35 @@ Architecture & Deployment course on the Microsoft Azure cloud platform.
 
 
 
-## Apply for AWS Educate
+## Apply to Azure for Students
 
 Apply to [Azure for Students](https://azure.microsoft.com/en-us/free/students/)
 **with your `@heig-vd.ch` email address**, which will provide you with free
 Azure resources as a student.
+
+
+
+## Get your public SSH key
+
+You can display your public SSH key in your terminal with the following command:
+
+```bash
+$> cat ~/.ssh/id_rsa.pub
+```
+
+You should copy the output of this command. You will need it later.
+
+> Azure requires an [SSH key of type RSA with at least 2048
+> bits](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).
+> If your existing key is not accepted by Azure, you may need to generate a new
+> one with enough bits:
+>
+>     ssh-keygen -m PEM -t rsa -b 4096
+>
+> **WARNING:** if you already have an RSA key, this command will ask you if you
+> want to overwrite it with the new one. If you do, the old key will be
+> permanently lost. (You will need to put your public key on GitHub again and
+> everywhere else you may have used it.)
 
 
 
@@ -22,89 +46,86 @@ Azure resources as a student.
 Once you have your Azure account, you can launch the virtual server you will be
 using for the rest of the course.
 
-* Access the Azure portal at https://portal.azure.com.
-* [Import your public key](https://eu-west-1.console.aws.amazon.com/ec2) under
-  **Key Pairs**.
+* Access the Azure portal at https://portal.azure.com and go to the **Virtual
+  machines** section:
 
-  You can display your public key by running the following command in your
-  terminal: `cat ~/.ssh/id_rsa.pub`.
+  ![Azure Portal](../images/azure-portal.png)
+* Create a new virtual machine:
 
-  ![AWS Import Public Key](../images/aws-import-public-key.png)
+  ![Azure: create a new virtual machine](../images/azure-vms.png)
 
-  > This will allow you to connect to your virtual server over SSH once it's
-  > launched.
-* Go to [**Instances**](https://eu-west-1.console.aws.amazon.com/ec2) and
-  **launch an instance**.
-
-  ![AWS Launch Instance](../images/aws-launch-instance.png)
-
-  > Launching an instance basically means creating a new virtual server in the
-  > AWS infrastructure. You will have full root access to the server once it's
+  > You are launching a new virtual server in the Microsoft Azure
+  > infrastructure. You will have full root access to the server once it's
   > launched.
 
-  * **Step 1:** Search and select the following Ubuntu AMI: `Ubuntu Server 20.04
-    LTS (HVM), SSD Volume Type`. Use the default 64-bit (x86) version.
+  * In the **Basics** settings, configure the **instance details**: the
+    machine's name, region, image and size:
 
-    ![AWS AMI](../images/aws-step-1-ami.png)
-  * **Step 2:** Select a **free-tier-eligible** instance type. It will be
-    **either `t2.micro` or `t3.micro`**, whichever is available, depending on
-    the region.
+    ![Azure: virtual machine instance details](../images/azure-vm-instance-details.png)
 
-    ![AWS Instance Type](../images/aws-step-2-instance-type.png)
-  * **Step 3:** Leave the default instance details.
-  * **Step 4:** Leave the default storage configuration.
-  * **Step 5:** Add a `Name` tag to easily identify your instance.
+    Make sure to select the **Ubuntu 20.04"** image and the **B1s** size. You
+    can select this size from the complete list of VM sizes:
 
-    ![AWS Tags](../images/aws-step-5-tags.png)
-  * **Step 6:** Create a security group with the following inbound ports open: 22, 80, 443, 3000 & 3001.
+    ![Azure: virtual machine size](../images/azure-vm-size.png)
 
-    ![AWS Security Group](../images/aws-step-6-security-group.png)
+    > Any region will do. Closer to where you are (or where your customers are)
+    > will reduce latency, and the North/West European regions are among the
+    > cheapest.
 
-    > What you are doing here is configuring the AWS firewall to allow incoming
-    > traffic to your virtual server on specific ports. If you do not do this,
-    > it will not be reachable from outside the AWS network. For example, for a
-    > web application running on your virtual server to be reachable, ports 80
-    > (HTTP) and 443 (HTTPS) must accept incoming requests. Port 22 is for SSH
-    > connections. Ports 3000 & 3001 will be used in various exercises.
+    Under the **Administrator account** settings, choose a user name.
+
+    **WARNING:** your Unix username should not contain spaces, accented
+    characters (e.g. `é`), hyphens (`-`) or dots (`.`). It should start with a
+    letter (a-z) and contain only alphanumeric characters (a-z and 0-9) and
+    underscores (`_`).
+
+    Select **SSH public key** authentication, **Use existing public key**, and
+    make sure to paste your public SSH key in the text area.
+
+    ![Azure: virtual machine administrator account](../images/azure-vm-admin-account.png)
+
+    Under **inbound port rules**, make sure the **SSH (22)** port is
+    allowed:
+
+    ![Azure: virtual machine inbound port rules](../images/azure-vm-inbound-port-rules.png)
 
     > You may ignore the security warning. It indicates that it's good practice
     > to limit the IP addresses authorized to access your virtual server. For
     > the purposes of this course, it's simpler to allow anyone to connect from
-    > any source IP address (which is what `0.0.0.0, ::/0` means).
-  * **Step 7:** Launch the virtual server.
+    > any source IP address.
+  * Use the default **Disks** settings.
+  * In the **Networking** settings, select the **Advanced** security group
+    option, and create a new security group:
 
-    ![AWS Launch](../images/aws-step-7-launch.png)
+    ![Azure: virtual machine networking](../images/azure-vm-networking.png)
 
-    Select the public key you imported.
+    Add two inbound rules, one for **HTTP** and one for **HTTPS**:
 
-    ![AWS Key Pair](../images/aws-step-7-key.png)
+    ![Azure: virtual machine HTTP & HTTPS](../images/azure-vm-http.png)
 
+    Add two other inbound rules, one for port 3000 and one for port 3001:
 
+    ![Azure: virtual machine custom ports](../images/azure-vm-custom-port.png)
 
-## Associate an Elastic IP address with your virtual server
+    The final security group settings should look something like this:
 
-When you launch a new EC2 instance, it gets a random IP address. This IP address
-may change every time you restart the server, which is not practical.
+    ![Azure: virtual machine security group](../images/azure-vm-security-group.png)
 
-[Elastic IP
-addresses](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
-are static IPv4 addresses for cloud computing. You can obtain one and associate
-it to your virtual server for free. That way your server will have a fixed IP
-address which persists across restarts.
+    > What you are doing here is configuring the Azure firewall to allow
+    > incoming traffic to your virtual server on specific ports. If you do not
+    > do this, it will not be reachable from outside the Azure network. For
+    > example, for a web application running on your virtual server to be
+    > reachable, ports 80 (HTTP) and 443 (HTTPS) must accept incoming requests.
+    > Port 22 is for SSH connections. Ports 3000 & 3001 will be used in various
+    > exercises.
+  * Use the default **Management**, **Advanced** and **Tags** settings.
+  * Review and create your virtual machine.
+  * Once your deployment is done, go to the virtual machine source:
 
-* Go to **Elastic IPs** in the menu, and allocate a new IP address.
+    ![Azure: virtual machine deployment complete](../images/azure-vm-deployment-complete.png)
+  * Find your machine's public IP address in virtual machine's information:
 
-  ![AWS Allocate Address](../images/aws-allocate-address.png)
-* Select the new IP address and associate it.
-
-  ![AWS Associate Address](../images/aws-associate-address-1.png)
-
-  Select the instance you just launched and its private IP address
-  (*the values will _not be the same_ as in this screenshot*):
-
-  ![AWS Associate Address](../images/aws-associate-address-2.png)
-
-  Your instance now has a fixed public IP address on the Internet.
+    ![Azure: virtual machine overview](../images/azure-vm-overview.png)
 
 
 
@@ -116,23 +137,46 @@ usual warning that its authenticity cannot be verified.
 To protect yourself from [man-in-the-middle
 attacks](https://en.wikipedia.org/wiki/Man-in-the-middle_attack), you can obtain
 the SSH host key fingerprints from your instance before attempting to connect.
-That way, you will be able to see if the key fingerprint in the warning matches
-one of your instance's keys.
+That way, you will be able to see if the key fingerprint in the warning match
 
-You can follow this Amazon Web Services guide if you wish to do so: [Get the
-instance
-fingerprint](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html#connection-prereqs-fingerprint).
+To do this, you need to install the [Azure
+CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli). Once you
+have it installed and have logged in, you can run the following command (adapt
+the resource group and name options to your configuration if necessary):
 
-Note that this requires the installation and configuration of an additional
-tool, the [AWS Command Line Interface (AWS
-CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
+```bash
+$> az vm run-command invoke \
+     --resource-group ArchiDep_group \
+     --name ArchiDep \
+     --command-id RunShellScript \
+     --scripts "find /etc/ssh -name '*.pub' -exec ssh-keygen -l -f {} \;"
+```
+
+After a while, it should print the response:
+
+```
+{
+  "value": [
+    {
+      "code": "ProvisioningState/succeeded",
+      "displayStatus": "Provisioning succeeded",
+      "level": "Info",
+      "message": "Enable succeeded: \n[stdout]\n256 SHA256:IKNmtqj1OKCP4gyErlaQkBbn26gB0ofV3fLkw14yokg root@ArchiDep (ED25519)\n1024 SHA256:mUJQmHnMkGeqbxrRjRrBCJYzxyFYIlwKx/R54eLi4ds root@ArchiDep (DSA)\n3072 SHA256:RGxd9jZfWrUUynsVNGmngD78AaZGcQNT4iHjwX6cK2c root@ArchiDep (RSA)\n256 SHA256:0TORCgUgzrPGeDHzV5fGAarkpGpc5Nbkhb7q2dbG0OA root@ArchiDep (ECDSA)\n\n[stderr]\n",
+      "time": null
+    }
+  ]
+}
+```
+
+Your machine's public key fingerprints are in the `message` property, separated
+by encoded new lines (`\n`).
 
 > You can skip this step if you consider the risk and impact of an attack low
 > enough.
 >
 > Understand that if you simply answer "yes" when the SSH client warns you, you
 > are exposing yourself to a potential man-in-the-middle attack. In all
-> likelihood, no one is trying to hack your AWS instance for this course, but
+> likelihood, no one is trying to hack your Azure instance for this course, but
 > the possibility exists.
 >
 > Since you are using public key authentication and not password authentication,
@@ -147,90 +191,31 @@ CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
 
 * Connect to your new instance over SSH.
 
-  By default, the Ubuntu image you selected when you launched the server creates
-  an `ubuntu` user.
-
-  Assuming the instance's public IP address is `W.X.Y.Z` (replace with the
-  elastic IP address you allocated):
-
-  ```bash
-  $> ssh ubuntu@W.X.Y.Z
-  ```
-
-  > You should be able to connect without a password. This works because you
-  > gave your public SSH key to Amazon and selected it when you configured the
-  > virtual server. It was automatically put in the `ubuntu` user's
-  > `~/.ssh/authorized_keys` file when the server was launched, which allows you
-  > to authenticate using your private SSH key.
-* Once you are connected as `ubuntu`, run the following command to give the
-  teacher access to your instance (be sure to copy the whole line):
-
-  ```bash
-  $> echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxDHpiwKjBPEQsxuYw6nQ4lA/gH9h00QkpVIptLewXFcO/hH8Dir+xvXWfiWe5J/dqAu76jYxDnlmtTyeKGHXRQExhKaX82Qu/krrnKbEotuRqp0hiDFzRLWuHAJ7ms5taDaJUQlu4YIOKsc87BkZz6DIcHRcGiNEnSi6iwhJGRjrP0IfQHtnilLypUfmru9SSNdedYdIIffgAcxJLu2ypC6pmEuV1VFBO1dZC40lP5e051ybbGH/Py1jk0hfjh1QP/W8sbiDsRkNaPYxT3X7CO751EHJKHQLMpCOed8zs9pU4KN6vXvCSj0Ppy0uPODE6cBpEjzYtHfbMz0EBCiGT comem-archidep" | sudo tee --append /home/ubuntu/.ssh/authorized_keys
-  ```
-
-  > This adds the teacher's public SSH key to the `ubuntu` user's
-  > `~/.ssh/authorized_keys`, allowing the teacher to also authenticate to your
-  > virtual server with his private SSH key.
-* Create your own user and set a password.
-
-  **WARNING:** your Unix username should not contain spaces, accented characters
-  (e.g. `é`), hyphens (`-`) or dots (`.`). It should start with a letter (a-z)
-  and contain only alphanumeric characters (a-z and 0-9) and underscores (`_`).
-
-  Assuming your username is `john_doe` (replace with your actual name):
-
-  ```bash
-  $> sudo useradd -m john_doe
-
-  $> sudo passwd john_doe
-  Enter new UNIX password:
-  Retype new UNIX password:
-  passwd: password updated successfully
-  ```
-* Set your new user's shell to Bash (instead of the default Bourne shell):
-
-  ```bash
-  $> sudo usermod -s /bin/bash john_doe
-  ```
-* Make your new user an administrator by adding it to the `sudo` group:
-
-  ```bash
-  $> sudo usermod -a -G sudo john_doe
-  ```
-* Copy the `ubuntu` user's authorized SSH keys file to your new user and fix its
-  permissions:
-
-  ```bash
-  $> sudo mkdir -p /home/john_doe/.ssh
-
-  $> sudo chown john_doe:john_doe /home/john_doe/.ssh
-
-  $> sudo chmod 700 /home/john_doe/.ssh
-
-  $> sudo cp /home/ubuntu/.ssh/authorized_keys /home/john_doe/.ssh/authorized_keys
-
-  $> sudo chown john_doe:john_doe /home/john_doe/.ssh/authorized_keys
-  ```
-
-  > This will allow you to use the same private SSH key to authenticate as your
-  > new user. The `chmod` (**ch**ange **mod**e, i.e. permissions) and `chown`
-  > (**ch**ange **own**ership) commands are used to set the correct permissions
-  > on the file, as SSH will refuse to read an `authorized_keys` file that is
-  > accessible to other users.
-  >
-  > You will learn about Unix users, groups and permissions later in the course.
-* Disconnect once you are done:
-
-  ```bash
-  $> exit
-  ```
-* Reconnect as your own user (again, replace `john_doe` and `W.X.Y.Z` by the
-  appropriate values):
+  Assuming the instance's public IP address is `W.X.Y.Z` (replace with the IP
+  address you copied from your virtual machine's information), and the
+  administrator account you created is `john_doe`, you can connect with this
+  command:
 
   ```bash
   $> ssh john_doe@W.X.Y.Z
   ```
+
+  > You should be able to connect without a password. This works because you
+  > gave your public SSH key to Azure when creating your virtual server. It was
+  > automatically put in your user's `~/.ssh/authorized_keys` file when the
+  > server was launched, which allows you to authenticate using your private SSH
+  > key.
+* Once you are connected, run the following command to give the teacher access
+  to your instance (be sure to copy the whole line and to replace `john_doe`
+  with your username):
+
+  ```bash
+  $> echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxDHpiwKjBPEQsxuYw6nQ4lA/gH9h00QkpVIptLewXFcO/hH8Dir+xvXWfiWe5J/dqAu76jYxDnlmtTyeKGHXRQExhKaX82Qu/krrnKbEotuRqp0hiDFzRLWuHAJ7ms5taDaJUQlu4YIOKsc87BkZz6DIcHRcGiNEnSi6iwhJGRjrP0IfQHtnilLypUfmru9SSNdedYdIIffgAcxJLu2ypC6pmEuV1VFBO1dZC40lP5e051ybbGH/Py1jk0hfjh1QP/W8sbiDsRkNaPYxT3X7CO751EHJKHQLMpCOed8zs9pU4KN6vXvCSj0Ppy0uPODE6cBpEjzYtHfbMz0EBCiGT comem-archidep" | sudo tee --append /home/john_doe/.ssh/authorized_keys
+  ```
+
+  > This adds the teacher's public SSH key to your user's
+  > `~/.ssh/authorized_keys`, allowing the teacher to also authenticate to your
+  > virtual server with his private SSH key to help debug issues.
 * Change the hostname of your server.
 
   **WARNING:** you should not use underscores (`_`) in a hostname, use hyphens
@@ -240,7 +225,8 @@ CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
   $> sudo hostname john-doe.archidep.tech
   ```
 
-  Also save your new hostname to the `/etc/hostname` file so that it will persist when you reboot the server:
+  Also save your new hostname to the `/etc/hostname` file so that it will
+  persist when you reboot the server:
 
   ```bash
   $> echo "john-doe.archidep.tech" | sudo tee /etc/hostname
@@ -264,26 +250,3 @@ CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
   ```
 * Send your instance's public IP address (the Elastic IP address you allocated)
   to the teacher.
-
-
-
-## End result
-
-![Diagram](aws-setup.png)
-
-> [PDF version](aws-setup.pdf).
-
-
-
-## Note: saving AWS Educate credits
-
-In order to spend as few AWS Educate credits as possible, you may stop your EC2
-instance when you are done working, then re-start it when you need it again:
-
-![AWS Stop Instance To Save Credits](../images/aws-stop-instance-to-save-credits.png)
-
-**Do NOT terminate the instance**, as that will delete all your data.
-
-> Your EBS storage volume and unattached Elastic IP Address will still consume
-> credits with a stopped instance, but at about half the rate for the suggested
-> `t3.micro` instance with 8 gigabytes of storage.
