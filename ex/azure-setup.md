@@ -1,7 +1,8 @@
 # Run your own virtual server on Microsoft Azure
 
 This guide describes how to run a virtual server appropriate for the COMEM+
-Architecture & Deployment course on the Microsoft Azure cloud platform.
+Architecture & Deployment course on the [Microsoft
+Azure](https://azure.microsoft.com) cloud platform.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -29,8 +30,9 @@ You should copy the output of this command. You will need it later.
 
 > Azure requires an [SSH key of type RSA with at least 2048
 > bits](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).
-> If your existing key is not accepted by Azure, you may need to generate a new
-> one with enough bits:
+> If your existing key is not accepted by Azure when pasting it in the
+> administrator account settings of your virtual server later, you may need to
+> generate a new one with enough bits:
 >
 >     ssh-keygen -m PEM -t rsa -b 4096
 >
@@ -46,25 +48,22 @@ You should copy the output of this command. You will need it later.
 Once you have your Azure account, you can launch the virtual server you will be
 using for the rest of the course.
 
-* Access the Azure portal at https://portal.azure.com and go to the **Virtual
+* Access the [Azure portal](https://portal.azure.com) and go to the **Virtual
   machines** section:
 
   ![Azure Portal](../images/azure-portal.png)
-* Create a new virtual machine:
+* Create a new virtual machine, i.e. a new virtual server in the Microsoft Azure
+  infrastructure:
 
   ![Azure: create a new virtual machine](../images/azure-vms.png)
-
-  > You are launching a new virtual server in the Microsoft Azure
-  > infrastructure. You will have full root access to the server once it's
-  > launched.
 
   * In the **Basics** settings, configure the **instance details**: the
     machine's name, region, image and size:
 
     ![Azure: virtual machine instance details](../images/azure-vm-instance-details.png)
 
-    Make sure to select the **Ubuntu 20.04"** image and the **B1s** size. You
-    can select this size from the complete list of VM sizes:
+    Be sure to select the **Ubuntu 20.04** image and the **B1s** size. You can
+    select this size from the complete list of VM sizes:
 
     ![Azure: virtual machine size](../images/azure-vm-size.png)
 
@@ -72,15 +71,17 @@ using for the rest of the course.
     > will reduce latency, and the North/West European regions are among the
     > cheapest.
 
-    Under the **Administrator account** settings, choose a user name.
+    Under the **Administrator account** settings, choose a user name, for
+    example `john_doe`.
 
-    **WARNING:** your Unix username should not contain spaces, accented
-    characters (e.g. `é`), hyphens (`-`) or dots (`.`). It should start with a
-    letter (a-z) and contain only alphanumeric characters (a-z and 0-9) and
-    underscores (`_`).
+    > **WARNING:** your Unix username should not contain spaces, accented
+    > characters (e.g. `é`), hyphens (`-`) or dots (`.`). It should start with a
+    > letter (a-z) and contain only alphanumeric characters (a-z and 0-9) and
+    > underscores (`_`).
 
-    Select **SSH public key** authentication, **Use existing public key**, and
-    make sure to paste your public SSH key in the text area.
+    Select **SSH public key** authentication, set the source to **Use existing
+    public key**, and paste your public SSH key (the one you copied earlier) in
+    the text area.
 
     ![Azure: virtual machine administrator account](../images/azure-vm-admin-account.png)
 
@@ -103,7 +104,8 @@ using for the rest of the course.
 
     ![Azure: virtual machine HTTP & HTTPS](../images/azure-vm-http.png)
 
-    Add two other inbound rules, one for port 3000 and one for port 3001:
+    Add two other inbound rules, one for **port 3000** and one for **port
+    3001**:
 
     ![Azure: virtual machine custom ports](../images/azure-vm-custom-port.png)
 
@@ -120,10 +122,10 @@ using for the rest of the course.
     > exercises.
   * Use the default **Management**, **Advanced** and **Tags** settings.
   * Review and create your virtual machine.
-  * Once your deployment is done, go to the virtual machine source:
+  * Once your deployment is complete, go to the virtual machine source:
 
     ![Azure: virtual machine deployment complete](../images/azure-vm-deployment-complete.png)
-  * Find your machine's public IP address in virtual machine's information:
+  * Find your machine's public IP address in the virtual machine's information:
 
     ![Azure: virtual machine overview](../images/azure-vm-overview.png)
 
@@ -132,12 +134,19 @@ using for the rest of the course.
 ## (Optional) Get your instance's public SSH key
 
 When you connect to your instance over SSH for the first time, you will get the
-usual warning that its authenticity cannot be verified.
+usual warning that its authenticity cannot be verified:
+
+```
+The authenticity of host '20.71.227.143 (20.71.227.143)' can't be established.
+ECDSA key fingerprint is SHA256:0000000000000000000000000000000000000000000.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
 
 To protect yourself from [man-in-the-middle
 attacks](https://en.wikipedia.org/wiki/Man-in-the-middle_attack), you can obtain
 the SSH host key fingerprints from your instance before attempting to connect.
-That way, you will be able to see if the key fingerprint in the warning match
+That way, you will be able to see if the key fingerprint in the warning matches
+one of your instance's keys.
 
 To do this, you need to install the [Azure
 CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli). Once you
@@ -248,5 +257,4 @@ by encoded new lines (`\n`).
   $> hostname
   john-doe.archidep.tech
   ```
-* Send your instance's public IP address (the Elastic IP address you allocated)
-  to the teacher.
+* Send your virtual server's public IP address to the teacher.
