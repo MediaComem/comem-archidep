@@ -13,7 +13,7 @@ Azure](https://azure.microsoft.com) cloud platform.
 ## Apply to Azure for Students
 
 Apply to [Azure for Students](https://azure.microsoft.com/en-us/free/students/)
-**with your `@heig-vd.ch` email address**, which will provide you with free
+**with your `@hes-so.ch` email address**, which will provide you with free
 Azure resources as a student.
 
 
