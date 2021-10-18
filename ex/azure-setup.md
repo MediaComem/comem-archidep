@@ -71,8 +71,8 @@ using for the rest of the course.
     > will reduce latency, and the North/West European regions are among the
     > cheapest.
 
-    Under the **Administrator account** settings, choose a user name, for
-    example `john_doe`.
+    Under the **Administrator account** settings, choose a username, for example
+    `john_doe`.
 
     > **WARNING:** your Unix username should not contain spaces, accented
     > characters (e.g. `é`), hyphens (`-`) or dots (`.`). It should start with a
@@ -257,4 +257,5 @@ by encoded new lines (`\n`).
   $> hostname
   john-doe.archidep.tech
   ```
-* Send your virtual server's public IP address to the teacher.
+* Send your virtual server's **public IP address** and the **username of your
+  administrator account** to the teacher.
