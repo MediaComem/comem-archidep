@@ -16,11 +16,11 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+
 - [Plan](#plan)
 - [What you will need](#what-you-will-need)
 - [Exercises](#exercises)
 - [Useful links](#useful-links)
-- [How to improve our basic deployment](#how-to-improve-our-basic-deployment)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->

@@ -10,6 +10,7 @@ configured an A record for your server in the domain name system.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+
 - [Put the static website on the server](#put-the-static-website-on-the-server)
 - [Create an nginx configuration file to serve the website](#create-an-nginx-configuration-file-to-serve-the-website)
   - [Enable the nginx configuration](#enable-the-nginx-configuration)

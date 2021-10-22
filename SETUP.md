@@ -3,9 +3,12 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+
 - [Initial setup](#initial-setup)
 - [Set up an EC2 instance for SSH exercises](#set-up-an-ec2-instance-for-ssh-exercises)
+  - [Send credentials to students](#send-credentials-to-students)
   - [Enable/disable password authentication](#enabledisable-password-authentication)
+  - [List a server's SSH key fingerprints](#list-a-servers-ssh-key-fingerprints)
   - [Renegerate SSH host keys](#renegerate-ssh-host-keys)
 - [Run AWS EC2 instances for students](#run-aws-ec2-instances-for-students)
 

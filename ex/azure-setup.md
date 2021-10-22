@@ -6,6 +6,14 @@ Azure](https://azure.microsoft.com) cloud platform.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Apply to Azure for Students](#apply-to-azure-for-students)
+- [Get your public SSH key](#get-your-public-ssh-key)
+- [Launch a virtual server](#launch-a-virtual-server)
+- [(Optional) Get your instance's public SSH key](#optional-get-your-instances-public-ssh-key)
+- [Configure your virtual server](#configure-your-virtual-server)
+
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 

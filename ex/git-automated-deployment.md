@@ -7,6 +7,7 @@ It assumes that you have performed the previous [nginx & PHP FPM exercise][php-f
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+
 - [Set up directories](#set-up-directories)
 - [Update the todolist nginx configuration](#update-the-todolist-nginx-configuration)
 - [Create a bare Git repository on the server](#create-a-bare-git-repository-on-the-server)

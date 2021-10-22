@@ -7,6 +7,7 @@ hardcoded configuration values.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+
 - [Setup](#setup)
 - [Update the configuration](#update-the-configuration)
 - [Pull the latest version from the server](#pull-the-latest-version-from-the-server)

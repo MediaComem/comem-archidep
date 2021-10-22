@@ -5,7 +5,9 @@ Useful commands to manage a Unix system.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+
 - [How to I connect to my server with SSH?](#how-to-i-connect-to-my-server-with-ssh)
+- [How do I change my username?](#how-do-i-change-my-username)
 - [How do I change my password?](#how-do-i-change-my-password)
 - [Administration](#administration)
   - [How do I create another user?](#how-do-i-create-another-user)
