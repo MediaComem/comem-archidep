@@ -16,7 +16,6 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [Plan](#plan)
 - [What you will need](#what-you-will-need)
 - [Exercises](#exercises)
@@ -88,6 +87,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Push a repository to a server](ex/git-push-to-server.md)
 * **Unix**
   * [Permissions](ex/unix-permissions.md)
+    * [**Solutions**](ex/unix-permissions-solutions.md)
   * [Pipeline](ex/unix-pipeline.md)
 * **Basic deployment**
   * [Run your own virtual server on Microsoft Azure](ex/azure-setup.md)
