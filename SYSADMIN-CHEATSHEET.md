@@ -28,6 +28,23 @@ $> ssh john_doe@W.X.Y.Z
 
 
 
+## How do I change my username?
+
+Rename the `oldname` user account into `newname` and move the user's home
+directory at the same time:
+
+```bash
+sudo usermod --login newname --home /home/newname --move-home oldname
+```
+
+You should also rename the associated group:
+
+```bash
+sudo groupmod --new-name newname oldname
+```
+
+
+
 ## How do I change my password?
 
 ```bash
