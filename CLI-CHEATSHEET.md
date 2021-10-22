@@ -6,7 +6,6 @@ shell for most Linux distributions and macOS.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [Getting help (`man`, `--help`)](#getting-help-man---help)
 - [Navigating](#navigating)
   - [Where am I? (`pwd`)](#where-am-i-pwd)

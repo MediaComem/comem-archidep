@@ -5,7 +5,6 @@ This guide describes how to run a virtual server appropriate for the COMEM+ Arch
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [Apply for AWS Educate](#apply-for-aws-educate)
 - [Launch a virtual server](#launch-a-virtual-server)
 - [Associate an Elastic IP address with your virtual server](#associate-an-elastic-ip-address-with-your-virtual-server)

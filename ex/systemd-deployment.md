@@ -5,7 +5,6 @@ This guide describes how to create a [systemd][systemd] service to run the PHP a
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [Setup](#setup)
 - [Create a systemd unit configuration file](#create-a-systemd-unit-configuration-file)
 - [Enable and start the todolist service](#enable-and-start-the-todolist-service)

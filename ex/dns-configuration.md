@@ -5,7 +5,6 @@ The goal of this exercise is to set up a real domain name for your application.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [Setup](#setup)
 - [Connect to Gandi.net](#connect-to-gandinet)
 - [Access the domain name](#access-the-domain-name)

@@ -6,7 +6,6 @@ using the PHP development server.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [Setup](#setup)
   - [Install MySQL](#install-mysql)
   - [Install PHP](#install-php)

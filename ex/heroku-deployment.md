@@ -8,7 +8,6 @@ illustrates the difference between the two cloud service models.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [Deploy the PHP Todolist application](#deploy-the-php-todolist-application)
   - [Optional: create a Heroku application (if you have a credit card)](#optional-create-a-heroku-application-if-you-have-a-credit-card)
   - [Add the free ClearDB MySQL add-on to your application](#add-the-free-cleardb-mysql-add-on-to-your-application)

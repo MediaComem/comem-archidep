@@ -13,7 +13,6 @@ the [systemd exercise][systemd-ex].
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [Using PHP FPM instead of the PHP development server](#using-php-fpm-instead-of-the-php-development-server)
 - [Add a the `TODOLIST_DB_PASS` environment variable to PHP FPM](#add-a-the-todolist_db_pass-environment-variable-to-php-fpm)
   - [Reload PHP FPM](#reload-php-fpm)
