@@ -1028,7 +1028,7 @@ This command will run a
 which traps and ignores all signals sent to it:
 
 ```bash
-$> curl -s -L https://git.io/fxTKY|sh -s
+$> curl -s -L https://git.io/JitFQ|sh -s
 Hi, I'm running with PID 10000
 Try and kill me!
 ```
