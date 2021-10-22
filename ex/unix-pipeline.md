@@ -51,7 +51,7 @@ Command                             | Description
 `cut -d ' ' -f <n>`                 | Select word in column `<n>` of each line (using one space as the delimiter).
 `fold -w 1`                         | Print one character by line.
 `grep <letterOrWord>`               | Select only lines that contain a given letter or word, e.g. `grep foo`.
-`grep "^<text>$"`                   | Select only lines that contain this exact text.
+`grep "^<text>$"`                   | Select only lines that contain this exact text (e.g. `grep "^foo$"`).
 `gzip -c`                           | Compress data.
 `sort`                              | Sort lines alphabetically.
 `tr '[:upper:]' '[:lower:]'`        | Convert all uppercase characters to lowercase.
