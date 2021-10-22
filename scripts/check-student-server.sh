@@ -14,6 +14,10 @@ ssh -i id_rsa ${STUDENT_USER}@$STUDENT_IP chmod 755 /home/${STUDENT_USER}/listen
 ssh -i id_rsa ${STUDENT_USER}@$STUDENT_IP "sudo nohup /home/${STUDENT_USER}/listen-server-ports.sh &>/dev/null < /dev/null &" || fail "Could not execute listen-server-ports.sh script on server"
 
 echo
+echo "Waiting 3 seconds for script to launch..."
+sleep 3
+
+echo
 for port in 80 443 3000 3001; do
   echo $port; nc -w 1 $STUDENT_IP $port
 done
