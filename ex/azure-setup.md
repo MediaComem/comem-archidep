@@ -247,6 +247,14 @@ by encoded new lines (`\n`).
   ```bash
   $> echo "john-doe.archidep.tech" | sudo tee /etc/hostname
   ```
+
+  > The hostname is the name of your virtual server. It can be any URL. It often
+  > identifies a machine in an organization with the format
+  > `<machine-name>.<organization>.<tld>` (e.g. `unix-box.google.com`).
+  >
+  > For the purposes of this course, we will be using the `archidep.tech`
+  > domain, so it makes sense to use a subdomain corresponding to yourself
+  > (`john-doe.archidep.tech`) as the hostname.
 * Reboot the server.
 
   ```bash
