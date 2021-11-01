@@ -1,0 +1,10 @@
+---
+- hosts: "{{ playbook_hosts | default('all') }}"
+  become: true
+  tasks:
+    - name: Add course SSH key to root user
+      ansible.posix.authorized_key:
+        user: root
+        key: "{{ course_ssh_public_key }}"
+        comment: comem-archidep
+        state: present

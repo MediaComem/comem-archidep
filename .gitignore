@@ -1,10 +1,11 @@
 # https://git-scm.com/docs/gitignore
+/azure/inventory*
 /build
 /config.local.js
 /config.yml
 /*.csv
 /data.yml
-/ec2/inventory
+/ec2/inventory*
 /heroku.csv
 /id_ed25519*
 /id_rsa*

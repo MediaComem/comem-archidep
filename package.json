@@ -14,11 +14,12 @@
   },
   "homepage": "https://github.com/MediaComem/comem-archidep#readme",
   "scripts": {
+    "azure:inventory": "node scripts/generate-azure-inventory.js",
     "build": "courses-md build",
     "deploy": "courses-md publish",
     "doctoc": "doctoc --notitle --github README.md CLI-CHEATSHEET.md SETUP.md SYSADMIN-CHEATSHEET.md TEST-MATTER.md ex",
     "ec2": "node scripts/manage-instances.js",
-    "inventory": "node scripts/manage-instances.js inventory",
+    "ec2:inventory": "node scripts/manage-instances.js inventory",
     "mails": "node scripts/send-students-data.js",
     "setup": "node scripts/process-students-data.js",
     "start": "courses-md",

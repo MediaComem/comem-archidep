@@ -1,21 +1,27 @@
+const chalk = require('chalk');
 const { createHmac } = require('crypto');
 const parseCsvNode = require('csv-parse');
 const { readFile } = require('fs-extra');
 const inquirer = require('inquirer');
 const { load: loadYaml } = require('js-yaml');
+const { isFunction, mapValues } = require('lodash');
 const nodemailer = require('nodemailer');
-const { resolve: resolvePath } = require('path');
+const ora = require('ora');
+const { join: joinPath, resolve: resolvePath } = require('path');
 
-let configCache;
 let dataCache;
 let mailTransporterCache;
 let processedDataCache;
 
+const contentCache = {};
+const fileCache = {};
 const processedDataFile = 'data.yml';
+const root = resolvePath(joinPath(__dirname, '..'));
 
-exports.configFile = 'config.yml';
+exports.configFile = joinPath(root, 'config.yml');
 exports.secretFile = 'secret.txt';
-exports.studentsFile = 'students.csv';
+exports.studentsFile = joinPath(root, 'students.csv');
+exports.root = root;
 
 exports.confirm = async function(message) {
 
@@ -28,6 +34,13 @@ exports.confirm = async function(message) {
   ]);
 
   return answers.result;
+};
+
+exports.executeScript = function(func) {
+  Promise.resolve().then(func).catch(err => {
+    console.error(chalk.red(err.stack));
+    process.exit(1);
+  });
 };
 
 exports.loadAwsCredentials = async function() {
@@ -88,7 +101,9 @@ exports.loadData = async function() {
 
     students.sort((a, b) => a.name.localeCompare(b.name));
 
-    dataCache = { students };
+    dataCache = {
+      students: students.map(student => mapValues(student, value => value !== '' ? value : null))
+    };
   }
 
   return dataCache;
@@ -110,6 +125,39 @@ exports.loadProcessedData = async function() {
   return processedDataCache;
 };
 
+exports.loading = function(promise, ...args) {
+  ora.promise(promise, ...args);
+  return promise;
+};
+
+exports.readContent = async function(absolutePath, parser) {
+  if (!isFunction(parser)) {
+    throw new Error('Parser must be a function');
+  }
+
+  if (!contentCache[absolutePath]) {
+    const rawContent = await exports.readFile(absolutePath);
+    const content = await parser(rawContent);
+    contentCache[absolutePath] = { content, parser };
+  } else if (contentCache[absolutePath].parser !== parser) {
+    throw new Error(`Cannot read content in file ${JSON.stringify(absolutePath)} with different parsers`);
+  }
+
+  return contentCache[absolutePath].content;
+};
+
+exports.readFile = async function(absolutePath, options = 'utf8') {
+  if (resolvePath(absolutePath) !== absolutePath) {
+    throw new Error(`File path ${JSON.stringify(absolutePath)} is not absolute`);
+  }
+
+  if (!fileCache[absolutePath]) {
+    fileCache[absolutePath] = await readFile(absolutePath, options);
+  }
+
+  return fileCache[absolutePath];
+};
+
 exports.sendMail = async function(options) {
 
   const config = await loadConfig();
@@ -126,11 +174,7 @@ exports.sendMail = async function(options) {
 };
 
 async function loadConfig() {
-  if (!configCache) {
-    configCache = loadYaml(await readFile(exports.configFile, 'utf8'));
-  }
-
-  return configCache;
+  return exports.readContent(exports.configFile, loadYaml);
 }
 
 async function loadMailTransporter() {

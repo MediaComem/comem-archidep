@@ -3,12 +3,14 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+
 - [Initial setup](#initial-setup)
 - [Set up an EC2 instance for SSH exercises](#set-up-an-ec2-instance-for-ssh-exercises)
   - [Send credentials to students](#send-credentials-to-students)
   - [Enable/disable password authentication](#enabledisable-password-authentication)
   - [List a server's SSH key fingerprints](#list-a-servers-ssh-key-fingerprints)
   - [Renegerate SSH host keys](#renegerate-ssh-host-keys)
+- [Configure Azure virtual machines for students](#configure-azure-virtual-machines-for-students)
 - [Run AWS EC2 instances for students](#run-aws-ec2-instances-for-students)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -62,6 +64,11 @@ $> find /etc/ssh -name "*.pub" -exec ssh-keygen -l -f {} \;
 ```bash
 ansible-playbook -i ssh/inventory -vv -D -t ssh -e ssh_regenerate_host_keys=true ssh/playbook.yml
 ```
+
+## Configure Azure virtual machines for students
+
+* `npm run azure:inventory`
+* `ansible-playbook -vv -D -i azure/inventory azure/playbook.yml`
 
 ## Run AWS EC2 instances for students
 
@@ -133,6 +140,6 @@ ansible-playbook -i ssh/inventory -vv -D -t ssh -e ssh_regenerate_host_keys=true
       ]
   }
   ```
-* `npm run inventory`
+* `npm run ec2:inventory`
 * `ANSIBLE_HOST_KEY_CHECKING=false ansible-playbook -vv -D -i ec2/inventory ec2/playbook.yml`
 * `ansible-playbook -vv -D -i ec2/inventory ec2/playbook.yml`
