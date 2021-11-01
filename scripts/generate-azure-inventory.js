@@ -24,7 +24,7 @@ async function generateInventory() {
           return memo;
         }
 
-        memo[student.username] = {
+        memo[student.defaultUsername] = {
           ansible_become: true,
           ansible_host: student.ip,
           ansible_ssh_private_key_file: sshPrivateKeyFile,

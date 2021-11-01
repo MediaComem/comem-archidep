@@ -3,12 +3,11 @@ const commander = require('commander');
 const { writeFile } = require('fs-extra');
 const { dump: dumpYaml } = require('js-yaml');
 const { difference, includes, isArray, isEmpty, isPlainObject, isString } = require('lodash');
-const ora = require('ora');
 const { join: joinPath, relative: relativePath, resolve: resolvePath } = require('path');
 const { table } = require('table');
 
 const { allocateAddress, associateAddress, createTags, getRegionName, listAddresses, listInstances, loadRegionImage, loadRegionLimit, loadRegions, loadRegionSecurityGroup, rebootInstances, releaseAddress, runInstance, startInstances, stopInstances, terminateInstances, waitForInstances } = require('./aws-ec2');
-const { confirm, loadConfigProperty, loadProcessedData, sendMail } = require('./utils');
+const { confirm, loadConfigProperty, loadProcessedData, loading, sendMail } = require('./utils');
 
 const SELECTED = Symbol('selected');
 
@@ -492,11 +491,6 @@ function getStudentInstance(student, instances) {
   }
 
   return instances.find(instance => instance.Tags.some(tag => tag.Key === 'Student' && tag.Value === student.username));
-}
-
-function loading(promise, ...args) {
-  ora.promise(promise, ...args);
-  return promise;
 }
 
 async function loadState() {

@@ -6,7 +6,6 @@ const inquirer = require('inquirer');
 const { load: loadYaml } = require('js-yaml');
 const { isFunction, mapValues } = require('lodash');
 const nodemailer = require('nodemailer');
-const ora = require('ora');
 const { join: joinPath, resolve: resolvePath } = require('path');
 
 let dataCache;
@@ -83,8 +82,9 @@ exports.loadData = async function() {
 
     for (const student of students) {
 
+      student.defaultUsername = student.email.toLowerCase().replace(/@.*/, '').replace(/[^a-z0-9]/g, '_');
       if (!student.username) {
-        student.username = student.email.toLowerCase().replace(/@.*/, '').replace(/[^a-z0-9]/g, '_');
+        student.username = student.defaultUsername;
       }
 
       // The goal is not to generate a secure password, or to have a good quality random distribution,
@@ -125,9 +125,9 @@ exports.loadProcessedData = async function() {
   return processedDataCache;
 };
 
-exports.loading = function(promise, ...args) {
-  ora.promise(promise, ...args);
-  return promise;
+exports.loading = async function(promise, ...args) {
+  const ora = await import('ora');
+  return ora.oraPromise(promise, ...args);
 };
 
 exports.readContent = async function(absolutePath, parser) {
