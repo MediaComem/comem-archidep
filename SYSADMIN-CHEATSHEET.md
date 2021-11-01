@@ -5,10 +5,11 @@ Useful commands to manage a Unix system.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+
 - [How to I connect to my server with SSH?](#how-to-i-connect-to-my-server-with-ssh)
-- [How do I change my username?](#how-do-i-change-my-username)
 - [How do I change my password?](#how-do-i-change-my-password)
 - [Administration](#administration)
+  - [How do I change my username?](#how-do-i-change-my-username)
   - [How do I create another user?](#how-do-i-create-another-user)
   - [How do I find and kill a naughty process?](#how-do-i-find-and-kill-a-naughty-process)
   - [The changes to my systemd service are not taken into account!](#the-changes-to-my-systemd-service-are-not-taken-into-account)
@@ -29,23 +30,6 @@ $> ssh john_doe@W.X.Y.Z
 
 
 
-## How do I change my username?
-
-Rename the `oldname` user account into `newname` and move the user's home
-directory at the same time:
-
-```bash
-$> sudo usermod --login newname --home /home/newname --move-home oldname
-```
-
-You should also rename the associated group:
-
-```bash
-$> sudo groupmod --new-name newname oldname
-```
-
-
-
 ## How do I change my password?
 
 ```bash
@@ -58,6 +42,21 @@ $> passwd
 
 You must be an administrator (have `sudo` access) to perform the following
 operations.
+
+### How do I change my username?
+
+The following command renames the `oldname` user account into `newname` and also
+renames the user's home directory at the same time:
+
+```bash
+$> sudo usermod --login newname --home /home/newname --move-home oldname
+```
+
+You also have to rename the associated group:
+
+```bash
+$> sudo groupmod --new-name newname oldname
+```
 
 ### How do I create another user?
 
