@@ -42,7 +42,7 @@ not have it already:
 
 ```bash
 $> cd /path/to/projects
-$> git clone https://github.com/MyUser/comem-archidep-php-todo-exercise.git
+$> git clone git@github.com:MyUser/comem-archidep-php-todo-exercise.git
 ```
 
 > Make sure that you are cloning a repository that belongs to you, because you
