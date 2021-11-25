@@ -64,7 +64,14 @@ commands above, because it does not understand Bash commands or Bash syntax. It
 uses configuration files in a certain format.
 
 You must write a **systemd unit file** which describes how and when to run the
-application (the "unit" in systemd terminology). You may save this file to
+application (the "unit" in systemd terminology). You can see an example of an
+existing unit file by displaying the one running the SSH server on your server:
+
+```bash
+$> cat /lib/systemd/system/ssh.service
+```
+
+Create your own unit file for the PHP todolist at
 `/etc/systemd/system/todolist.service`. You will have to use nano (or Vim) to
 create and edit this file directly on the server. You cannot use an SFTP client.
 
