@@ -313,7 +313,7 @@ communication flow at the end of this exercise:
 
 ![Simplified architecture](sftp-deployment-simplified.png)
 
-> [Simplified architecture PDF version](sftp-deployment.pdf).
+> [Simplified architecture PDF version](sftp-deployment-simplified.pdf).
 
 This is a more detailed representation including more details as well as the
 short-lived processes run during the exercise:
