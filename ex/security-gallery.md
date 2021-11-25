@@ -2,8 +2,14 @@
 
 An exercise to illustrate a security flaw.
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Get your public SSH key](#get-your-public-ssh-key)
+- [Launch a virtual server](#launch-a-virtual-server)
+- [Set up the image gallery application](#set-up-the-image-gallery-application)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 

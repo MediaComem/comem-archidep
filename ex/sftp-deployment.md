@@ -17,7 +17,7 @@ using the PHP development server.
 - [Update the configuration](#update-the-configuration)
 - [Run the PHP development server](#run-the-php-development-server)
 - [What have I done?](#what-have-i-done)
-- [End result](#end-result)
+- [Architecture](#architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

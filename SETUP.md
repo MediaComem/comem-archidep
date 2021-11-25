@@ -3,7 +3,6 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [Initial setup](#initial-setup)
 - [Set up an EC2 instance for SSH exercises](#set-up-an-ec2-instance-for-ssh-exercises)
   - [Send credentials to students](#send-credentials-to-students)

@@ -17,6 +17,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Plan](#plan)
+- [How to improve our basic deployment](#how-to-improve-our-basic-deployment)
 - [What you will need](#what-you-will-need)
 - [Exercises](#exercises)
 - [Useful links](#useful-links)
