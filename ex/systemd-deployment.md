@@ -64,12 +64,17 @@ commands above, because it does not understand Bash commands or Bash syntax. It
 uses configuration files in a certain format.
 
 You must write a **systemd unit file** which describes how and when to run the
-application (the "unit" in systemd terminology). You can see an example of an
-existing unit file by displaying the one for the SSH server on your server:
+application (the "unit" in systemd terminology). You can see examples of
+existing unit file by looking at the ones for the MySQL or SSH servers running
+on your server:
 
 ```bash
+$> cat /lib/systemd/system/mysql.service
 $> cat /lib/systemd/system/ssh.service
 ```
+
+You will not use exactly the same options, but it shows you what a complete unit
+file can look like.
 
 Create your own unit file for the PHP todolist at
 `/etc/systemd/system/todolist.service`. You will have to use nano (or Vim) to
@@ -160,21 +165,11 @@ Here's another way to look at this information:
 | Set an environment variable                           | `KEY=value ...`                   | `Environment="KEY=value"` in the `[Service]` section                            |
 | Execute a command                                     | `<command> <arg1> <arg2>`         | `ExecStart=<absolute-path-to-command> <arg1> <arg2>` in the `[Service]` section |
 | Restart the application automatically when it crashes | *Cannot be done manually*         | `Restart=<policy>` in the `[Service]` section                                   |
-| Have the application start automatically on boot      | *Cannot be done manually*         | `WantedBy=<target>`                                                             |
+| Have the application start automatically on boot      | *Cannot be done manually*         | `WantedBy=<target>` in the `[Install]` section                                  |
 
 > **Hint:** You should put comments in your unit file to explain what each
 > option is for. This can help you if you come back later and do not remember
 > what you did or why. Any line starting with `#` is considered a comment.
->
-> To see an example of a unit file, you can look at the one for the MySQL server
-> you installed in previous exercises:
->
-> ```bash
-> $> cat /lib/systemd/system/mysql.service
-> ```
->
-> You will not use the same options as MySQL, but this shows you what a
-> functional unit file can look like.
 
 
 
