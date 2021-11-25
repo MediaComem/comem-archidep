@@ -315,7 +315,10 @@ communication flow at the end of this exercise:
 
 > [Simplified architecture PDF version](sftp-deployment-simplified.pdf).
 
-This is a more detailed representation including more details as well as the
+Compare this with [the same exercise deployed on your local
+machine](https://github.com/MediaComem/comem-archidep-php-todo-exercise#architecture).
+
+The following diagram is a more detailed representation also including the
 short-lived processes run during the exercise:
 
 ![Detailed architecture](sftp-deployment.png)
