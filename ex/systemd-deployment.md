@@ -26,12 +26,46 @@ Stop your `php -S` command if it is still running.
 
 
 
+## What you have done so far do to run your application
+
+Running the PHP todolist manually in the previous exercises basically consists
+of these steps:
+
+* Connect to the server with SSH as your user, e.g. `john_doe`:
+
+  ```bash
+  $> ssh john_doe@W.X.Y.Z
+  ```
+* *The first time,* install MySQL and check that it is running:
+
+  ```bash
+  $> sudo apt install mysql-server
+  $> sudo systemctl status mysql
+  ```
+* Move into the application directory:
+
+  ```bash
+  $> cd todolist-repo
+  ```
+* Run the application with the appropriate environment variables:
+
+  ```bash
+  $> TODOLIST_DB_PASS=changeme php -S 0.0.0.0:3000
+  ```
+
+
+
 ## Create a systemd unit configuration file
 
-You must write a systemd unit file which describes how and when to run the
-application. You may save this file to `/etc/systemd/system/todolist.service`.
-You will have to use nano (or Vim) to create and edit this file directly on the
-server. You cannot use an SFTP client.
+Now you want systemd to run the application automatically for you. You need to
+tell systemd how to do it. But you cannot simply tell systemd to execute the
+commands above, because it does not understand Bash commands or Bash syntax. It
+uses configuration files in a certain format.
+
+You must write a **systemd unit file** which describes how and when to run the
+application (the "unit" in systemd terminology). You may save this file to
+`/etc/systemd/system/todolist.service`. You will have to use nano (or Vim) to
+create and edit this file directly on the server. You cannot use an SFTP client.
 
 > **Reminder:** You can edit a file with nano by running the following command:
 > `sudo nano <path>`. If the file does not exist, it will be created by nano
@@ -107,6 +141,18 @@ Here are a few hints:
     > words, it means that user management and networking have been initialized.
     > This is typically when you want to start running other processes which
     > depend on users and/or networking, like web applications.
+
+Here's another way to look at this information:
+
+| Things you do to run the application                  | How to do it manually             | How to tell systemd to do it                                                    |
+| :---------------------------------------------------- | :-------------------------------- | :------------------------------------------------------------------------------ |
+| Run commands as user `john_doe`                       | Connect as `john_doe` with SSH    | `User=john_doe` in the `[Unit]` section                                         |
+| Make sure a service is started                        | `sudo systemctl status <service>` | `After=<service>` in the `[Unit]` section                                       |
+| Move into a directory                                 | `cd <path>`                       | `WorkingDirectory=<path>` in the `[Service]` section                            |
+| Set an environment variable                           | `KEY=value ...`                   | `Environment="KEY=value"` in the `[Service]` section                            |
+| Execute a command                                     | `<command> <arg1> <arg2>`         | `ExecStart=<absolute-path-to-command> <arg1> <arg2>` in the `[Service]` section |
+| Restart the application automatically when it crashes | *Cannot be done manually*         | `Restart=<policy>` in the `[Service]` section                                   |
+| Have the application start automatically on boot      | *Cannot be done manually*         | `WantedBy=<target>`                                                             |
 
 > **Hint:** You should put comments in your unit file to explain what each
 > option is for. This can help you if you come back later and do not remember
