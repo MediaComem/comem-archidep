@@ -38,6 +38,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 * Security
   * [Open Web Application Security Project][owasp]
   * [OWASP Top 10 - The Ten Most Critical Web Application Security Risks][owasp-top10]
+  * [The image gallery](./ex/security-gallery.md)
 * Basic deployment
   * [Cloud computing](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
   * [Linux](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
