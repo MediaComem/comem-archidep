@@ -306,11 +306,21 @@ instance's elastic IP address.
 
 
 
-## End result
+## Architecture
 
-![Diagram](sftp-deployment.png)
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise:
 
-> [PDF version](sftp-deployment.pdf).
+![Simplified architecture](sftp-deployment-simplified.png)
+
+> [Simplified architecture PDF version](sftp-deployment.pdf).
+
+This is a more detailed representation including more details as well as the
+short-lived processes run during the exercise:
+
+![Detailed architecture](sftp-deployment.png)
+
+> [Detailed architecture PDF version](sftp-deployment.pdf).
 
 
 
