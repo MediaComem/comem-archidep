@@ -235,6 +235,36 @@ no longer have to worry about:
 
 
 
+## A note on security
+
+If you read [systemd's
+documentation](https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Environment),
+it will tell you that using `Environment=` is not the proper way to communicate
+sensitive values to your application:
+
+```
+Note that environment variables are not suitable for passing secrets (such as
+passwords, key material, ...) to service processes. Environment variables set
+for a unit are exposed to unprivileged clients [...], and generally not
+understood as being data that requires protection. [...] Use LoadCredential=,
+LoadCredentialEncrypted= or SetCredentialEncrypted= (see below) to pass data to
+unit processes securely.
+```
+
+It's true that using `Environment=` is susceptible to certain kinds of attacks,
+especially if other users have access to your server, or if other vulnerable
+applications are running on the same server.
+
+The [`Credentials`
+section](https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Credentials)
+explains how to properly pass credentials to services through protected files.
+
+In order to use this mechanism, you would have to modify the PHP todolist to
+read the database password from a file, e.g. using [PHP's `file_get_contents`
+function](https://www.php.net/manual/en/function.file-get-contents.php).
+
+
+
 ## End result
 
 ![Diagram](systemd-deployment.png)
