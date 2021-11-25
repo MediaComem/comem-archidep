@@ -65,7 +65,7 @@ uses configuration files in a certain format.
 
 You must write a **systemd unit file** which describes how and when to run the
 application (the "unit" in systemd terminology). You can see an example of an
-existing unit file by displaying the one running the SSH server on your server:
+existing unit file by displaying the one for the SSH server on your server:
 
 ```bash
 $> cat /lib/systemd/system/ssh.service
