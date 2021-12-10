@@ -41,6 +41,8 @@ index.html  README.md  script.js  style.css
 
 ## Create an nginx configuration file to serve the website
 
+Make sure you have nginx installed [as shown during the course][nginx-install].
+
 Create an nginx configuration file for the website. You may name the file
 `clock` and put it in nginx's `/etc/nginx/sites-available` directory. You can do
 that with nano or Vim. You will need to use `sudo` as that directory is only
@@ -173,6 +175,7 @@ server (your AWS instance).
 
 
 [nginx]: http://nginx.org/
+[nginx-install]: https://mediacomem.github.io/comem-archidep/2021-2022/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#18
 [nginx-signals]: http://nginx.org/en/docs/control.html
 [nginx-static]: https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/
 [nginx-static-conf]: https://mediacomem.github.io/comem-archidep/2021-2022/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#28
