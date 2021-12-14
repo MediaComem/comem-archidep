@@ -1,4 +1,4 @@
-# Deploy a Nest.js application with a Redis database
+# Deploy Big Browser, a Nest.js (Node.js) web application with a Redis database
 
 The goal of this exercise is to put in practice the knowledge acquired during
 the architecture & deployment course's exercises to deploy a new application

@@ -153,11 +153,11 @@ fix during the rest of the course:
   * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
   * [Deploy web applications with a database to Heroku](ex/heroku-deployment.md)
 * *Extra*
-  * [Deploy the One Chat Room web application (Node.js & MongoDB)](ex/one-chat-room-deployment.md)
+  * [Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database](ex/one-chat-room-deployment.md)
     * [Diagram](ex/end-result.pdf)
-  * [Deploy the Big Browser web application (Node.js & Redis)](ex/big-browser-deployment.md)
-  * [Deploy the WOPR web application (Ruby & Redis)](ex/wopr-deployment.md)
-  * [Deploy the RPS web application (Node.js & PostgreSQL)](ex/rps-deployment.md)
+  * [Deploy Big Browser, a Nest.js (Node.js) application with a Redis database](ex/big-browser-deployment.md)
+  * [Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md)
+  * [Deploy RPS, a Node.js & Svelte web application with a PostgreSQL database](ex/rps-deployment.md)
   * [Configure nginx as a load balancer](ex/load-balancing-deployment.md)
 
 

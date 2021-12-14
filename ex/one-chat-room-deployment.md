@@ -1,4 +1,4 @@
-# Deploy a Node.js application with a MongoDB database
+# Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database
 
 The goal of this exercice is to put in practice the knowledge acquired during
 previous exercices to deploy a new application from scratch on your server.

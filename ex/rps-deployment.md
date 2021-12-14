@@ -1,4 +1,4 @@
-# Deploy a Node.js & Svelte application with a PostgreSQL database
+# Deploy RPS, a Node.js & Svelte web application with a PostgreSQL database
 
 The goal of this exercice is to put in practice the knowledge acquired during
 previous exercices to deploy a new application from scratch on your server.

@@ -1,4 +1,4 @@
-# Deploy a Sinatra & Svelte application with a Redis database
+# Deploy WOPR, a Sinatra & Svelte web application with a Redis database
 
 The goal of this exercice is to put in practice the knowledge acquired during
 previous exercices to deploy a new application from scratch on your server.
