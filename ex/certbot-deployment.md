@@ -25,7 +25,7 @@ serve it.
 Install Certbot with the following command:
 
 ```bash
-sudo apt install certbot
+sudo apt install certbot python3-certbot-nginx
 ```
 
 Follow the [instructions for nginx and Ubuntu
