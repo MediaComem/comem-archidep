@@ -8,6 +8,7 @@ It assumes that you have performed the previous [nginx & PHP FPM exercise][php-f
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Set up directories](#set-up-directories)
+- [Update the Systemd configuration](#update-the-systemd-configuration)
 - [Update the todolist nginx configuration](#update-the-todolist-nginx-configuration)
 - [Create a bare Git repository on the server](#create-a-bare-git-repository-on-the-server)
   - [Add a `post-receive` hook to the Git repository](#add-a-post-receive-hook-to-the-git-repository)
@@ -38,6 +39,29 @@ so that you can push commits to it.
 
 The `todolist-automated` directory will contain the currently deployed version of the code.
 The goal is that every time you push commits to the repository, this directory is automatically updated.
+
+
+
+## Update the Systemd configuration
+
+In previous exercises you configured Systemd to manage the PHP todolist
+application in the `todolist-repo` directory. You specified the path to the
+repository with the `WorkingDirectory` option.
+
+Edit that configuration:
+
+```bash
+$> sudo nano /etc/systemd/system/todolist.service
+```
+
+Udpate `todolist-repo` to `todolist-automated` in the `WorkingDirectory` option
+so that Systemd looks in the correct directory.
+
+Restart the service:
+
+```bash
+$> sudo systemctl restart todolist
+```
 
 
 
