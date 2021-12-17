@@ -148,7 +148,7 @@ fix during the rest of the course:
   * [Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
   * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
     * [Diagram](ex/git-automated-deployment.pdf)
-  * Deploy a web application with a database (**graded**, *not yet available*)
+  * [Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md) (**graded**)
 * **Platform-as-a-Service deployment**
   * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
   * [Deploy web applications with a database to Heroku](ex/heroku-deployment.md)
