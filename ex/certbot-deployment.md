@@ -22,7 +22,15 @@ serve it.
 
 ## Install Certbot & generate a certificate
 
-Follow the instructions for nginx and Ubuntu 20.04 on the [home page][certbot]:
+Install Certbot with the following command:
+
+```bash
+sudo apt install certbot
+```
+
+Follow the [instructions for nginx and Ubuntu
+20.04](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal) **starting
+at step 7**:
 
 > When the instructions ask you to "Choose how you'd like to run Certbot", you
 > can choose the simplest option which is to "get a certificate and have Certbot
