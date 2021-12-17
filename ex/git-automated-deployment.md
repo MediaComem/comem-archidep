@@ -114,11 +114,14 @@ set -e
 echo Checking out latest version...
 export GIT_DIR=/home/john_doe/todolist-automated-repo
 export GIT_WORK_TREE=/home/john_doe/todolist-automated
-git checkout -f
+git checkout -f main
 cd "$GIT_WORK_TREE"
 
 echo Deployment successful
 ```
+
+:warning: If your repo has a `master` branch instead of a `main` branch, replace
+`main` by `master` in the `git checkout -f main` command in your hook.
 
 > This script will take the latest version of the code in the `todolist-automated-repo` repository
 > and checkout a working tree in the `todolist-automated` directory (the one nginx is serving files out of).
