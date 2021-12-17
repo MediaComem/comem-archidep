@@ -191,6 +191,9 @@ To W.X.Y.Z:todolist-automated-repo
  * [new branch]      main -> main
 ```
 
+:warning: If your repo has a `master` branch instead of a `main` branch, replace
+`main` by `master` in the `git push archidep main` command in your hook.
+
 > If you have set up your `post-receive` hook correctly,
 > you will see its `echo` commands displayed when you run `git push`.
 > In the above example, they are the two lines starting with `remote:`.
