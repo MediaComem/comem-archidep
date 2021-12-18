@@ -846,27 +846,27 @@ remote: sudo: no tty present and no askpass program specified
 ```
 
 It means that you have created a dedicated Unix user but you have not performed
-the following step correctly: [Allow the dedicated `minesweeper` Unix user to
+the following step correctly: [Allowing the dedicated `minesweeper` Unix user to
 control the Systemd
-service](#allow-the-dedicated-minesweeper-unix-user-to-control-the-systemd-service).
+service](#space_invader-allowing-the-dedicated-minesweeper-unix-user-to-control-the-systemd-service).
 
 Make sure that the list of authorized `systemctl` commands in the sudoers file
 match the name of your service (if you named your systemd configuration file
 something other than `minesweeper.service`, you must adapt the commands in the
 `/etc/sudoers.d/minesweeper` file to use the correct service name).
 
-> This error occurs because ordinarily, your own Unix user does not have the
-> right to execute `sudo systemctl restart minesweeper` without you entering
-> your password to gain administrative rights. A Git hook is executed in a
-> non-interactive context: it can only print information, and you cannot
-> interact with it (e.g. give it input) while it is running. This means that it
-> cannot ask for your password, so any `sudo` command will fail by default.
+> This error occurs because ordinarily, a Unix user does not have the right to
+> execute `sudo systemctl restart minesweeper` without entering their password
+> to gain administrative rights. A Git hook is executed in a non-interactive
+> context: it can only print information, and you cannot interact with it (e.g.
+> give it input) while it is running. This means that it cannot ask for your
+> password, so any `sudo` command will fail by default.
 >
 > This is what the error message indicates: `no tty present` means that there is
 > no interactive terminal (`tty` comes from the terminology of the 1970s: it
 > means a **t**ele**ty**pewriter, which was one of the first terminals).
 >
-> The instructions mentioned above grant your user the right to execute specific
+> The linked instructions above grant the user the right to execute specific
 > `sudo` commands (like `sudo systemctl restart minesweeper`) without having to
 > enter your password. Once that is done, these commands will work from the Git
 > hook as well.
