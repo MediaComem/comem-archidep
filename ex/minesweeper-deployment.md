@@ -601,10 +601,11 @@ Once you have set up the new directories, make sure to update your systemd unit
 file and nginx configuration file to point to the correct directories.
 
 Because the new directory is a fresh deployment, you may have to repeat part of
-the [initial setup][initial-setup] you performed in the original directory. Your
-hook will handle most of the setup, but if you used the `config/local.exs`
-configuration file, you must copy it to the new deployment directory as well.
-You can use the `cp <source> <target>` command for this.
+the [initial setup][initial-setup] you performed in the original directory. The
+PostgreSQL user, database and extension have already been created, and your hook
+will handle most of the rest of the setup. But if you used the
+`config/local.exs` configuration file, you must copy it to the new deployment
+directory as well. You can use the `cp <source> <target>` command for this.
 
 Complete the `post-receive` hook. Compared to the PHP todolist, there are
 additional steps which must be performed in the script for the automated
