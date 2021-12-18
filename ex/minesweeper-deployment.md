@@ -319,14 +319,27 @@ described in the [project's README][readme] on your server:
 You must perform the **initial setup** instructions indicated in the [project's
 README][readme].
 
-> :gem: When installing the application's dependencies with the `mix deps.get`
-> command, you can answer yes if Mix asks you to install Hex:
+> * :gem: When installing the application's dependencies with the `mix deps.get`
+>   command, you can answer yes if Mix asks you to install Hex:
 >
-> ```bash
-> $> mix deps.get
-> Could not find Hex, which is needed to build dependency :phoenix
-> Shall I install Hex? (if running non-interactively, use "mix local.hex --force") [Yn] y
-> ```
+>   ```bash
+>   $> mix deps.get
+>   Could not find Hex, which is needed to build dependency :phoenix
+>   Shall I install Hex? (if running non-interactively, use "mix local.hex --force") [Yn] y
+>   ```
+> * :gem: The Minesweeper application has two configuration mechanisms:
+>   environment variables or a local configuration file. You can use either or
+>   both. It does not matter which you choose. Both are equally valid way of
+>   configuring the Minesweeper application.
+>
+>   If you choose to use environment variables as you have done with the PHP
+>   todolist, you will need to provide these environment variables through
+>   Systemd later.
+>
+>   The `export` sample commands provided in the README will only set the
+>   variables in the shell/SSH session where you run them. You will need to run
+>   them again in each new shell, or add them to your shell's startup
+>   configuration file (`.bash_profile`) on the server.
 
 ### :books: What sorcery is this?
 
@@ -414,11 +427,9 @@ dependency manager and build tool of the [Elixir][elixir] ecosystem, much like
 `config/local.exs` file or through environment variables is equivalent to the
 [configuration of the PHP
 todolist](https://github.com/MediaComem/comem-archidep-php-todo-exercise/blob/5d46e9fcf974d3d74d5eec838c512798f02581e1/index.php#L3-L15)
-which you improved during the course using environment variables, except that
-the Minesweeper application has two configuration mechanisms: a local
-configuration file and/or environment variables. You can use either or both. It
-does not matter which you choose. Both are equally valid way of configuring the
-Minesweeper application.
+which you improved during the course using environment variables. It is not
+uncommon for applications to provide multiple configuration mechanisms, letting
+you choose which is more convenient for you.
 
 :books: Note that the PHP todolist used separate database connection settings
 (`TODOLIST_DB_NAME`, `TODOLIST_DB_USER`, `TODOLIST_DB_PASS`, `TODOLIST_DB_HOST`,
