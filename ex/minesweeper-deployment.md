@@ -1006,9 +1006,9 @@ repository](#boom-updating-your-fork-of-the-repository).
 
 ### :boom: Updating your fork of the repository
 
-If changes are made to the original repository after you have started the
-exercise, these changes will not automatically be included into your fork of the
-repository. You can follow this procedure to update it.
+If changes (e.g. bugfixes) are made to the original repository after you have
+started the exercise, these changes will not automatically be included into your
+fork of the repository. You can follow this procedure to update it.
 
 **On your local machine:**
 
