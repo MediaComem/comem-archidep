@@ -248,11 +248,11 @@ nginx will forward it to PHP FPM using the FastCGI protocol. PHP FPM will
 execute your application's PHP code and give the result to nginx, which will
 send it back to the client. The communication flow looks something like this:
 
-    Browser ↔ Nginx ↔ PHP FPM ↔ PHP todolist
+    Browser ↔ Nginx ↔ PHP FPM
 
 This is a bit more complex than what you had before:
 
-    Browser ↔ PHP development server ↔ PHP todolist
+    Browser ↔ PHP development server
 
 But on the other hand, you are using PHP FPM which is much more suitable for a
 production deployment. You are also using nginx, which allows you to deploy
