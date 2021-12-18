@@ -40,6 +40,8 @@ previous exercices to deploy a new application from scratch on your server.
   - [:boom: I don't remember the password I used for the `minesweeper` PostgreSQL user](#boom-i-dont-remember-the-password-i-used-for-the-minesweeper-postgresql-user)
   - [:boom: System debugging](#boom-system-debugging)
   - [:boom: PostgreSQL debugging](#boom-postgresql-debugging)
+  - [:boom: `(BadArityError) &Function.identity/1 with arity 1 called with 2 arguments`](#boom-badarityerror-functionidentity1-with-arity-1-called-with-2-arguments)
+  - [:boom: Updating your fork of the repository](#boom-updating-your-fork-of-the-repository)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -970,6 +972,79 @@ minesweeper=# select count(*) from games;
 ```
 
 Run the `exit` command when you are done to exit the PostgreSQL console.
+
+### :boom: `(BadArityError) &Function.identity/1 with arity 1 called with 2 arguments`
+
+If you see an error similar to this:
+
+```
+** (BadArityError) &Function.identity/1 with arity 1 called with 2 arguments ("ecto://unknow@localhost/minesweeper", "MINESWEEPER_DATABASE_URL")
+    (minesweeper 1.0.0) lib/minesweeper/config.ex:60: Minesweeper.Config.env_config_value!/3
+    (stdlib 3.16.1) erl_eval.erl:685: :erl_eval.do_apply/6
+    (stdlib 3.16.1) erl_eval.erl:893: :erl_eval.expr_list/6
+    (stdlib 3.16.1) erl_eval.erl:237: :erl_eval.expr/5
+    (stdlib 3.16.1) erl_eval.erl:229: :erl_eval.expr/5
+    (stdlib 3.16.1) erl_eval.erl:893: :erl_eval.expr_list/6
+    (stdlib 3.16.1) erl_eval.erl:408: :erl_eval.expr/5
+    (elixir 1.12.3) lib/code.ex:656: Code.eval_string_with_error_handling/3
+    (elixir 1.12.3) lib/config.ex:258: Config.__eval__!/3
+    (elixir 1.12.3) lib/config/reader.ex:86: Config.Reader.read!/2
+    (mix 1.12.3) lib/mix/tasks/loadconfig.ex:57: Mix.Tasks.Loadconfig.load_runtime/1
+    (mix 1.12.3) lib/mix/tasks/app.config.ex:38: Mix.Tasks.App.Config.run/1
+    (mix 1.12.3) lib/mix/task.ex:394: anonymous fn/3 in Mix.Task.run_task/3
+    (mix 1.12.3) lib/mix/tasks/app.start.ex:46: Mix.Tasks.App.Start.run/1
+    (mix 1.12.3) lib/mix/task.ex:394: anonymous fn/3 in Mix.Task.run_task/3
+    (mix 1.12.3) lib/mix/tasks/run.ex:129: Mix.Tasks.Run.run/5
+    (mix 1.12.3) lib/mix/tasks/run.ex:86: Mix.Tasks.Run.run/1
+    (mix 1.12.3) lib/mix/task.ex:394: anonymous fn/3 in Mix.Task.run_task/3
+```
+
+It means that you have encountered a bug that was present in the original
+version of the exercise and that has been fixed since. You should follow the
+instructions on [how to update your fork of the
+repository](#boom-updating-your-fork-of-the-repository).
+
+### :boom: Updating your fork of the repository
+
+If changes are made to the original repository after you have started the
+exercise, these changes will not automatically be included into your fork of the
+repository. You can follow this procedure to update it.
+
+**On your local machine:**
+
+```bash
+# Clone your fork of the Minesweeper repository on your local machine (replace
+# MyGitHubUser by your GitHub username)
+cd /path/to/projects
+git clone git@github.com:MyGitHubUser/minesweeper.git
+cd minesweeper
+
+# Add a remote to the original repository
+git remote add upstream https://github.com/MediaComem/minesweeper.git
+
+# Fetch the latest changes from all remotes
+git fetch --all
+
+# Merge the latest changes from the original repository into your local repository
+git merge upstream/main
+
+# Push the new version to your fork on GitHub
+git push origin main
+```
+
+If you have already setup the automated deployment, you simply need to push to
+your `archidep` remote again.
+
+Otherwise if you have cloned the repository on your server, you should also
+update it. **Connect to your server** and run the following commands:
+
+```bash
+# Move into the minesweeper repository you have cloned
+cd minesweeper
+
+# Pull the latest changes
+git pull
+```
 
 
 
