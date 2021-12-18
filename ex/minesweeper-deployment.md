@@ -978,7 +978,7 @@ Run the `exit` command when you are done to exit the PostgreSQL console.
 If you see an error similar to this:
 
 ```
-** (BadArityError) &Function.identity/1 with arity 1 called with 2 arguments ("ecto://unknow@localhost/minesweeper", "MINESWEEPER_DATABASE_URL")
+** (BadArityError) &Function.identity/1 with arity 1 called with 2 arguments ("ecto://minesweeper:password@localhost/minesweeper", "MINESWEEPER_DATABASE_URL")
     (minesweeper 1.0.0) lib/minesweeper/config.ex:60: Minesweeper.Config.env_config_value!/3
     (stdlib 3.16.1) erl_eval.erl:685: :erl_eval.do_apply/6
     (stdlib 3.16.1) erl_eval.erl:893: :erl_eval.expr_list/6
