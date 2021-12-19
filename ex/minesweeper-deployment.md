@@ -42,6 +42,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [:boom: PostgreSQL debugging](#boom-postgresql-debugging)
   - [:boom: `(BadArityError) &Function.identity/1 with arity 1 called with 2 arguments`](#boom-badarityerror-functionidentity1-with-arity-1-called-with-2-arguments)
   - [:boom: Updating your fork of the repository](#boom-updating-your-fork-of-the-repository)
+  - [:boom: `Error: error:0308010C:digital envelope routines::unsupported`](#boom-error-error0308010cdigital-envelope-routinesunsupported)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -1045,6 +1046,43 @@ cd minesweeper
 # Pull the latest changes
 git pull
 ```
+
+### :boom: `Error: error:0308010C:digital envelope routines::unsupported`
+
+If you see an error similar to this when building the frontend in development or
+production mode:
+
+```bash
+node:internal/crypto/hash:67
+  this[kHandle] = new _Hash(algorithm, xofLen);
+                  ^
+
+Error: error:0308010C:digital envelope routines::unsupported
+    at new Hash (node:internal/crypto/hash:67:19)
+    at Object.createHash (node:crypto:130:10)
+    at BulkUpdateDecorator.hashFactory (/home/john_doe/minesweeper/assets/node_modules/webpack/lib/util/createHash.js:145:18)
+    at BulkUpdateDecorator.update (/home/john_doe/minesweeper/assets/node_modules/webpack/lib/util/createHash.js:46:50)
+    at RawSource.updateHash (/home/john_doe/minesweeper/assets/node_modules/webpack/node_modules/webpack-sources/lib/RawSource.js:77:8)
+    at NormalModule._initBuildHash (/home/john_doe/minesweeper/assets/node_modules/webpack/lib/NormalModule.js:888:17)
+    at handleParseResult (/home/john_doe/minesweeper/assets/node_modules/webpack/lib/NormalModule.js:954:10)
+    at /home/john_doe/minesweeper/assets/node_modules/webpack/lib/NormalModule.js:1048:4
+    at processResult (/home/john_doe/minesweeper/assets/node_modules/webpack/lib/NormalModule.js:763:11)
+    at /home/john_doe/minesweeper/assets/node_modules/webpack/lib/NormalModule.js:827:5 {
+  opensslErrorStack: [ 'error:03000086:digital envelope routines::initialization error' ],
+  library: 'digital envelope routines',
+  reason: 'unsupported',
+  code: 'ERR_OSSL_EVP_UNSUPPORTED'
+}
+```
+
+It means you have not correctly installed the [requirements described in the
+project's README](https://github.com/MediaComem/minesweeper#requirements).
+
+The chapter on [how to check that everything has been correctly
+installed](#question-check-that-everything-has-been-correctly-installed) should
+help you.
+
+
 
 
 
