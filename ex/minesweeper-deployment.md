@@ -923,12 +923,23 @@ $> sudo -u postgres psql -c '\password minesweeper'
 
 ### :boom: System debugging
 
-You can display the logs of your `minesweeper` Systemd service with the
-following command:
+You can display the last few lines of the logs of your `minesweeper` Systemd
+service with the following command:
+
+```bash
+$> sudo systemctl status minesweeper
+```
+
+If you need more details, you can display the full logs with the following
+command:
 
 ```bash
 $> sudo journalctl -u minesweeper
 ```
+
+> :gem: You can scroll in `journalctl` logs using the up/down arrow keys, jump
+> directly to the bottom with Shift-G (uppercase G), or back to the top with g
+> (lowercase g).
 
 If the application does not seem to work after running the Systemd service,
 there might be an error message in these logs that can help you identify the
