@@ -28,7 +28,7 @@ async function generateInventory() {
           ansible_become: true,
           ansible_host: student.ip,
           ansible_ssh_private_key_file: sshPrivateKeyFile,
-          ansible_user: student.username,
+          ansible_user: student.ansibleUser ?? student.username,
           base_domain: baseDomain,
           student_email: student.email,
           student_name: student.name,

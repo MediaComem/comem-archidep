@@ -76,7 +76,7 @@ exports.loadData = async function() {
       }
     }
 
-    const students = await parseCsv(await readFile(exports.studentsFile, 'utf8'), { columns: [ 'class', 'name', 'orientation', 'mode', 'email', 'ip', 'username', 'herokuEmail', 'herokuId' ], from: 2 });
+    const students = await parseCsv(await readFile(exports.studentsFile, 'utf8'), { columns: [ 'class', 'name', 'orientation', 'mode', 'email', 'ip', 'username', 'herokuEmail', 'herokuId', 'ansibleUser' ], from: 2 });
 
     const passwords = [];
 
