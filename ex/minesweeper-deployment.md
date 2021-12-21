@@ -43,6 +43,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [:boom: `(BadArityError) &Function.identity/1 with arity 1 called with 2 arguments`](#boom-badarityerror-functionidentity1-with-arity-1-called-with-2-arguments)
   - [:boom: Updating your fork of the repository](#boom-updating-your-fork-of-the-repository)
   - [:boom: `Error: error:0308010C:digital envelope routines::unsupported`](#boom-error-error0308010cdigital-envelope-routinesunsupported)
+  - [:boom: `(Mix) Could not compile dependency :cowlib`](#boom-mix-could-not-compile-dependency-cowlib)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -1092,6 +1093,59 @@ project's README](https://github.com/MediaComem/minesweeper#requirements).
 The chapter on [how to check that everything has been correctly
 installed](#question-check-that-everything-has-been-correctly-installed) should
 help you.
+
+### :boom: `(Mix) Could not compile dependency :cowlib`
+
+If you see an error similar to this:
+
+```
+===> Compiling cowlib
+Killed
+** (Mix) Could not compile dependency :cowlib, "/home/john_doe/.mix/rebar3 bare compile --paths /home/john_doe/minesweeper/_build/dev/lib/*/ebin" command failed. Errors may have been logged above. You can recompile this dependency with "mix deps.compile cowlib", update it with "mix deps.update cowlib" or clean it with "mix deps.clean cowlib"
+```
+
+It might mean your server does not have enough memory (RAM) to perform the
+compilation of some dependencies. Adding 1 gigabyte of swap space should solve
+the issue, which you can do with the following commands:
+
+```bash
+$> sudo fallocate -l 1G /swapfile
+$> sudo chmod 600 /swapfile
+$> sudo mkswap /swapfile
+$> sudo swapon /swapfile
+```
+
+> [Swap
+> space](https://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment_Guide-en-US/ch-swapspace.html)
+> in Linux is used when the amount of physical memory (RAM) is full. If the
+> system needs more memory resources and the RAM is full, inactive pages in
+> memory are moved to the swap space.
+
+You can verify that the swap space is correctly configuring by displaying
+available memory with the `free -m` command. You should see the `Swap` line
+indicating the gigabyte of swap space you have added:
+
+```bash
+$> free -h
+              total        used        free      shared  buff/cache   available
+Mem:          914Mi       404Mi       316Mi        31Mi       193Mi       331Mi
+Swap:         1.0Gi       150Mi       873Mi
+```
+
+If you reboot your server, the swap space will be disabled. You can easily
+enable it again by re-executing the `swapon` command:
+
+```bash
+$> sudo swapon /swapfile
+```
+
+> You could make the swap space permanent by modifying your `/etc/fstab` file,
+> but **DO NOT DO THIS** unless you know EXACTLY what you are doing. Introducing
+> errors into the `/etc/fstab` file can break your server.
+>
+> See [How to Add Swap Space on Ubuntu
+> 20.04](https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-20-04)
+> for more information.
 
 
 
