@@ -44,6 +44,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [:boom: Updating your fork of the repository](#boom-updating-your-fork-of-the-repository)
   - [:boom: `Error: error:0308010C:digital envelope routines::unsupported`](#boom-error-error0308010cdigital-envelope-routinesunsupported)
   - [:boom: `(Mix) Could not compile dependency :cowlib`](#boom-mix-could-not-compile-dependency-cowlib)
+  - [:boom: `Error creating new order :: too many certificates already issued for: archidep.tech`](#boom-error-creating-new-order--too-many-certificates-already-issued-for-archideptech)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -1146,6 +1147,56 @@ $> sudo swapon /swapfile
 > See [How to Add Swap Space on Ubuntu
 > 20.04](https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-20-04)
 > for more information.
+
+### :boom: `Error creating new order :: too many certificates already issued for: archidep.tech`
+
+If you see an error similar to this when attempting to obtain a Let's Encrypt
+TLS certificate with Certbot:
+
+```bash
+$> sudo certbot --nginx
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+
+Which names would you like to activate HTTPS for?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: clock.john-doe.archidep.tech
+2: minesweeper.john-doe.archidep.tech
+3: todolist.john-doe.archidep.tech
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate numbers separated by commas and/or spaces, or leave input
+blank to select all options shown (Enter 'c' to cancel): 2
+Obtaining a new certificate
+An unexpected error occurred:
+There were too many requests of a given type :: Error creating new order :: too many certificates already issued for: archidep.tech: see https://letsencrypt.org/docs/rate-limits/
+Please see the logfiles in /var/log/letsencrypt for more details.
+```
+
+It means that you are running into a [rate limit of the Let's Encrypt
+service](https://letsencrypt.org/docs/rate-limits/): at most 50 certificates can
+be requested per domain per week. With more than 50 students in both classes of
+the architecture & deployment course, we may encounter this limit now and then.
+
+A second domain, `archidep2.tech`, is now available for you. You can access
+[Gandi.net](https://admin.gandi.net/domain/ef323400-0433-11e9-83f1-00163e4e76d5/)
+to add entries to its DNS zone like in [the DNS
+exercise](https://github.com/MediaComem/comem-archidep/blob/main/ex/dns-configuration.md#connect-to-gandinet).
+
+You should add the same entries you added for `archidep.tech` to this new
+`archidep2.tech` domain:
+
+* An `A` entry for `john-doe` (replacing `john-doe` with
+  your name) pointing to your server's public IP address.
+* Another `A` entry for `*.john-doe` (replacing `john-doe` with your name)
+  pointing to the same IP address.
+
+You can then update your nginx configuration for the exercise to use your
+subdomain of `archidep2.tech` instead of `archidep.tech`. Once you have done
+this, you should be able to run the `sudo certbot --nginx` command again without
+error.
+
+> Please notify the teacher immediately if you encounter the same error with the
+> `archidep2.tech` domain.
 
 
 
