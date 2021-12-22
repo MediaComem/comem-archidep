@@ -1190,10 +1190,14 @@ You should add the same entries you added for `archidep.tech` to this new
 * Another `A` entry for `*.john-doe` (replacing `john-doe` with your name)
   pointing to the same IP address.
 
-You can then update your nginx configuration for the exercise to use your
-subdomain of `archidep2.tech` instead of `archidep.tech`. Once you have done
-this, you should be able to run the `sudo certbot --nginx` command again without
-error.
+You can then connect to your server and perform the following actions:
+
+* Update your nginx configuration for the exercise to use your new subdomain of
+  `archidep2.tech` instead of `archidep.tech`.
+* Test and reload nginx's configuration with `sudo nginx -t` and `sudo nginx -s
+  reload`.
+* Run the `sudo certbot --nginx` command again. There should be no errors this
+  time.
 
 > Please notify the teacher immediately if you encounter the same error with the
 > `archidep2.tech` domain.
