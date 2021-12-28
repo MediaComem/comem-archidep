@@ -28,6 +28,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [:gem: Allowing your user to restart the service without a password](#gem-allowing-your-user-to-restart-the-service-without-a-password)
   - [:space_invader: Allowing the dedicated `minesweeper` Unix user to control the Systemd service](#space_invader-allowing-the-dedicated-minesweeper-unix-user-to-control-the-systemd-service)
   - [:exclamation: Test the automated deployment](#exclamation-test-the-automated-deployment)
+  - [:exclamation: Notify the teacher](#exclamation-notify-the-teacher)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: `Could not find a Mix.Project`](#boom-could-not-find-a-mixproject)
   - [:boom: `Note no mix.exs was found in the current directory`](#boom-note-no-mixexs-was-found-in-the-current-directory)
@@ -729,6 +730,11 @@ Here's some visible changes you could easily make:
 * Change the [difficulty levels in the
   `lib/minesweeper_web/templates/home/index.html.eex`
   file](https://github.com/MediaComem/minesweeper/blob/ca3e6fb2956afc751274ce2589ff9490c90c5e00/lib/minesweeper_web/templates/home/index.html.eex#L5-L8).
+
+### :exclamation: Notify the teacher
+
+Send an email or a Teams message to the teacher **no later than January 13th
+2022** indicating that you have finished the exercise.
 
 
 
