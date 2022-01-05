@@ -1227,6 +1227,10 @@ release has been included into the compiled release. Any subsequent changes to
 the original file will not be taken into account unless you re-create the
 release.
 
+Unlike with Apache & PHP, Elixir code (or Ruby code, or Python code, etc) is not
+reloaded automatically on each request. You must also restart the application to
+take your changes into account.
+
 
 
 
