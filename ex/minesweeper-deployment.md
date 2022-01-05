@@ -46,6 +46,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [:boom: `Error: error:0308010C:digital envelope routines::unsupported`](#boom-error-error0308010cdigital-envelope-routinesunsupported)
   - [:boom: `(Mix) Could not compile dependency :cowlib`](#boom-mix-could-not-compile-dependency-cowlib)
   - [:boom: `Error creating new order :: too many certificates already issued for: archidep.tech`](#boom-error-creating-new-order--too-many-certificates-already-issued-for-archideptech)
+  - [:boom: My changes to `config/local.exs` are not taken into account](#boom-my-changes-to-configlocalexs-are-not-taken-into-account)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -1209,6 +1210,22 @@ You can then connect to your server and perform the following actions:
 
 > Please notify the teacher immediately if you encounter the same error with the
 > `archidep2.tech` domain.
+
+### :boom: My changes to `config/local.exs` are not taken into account
+
+Contrary to environment variables, the `config/local.exs` file is not read at
+runtime (when the application starts), but is embedded into the application at
+compilation time.
+
+If you are running the application in development mode with `mix phx.server`,
+re-compilation is done automatically for you, meaning it will always use the
+latest version of the `config/local.exs` file.
+
+Once you have created the production release with `MIX_ENV=prod mix release`,
+the version of the `config/local.exs` file that existed when you created the
+release has been included into the compiled release. Any subsequent changes to
+the original file will not be taken into account unless you re-create the
+release.
 
 
 
