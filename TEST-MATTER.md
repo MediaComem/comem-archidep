@@ -358,7 +358,7 @@ You must understand how to set up automated deployments with Git hooks,
 which you put in practice during the following exercises:
 
 * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md) [(architecture)](ex/git-automated-deployment.md#architecture)
-* [Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](ex/minesweeper-deployment.md) [(architecture)](ex/minesweeper-deployment.md#architecture)
+* [Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](ex/minesweeper-deployment.md)
 
 This [diagram](ex/end-result.pdf) shows the end result of previous exercises.
 
