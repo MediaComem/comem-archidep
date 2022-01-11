@@ -230,8 +230,8 @@ UUID=0BC7-08EF  /boot/efi       vfat    umask=0077      0 1
 /dev/disk/cloud/azure_resource-part1    /mnt    auto    defaults,nofail,x-systemd.requires=cloud-init.service,comment=cloudconfig       0       2
 ```
 
-:warning: :warning: :warning: **WARNING: be very careful to execute the
-following command exactly as is.** *(Corrupting your `/etc/fstab` file can
+:warning: :warning: :warning: **WARNING: BE VERY CAREFUL TO EXECUTE THE
+FOLLOWING COMMAND EXACTLY AS IS.** *(Corrupting your `/etc/fstab` file can
 prevent your server from rebooting.)* :warning: :warning: :warning:
 
 To make the swap space permanent, execute the following command to add the
