@@ -19,7 +19,7 @@ illustrates the difference between the two cloud service models.
   - [Add the free Heroku Postgres add-on to your application](#add-the-free-heroku-postgres-add-on-to-your-application)
   - [Update your Minesweeper application to the latest version](#update-your-minesweeper-application-to-the-latest-version)
   - [Deploy the application to Heroku](#deploy-the-application-to-heroku-1)
-- [Deploy applications from previous years' exercises](#deploy-applications-from-previous-years-exercises)
+- [Deploy applications from previous years](#deploy-applications-from-previous-years)
   - [Deploy the RPS application](#deploy-the-rps-application)
     - [Optional: create a Heroku application (if you have a credit card)](#optional-create-a-heroku-application-if-you-have-a-credit-card-1)
     - [Add the free Heroku Postgres add-on to your application](#add-the-free-heroku-postgres-add-on-to-your-application-1)
@@ -333,7 +333,7 @@ The application should be deployed.
 
 
 
-## Deploy applications from previous years' exercises
+## Deploy applications from previous years
 
 
 
