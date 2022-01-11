@@ -347,12 +347,13 @@ which you put in practice during the following exercises:
 * [Configure a domain name](ex/dns-configuration.md) [(architecture)](ex/dns-configuration.md#architecture)
 * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(architecture)](ex/nginx-php-fpm-deployment.md#architecture)
 
-You must understand how to use a reverse proxy to deploy several web sites or applications
-on the same server, which you put in practice during the following exercises:
+You must understand how to use a reverse proxy to deploy several web sites or
+applications on the same server, which you put in practice during the following
+exercises:
 
 * [Deploy a static site with nginx](ex/nginx-static-deployment.md) [(architecture)](ex/nginx-static-deployment.md#architecture)
 * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(architecture)](ex/nginx-php-fpm-deployment.md#architecture)
-* Deploy a web application with a database (*not yet available*)
+* [Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](ex/minesweeper-deployment.md)
 
 You must understand how to set up automated deployments with Git hooks,
 which you put in practice during the following exercises:
