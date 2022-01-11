@@ -120,7 +120,7 @@ the latest changes from the repository.
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise. Note that it has not changed
 compared to [the previous exercise](./sftp-deployment.md#architecture) since we
-have not created any new processes or changed how they communicate:
+have neither created any new processes nor changed how they communicate:
 
 ![Simplified architecture](sftp-deployment-simplified.png)
 

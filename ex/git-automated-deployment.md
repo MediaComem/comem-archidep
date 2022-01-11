@@ -15,7 +15,7 @@ It assumes that you have performed the previous [nginx & PHP FPM exercise][php-f
 - [Add the server's Git repository as a remote](#add-the-servers-git-repository-as-a-remote)
 - [Make an automated deployment](#make-an-automated-deployment)
 - [Commit a change to the project and deploy it](#commit-a-change-to-the-project-and-deploy-it)
-- [End result](#end-result)
+- [Architecture](#architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -237,11 +237,23 @@ been deployed automatically!
 
 
 
-## End result
+## Architecture
 
-![Diagram](git-automated-deployment.png)
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise. Note that it has not changed
+compared to [the previous exercises](./certbot-deployment.md#architecture) since
+we have neither created any new processes nor changed how they communicate:
 
-> [PDF version](git-automated-deployment.pdf).
+![Simplified architecture](certbot-deployment-simplified.png)
+
+> [Simplified architecture PDF version](certbot-deployment-simplified.pdf).
+
+The following diagram is a more detailed representation also including the
+short-lived processes run during the exercise:
+
+![Detailed architecture](git-automated-deployment.png)
+
+> [Detailed architecture PDF version](git-automated-deployment.pdf).
 
 
 
