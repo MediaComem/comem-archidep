@@ -340,24 +340,24 @@ You must know how to deploy a PHP web application on a cloud platform
 with the Infrastructure-as-a-Service (IaaS) service model,
 which you put in practice during the following exercises:
 
-* [Deploy a PHP application with SFTP](ex/sftp-deployment.md) [(diagram)](ex/sftp-deployment.pdf)
-* [Deploy a PHP application with Git](ex/git-clone-deployment.md) [(diagram)](ex/git-clone-deployment.pdf)
-* [Configure a PHP application through environment variables](ex/config-through-environment.md) [(diagram)](ex/config-through-environment.pdf)
-* [Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md) [(diagram)](ex/systemd-deployment.pdf)
-* [Configure a domain name](ex/dns-configuration.md)
-* [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(diagram)](ex/nginx-php-fpm-deployment.pdf)
+* [Deploy a PHP application with SFTP](ex/sftp-deployment.md) [(architecture)](ex/sftp-deployment-simplified.md#architecture)
+* [Deploy a PHP application with Git](ex/git-clone-deployment.md) [(architecture)](ex/git-clone-deployment-simplified.md#architecture)
+* [Configure a PHP application through environment variables](ex/config-through-environment.md) [(architecture)](ex/config-through-environment.md#architecture)
+* [Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md) [(architecture)](ex/systemd-deployment.md#architecture)
+* [Configure a domain name](ex/dns-configuration.md) [(architecture)](ex/dns-configuration.md#architecture)
+* [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(architecture)](ex/nginx-php-fpm-deployment.md#architecture)
 
 You must understand how to use a reverse proxy to deploy several web sites or applications
 on the same server, which you put in practice during the following exercises:
 
-* [Deploy a static site with nginx](ex/nginx-static-deployment.md) [(diagram)](ex/nginx-static-deployment.pdf)
-* [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(diagram)](ex/nginx-php-fpm-deployment.pdf)
+* [Deploy a static site with nginx](ex/nginx-static-deployment.md) [(architecture)](ex/nginx-static-deployment.md#architecture)
+* [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(architecture)](ex/nginx-php-fpm-deployment.md#architecture)
 * Deploy a web application with a database (*not yet available*)
 
 You must understand how to set up automated deployments with Git hooks,
 which you put in practice during the following exercises:
 
-* [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md) [(diagram)](ex/git-automated-deployment.pdf)
+* [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md) [(architecture)](ex/git-automated-deployment.md#architecture)
 * [Deploy a Node.js & Svelte application with a PostgreSQL database](ex/rps-deployment.md)
 
 This [diagram](ex/end-result.pdf) shows the end result of previous exercises.
