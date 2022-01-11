@@ -270,10 +270,10 @@ Mem:          914Mi       404Mi       316Mi        31Mi       193Mi       331Mi
 Swap:         2.0Gi       200Mi       1.8Gi
 ```
 
-You should also be able to see the available swap space and how much is used
-with the `htop` command which shows it as the `Swp` bar at the top (you can quit
-it with `q` once it is open).
-
+> You can also see the currently available swap space and how much is used
+> with the `htop` command which shows it as the `Swp` bar at the top (you can quit
+> it with `q` once it is open).
+>
 > For more information, see the [fstab Linux man
 > page](https://man7.org/linux/man-pages/man5/fstab.5.html) and [How to Add Swap
 > Space on Ubuntu
