@@ -186,8 +186,8 @@ this issue.
 
 Adding 2 gigabytes of swap space should be enough for our purposes.
 
-Run the following commands to make sure you disable any previous swap files you
-might have created:
+Run the following commands to make sure you disable any previous swap file you
+might have created during the exercises:
 
 ```bash
 # (It's okay if this command produces an error.)
