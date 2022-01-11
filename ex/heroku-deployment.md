@@ -204,7 +204,134 @@ The application should work fine now.
 
 
 
-## Deploy the RPS application
+## Deploy the Minesweeper application
+
+This section explains how to deploy the same application as in the [Minesweeper
+exercise](https://github.com/MediaComem/comem-archidep/blob/main/ex/minesweeper-deployment.md)
+on Heroku.
+
+The commands in this exercise must be executed **on your local machine** in the
+Git repository where you have the Minesweeper application. You do not need your
+cloud server at all.
+
+### Create a Heroku application (if you have a credit card)
+
+Create the application in your Heroku account. We will only use free add-ons, so
+no money will be charged. You can create an application from the main Heroku
+page once logged in:
+
+![Create Heroku Application](../images/heroku-create-app.png)
+
+### Add the free Heroku Postgres add-on to your application
+
+Add the **free** [Heroku Postgres add-on][heroku-postgres] to your Heroku
+application's resources:
+
+![Add Postgres Add-on](../images/heroku-minesweeper-postgres.png)
+
+**Be sure to select the free plan:**
+
+![Choose Postgres Plan](../images/heroku-minesweeper-postgres-plan.png)
+
+Go to your application's settings and reveal its configuration variables. You
+should see a `DATABASE_URL` variable there:
+
+![Postgres Database URL](../images/heroku-minesweeper-postgres-url.png)
+
+As [documented by the Heroku Postgres add-on][heroku-postgres-database-url],
+this environment variable is how database connection settings are provided to
+your application.
+
+### Update your Minesweeper application to the latest version
+
+The version of the Minesweeper application you have deployed during the original
+exercise only supported the `$MINESWEEPER_DATABASE_URL` environment variable to
+configure PostgreSQL connection settings, and the `$MINESWEEPER_HTTP_PORT`
+environment variable to configure the port to listen on.
+
+A new version has been published which alternatively also supports the
+`$DATABASE_URL` and `$PORT` environment variables, so that it works out of the
+box with the [Heroku Postgres add-on][heroku-postgres] and Heroku itself.
+
+**If you have a clone of the [original
+repository](https://github.com/MediaComem/minesweeper)** on your machine, you can simply
+update it with `git pull` and use that.
+
+**If you have forked the repository**, follow these instructions to update your
+fork:
+
+* **On your local machine,** go into the directory where you cloned your fork:
+
+  ```bash
+  $> cd /path/to/projects/minesweeper
+  ```
+* Add the original repository as a remote:
+
+  ```bash
+  $> git remote add upstream https://github.com/MediaComem/minesweeper.git
+  ```
+* Merge the latest changes from the original repository into your main branch:
+
+  ```bash
+  $> git checkout main
+  $> git merge upstream/master
+  ```
+
+Your fork should now be up-to-date. You can push the updates to GitHub with `git
+push origin main` if you want, then continue with this exercise.
+
+### Deploy the application to Heroku
+
+Move into the Minesweeper application repository **on your local machine**:
+
+```bash
+$> cd /path/to/projects/minesweeper
+```
+
+Add the `heroku` remote to your application (assuming your Heroku application is
+named `ad-john-doe-mnswpr`):
+
+```bash
+$> heroku git:remote -a ad-john-doe-mnswpr
+```
+
+> Heroku will probably open your browser and ask you to log in at this point.
+
+The [initial setup of the Minesweeper application][minesweeper-initial-setup]
+indicates that you must create the `uuid-ossp` extension. You can use the
+following command to do this on Heroku:
+
+```bash
+$> heroku psql -c 'CREATE EXTENSION "uuid-ossp";'
+```
+
+Because the combination of Elixir and Node.js is not standard for Heroku, you
+must explicitly tell Heroku what [buildpacks][heroku-buildpacks] to use:
+
+```bash
+$> heroku buildpacks:clear
+$> heroku buildpacks:add hashnuke/elixir
+$> heroku buildpacks:add heroku/nodejs
+```
+
+> This will tell Heroku to first compile the Node.js frontend of the Minesweeper
+> application, then the Elixir/Phoenix backend.
+
+Push the application to Heroku:
+
+```bash
+$> git push heroku main
+```
+
+The application should be deployed.
+
+
+
+## Deploy applications from previous years' exercises
+
+
+
+### Deploy the RPS application
 
 This section explains how to deploy the same application as in the [Rock Paper
 Scissors exercise
@@ -215,7 +342,7 @@ The commands in this exercise must be executed **on your local machine** in the
 Git repository where you have the RPS application. You do not need your AWS
 server at all.
 
-### Optional: create a Heroku application (if you have a credit card)
+#### Optional: create a Heroku application (if you have a credit card)
 
 An existing Heroku application will be provided for you by the teacher.
 
@@ -228,7 +355,7 @@ You can create an application from the main Heroku page once logged in:
 
 ![Create Heroku Application](../images/heroku-create-app.png)
 
-### Add the free Heroku Postgres add-on to your application
+#### Add the free Heroku Postgres add-on to your application
 
 Add the **free** [Heroku Postgres add-on][heroku-postgres] to your Heroku
 application's resources:
@@ -248,7 +375,7 @@ As [documented by the Heroku Postgres add-on][heroku-postgres-database-url],
 this environment variable is how database connection settings are provided to
 your application.
 
-### Update your RPS application to the latest version
+#### Update your RPS application to the latest version
 
 The version of the RPS application you have deployed during the original
 exercise only supported [the `$RPS_DATABASE_URL` environment
@@ -288,7 +415,7 @@ fork:
 Your fork should now be up-to-date. You can push the updates to GitHub with `git
 push origin main` if you want, then continue with this exercise.
 
-### Deploy the application to Heroku
+#### Deploy the application to Heroku
 
 Move into the RPS application repository **on your local machine**:
 
@@ -313,7 +440,7 @@ The application should be deployed, but it will not work yet. As you saw when
 deploying on your own server, there are setup steps concerning the database
 which you have not yet performed.
 
-### Set up the database
+#### Set up the database
 
 You do not need to create a database user or a database. The [Heroku Postgres
 add-on][heroku-postgres] has taken care of this for you. However, this database
@@ -358,7 +485,7 @@ The application should now work!
 
 
 
-## Deploy the WOPR application
+### Deploy the WOPR application
 
 This section explains how to deploy the same application as in the [WOPR
 exercise](https://github.com/MediaComem/comem-archidep/blob/master/ex/wopr-deployment.md)
@@ -368,7 +495,7 @@ The commands in this exercise must be executed **on your local machine** in the
 Git repository where you have the WOPR application. You do not need your AWS
 server at all.
 
-### Optional: create a Heroku application (if you have a credit card)
+#### Optional: create a Heroku application (if you have a credit card)
 
 An existing Heroku application will be provided for you by the teacher.
 
@@ -381,7 +508,7 @@ You can create an application from the main Heroku page once logged in:
 
 ![Create Heroku Application](../images/heroku-create-app.png)
 
-### Add the free Heroku Redis add-on to your application
+#### Add the free Heroku Redis add-on to your application
 
 Add the **free** [Heroku Redis
 add-on](https://elements.heroku.com/addons/heroku-redis) to your Heroku
@@ -403,7 +530,7 @@ environment
 variable](https://github.com/MediaComem/comem-wopr/blob/7de462120783fdf771e68161ac21d5b51eca52d5/lib/wopr.rb#L64-L66),
 so you will not have to make any changes to the code this time.
 
-### Deploy the application to Heroku
+#### Deploy the application to Heroku
 
 Move into the WOPR application repository **on your local machine**:
 
@@ -450,5 +577,7 @@ deployment log. It should also work!
 
 
 
+[heroku-buildpacks]: https://devcenter.heroku.com/articles/buildpacks
 [heroku-postgres]: https://elements.heroku.com/addons/heroku-postgresql
 [heroku-postgres-database-url]: https://devcenter.heroku.com/articles/heroku-postgresql#provisioning-heroku-postgres
+[minesweeper-initial-setup]: https://github.com/MediaComem/minesweeper#initial-setup
