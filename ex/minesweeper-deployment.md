@@ -1119,47 +1119,10 @@ Killed
 ```
 
 It might mean your server does not have enough memory (RAM) to perform the
-compilation of some dependencies. Adding 1 gigabyte of swap space should solve
-the issue, which you can do with the following commands:
+compilation of some dependencies. Adding a few gigabytes of swap space should solve
+the issue. Follow the instructions in the sysadmin cheatsheet to do so:
 
-```bash
-$> sudo fallocate -l 1G /swapfile
-$> sudo chmod 600 /swapfile
-$> sudo mkswap /swapfile
-$> sudo swapon /swapfile
-```
-
-> [Swap
-> space](https://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment_Guide-en-US/ch-swapspace.html)
-> in Linux is used when the amount of physical memory (RAM) is full. If the
-> system needs more memory resources and the RAM is full, inactive pages in
-> memory are moved to the swap space.
-
-You can verify that the swap space is correctly configuring by displaying
-available memory with the `free -m` command. You should see the `Swap` line
-indicating the gigabyte of swap space you have added:
-
-```bash
-$> free -h
-              total        used        free      shared  buff/cache   available
-Mem:          914Mi       404Mi       316Mi        31Mi       193Mi       331Mi
-Swap:         1.0Gi       150Mi       873Mi
-```
-
-If you reboot your server, the swap space will be disabled. You can easily
-enable it again by re-executing the `swapon` command:
-
-```bash
-$> sudo swapon /swapfile
-```
-
-> You could make the swap space permanent by modifying your `/etc/fstab` file,
-> but **DO NOT DO THIS** unless you know EXACTLY what you are doing. Introducing
-> errors into the `/etc/fstab` file can break your server.
->
-> See [How to Add Swap Space on Ubuntu
-> 20.04](https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-20-04)
-> for more information.
+* [Add swap space to your cloud server](../SYSADMIN-CHEATSHEET.md#add-swap-space-to-your-cloud-server)
 
 ### :boom: `Error creating new order :: too many certificates already issued for: archidep.tech`
 
