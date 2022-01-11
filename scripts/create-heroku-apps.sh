@@ -7,6 +7,7 @@ RED=31
 
 app_name=""
 configure_collaborator=0
+only_class_name=""
 only=()
 
 color() {
@@ -43,6 +44,10 @@ while [[ $# -gt 0 ]]; do
       app_name="$1"
       shift
     ;;
+    -l|--class)
+      only_class_name="$1"
+      shift
+    ;;
     -o|--only)
       only+=("$1")
       shift
@@ -71,21 +76,27 @@ for student in $csv; do
   IFS=$','; declare -a fields=($student)
   IFS="$OLD_IFS"
 
-  # Column 0: human-readable name
+  # Column 0: class name
+  class_name="$(echo "${fields[0]}"| tr -d '[:space:]')"
+
+  # Skip other classes if -l|--class option is specified
+  test -n "$only_class_name" && [[ "$class_name" != "$only_class_name" ]] && continue
+
+  # Column 1: human-readable name
   name="$(echo "${fields[1]}"|tr -d '[:space:]')"
 
-  # Columns 1-2: unused
+  # Columns 2-3: unused
 
-  # Column 3: email address
+  # Column 4: email address
   email="$(echo "${fields[4]}"|tr -d '[:space:]')"
 
-  # Columns 4-5: unused
+  # Columns 5-6: unused
 
-  # Column 6 (optional): Heroku account email address (if different)
+  # Column 7 (optional): Heroku account email address (if different)
   heroku_email="$(echo "${fields[7]}"|tr -d '[:space:]')"
   id="$(echo "$email"|sed 's/@.*//'|sed 's/\./-/')"
 
-  # Column 7 (optional): custom ID (useful if default ID is too long)
+  # Column 8 (optional): custom ID (useful if default ID is too long)
   # The default ID is the name portion of the email address,
   # with dots replaced by hyphens.
   short_id="$(echo "${fields[8]}"|tr -d '[:space:]')"
