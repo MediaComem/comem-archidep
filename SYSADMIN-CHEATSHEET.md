@@ -230,9 +230,9 @@ UUID=0BC7-08EF  /boot/efi       vfat    umask=0077      0 1
 /dev/disk/cloud/azure_resource-part1    /mnt    auto    defaults,nofail,x-systemd.requires=cloud-init.service,comment=cloudconfig       0       2
 ```
 
-:warning: *WARNING: be very careful to execute the following command exactly as
-is* :warning: *(Corrupting your `/etc/fstab` file can prevent your server from
-rebooting.)*
+:warning: :warning: :warning: **WARNING: be very careful to execute the
+following command exactly as is.** *(Corrupting your `/etc/fstab` file can
+prevent your server from rebooting.)* :warning: :warning: :warning:
 
 To make the swap space permanent, execute the following command to add the
 appropriate line to your server's `/etc/fstab` file:
@@ -269,6 +269,10 @@ $> free -h
 Mem:          914Mi       404Mi       316Mi        31Mi       193Mi       331Mi
 Swap:         2.0Gi       200Mi       1.8Gi
 ```
+
+You should also be able to see the available swap space and how much is used
+with the `htop` command which shows it as the `Swp` bar at the top (you can quit
+it with `q` once it is open).
 
 > For more information, see the [fstab Linux man
 > page](https://man7.org/linux/man-pages/man5/fstab.5.html) and [How to Add Swap
