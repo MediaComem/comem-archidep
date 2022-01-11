@@ -254,7 +254,7 @@ UUID=0BC7-08EF  /boot/efi       vfat    umask=0077      0 1
 /swapfile none swap sw 0 0
 ```
 
-**Only** if it looks correct, reboot your server:
+**IF it looks correct**, reboot your server:
 
 ```bash
 $> sudo reboot
