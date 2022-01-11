@@ -259,12 +259,7 @@ A new version has been published which alternatively also supports the
 `$DATABASE_URL` and `$PORT` environment variables, so that it works out of the
 box with the [Heroku Postgres add-on][heroku-postgres] and Heroku itself.
 
-**If you have a clone of the [original
-repository](https://github.com/MediaComem/minesweeper)** on your machine, you can simply
-update it with `git pull` and use that.
-
-**If you have forked the repository**, follow these instructions to update your
-fork:
+Follow these instructions to update your fork of the Minesweeper repository:
 
 * **On your local machine,** go into the directory where you cloned your fork:
 
@@ -276,11 +271,22 @@ fork:
   ```bash
   $> git remote add upstream https://github.com/MediaComem/minesweeper.git
   ```
+* Make sure you have no uncommitted changes:
+
+  ```bash
+  $> git status
+  On branch main
+  Your branch is up to date with 'origin/main'.
+
+  nothing to commit, working tree clean
+  ```
+
+  > If you have changes, you should commit them before moving on.
 * Merge the latest changes from the original repository into your main branch:
 
   ```bash
   $> git checkout main
-  $> git merge upstream/master
+  $> git merge upstream/main
   ```
 
 Your fork should now be up-to-date. You can push the updates to GitHub with `git
@@ -304,8 +310,10 @@ $> heroku git:remote -a ad-john-doe-mnswpr
 > Heroku will probably open your browser and ask you to log in at this point.
 
 The [initial setup of the Minesweeper application][minesweeper-initial-setup]
-indicates that you must create the `uuid-ossp` extension. You can use the
-following command to do this on Heroku:
+indicates that you must create various things such as a database user, a
+database, and the `uuid-ossp` extension. The Heroku Postgres addon already
+manages the user and database for you. You can use the following command to
+create the extension in the provided database:
 
 ```bash
 $> heroku psql -c 'CREATE EXTENSION "uuid-ossp";'
@@ -329,7 +337,7 @@ Push the application to Heroku:
 $> git push heroku main
 ```
 
-The application should be deployed.
+The application should compile and be deployed.
 
 
 
