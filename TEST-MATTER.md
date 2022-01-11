@@ -340,8 +340,8 @@ You must know how to deploy a PHP web application on a cloud platform
 with the Infrastructure-as-a-Service (IaaS) service model,
 which you put in practice during the following exercises:
 
-* [Deploy a PHP application with SFTP](ex/sftp-deployment.md) [(architecture)](ex/sftp-deployment-simplified.md#architecture)
-* [Deploy a PHP application with Git](ex/git-clone-deployment.md) [(architecture)](ex/git-clone-deployment-simplified.md#architecture)
+* [Deploy a PHP application with SFTP](ex/sftp-deployment.md) [(architecture)](ex/sftp-deployment.md#architecture)
+* [Deploy a PHP application with Git](ex/git-clone-deployment.md) [(architecture)](ex/git-clone-deployment.md#architecture)
 * [Configure a PHP application through environment variables](ex/config-through-environment.md) [(architecture)](ex/config-through-environment.md#architecture)
 * [Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md) [(architecture)](ex/systemd-deployment.md#architecture)
 * [Configure a domain name](ex/dns-configuration.md) [(architecture)](ex/dns-configuration.md#architecture)
