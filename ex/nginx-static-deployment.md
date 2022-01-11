@@ -16,7 +16,7 @@ configured an A record for your server in the domain name system.
   - [Reload the nginx configuration](#reload-the-nginx-configuration)
 - [See it in action](#see-it-in-action)
 - [What have I done?](#what-have-i-done)
-- [End result](#end-result)
+- [Architecture](#architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -166,11 +166,21 @@ server (your AWS instance).
 
 
 
-## End result
+## Architecture
 
-![Diagram](nginx-static-deployment.png)
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise:
 
-> [PDF version](nginx-static-deployment.pdf).
+![Simplified architecture](nginx-static-deployment-simplified.png)
+
+> [Simplified architecture PDF version](nginx-static-deployment-simplified.pdf).
+
+The following diagram is a more detailed representation also including the
+short-lived processes run during the exercise:
+
+![Detailed architecture](nginx-static-deployment.png)
+
+> [Detailed architecture PDF version](nginx-static-deployment.pdf).
 
 
 

@@ -9,6 +9,7 @@ using [Certbot][certbot].
 
 - [Prerequisites](#prerequisites)
 - [Install Certbot & generate a certificate](#install-certbot--generate-a-certificate)
+- [Architecture](#architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -40,6 +41,22 @@ Once you are done, your web site or application should be accessible over HTTPS.
 
 You should take a look at your nginx configuration file(s) in
 `/etc/nginx/sites-available`, to see the changes Certbot has made.
+
+
+
+## Architecture
+
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise:
+
+![Simplified architecture](certbot-deployment-simplified.png)
+
+> [Simplified architecture PDF version](certbot-deployment-simplified.pdf).
+
+The only thing that has changed compared to [the previous
+exercise](./nginx-php-fpm-deployment.md#architecture) is that you are now
+accessing your application over an encrypted HTTPS/TLS connection instead of
+insecure HTTP.
 
 
 

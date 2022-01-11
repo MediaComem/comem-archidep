@@ -12,7 +12,7 @@ This guide describes how to create a [systemd][systemd] service to run the PHP a
   - [Troubleshooting](#troubleshooting)
 - [Reboot and try again](#reboot-and-try-again)
 - [What have I done?](#what-have-i-done)
-- [End result](#end-result)
+- [Architecture](#architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -235,7 +235,17 @@ no longer have to worry about:
 
 
 
-## End result
+## Architecture
+
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise:
+
+![Simplified architecture](systemd-deployment-simplified.png)
+
+> [Simplified architecture PDF version](systemd-deployment-simplified.pdf).
+
+The following diagram is a more detailed representation also including the
+short-lived processes run during the exercise:
 
 ![Diagram](systemd-deployment.png)
 

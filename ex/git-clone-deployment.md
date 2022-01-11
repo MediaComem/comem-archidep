@@ -12,7 +12,7 @@ instead of SFTP.
 - [Update the configuration](#update-the-configuration)
 - [Run the PHP development server](#run-the-php-development-server)
 - [What have I done?](#what-have-i-done)
-- [End result](#end-result)
+- [Architecture](#architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -115,11 +115,23 @@ the latest changes from the repository.
 
 
 
-## End result
+## Architecture
 
-![Diagram](git-clone-deployment.png)
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise. Note that it has not changed
+compared to [the previous exercise](./sftp-deployment.md#architecture) since we
+have not created any new processes or changed how they communicate:
 
-> [PDF version](git-clone-deployment.pdf).
+![Simplified architecture](sftp-deployment-simplified.png)
+
+> [Simplified architecture PDF version](sftp-deployment-simplified.pdf).
+
+The following diagram is a more detailed representation also including the
+short-lived processes run during the exercise:
+
+![Detailed architecture](git-clone-deployment.png)
+
+> [Detailed architecture PDF version](git-clone-deployment.pdf).
 
 
 

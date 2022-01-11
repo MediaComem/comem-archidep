@@ -9,6 +9,7 @@ The goal of this exercise is to set up a real domain name for your application.
 - [Connect to Gandi.net](#connect-to-gandinet)
 - [Access the domain name](#access-the-domain-name)
 - [What have I done?](#what-have-i-done)
+- [Architecture](#architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -68,6 +69,21 @@ have configured.
 
 This allows your applications and websites to be accessible through a
 human-friendly domain name instead of an IP address.
+
+
+
+## Architecture
+
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise:
+
+![Simplified architecture](dns-configuration-simplified.png)
+
+> [Simplified architecture PDF version](dns-configuration-simplified.pdf).
+
+The only thing that has changed compared to [the previous
+exercise](./systemd-deployment.md#architecture) is that you are now using a
+domain name instead of an IP address to reach your application.
 
 
 
