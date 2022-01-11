@@ -899,11 +899,15 @@ the working directory you have configured is the correct one and really exists.
 
 ### :boom: `502 Bad Gateway`
 
-If you see this error in your browser when trying to access an nginx site you
-have configured, it means that nginx cannot reach the proxy address you have
-defined. Check your nginx configuration to make sure that you are using the
-correct address and port. Are you sure your application is actually listening on
-that port?
+If you get a [502 Bad Gateway][http-502] error in your browser when trying to
+access an nginx site you have configured, it means that you have reached nginx,
+but that nginx could not reach the proxy address you have configured. The proxy
+address is defined with the [`proxy_pass` directive][nginx-proxy-pass] in that
+site's configuration file.
+
+Are you sure that your nginx configuration, namely the proxy address, is
+correct? Check to make sure you are using the correct address and port. Is your
+application actually listening on that port?
 
 ### :boom: I forgot to fork the Minesweeper repository and I have already cloned it
 
@@ -1224,12 +1228,12 @@ latest version of the `config/local.exs` file.
 Once you have created the production release with `MIX_ENV=prod mix release`,
 the version of the `config/local.exs` file that existed when you created the
 release has been included into the compiled release. Any subsequent changes to
-the original file will not be taken into account unless you re-create the
-release.
+the original file will not be taken into account unless you *re-create the
+release*.
 
 Unlike with Apache & PHP, Elixir code (or Ruby code, or Python code, etc) is not
-reloaded automatically on each request. You must also restart the application to
-take your changes into account.
+reloaded automatically on each request. You must *also restart the application*
+to take your changes into account.
 
 
 
@@ -1250,6 +1254,7 @@ take your changes into account.
 [erlang]: https://www.erlang.org
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [hex]: https://hex.pm
+[http-502]: https://httpstatuses.com/502
 [initial-setup]: https://github.com/MediaComem/minesweeper#initial-setup
 [java]: https://www.oracle.com/java/
 [js]: https://en.wikipedia.org/wiki/JavaScript
