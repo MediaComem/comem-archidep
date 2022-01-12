@@ -8,6 +8,7 @@ illustrates the difference between the two cloud service models.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+- [Requirements](#requirements)
 - [Deploy the PHP Todolist application](#deploy-the-php-todolist-application)
   - [Optional: create a Heroku application (if you have a credit card)](#optional-create-a-heroku-application-if-you-have-a-credit-card)
   - [Add the free ClearDB MySQL add-on to your application](#add-the-free-cleardb-mysql-add-on-to-your-application)
@@ -17,6 +18,7 @@ illustrates the difference between the two cloud service models.
 - [Deploy the Minesweeper application](#deploy-the-minesweeper-application)
   - [Create a Heroku application (if you have a credit card)](#create-a-heroku-application-if-you-have-a-credit-card)
   - [Add the free Heroku Postgres add-on to your application](#add-the-free-heroku-postgres-add-on-to-your-application)
+  - [Add the required configuration to your application](#add-the-required-configuration-to-your-application)
   - [Update your Minesweeper application to the latest version](#update-your-minesweeper-application-to-the-latest-version)
   - [Deploy the application to Heroku](#deploy-the-application-to-heroku-1)
 - [Deploy applications from previous years](#deploy-applications-from-previous-years)
@@ -35,6 +37,20 @@ illustrates the difference between the two cloud service models.
 
 
 
+## Requirements
+
+To perform this exercise, you will need:
+
+* A [Heroku][heroku] account.
+* The [Heroku Command Line Interface (CLI)][heroku-cli] installed on your local
+  machine.
+
+  > macOS users should install [Homebrew][homebrew], a package manager for
+  > macOS, in order to have the `brew` command mentioned in the Heroku CLI
+  > installation instructions.
+
+
+
 ## Deploy the PHP Todolist application
 
 This section explains how to deploy the PHP todolist used during the course on
@@ -42,7 +58,7 @@ Heroku.
 
 The commands in this exercise must be executed **on your local machine** in the
 Git repository where you have the PHP Todolist application. You do not need your
-AWS server at all.
+cloud server at all.
 
 ### Optional: create a Heroku application (if you have a credit card)
 
@@ -51,7 +67,7 @@ An existing Heroku application will be provided for you by the teacher.
 However, if you have a credit card, do not hesitate to create the application
 yourself in your Heroku account. We will only use free add-on, so no money will
 be charged. (But Heroku requires the account to have a valid credit card to
-use database add-ons, even free ones.)
+use third-party database add-ons, even free ones.)
 
 You can create an application from the main Heroku page once logged in:
 
@@ -140,7 +156,7 @@ Add the `heroku` remote to your application:
 $> heroku git:remote -a ad-john-doe-todo
 ```
 
-Push the application to Heroku:
+Push your `main` (or `master`) branch to Heroku:
 
 ```bash
 $> git push heroku main
@@ -182,9 +198,10 @@ client, but you can do it with any SQL client.
   >
   > Since the port is not specified in this connection URL, it is the default MySQL port: `3306`.
 * Download, install and run [MySQL
-  Workbench](https://www.mysql.com/products/workbench/). (You do not need to
-  create an Oracle account; there is a link to skip account creation at the
-  bottom.)
+  Workbench](https://www.mysql.com/products/workbench/).
+
+  > You do not need to create an Oracle account; there is a link to skip account
+  > creation at the bottom.)
 * Create a new connection:
 
   ![Create MySQL Workbench Connection](../images/workbench-connection.png)
@@ -248,6 +265,28 @@ As [documented by the Heroku Postgres add-on][heroku-postgres-database-url],
 this environment variable is how database connection settings are provided to
 your application.
 
+### Add the required configuration to your application
+
+Minesweeper has two configuration mechanisms: a local configuration file
+(`config/local.exs`) or environment variables.
+
+You cannot use the local configuration file on Heroku, because Heroku
+applications run in a containerized environment where [the file system is
+ephemeral](https://medium.com/geekculture/files-on-heroku-cd09509ed285). Any
+files not committed into the Git repository will be lost every time the
+application restarts. The local configuration file is ignored by Git (to avoid
+committing sensitive values into the history) so it would be lost.
+
+Heroku's preferred configuration mechanism is environment variables, so you
+should use that since the Minesweeper application supports it. Still under
+configuration variables, add the following variables:
+
+* `MIX_ENV` must be set to `prod` to make sure that the Elixir application is
+  compiled in production mode.
+* `MINESWEEPER_SECRET_KEY_BASE` should be set to a long random string.
+
+![Minesweeper configuration variables](../images/heroku-minesweeper-config.png)
+
 ### Update your Minesweeper application to the latest version
 
 The version of the Minesweeper application you have deployed during the original
@@ -266,12 +305,8 @@ Follow these instructions to update your fork of the Minesweeper repository:
   ```bash
   $> cd /path/to/projects/minesweeper
   ```
-* Add the original repository as a remote:
-
-  ```bash
-  $> git remote add upstream https://github.com/MediaComem/minesweeper.git
-  ```
-* Make sure you have no uncommitted changes:
+* Make sure you are on your `main` (or `master`) branch and that you have no
+  uncommitted changes:
 
   ```bash
   $> git status
@@ -282,10 +317,19 @@ Follow these instructions to update your fork of the Minesweeper repository:
   ```
 
   > If you have changes, you should commit them before moving on.
+* Add the original repository as a remote:
+
+  ```bash
+  $> git remote add upstream https://github.com/MediaComem/minesweeper.git
+  ```
+* Fetch all changes from the new remote:
+
+  ```bash
+  $> git fetch upstream
+  ```
 * Merge the latest changes from the original repository into your main branch:
 
   ```bash
-  $> git checkout main
   $> git merge upstream/main
   ```
 
@@ -294,14 +338,8 @@ push origin main` if you want, then continue with this exercise.
 
 ### Deploy the application to Heroku
 
-Move into the Minesweeper application repository **on your local machine**:
-
-```bash
-$> cd /path/to/projects/minesweeper
-```
-
-Add the `heroku` remote to your application (assuming your Heroku application is
-named `ad-john-doe-mnswpr`):
+Still in your local Minesweeper repository, add the `heroku` remote to your
+application (assuming your Heroku application is named `ad-john-doe-mnswpr`):
 
 ```bash
 $> heroku git:remote -a ad-john-doe-mnswpr
@@ -319,13 +357,14 @@ create the extension in the provided database:
 $> heroku psql -c 'CREATE EXTENSION "uuid-ossp";'
 ```
 
-Because the combination of Elixir and Node.js is not standard for Heroku, you
-must explicitly tell Heroku what [buildpacks][heroku-buildpacks] to use:
+Because the combination of Elixir and Node.js in one project is not standard for
+Heroku, you must explicitly tell Heroku what [buildpacks][heroku-buildpacks] to
+use:
 
 ```bash
 $> heroku buildpacks:clear
-$> heroku buildpacks:add hashnuke/elixir
 $> heroku buildpacks:add heroku/nodejs
+$> heroku buildpacks:add hashnuke/elixir
 ```
 
 > This will tell Heroku to first compile the Node.js frontend of the Minesweeper
@@ -337,7 +376,7 @@ Push the application to Heroku:
 $> git push heroku main
 ```
 
-The application should compile and be deployed.
+The application should compile and be deployed automatically.
 
 
 
@@ -353,7 +392,7 @@ Scissors exercise
 on Heroku.
 
 The commands in this exercise must be executed **on your local machine** in the
-Git repository where you have the RPS application. You do not need your AWS
+Git repository where you have the RPS application. You do not need your cloud
 server at all.
 
 #### Optional: create a Heroku application (if you have a credit card)
@@ -506,7 +545,7 @@ exercise](https://github.com/MediaComem/comem-archidep/blob/master/ex/wopr-deplo
 on Heroku.
 
 The commands in this exercise must be executed **on your local machine** in the
-Git repository where you have the WOPR application. You do not need your AWS
+Git repository where you have the WOPR application. You do not need your cloud
 server at all.
 
 #### Optional: create a Heroku application (if you have a credit card)
@@ -591,7 +630,10 @@ deployment log. It should also work!
 
 
 
+[heroku]: https://www.heroku.com
 [heroku-buildpacks]: https://devcenter.heroku.com/articles/buildpacks
+[heroku-cli]: https://devcenter.heroku.com/articles/heroku-cli
 [heroku-postgres]: https://elements.heroku.com/addons/heroku-postgresql
 [heroku-postgres-database-url]: https://devcenter.heroku.com/articles/heroku-postgresql#provisioning-heroku-postgres
+[homebrew]: https://brew.sh
 [minesweeper-initial-setup]: https://github.com/MediaComem/minesweeper#initial-setup
