@@ -1,4 +1,4 @@
-# Scale a web application with nginx as a load balancer
+# Horizontally scale a web application with nginx as a load balancer
 
 The goal of this exercise is to show how a web application can be
 [scaled][scaling] to handle a growing amount of work by using Systemd unit

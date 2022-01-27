@@ -152,6 +152,8 @@ fix during the rest of the course:
     * [Architecture](ex/git-automated-deployment.md#architecture)
   * [Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md) (**graded**)
     * [Architecture](ex/minesweeper-deployment.md#books-architecture)
+  * [Deploy a multi-component web application with nginx](./ex/revprod-deployment.md)
+  * [Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
 * **Platform-as-a-Service deployment**
   * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
   * [Deploy web applications with a database to Heroku](ex/heroku-deployment.md)
