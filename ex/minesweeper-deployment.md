@@ -47,6 +47,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [:boom: `(Mix) Could not compile dependency :cowlib`](#boom-mix-could-not-compile-dependency-cowlib)
   - [:boom: `Error creating new order :: too many certificates already issued for: archidep.tech`](#boom-error-creating-new-order--too-many-certificates-already-issued-for-archideptech)
   - [:boom: My changes to `config/local.exs` are not taken into account](#boom-my-changes-to-configlocalexs-are-not-taken-into-account)
+- [Architecture](#architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -1197,6 +1198,17 @@ release*.
 Unlike with Apache & PHP, Elixir code (or Ruby code, or Python code, etc) is not
 reloaded automatically on each request. You must *also restart the application*
 to take your changes into account.
+
+
+
+## Architecture
+
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise:
+
+![Simplified architecture](minesweeper-deployment-simplified.png)
+
+> [Simplified architecture PDF version](minesweeper-deployment-simplified.pdf).
 
 
 

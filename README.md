@@ -151,6 +151,7 @@ fix during the rest of the course:
   * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
     * [Architecture](ex/git-automated-deployment.md#architecture)
   * [Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md) (**graded**)
+    * [Architecture](ex/minesweeper-deployment.md#architecture)
 * **Platform-as-a-Service deployment**
   * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
   * [Deploy web applications with a database to Heroku](ex/heroku-deployment.md)
