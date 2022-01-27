@@ -25,11 +25,11 @@ It also indicates what you do not need to remember by heart.
     * What a command line interface is, what a command is, and general command syntax.
     * What the Unix paths `.`, `..` and `~` are.
     * The difference between a relative and an absolute path.
-    * What the `PATH` is and how it works.
     * What the following commands do and their basic syntax (not their options): `cd`, `ls`, `pwd`.
 
     You do not need to know:
 
+    * What the `PATH` is and how it works.
     * The history of computer interfaces.
     * Vim or nano usage.
     * The specifics of particular commands.
@@ -117,6 +117,24 @@ It also indicates what you do not need to remember by heart.
     You do not need to know:
 
     * The list of attacks or the details of those attacks.
+  * The Root Image Gallery security demonstration (26 Nov. 2021)
+
+    You must know:
+
+    * Why it's not a good idea to run a web application (or any application in
+      general) as `root`.
+  * The CSRF security demonstration (28 Jan. 2022)
+
+    You must know:
+
+    * That the OWASP organization has resouces to help you know about and
+      protect against attacks on web applications.
+
+    You do not need to know:
+
+    * The specifics of the CSRF attack or the demonstration made during the
+      course. (Although it is a good thing to know, and the attack is
+      [documented by OWASP](https://owasp.org/www-community/attacks/csrf).)
 * Basic deployment
   * [Cloud computing](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
 
@@ -155,8 +173,8 @@ It also indicates what you do not need to remember by heart.
     * What are users, groups and the superuser in a Unix-like system.
     * How file permissions are represented (`r`, `w`, `x` and the concept of owner, group and others).
     * What the `sudo` command is and how to use it.
-    * What the `/etc/sudoers` file is in principle.
-    * What the `chmod` and `chown` commands are in principle.
+    * What the `/etc/sudoers` file is in principle (not its syntax).
+    * What the `chmod` and `chown` commands are in principle (not their syntax or options).
 
     You do not need to know:
 
@@ -171,7 +189,7 @@ It also indicates what you do not need to remember by heart.
     You must know:
 
     * What a process is.
-    * What a process ID is and what the `ps` command does.
+    * What a process ID is.
     * What an exit status is and what is the difference between and exit status
       of zero and a non-zero exit status.
     * What a Unix pipeline is and the syntax used to pipe commands together.
@@ -179,8 +197,7 @@ It also indicates what you do not need to remember by heart.
 
     You do not need to know:
 
-    * The options of the `ps` command or the syntax of its output.
-    * The `top`, `htop` and `free` commands.
+    * The `ps`, `top`, `htop` and `free` commands.
     * How to retrieve the exit status from code.
     * What a Unix stream is or what are the 3 standard streams (standard input,
       standard output and standard error).
@@ -205,12 +222,9 @@ It also indicates what you do not need to remember by heart.
     * The Unix networking commands (`ip`, `ping`, etc).
   * [APT](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
 
-    You must know:
-
-    * What APT is.
-
     You do not need to know
 
+    * What APT is.
     * The other package managers.
     * How to use the `apt` command line.
 * Advanced deployment
