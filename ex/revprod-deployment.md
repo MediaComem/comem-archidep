@@ -277,16 +277,16 @@ landing page is at `http://revprod-landing.john-doe.archidep.tech` and is
 attempting to access `http://revprod-backend.john-doe.archidep.tech` which is
 another domain entirely.
 
-> This is called the [**Same-Origin Policy**][sop]. It is a critical security
-> mechanism that restricts how a document or script loaded by one origin can
-> interact with a resource from another origin.
->
-> It helps isolate potentially malicious documents, reducing possible attack
-> vectors. For example, it prevents a malicious website on the Internet from
-> running JS in a browser to read data from a third-party webmail service (which
-> the user is signed into) or a company intranet (which is protected from direct
-> access by the attacker by not having a public IP address) and relaying that
-> data to the attacker.
+This is called the [**Same-Origin Policy**][sop]. It is a critical security
+mechanism that restricts how a document or script loaded by one origin can
+interact with a resource from another origin.
+
+It helps isolate potentially malicious documents, reducing possible attack
+vectors. For example, it prevents a malicious website on the Internet from
+running JS in a browser to read data from a third-party webmail service (which
+the user is signed into) or a company intranet (which is protected from direct
+access by the attacker by not having a public IP address) and relaying that data
+to the attacker.
 
 ## Using Cross-Origin Request Sharing (CORS)
 
