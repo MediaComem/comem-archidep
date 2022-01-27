@@ -32,9 +32,9 @@ The following requirements should be installed on your server:
 
 ## The application
 
-The application you will deploy is **Revprod**, a marketing web application where
-customers can leave testimonials about **The Revolutionary Product**. This application
-has been developed as two separate components:
+The application you will deploy is **Revprod**, a marketing web application
+where customers can leave testimonials about **The Revolutionary Product**. This
+application has been developed as two separate components:
 
 * The [revprod landing
   page](https://github.com/MediaComem/revprod-landing-page): the main page of
@@ -116,8 +116,9 @@ $> sudo systemctl start revprod-landing
 
 > You can check that it is running with `sudo systemctl status revprod-landing`.
 
-Create the nginx site configuration `/etc/nginx/sites-available/revprod-landing`
-(e.g. with `nano`) to expose this component:
+Create an nginx site configuration file
+`/etc/nginx/sites-available/revprod-landing` (e.g. with `nano`) to expose this
+component:
 
 ```conf
 # /etc/nginx/sites-available/revprod-landing-page
@@ -197,8 +198,9 @@ $> sudo systemctl start revprod-backend
 
 > You can check that it is running with `sudo systemctl status revprod-backend`.
 
-Create the nginx site configuration `/etc/nginx/sites-available/revprod-backend`
-(e.g. with `nano`) to expose this component:
+Create an nginx site configuration file
+`/etc/nginx/sites-available/revprod-backend` (e.g. with `nano`) to expose this
+component:
 
 ```conf
 server {
