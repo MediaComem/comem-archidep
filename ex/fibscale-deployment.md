@@ -295,7 +295,7 @@ http://locust.fibscale.john-doe.archidep.tech.
 ### Start load-testing the application with a small number of users
 
 The **Host** field tells Locust what the base URL for the load testing scenario
-is. Enter the address of FibScale: `http://fibscale.john-doe.archidep.tech. Set
+is. Enter the address of FibScale: `http://fibscale.john-doe.archidep.tech`. Set
 the **Number of users** to 1 and the **Spawn rate** to 1 for now, and run the
 scenario.
 

@@ -153,6 +153,8 @@ $> sudo nginx -s reload
 You should then be able to access the revprod landing page at
 http://revprod-landing.john-doe.archidep.tech.
 
+![Revprod landing page](../images/revprod-landing.png)
+
 ### Deploy the revprod backend
 
 Clone the backend repository on your server and install the required
@@ -233,6 +235,12 @@ $> sudo nginx -s reload
 You should then be able to access the revprod backend at
 http://revprod-backend.john-doe.archidep.tech.
 
+![Revprod backend](../images/revprod-backend.png)
+
+Take the time to share your thoughts about The Revolutionary Product!
+
+![Share your testimonial in the Revprod backend](../images/revprod-backend-share.png)
+
 ## It's not working!
 
 If you have followed the instructions so far, you should be able to access the
@@ -244,8 +252,13 @@ to `http://revprod-backend.john-doe.archidep.tech` (and back) when you navigate
 from the landing page to the Share page. The user can clearly see that these are
 two separate sites.
 
+![From the Revprod landing page to the backend](../images/revprod-landing-switch.png)
+![From the Revprod backend to the landing page](../images/revprod-backend-switch.png)
+
 But more importantly, **the testimonials are not displayed on the landing
 page!**
+
+![Revprod SOP error](../images/revprod-sop.png)
 
 If you open your browser's developer console, you should see an error that looks
 something like this:
@@ -255,6 +268,8 @@ Cross-Origin Request Blocked: The Same Origin Policy disallows reading the
 remote resource at http://revprod-backend.john-doe.archidep.tech/comments.
 (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 200.
 ```
+
+![Revprod SOP error in the developer console](../images/revprod-sop-error.png)
 
 The landing page's AJAX request to fetch the comments from the backend has been
 blocked by the browser because the request is to a different **origin**: the
@@ -316,6 +331,8 @@ Access-Control-Allow-Origin: http://revprod-landing.john-doe.archidep.tech
 Your browser knows to check this header and let the request through if the
 origin matches.
 
+![Revprod CORS](../images/revprod-cors.png)
+
 ### Disabling CORS
 
 You should now disable CORS because we will explore another solution to this
@@ -338,18 +355,20 @@ $> sudo systemctl restart revprod-backend
 Check that the comments no longer work by refreshing
 http://revprod-landing.john-doe.archidep.tech.
 
+![Revprod SOP error](../images/revprod-sop.png)
+
 ## Using nginx to make both components appear as a single website
 
 The problem we have is that our two components are deployed on separate domains,
 therefore a request from the landing page to the backend is a **cross-origin
 request** and is blocked by the **same-origin policy** by default.
 
-*What if we had only one domain and one origin?*
+*What if we had **only one domain**, and therefore only one origin?*
 
 A reverse proxy like nginx is a very powerful tool. You have so far configured
 two separate nginx sites with separate proxies to the backend and landing page,
 but nothing says it has to be that way. You can actually configure one site to
-proxy to both components.
+proxy to both components depending on various criteria.
 
 Let's assume that we want the revprod application (both the backend and the
 landing page) to be accessible at one URL:
@@ -420,10 +439,15 @@ application. Everything is served under `http://revprod.john-doe.archidep.tech`
 because everything goes through nginx which then proxies it **internally** to
 our separate components.
 
+![From the Revprod landing page to the backend with nginx](../images/revprod-rp-landing.png)
+![From the Revprod backend to the landing page with nginx](../images/revprod-rp-backend.png)
+
 Neither the browser nor the user now have any idea that this application is in
 fact composed of multiple components. To the outside world, it appears as one
 application on one domain, thus also solving our original problem: there is no
 longer any cross-origin request, so the same-origin policy does not apply.
+
+![Revprod with no SOP error behind nginx](../images/revprod-rp-no-sop.png)
 
 
 
@@ -445,6 +469,8 @@ configuration with `sudo nano /etc/nginx/nginx.conf` and add the following line
 ```
 server_names_hash_bucket_size 256;
 ```
+
+
 
 [cors]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 [nginx-server-and-location]: https://www.digitalocean.com/community/tutorials/understanding-nginx-server-and-location-block-selection-algorithms
