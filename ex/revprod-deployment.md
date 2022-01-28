@@ -304,7 +304,7 @@ section to enable CORS:
 
 ```conf
 Environment="REVPROD_CORS=true"
-Environment="REVPROD_CORS_ORIGINS=revprod-landing.john-doe.archidep.tech"
+Environment="REVPROD_CORS_ORIGINS=http://revprod-landing.john-doe.archidep.tech"
 ```
 
 Reload the Systemd configuration and restart the backend service:
