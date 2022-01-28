@@ -1204,7 +1204,8 @@ to take your changes into account.
 ## :books: Architecture
 
 This is a simplified architecture of the main running processes and
-communication flow at the end of this exercise:
+communication flow at the end of this exercise (after completing [all previous
+course exercises][archidep-exercises]):
 
 ![Simplified architecture](minesweeper-deployment-simplified.png)
 
@@ -1217,6 +1218,7 @@ communication flow at the end of this exercise:
 [alpinejs]: https://alpinejs.dev
 [app-config]: https://github.com/MediaComem/minesweeper#configuration
 [app-deps]: https://github.com/MediaComem/minesweeper/blob/ca3e6fb2956afc751274ce2589ff9490c90c5e00/mix.exs#L40-L57
+[archidep-exercises]: https://github.com/MediaComem/comem-archidep#exercises
 [auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md
 [automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md#update-the-todolist-nginx-configuration
 [automated-tests]: https://en.wikipedia.org/wiki/Test_automation

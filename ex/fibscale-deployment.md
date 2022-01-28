@@ -36,7 +36,7 @@ wildcard entry preconfigured to make various subdomains
 
 The following requirements should be installed on your server:
 
-* [Ruby][node] 2.7.x or 3.x and compilation tools
+* [Ruby][ruby] 2.7.x or 3.x and compilation tools
 
   You can install those by running the following commands:
 
@@ -513,6 +513,13 @@ server {
 }
 ```
 
+Test and reload nginx's configuration:
+
+```bash
+$> sudo nginx -t
+$> sudo nginx -s reload
+```
+
 Access the FibScale application at http://fibscale.john-doe.archidep.tech again,
 and note that the navbar has changed color (because of the instance parameter
 passed as argument).
@@ -667,4 +674,5 @@ your problem depending on the cause. It may even make it worse!
 [pip]: https://pypi.org/project/pip/
 [python]: https://www.python.org
 [rate-limiting]: https://en.wikipedia.org/wiki/Rate_limiting
+[ruby]: https://www.ruby-lang.org
 [scaling]: https://en.wikipedia.org/wiki/Scalability

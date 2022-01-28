@@ -353,6 +353,8 @@ $> sudo systemctl restart revprod-backend
 Check that the comments no longer work by refreshing
 http://revprod-landing.john-doe.archidep.tech.
 
+> You may need to force a refresh by holding the Shift key.
+
 ![Revprod SOP error](../images/revprod-sop.png)
 
 ## Using nginx to make both components appear as a single website
@@ -390,6 +392,15 @@ Do the same in the Systemd unit file
 #Environment="REVPROD_BACKEND_BASE_URL=http://revprod-backend.john-doe.archidep.tech"
 ```
 
+Reload Systemd's configuration and restart both services to take these changes
+into account:
+
+```bash
+$> sudo systemctl daemon-reload
+$> sudo systemctl restart revprod-backend
+$> sudo systemctl restart revprod-landing
+```
+
 Create a new nginx site configuration file `/etc/nginx/sites-available/revprod`:
 
 ```conf
@@ -419,6 +430,12 @@ Note that this file has **two `location` blocks**:
 > just one example of how you can vary your site's configuration based on the
 > request. For more information, read [Understanding Nginx Server and Location
 > Block Selection Algorithms][nginx-server-and-location].
+
+Enable the new configuration with the following command:
+
+```bash
+$> sudo ln -s /etc/nginx/sites-available/revprod /etc/nginx/sites-enabled/revprod
+```
 
 Check and reload nginx's configuration:
 
