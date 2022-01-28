@@ -121,8 +121,6 @@ Create an nginx site configuration file
 component:
 
 ```conf
-# /etc/nginx/sites-available/revprod-landing-page
-
 server {
   listen 80;
   server_name revprod-landing.john-doe.archidep.tech;
