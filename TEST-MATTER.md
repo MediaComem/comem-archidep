@@ -368,7 +368,7 @@ following exercises:
 
 * [Deploy a static site with nginx](ex/nginx-static-deployment.md) [(architecture)](ex/nginx-static-deployment.md#architecture)
 * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(architecture)](ex/nginx-php-fpm-deployment.md#architecture)
-* [Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](ex/minesweeper-deployment.md) [(architecture)](ex/minesweeper-deployment.md#architecture)
+* [Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](ex/minesweeper-deployment.md) [(architecture)](ex/minesweeper-deployment.md#books-architecture)
 * [Deploy a multi-component web application with nginx](./ex/revprod-deployment.md) [(architecture)](ex/revprod-deployment.md#architecture)
 * [Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md) [(architecture)](ex/fibscale-deployment.md#architecture)
 
