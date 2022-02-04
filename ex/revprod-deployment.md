@@ -487,6 +487,19 @@ server_names_hash_bucket_size 256;
 
 
 
+## Architecture
+
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise (after completing [all previous
+course exercises][archidep-exercises]):
+
+![Simplified architecture](revprod-deployment-simplified.png)
+
+> [Simplified architecture PDF version](revprod-deployment-simplified.pdf).
+
+
+
+[archidep-exercises]: https://github.com/MediaComem/comem-archidep#exercises
 [cors]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 [nginx-server-and-location]: https://www.digitalocean.com/community/tutorials/understanding-nginx-server-and-location-block-selection-algorithms
 [node]: https://nodejs.org

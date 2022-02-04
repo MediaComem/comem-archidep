@@ -659,6 +659,19 @@ your problem depending on the cause. It may even make it worse!
 
 
 
+## Architecture
+
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise (after completing [all previous
+course exercises][archidep-exercises]):
+
+![Simplified architecture](fibscale-deployment-simplified.png)
+
+> [Simplified architecture PDF version](fibscale-deployment-simplified.pdf).
+
+
+
+[archidep-exercises]: https://github.com/MediaComem/comem-archidep#exercises
 [bundler]: https://bundler.io
 [dos]: https://en.wikipedia.org/wiki/Denial-of-service_attack
 [fib]: https://en.wikipedia.org/wiki/Fibonacci_number

@@ -368,9 +368,9 @@ following exercises:
 
 * [Deploy a static site with nginx](ex/nginx-static-deployment.md) [(architecture)](ex/nginx-static-deployment.md#architecture)
 * [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(architecture)](ex/nginx-php-fpm-deployment.md#architecture)
-* [Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](ex/minesweeper-deployment.md)
-* [Deploy a multi-component web application with nginx](./ex/revprod-deployment.md)
-* [Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
+* [Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](ex/minesweeper-deployment.md) [(architecture)](ex/minesweeper-deployment.md#architecture)
+* [Deploy a multi-component web application with nginx](./ex/revprod-deployment.md) [(architecture)](ex/revprod-deployment.md#architecture)
+* [Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md) [(architecture)](ex/fibscale-deployment.md#architecture)
 
 You must understand how to set up automated deployments with Git hooks,
 which you put in practice during the following exercises:
@@ -429,21 +429,17 @@ the [*Deploy a PHP application with SFTP*](ex/sftp-deployment.md) exercise
 (assuming the PHP development server running the todolist is listening on port
 3000 and nothing else is deployed on the server):
 
-![Diagram](images/simplified-architecture-sftp-deployment.png)
+![Diagram](ex/sftp-deployment-simplified.png)
 
 This is a simple architecture diagram representing the deployment performed in
 the [*Manage a PHP application with systemd as a Process
 Manager*](ex/systemd-deployment.md) exercise (assuming nothing else is deployed
 on the server):
 
-![Diagram](images/simplified-architecture-systemd-deployment.png)
+![Diagram](ex/systemd-deployment-simplified.png)
 
-This is a simple architecture diagram representing the deployment performed in
-the [*Deploy a Node.js & Svelte application with a PostgreSQL
-database*](ex/rps-deployment.md) exercise (assuming the RPS application is
-listening on port 4000 and nothing else is deployed on the server):
-
-![Diagram](images/simplified-architecture-rps-deployment.png)
+Check out the **architecture** links in the list of exercises for more examples
+of architecture diagrams.
 
 
 
