@@ -267,10 +267,10 @@ These symbols represent **the prompt** and are used to indicate that you have th
 <!-- slide-column -->
 
 The prompt is not always `$>`.
-For example, by default on macOS, the prompt is `bash-3.2$` (at the time of writing).
+For example, by default on macOS, the prompt is `<user>@<computer-name> <directory> %` or `simon@MacBookPro ~ %` (at the time of writing).
 
 <!-- slide-column 30 -->
-
+<!-- CHANGE IMAGE FOR ZSH -->
 <p class='center'><img src='images/bash-prompt.png' width='100%' /></p>
 
 <!-- slide-container -->
@@ -959,15 +959,21 @@ As you can see, it tells you the name of the file you opened. Now you can:
 
 ### Setting Nano as the default editor
 
-On a standard Bash shell (which the default terminal shell on macOS and in Git
-Bash), you have to set the `$EDITOR` environment variable. You can do that by
-adding the following line to your `~/.bash_profile`:
+Editing the shell configuration will depend On a standard Zsh (the default terminal shell on macOS) or Bash shell (the default in Git
+Bash and most Linux systems), you have to set the `$EDITOR` environment variable. You can do that by
+adding the following line to your `~/.zshrc` or `~/.bash_profile` depending on which shell you are using:
 
 ```
 export EDITOR=nano
 ```
 
 Remember that you must relaunch your terminal for this change to take effect.
+
+
+>**Hint**: If you are unsure of what shell you are using, type in the following command. The output will display the name of your current shell. 
+>```bash
+>$> echo $0
+
 
 > **Hint:** now that you know how to use Nano, you can edit your Bash profile
 > file with the following command: `nano ~/.bash_profile`.
