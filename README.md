@@ -30,12 +30,12 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 ## Plan
 
 * Introduction
-  * [Command line](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Command line](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
 * Version control
-  * [Version control with Git](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Git branching](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Collaborating with Git](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Version control with Git](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Git branching](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Collaborating with Git](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
 * Security
   * [Open Web Application Security Project][owasp]
   * [OWASP Top 10 - The Ten Most Critical Web Application Security Risks][owasp-top10]
@@ -43,29 +43,29 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [The CSRF bank](https://github.com/MediaComem/csrf-bank)
     * [Phishing page](https://github.com/MediaComem/phishing)
 * Basic deployment
-  * [Cloud computing](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Linux](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Unix basics & administration](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Unix processes](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Unix networking](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
-  * [APT](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Cloud computing](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Linux](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Unix basics & administration](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Unix processes](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Unix networking](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
+  * [APT](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
 * [How to improve our basic deployment](#how-to-improve-our-basic-deployment)
 * Advanced deployment
   * [Twelve-factor app][12factor]
-  * [Unix environment variables](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Linux process management](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Domain Name System (DNS)](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Reverse proxying](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
-  * [TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Unix environment variables](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Linux process management](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Domain Name System (DNS)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Reverse proxying](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
+  * [TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
 * Automated deployment
-  * [Shell scripting](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Git hooks](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Shell scripting](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Git hooks](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
 * Platform-as-a-Service (PaaS)
-  * [Heroku](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/heroku?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Heroku](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/heroku?home=MediaComem%2Fcomem-archidep%23readme)
 * *Software development (extra)*
-  * [Continuous software development](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Automated testing (2018)](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
-  * [Automated testing (2020)](https://mediacomem.github.io/comem-archioweb/2021-2022/subjects/automated-testing/?home=MediaComem%2Fcomem-archioweb%23readme#1)
+  * [Continuous software development](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Automated testing (2018)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Automated testing (2020)](https://mediacomem.github.io/comem-archioweb/2022-2023/subjects/automated-testing/?home=MediaComem%2Fcomem-archioweb%23readme#1)
     * [YouTube: Expecting Profesionnalism – Robert C. Martin](https://youtu.be/BSaAMQVq01E)
     * [YouTube: GOTO 2017 – The Scribe's Oath – Robert C. Martin](https://youtu.be/Tng6Fox8EfI)
     * [YouTube: The Future of Programming – Robert C. Martin](https://youtu.be/ecIWPzGEbFc)

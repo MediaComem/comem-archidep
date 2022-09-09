@@ -18,7 +18,7 @@ It also indicates what you do not need to remember by heart.
 ## Plan
 
 * Introduction
-  * [Command line](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Command line](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -33,7 +33,7 @@ It also indicates what you do not need to remember by heart.
     * The history of computer interfaces.
     * Vim or nano usage.
     * The specifics of particular commands.
-  * [Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -54,7 +54,7 @@ It also indicates what you do not need to remember by heart.
     * The syntax of the `scp` command
     * How to use an SSH agent.
 * Version control
-  * [Version control with Git](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Version control with Git](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -77,7 +77,7 @@ It also indicates what you do not need to remember by heart.
     * The history of version control systems.
     * Other Git subcommands and their syntax.
     * The global ignore file.
-  * [Git branching](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Git branching](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -88,7 +88,7 @@ It also indicates what you do not need to remember by heart.
 
     * How to work with branches.
     * How to manage merge conflicts.
-  * [Collaborating with Git](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Collaborating with Git](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -136,7 +136,7 @@ It also indicates what you do not need to remember by heart.
       course. (Although it is a good thing to know, and the attack is
       [documented by OWASP](https://owasp.org/www-community/attacks/csrf).)
 * Basic deployment
-  * [Cloud computing](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Cloud computing](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -154,7 +154,7 @@ It also indicates what you do not need to remember by heart.
     * The FaaS and MBaaS service models.
     * The diagrams on the "How does IaaS/PaaS/FaaS/MBaaS work?" slides.
     * Service-oriented architecture (SOA), microservices or serverless computing.
-  * [Linux](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Linux](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -164,7 +164,7 @@ It also indicates what you do not need to remember by heart.
     You do not need to know:
 
     * The history of Unix or Linux distributions.
-  * [Unix basics & administration](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Unix basics & administration](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -184,7 +184,7 @@ It also indicates what you do not need to remember by heart.
     * The `su` command.
     * Unix user database files, user management commands, login users or system users.
     * The syntax of the `chmod` and `chown` commands (e.g. symbolic and octal modes).
-  * [Unix processes](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Unix processes](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -204,7 +204,7 @@ It also indicates what you do not need to remember by heart.
     * What stream redirection is.
     * The commands used in the pipeline exercise.
     * The list of Unix signals, or how to trap signals.
-  * [Unix networking](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Unix networking](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -220,7 +220,7 @@ It also indicates what you do not need to remember by heart.
     * IP networks, subnetworks, reserved address spaces or network address translation.
     * The list of registered port numbers (except ports 80 and 443).
     * The Unix networking commands (`ip`, `ping`, etc).
-  * [APT](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
+  * [APT](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
 
     You do not need to know
 
@@ -238,7 +238,7 @@ It also indicates what you do not need to remember by heart.
     You do not need to know:
 
     * The other 11 factors.
-  * [Unix environment variables](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Unix environment variables](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -247,7 +247,7 @@ It also indicates what you do not need to remember by heart.
     You do not need to know:
 
     * How to manage them.
-  * [Linux process management](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Linux process management](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -261,7 +261,7 @@ It also indicates what you do not need to remember by heart.
     * The list of process managers or lightweight process managers.
     * The syntax of unit files or their location.
     * The syntax of systemd commands (`systemctl` and `journalctl`).
-  * [Domain Name System (DNS)](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Domain Name System (DNS)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -272,7 +272,7 @@ It also indicates what you do not need to remember by heart.
 
     * The syntax of DNS zone files and records.
     * How manage DNS on Gandi.
-  * [Reverse proxying](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Reverse proxying](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know
 
@@ -289,7 +289,7 @@ It also indicates what you do not need to remember by heart.
     * That nginx uses configuration files and the difference between an
       available and an enabled configuration (i.e. how to use the
       `sites-available` and `sites-enabled` directories).
-  * [TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
+  * [TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -309,7 +309,7 @@ It also indicates what you do not need to remember by heart.
     * How to configure nginx to use one.
     * About purchasing TLS certificates.
 * Automated deployment
-  * [Shell scripting](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Shell scripting](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -319,7 +319,7 @@ It also indicates what you do not need to remember by heart.
     You do not need to know:
 
     * The shell script basics.
-  * [Git hooks](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Git hooks](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
@@ -330,7 +330,7 @@ It also indicates what you do not need to remember by heart.
     * The list of Git hooks.
     * How to create a Git hook.
 * Platform-as-a-Service (PaaS)
-  * [Heroku](https://mediacomem.github.io/comem-archidep/2021-2022/subjects/heroku?home=MediaComem%2Fcomem-archidep%23readme)
+  * [Heroku](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/heroku?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
 
