@@ -21,9 +21,7 @@ import heigLogo from './assets/heig.png';
 subject.setLogo({
   url: 'https://heig-vd.ch',
   imageUrl: heigLogo,
-  height: 60
+  height: 35
 });
 
-subject
-  .afterStart(() => GitMemoirController.start())
-  .start();
+subject.afterStart(() => GitMemoirController.start()).start();
