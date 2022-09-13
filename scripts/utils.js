@@ -1,12 +1,14 @@
-const chalk = require('chalk');
-const { createHmac } = require('crypto');
-const parseCsvNode = require('csv-parse');
-const { readFile } = require('fs-extra');
-const inquirer = require('inquirer');
-const { load: loadYaml } = require('js-yaml');
-const { isFunction, mapValues } = require('lodash');
-const nodemailer = require('nodemailer');
-const { join: joinPath, resolve: resolvePath } = require('path');
+import chalk from 'chalk';
+import { createHmac } from 'crypto';
+import { parse as parseCsvNode } from 'csv-parse';
+import { readFile as readFileNative } from 'fs/promises';
+import inquirer from 'inquirer';
+import { load as loadYaml } from 'js-yaml';
+import isFunction from 'lodash/isFunction.js';
+import mapValues from 'lodash/mapValues.js';
+import nodemailer from 'nodemailer';
+import { dirname, join as joinPath, resolve as resolvePath } from 'path';
+import { fileURLToPath } from 'url';
 
 let dataCache;
 let mailTransporterCache;
@@ -15,14 +17,13 @@ let processedDataCache;
 const contentCache = {};
 const fileCache = {};
 const processedDataFile = 'data.yml';
-const root = resolvePath(joinPath(__dirname, '..'));
 
-exports.configFile = joinPath(root, 'config.yml');
-exports.secretFile = 'secret.txt';
-exports.studentsFile = joinPath(root, 'students.csv');
-exports.root = root;
+export const root = resolvePath(joinPath(dirname(fileURLToPath(import.meta.url)), '..'));
+export const configFile = joinPath(root, 'config.yml');
+export const secretFile = 'secret.txt';
+export const studentsFile = joinPath(root, 'students.csv');
 
-exports.confirm = async function(message) {
+export async function confirm(message) {
 
   const answers = await inquirer.prompt([
     {
@@ -33,50 +34,50 @@ exports.confirm = async function(message) {
   ]);
 
   return answers.result;
-};
+}
 
-exports.executeScript = function(func) {
+export function executeScript(func) {
   Promise.resolve().then(func).catch(err => {
     console.error(chalk.red(err.stack));
     process.exit(1);
   });
-};
+}
 
-exports.loadAwsCredentials = async function() {
+export async function loadAwsCredentials() {
   if (!process.env.AWS_ACCESS_KEY_ID) {
-    process.env.AWS_ACCESS_KEY_ID = await exports.loadConfigProperty('aws_access_key_id');
+    process.env.AWS_ACCESS_KEY_ID = await loadConfigProperty('aws_access_key_id');
   }
 
   if (!process.env.AWS_SECRET_ACCESS_KEY) {
-    process.env.AWS_SECRET_ACCESS_KEY = await exports.loadConfigProperty('aws_secret_access_key');
+    process.env.AWS_SECRET_ACCESS_KEY = await loadConfigProperty('aws_secret_access_key');
   }
-};
+}
 
-exports.loadConfigProperty = async function(name) {
+export async function loadConfigProperty(name) {
 
   const config = await loadConfig();
   if (!config[name]) {
-    throw new Error(`Missing property "${name}" in config file ${exports.configFile}`);
+    throw new Error(`Missing property "${name}" in config file ${configFile}`);
   }
 
   return config[name];
-};
+}
 
-exports.loadData = async function() {
+export async function loadData() {
   if (!dataCache) {
 
     let secret;
     try {
-      secret = (await readFile(exports.secretFile, 'utf8')).trim();
+      secret = (await readFileNative(secretFile, 'utf8')).trim();
     } catch (err) {
       if (err.code === 'ENOENT') {
-        throw new Error(`Secret file "${exports.secretFile}" not found; read SETUP.md`);
+        throw new Error(`Secret file "${secretFile}" not found; read SETUP.md`);
       } else {
         throw err;
       }
     }
 
-    const students = await parseCsv(await readFile(exports.studentsFile, 'utf8'), { columns: [ 'class', 'name', 'orientation', 'mode', 'email', 'ip', 'username', 'herokuEmail', 'herokuId', 'ansibleUser' ], from: 2 });
+    const students = await parseCsv(await readFileNative(studentsFile, 'utf8'), { columns: [ 'class', 'name', 'orientation', 'mode', 'email', 'ip', 'username', 'herokuEmail', 'herokuId', 'ansibleUser' ], from: 2 });
 
     const passwords = [];
 
@@ -107,12 +108,12 @@ exports.loadData = async function() {
   }
 
   return dataCache;
-};
+}
 
-exports.loadProcessedData = async function() {
+export async function loadProcessedData() {
   if (!processedDataCache) {
     try {
-      processedDataCache = loadYaml(await readFile(processedDataFile, 'utf8'));
+      processedDataCache = loadYaml(await readFileNative(processedDataFile, 'utf8'));
     } catch (err) {
       if (err.code === 'ENOENT') {
         throw new Error(`Processed data file ${resolvePath(processedDataFile)} not found; run "npm start" to create it`);
@@ -123,20 +124,20 @@ exports.loadProcessedData = async function() {
   }
 
   return processedDataCache;
-};
+}
 
-exports.loading = async function(promise, ...args) {
+export async function loading(promise, ...args) {
   const ora = await import('ora');
   return ora.oraPromise(promise, ...args);
-};
+}
 
-exports.readContent = async function(absolutePath, parser) {
+export async function readContent(absolutePath, parser) {
   if (!isFunction(parser)) {
     throw new Error('Parser must be a function');
   }
 
   if (!contentCache[absolutePath]) {
-    const rawContent = await exports.readFile(absolutePath);
+    const rawContent = await readFileNative(absolutePath);
     const content = await parser(rawContent);
     contentCache[absolutePath] = { content, parser };
   } else if (contentCache[absolutePath].parser !== parser) {
@@ -144,21 +145,21 @@ exports.readContent = async function(absolutePath, parser) {
   }
 
   return contentCache[absolutePath].content;
-};
+}
 
-exports.readFile = async function(absolutePath, options = 'utf8') {
+export async function readFile(absolutePath, options = 'utf8') {
   if (resolvePath(absolutePath) !== absolutePath) {
     throw new Error(`File path ${JSON.stringify(absolutePath)} is not absolute`);
   }
 
   if (!fileCache[absolutePath]) {
-    fileCache[absolutePath] = await readFile(absolutePath, options);
+    fileCache[absolutePath] = await readFileNative(absolutePath, options);
   }
 
   return fileCache[absolutePath];
-};
+}
 
-exports.sendMail = async function(options) {
+export async function sendMail(options) {
 
   const config = await loadConfig();
   const transporter = await loadMailTransporter();
@@ -171,10 +172,10 @@ exports.sendMail = async function(options) {
   return new Promise((resolve, reject) => {
     transporter.sendMail(mailOptions, (err, info) => err ? reject(err) : resolve(info));
   });
-};
+}
 
 async function loadConfig() {
-  return exports.readContent(exports.configFile, loadYaml);
+  return readContent(configFile, loadYaml);
 }
 
 async function loadMailTransporter() {

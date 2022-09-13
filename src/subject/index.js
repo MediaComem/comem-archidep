@@ -1,10 +1,10 @@
-import subject from 'courses-md/dist/client';
+import subject from 'courses-md/dist/client.js';
 import * as GitMemoir from 'git-memoir';
 
 window.gitMemoir = GitMemoir;
 window.subject = subject;
 
-import { GitMemoirController } from './git-memoir';
+import { GitMemoirController } from './git-memoir.js';
 
 import 'font-awesome/css/font-awesome.css';
 

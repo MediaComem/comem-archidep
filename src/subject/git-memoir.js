@@ -1,4 +1,4 @@
-import subject from 'courses-md/dist/client';
+import subject from 'courses-md/dist/client.js';
 import $ from 'jquery';
 import tippy from 'tippy.js';
 

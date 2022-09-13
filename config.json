@@ -1,0 +1,21 @@
+{
+  "title": "Media Engineering Architecture & Deployment",
+  "version": "2022-2023",
+  "repoUrl": "https://github.com/MediaComem/comem-archidep",
+  "remark": {
+    "highlightLines": true,
+    "highlightSpans": true,
+    "countIncrementalSlides": false,
+    "navigation": {
+      "click": false,
+      "scroll": false,
+      "touch": false
+    }
+  },
+  "publish": {
+    "gitUrl": "git@github.com:MediaComem/comem-archidep.git",
+    "baseUrl": "https://mediacomem.github.io/comem-archidep",
+    "branch": "gh-pages",
+    "version": "2022-2023"
+  }
+}

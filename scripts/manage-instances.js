@@ -1,17 +1,16 @@
-const chalk = require('chalk');
-const commander = require('commander');
-const { writeFile } = require('fs-extra');
-const { dump: dumpYaml } = require('js-yaml');
-const { difference, includes, isArray, isEmpty, isPlainObject, isString } = require('lodash');
-const { join: joinPath, relative: relativePath, resolve: resolvePath } = require('path');
-const { table } = require('table');
+import chalk from 'chalk';
+import { program as commander } from 'commander';
+import { writeFile } from 'fs/promises';
+import { dump as dumpYaml } from 'js-yaml';
+import { difference, includes, isArray, isEmpty, isPlainObject, isString } from 'lodash';
+import { join as joinPath, relative as relativePath, resolve as resolvePath } from 'path';
+import { table } from 'table';
 
-const { allocateAddress, associateAddress, createTags, getRegionName, listAddresses, listInstances, loadRegionImage, loadRegionLimit, loadRegions, loadRegionSecurityGroup, rebootInstances, releaseAddress, runInstance, startInstances, stopInstances, terminateInstances, waitForInstances } = require('./aws-ec2');
-const { confirm, loadConfigProperty, loadProcessedData, loading, sendMail } = require('./utils');
+import { allocateAddress, associateAddress, createTags, getRegionName, listAddresses, listInstances, loadRegionImage, loadRegionLimit, loadRegions, loadRegionSecurityGroup, rebootInstances, releaseAddress, runInstance, startInstances, stopInstances, terminateInstances, waitForInstances } from './aws-ec2.js';
+import { confirm, loadConfigProperty, loadProcessedData, loading, root, sendMail } from './utils.js';
 
 const SELECTED = Symbol('selected');
 
-const root = resolvePath(joinPath(__dirname, '..'));
 const inventoryFile = resolvePath(joinPath(root, 'ec2', 'inventory'));
 const sshPrivateKeyFile = resolvePath(joinPath(root, 'id_rsa'));
 

@@ -1,7 +1,7 @@
-const aws = require('aws-sdk');
-const { isFunction, keys, pick, uniq } = require('lodash');
+import aws from 'aws-sdk';
+import { isFunction, keys, pick, uniq } from 'lodash';
 
-const { loadAwsCredentials, loadConfigProperty } = require('./utils');
+import { loadAwsCredentials, loadConfigProperty } from './utils.js';
 
 let cachedRegions;
 const cachedEc2ByRegion = {};
@@ -27,7 +27,7 @@ const regionNames = {
   'sa-east-1': 'Sao Paulo'
 };
 
-exports.allocateAddress = async function(region) {
+export async function allocateAddress(region) {
 
   const ec2 = await loadClient(region);
 
@@ -40,9 +40,9 @@ exports.allocateAddress = async function(region) {
     ...address,
     Region: region
   };
-};
+}
 
-exports.associateAddress = async function(address, instance) {
+export async function associateAddress(address, instance) {
   if (!address.Region) {
     throw new Error('Address must have a region', address);
   } else if (!instance.Region) {
@@ -64,9 +64,9 @@ exports.associateAddress = async function(address, instance) {
   address.InstanceId = instance.InstanceId;
 
   return address;
-};
+}
 
-exports.createTags = async function(region, resources, tags) {
+export async function createTags(region, resources, tags) {
 
   const ec2 = await loadClient(region);
 
@@ -76,16 +76,16 @@ exports.createTags = async function(region, resources, tags) {
   };
 
   await ec2.createTags(params).promise();
-};
+}
 
-exports.getRegionName = function(region) {
+export function getRegionName(region) {
   return regionNames[region] ? `${region} - ${regionNames[region]}` : region;
-};
+}
 
-exports.listAddresses = async function() {
+export async function listAddresses() {
 
   const addresses = [];
-  for (const region of await exports.loadRegions()) {
+  for (const region of await loadRegions()) {
 
     const ec2 = await loadClient(region);
 
@@ -96,12 +96,12 @@ exports.listAddresses = async function() {
   }
 
   return addresses;
-};
+}
 
-exports.listInstances = async function() {
+export async function listInstances() {
 
   const instances = [];
-  for (const region of await exports.loadRegions()) {
+  for (const region of await loadRegions()) {
 
     const ec2 = await loadClient(region);
 
@@ -128,9 +128,9 @@ exports.listInstances = async function() {
   }
 
   return instances;
-};
+}
 
-exports.releaseAddress = async function(address) {
+export async function releaseAddress(address) {
   if (!address.Region) {
     throw new Error('Address must have a region', address);
   }
@@ -143,9 +143,9 @@ exports.releaseAddress = async function(address) {
   delete address.InstanceId;
 
   return address;
-};
+}
 
-exports.runInstance = async function(region, params) {
+export async function runInstance(region, params) {
 
   const ec2 = await loadClient(region);
 
@@ -159,14 +159,14 @@ exports.runInstance = async function(region, params) {
     ...result.Instances[0],
     Region: region
   };
-};
+}
 
-exports.rebootInstances = instancesActionFactory('rebootInstances');
-exports.startInstances = instancesActionFactory('startInstances', 'StartingInstances');
-exports.stopInstances = instancesActionFactory('stopInstances', 'StoppingInstances');
-exports.terminateInstances = instancesActionFactory('terminateInstances', 'TerminatingInstances');
+export const rebootInstances = instancesActionFactory('rebootInstances');
+export const startInstances = instancesActionFactory('startInstances', 'StartingInstances');
+export const stopInstances = instancesActionFactory('stopInstances', 'StoppingInstances');
+export const terminateInstances = instancesActionFactory('terminateInstances', 'TerminatingInstances');
 
-exports.waitForInstances = async function(instances) {
+export async function waitForInstances(instances) {
   if (instances.some(instance => !instance.Region)) {
     throw new Error('All instances must have a region', instances);
   }
@@ -183,7 +183,7 @@ exports.waitForInstances = async function(instances) {
 
     await ec2.waitFor('instanceRunning', params).promise();
   }
-};
+}
 
 async function loadClient(region) {
   if (!cachedEc2ByRegion[region]) {
@@ -199,22 +199,22 @@ async function loadClient(region) {
   return cachedEc2ByRegion[region];
 }
 
-exports.loadRegionImage = async function(region) {
+export async function loadRegionImage(region) {
   return (await loadRegionsConfig())[region].image || await loadConfigProperty('aws_image');
-};
+}
 
-exports.loadRegionLimit = async function(region) {
+export async function loadRegionLimit(region) {
   const limit = (await loadRegionsConfig())[region].limit;
   return limit !== undefined ? limit : 5;
-};
+}
 
-exports.loadRegionSecurityGroup = async function(region) {
+export async function loadRegionSecurityGroup(region) {
   return (await loadRegionsConfig())[region].security_group;
-};
+}
 
-exports.loadRegions = async function() {
+export async function loadRegions() {
   return keys(await loadRegionsConfig());
-};
+}
 
 async function loadRegionsConfig() {
   if (!cachedRegions) {

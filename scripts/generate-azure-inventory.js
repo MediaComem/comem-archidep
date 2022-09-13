@@ -1,9 +1,9 @@
-const chalk = require('chalk');
-const { writeFile } = require('fs-extra');
-const { dump: dumpYaml } = require('js-yaml');
-const { join: joinPath, relative: relativePath } = require('path');
+import chalk from 'chalk';
+import { writeFile } from 'fs/promises';
+import { dump as dumpYaml } from 'js-yaml';
+import { join as joinPath, relative as relativePath } from 'path';
 
-const { executeScript, loadConfigProperty, loadData, loading, readFile, root, studentsFile } = require('./utils');
+import { executeScript, loadConfigProperty, loadData, loading, readFile, root, studentsFile } from './utils.js';
 
 const inventoryFile = joinPath(root, 'azure', 'inventory');
 const sshPrivateKeyFile = joinPath(root, 'id_rsa');

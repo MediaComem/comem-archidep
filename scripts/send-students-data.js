@@ -1,6 +1,6 @@
-const chalk = require('chalk');
+import chalk from 'chalk';
 
-const { loadData, sendMail } = require('./utils');
+import { loadData, sendMail } from './utils.js';
 
 Promise
   .resolve()

@@ -1,9 +1,9 @@
-const chalk = require('chalk');
-const { writeFile } = require('fs-extra');
-const { dump: dumpYaml } = require('js-yaml');
-const { join: joinPath, relative: relativePath } = require('path');
+import chalk from 'chalk';
+import { writeFile } from 'fs/promises';
+import { dump as dumpYaml } from 'js-yaml';
+import { join as joinPath, relative as relativePath } from 'path';
 
-const { loadData, root, studentsFile } = require('./utils');
+import { loadData, root, studentsFile } from './utils.js';
 
 const targetDirs = [ root, joinPath(root, 'ssh') ];
 const targetBasename = 'data.yml';
