@@ -278,13 +278,13 @@ CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
   (`-`) instead.
 
   ```bash
-  $> sudo hostname john-doe.archidep.tech
+  $> sudo hostname john-doe.archidep.ch
   ```
 
   Also save your new hostname to the `/etc/hostname` file so that it will persist when you reboot the server:
 
   ```bash
-  $> echo "john-doe.archidep.tech" | sudo tee /etc/hostname
+  $> echo "john-doe.archidep.ch" | sudo tee /etc/hostname
   ```
 * Reboot the server.
 
@@ -301,7 +301,7 @@ CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
   ...
 
   $> hostname
-  john-doe.archidep.tech
+  john-doe.archidep.ch
   ```
 * Send your instance's public IP address (the Elastic IP address you allocated)
   to the teacher.

@@ -6,7 +6,7 @@ multi-component web application, and how a reverse proxy like nginx can help.
 This guide assumes that you are familiar with [reverse proxying][slides], that
 you have nginx installed and running on a server, and that you have a DNS
 wildcard entry preconfigured to make various subdomains
-(`*.john-doe.archidep.tech` in this guide) point to that server.
+(`*.john-doe.archidep.ch` in this guide) point to that server.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -68,8 +68,8 @@ application has been developed as two separate components:
 Let's start by deploying the revprod backend and frontend separately at these
 URLs (replacing `john-doe` with your name):
 
-* `http://revprod-backend.john-doe.archidep.tech`
-* `http://revprod-landing.john-doe.archidep.tech`
+* `http://revprod-backend.john-doe.archidep.ch`
+* `http://revprod-landing.john-doe.archidep.ch`
 
 ### Deploy the revprod landing page
 
@@ -95,7 +95,7 @@ ExecStart=/usr/bin/node bin.js
 WorkingDirectory=/home/john_doe/revprod-landing-page
 Environment="REVPROD_LISTEN_PORT=4201"
 # Public URL at which the backend can be accessed
-Environment="REVPROD_BACKEND_BASE_URL=http://revprod-backend.john-doe.archidep.tech"
+Environment="REVPROD_BACKEND_BASE_URL=http://revprod-backend.john-doe.archidep.ch"
 User=john_doe
 Restart=on-failure
 
@@ -123,7 +123,7 @@ component:
 ```conf
 server {
   listen 80;
-  server_name revprod-landing.john-doe.archidep.tech;
+  server_name revprod-landing.john-doe.archidep.ch;
   root /home/john_doe/revprod-landing-page/public;
 
   location / {
@@ -149,7 +149,7 @@ $> sudo nginx -s reload
 ```
 
 You should then be able to access the revprod landing page at
-http://revprod-landing.john-doe.archidep.tech.
+http://revprod-landing.john-doe.archidep.ch.
 
 ![Revprod landing page](../images/revprod-landing.png)
 
@@ -177,7 +177,7 @@ ExecStart=/usr/bin/node bin.js
 WorkingDirectory=/home/john_doe/revprod-backend
 Environment="REVPROD_LISTEN_PORT=4200"
 # Public URL at which the frontend can be accessed
-Environment="REVPROD_LANDING_PAGE_BASE_URL=http://revprod-landing.john-doe.archidep.tech"
+Environment="REVPROD_LANDING_PAGE_BASE_URL=http://revprod-landing.john-doe.archidep.ch"
 User=john_doe
 Restart=on-failure
 
@@ -205,7 +205,7 @@ component:
 ```conf
 server {
   listen 80;
-  server_name revprod-backend.john-doe.archidep.tech;
+  server_name revprod-backend.john-doe.archidep.ch;
   root /home/john_doe/revprod-backend/public;
 
   location / {
@@ -231,7 +231,7 @@ $> sudo nginx -s reload
 ```
 
 You should then be able to access the revprod backend at
-http://revprod-backend.john-doe.archidep.tech.
+http://revprod-backend.john-doe.archidep.ch.
 
 ![Revprod backend](../images/revprod-backend.png)
 
@@ -245,8 +245,8 @@ If you have followed the instructions so far, you should be able to access the
 revprod backend and landing page in your browser, you should be able to create
 testimonials in the backend page.
 
-Note that the URL switches from `http://revprod-landing.john-doe.archidep.tech`
-to `http://revprod-backend.john-doe.archidep.tech` (and back) when you navigate
+Note that the URL switches from `http://revprod-landing.john-doe.archidep.ch`
+to `http://revprod-backend.john-doe.archidep.ch` (and back) when you navigate
 from the landing page to the Share page. The user can clearly see that these are
 two separate sites.
 
@@ -263,7 +263,7 @@ something like this:
 
 ```
 Cross-Origin Request Blocked: The Same Origin Policy disallows reading the
-remote resource at http://revprod-backend.john-doe.archidep.tech/comments.
+remote resource at http://revprod-backend.john-doe.archidep.ch/comments.
 (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 200.
 ```
 
@@ -271,8 +271,8 @@ remote resource at http://revprod-backend.john-doe.archidep.tech/comments.
 
 The landing page's AJAX request to fetch the comments from the backend has been
 blocked by the browser because the request is to a different **origin**: the
-landing page is at `http://revprod-landing.john-doe.archidep.tech` and is
-attempting to access `http://revprod-backend.john-doe.archidep.tech` which is
+landing page is at `http://revprod-landing.john-doe.archidep.ch` and is
+attempting to access `http://revprod-backend.john-doe.archidep.ch` which is
 another domain entirely.
 
 This is called the [**Same-Origin Policy**][sop]. It is a critical security
@@ -304,7 +304,7 @@ section to enable CORS:
 
 ```conf
 Environment="REVPROD_CORS=true"
-Environment="REVPROD_CORS_ORIGINS=http://revprod-landing.john-doe.archidep.tech"
+Environment="REVPROD_CORS_ORIGINS=http://revprod-landing.john-doe.archidep.ch"
 ```
 
 Reload the Systemd configuration and restart the backend service:
@@ -315,7 +315,7 @@ $> sudo systemctl restart revprod-backend
 ```
 
 Refresh the revprod landing page at
-http://revprod-landing.john-doe.archidep.tech again. The comments should work
+http://revprod-landing.john-doe.archidep.ch again. The comments should work
 this time!
 
 If you look at your browser's developer console when refreshing the page, you
@@ -323,7 +323,7 @@ should see that the backend now sends the following header in the comments
 response:
 
 ```
-Access-Control-Allow-Origin: http://revprod-landing.john-doe.archidep.tech
+Access-Control-Allow-Origin: http://revprod-landing.john-doe.archidep.ch
 ```
 
 Your browser knows to check this header and let the request through if the
@@ -351,7 +351,7 @@ $> sudo systemctl restart revprod-backend
 ```
 
 Check that the comments no longer work by refreshing
-http://revprod-landing.john-doe.archidep.tech.
+http://revprod-landing.john-doe.archidep.ch.
 
 > You may need to force a refresh by holding the Shift key.
 
@@ -372,7 +372,7 @@ proxy to both components depending on various criteria.
 
 Let's assume that we want the revprod application (both the backend and the
 landing page) to be accessible at one URL:
-`http://revprod.john-doe.archidep.tech`.
+`http://revprod.john-doe.archidep.ch`.
 
 Since the backend and landing page will be accessible at the same URL, we have
 to update their configurations to reflect that fact. Update the Systemd unit
@@ -381,7 +381,7 @@ out (or remove) the `REVPROD_LANDING_PAGE_BASE_URL` environment variable in the
 `[Service]` section:
 
 ```conf
-#Environment="REVPROD_LANDING_PAGE_BASE_URL=http://revprod-landing.john-doe.archidep.tech"
+#Environment="REVPROD_LANDING_PAGE_BASE_URL=http://revprod-landing.john-doe.archidep.ch"
 ```
 
 Do the same in the Systemd unit file
@@ -389,7 +389,7 @@ Do the same in the Systemd unit file
 `REVPROD_BACKEND_BASE_URL` variable:
 
 ```conf
-#Environment="REVPROD_BACKEND_BASE_URL=http://revprod-backend.john-doe.archidep.tech"
+#Environment="REVPROD_BACKEND_BASE_URL=http://revprod-backend.john-doe.archidep.ch"
 ```
 
 Reload Systemd's configuration and restart both services to take these changes
@@ -406,7 +406,7 @@ Create a new nginx site configuration file `/etc/nginx/sites-available/revprod`:
 ```conf
 server {
   listen 80;
-  server_name revprod.john-doe.archidep.tech;
+  server_name revprod.john-doe.archidep.ch;
   root /home/john_doe/revprod-landing-page/public;
 
   location ~ /(comments|share) {
@@ -445,12 +445,12 @@ $> sudo nginx -s reload
 ```
 
 You should now be able to access the revprod application at
-http://revprod.john-doe.archidep.tech and everything should work!
+http://revprod.john-doe.archidep.ch and everything should work!
 
 Note that your are no longer switching from
-`http://revprod-landing.john-doe.archidep.tech` to
-`http://revprod-backend.john-doe.archidep.tech` when navigating in the
-application. Everything is served under `http://revprod.john-doe.archidep.tech`
+`http://revprod-landing.john-doe.archidep.ch` to
+`http://revprod-backend.john-doe.archidep.ch` when navigating in the
+application. Everything is served under `http://revprod.john-doe.archidep.ch`
 because everything goes through nginx which then proxies it **internally** to
 our separate components.
 

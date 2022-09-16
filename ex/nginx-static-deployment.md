@@ -52,7 +52,7 @@ Take the static configuration that was [presented during the
 course][nginx-static-conf] and put it in the file. You should modify it to:
 
 * Use the subdomain you configured for your server during the previous DNS
-  exercise (e.g. `john-doe.archidep.tech`).
+  exercise (e.g. `john-doe.archidep.ch`).
 
   > This is done by customizing [nginx's `server_name`
   > directive](http://nginx.org/en/docs/http/server_names.html) in your `server`
@@ -147,7 +147,7 @@ configuration.
 
 ## See it in action
 
-Visit the subdomain of your server, e.g. http://john-doe.archidep.tech
+Visit the subdomain of your server, e.g. http://john-doe.archidep.ch
 (replacing `john-doe` with your username) and you should see the website
 working.
 

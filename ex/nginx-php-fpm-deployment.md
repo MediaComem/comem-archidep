@@ -150,9 +150,9 @@ but you need to make the following changes:
   > copy.
   >
   > **Hint:** in the DNS exercise, you should have configured a wildcard domain
-  > name like `*.john-doe.archidep.tech`. This means that any subdomain you
-  > want under `john-doe.archidep.tech`, for example
-  > `todolist.john-doe.archidep.tech`, should reach your server.
+  > name like `*.john-doe.archidep.ch`. This means that any subdomain you
+  > want under `john-doe.archidep.ch`, for example
+  > `todolist.john-doe.archidep.ch`, should reach your server.
 * PHP FPM uses the [FastCGI protocol][fastcgi] to receive requests to execute
   PHP code. This means that you cannot use [nginx's `proxy_pass`
   directive][nginx-proxy-pass] to define your proxy since it works with the HTTP
@@ -229,7 +229,7 @@ $> sudo nginx -s reload
 
 ## See it in action
 
-Visit http://todolist.john-doe.archidep.tech (replacing `john-doe` with your
+Visit http://todolist.john-doe.archidep.ch (replacing `john-doe` with your
 username) and you should see the PHP todolist working.
 
 

@@ -238,23 +238,23 @@ by encoded new lines (`\n`).
   (`-`) instead.
 
   ```bash
-  $> sudo hostname john-doe.archidep.tech
+  $> sudo hostname john-doe.archidep.ch
   ```
 
   Also save your new hostname to the `/etc/hostname` file so that it will
   persist when you reboot the server:
 
   ```bash
-  $> echo "john-doe.archidep.tech" | sudo tee /etc/hostname
+  $> echo "john-doe.archidep.ch" | sudo tee /etc/hostname
   ```
 
   > The hostname is the name of your virtual server. It can be any URL. It often
   > identifies a machine in an organization with the format
   > `<machine-name>.<organization>.<tld>` (e.g. `unix-box.google.com`).
   >
-  > For the purposes of this course, we will be using the `archidep.tech`
+  > For the purposes of this course, we will be using the `archidep.ch`
   > domain, so it makes sense to use a subdomain corresponding to yourself
-  > (`john-doe.archidep.tech`) as the hostname.
+  > (`john-doe.archidep.ch`) as the hostname.
 * Reboot the server.
 
   ```bash
@@ -270,7 +270,7 @@ by encoded new lines (`\n`).
   ...
 
   $> hostname
-  john-doe.archidep.tech
+  john-doe.archidep.ch
   ```
 * Send your virtual server's **public IP address** and the **username of your
   administrator account** to the teacher.

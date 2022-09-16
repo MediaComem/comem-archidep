@@ -7,7 +7,7 @@ templates and configuring nginx as a [load balancer][load-balancing].
 This guide assumes that you are familiar with [reverse proxying][slides], that
 you have nginx installed and running on a server, and that you have a DNS
 wildcard entry preconfigured to make various subdomains
-(`*.john-doe.archidep.tech` in this guide) point to that server.
+(`*.john-doe.archidep.ch` in this guide) point to that server.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -112,7 +112,7 @@ with `nano`) to expose this component:
 
 server {
   listen 80;
-  server_name fibscale.john-doe.archidep.tech;
+  server_name fibscale.john-doe.archidep.ch;
 
   location / {
     proxy_pass http://127.0.0.1:4202;
@@ -136,7 +136,7 @@ $> sudo nginx -s reload
 ```
 
 You should now be able to access the FibScale application at
-http://fibscale.john-doe.archidep.tech and see how it works.
+http://fibscale.john-doe.archidep.ch and see how it works.
 
 ![FibScale application](../images/fibscale.png)
 
@@ -178,7 +178,7 @@ $> sudo systemctl daemon-reload
 $> sudo systemctl restart fibscale
 ```
 
-Test the application at http://fibscale.john-doe.archidep.tech again and
+Test the application at http://fibscale.john-doe.archidep.ch again and
 observe that every computation now takes at least one second.
 
 ![Slow FibScale application](../images/fibscale-slow.png)
@@ -266,7 +266,7 @@ port 8089 by default:
 ```conf
 server {
   listen 80;
-  server_name locust.fibscale.john-doe.archidep.tech;
+  server_name locust.fibscale.john-doe.archidep.ch;
 
   location / {
     proxy_pass http://127.0.0.1:8089;
@@ -290,12 +290,12 @@ $> sudo nginx -s reload
 ```
 
 You should now be able to access Locust at
-http://locust.fibscale.john-doe.archidep.tech.
+http://locust.fibscale.john-doe.archidep.ch.
 
 ### Start load-testing the application with a small number of users
 
 The **Host** field tells Locust what the base URL for the load testing scenario
-is. Enter the address of FibScale: `http://fibscale.john-doe.archidep.tech`. Set
+is. Enter the address of FibScale: `http://fibscale.john-doe.archidep.ch`. Set
 the **Number of users** to 1 and the **Spawn rate** to 1 for now, and run the
 scenario.
 
@@ -504,7 +504,7 @@ upstream fibscale {
 
 server {
   listen 80;
-  server_name fibscale.john-doe.archidep.tech;
+  server_name fibscale.john-doe.archidep.ch;
 
   location / {
     # Proxy to the upstream.
@@ -520,7 +520,7 @@ $> sudo nginx -t
 $> sudo nginx -s reload
 ```
 
-Access the FibScale application at http://fibscale.john-doe.archidep.tech again,
+Access the FibScale application at http://fibscale.john-doe.archidep.ch again,
 and note that the navbar has changed color (because of the instance parameter
 passed as argument).
 
@@ -528,7 +528,7 @@ passed as argument).
 
 ### Load-test the new FibScale service
 
-Access Locust at http://locust.fibscale.john-doe.archidep.tech and run the same
+Access Locust at http://locust.fibscale.john-doe.archidep.ch and run the same
 load testing scenario as before: test the **Host**
 http://fibscale.john-doe.archidep.test with the **Number of users** set to 10
 and the **Spawn rate** set to 1.
@@ -601,7 +601,7 @@ increase to 3 and the response time decrease.
 
 ![Locust charts with 3 instances](../images/fibscale-locust-3-instances.png)
 
-If you access the FibScale application at http://fibscale.john-doe.archidep.tech
+If you access the FibScale application at http://fibscale.john-doe.archidep.ch
 and reload the page a few times, you will see that the navbar changes color,
 indicating that nginx correctly distributes your requests to the 3 FibScale
 instances.

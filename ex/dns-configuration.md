@@ -26,12 +26,12 @@ Make sure you have completed the [previous exercise](systemd-deployment.md).
 Connect to [Gandi.net](https://gandi.net) with the provided user account and
 create two new `A` record to map subdomains to your server's IP address:
 
-1. Your first subdomain should be `john-doe.archidep.tech`, where `john-doe`
+1. Your first subdomain should be `john-doe.archidep.ch`, where `john-doe`
    is your name on your server, meaning that you should use `john-doe` (your
    username) as the **name of the DNS record**.
 2. Then, create a wildcard subdomain using `*.john-doe` as the **name of the DNS
    record**, and the same IP address. This will direct any second-level
-   subdomain like `foo.john-doe.archidep.tech` to your server.
+   subdomain like `foo.john-doe.archidep.ch` to your server.
 
 Assuming your server's IP address is `W.X.Y.Z` and your username is `john-doe`,
 you should have the following DNS records (among others) in your zone file:
@@ -46,7 +46,7 @@ john-doe 1800 IN A W.X.Y.Z
 ## Access the domain name
 
 Once you have configured it correctly, you (and everybody else) should be able
-to access the todolist application at http://john-doe.archidep.tech:3000 in
+to access the todolist application at http://john-doe.archidep.ch:3000 in
 your browser (if you have completed the previous exercises).
 
 > You might have to wait a few minutes for the change to take effect, especially
@@ -59,10 +59,10 @@ your browser (if you have completed the previous exercises).
 ## What have I done?
 
 You have created a mapping in the [domain name system][dns] between your custom
-subdomain (e.g. `john-doe.archidep.tech`) and the IP address of your server.
+subdomain (e.g. `john-doe.archidep.ch`) and the IP address of your server.
 
 You have done this by modifying the [DNS zone file][dns-zone-file] for the
-course's domain (`archidep.tech`). When a computer requests to know the IP
+course's domain (`archidep.ch`). When a computer requests to know the IP
 address for your subdomain, the [DNS name servers][dns-name-server] of the
 domain provider (gandi.net) will give them the IP address in the mapping you
 have configured.

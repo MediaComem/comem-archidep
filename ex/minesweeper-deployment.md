@@ -45,7 +45,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [:boom: Updating your fork of the repository](#boom-updating-your-fork-of-the-repository)
   - [:boom: `Error: error:0308010C:digital envelope routines::unsupported`](#boom-error-error0308010cdigital-envelope-routinesunsupported)
   - [:boom: `(Mix) Could not compile dependency :cowlib`](#boom-mix-could-not-compile-dependency-cowlib)
-  - [:boom: `Error creating new order :: too many certificates already issued for: archidep.tech`](#boom-error-creating-new-order--too-many-certificates-already-issued-for-archideptech)
+  - [:boom: `Error creating new order :: too many certificates already issued for: archidep.ch`](#boom-error-creating-new-order--too-many-certificates-already-issued-for-archideptech)
   - [:boom: My changes to `config/local.exs` are not taken into account](#boom-my-changes-to-configlocalexs-are-not-taken-into-account)
 - [:books: Architecture](#books-architecture)
 
@@ -294,8 +294,8 @@ described in the [project's README][readme] on your server:
       Memory: 0B
       CGroup: /system.slice/postgresql.service
 
-  Dec 10 20:54:52 john-doe.archidep.tech systemd[1]: Starting PostgreSQL RDBMS...
-  Dec 10 20:54:52 john-doe.archidep.tech systemd[1]: Finished PostgreSQL RDBMS.
+  Dec 10 20:54:52 john-doe.archidep.ch systemd[1]: Starting PostgreSQL RDBMS...
+  Dec 10 20:54:52 john-doe.archidep.ch systemd[1]: Finished PostgreSQL RDBMS.
   ```
 
   You can also verify that PostgreSQL is working by listing available databases,
@@ -1125,7 +1125,7 @@ the issue. Follow the instructions in the sysadmin cheatsheet to do so:
 
 * [Add swap space to your cloud server](../SYSADMIN-CHEATSHEET.md#add-swap-space-to-your-cloud-server)
 
-### :boom: `Error creating new order :: too many certificates already issued for: archidep.tech`
+### :boom: `Error creating new order :: too many certificates already issued for: archidep.ch`
 
 If you see an error similar to this when attempting to obtain a Let's Encrypt
 TLS certificate with Certbot:
@@ -1137,15 +1137,15 @@ Plugins selected: Authenticator nginx, Installer nginx
 
 Which names would you like to activate HTTPS for?
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-1: clock.john-doe.archidep.tech
-2: minesweeper.john-doe.archidep.tech
-3: todolist.john-doe.archidep.tech
+1: clock.john-doe.archidep.ch
+2: minesweeper.john-doe.archidep.ch
+3: todolist.john-doe.archidep.ch
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Select the appropriate numbers separated by commas and/or spaces, or leave input
 blank to select all options shown (Enter 'c' to cancel): 2
 Obtaining a new certificate
 An unexpected error occurred:
-There were too many requests of a given type :: Error creating new order :: too many certificates already issued for: archidep.tech: see https://letsencrypt.org/docs/rate-limits/
+There were too many requests of a given type :: Error creating new order :: too many certificates already issued for: archidep.ch: see https://letsencrypt.org/docs/rate-limits/
 Please see the logfiles in /var/log/letsencrypt for more details.
 ```
 
@@ -1154,13 +1154,13 @@ service](https://letsencrypt.org/docs/rate-limits/): at most 50 certificates can
 be requested per domain per week. With more than 50 students in both classes of
 the architecture & deployment course, we may encounter this limit now and then.
 
-A second domain, `archidep2.tech`, is now available for you. You can access
+A second domain, `archidep2.ch`, is now available for you. You can access
 [Gandi.net](https://admin.gandi.net/domain/ef323400-0433-11e9-83f1-00163e4e76d5/)
 to add entries to its DNS zone like in [the DNS
 exercise](https://github.com/MediaComem/comem-archidep/blob/main/ex/dns-configuration.md#connect-to-gandinet).
 
-You should add the same entries you added for `archidep.tech` to this new
-`archidep2.tech` domain:
+You should add the same entries you added for `archidep.ch` to this new
+`archidep2.ch` domain:
 
 * An `A` entry for `john-doe` (replacing `john-doe` with
   your name) pointing to your server's public IP address.
@@ -1170,14 +1170,14 @@ You should add the same entries you added for `archidep.tech` to this new
 You can then connect to your server and perform the following actions:
 
 * Update your nginx configuration for the exercise to use your new subdomain of
-  `archidep2.tech` instead of `archidep.tech`.
+  `archidep2.ch` instead of `archidep.ch`.
 * Test and reload nginx's configuration with `sudo nginx -t` and `sudo nginx -s
   reload`.
 * Run the `sudo certbot --nginx` command again. There should be no errors this
   time.
 
 > Please notify the teacher immediately if you encounter the same error with the
-> `archidep2.tech` domain.
+> `archidep2.ch` domain.
 
 ### :boom: My changes to `config/local.exs` are not taken into account
 

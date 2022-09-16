@@ -1,2 +1,4 @@
+# https://beyondgrep.com/
 --ignore-dir=build
 --ignore-dir=node_modules
+--ignore-file=is:inventory
