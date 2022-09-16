@@ -25,9 +25,8 @@
   mv students.csv original.csv
   iconv -f macintosh -t UTF-8 < original.csv > students.csv
   ```
-* Make sure number and content of columns are as expected in `scripts/utils.js`
-  and `scripts/create-heroku-apps.sh`, update the scripts and/or the CSV file if
-  necessary.
+* Make sure number and content of columns are as expected in `scripts/utils.js`.
+  Update the scripts and/or the CSV file if necessary.
 * Run `npm run setup`.
 
 ## Set up an EC2 instance for SSH exercises

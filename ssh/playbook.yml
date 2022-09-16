@@ -1,10 +1,10 @@
 ---
 - hosts: all
   become: true
-  gather_facts: no # See first 2 tasks.
+  gather_facts: false # See first 2 tasks.
 
   vars:
-    server_name: archidep.tech
+    server_name: archidep.ch
     ssh_password_authentication: false
     ssh_regenerate_host_keys: false
 
@@ -12,39 +12,38 @@
     - ./data.yml
 
   tasks:
-
     # Make sure python 2 is installed before doing anything
     # (this is not the case by default on Ubuntu Bionic).
     - name: Install Python
       raw: command -v python3 || { apt-get update && apt-get install -y python3; }
       changed_when: false
-      tags: [ always ]
+      tags: [always]
 
     # Gather ansible facts (requires python).
     # Facts are required for many Ansible modules to work correctly.
     - name: Gather facts
       setup:
-      tags: [ always ]
+      tags: [always]
 
     - name: Upgrade all packages
       apt:
-        name: "*"
+        name: '*'
         autoremove: true
         force_apt_get: true
         state: latest
 
     - name: Set hostname
       hostname:
-        name: "{{ server_name }}"
+        name: '{{ server_name }}'
 
     - name: Create students
       user:
-        name: "{{ student.username }}"
+        name: '{{ student.username }}'
         password: "{{ student.password | password_hash('sha512') }}"
         shell: /bin/bash
-      loop: "{{ students }}"
+      loop: '{{ students }}'
       loop_control:
-        label: "{{ student.username }}"
+        label: '{{ student.username }}'
         loop_var: student
 
     - name: Enable SSH password authentication
@@ -53,32 +52,32 @@
         regexp: '^PasswordAuthentication '
         line: 'PasswordAuthentication {{ "yes" if (ssh_password_authentication | bool) else "no" }}'
       when: ssh_password_authentication is defined
-      tags: [ ssh ]
+      tags: [ssh]
 
     - name: Find SSH server host keys
       command: find /etc/ssh -name ssh_host_*
       register: find_ssh_keys_command
       when: ssh_regenerate_host_keys is defined and ssh_regenerate_host_keys | bool
-      tags: [ ssh ]
+      tags: [ssh]
 
     - name: Delete SSH server host keys
       file:
-        path: "{{ key_file }}"
+        path: '{{ key_file }}'
         state: absent
       loop: "{{ find_ssh_keys_command.stdout.split('\n') }}"
       loop_control:
         loop_var: key_file
       when: ssh_regenerate_host_keys is defined and ssh_regenerate_host_keys | bool and find_ssh_keys_command.stdout != ''
-      tags: [ ssh ]
+      tags: [ssh]
 
     - name: Regenerate SSH server host keys
       command: dpkg-reconfigure openssh-server
       when: ssh_regenerate_host_keys is defined and ssh_regenerate_host_keys | bool
-      tags: [ ssh ]
+      tags: [ssh]
 
     - name: Restart SSH server
       service:
         name: ssh
         state: restarted
       when: ssh_password_authentication or ssh_regenerate_host_keys
-      tags: [ ssh ]
+      tags: [ssh]
