@@ -2,8 +2,8 @@
 
 In this course you will learn:
 
-* How to deploy applications on a Linux server on an IaaS platform (Amazon Web Services).
-* How to deploy applications on a PaaS platform (Heroku).
+* How to deploy applications on a Linux server on an IaaS platform (Microsoft Azure).
+* How to deploy applications on a PaaS platform (Render).
 
 In pursuit of this goal, you will learn:
 
@@ -61,7 +61,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   * [Shell scripting](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
   * [Git hooks](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
 * Platform-as-a-Service (PaaS)
-  * [Heroku](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/heroku?home=MediaComem%2Fcomem-archidep%23readme)
+  * Render (*not yet available*)
 * *Software development (extra)*
   * [Continuous software development](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
   * [Automated testing (2018)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
@@ -116,8 +116,7 @@ fix during the rest of the course:
 * [Git][git-downloads]
 * A free [GitHub][github] account
 * [Google Chrome][chrome] (recommended, any browser with developer tools will do)
-* A free [Heroku][heroku] account
-* The [Heroku CLI][heroku-cli]
+* A free [Render][render] account
 
 
 
@@ -152,21 +151,22 @@ fix during the rest of the course:
     * [Architecture](ex/certbot-deployment.md#architecture)
   * [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
     * [Architecture](ex/git-automated-deployment.md#architecture)
-  * [Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md) (**graded**)
-    * [Architecture](ex/minesweeper-deployment.md#books-architecture)
+  * Deploy a web application with a database (**graded**, *not yet available*)
   * [Deploy a multi-component web application with nginx](./ex/revprod-deployment.md)
     * [Architecture](ex/revprod-deployment.md#architecture)
   * [Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
     * [Architecture](ex/fibscale-deployment.md#architecture)
 * **Platform-as-a-Service deployment**
-  * [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
-  * [Deploy web applications with a database to Heroku](ex/heroku-deployment.md)
+  * Deploy a PHP web page to Render (*not yet available*)
+  * Deploy web applications with a database to Render (*not yet available*)
 * *Extra*
   * [Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database](ex/one-chat-room-deployment.md)
     * [Diagram](ex/end-result.pdf)
   * [Deploy Big Browser, a Nest.js (Node.js) application with a Redis database](ex/big-browser-deployment.md)
   * [Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md)
   * [Deploy RPS, a Node.js & Svelte web application with a PostgreSQL database](ex/rps-deployment.md)
+  * [Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md)
+    * [Architecture](ex/minesweeper-deployment.md#books-architecture)
   * [Configure nginx as a load balancer](ex/load-balancing-deployment.md)
 
 
@@ -211,7 +211,7 @@ the end of each subject.
 * [nginx documentation](http://nginx.org/en/docs/)
   * [Beginner's Guide](http://nginx.org/en/docs/beginners_guide.html)
   * [Configuring HTTPS Servers](http://nginx.org/en/docs/http/configuring_https_servers.html)
-* [Heroku Dev Center](https://devcenter.heroku.com)
+* [Render Documentation](https://render.com/docs)
 
 [Wikipedia](https://www.wikipedia.org) is also often referenced, namely these
 and related articles:
@@ -238,11 +238,10 @@ and related articles:
 [git-cheatsheet]: https://github.com/MediaComem/comem-webdev/blob/master/GIT-CHEATSHEET.md
 [git-downloads]: https://git-scm.com/downloads
 [github]: https://github.com
-[heroku]: https://www.heroku.com/home
-[heroku-cli]: https://devcenter.heroku.com/articles/heroku-cli
 [heig]: http://www.heig-vd.ch
 [nginx]: https://www.nginx.com
 [owasp]: https://www.owasp.org
 [owasp-top10]: https://owasp.org/www-project-top-ten/
 [php-dev-server]: https://www.php.net/manual/en/features.commandline.webserver.php
 [php-fpm]: https://www.php.net/manual/en/install.fpm.php
+[render]: https://render.com
