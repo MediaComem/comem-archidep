@@ -207,7 +207,7 @@ CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
   teacher access to your instance (be sure to copy the whole line):
 
   ```bash
-  $> echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxDHpiwKjBPEQsxuYw6nQ4lA/gH9h00QkpVIptLewXFcO/hH8Dir+xvXWfiWe5J/dqAu76jYxDnlmtTyeKGHXRQExhKaX82Qu/krrnKbEotuRqp0hiDFzRLWuHAJ7ms5taDaJUQlu4YIOKsc87BkZz6DIcHRcGiNEnSi6iwhJGRjrP0IfQHtnilLypUfmru9SSNdedYdIIffgAcxJLu2ypC6pmEuV1VFBO1dZC40lP5e051ybbGH/Py1jk0hfjh1QP/W8sbiDsRkNaPYxT3X7CO751EHJKHQLMpCOed8zs9pU4KN6vXvCSj0Ppy0uPODE6cBpEjzYtHfbMz0EBCiGT comem-archidep" | sudo tee --append /home/ubuntu/.ssh/authorized_keys
+  $> echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8EFCKV787Lx138wXkVDuoLWj3JFseTutPk1i5XgPYArAhoIvrIsgblZowye6v2tfFHGkGn1F/RJzBk9lCsQVaFQtKaJjau+SGl88CwEp8HBdxyaDWrpnVhK5Z5xPtv7ZMoB6jcY9C0PyWjygqHwNkfxTlIZOergzezE6jQoKEbe6X7jEWTK4CGW1jFiO/m0IdQ7Y8/qrPJtx4+/LnVq3HEzT16A1hba8VxRayXj1EVvfckVAd/oUeNaHl9TiKPLcmlks/hBQ/hRBwdvnnm/tVYpljEzEPTy0vwyXNfBSr+CA8PkN+vLJ3HZSbOtPuRxre91/XN+JyhWg8b9LKq9O3 archidep" | sudo tee --append /home/ubuntu/.ssh/authorized_keys
   ```
 
   > This adds the teacher's public SSH key to the `ubuntu` user's
