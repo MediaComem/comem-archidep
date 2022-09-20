@@ -1,4 +1,6 @@
 # https://prettier.io/docs/en/ignore.html
 /build
 /node_modules
+/src/subject/assets
+/subjects
 /tmp

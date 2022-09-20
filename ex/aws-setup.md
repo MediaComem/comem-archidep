@@ -15,8 +15,6 @@ This guide describes how to run a virtual server appropriate for the COMEM+ Arch
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## Apply for AWS Educate
 
 Apply for [AWS Educate](https://aws.amazon.com/education/awseducate/apply/),
@@ -29,31 +27,30 @@ application has been approved.
 > If you have a credit card, you may instead register a [standard AWS
 > account](https://portal.aws.amazon.com/billing/signup#/start).
 >
-> You will be able to run a small *free* server that is sufficient for the needs
+> You will be able to run a small _free_ server that is sufficient for the needs
 > of this course.
-
-
 
 ## Launch a virtual server
 
 Once you have your AWS account, you can launch the virtual server you will be
 using for the rest of the course.
 
-* Access the EC2 Dashboard.
+- Access the EC2 Dashboard.
 
   If you are a student:
 
-  * Log in to the third-party platform of AWS's educational partner, Vocareum.
+  - Log in to the third-party platform of AWS's educational partner, Vocareum.
     You should have received a link by email, or you can find it on the AWS
     Educate website once logged in.
-  * Access the **AWS Console** from Vocareum. There should be a link in the home
+  - Access the **AWS Console** from Vocareum. There should be a link in the home
     page.
-  * Once you are in the AWS Console, find the **Services** menu at the top, and
+  - Once you are in the AWS Console, find the **Services** menu at the top, and
     select the **EC2** service.
 
   > If you have a standard account with a credit card, you can follow [this
   > link](https://eu-west-1.console.aws.amazon.com/ec2) and log in normally.
-* Most of the AWS resources you will use must be located in a
+
+- Most of the AWS resources you will use must be located in a
   [region](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
   If you are student, you probably only have access to one region. Use whatever
@@ -64,7 +61,8 @@ using for the rest of the course.
   cheapest European region.
 
   ![AWS Region](../images/aws-region.png?)
-* [Import your public key](https://eu-west-1.console.aws.amazon.com/ec2) under
+
+- [Import your public key](https://eu-west-1.console.aws.amazon.com/ec2) under
   **Key Pairs**.
 
   You can display your public key by running the following command in your
@@ -74,7 +72,8 @@ using for the rest of the course.
 
   > This will allow you to connect to your virtual server over SSH once it's
   > launched.
-* Go to [**Instances**](https://eu-west-1.console.aws.amazon.com/ec2) and
+
+- Go to [**Instances**](https://eu-west-1.console.aws.amazon.com/ec2) and
   **launch an instance**.
 
   ![AWS Launch Instance](../images/aws-launch-instance.png)
@@ -83,21 +82,23 @@ using for the rest of the course.
   > AWS infrastructure. You will have full root access to the server once it's
   > launched.
 
-  * **Step 1:** Search and select the following Ubuntu AMI: `Ubuntu Server 20.04
-    LTS (HVM), SSD Volume Type`. Use the default 64-bit (x86) version.
+  - **Step 1:** Search and select the following Ubuntu AMI: `Ubuntu Server 20.04 LTS (HVM), SSD Volume Type`. Use the default 64-bit (x86) version.
 
     ![AWS AMI](../images/aws-step-1-ami.png)
-  * **Step 2:** Select a **free-tier-eligible** instance type. It will be
+
+  - **Step 2:** Select a **free-tier-eligible** instance type. It will be
     **either `t2.micro` or `t3.micro`**, whichever is available, depending on
     the region.
 
     ![AWS Instance Type](../images/aws-step-2-instance-type.png)
-  * **Step 3:** Leave the default instance details.
-  * **Step 4:** Leave the default storage configuration.
-  * **Step 5:** Add a `Name` tag to easily identify your instance.
+
+  - **Step 3:** Leave the default instance details.
+  - **Step 4:** Leave the default storage configuration.
+  - **Step 5:** Add a `Name` tag to easily identify your instance.
 
     ![AWS Tags](../images/aws-step-5-tags.png)
-  * **Step 6:** Create a security group with the following inbound ports open: 22, 80, 443, 3000 & 3001.
+
+  - **Step 6:** Create a security group with the following inbound ports open: 22, 80, 443, 3000 & 3001.
 
     ![AWS Security Group](../images/aws-step-6-security-group.png)
 
@@ -112,15 +113,14 @@ using for the rest of the course.
     > to limit the IP addresses authorized to access your virtual server. For
     > the purposes of this course, it's simpler to allow anyone to connect from
     > any source IP address (which is what `0.0.0.0, ::/0` means).
-  * **Step 7:** Launch the virtual server.
+
+  - **Step 7:** Launch the virtual server.
 
     ![AWS Launch](../images/aws-step-7-launch.png)
 
     Select the public key you imported.
 
     ![AWS Key Pair](../images/aws-step-7-key.png)
-
-
 
 ## Associate an Elastic IP address with your virtual server
 
@@ -133,21 +133,20 @@ are static IPv4 addresses for cloud computing. You can obtain one and associate
 it to your virtual server for free. That way your server will have a fixed IP
 address which persists across restarts.
 
-* Go to **Elastic IPs** in the menu, and allocate a new IP address.
+- Go to **Elastic IPs** in the menu, and allocate a new IP address.
 
   ![AWS Allocate Address](../images/aws-allocate-address.png)
-* Select the new IP address and associate it.
+
+- Select the new IP address and associate it.
 
   ![AWS Associate Address](../images/aws-associate-address-1.png)
 
   Select the instance you just launched and its private IP address
-  (*the values will _not be the same_ as in this screenshot*):
+  (_the values will *not be the same* as in this screenshot_):
 
   ![AWS Associate Address](../images/aws-associate-address-2.png)
 
   Your instance now has a fixed public IP address on the Internet.
-
-
 
 ## (Optional) Get your instance's public SSH key
 
@@ -182,11 +181,9 @@ CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
 > that server could potentially be read and modified by an attacker if he
 > manages to intercept the initial connection.
 
-
-
 ## Configure your virtual server
 
-* Connect to your new instance over SSH.
+- Connect to your new instance over SSH.
 
   By default, the Ubuntu image you selected when you launched the server creates
   an `ubuntu` user.
@@ -203,7 +200,8 @@ CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
   > virtual server. It was automatically put in the `ubuntu` user's
   > `~/.ssh/authorized_keys` file when the server was launched, which allows you
   > to authenticate using your private SSH key.
-* Once you are connected as `ubuntu`, run the following command to give the
+
+- Once you are connected as `ubuntu`, run the following command to give the
   teacher access to your instance (be sure to copy the whole line):
 
   ```bash
@@ -213,7 +211,8 @@ CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
   > This adds the teacher's public SSH key to the `ubuntu` user's
   > `~/.ssh/authorized_keys`, allowing the teacher to also authenticate to your
   > virtual server with his private SSH key.
-* Create your own user and set a password.
+
+- Create your own user and set a password.
 
   **WARNING:** your Unix username should not contain spaces, accented characters
   (e.g. `é`), hyphens (`-`) or dots (`.`). It should start with a letter (a-z)
@@ -229,17 +228,20 @@ CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
   Retype new UNIX password:
   passwd: password updated successfully
   ```
-* Set your new user's shell to Bash (instead of the default Bourne shell):
+
+- Set your new user's shell to Bash (instead of the default Bourne shell):
 
   ```bash
   $> sudo usermod -s /bin/bash john_doe
   ```
-* Make your new user an administrator by adding it to the `sudo` group:
+
+- Make your new user an administrator by adding it to the `sudo` group:
 
   ```bash
   $> sudo usermod -a -G sudo john_doe
   ```
-* Copy the `ubuntu` user's authorized SSH keys file to your new user and fix its
+
+- Copy the `ubuntu` user's authorized SSH keys file to your new user and fix its
   permissions:
 
   ```bash
@@ -261,18 +263,21 @@ CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
   > accessible to other users.
   >
   > You will learn about Unix users, groups and permissions later in the course.
-* Disconnect once you are done:
+
+- Disconnect once you are done:
 
   ```bash
   $> exit
   ```
-* Reconnect as your own user (again, replace `john_doe` and `W.X.Y.Z` by the
+
+- Reconnect as your own user (again, replace `john_doe` and `W.X.Y.Z` by the
   appropriate values):
 
   ```bash
   $> ssh john_doe@W.X.Y.Z
   ```
-* Change the hostname of your server.
+
+- Change the hostname of your server.
 
   **WARNING:** you should not use underscores (`_`) in a hostname, use hyphens
   (`-`) instead.
@@ -286,13 +291,14 @@ CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
   ```bash
   $> echo "john-doe.archidep.ch" | sudo tee /etc/hostname
   ```
-* Reboot the server.
+
+- Reboot the server.
 
   ```bash
   $> sudo reboot
   ```
 
-* *Once the server has restarted* (it might take a couple of minutes), check
+- _Once the server has restarted_ (it might take a couple of minutes), check
   that you can still connect and that your hostname is correct:
 
   ```bash
@@ -303,18 +309,15 @@ CLI)](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
   $> hostname
   john-doe.archidep.ch
   ```
-* Send your instance's public IP address (the Elastic IP address you allocated)
+
+- Send your instance's public IP address (the Elastic IP address you allocated)
   to the teacher.
-
-
 
 ## End result
 
 ![Diagram](aws-setup.png)
 
 > [PDF version](aws-setup.pdf).
-
-
 
 ## Note: saving AWS Educate credits
 

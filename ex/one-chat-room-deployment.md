@@ -20,31 +20,29 @@ previous exercices to deploy a new application from scratch on your server.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## The goal
 
 You must deploy the provided application in a similar way as the PHP todolist in
 previous exercises:
 
-* You must install the language and database necessary to run the application,
+- You must install the language and database necessary to run the application,
   which are not the same as for the PHP todolist.
-* You must run this application as a systemd service.
-* You must serve this application through nginx acting as a reverse proxy.
-* You must provision a TLS certificate for the application and configure nginx
+- You must run this application as a systemd service.
+- You must serve this application through nginx acting as a reverse proxy.
+- You must provision a TLS certificate for the application and configure nginx
   to use it.
-* You must set up an automated deployment via Git hooks for this application.
+- You must set up an automated deployment via Git hooks for this application.
 
 Additionally:
 
-* The application must run in production mode (see its documentation).
-* The application must restart automatically if your server is rebooted (i.e.
+- The application must run in production mode (see its documentation).
+- The application must restart automatically if your server is rebooted (i.e.
   your systemd service must be enabled).
-* The application must be accessible **only through nginx**. It **must not** be
+- The application must be accessible **only through nginx**. It **must not** be
   exposed directly on a publicly accessible port other than 80 or 443 (in the
   AWS instances used in this course, the other publicly accessible ports are 22,
   3000 and 3001, with port 22 being already used by SSH).
-* Clients accessing the application over HTTP must be redirected to HTTPS.
+- Clients accessing the application over HTTP must be redirected to HTTPS.
 
 ### The application
 
@@ -53,14 +51,12 @@ The application you must deploy is a [real-time chatroom demo][app]. Its code is
 
 It is developed with:
 
-* [Node.js (server-side JavaScript)][node] for the backend
-* [Vue.js (client-side JavaScript)][vue] for the frontend
-* [MongoDB][mongo] for the database (a non-relational, [NoSQL][nosql] database)
+- [Node.js (server-side JavaScript)][node] for the backend
+- [Vue.js (client-side JavaScript)][vue] for the frontend
+- [MongoDB][mongo] for the database (a non-relational, [NoSQL][nosql] database)
 
 You do not need to know any of these technologies, as your goal is only to
 install and run the application, not modify it.
-
-
 
 ## Getting started
 
@@ -101,8 +97,6 @@ server's IP address). Stop the application with `Ctrl-C` once you are done.
 > by default, and it's also a schema-less NoSQL database (databases and
 > collections are created on-the-fly when they are accessed the first time).
 
-
-
 ## Create a systemd service
 
 Create and enable a systemd unit file like in the [systemd
@@ -111,10 +105,10 @@ application instead of the PHP todolist.
 
 > **Hints:**
 >
-> * You will find the correct command to run the application in [the project's
+> - You will find the correct command to run the application in [the project's
 >   `README`][readme]. Remember that systemd requires absolute paths to
 >   commands.
-> * You may want to set the `PORT` environment variable to choose the port on
+> - You may want to set the `PORT` environment variable to choose the port on
 >   which the application will listen. You can use the publicly accessible 3001
 >   port temporarily for testing, but you should use another free port that is
 >   not exposed to complete the exercise, since one of the requirements is to
@@ -128,8 +122,6 @@ next time you restart the server with `sudo reboot`.
 > your systemd configuration to the correct directory. That way you will not
 > have to modify it later.
 
-
-
 ## Serve the application through nginx
 
 Create an nginx configuration to serve the application like in the [nginx
@@ -137,22 +129,18 @@ PHP-FPM exercise][nginx-php-fpm-ex].
 
 > **Hints:**
 >
-> * Skip all steps related to PHP FPM, since they are only valid for a PHP
+> - Skip all steps related to PHP FPM, since they are only valid for a PHP
 >   application.
-> * The `include` and `fastcgi_pass` directives used in the PHP FPM exercise
+> - The `include` and `fastcgi_pass` directives used in the PHP FPM exercise
 >   make no sense for a non-PHP application. You should replace them with a
 >   [`proxy_pass`
 >   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
 >   as [presented during the course][nginx-rp-conf].
 
-
-
 ## Provision a TLS certificate
 
 Obtain and configure a TLS certificate to serve the application over HTTPS like
 in the [certbot exercise][certbot-ex].
-
-
 
 ## Set up an automated deployment with Git hooks
 
@@ -161,9 +149,9 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 
 > **Hints:**
 >
-> * Once you have set up the new directories, make sure to update your systemd
+> - Once you have set up the new directories, make sure to update your systemd
 >   unit file to point to the correct directory.
-> * Update the `post-receive` hook. Compared to the PHP todolist, there are
+> - Update the `post-receive` hook. Compared to the PHP todolist, there are
 >   additional steps which must be performed in the script for the automated
 >   deployment to work correctly:
 >
@@ -232,8 +220,7 @@ Exit with `Ctrl-X` and save when prompted.
 > commands with `sudo` without having to enter a password (hence the `NOPASSWD`
 > option).
 >
-> You can test that it works by connecting to your server and running `sudo
-> systemctl status one-chat-room`. It should no longer ask you for your
+> You can test that it works by connecting to your server and running `sudo systemctl status one-chat-room`. It should no longer ask you for your
 > password.
 
 ### Test the automated deployment
@@ -245,15 +232,11 @@ automated deployment.
 For example, the main title of the page is [in the file
 `views/components/app.pug`][one-chat-room-title].
 
-
-
 ## End result
 
 ![Diagram](one-chat-room-deployment.png)
 
 > [PDF version](one-chat-room-deployment.pdf).
-
-
 
 [app]: https://one-chat-room.herokuapp.com
 [auto-deploy-ex]: git-automated-deployment.md

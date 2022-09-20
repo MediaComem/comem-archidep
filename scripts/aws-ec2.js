@@ -28,7 +28,6 @@ const regionNames = {
 };
 
 export async function allocateAddress(region) {
-
   const ec2 = await loadClient(region);
 
   const params = {
@@ -48,7 +47,11 @@ export async function associateAddress(address, instance) {
   } else if (!instance.Region) {
     throw new Error('Instance must have a region', instance);
   } else if (address.Region !== instance.Region) {
-    throw new Error('Address and instance must have the same region', address, instance);
+    throw new Error(
+      'Address and instance must have the same region',
+      address,
+      instance
+    );
   }
 
   const ec2 = await loadClient(address.Region);
@@ -67,7 +70,6 @@ export async function associateAddress(address, instance) {
 }
 
 export async function createTags(region, resources, tags) {
-
   const ec2 = await loadClient(region);
 
   const params = {
@@ -83,37 +85,40 @@ export function getRegionName(region) {
 }
 
 export async function listAddresses() {
-
   const addresses = [];
   for (const region of await loadRegions()) {
-
     const ec2 = await loadClient(region);
 
     const params = {};
     const result = await ec2.describeAddresses(params).promise();
 
-    addresses.push(...result.Addresses.map(address => ({ ...address, Region: region })));
+    addresses.push(
+      ...result.Addresses.map(address => ({ ...address, Region: region }))
+    );
   }
 
   return addresses;
 }
 
 export async function listInstances() {
-
   const instances = [];
   for (const region of await loadRegions()) {
-
     const ec2 = await loadClient(region);
 
     let nextToken;
 
     do {
-
       const params = {
         Filters: [
           {
             Name: 'instance-state-name',
-            Values: [ 'pending', 'running', 'shutting-down', 'stopping', 'stopped' ]
+            Values: [
+              'pending',
+              'running',
+              'shutting-down',
+              'stopping',
+              'stopped'
+            ]
           }
         ],
         NextToken: nextToken
@@ -122,8 +127,13 @@ export async function listInstances() {
       const result = await ec2.describeInstances(params).promise();
       nextToken = result.NextToken;
 
-      const currentInstances = result.Reservations.reduce((memo, reservation) => [ ...memo, ...reservation.Instances ], []);
-      instances.push(...currentInstances.map(instance => ({ ...instance, Region: region })));
+      const currentInstances = result.Reservations.reduce(
+        (memo, reservation) => [...memo, ...reservation.Instances],
+        []
+      );
+      instances.push(
+        ...currentInstances.map(instance => ({ ...instance, Region: region }))
+      );
     } while (nextToken);
   }
 
@@ -137,7 +147,9 @@ export async function releaseAddress(address) {
 
   const ec2 = await loadClient(address.Region);
 
-  const result = await ec2.releaseAddress(pick(address, 'AllocationId')).promise();
+  const result = await ec2
+    .releaseAddress(pick(address, 'AllocationId'))
+    .promise();
 
   delete address.AssociationId;
   delete address.InstanceId;
@@ -146,14 +158,15 @@ export async function releaseAddress(address) {
 }
 
 export async function runInstance(region, params) {
-
   const ec2 = await loadClient(region);
 
-  const result = await ec2.runInstances({
-    ...params,
-    MaxCount: 1,
-    MinCount: 1
-  }).promise();
+  const result = await ec2
+    .runInstances({
+      ...params,
+      MaxCount: 1,
+      MinCount: 1
+    })
+    .promise();
 
   return {
     ...result.Instances[0],
@@ -162,9 +175,18 @@ export async function runInstance(region, params) {
 }
 
 export const rebootInstances = instancesActionFactory('rebootInstances');
-export const startInstances = instancesActionFactory('startInstances', 'StartingInstances');
-export const stopInstances = instancesActionFactory('stopInstances', 'StoppingInstances');
-export const terminateInstances = instancesActionFactory('terminateInstances', 'TerminatingInstances');
+export const startInstances = instancesActionFactory(
+  'startInstances',
+  'StartingInstances'
+);
+export const stopInstances = instancesActionFactory(
+  'stopInstances',
+  'StoppingInstances'
+);
+export const terminateInstances = instancesActionFactory(
+  'terminateInstances',
+  'TerminatingInstances'
+);
 
 export async function waitForInstances(instances) {
   if (instances.some(instance => !instance.Region)) {
@@ -174,11 +196,12 @@ export async function waitForInstances(instances) {
   const regions = uniq(instances.map(instance => instance.Region));
 
   for (const region of regions) {
-
     const ec2 = await loadClient(region);
 
     const params = {
-      InstanceIds: instances.filter(instance => instance.Region === region).map(instance => instance.InstanceId)
+      InstanceIds: instances
+        .filter(instance => instance.Region === region)
+        .map(instance => instance.InstanceId)
     };
 
     await ec2.waitFor('instanceRunning', params).promise();
@@ -187,7 +210,6 @@ export async function waitForInstances(instances) {
 
 async function loadClient(region) {
   if (!cachedEc2ByRegion[region]) {
-
     await loadAwsCredentials();
 
     cachedEc2ByRegion[region] = new aws.EC2({
@@ -200,7 +222,10 @@ async function loadClient(region) {
 }
 
 export async function loadRegionImage(region) {
-  return (await loadRegionsConfig())[region].image || await loadConfigProperty('aws_image');
+  return (
+    (await loadRegionsConfig())[region].image ||
+    (await loadConfigProperty('aws_image'))
+  );
 }
 
 export async function loadRegionLimit(region) {
@@ -232,14 +257,15 @@ function instancesActionFactory(action, statusKey) {
 
     const regions = uniq(instances.map(instance => instance.Region));
     for (const region of regions) {
-
       const ec2 = await loadClient(region);
       if (!isFunction(ec2[action])) {
         throw new Error(`AWS SDK EC2 has no "${action}" function`);
       }
 
       const params = {
-        InstanceIds: instances.filter(instance => instance.Region === region).map(instance => instance.InstanceId)
+        InstanceIds: instances
+          .filter(instance => instance.Region === region)
+          .map(instance => instance.InstanceId)
       };
 
       const result = await ec2[action](params).promise();
@@ -247,7 +273,9 @@ function instancesActionFactory(action, statusKey) {
       const status = result[statusKey];
       if (status) {
         for (const change of status) {
-          const instance = instances.find(i => i.InstanceId === change.InstanceId);
+          const instance = instances.find(
+            i => i.InstanceId === change.InstanceId
+          );
           instance.State = change.CurrentState;
         }
       }

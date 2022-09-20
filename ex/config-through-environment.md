@@ -16,9 +16,6 @@ hardcoded configuration values.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
-
 ## Setup
 
 Make sure you have completed the [previous exercise](git-clone-deployment.md)
@@ -30,10 +27,6 @@ Stop your `php -S` command if it is still running.
 
 > **Reminder:** You can use Ctrl-C to stop any command currently running in your
 > terminal.
-
-
-
-
 
 ## Update the configuration
 
@@ -88,10 +81,6 @@ with an appropriate default value.
 
 **Commit and push your changes** to the remote repository on GitHub.
 
-
-
-
-
 ## Pull the latest version from the server
 
 **Connect to your server** and go into the cloned repository from the previous
@@ -108,13 +97,9 @@ $> git restore index.php
 
 You can now pull the latest version of the code from GitHub.
 
-> **Reminder:** The command to pull the latest changes is `git pull <remote>
-> <branch>`. If you do not remember the name(s) of your remote(s), you can list
+> **Reminder:** The command to pull the latest changes is `git pull <remote> <branch>`. If you do not remember the name(s) of your remote(s), you can list
 > them with the `git remote` command (or with `git remote -v` to also see their
 > URLs).
-
-
-
 
 ## Run the PHP development server
 
@@ -122,9 +107,9 @@ Still in the cloned repository, run a PHP development server on port 3000. Note
 that this time you must now provide the appropriate configuration through
 environment variables:
 
-* You must provide the `TODOLIST_DB_PASS` environment variable which has no
+- You must provide the `TODOLIST_DB_PASS` environment variable which has no
   default value.
-* If the default values you have hardcoded for other variables are not suitable
+- If the default values you have hardcoded for other variables are not suitable
   for your server's environment, you must also provided the corresponding
   environment variables with suitable values.
 
@@ -134,10 +119,6 @@ environment variables:
 You (and everybody else) should be able to access the application in a browser
 at the correct IP address and port (e.g. `W.X.Y.Z:3000`) and it should work.
 
-
-
-
-
 ## What have I done?
 
 You have made your application configurable through the environment, as
@@ -146,7 +127,7 @@ App](https://12factor.net/config).
 
 This means that you no longer need to make any changes to the code before
 deploying your application to any new environment. It can now be deployed
-*anywhere*, on any server or on any developer's local machine, without changing
+_anywhere_, on any server or on any developer's local machine, without changing
 a single line of code.
 
 You simply need to set the appropriate environment variables when running it,
@@ -155,10 +136,6 @@ defaults. For example, if you are deploying the application on a server where
 the MySQL database server is exposed on a non-standard port like `5000`, simply
 set the `TODOLIST_DB_PORT` variable, and the application will happily connect to
 it.
-
-
-
-
 
 ## Architecture
 
@@ -177,10 +154,6 @@ short-lived processes run during the exercise:
 ![Detailed architecture](config-through-environment.png)
 
 > [Detailed architecture PDF version](config-through-environment.pdf).
-
-
-
-
 
 [php-shorthand-comparisons]: https://stitcher.io/blog/shorthand-comparisons-in-php
 [php-todolist]: https://github.com/MediaComem/comem-archidep-php-todo-exercise

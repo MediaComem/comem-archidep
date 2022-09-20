@@ -30,16 +30,12 @@ shell for most Linux distributions and macOS.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## Getting help (`man`, `--help`)
 
-* `man ls` displays the manual of the `ls` command on Unix systems.
-* `help ls` displays the help of the `ls` command in Git Bash on Windows.
-* `git --help` displays the help of the `git` command. Many (but not all)
+- `man ls` displays the manual of the `ls` command on Unix systems.
+- `help ls` displays the help of the `ls` command in Git Bash on Windows.
+- `git --help` displays the help of the `git` command. Many (but not all)
   commands provide a help page.
-
-
 
 ## Navigating
 
@@ -54,38 +50,36 @@ $> pwd
 
 ### What is there? (`ls`)
 
-Command   | Effect
-:-------- | :------------------------------------------------------------------------------------------------------------------
-`ls`      | List the files in the current directory (invisible files are hidden).
-`ls -a`   | List all files in the current directory, including invisible ones.
-`ls -ahl` | List all files in the current directory, also displaying their mode, owner, group, size and last modification date.
-`ls foo`  | List all files in the `foo` directory inside the current directory.
+| Command   | Effect                                                                                                              |
+| :-------- | :------------------------------------------------------------------------------------------------------------------ |
+| `ls`      | List the files in the current directory (invisible files are hidden).                                               |
+| `ls -a`   | List all files in the current directory, including invisible ones.                                                  |
+| `ls -ahl` | List all files in the current directory, also displaying their mode, owner, group, size and last modification date. |
+| `ls foo`  | List all files in the `foo` directory inside the current directory.                                                 |
 
 ### Move around (`cd`)
 
-Command        | Effect
-:------------- | :-----------------------------------------------------------------------------------------------
-`cd .`         | Move into the current directory ([wheeeeee][whee]).
-`cd foo`       | Move into the `foo` directory inside the current directory.
-`cd ./foo`     | *Same as previous.*
-`cd foo/bar`   | Move into the `bar` directory inside the `foo` directory inside the current directory
-`cd ./foo/bar` | *Same as previous.*
-`cd ..`        | Move into the parent directory (e.g. into `/foo` if you are in `/foo/bar`).
-`cd ../..`     | Move into the parent directory of the parent directory (e.g. into `/` if you are in `/foo/bar`).
-`cd ~`         | Move into your home directory.
-`cd`           | *Same as previous.*
-`cd /`         | Move to the root of the file system.
+| Command        | Effect                                                                                           |
+| :------------- | :----------------------------------------------------------------------------------------------- |
+| `cd .`         | Move into the current directory ([wheeeeee][whee]).                                              |
+| `cd foo`       | Move into the `foo` directory inside the current directory.                                      |
+| `cd ./foo`     | _Same as previous._                                                                              |
+| `cd foo/bar`   | Move into the `bar` directory inside the `foo` directory inside the current directory            |
+| `cd ./foo/bar` | _Same as previous._                                                                              |
+| `cd ..`        | Move into the parent directory (e.g. into `/foo` if you are in `/foo/bar`).                      |
+| `cd ../..`     | Move into the parent directory of the parent directory (e.g. into `/` if you are in `/foo/bar`). |
+| `cd ~`         | Move into your home directory.                                                                   |
+| `cd`           | _Same as previous._                                                                              |
+| `cd /`         | Move to the root of the file system.                                                             |
 
 ### Special paths (`.`, `..`, `~`)
 
-Path | Where
-:--- | :------------------------------------------------------------
-`.`  | The current directory (the same as indicated by `pwd`).
-`..` | The parent directory (e.g. `/foo` if you are in `/foo/bar`).
-`~`  | Your user's home directory (e.g. `/Users/username` in macOS).
-`/`  | The file system's root directory.
-
-
+| Path | Where                                                         |
+| :--- | :------------------------------------------------------------ |
+| `.`  | The current directory (the same as indicated by `pwd`).       |
+| `..` | The parent directory (e.g. `/foo` if you are in `/foo/bar`).  |
+| `~`  | Your user's home directory (e.g. `/Users/username` in macOS). |
+| `/`  | The file system's root directory.                             |
 
 ## Reading
 
@@ -119,8 +113,6 @@ down arrow keys (exit this mode by typing the letter `q`, as in **q**uit):
 ```bash
 $> less file.txt
 ```
-
-
 
 ## Writing
 
@@ -237,8 +229,6 @@ directory you want to delete).
 $> rm -r directory
 ```
 
-
-
 ## Finding stuff
 
 ### Find files (`find`)
@@ -262,8 +252,6 @@ Recursively find all files in the current directory containing the word "foo":
 ```bash
 $> grep -R foo .
 ```
-
-
 
 ## Environment variables
 
@@ -322,8 +310,6 @@ $> which git
 $> which foo
 foo not found
 ```
-
-
 
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
 [tee]: https://en.wikipedia.org/wiki/Tee_(command)

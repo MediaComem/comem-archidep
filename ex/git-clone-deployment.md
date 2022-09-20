@@ -16,9 +16,6 @@ instead of SFTP.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
-
 ## Setup
 
 Make sure you have completed the [previous exercise](sftp-deployment.md) and the
@@ -29,10 +26,6 @@ person who owns the fork), create your own fork of the repository so that you
 can modify it independently.
 
 Stop your `php -S` command if it is still running.
-
-
-
-
 
 ## Clone the repository
 
@@ -56,17 +49,12 @@ While connected to your server, you need to clone the repository somewhere. For
 example, you could clone it to the `todolist-repo` directory in your home
 directory.
 
-> **Reminder:** The command to clone a Git repository is `git clone <url>
-> [<directory-name>]`. The directory name is optional, and defaults to the last
+> **Reminder:** The command to clone a Git repository is `git clone <url> [<directory-name>]`. The directory name is optional, and defaults to the last
 > component of the URL's path without the ".git" extension.
 >
 > For example, if the clone URL is "https://github.com/bob/awesome-repo.git",
 > the directory will be named "awesome-repo" by default, unless you specify
 > another name with the `<directory-name>` argument.
-
-
-
-
 
 ## Update the configuration
 
@@ -77,9 +65,6 @@ lines of `index.php` with the same configuration as for the previous exercise
 Go into the cloned repository on the server and edit `index.php` with nano or
 Vim, or edit it on your machine and overwrite it with FileZilla, as you prefer.
 Make sure the configuration is appropriate to your server's environment.
-
-
-
 
 ## Run the PHP development server
 
@@ -93,10 +78,6 @@ $> php -S 0.0.0.0:3000
 You (and everybody else) should be able to access the application in a browser
 at the correct IP address and port (e.g. `W.X.Y.Z:3000`).
 
-
-
-
-
 ## What have I done?
 
 You are now transfering code to your deployment environment (your server) using
@@ -105,15 +86,11 @@ a version control tool (Git) instead of manually, as recommended in the
 Always deploying from the same codebase makes it less likely that you will make
 a mistake like:
 
-* Copying an outdated version of the codebase from the wrong directory.
-* Forgetting to upload some of the modified files when you upload them by hand.
+- Copying an outdated version of the codebase from the wrong directory.
+- Forgetting to upload some of the modified files when you upload them by hand.
 
 Using Git now also allows you to use Git commands like `git pull` to easily pull
 the latest changes from the repository.
-
-
-
-
 
 ## Architecture
 
@@ -132,9 +109,5 @@ short-lived processes run during the exercise:
 ![Detailed architecture](git-clone-deployment.png)
 
 > [Detailed architecture PDF version](git-clone-deployment.pdf).
-
-
-
-
 
 [php-todolist]: https://github.com/MediaComem/comem-archidep-php-todo-exercise

@@ -28,31 +28,29 @@ previous exercices to deploy a new application from scratch on your server.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## The goal
 
 You must deploy the provided application in a similar way as the PHP todolist in
 previous exercises:
 
-* You must install the language(s) and database necessary to run the
+- You must install the language(s) and database necessary to run the
   application, which are not the same as for the PHP todolist.
-* You must run the application as a systemd service.
-* You must serve the application through nginx acting as a reverse proxy.
-* You must provision a TLS certificate for the application and configure nginx
+- You must run the application as a systemd service.
+- You must serve the application through nginx acting as a reverse proxy.
+- You must provision a TLS certificate for the application and configure nginx
   to use it.
-* You must set up an automated deployment via Git hooks for this application.
+- You must set up an automated deployment via Git hooks for this application.
 
 Additionally:
 
-* The application must run in production mode (see its documentation).
-* The application must restart automatically if your server is rebooted (i.e.
+- The application must run in production mode (see its documentation).
+- The application must restart automatically if your server is rebooted (i.e.
   your systemd service must be enabled).
-* The application must be accessible **only through nginx**. It **must not** be
+- The application must be accessible **only through nginx**. It **must not** be
   exposed directly on a publicly accessible port. In the AWS virtual machines
   used in this course, ports 3000 and 3001 are open for testing. Do not use
   these ports in the final setup.
-* Clients accessing the application over HTTP must be redirected to HTTPS.
+- Clients accessing the application over HTTP must be redirected to HTTPS.
 
 ### The application
 
@@ -61,40 +59,41 @@ play against the computer. Its code is [available on GitHub][repo].
 
 It uses:
 
-* [Sinatra][sinatra], a [Ruby][ruby] microframework, for the backend.
-* [Svelte][svelte], a JavaScript framework, for the frontend.
-* [Redis][redis], an in-memory [NoSQL][nosql] database, for the database.
+- [Sinatra][sinatra], a [Ruby][ruby] microframework, for the backend.
+- [Svelte][svelte], a JavaScript framework, for the frontend.
+- [Redis][redis], an in-memory [NoSQL][nosql] database, for the database.
 
 You do not need to know the specifics of these technologies. Your goal is only
 to deploy the application, not modify it.
-
-
 
 ## Getting started
 
 You may want to start by making sure you have installed all the requirements
 described in the [project's README][readme] on your server.
 
-* **How to install:** there are several methods to install Ruby and Node.js. You
+- **How to install:** there are several methods to install Ruby and Node.js. You
   should look for installation instructions specific to your operating system
   (your AWS instance is running Ubuntu 20.04 Focal). Where possible, you should
   find instructions to install with the apt package manager.
 
   For Redis, you may follow step 1 of this article:
   https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-20-04.
-* **Check your ruby installation:** you can check that Ruby has been correctly
+
+- **Check your ruby installation:** you can check that Ruby has been correctly
   installed with the following command:
 
   ```bash
   ruby -e 'puts "Ruby #{RUBY_VERSION} is installed and working"'
   ```
-* **Check your Node.js installation:** you can check that Node.js has been
+
+- **Check your Node.js installation:** you can check that Node.js has been
   correctly installed with the following command:
 
   ```bash
   node -e 'console.log(`Node.js ${process.version} is installed and working`)'
   ```
-* **Check your Redis installation:** step 2 of the article mentionned above
+
+- **Check your Redis installation:** step 2 of the article mentionned above
   explains how to make sure your Redis server is running.
 
 ### Install compilation tools
@@ -134,8 +133,6 @@ with `Ctrl-C` once you are done.
 > It works out of the box for two reasons: Redis requires no user or password by
 > default, and it's also a schema-less NoSQL database.
 
-
-
 ## Create a systemd service
 
 Create and enable a systemd unit file like in the [systemd
@@ -144,10 +141,10 @@ application instead of the PHP todolist.
 
 > **Hints:**
 >
-> * You will find the correct command to run the application in [the project's
+> - You will find the correct command to run the application in [the project's
 >   `README`][readme]. Remember that systemd requires absolute paths to
 >   commands.
-> * You may want to set the `PORT` environment variable to choose the port on
+> - You may want to set the `PORT` environment variable to choose the port on
 >   which the application will listen. You can use the publicly accessible 3001
 >   port temporarily for testing, but you should use another free port that is
 >   not exposed to complete the exercise, since one of the requirements is to
@@ -161,8 +158,6 @@ next time you restart the server with `sudo reboot`.
 > your systemd configuration to the correct directory. That way you will not
 > have to modify it later.
 
-
-
 ## Serve the application through nginx
 
 Create an nginx configuration to serve the application like in the [nginx
@@ -170,25 +165,21 @@ PHP-FPM exercise][nginx-php-fpm-ex].
 
 > **Hints:**
 >
-> * Skip all steps related to PHP FPM, since they are only valid for a PHP
+> - Skip all steps related to PHP FPM, since they are only valid for a PHP
 >   application.
-> * The `include` and `fastcgi_pass` directives used in the PHP FPM exercise
+> - The `include` and `fastcgi_pass` directives used in the PHP FPM exercise
 >   make no sense for a non-PHP application. You should replace them with a
 >   [`proxy_pass`
 >   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
 >   as [presented during the course][nginx-rp-conf].
-> * Similarly, you can also point the nginx configuration directly to the
+> - Similarly, you can also point the nginx configuration directly to the
 >   automated deployment structure. That way you will not have to modify it
 >   later.
-
-
 
 ## Provision a TLS certificate
 
 Obtain and configure a TLS certificate to serve the application over HTTPS like
 in the [certbot exercise][certbot-ex].
-
-
 
 ## Set up an automated deployment with Git hooks
 
@@ -197,9 +188,9 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 
 > **Hints:**
 >
-> * Once you have set up the new directories, make sure to update your systemd
+> - Once you have set up the new directories, make sure to update your systemd
 >   unit file to point to the correct directory.
-> * Update the `post-receive` hook. Compared to the PHP todolist, there are
+> - Update the `post-receive` hook. Compared to the PHP todolist, there are
 >   additional steps which must be performed in the script for the automated
 >   deployment to work correctly:
 >
@@ -209,7 +200,8 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 >   1. The systemd service must be restarted with `systemctl`. (Ruby code is not
 >      reinterpreted on-the-fly as with PHP; the process must be restarted so
 >      that the code is reloaded into memory).
-> * Note: in the automated deployment exercice, it is mentionned that the
+>
+> - Note: in the automated deployment exercice, it is mentionned that the
 >   application will no longer work after changing the path to the repository in
 >   the nginx configuration. In the case of the WOPR application, it will
 >   continue to work, because the application serves its static files on its
@@ -229,7 +221,7 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 ### Allow your user to restart the service without a password
 
 In order for the new `post-receive` hook to work, your user must be able to run
-`sudo systemctl restart wopr`  (assuming you have named your service `wopr`)
+`sudo systemctl restart wopr` (assuming you have named your service `wopr`)
 without entering a password, otherwise it will not work in a Git hook.
 
 > A Git hook is not an interactive program. You are not running it yourself, so
@@ -283,8 +275,7 @@ Exit with `Ctrl-X` and save when prompted.
 > This line allows any user in the `wopr` group to execute the listed commands
 > with `sudo` without having to enter a password (hence the `NOPASSWD` option).
 >
-> You can test that it works by connecting to your server and running `sudo
-> systemctl status one-chat-room`. It should no longer ask you for your
+> You can test that it works by connecting to your server and running `sudo systemctl status one-chat-room`. It should no longer ask you for your
 > password.
 
 ### Test the automated deployment
@@ -296,16 +287,14 @@ automated deployment.
 For example, some of the text displayed in the main page is [in the file
 `src/app.svelte`][change].
 
-
-
 ## Troubleshooting
 
 Here's a few tips about some problems you may encounter during this exercise.
 Note that some of these errors can happen in various situations:
 
-* When running a command manually from your terminal.
-* When systemd tries to start your service.
-* When your `post-receive` Git hook executes.
+- When running a command manually from your terminal.
+- When systemd tries to start your service.
+- When your `post-receive` Git hook executes.
 
 ### `ENOENT open package.json`
 
@@ -373,8 +362,7 @@ sh: 1: rimraf: not found
 ```
 
 You are probably trying to execute the `npm run build` command in the WOPR
-application without having installed its JavaScript dependencies (with the `npm
-ci` command).
+application without having installed its JavaScript dependencies (with the `npm ci` command).
 
 > Note that the `npm ci` command downloads npm packages to a `node_modules`
 > directory in the current working directory. This means that you must run it at
@@ -433,8 +421,6 @@ have configured, it means that nginx cannot reach the proxy address you have
 defined. Check your nginx configuration to make sure that you are using the
 correct address and port. Are you sure your application is actually listening on
 that port?
-
-
 
 [app]: https://comem-wopr.herokuapp.com
 [auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md

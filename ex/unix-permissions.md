@@ -14,8 +14,6 @@ Replace `john_doe` by your actual username.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## Setup
 
 Create a new `alice` user:
@@ -24,21 +22,17 @@ Create a new `alice` user:
 $> sudo useradd --create-home --shell /bin/bash alice
 ```
 
-
-
 ## The exercise
 
-* Create a file named `file.txt` in `alice`'s home directory that is readable by
+- Create a file named `file.txt` in `alice`'s home directory that is readable by
   `alice` but not by you.
-* Create a directory named `for_alice` in your home directory. The `alice` user
+- Create a directory named `for_alice` in your home directory. The `alice` user
   must be able to traverse this directory, but not list its contents or create
   new files in it.
-* The directory must contain a `readable.txt` file that `alice` can read from,
+- The directory must contain a `readable.txt` file that `alice` can read from,
   but not write to.
-* The directory must contain a `writable.txt` file that `alice` can read from
+- The directory must contain a `writable.txt` file that `alice` can read from
   and write to.
-
-
 
 ## Check if it works
 

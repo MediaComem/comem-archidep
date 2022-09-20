@@ -28,31 +28,29 @@ previous exercices to deploy a new application from scratch on your server.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## The goal
 
 You must deploy the provided application in a similar way as the PHP todolist in
 previous exercises:
 
-* You must install the language(s) and database necessary to run the
+- You must install the language(s) and database necessary to run the
   application, which are not the same as for the PHP todolist.
-* You must run the application as a systemd service.
-* You must serve the application through nginx acting as a reverse proxy.
-* You must provision a TLS certificate for the application and configure nginx
+- You must run the application as a systemd service.
+- You must serve the application through nginx acting as a reverse proxy.
+- You must provision a TLS certificate for the application and configure nginx
   to use it.
-* You must set up an automated deployment via Git hooks for this application.
+- You must set up an automated deployment via Git hooks for this application.
 
 Additionally:
 
-* The application must run in production mode (see its documentation).
-* The application must restart automatically if your server is rebooted (i.e.
+- The application must run in production mode (see its documentation).
+- The application must restart automatically if your server is rebooted (i.e.
   your systemd service must be enabled).
-* The application must be accessible **only through nginx**. It **must not** be
+- The application must be accessible **only through nginx**. It **must not** be
   exposed directly on a publicly accessible port. In the AWS virtual machines
   used in this course, ports 3000 and 3001 are open for testing. Do not use
   these ports in the final setup.
-* Clients accessing the application over HTTP must be redirected to HTTPS.
+- Clients accessing the application over HTTP must be redirected to HTTPS.
 
 ### The application
 
@@ -61,14 +59,12 @@ code is [available on GitHub][repo].
 
 It uses:
 
-* [Express.js][express], a [Node.js][node] framework, for the backend.
-* [Svelte][svelte], a JavaScript framework, for the frontend.
-* [PostgreSQL][postgres], an open source relational database.
+- [Express.js][express], a [Node.js][node] framework, for the backend.
+- [Svelte][svelte], a JavaScript framework, for the frontend.
+- [PostgreSQL][postgres], an open source relational database.
 
 You do not need to know the specifics of these technologies. Your goal is only
 to deploy the application, not modify it.
-
-
 
 ## Getting started
 
@@ -77,17 +73,17 @@ to deploy the application, not modify it.
 You may want to start by making sure you have installed all the requirements
 described in the [project's README][readme] on your server:
 
-* **How to install Node.js:** there are several methods to install Node.js. One
+- **How to install Node.js:** there are several methods to install Node.js. One
   of the simplest is to use the [binary distributions provided by
   NodeSource][node-install]. You should look for installation instructions
   specific to your operating system (your AWS instance is running Ubuntu 20.04
   Focal). Where possible, you should find instructions for the apt package
   manager.
-* **How to install PostgreSQL:** you can follow the official instructions on the
+- **How to install PostgreSQL:** you can follow the official instructions on the
   Downloads page of the [PostgreSQL website][postgres]. You should look for
   installation instructions specific to your operating system (your AWS instance
   is running Ubuntu 20.04 Focal).
-* **Check your Node.js installation:** you can check that Node.js has been
+- **Check your Node.js installation:** you can check that Node.js has been
   correctly installed by displaying the version of the `node` command:
 
   ```bash
@@ -102,7 +98,8 @@ described in the [project's README][readme] on your server:
   $> node -e 'console.log(1 + 2)'
   3
   ```
-* **Check your PostgreSQL installation:** you can check that PostgreSQL has been
+
+- **Check your PostgreSQL installation:** you can check that PostgreSQL has been
   correctly installed by displaying the version of the `psql` command:
 
   ```bash
@@ -131,17 +128,17 @@ described in the [project's README][readme] on your server:
 You must also perform the **initial setup** instructions indicated in the
 [project's README][readme].
 
-> * **Note:** PostgreSQL listens on port 5432 by default.
-> * **Note:** the setup instructions use the `createuser` and `createdb`
+> - **Note:** PostgreSQL listens on port 5432 by default.
+> - **Note:** the setup instructions use the `createuser` and `createdb`
 >   commands. These commands are binaries that come with the PostgreSQL server
 >   and can be used to manage PostgreSQL users and databases on the command
 >   line:
 >
->   * The `createuser --pwprompt rps` command creates a PostgreSQL user named
+>   - The `createuser --pwprompt rps` command creates a PostgreSQL user named
 >     "rps" and asks you to define a password for that user. The application
 >     should use this PostgreSQL username and password to connect to the
 >     database.
->   * The `createdb --owner rps rps` command creates an empty PostgreSQL
+>   - The `createdb --owner rps rps` command creates an empty PostgreSQL
 >     database named "rps" and owned by the "rps" user. This is the database
 >     that the application will use.
 >
@@ -150,12 +147,10 @@ You must also perform the **initial setup** instructions indicated in the
 >   you executed when first deploying the PHP todolist.
 >
 >   If you prefer using SQL, you could instead connect to the database as the
->   `postgres` user (equivalent to MySQL's `root` user) with `sudo -u postgres
->   psql` and run equivalent [`CREATE
->   USER`](https://www.postgresql.org/docs/13/sql-createuser.html) and [`CREATE
->   DATABASE`](https://www.postgresql.org/docs/13/sql-createdatabase.html)
+>   `postgres` user (equivalent to MySQL's `root` user) with `sudo -u postgres psql` and run equivalent [`CREATE USER`](https://www.postgresql.org/docs/13/sql-createuser.html) and [`CREATE DATABASE`](https://www.postgresql.org/docs/13/sql-createdatabase.html)
 >   queries.
-> * **Note:** the `npm run migrate` command you are asked to run will execute
+>
+> - **Note:** the `npm run migrate` command you are asked to run will execute
 >   [the RPS application's database
 >   migrations](https://github.com/MediaComem/rps/blob/627e80fcdfa8e5e4b4cfe66b9ff372a0d25e889f/src/server/migrations/20201209165252_init.ts)
 >   which are written in code. The migration scripts will connect to the
@@ -164,7 +159,8 @@ You must also perform the **initial setup** instructions indicated in the
 >   This is equivalent to the [rest of the `todolist.sql`
 >   script](https://github.com/MediaComem/comem-archidep-php-todo-exercise/blob/5d46e9fcf974d3d74d5eec838c512798f02581e1/todolist.sql#L12-L18)
 >   you executed when first deploying to the PHP todolist.
-> * **Note:** on the command line, PostgreSQL uses [peer
+>
+> - **Note:** on the command line, PostgreSQL uses [peer
 >   authentication](https://www.postgresql.org/docs/13/auth-peer.html) based on
 >   your Unix username by default. This is why the commands are prefixed with
 >   `sudo -u postgres`, which executes them as the `postgres` Unix user which
@@ -184,8 +180,6 @@ Run the application on that port and visit http://W.X.Y.Z:3001 to check that it
 works (replacing `W.X.Y.Z` by your server's IP address). Stop the application
 with `Ctrl-C` once you are done.
 
-
-
 ## Create a systemd service
 
 Create and enable a systemd unit file like in the [systemd
@@ -194,10 +188,10 @@ application instead of the PHP todolist.
 
 > **Hints:**
 >
-> * You will find the correct command to run the application in [the project's
+> - You will find the correct command to run the application in [the project's
 >   `README`][readme]. Remember that systemd requires absolute paths to
 >   commands.
-> * You may want to set the `PORT` environment variable to choose the port on
+> - You may want to set the `PORT` environment variable to choose the port on
 >   which the application will listen. You can use the publicly accessible 3001
 >   port temporarily for testing, but you should use another free port that is
 >   not exposed to complete the exercise, since one of the requirements is to
@@ -210,8 +204,6 @@ next time you restart the server with `sudo reboot`.
 > automated deployment project structure at this point, so that you can point
 > your systemd configuration to the correct directory. That way you will not
 > have to modify it later.
-
-
 
 ## Serve the application through nginx
 
@@ -232,25 +224,21 @@ proxy_set_header Host $host;
 
 > **Hints:**
 >
-> * Skip all steps related to PHP FPM, since they are only valid for a PHP
+> - Skip all steps related to PHP FPM, since they are only valid for a PHP
 >   application.
-> * The `include` and `fastcgi_pass` directives used in the PHP FPM exercise
+> - The `include` and `fastcgi_pass` directives used in the PHP FPM exercise
 >   make no sense for a non-PHP application. You should replace them with a
 >   [`proxy_pass`
 >   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
 >   as [presented during the course][nginx-rp-conf].
-> * **Advanced:** you can also point the nginx configuration directly to the
+> - **Advanced:** you can also point the nginx configuration directly to the
 >   automated deployment structure. That way you will not have to modify it
 >   later.
-
-
 
 ## Provision a TLS certificate
 
 Obtain and configure a TLS certificate to serve the application over HTTPS like
 in the [certbot exercise][certbot-ex].
-
-
 
 ## Set up an automated deployment with Git hooks
 
@@ -259,7 +247,7 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 
 > **Hints:**
 >
-> * Once you have set up the new directories, make sure to update your systemd
+> - Once you have set up the new directories, make sure to update your systemd
 >   unit file to point to the correct directory.
 >
 >   Note that the new directory is a fresh deployment, so you have to repeat
@@ -267,7 +255,8 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 >   directory. You do not have to create or migrate the database again, and your
 >   hook will handle most of the setup, but you must manually configure the
 >   `.env` file in this new deployment directory as well.
-> * Update the `post-receive` hook. Compared to the PHP todolist, there are
+>
+> - Update the `post-receive` hook. Compared to the PHP todolist, there are
 >   additional steps which must be performed in the script for the automated
 >   deployment to work correctly:
 >
@@ -281,7 +270,8 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 >
 >   The commands to perform these steps must be added to your `post-receive`
 >   hook script.
-> * Note: in the automated deployment exercice, it is mentionned that the
+>
+> - Note: in the automated deployment exercice, it is mentionned that the
 >   application will no longer work after changing the path to the repository in
 >   the nginx configuration. In the case of the RPS application, it will
 >   continue to work, because the application serves its static files on its
@@ -301,7 +291,7 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 ### Allow your user to restart the service without a password
 
 In order for the new `post-receive` hook to work, your user must be able to run
-`sudo systemctl restart rps`  (assuming you have named your service `rps`)
+`sudo systemctl restart rps` (assuming you have named your service `rps`)
 without entering a password, otherwise it will not work in a Git hook.
 
 > A Git hook is not an interactive program. You are not running it yourself, so
@@ -355,8 +345,7 @@ Exit with `Ctrl-X` and save when prompted.
 > This line allows any user in the `rps` group to execute the listed commands
 > with `sudo` without having to enter a password (hence the `NOPASSWD` option).
 >
-> You can test that it works by connecting to your server and running `sudo
-> systemctl status rps`. It should no longer ask you for your password.
+> You can test that it works by connecting to your server and running `sudo systemctl status rps`. It should no longer ask you for your password.
 
 ### Test the automated deployment
 
@@ -374,16 +363,14 @@ the commit to your server.
 > But this then requires a full build with `npm run build`, which is impractical
 > on small cloud servers.
 
-
-
 ## Troubleshooting
 
 Here's a few tips about some problems you may encounter during this exercise.
 Note that some of these errors can happen in various situations:
 
-* When running a command manually from your terminal.
-* When systemd tries to start your service.
-* When your `post-receive` Git hook executes.
+- When running a command manually from your terminal.
+- When systemd tries to start your service.
+- When your `post-receive` Git hook executes.
 
 ### `ENOENT`
 
@@ -540,8 +527,6 @@ have configured, it means that nginx cannot reach the proxy address you have
 defined. Check your nginx configuration to make sure that you are using the
 correct address and port. Are you sure your application is actually listening on
 that port?
-
-
 
 [auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md
 [automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md#update-the-todolist-nginx-configuration

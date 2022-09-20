@@ -15,15 +15,11 @@ Azure](https://azure.microsoft.com) cloud platform.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## Apply to Azure for Students
 
 Apply to [Azure for Students](https://azure.microsoft.com/en-us/free/students/)
 **with your `@hes-so.ch` email address**, which will provide you with free
 Azure resources as a student.
-
-
 
 ## Get your public SSH key
 
@@ -48,23 +44,22 @@ You should copy the output of this command. You will need it later.
 > permanently lost. (You will need to put your public key on GitHub again and
 > everywhere else you may have used it.)
 
-
-
 ## Launch a virtual server
 
 Once you have your Azure account, you can launch the virtual server you will be
 using for the rest of the course.
 
-* Access the [Azure portal](https://portal.azure.com) and go to the **Virtual
+- Access the [Azure portal](https://portal.azure.com) and go to the **Virtual
   machines** section:
 
   ![Azure Portal](../images/azure-portal.png)
-* Create a new virtual machine, i.e. a new virtual server in the Microsoft Azure
+
+- Create a new virtual machine, i.e. a new virtual server in the Microsoft Azure
   infrastructure:
 
   ![Azure: create a new virtual machine](../images/azure-vms.png)
 
-  * In the **Basics** settings, configure the **instance details**: the
+  - In the **Basics** settings, configure the **instance details**: the
     machine's name, region, image and size:
 
     ![Azure: virtual machine instance details](../images/azure-vm-instance-details.png)
@@ -101,8 +96,9 @@ using for the rest of the course.
     > to limit the IP addresses authorized to access your virtual server. For
     > the purposes of this course, it's simpler to allow anyone to connect from
     > any source IP address.
-  * Use the default **Disks** settings.
-  * In the **Networking** settings, select the **Advanced** security group
+
+  - Use the default **Disks** settings.
+  - In the **Networking** settings, select the **Advanced** security group
     option, and create a new security group:
 
     ![Azure: virtual machine networking](../images/azure-vm-networking.png)
@@ -127,16 +123,16 @@ using for the rest of the course.
     > reachable, ports 80 (HTTP) and 443 (HTTPS) must accept incoming requests.
     > Port 22 is for SSH connections. Ports 3000 & 3001 will be used in various
     > exercises.
-  * Use the default **Management**, **Advanced** and **Tags** settings.
-  * Review and create your virtual machine.
-  * Once your deployment is complete, go to the virtual machine source:
+
+  - Use the default **Management**, **Advanced** and **Tags** settings.
+  - Review and create your virtual machine.
+  - Once your deployment is complete, go to the virtual machine source:
 
     ![Azure: virtual machine deployment complete](../images/azure-vm-deployment-complete.png)
-  * Find your machine's public IP address in the virtual machine's information:
+
+  - Find your machine's public IP address in the virtual machine's information:
 
     ![Azure: virtual machine overview](../images/azure-vm-overview.png)
-
-
 
 ## (Optional) Get your instance's public SSH key
 
@@ -201,11 +197,9 @@ by encoded new lines (`\n`).
 > that server could potentially be read and modified by an attacker if he
 > manages to intercept the initial connection.
 
-
-
 ## Configure your virtual server
 
-* Connect to your new instance over SSH.
+- Connect to your new instance over SSH.
 
   Assuming the instance's public IP address is `W.X.Y.Z` (replace with the IP
   address you copied from your virtual machine's information), and the
@@ -221,7 +215,8 @@ by encoded new lines (`\n`).
   > automatically put in your user's `~/.ssh/authorized_keys` file when the
   > server was launched, which allows you to authenticate using your private SSH
   > key.
-* Once you are connected, run the following command to give the teacher access
+
+- Once you are connected, run the following command to give the teacher access
   to your instance (be sure to copy the whole line and to replace `john_doe`
   with your username):
 
@@ -232,7 +227,8 @@ by encoded new lines (`\n`).
   > This adds the teacher's public SSH key to your user's
   > `~/.ssh/authorized_keys`, allowing the teacher to also authenticate to your
   > virtual server with his private SSH key to help debug issues.
-* Change the hostname of your server.
+
+- Change the hostname of your server.
 
   **WARNING:** you should not use underscores (`_`) in a hostname, use hyphens
   (`-`) instead.
@@ -255,13 +251,14 @@ by encoded new lines (`\n`).
   > For the purposes of this course, we will be using the `archidep.ch`
   > domain, so it makes sense to use a subdomain corresponding to yourself
   > (`john-doe.archidep.ch`) as the hostname.
-* Reboot the server.
+
+- Reboot the server.
 
   ```bash
   $> sudo reboot
   ```
 
-* *Once the server has restarted* (it might take a couple of minutes), check
+- _Once the server has restarted_ (it might take a couple of minutes), check
   that you can still connect and that your hostname is correct:
 
   ```bash
@@ -272,5 +269,6 @@ by encoded new lines (`\n`).
   $> hostname
   john-doe.archidep.ch
   ```
-* Send your virtual server's **public IP address** and the **username of your
+
+- Send your virtual server's **public IP address** and the **username of your
   administrator account** to the teacher.

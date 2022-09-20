@@ -20,8 +20,6 @@ instances.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## Goal
 
 The application you must deploy is an [IP address locator][locator]. Its source
@@ -42,23 +40,17 @@ deployment linked above.)
 > Since there are 3 instances available to respond to requests, it can in theory
 > respond to 3 times as many requests in parallel.
 
-
-
 ## Requirements
 
 You must have [Node.js][node] version 10+ installed on your server.
-
-
 
 ## Install the application on your server
 
 Follow the instructions in the [GitHub repository's README][locator-readme] to
 install the application on your server:
 
-* Clone the repository.
-* Install its dependencies.
-
-
+- Clone the repository.
+- Install its dependencies.
 
 ## Run the application with PM2
 
@@ -85,10 +77,10 @@ setting the correct environment variables for each instance. Read the [locator's
 configuration documentation][locator-config] to find the correct variables to
 set.
 
-> * *Hint:* the `script` key in the PM2 ecosystem file defines the file PM2 will
+> - _Hint:_ the `script` key in the PM2 ecosystem file defines the file PM2 will
 >   execute to launch the application. Look at the `start` script in the
 >   application's `package.json` file to find the right file to execute.
-> * *Hint:* the `watch` key should be false or be removed. Watching is for
+> - _Hint:_ the `watch` key should be false or be removed. Watching is for
 >   development, when you want the application to automatically reload its code
 >   if it changes. You do not want this for a production deployment, as it might
 >   take a few seconds to restart, during which clients will get errors.
@@ -102,31 +94,25 @@ hook documentation][pm2-startup].
 
 You will need to install the hook, then save your process list.
 
-
-
 ## Configure nginx as a load balancer
 
 Create an nginx site configuration file that does the following:
 
-* Serve the site on the subdomain `locator.john-doe.archidep.ch` (replacing
+- Serve the site on the subdomain `locator.john-doe.archidep.ch` (replacing
   `john-doe` with your username).
-* Use the path to the locator application's `public` directory as the site's
+- Use the path to the locator application's `public` directory as the site's
   root.
-* Configure load balancing to your 3 instances. You will find an example of a
+- Configure load balancing to your 3 instances. You will find an example of a
   load balancing nginx configuration in the [reverse proxying
   slides][nginx-slides].
 
 Once you have your configuration in place and enabled, tell nginx to reload its
 configuration.
 
-
-
 ## The end
 
 Make sure the load balancing works (you should see a different color each time
 you refresh your locator page).
-
-
 
 [locator]: https://load-balanceable-locator.herokuapp.com
 [locator-config]: https://github.com/MediaComem/load-balanceable-locator#configuration

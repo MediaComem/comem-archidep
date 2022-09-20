@@ -13,13 +13,9 @@ The goal of this exercise is to set up a real domain name for your application.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## Setup
 
 Make sure you have completed the [previous exercise](systemd-deployment.md).
-
-
 
 ## Connect to Gandi.net
 
@@ -41,8 +37,6 @@ you should have the following DNS records (among others) in your zone file:
 john-doe 1800 IN A W.X.Y.Z
 ```
 
-
-
 ## Access the domain name
 
 Once you have configured it correctly, you (and everybody else) should be able
@@ -53,8 +47,6 @@ your browser (if you have completed the previous exercises).
 > if you make a mistake in configuring the DNS record and then fix it. This is
 > because DNS records are cached for a time (the TTL you configured), by all
 > intermediaries and also by your machine.
-
-
 
 ## What have I done?
 
@@ -70,8 +62,6 @@ have configured.
 This allows your applications and websites to be accessible through a
 human-friendly domain name instead of an IP address.
 
-
-
 ## Architecture
 
 This is a simplified architecture of the main running processes and
@@ -84,8 +74,6 @@ communication flow at the end of this exercise:
 The only thing that has changed compared to [the previous
 exercise](./systemd-deployment.md#architecture) is that you are now using a
 domain name instead of an IP address to reach your application.
-
-
 
 [dns]: https://en.wikipedia.org/wiki/Domain_Name_System
 [dns-name-server]: https://en.wikipedia.org/wiki/Name_server

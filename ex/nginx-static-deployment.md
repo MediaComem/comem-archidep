@@ -20,8 +20,6 @@ configured an A record for your server in the domain name system.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## Put the static website on the server
 
 It is suggested that you use the provided [HTML, JavaScript and CSS
@@ -37,8 +35,6 @@ $> ls static-clock-website
 index.html  README.md  script.js  style.css
 ```
 
-
-
 ## Create an nginx configuration file to serve the website
 
 Make sure you have nginx installed [as shown during the course][nginx-install].
@@ -51,7 +47,7 @@ writable by `root`.
 Take the static configuration that was [presented during the
 course][nginx-static-conf] and put it in the file. You should modify it to:
 
-* Use the subdomain you configured for your server during the previous DNS
+- Use the subdomain you configured for your server during the previous DNS
   exercise (e.g. `john-doe.archidep.ch`).
 
   > This is done by customizing [nginx's `server_name`
@@ -59,7 +55,8 @@ course][nginx-static-conf] and put it in the file. You should modify it to:
   > block. Read [How nginx processes a
   > request](http://nginx.org/en/docs/http/request_processing.html) if you want
   > to know more.
-* Serve the files in the repository you just cloned.
+
+- Serve the files in the repository you just cloned.
 
   > This is done by customizing [nginx's `root`
   > directive](http://nginx.org/en/docs/http/ngx_http_core_module.html#root).
@@ -107,8 +104,7 @@ lrwxrwxrwx 1 root root 32 Jan 10 17:07 /etc/nginx/sites-enabled/clock -> /etc/ng
 
 Nginx does not automatically reload its configuration files when they change.
 
-First, you should check whether the changes you have made are valid. The `nginx
--t` command loads all the nginx configuration (including files added with
+First, you should check whether the changes you have made are valid. The `nginx -t` command loads all the nginx configuration (including files added with
 `include`) and checks that they are valid:
 
 ```bash
@@ -143,15 +139,11 @@ $> sudo nginx -s reload
 If the command indicates no errors, nginx should have reloaded its
 configuration.
 
-
-
 ## See it in action
 
 Visit the subdomain of your server, e.g. http://john-doe.archidep.ch
 (replacing `john-doe` with your username) and you should see the website
 working.
-
-
 
 ## What have I done?
 
@@ -163,8 +155,6 @@ You can serve any static web content this way. You can also make nginx serve as
 many separate websites as you want under different domains by creating multiple
 configuration files with different `server_name` directives, all on the same
 server (your AWS instance).
-
-
 
 ## Architecture
 
@@ -181,8 +171,6 @@ short-lived processes run during the exercise:
 ![Detailed architecture](nginx-static-deployment.png)
 
 > [Detailed architecture PDF version](nginx-static-deployment.pdf).
-
-
 
 [nginx]: http://nginx.org/
 [nginx-install]: https://mediacomem.github.io/comem-archidep/2022-2023/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#18

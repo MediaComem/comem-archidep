@@ -21,10 +21,6 @@ using the PHP development server.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
-
-
 ## Setup
 
 Use the previous PHP Todolist Exercice. Clone the [PHP Todolist
@@ -122,8 +118,8 @@ All done!
 
 Here you will install the bare minimum:
 
-* The PHP FastCGI process manager.
-* The PHP MySQL extension.
+- The PHP FastCGI process manager.
+- The PHP MySQL extension.
 
 > In this exercise, you will execute your PHP application directly from the
 > command line, without using a web server like Apache.
@@ -133,10 +129,6 @@ Simply run this command to install both:
 ```bash
 $> sudo apt install php-fpm php-mysql
 ```
-
-
-
-
 
 ## Use a real password
 
@@ -155,10 +147,6 @@ you chose when you secured the MySQL installation.
 > application to its database. You, the system administrator, should be the only
 > person who knows that password.
 
-
-
-
-
 ## Upload the application
 
 Use an SFTP client like [FileZilla][filezilla] to upload the application to the
@@ -166,10 +154,6 @@ server.
 
 Connect to your server first, using your SSH public key for authentication. Then
 copy the application to `/home/john_doe/todolist`.
-
-
-
-
 
 ## Initialize the database
 
@@ -252,10 +236,6 @@ $> sudo mysql -u root
 > may have been created by the `todolist.sql` script, so you can start over with
 > a clean state.
 
-
-
-
-
 ## Update the configuration
 
 Update the first few lines of the `index.php` file with the correct configuration:
@@ -268,10 +248,6 @@ define('DB_NAME', 'todolist');
 define('DB_HOST', '127.0.0.1');
 define('DB_PORT', '3306');
 ```
-
-
-
-
 
 ## Run the PHP development server
 
@@ -290,10 +266,6 @@ $> php -S 0.0.0.0:3000
 You (and everbody else) should be able to access the application in a browser at
 your server's IP address and the correct port (e.g. `W.X.Y.Z:3000`).
 
-
-
-
-
 ## What have I done?
 
 You have **deployed** a PHP application to a server running in the Amazon Web
@@ -301,10 +273,6 @@ Services cloud.
 
 The application is now publicly accessible by anyone on the Internet, at your
 instance's elastic IP address.
-
-
-
-
 
 ## Architecture
 
@@ -324,10 +292,6 @@ short-lived processes run during the exercise:
 ![Detailed architecture](sftp-deployment.png)
 
 > [Detailed architecture PDF version](sftp-deployment.pdf).
-
-
-
-
 
 [filezilla]: https://filezilla-project.org/
 [php-dev-server]: https://www.php.net/manual/en/features.commandline.webserver.php

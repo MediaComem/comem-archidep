@@ -30,13 +30,11 @@ wildcard entry preconfigured to make various subdomains
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## Requirements
 
 The following requirements should be installed on your server:
 
-* [Ruby][ruby] 2.7.x or 3.x and compilation tools
+- [Ruby][ruby] 2.7.x or 3.x and compilation tools
 
   You can install those by running the following commands:
 
@@ -44,7 +42,8 @@ The following requirements should be installed on your server:
   $> sudo apt update
   $> sudo apt install ruby-full build-essential
   ```
-* [Bundler][bundler], a command-line tool that downloads Ruby gems (i.e.
+
+- [Bundler][bundler], a command-line tool that downloads Ruby gems (i.e.
   packages)
 
   Once your have Ruby installed, you can install Bundler with the `gem` command:
@@ -53,14 +52,10 @@ The following requirements should be installed on your server:
   $> sudo gem install bundler
   ```
 
-
-
 ## The application
 
 The application you will deploy is [**FibScale**][fibscale], a web application
 that computes [Fibonacci numbers][fib].
-
-
 
 ## Deploy the application
 
@@ -145,8 +140,6 @@ algorithms, and display how much time each computation took.
 
 ![FibScale application with number 5](../images/fibscale-fib-5.png)
 
-
-
 ## Artificially slow down the application
 
 To better show the benefits of scaling, we will configure the FibScale
@@ -185,8 +178,6 @@ observe that every computation now takes at least one second.
 
 We now have a simulation of a slow application. Or do we? As the saying goes,
 **don't guess, measure!**
-
-
 
 ## Load-testing the application
 
@@ -373,8 +364,6 @@ You may now **stop** the load testing scenario.
 
 ![Stop the Locust test](../images/fibscale-locust-10-users-stop.png)
 
-
-
 ## What to do?
 
 Let's assume that we cannot speed up the application itself, and that its
@@ -387,8 +376,6 @@ I/O performance).
 If we have resources to spare on the server, and one instance of the FibScale
 application cannot serve enough users at the same time, let's **spin up more
 instances** and see what happens.
-
-
 
 ## Horizontally scale the FibScale application
 
@@ -418,19 +405,20 @@ pass it to the application or change the port the application listens on.
 
 Modify `/etc/systemd/system/fibscale@.service` as follows:
 
-* Remove the `[Install]` section (and the `WantedBy` option it contains). We
+- Remove the `[Install]` section (and the `WantedBy` option it contains). We
   will no longer start the `fibscale` service directly once it is a template.
-* Add the `%i` parameter at the end of the description.
-* Add the `%i` parameter at the end of the `ExecStart` command to pass it to the
+- Add the `%i` parameter at the end of the description.
+- Add the `%i` parameter at the end of the `ExecStart` command to pass it to the
   FibScale application.
 
   > As you can see in [FibScale's documentation][fibscale-config], passing an
   > integer to the application will change the color of its navbar to help
   > identify different instances.
-* Change the value of the `$FIBSCALE_PORT` environment variable from the fixed
+
+- Change the value of the `$FIBSCALE_PORT` environment variable from the fixed
   port `4202` to the dynamic port `4200%i`. Since we intend on running multiple
   instances of the FibScale application, they need to listen on different ports.
-* Add a `PartOf=fibscales.target` option to the `[Unit]` section. A Systemd
+- Add a `PartOf=fibscales.target` option to the `[Unit]` section. A Systemd
   **target** is a group of units. This `fibscales.target` group does not exist
   yet, but we will soon create it.
 
@@ -627,8 +615,6 @@ computation 9              --1s--
                ------------------ 3s total
 ```
 
-
-
 ## Not the solution to all your problems
 
 This exercise is intended as a demonstration of how to perform load balancing
@@ -637,17 +623,18 @@ with nginx. It is not a silver bullet for all your performance problems.
 Deploying more instances of your application on the same server may not solve
 your problem depending on the cause. It may even make it worse!
 
-* If your application is slow because it uses too much CPU, increasing the
+- If your application is slow because it uses too much CPU, increasing the
   number of instances may not increase performance. It may even decrease it if
   your server's CPU(s) becomes overloaded.
 
   The situation will also be very different depending on the number of CPUs and
   CPU cores your server has. Performance is a complex issue. Again, don't guess,
   measure!
-* If your application is I/O-bound, increasing the number of instances may
+
+- If your application is I/O-bound, increasing the number of instances may
   increase performance, but only if the I/O work can be parallelized, which
   depends entirely on what kind of work it is.
-* Running the load testing tool (Locust) on the same server as the application
+- Running the load testing tool (Locust) on the same server as the application
   your are testing is not a good idea. As you increase the load, Locust itself
   will start consuming CPU and memory resources, slowing down your server and
   making your application slower than it would normally be.
@@ -656,8 +643,6 @@ your problem depending on the cause. It may even make it worse!
 > [(D)DOS][dos] protection when load-testing. Load tests can look a lot like a
 > DOS attack. You may inadvertently be banned by your cloud provider if you're
 > not careful.
-
-
 
 ## Architecture
 
@@ -668,8 +653,6 @@ course exercises][archidep-exercises]):
 ![Simplified architecture](fibscale-deployment-simplified.png)
 
 > [Simplified architecture PDF version](fibscale-deployment-simplified.pdf).
-
-
 
 [archidep-exercises]: https://github.com/MediaComem/comem-archidep#exercises
 [bundler]: https://bundler.io

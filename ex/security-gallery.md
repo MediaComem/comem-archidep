@@ -11,8 +11,6 @@ An exercise to illustrate a security flaw.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## Get your public SSH key
 
 You can display your public SSH key in your terminal with the following command:
@@ -23,21 +21,18 @@ $> cat ~/.ssh/id_rsa.pub
 
 You should copy the output of this command. You will need it later.
 
-
-
 ## Launch a virtual server
 
 You will launch a virtual server to deploy the vulnerable application.
 
-* Access the [Azure portal](https://portal.azure.com) and go to the **Virtual
+- Access the [Azure portal](https://portal.azure.com) and go to the **Virtual
   machines** section:
 
   ![Azure Portal](../images/azure-portal.png)
-* Create a new virtual machine with these settings:
+
+- Create a new virtual machine with these settings:
 
   ![Gallery virtual machine](../images/ex-gallery-azure.png)
-
-
 
 ## Set up the image gallery application
 

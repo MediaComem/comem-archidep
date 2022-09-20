@@ -9,13 +9,11 @@
 
 // Convert a raw string to a hex string
 function rawToHex(raw) {
-  var hex = "";
-  var hexChars = "0123456789abcdef";
+  var hex = '';
+  var hexChars = '0123456789abcdef';
   for (var i = 0; i < raw.length; i++) {
     var c = raw.charCodeAt(i);
-    hex += (
-      hexChars.charAt((c >>> 4) & 0x0f) +
-      hexChars.charAt(c & 0x0f));
+    hex += hexChars.charAt((c >>> 4) & 0x0f) + hexChars.charAt(c & 0x0f);
   }
   return hex;
 }
@@ -29,9 +27,9 @@ function sha1Raw(raw) {
  * Convert an array of big-endian words to a string
  */
 function binaryToRaw(bin) {
-  var raw = "";
+  var raw = '';
   for (var i = 0, il = bin.length * 32; i < il; i += 8) {
-    raw += String.fromCharCode((bin[i >> 5] >>> (24 - i % 32)) & 0xff);
+    raw += String.fromCharCode((bin[i >> 5] >>> (24 - (i % 32))) & 0xff);
   }
   return raw;
 }
@@ -41,14 +39,14 @@ function binaryToRaw(bin) {
  */
 function sha1Binary(bin, len) {
   // append padding
-  bin[len >> 5] |= 0x80 << (24 - len % 32);
-  bin[((len + 64 >> 9) << 4) + 15] = len;
+  bin[len >> 5] |= 0x80 << (24 - (len % 32));
+  bin[(((len + 64) >> 9) << 4) + 15] = len;
 
   var w = new Array(80);
-  var a =  1732584193;
+  var a = 1732584193;
   var b = -271733879;
   var c = -1732584194;
-  var d =  271733878;
+  var d = 271733878;
   var e = -1009589776;
 
   for (var i = 0, il = bin.length; i < il; i += 16) {
@@ -62,10 +60,12 @@ function sha1Binary(bin, len) {
       if (j < 16) {
         w[j] = bin[i + j];
       } else {
-        w[j] = _rotateLeft(w[j-3] ^ w[j-8] ^ w[j-14] ^ w[j-16], 1);
+        w[j] = _rotateLeft(w[j - 3] ^ w[j - 8] ^ w[j - 14] ^ w[j - 16], 1);
       }
-      var t = _add(_add(_rotateLeft(a, 5), _ft(j, b, c, d)),
-                   _add(_add(e, w[j]), _kt(j)));
+      var t = _add(
+        _add(_rotateLeft(a, 5), _ft(j, b, c, d)),
+        _add(_add(e, w[j]), _kt(j))
+      );
       e = d;
       d = c;
       c = _rotateLeft(b, 30);
@@ -85,9 +85,9 @@ function sha1Binary(bin, len) {
 // Add integers, wrapping at 2^32. This uses 16-bit operations internally
 // to work around bugs in some JS interpreters.
 function _add(x, y) {
-  var lsw = (x & 0xFFFF) + (y & 0xFFFF);
+  var lsw = (x & 0xffff) + (y & 0xffff);
   var msw = (x >> 16) + (y >> 16) + (lsw >> 16);
-  return (msw << 16) | (lsw & 0xFFFF);
+  return (msw << 16) | (lsw & 0xffff);
 }
 
 /*
@@ -103,7 +103,7 @@ function _rotateLeft(n, count) {
  */
 function _ft(t, b, c, d) {
   if (t < 20) {
-    return (b & c) | ((~b) & d);
+    return (b & c) | (~b & d);
   } else if (t < 40) {
     return b ^ c ^ d;
   } else if (t < 60) {
@@ -136,7 +136,7 @@ function rawToBinary(raw) {
     binary[i] = 0;
   }
   for (i = 0, il = raw.length * 8; i < il; i += 8) {
-    binary[i>>5] |= (raw.charCodeAt(i / 8) & 0xFF) << (24 - i % 32);
+    binary[i >> 5] |= (raw.charCodeAt(i / 8) & 0xff) << (24 - (i % 32));
   }
   return binary;
 }
@@ -144,7 +144,9 @@ function rawToBinary(raw) {
 // Encode a string as UTF-8.
 // For efficiency, this assumes the input is valid UTF-16.
 function stringToRaw(string) {
-  var raw = "", x, y;
+  var raw = '',
+    x,
+    y;
   var i = -1;
   var il = string.length;
   while (++i < il) {
@@ -159,17 +161,20 @@ function stringToRaw(string) {
     if (x <= 0x7f) {
       raw += String.fromCharCode(x);
     } else if (x <= 0x7ff) {
-      raw += String.fromCharCode(0xc0 | ((x >>> 6 ) & 0x1f),
-                                    0x80 | ( x         & 0x3f));
+      raw += String.fromCharCode(0xc0 | ((x >>> 6) & 0x1f), 0x80 | (x & 0x3f));
     } else if (x <= 0xffff) {
-      raw += String.fromCharCode(0xe0 | ((x >>> 12) & 0x0f),
-                                    0x80 | ((x >>> 6 ) & 0x3f),
-                                    0x80 | ( x         & 0x3f));
+      raw += String.fromCharCode(
+        0xe0 | ((x >>> 12) & 0x0f),
+        0x80 | ((x >>> 6) & 0x3f),
+        0x80 | (x & 0x3f)
+      );
     } else if (x <= 0x1fffff) {
-      raw += String.fromCharCode(0xf0 | ((x >>> 18) & 0x07),
-                                    0x80 | ((x >>> 12) & 0x3f),
-                                    0x80 | ((x >>> 6 ) & 0x3f),
-                                    0x80 | ( x         & 0x3f));
+      raw += String.fromCharCode(
+        0xf0 | ((x >>> 18) & 0x07),
+        0x80 | ((x >>> 12) & 0x3f),
+        0x80 | ((x >>> 6) & 0x3f),
+        0x80 | (x & 0x3f)
+      );
     }
   }
   return raw;
@@ -183,7 +188,7 @@ function hmacRaw(key, data) {
   }
   var ipad = new Array(16);
   var opad = new Array(16);
-  for(var i = 0; i < 16; i++) {
+  for (var i = 0; i < 16; i++) {
     ipad[i] = binaryKey[i] ^ 0x36363636;
     opad[i] = binaryKey[i] ^ 0x5c5c5c5c;
   }

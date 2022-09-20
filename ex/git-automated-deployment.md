@@ -19,8 +19,6 @@ It assumes that you have performed the previous [nginx & PHP FPM exercise][php-f
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## Set up directories
 
 **Connect to your server.**
@@ -39,8 +37,6 @@ so that you can push commits to it.
 
 The `todolist-automated` directory will contain the currently deployed version of the code.
 The goal is that every time you push commits to the repository, this directory is automatically updated.
-
-
 
 ## Update the Systemd configuration
 
@@ -63,8 +59,6 @@ Restart the service:
 $> sudo systemctl restart todolist
 ```
 
-
-
 ## Update the todolist nginx configuration
 
 In previous exercises you configured nginx to serve the PHP application from the `todolist-repo` directory.
@@ -85,8 +79,6 @@ $> sudo nginx -s reload
 The site at http://todolist.john-doe.archidep.ch should not work anymore
 You should get a `404 Not Found` error from nginx
 (since there are no files in the `todolist-automated` directory yet).
-
-
 
 ## Create a bare Git repository on the server
 
@@ -150,8 +142,6 @@ $> ls -l hooks/post-receive
 
 > It should have the `x` (e**x**ecute) permission for owner, group and others.
 
-
-
 ## Add the server's Git repository as a remote
 
 **Disconnect from the server. The following steps happen on your local machine.**
@@ -168,8 +158,6 @@ Git can communicate over SSH, so you can add an [SSH remote][git-ssh-protocol]
 ```bash
 $> git remote add archidep john_doe@W.X.Y.Z:todolist-automated-repo
 ```
-
-
 
 ## Make an automated deployment
 
@@ -209,8 +197,6 @@ $> ls ~/todolist-automated
 LICENSE.txt  README.md  images  index.php  todolist.sql  update.sh
 ```
 
-
-
 ## Commit a change to the project and deploy it
 
 **On your local machine,** make a visible change to the project's `index.php` file.
@@ -235,8 +221,6 @@ To W.X.Y.Z:todolist-automated-repo
 Visit http://todolist.john-doe.archidep.ch again. Your changes should have
 been deployed automatically!
 
-
-
 ## Architecture
 
 This is a simplified architecture of the main running processes and
@@ -254,8 +238,6 @@ short-lived processes run during the exercise:
 ![Detailed architecture](git-automated-deployment.png)
 
 > [Detailed architecture PDF version](git-automated-deployment.pdf).
-
-
 
 [git-ssh-protocol]: https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_ssh_protocol
 [php-fpm-ex]: nginx-php-fpm-deployment.md

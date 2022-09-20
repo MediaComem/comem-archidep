@@ -21,7 +21,6 @@ const MODES = [
 subject.gitMemoirs = {};
 
 export class GitMemoirController {
-
   static start() {
     this.startGitMemoirs();
     subject.slideshow.on('afterShowSlide', this.startGitMemoirs);
@@ -29,13 +28,13 @@ export class GitMemoirController {
   }
 
   static startGitMemoirs() {
-    $('.remark-visible .remark-slide-content git-memoir').each(function() {
+    $('.remark-visible .remark-slide-content git-memoir').each(function () {
       new GitMemoirController(this).start();
     });
   }
 
   static destroyGitMemoirs() {
-    $('.remark-visible .remark-slide-content git-memoir').each(function() {
+    $('.remark-visible .remark-slide-content git-memoir').each(function () {
       const memoirController = $(this).data('controller');
       if (memoirController) {
         memoirController.destroy();
@@ -44,7 +43,6 @@ export class GitMemoirController {
   }
 
   constructor(element) {
-
     this.$element = $(element);
     this.$element.data('controller', this);
 
@@ -65,18 +63,27 @@ export class GitMemoirController {
       this.chapters = 1;
     }
 
-    this.controlsEnabled = !this.$element.attr('controls') || this.$element.attr('controls').match(/^(1|y|yes|t|true)$/i);
+    this.controlsEnabled =
+      !this.$element.attr('controls') ||
+      this.$element.attr('controls').match(/^(1|y|yes|t|true)$/i);
 
     this.memoirFactory = subject.gitMemoirs[this.name];
     if (!this.memoirFactory) {
-      throw new Error(`No memoir found named "${this.name}"; assign a factory function to "subject.gitMemoirs.${this.name}"`);
-    } else if (typeof(this.memoirFactory) != 'function') {
-      throw new Error(`Memoir named "${this.name}" must be a function, got ${typeof(this.memoirFactory)}`);
+      throw new Error(
+        `No memoir found named "${this.name}"; assign a factory function to "subject.gitMemoirs.${this.name}"`
+      );
+    } else if (typeof this.memoirFactory != 'function') {
+      throw new Error(
+        `Memoir named "${this.name}" must be a function, got ${typeof this
+          .memoirFactory}`
+      );
     }
   }
 
   get mode() {
-    return isLocalStorageAvailable() ? localStorage.gitMemoirMode || 'autoplay' : 'visualization';
+    return isLocalStorageAvailable()
+      ? localStorage.gitMemoirMode || 'autoplay'
+      : 'visualization';
   }
 
   start() {
@@ -90,22 +97,29 @@ export class GitMemoirController {
 
     const memoir = this.memoirFactory();
 
-    const $svg = $(document.createElementNS('http://www.w3.org/2000/svg', 'svg'))
+    const $svg = $(
+      document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+    )
       .attr('width', '100%')
       .attr('height', this.svgHeight)
       .appendTo(this.$element);
 
     if (this.controlsEnabled) {
-
       const $controls = $('<div class="controls" />').appendTo(this.$element);
-      this.$playButton = $('<button type="button" class="play tooltip" title="Play"><i class="fa fa-play" /></button>').appendTo($controls);
+      this.$playButton = $(
+        '<button type="button" class="play tooltip" title="Play"><i class="fa fa-play" /></button>'
+      ).appendTo($controls);
 
-      this.$modeButton = $('<button type="button" class="mode tooltip" data-dynamictitle="true"><i class="fa" /></button>');
+      this.$modeButton = $(
+        '<button type="button" class="mode tooltip" data-dynamictitle="true"><i class="fa" /></button>'
+      );
       if (isLocalStorageAvailable()) {
         this.$modeButton.appendTo($controls);
       }
 
-      this.$backButton = $('<button type="button" class="back tooltip" title="Back"><i class="fa fa-backward" /></button>"').appendTo($controls);
+      this.$backButton = $(
+        '<button type="button" class="back tooltip" title="Back"><i class="fa fa-backward" /></button>"'
+      ).appendTo($controls);
 
       this.updateControls();
       this.createTooltips();
@@ -132,13 +146,15 @@ export class GitMemoirController {
   }
 
   drawInitialStep() {
-
     const drawOptions = {
       immediate: true,
       stepDuration: 0
     };
 
-    if (!this.played && (this.mode == 'visualization' || !this.controlsEnabled)) {
+    if (
+      !this.played &&
+      (this.mode == 'visualization' || !this.controlsEnabled)
+    ) {
       drawOptions.chapter = this.chapter;
       this.played = true;
     } else {
@@ -154,7 +170,10 @@ export class GitMemoirController {
   }
 
   drawNextSteps(instant) {
-    if ((this.$playButton && this.$playButton.is('.disabled')) || this.playing) {
+    if (
+      (this.$playButton && this.$playButton.is('.disabled')) ||
+      this.playing
+    ) {
       return;
     }
 
@@ -191,7 +210,6 @@ export class GitMemoirController {
   }
 
   draw(options) {
-
     const done = () => {
       this.playing = false;
     };
@@ -212,11 +230,14 @@ export class GitMemoirController {
   }
 
   cycleMode() {
-
     const index = MODES.indexOf(this.mode);
     this.setMode(index < MODES.length - 1 ? MODES[index + 1] : MODES[0]);
 
-    if ((this.mode == 'autoplay' || this.mode == 'visualization') && !this.playing && !this.played) {
+    if (
+      (this.mode == 'autoplay' || this.mode == 'visualization') &&
+      !this.playing &&
+      !this.played
+    ) {
       this.drawNextSteps(this.mode == 'visualization');
     }
   }
@@ -229,13 +250,14 @@ export class GitMemoirController {
   updateControls() {
     if (this.controlsEnabled) {
       this.$playButton[this.playing ? 'addClass' : 'removeClass']('disabled');
-      this.$backButton[this.playing || !this.played ? 'addClass' : 'removeClass']('disabled');
+      this.$backButton[
+        this.playing || !this.played ? 'addClass' : 'removeClass'
+      ]('disabled');
       this.updateModeButton();
     }
   }
 
   updateModeButton() {
-
     let icon = 'play-circle-o';
     let title = 'Autoplay mode';
 
@@ -288,7 +310,9 @@ export class GitMemoirController {
       return;
     }
 
-    const modeTooltip = this.tooltips.find(tooltip => $(tooltip.reference).is('button.mode'));
+    const modeTooltip = this.tooltips.find(tooltip =>
+      $(tooltip.reference).is('button.mode')
+    );
     if (!modeTooltip) {
       return;
     }
@@ -307,5 +331,5 @@ function destroyTooltips(tooltips) {
 }
 
 function isLocalStorageAvailable() {
-  return typeof(Storage) != 'undefined';
+  return typeof Storage != 'undefined';
 }

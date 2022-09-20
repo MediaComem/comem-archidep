@@ -25,25 +25,23 @@ the [systemd exercise][systemd-ex].
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## Using PHP FPM instead of the PHP development server
 
 When you did the [systemd exercise][systemd-ex], you used the PHP development
 server (with the command `/usr/bin/php -S 0.0.0.0:3000`). As [its documentation
 states][php-dev-server], it is meant for development, not to be used on a
 production server. One of the main reasons it's a bad idea to use it on a server
-is beacuse it is **single-threaded**, and can only serve *one request at a
-time*.
+is beacuse it is **single-threaded**, and can only serve _one request at a
+time_.
 
 During the [SFTP exercise][sftp-ex], you installed the `php-fpm` package,
 which provides the [FastCGI Process Manager (FPM)][php-fpm].
 
 It is both a **process manager** and a **FastCGI server**:
 
-* It will run multiple PHP processes to be able to serve requests from multiple
+- It will run multiple PHP processes to be able to serve requests from multiple
   clients at the same time.
-* A web server (such as nginx) can ask it to execute PHP files using the
+- A web server (such as nginx) can ask it to execute PHP files using the
   [FastCGI protocol][fastcgi].
 
 > Use the following command for more information on how PHP FPM manages
@@ -62,8 +60,6 @@ $> sudo systemctl status php7.4-fpm
    Active: active (running) since Thu 2019-01-10 17:58:07 UTC; 27min ago
    ...
 ```
-
-
 
 ## Add a the `TODOLIST_DB_PASS` environment variable to PHP FPM
 
@@ -127,8 +123,6 @@ $> sudo systemctl status php7.4-fpm
 
 > If it is no longer running, you may have corrupted the configuration file.
 
-
-
 ## Create an nginx configuration file to serve the application
 
 Create an nginx configuration file named `todolist` for the application. Put it
@@ -143,7 +137,7 @@ You can start with the [reverse proxy
 configuration](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29),
 but you need to make the following changes:
 
-* Like in the previous exercise, adapt the server name and root directory.
+- Like in the previous exercise, adapt the server name and root directory.
 
   > **Hint:** you can use the existing `todolist-repo` directory you have been
   > using in previous PHP todolist exercises. There is no need to clone another
@@ -153,12 +147,13 @@ but you need to make the following changes:
   > name like `*.john-doe.archidep.ch`. This means that any subdomain you
   > want under `john-doe.archidep.ch`, for example
   > `todolist.john-doe.archidep.ch`, should reach your server.
-* PHP FPM uses the [FastCGI protocol][fastcgi] to receive requests to execute
+
+- PHP FPM uses the [FastCGI protocol][fastcgi] to receive requests to execute
   PHP code. This means that you cannot use [nginx's `proxy_pass`
   directive][nginx-proxy-pass] to define your proxy since it works with the HTTP
   protocol. Instead, you must **replace** it with two other directives:
 
-  * You must configure nginx to set various FastCGI parameters. You could do
+  - You must configure nginx to set various FastCGI parameters. You could do
     this yourself, but nginx helpfully provides a configuration snippet which
     you can simply include like this:
 
@@ -170,7 +165,8 @@ but you need to make the following changes:
     > will in turn include `/etc/nginx/fastcgi.conf`. If you want to know what
     > is required to make nginx properly proxy a request with the FastCGI
     > protocol, you can look at the contents of these two files.
-  * You must tell nginx to proxy requests with the FastCGI protocol, and where
+
+  - You must tell nginx to proxy requests with the FastCGI protocol, and where
     to proxy them to, with its [`fastcgi_pass` directive][nginx-fastcgi-pass].
     This allows you to proxy requests either to a domain and IP address (e.g.
     `localhost:9000`) or to a [Unix domain socket][unix-socket] (a special kind
@@ -191,8 +187,7 @@ but you need to make the following changes:
     > and look for the `listen = ...` option which should be near the top.
     >
     > You can use the following command to quickly find the `listen` option and
-    > print it along with the few lines preceding it: `grep -B 10 -m 1 "listen
-    > =" /etc/php/7.4/fpm/pool.d/www.conf`.
+    > print it along with the few lines preceding it: `grep -B 10 -m 1 "listen =" /etc/php/7.4/fpm/pool.d/www.conf`.
 
 ### Enable the nginx configuration
 
@@ -225,14 +220,10 @@ Tell nginx to reload its configuration:
 $> sudo nginx -s reload
 ```
 
-
-
 ## See it in action
 
 Visit http://todolist.john-doe.archidep.ch (replacing `john-doe` with your
 username) and you should see the PHP todolist working.
-
-
 
 ## What have I done?
 
@@ -266,8 +257,6 @@ application does what it's supposed to do. This allows each process to focus on
 one thing and do it well. The PHP todolist application does not have to know
 about the other applications and websites that might be running on the server.
 
-
-
 ## Architecture
 
 This is a simplified architecture of the main running processes and
@@ -283,8 +272,6 @@ short-lived processes run during the exercise:
 ![Detailed architecture](nginx-php-fpm-deployment.png)
 
 > [Detailed architecture PDF version](nginx-php-fpm-deployment.pdf).
-
-
 
 [dns-ex]: dns-configuration.md
 [fastcgi]: https://en.wikipedia.org/wiki/FastCGI

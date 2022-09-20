@@ -2,17 +2,14 @@ import chalk from 'chalk';
 
 import { loadData, sendMail } from './utils.js';
 
-Promise
-  .resolve()
+Promise.resolve()
   .then(send)
   .catch(err => console.error(chalk.red(err.stack)));
 
 async function send() {
-
   const data = await loadData();
 
   for (const student of data.students) {
-
     const mail = {
       to: student.email,
       subject: `ArchiDep ${new Date().getFullYear()} Credentials`,

@@ -3,7 +3,15 @@ import { writeFile } from 'fs/promises';
 import { dump as dumpYaml } from 'js-yaml';
 import { join as joinPath, relative as relativePath } from 'path';
 
-import { executeScript, loadConfigProperty, loadData, loading, readFile, root, studentsFile } from './utils.js';
+import {
+  executeScript,
+  loadConfigProperty,
+  loadData,
+  loading,
+  readFile,
+  root,
+  studentsFile
+} from './utils.js';
 
 const inventoryFile = joinPath(root, 'azure', 'inventory');
 const sshPrivateKeyFile = joinPath(root, 'id_rsa');
@@ -12,7 +20,12 @@ const sshPublicKeyFile = joinPath(root, 'id_rsa.pub');
 executeScript(generateInventory);
 
 async function generateInventory() {
-  const { students } = await loading(loadData(), `Loading student data from ${chalk.yellow(relativePath(root, studentsFile))}`);
+  const { students } = await loading(
+    loadData(),
+    `Loading student data from ${chalk.yellow(
+      relativePath(root, studentsFile)
+    )}`
+  );
 
   const baseDomain = await loadConfigProperty('vm_base_domain');
   const sshPublicKey = await readFile(sshPublicKeyFile);

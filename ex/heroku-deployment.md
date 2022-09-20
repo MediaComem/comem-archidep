@@ -35,21 +35,17 @@ illustrates the difference between the two cloud service models.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## Requirements
 
 To perform this exercise, you will need:
 
-* A [Heroku][heroku] account.
-* The [Heroku Command Line Interface (CLI)][heroku-cli] installed on your local
+- A [Heroku][heroku] account.
+- The [Heroku Command Line Interface (CLI)][heroku-cli] installed on your local
   machine.
 
   > macOS users should install [Homebrew][homebrew], a package manager for
   > macOS, in order to have the `brew` command mentioned in the Heroku CLI
   > installation instructions.
-
-
 
 ## Deploy the PHP Todolist application
 
@@ -139,8 +135,7 @@ define('DB_HOST', getenv('TODOLIST_DB_HOST') ?: $dbDefaults["host"]);
 define('DB_PORT', getenv('TODOLIST_DB_PORT') ?: $dbDefaults["port"]);
 ```
 
-Add and commit your changes with `git add index.php` and `git commit -m "Allow
-configuration with database URL"`.
+Add and commit your changes with `git add index.php` and `git commit -m "Allow configuration with database URL"`.
 
 ### Deploy the application to Heroku
 
@@ -174,7 +169,7 @@ indicate how to do this with [MySQL
 Workbench](https://www.mysql.com/products/workbench/), a free cross-platform SQL
 client, but you can do it with any SQL client.
 
-* Retrieve your database credentials from the `$CLEARDB_DATABASE_URL` environment
+- Retrieve your database credentials from the `$CLEARDB_DATABASE_URL` environment
   variable. You can copy it from Heroku's web interface, or you can get it on the
   command line in your repository with the following command:
 
@@ -191,30 +186,35 @@ client, but you can do it with any SQL client.
   >
   > In this example:
   >
-  > * `23fbfc668f39e2` is the **username**.
-  > * `letmein` is the **password**.
-  > * `us-cdbr-iron-east-01.cleardb.net` is the address of the **host** server where the database is running.
-  > * `heroku_1a84deeaab9449e` is the **database name**.
+  > - `23fbfc668f39e2` is the **username**.
+  > - `letmein` is the **password**.
+  > - `us-cdbr-iron-east-01.cleardb.net` is the address of the **host** server where the database is running.
+  > - `heroku_1a84deeaab9449e` is the **database name**.
   >
   > Since the port is not specified in this connection URL, it is the default MySQL port: `3306`.
-* Download, install and run [MySQL
+
+- Download, install and run [MySQL
   Workbench](https://www.mysql.com/products/workbench/).
 
   > You do not need to create an Oracle account; there is a link to skip account
   > creation at the bottom.)
-* Create a new connection:
+
+- Create a new connection:
 
   ![Create MySQL Workbench Connection](../images/workbench-connection.png)
-* Configure the connection parameters from the parameters in the
+
+- Configure the connection parameters from the parameters in the
   `$CLEARDB_DATABASE_URL` variable:
 
   ![Configure MySQL Workbench Connection](../images/workbench-connection-params.png)
-* Open the connection by double-clicking on it. It will ask you for the database
+
+- Open the connection by double-clicking on it. It will ask you for the database
   password at this stage (which you will also find in the
   `$CLEARDB_DATABASE_URL` variable):
 
   ![Open MySQL Workbench Connection](../images/workbench-connection-open.png)
-* Double-click on the table name in the Schemas tab on the left. Then execute
+
+- Double-click on the table name in the Schemas tab on the left. Then execute
   the correct `CREATE TABLE` query:
 
   ![Create Todolist Table](../images/workbench-create-table.png)
@@ -224,8 +224,6 @@ client, but you can do it with any SQL client.
   > file](https://github.com/MediaComem/comem-archidep-php-todo-exercise/blob/63ffa1067f17b76bb3cd7fca50fb62492c475c11/todolist.sql#L7-L13).
 
 The application should work fine now.
-
-
 
 ## Deploy the Minesweeper application
 
@@ -281,9 +279,9 @@ Heroku's preferred configuration mechanism is environment variables, so you
 should use that since the Minesweeper application supports it. Still under
 configuration variables, add the following variables:
 
-* `MIX_ENV` must be set to `prod` to make sure that the Elixir application is
+- `MIX_ENV` must be set to `prod` to make sure that the Elixir application is
   compiled in production mode.
-* `MINESWEEPER_SECRET_KEY_BASE` should be set to a long random string.
+- `MINESWEEPER_SECRET_KEY_BASE` should be set to a long random string.
 
 ![Minesweeper configuration variables](../images/heroku-minesweeper-config.png)
 
@@ -300,12 +298,13 @@ box with the [Heroku Postgres add-on][heroku-postgres] and Heroku itself.
 
 Follow these instructions to update your fork of the Minesweeper repository:
 
-* **On your local machine,** go into the directory where you cloned your fork:
+- **On your local machine,** go into the directory where you cloned your fork:
 
   ```bash
   $> cd /path/to/projects/minesweeper
   ```
-* Make sure you are on your `main` (or `master`) branch and that you have no
+
+- Make sure you are on your `main` (or `master`) branch and that you have no
   uncommitted changes:
 
   ```bash
@@ -317,24 +316,26 @@ Follow these instructions to update your fork of the Minesweeper repository:
   ```
 
   > If you have changes, you should commit them before moving on.
-* Add the original repository as a remote:
+
+- Add the original repository as a remote:
 
   ```bash
   $> git remote add upstream https://github.com/MediaComem/minesweeper.git
   ```
-* Fetch all changes from the new remote:
+
+- Fetch all changes from the new remote:
 
   ```bash
   $> git fetch upstream
   ```
-* Merge the latest changes from the original repository into your main branch:
+
+- Merge the latest changes from the original repository into your main branch:
 
   ```bash
   $> git merge upstream/main
   ```
 
-Your fork should now be up-to-date. You can push the updates to GitHub with `git
-push origin main` if you want, then continue with this exercise.
+Your fork should now be up-to-date. You can push the updates to GitHub with `git push origin main` if you want, then continue with this exercise.
 
 ### Deploy the application to Heroku
 
@@ -378,11 +379,7 @@ $> git push heroku main
 
 The application should compile and be deployed automatically.
 
-
-
 ## Deploy applications from previous years
-
-
 
 ### Deploy the RPS application
 
@@ -448,25 +445,26 @@ update it with `git pull` and use that.
 **If you have forked the repository**, follow these instructions to update your
 fork:
 
-* **On your local machine,** go into the directory where you cloned your fork:
+- **On your local machine,** go into the directory where you cloned your fork:
 
   ```bash
   $> cd /path/to/projects/rps
   ```
-* Add the original repository as a remote:
+
+- Add the original repository as a remote:
 
   ```bash
   $> git remote add upstream https://github.com/MediaComem/rps.git
   ```
-* Merge the latest changes from the original repository into your main branch:
+
+- Merge the latest changes from the original repository into your main branch:
 
   ```bash
   $> git checkout main
   $> git merge upstream/master
   ```
 
-Your fork should now be up-to-date. You can push the updates to GitHub with `git
-push origin main` if you want, then continue with this exercise.
+Your fork should now be up-to-date. You can push the updates to GitHub with `git push origin main` if you want, then continue with this exercise.
 
 #### Deploy the application to Heroku
 
@@ -508,8 +506,7 @@ $> heroku psql -c 'CREATE EXTENSION "uuid-ossp";'
 
 > The `heroku psql -c '...'` command executes arbitrary SQL statements in the
 > context of the database provided by the Heroku Postgres add-on. This is
-> equivalent to when you used `sudo -u postgres psql -d rps -c 'CREATE EXTENSION
-> "uuid-ossp"'` during the original exercise to execute SQL statements in the
+> equivalent to when you used `sudo -u postgres psql -d rps -c 'CREATE EXTENSION "uuid-ossp"'` during the original exercise to execute SQL statements in the
 > database running on your own server.
 
 You must then use the `npm run migrate` script to create the necessary database
@@ -535,8 +532,6 @@ The application should now work!
 > Note that on a free deployment, the WebSocket connection will drop after a
 > while when Heroku puts the application to sleep. Free dynos are not
 > appropriate for real-time applications running on Heroku.
-
-
 
 ### Deploy the WOPR application
 
@@ -627,8 +622,6 @@ deployment log. It should also work!
 > You do not need to configure the database for this application. This is
 > because Redis is a schema-less NoSQL database. Values can be stored without
 > having to create a database in advance.
-
-
 
 [heroku]: https://www.heroku.com
 [heroku-buildpacks]: https://devcenter.heroku.com/articles/buildpacks

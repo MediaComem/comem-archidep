@@ -16,8 +16,6 @@ This guide describes how to create a [systemd][systemd] service to run the PHP a
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## Setup
 
 Make sure you have completed the [previous
@@ -25,36 +23,35 @@ exercise](config-through-environment.md).
 
 Stop your `php -S` command if it is still running.
 
-
-
 ## What you have done so far do to run your application
 
 Running the PHP todolist manually in the previous exercises basically consists
 of these steps:
 
-* Connect to the server with SSH as your user, e.g. `john_doe`:
+- Connect to the server with SSH as your user, e.g. `john_doe`:
 
   ```bash
   $> ssh john_doe@W.X.Y.Z
   ```
-* *The first time,* install MySQL and check that it is running:
+
+- _The first time,_ install MySQL and check that it is running:
 
   ```bash
   $> sudo apt install mysql-server
   $> sudo systemctl status mysql
   ```
-* Move into the application directory:
+
+- Move into the application directory:
 
   ```bash
   $> cd todolist-repo
   ```
-* Run the application with the appropriate environment variables:
+
+- Run the application with the appropriate environment variables:
 
   ```bash
   $> TODOLIST_DB_PASS=changeme php -S 0.0.0.0:3000
   ```
-
-
 
 ## Create a systemd unit configuration file
 
@@ -91,28 +88,31 @@ create and edit this file directly on the server. You cannot use an SFTP client.
 
 You may find the following documentation useful to write your unit file:
 
-* [`[Unit]` section
+- [`[Unit]` section
   options](https://www.freedesktop.org/software/systemd/man/systemd.unit.html#%5BUnit%5D%20Section%20Options)
-* [`[Service]` section
+- [`[Service]` section
   options](https://www.freedesktop.org/software/systemd/man/systemd.service.html#Options)
-  * [Environment](https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Environment)
+  - [Environment](https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Environment)
     (for the `Environment`, `User` and `WorkingDirectory` options)
-* [`[Install]` section
+- [`[Install]` section
   options](https://www.freedesktop.org/software/systemd/man/systemd.unit.html#%5BInstall%5D%20Section%20Options)
 
 Here are a few hints:
 
-* In the `[Unit]` section of your unit file:
-  * You should briefly document what your service is with a `Description`
+- In the `[Unit]` section of your unit file:
+
+  - You should briefly document what your service is with a `Description`
     option.
-  * You may want to use an `After` option. What other service needs to already
+  - You may want to use an `After` option. What other service needs to already
     be running for the PHP TodoList to work? If there is one, your application
     should start after it.
 
     > **Hint:** You can use the `ls /lib/systemd/system` command to list
     > other system services.
-* In the `[Service]` section of your unit file:
-  * You should tell systemd what command to run your application with using the
+
+- In the `[Service]` section of your unit file:
+
+  - You should tell systemd what command to run your application with using the
     `ExecStart` option.
 
     > **Hint:** You must use absolute command paths with `ExecStart`. For
@@ -120,13 +120,15 @@ Here are a few hints:
     > `php`, you have to use the absolute path to the command instead.
     >
     > You can find the path to any binary with the `which <command>` command.
-  * You must tell systemd where to execute the command (in which directory) with
+
+  - You must tell systemd where to execute the command (in which directory) with
     the `WorkingDirectory` option. This must be an absolute path.
 
     > **Hint:** Go in the application directory on the server and execute the
     > `pwd` (print working directory) command if you are not sure what the
     > absolute path is.
-  * You should tell systemd which user must run the command with the `User`
+
+  - You should tell systemd which user must run the command with the `User`
     option. You can use your own username.
 
     > It's bad practice to run an application with the `root` user. An
@@ -138,14 +140,17 @@ Here are a few hints:
     > application. This would allow you to limit that user's privileges, also
     > limiting the damage an attacker could make if your application is
     > compromised.
-  * If your application requires one or multiple environment variables to be
+
+  - If your application requires one or multiple environment variables to be
     set, you can set them by adding an `Environment` option. This option can be
     included in the file multiple times to set multiple environment variables.
-  * In case your application crashes due to a bug or a server issue, you should
+  - In case your application crashes due to a bug or a server issue, you should
     configure the `Restart` option so that systemd automatically restarts it
     when there is a problem.
-* In the `[Install]` section of your unit file:
-  * You may want to set the `WantedBy` option to tell systemd to automatically
+
+- In the `[Install]` section of your unit file:
+
+  - You may want to set the `WantedBy` option to tell systemd to automatically
     start your application when the server boots. You can use the value
     `multi-user.target` for this option.
 
@@ -164,14 +169,12 @@ Here's another way to look at this information:
 | Move into a directory                                 | `cd <path>`                       | `WorkingDirectory=<path>` in the `[Service]` section                            |
 | Set an environment variable                           | `KEY=value ...`                   | `Environment="KEY=value"` in the `[Service]` section                            |
 | Execute a command                                     | `<command> <arg1> <arg2>`         | `ExecStart=<absolute-path-to-command> <arg1> <arg2>` in the `[Service]` section |
-| Restart the application automatically when it crashes | *Cannot be done manually*         | `Restart=<policy>` in the `[Service]` section                                   |
-| Have the application start automatically on boot      | *Cannot be done manually*         | `WantedBy=<target>` in the `[Install]` section                                  |
+| Restart the application automatically when it crashes | _Cannot be done manually_         | `Restart=<policy>` in the `[Service]` section                                   |
+| Have the application start automatically on boot      | _Cannot be done manually_         | `WantedBy=<target>` in the `[Install]` section                                  |
 
 > **Hint:** You should put comments in your unit file to explain what each
 > option is for. This can help you if you come back later and do not remember
 > what you did or why. Any line starting with `#` is considered a comment.
-
-
 
 ## Enable and start the todolist service
 
@@ -193,7 +196,7 @@ Check that the service is running properly and that there were no errors.
 >
 > To see the complete logs, you can use the `sudo journalctl -u <service-name>`
 > command. Pay attention to the timestamps at the beginning of each line, which
-> will let you know *when* each event occurred.
+> will let you know _when_ each event occurred.
 
 You (and everybody else) should be able to access the running todolist
 application in your browser on your server's IP address and port 3000 (e.g.
@@ -203,10 +206,7 @@ application in your browser on your server's IP address and port 3000 (e.g.
 
 If the status indicates a problem with your unit file, you should fix the
 problem in your unit file. Then, be sure to run `sudo systemctl daemon-reload`
-to take the changes into account. You may also need to run `sudo systemctl
-restart todolist` to restart your application.
-
-
+to take the changes into account. You may also need to run `sudo systemctl restart todolist` to restart your application.
 
 ## Reboot and try again
 
@@ -221,19 +221,15 @@ $> sudo reboot
 
 The application should still be running.
 
-
-
 ## What have I done?
 
 You have configured your operating system's process manager (systemd, which
 comes bundled with Ubuntu) to manage your application's lifecycle for you. You
 no longer have to worry about:
 
-* Running the command to start the application.
-* Restarting the application after rebooting the server.
-* Restarting the application after it crashes due to a bug.
-
-
+- Running the command to start the application.
+- Restarting the application after rebooting the server.
+- Restarting the application after it crashes due to a bug.
 
 ## Architecture
 
@@ -250,7 +246,5 @@ short-lived processes run during the exercise:
 ![Diagram](systemd-deployment.png)
 
 > [PDF version](systemd-deployment.pdf).
-
-
 
 [systemd]: https://en.wikipedia.org/wiki/Systemd

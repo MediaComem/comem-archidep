@@ -28,7 +28,7 @@ wildcard entry preconfigured to make various subdomains
 
 The following requirements should be installed on your server:
 
-* [Node.js][node] 16.x ([installation instructions][node-install])
+- [Node.js][node] 16.x ([installation instructions][node-install])
 
 ## The application
 
@@ -36,14 +36,15 @@ The application you will deploy is **Revprod**, a marketing web application
 where customers can leave testimonials about **The Revolutionary Product**. This
 application has been developed as two separate components:
 
-* The [revprod landing
+- The [revprod landing
   page](https://github.com/MediaComem/revprod-landing-page): the main page of
   the application that describes the product and displays customers'
   testimonials.
 
   This component is basically a static page with no server-side logic. It loads
   testimonials from the backend using AJAX requests.
-* The [revprod backend](https://github.com/MediaComem/revprod-backend): an
+
+- The [revprod backend](https://github.com/MediaComem/revprod-backend): an
   application that allows customers to provide their testimonials.
 
   This component stores the customers' testimonials in an embedded file
@@ -68,8 +69,8 @@ application has been developed as two separate components:
 Let's start by deploying the revprod backend and frontend separately at these
 URLs (replacing `john-doe` with your name):
 
-* `http://revprod-backend.john-doe.archidep.ch`
-* `http://revprod-landing.john-doe.archidep.ch`
+- `http://revprod-backend.john-doe.archidep.ch`
+- `http://revprod-landing.john-doe.archidep.ch`
 
 ### Deploy the revprod landing page
 
@@ -363,7 +364,7 @@ The problem we have is that our two components are deployed on separate domains,
 therefore a request from the landing page to the backend is a **cross-origin
 request** and is blocked by the **same-origin policy** by default.
 
-*What if we had **only one domain**, and therefore only one origin?*
+_What if we had **only one domain**, and therefore only one origin?_
 
 A reverse proxy like nginx is a very powerful tool. You have so far configured
 two separate nginx sites with separate proxies to the backend and landing page,
@@ -421,10 +422,10 @@ server {
 
 Note that this file has **two `location` blocks**:
 
-* The `~ /(comments|share)` location block proxies all requests starting with
+- The `~ /(comments|share)` location block proxies all requests starting with
   either `/comments` or `/share`
   to the revprod backend.
-* The `/` location block proxies all other requests to the revprod landing page.
+- The `/` location block proxies all other requests to the revprod landing page.
 
 > We are configuring **different proxies based on the request path**. This is
 > just one example of how you can vary your site's configuration based on the
@@ -464,8 +465,6 @@ longer any cross-origin request, so the same-origin policy does not apply.
 
 ![Revprod with no SOP error behind nginx](../images/revprod-rp-no-sop.png)
 
-
-
 ## Troubleshooting
 
 If you encounter the following error:
@@ -485,8 +484,6 @@ configuration with `sudo nano /etc/nginx/nginx.conf` and add the following line
 server_names_hash_bucket_size 256;
 ```
 
-
-
 ## Architecture
 
 This is a simplified architecture of the main running processes and
@@ -496,8 +493,6 @@ course exercises][archidep-exercises]):
 ![Simplified architecture](revprod-deployment-simplified.png)
 
 > [Simplified architecture PDF version](revprod-deployment-simplified.pdf).
-
-
 
 [archidep-exercises]: https://github.com/MediaComem/comem-archidep#exercises
 [cors]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS

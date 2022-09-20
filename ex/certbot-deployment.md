@@ -13,8 +13,6 @@ using [Certbot][certbot].
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## Prerequisites
 
 This exercise assumes that you have deployed at least one web site or
@@ -42,8 +40,6 @@ Once you are done, your web site or application should be accessible over HTTPS.
 You should take a look at your nginx configuration file(s) in
 `/etc/nginx/sites-available`, to see the changes Certbot has made.
 
-
-
 ## Architecture
 
 This is a simplified architecture of the main running processes and
@@ -57,8 +53,6 @@ The only thing that has changed compared to [the previous
 exercise](./nginx-php-fpm-deployment.md#architecture) is that you are now
 accessing your application over an encrypted HTTPS/TLS connection instead of
 insecure HTTP.
-
-
 
 [certbot]: https://certbot.eff.org
 [certificate]: https://en.wikipedia.org/wiki/Public_key_certificate

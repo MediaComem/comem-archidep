@@ -3,7 +3,7 @@
 <!-- START doctoc -->
 <!-- END doctoc -->
 
-* Create a file named `file.txt` in `alice`'s home directory that is readable by
+- Create a file named `file.txt` in `alice`'s home directory that is readable by
   `alice` but not by you.
 
   **Solution 1**
@@ -35,7 +35,8 @@
   ```bash
   $> sudo chmod 640 /home/alice/file.txt
   ```
-* Create a directory named `for_alice` in your home directory. The `alice` user
+
+- Create a directory named `for_alice` in your home directory. The `alice` user
   must be able to traverse this directory, but not list its contents or create
   new files in it.
 
@@ -58,7 +59,8 @@
   ```bash
   $> sudo chmod 710 for_alice
   ```
-* The directory must contain a `readable.txt` file that `alice` can read from,
+
+- The directory must contain a `readable.txt` file that `alice` can read from,
   but not write to.
 
   **Solution with access by other users**
@@ -84,7 +86,8 @@
   ```bash
   $> sudo chmod 640 readable.txt
   ```
-* The directory must contain a `writable.txt` file that `alice` can read from
+
+- The directory must contain a `writable.txt` file that `alice` can read from
   and write to.
 
   **Solution with access by other users**

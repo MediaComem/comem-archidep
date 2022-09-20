@@ -18,8 +18,6 @@ Useful commands to manage a Unix system.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## How to I connect to my server with SSH?
 
 Connect to the server at the IP address `W.X.Y.Z` as the `john_doe` user:
@@ -28,15 +26,11 @@ Connect to the server at the IP address `W.X.Y.Z` as the `john_doe` user:
 $> ssh john_doe@W.X.Y.Z
 ```
 
-
-
 ## How do I change my password?
 
 ```bash
 $> passwd
 ```
-
-
 
 ## Administration
 
@@ -143,8 +137,6 @@ directory named after your service. For example, nginx stores its error logs in
 
 If your service cannot start, you should be able to find an error from one of these sources.
 
-
-
 ## My `post-receive` Git hook is not executing!
 
 When you push to a remote (`foo` in this example), you may get this message:
@@ -169,8 +161,6 @@ be sent.
 > ```
 >
 > This will give you a new commit to push without actually making a change.
-
-
 
 ## Add swap space to your cloud server
 
@@ -231,8 +221,8 @@ UUID=0BC7-08EF  /boot/efi       vfat    umask=0077      0 1
 ```
 
 :warning: :warning: :warning: **WARNING: BE VERY CAREFUL TO EXECUTE THE
-FOLLOWING COMMAND EXACTLY AS IS.** *(Corrupting your `/etc/fstab` file can
-prevent your server from rebooting.)* :warning: :warning: :warning:
+FOLLOWING COMMAND EXACTLY AS IS.** _(Corrupting your `/etc/fstab` file can
+prevent your server from rebooting.)_ :warning: :warning: :warning:
 
 To make the swap space permanent, execute the following command to add the
 appropriate line to your server's `/etc/fstab` file:
@@ -278,7 +268,5 @@ Swap:         2.0Gi       200Mi       1.8Gi
 > page](https://man7.org/linux/man-pages/man5/fstab.5.html) and [How to Add Swap
 > Space on Ubuntu
 > 20.04](https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-20-04).
-
-
 
 [sftp-deploy-ex]: ./ex/sftp-deployment.md

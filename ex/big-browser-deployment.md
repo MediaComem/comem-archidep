@@ -20,31 +20,29 @@ from scratch on a server.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## The goal
 
 You must deploy the provided application in a similar way as the PHP todolist
 in previous exercises:
 
-* You must install the language and database necessary to run the application,
+- You must install the language and database necessary to run the application,
   which are not the same as for the PHP todolist.
-* You must run the application as a systemd service.
-* You must serve the application through nginx acting as a reverse proxy.
-* You must provision a TLS certificate for the application and configure nginx
+- You must run the application as a systemd service.
+- You must serve the application through nginx acting as a reverse proxy.
+- You must provision a TLS certificate for the application and configure nginx
   to use it.
-* You must set up an automated deployment via Git hooks for the application.
+- You must set up an automated deployment via Git hooks for the application.
 
 Additionally:
 
-* The application must run in production mode (see its documentation).
-* The application must restart automatically if your server is rebooted (i.e.
+- The application must run in production mode (see its documentation).
+- The application must restart automatically if your server is rebooted (i.e.
   your systemd service must be enabled).
-* The application must be accessible **only through nginx**. It **must not** be
+- The application must be accessible **only through nginx**. It **must not** be
   exposed directly on a publicly accessible port other than 80 or 443 (in the
   AWS instances used in this course, the other publicly accessible ports are 22,
   3000 and 3001, with port 22 being already used by SSH).
-* Clients accessing the application over HTTP must be redirected to HTTPS.
+- Clients accessing the application over HTTP must be redirected to HTTPS.
 
 ### The application
 
@@ -53,26 +51,26 @@ GitHub][repo].
 
 It is developed with:
 
-* [nest][nest] for the backend.
+- [nest][nest] for the backend.
 
   > Nest is a [Node.js (server-side JavaScript)][node] framework for building
   > server-side applications with [TypeScript][ts].
-* [Vue.js][vue] for the frontend.
+
+- [Vue.js][vue] for the frontend.
 
   > Vue is a JavaScript framework for building client-side applications.
-* [Redis][redis] for the database.
+
+- [Redis][redis] for the database.
 
   > Redis is an in-memory [NoSQL][nosql] database, cache and message broker.
 
 You do not need to know any of these technologies, as your goal is only to
 install and run the application, not modify it.
 
-
-
 ## Getting started
 
 You should start by **forking** the [repository][repo] with the `Fork` button,
-and use your own copy of the repository instead of the provided one.  This will
+and use your own copy of the repository instead of the provided one. This will
 make it easier for you to test the automated deployment at the end.
 
 Then install the required dependencies and perform the required setup as
@@ -97,7 +95,7 @@ $> PORT=3001 npm start
 > firewall.
 
 Visit http://W.X.Y.Z:3001 to check that it works (replacing `W.X.Y.Z` by your
-server's IP address).  Stop the application with `Ctrl-C` once you are done.
+server's IP address). Stop the application with `Ctrl-C` once you are done.
 
 > Note that you did not need to configure database access credentials as with
 > the PHP Todo List.
@@ -105,8 +103,6 @@ server's IP address).  Stop the application with `Ctrl-C` once you are done.
 > It works out of the box for two reasons: Redis requires no user or password by
 > default, and it's also a schema-less NoSQL database (databases and keys are
 > created on-the-fly as they are accessed the first time).
-
-
 
 ## Create a systemd service
 
@@ -116,10 +112,10 @@ application instead of the PHP todolist.
 
 > **Hints:**
 >
-> * You will find the correct command to run the application in [the project's
+> - You will find the correct command to run the application in [the project's
 >   `README`][readme]. Remember that systemd requires absolute paths to
 >   commands.
-> * You may want to set the `PORT` environment variable to choose the port on
+> - You may want to set the `PORT` environment variable to choose the port on
 >   which the application will listen. You can use the publicly accessible 3001
 >   port temporarily for testing, but you should use another free port that is
 >   not exposed to complete the exercise, since one of the requirements is to
@@ -133,8 +129,6 @@ next time you restart the server with `sudo reboot`.
 > your systemd configuration to the correct directory. That way you will not
 > have to modify it later.
 
-
-
 ## Serve the application through nginx
 
 Create an nginx configuration to serve the application like in the [nginx
@@ -142,22 +136,18 @@ PHP-FPM exercise][nginx-php-fpm-ex].
 
 > **Hints:**
 >
-> * Skip all steps related to PHP FPM, since they are only valid for a PHP
+> - Skip all steps related to PHP FPM, since they are only valid for a PHP
 >   application.
-> * The `include` and `fastcgi_pass` directives used in the PHP FPM exercise
+> - The `include` and `fastcgi_pass` directives used in the PHP FPM exercise
 >   make no sense for a non-PHP application. You should replace them with a
 >   [`proxy_pass`
 >   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
 >   as [presented during the course][nginx-rp-conf].
 
-
-
 ## Provision a TLS certificate
 
 Obtain and configure a TLS certificate to serve the application over HTTPS like
 in the [certbot exercise][certbot-ex].
-
-
 
 ## Set up an automated deployment with Git hooks
 
@@ -166,9 +156,9 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 
 > **Hints:**
 >
-> * Once you have set up the new directories, make sure to update your systemd
+> - Once you have set up the new directories, make sure to update your systemd
 >   unit file to point to the correct directory.
-> * Update the `post-receive` hook. Compared to the PHP todolist, there are
+> - Update the `post-receive` hook. Compared to the PHP todolist, there are
 >   additional steps which must be performed in the script for the automated
 >   deployment to work correctly:
 >
@@ -177,7 +167,8 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 >   1. The systemd service must be restarted with `systemctl`. (Node.js code is
 >      not reinterpreted on-the-fly as with PHP; the process must be restarted
 >      so that the code is reloaded into memory).
-> * Note: in the automated deployment exercice, it is mentionned that the
+>
+> - Note: in the automated deployment exercice, it is mentionned that the
 >   application will no longer work after changing the path to the repository in
 >   the nginx configuration. In the case of the Big Browser application, it will
 >   continue to work, because the application serves its static files on its
@@ -253,8 +244,7 @@ Exit with `Ctrl-X` and save when prompted.
 > commands with `sudo` without having to enter a password (hence the `NOPASSWD`
 > option).
 >
-> You can test that it works by connecting to your server and running `sudo
-> systemctl status one-chat-room`. It should no longer ask you for your
+> You can test that it works by connecting to your server and running `sudo systemctl status one-chat-room`. It should no longer ask you for your
 > password.
 
 ### Test the automated deployment
@@ -266,8 +256,6 @@ automated deployment.
 For example, you may change the title in the navbar, which is in [in the
 `public/index.html`
 file](https://github.com/mediacomem/big-browser/blob/8c38c2b3a2438374d7747169a52cf30669dab6c1/public/index.html#L14).
-
-
 
 [app]: https://big-browser.herokuapp.com
 [auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md
