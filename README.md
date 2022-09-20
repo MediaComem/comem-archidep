@@ -21,7 +21,6 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 - [What you will need](#what-you-will-need)
 - [Exercises](#exercises)
 - [Frequently Asked Questions](#frequently-asked-questions)
-  - [What is the meaning of life.](#what-is-the-meaning-of-life)
   - [How do I do *X* with the command line?](#how-do-i-do-x-with-the-command-line)
   - [How do I connect to my server and stuff?](#how-do-i-connect-to-my-server-and-stuff)
   - [How do I do *Y* with Git?](#how-do-i-do-y-with-git)
@@ -135,7 +134,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 
 ## Frequently Asked Questions
 
-### What is the meaning of life.
+### What is the meaning of life?
 
 42
 
