@@ -8,12 +8,18 @@ and learn the basics of navigating and manipulating your filesystem in a Unix sh
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
-- [A short history of computer interfaces](#a-short-history-of-computer-interfaces)
+- [A short history of computers & computer interfaces](#a-short-history-of-computers--computer-interfaces)
+  - [In the beginning (1830s)](#in-the-beginning-1830s)
+  - [In the beginning (1830s)](#in-the-beginning-1830s-1)
+  - [Analytical engine (1837)](#analytical-engine-1837)
+  - [A century later (1940s)](#a-century-later-1940s)
+  - [A century later (1940s)](#a-century-later-1940s-1)
   - [ENIAC (1946)](#eniac-1946)
-  - [Punched cards for computers (1950)](#punched-cards-for-computers-1950)
+  - [Automated Computing Engine (1950s)](#automated-computing-engine-1950s)
+  - [Punched cards for computers (1950s)](#punched-cards-for-computers-1950s)
   - [TeleTYpewriter (1960s)](#teletypewriter-1960s)
   - [Video terminals (1970s)](#video-terminals-1970s)
+    - [Unix & shells](#unix--shells)
   - [Graphical User Interfaces (1980s)](#graphical-user-interfaces-1980s)
   - [More user interfaces](#more-user-interfaces)
 - [Back to the command line](#back-to-the-command-line)
@@ -22,15 +28,23 @@ and learn the basics of navigating and manipulating your filesystem in a Unix sh
   - [Open a CLI](#open-a-cli)
   - [Install Git Bash (Windows users only)](#install-git-bash-windows-users-only)
 - [How to use the CLI](#how-to-use-the-cli)
+  - [Work in progress...](#work-in-progress)
   - [Writing commands](#writing-commands)
   - [Options vs. arguments](#options-vs-arguments)
+    - [Options with values](#options-with-values)
   - [Naming things when using CLI](#naming-things-when-using-cli)
   - [Auto-completion](#auto-completion)
   - [Getting help](#getting-help)
+    - [Interactive help pages](#interactive-help-pages)
+    - [Unix Command Syntax](#unix-command-syntax)
 - [Using the filesystem](#using-the-filesystem)
   - [The `pwd` command](#the-pwd-command)
   - [The `ls` command](#the-ls-command)
   - [The `cd` command](#the-cd-command)
+    - [The `.` path](#the--path)
+    - [The `..` path](#the--path)
+    - [Path reference](#path-reference)
+    - [Your projects directory](#your-projects-directory)
   - [The `mkdir` command](#the-mkdir-command)
   - [The `touch` command](#the-touch-command)
   - [The `echo` command](#the-echo-command)
@@ -45,21 +59,106 @@ and learn the basics of navigating and manipulating your filesystem in a Unix sh
 - [Nano](#nano)
   - [An alternative to Vim](#an-alternative-to-vim)
   - [Editing files with Nano](#editing-files-with-nano)
+    - [Saving files](#saving-files)
+    - [Confirming the filename](#confirming-the-filename)
   - [Setting Nano as the default editor](#setting-nano-as-the-default-editor)
 - [The `PATH` variable](#the-path-variable)
   - [Understanding the `PATH`](#understanding-the-path)
+  - [Finding commands](#finding-commands)
   - [Using non-system commands](#using-non-system-commands)
+    - [Custom command example](#custom-command-example)
+    - [Executing a command in a directory that's not in the `PATH`](#executing-a-command-in-a-directory-thats-not-in-the-path)
   - [Updating the `PATH` variable](#updating-the-path-variable)
+    - [Does it work?](#does-it-work)
+    - [What have I done?](#what-have-i-done)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 
-## A short history of computer interfaces
+## A short history of computers & computer interfaces
 
 <!-- slide-front-matter class: center, middle -->
 
 For old time's sake.
+
+### In the beginning (1830s)
+
+<!-- slide-front-matter class: center -->
+
+<!-- slide-column -->
+
+<p class='center'><img class='w80' src='images/charles-babbage.jpg' /></p>
+
+<!-- slide-column -->
+
+<p class='center'><img class='w80' src='images/ada-lovelace.png' /></p>
+
+<!-- slide-container -->
+
+Who are these people?
+
+### In the beginning (1830s)
+
+<!-- slide-front-matter class: center -->
+
+<!-- slide-column -->
+
+<p class='center'><img class='w80' src='images/charles-babbage.jpg' /></p>
+
+[**Charles Babbage**][charles-babbage]
+
+Originated the concept of a [digital][digital] [programmable][programmable],
+[general-purpose computer][general-purpose-computer].
+
+<!-- slide-column -->
+
+<p class='center'><img class='w80' src='images/ada-lovelace.png' /></p>
+
+[**Ada Lovelace**][ada-lovelace]
+
+Published the first [algorithm][algorithm] to be carried out by such a machine.
+
+### Analytical engine (1837)
+
+<!-- slide-column -->
+
+<p class='center'><img class='w100' src='images/analytical-engine.jpg' /></p>
+
+<!-- slide-column -->
+
+The [Analytical Engine][analytical-engine] was a proposed mechanical
+[general-purpose computer][general-purpose-computer] designed by English
+mathematician and computer pioneer [Charles Babbage][charles-babbage].
+
+In 1842, [Ada Lovelace][ada-lovelace] translated into English and extensively
+annotated a description of the engine, including a way to calculate [Bernoulli
+numbers][bernoulli-numbers] using the machine (widely considered to be the first
+complete computer program). She has been described as the first computer
+programmer.
+
+### A century later (1940s)
+
+<!-- slide-front-matter class: center -->
+
+<p class='center'><img class='w45' src='images/alan-turing.jpg' /></p>
+
+<!-- slide-container -->
+
+Who is this?
+
+### A century later (1940s)
+
+<!-- slide-front-matter class: center -->
+
+<p class='center'><img class='w45' src='images/alan-turing.jpg' /></p>
+
+[**Alan Turing**][alan-turing]
+
+Formalized the concepts of [algorithm][algorithm] and [computation][computation]
+with the [Turing machine][turing-machine]. He is widely considered to be the
+father of theoretical [computer science][computer-science] and [artificial
+intelligence][artificial-intelligence].
 
 ### ENIAC (1946)
 
@@ -69,11 +168,21 @@ On the [ENIAC][eniac], this was done using function tables with **hundreds of te
 
 <p class='center'><img class='w75' src='images/eniac.jpg' /></p>
 
+### Automated Computing Engine (1950s)
+
+<p class='center'><img class='w85' src='images/ace.jpg' /></p>
+
+The [Automatic Computing Engine (ACE)][ace] was a British early electronic
+serial [stored-program computer][stored-program-computer] designed by [Alan
+Turing][alan-turing]. It used [mercury delay lines for its main
+memory][delay-line-memory].
+
 ### Punched cards for computers (1950s)
 
 <!-- slide-column -->
 
-Later, many early general-purpose digital computers used [punched cards][punched-card] for data input, output and storage.
+Many early general-purpose digital computers used [punched cards][punched-card]
+for data input, output and storage.
 
 Someone had to use a [keypunch][keypunch] machine to write your cards, then feed them to the computer.
 
@@ -178,8 +287,9 @@ Tomorrow:
 
 A CLI is a tool that allows you to use your computer by **writing** what you want to do (i.e. **commands**), instead of clicking on things.
 
-It's been installed on computers for a long time, but it has evolved "a little" since then.
-It usually looks something like this:
+It's been installed on computers for a long time, but it has evolved ["a
+little"][building-the-future-of-the-command-line] since then. It usually looks
+something like this:
 
 <p class='center'><img src='images/cli.jpg' width='100%' /></p>
 
@@ -255,33 +365,61 @@ but it sometimes has issues when integrating with other programs not installed i
 
 ## How to use the CLI
 
-When you open the CLI you should find a blank screen with something like this:
+When you open the CLI you will find a blank screen that looks like this:
 
 ```bash
 $>
 ```
 
-These symbols represent **the prompt** and are used to indicate that you have the lead.
-**The computer is waiting for you to type something** for it to execute.
+These symbols represent **the prompt** and are used to indicate that you have
+the lead. **The computer is waiting for you to type something** for it to
+execute.
 
 <!-- slide-column -->
 
 The prompt is not always `$>`.
-For example, by default on macOS, the prompt is `<user>@<computer-name> <directory> %` or `simon@MacBookPro ~ %` (at the time of writing).
+
+For example, on earlier macOS versions, it used to be `bash3.2$`, indicating the
+name of the shell ([Bash][bash]) and its version.
+
+On more recent macOS versions using [the Z shell (ZSH)][zsh], the prompt might
+indicate your computer's name, your username and the current directory, e.g.
+`MyComputer:~ root#`.
 
 <!-- slide-column 30 -->
-<!-- CHANGE IMAGE FOR ZSH -->
+
 <p class='center'><img src='images/bash-prompt.png' width='100%' /></p>
+
+<p class='center'><img src='images/zsh-prompt.png' width='100%' /></p>
 
 <!-- slide-container -->
 
 **For consistency, we will always use `$>` to represent the prompt.**
 
-<!-- slide-notes -->
+### Work in progress...
 
-Please note that, depending on your OS and your CLI, **the prompt can be composed of different characters**.
+<!-- slide-column -->
 
-When the computer's working, the prompt disappear and you won't have the lead until the prompt reappear again.
+When the computer is working, the prompt disappear and you no longer have the
+lead.
+
+> The `sleep` command tells the computer to do nothing for the specified number
+> of seconds.
+
+<!-- slide-column -->
+
+<p class='center'><img src='images/sleep.png' width='100%' /></p>
+
+<!-- slide-container -->
+
+<!-- slide-column -->
+
+When the computer is done working, it will indicate that you are back in control
+by showing the prompt again.
+
+<!-- slide-column -->
+
+<p class='center'><img src='images/sleep-done.png' width='100%' /></p>
 
 
 
@@ -959,24 +1097,31 @@ As you can see, it tells you the name of the file you opened. Now you can:
 
 ### Setting Nano as the default editor
 
-Editing the shell configuration will depend On a standard Zsh (the default terminal shell on macOS) or Bash shell (the default in Git
-Bash and most Linux systems), you have to set the `$EDITOR` environment variable. You can do that by
-adding the following line to your `~/.zshrc` or `~/.bash_profile` depending on which shell you are using:
+Editing the shell configuration will depend on your shell: for Zsh (the default
+terminal shell on macOS) or Bash shell (the default in Git Bash and most Linux
+systems), you have to set the `$EDITOR` environment variable. You can do that by
+adding the following line to your **`~/.zshrc` or `~/.bash_profile` file**
+depending on which shell you are using:
 
 ```
 export EDITOR=nano
 ```
 
-Remember that you must relaunch your terminal for this change to take effect.
+Remember that you must **relaunch your terminal** for this change to take
+effect.
 
+If you are unsure of what shell you are using, type in the following
+command. The output will display the name of your current shell.
 
->**Hint**: If you are unsure of what shell you are using, type in the following command. The output will display the name of your current shell. 
->```bash
->$> echo $0
-
+```bash
+$> echo $0
+bash
+```
 
 > **Hint:** now that you know how to use Nano, you can edit your Bash profile
 > file with the following command: `nano ~/.bash_profile`.
+
+<!-- slide-notes -->
 
 On Ubuntu, you can list available editors and choose the default one with the
 following command:
@@ -1031,12 +1176,27 @@ $> ls -a -l
    to be an `ls` executable in the `/custom/dir` directory, it will **not be
    used**.
 
+### Finding commands
+
 You can check where a command is with the `which` command:
 
 ```bash
 $> which ls
 /bin/ls
 ```
+
+If there are multiple versions of a command in your `PATH`, you can add the `-a`
+option to list them all:
+
+```bash
+$> which -a
+/opt/homebrew/bin/git
+/usr/bin/git
+```
+
+> Remember, the shell will use the first one it finds, so in this example it
+> would use `/opt/homebrew/bin/git` if you type `git`, completely ignoring
+> `/usr/bin/git`.
 
 
 
@@ -1101,29 +1261,31 @@ For this, you need to **add the directory containing the executable** to your `P
 
 ### Updating the `PATH` variable
 
-To add a new path in your `PATH` variable, you have to edit a special file, used by your CLI interpreter (shell).
-This file depends upon the shell you are using:
+To add a new path in your `PATH` variable, you have to edit a special file, used
+by your CLI interpreter (shell). This file depends upon the shell you are using:
 
-| CLI                 | File to edit      |
-| :------------------ | :-----------      |
-| Terminal / Git Bash | `~/.bash_profile` |
-| [ZSH][zsh-site]     | `~/.zshrc`        |
+| CLI                        | File to edit      |
+| :------------------------- | :---------------- |
+| Git Bash                   | `~/.bash_profile` |
+| Terminal / [ZSH][zsh-site] | `~/.zshrc`        |
 
-Open the adequate file (`.bashrc` for this example) from the CLI with `nano` or
-your favorite editor if it can display hidden files:
+Open the adequate file (`.bash_profile` for this example) from the CLI with
+`nano` or your favorite editor if it can display hidden files:
 
 ```bash
 $> nano ~/.bash_profile
 ```
 
-Add this line at the bottom of your file
-(use `i` to enter _insert_ mode if you're in Vim):
+Add this line at the bottom of your file (use `i` to enter _insert_ mode if
+using Vim):
 
 ```vim
 export PATH="~/hello-program/bin:$PATH"
 ```
 
-If you're in Vim, press `Esc` when you're done typing, then `:wq` and `Enter` to save and quit.
+If you're in Vim, press `Esc` when you're done typing, then `:wq` and `Enter` to
+save and quit. If you're in Nano, press `Ctrl-X`, then ansert `Yes` and confirm
+the filename.
 
 #### Does it work?
 
@@ -1178,27 +1340,45 @@ The next time you run a command, your shell will **first look** in this director
 
 
 
+[ace]: https://en.wikipedia.org/wiki/Automatic_Computing_Engine
+[ada-lovelace]: https://en.wikipedia.org/wiki/Ada_Lovelace
+[alan-turing]: https://en.wikipedia.org/wiki/Alan_Turing
+[algorithm]: https://en.wikipedia.org/wiki/Algorithm
+[analytical-engine]: https://en.wikipedia.org/wiki/Analytical_Engine
+[artificial-intelligence]: https://en.wikipedia.org/wiki/Artificial_intelligence
 [augmented-reality]: https://en.wikipedia.org/wiki/Augmented_reality
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
+[bernoulli-numbers]: https://en.wikipedia.org/wiki/Bernoulli_number
 [brain-interface]: https://en.wikipedia.org/wiki/Brain–computer_interface
+[building-the-future-of-the-command-line]: https://github.com/readme/featured/future-of-the-command-line
 [c]: https://en.wikipedia.org/wiki/C_(programming_language)
 [cat]: https://en.wikipedia.org/wiki/Cat_(Unix)
+[charles-babbage]: https://en.wikipedia.org/wiki/Charles_Babbage
 [cli]: https://en.wikipedia.org/wiki/Command-line_interface
+[computation]: https://en.wikipedia.org/wiki/Computation
+[computer-science]: https://en.wikipedia.org/wiki/Computer_science
+[delay-line-memory]: https://en.wikipedia.org/wiki/Delay-line_memory
+[digital]: https://en.wikipedia.org/wiki/Digital_data
 [eniac]: https://en.wikipedia.org/wiki/ENIAC
 [freebsd]: https://en.wikipedia.org/wiki/FreeBSD
+[general-purpose-computer]: https://en.wikipedia.org/wiki/Computer
 [gitbash]: https://gitforwindows.org
 [gui]: https://en.wikipedia.org/wiki/Graphical_user_interface
 [keypunch]: https://en.wikipedia.org/wiki/Keypunch
+[lfm]: https://en.wikipedia.org/wiki/Luigi_Federico_Menabrea
 [linux]: https://en.wikipedia.org/wiki/Linux
 [macos]: https://en.wikipedia.org/wiki/MacOS
 [mainframe]: https://en.wikipedia.org/wiki/Mainframe_computer
 [motion-sensing]: https://en.wikipedia.org/wiki/Motion_detection
 [nano]: https://en.wikipedia.org/wiki/GNU_nano
+[programmable]: https://en.wikipedia.org/wiki/Computer_program
 [punched-card]: https://en.wikipedia.org/wiki/Punched_card
 [redirection]: https://en.wikipedia.org/wiki/Redirection_(computing)
 [slide-git]: ../git
+[stored-program-computer]: https://en.wikipedia.org/wiki/Stored-program_computer
 [tty]: https://en.wikipedia.org/wiki/Teleprinter
 [tui]: https://en.wikipedia.org/wiki/Touch_user_interface
+[turing-machine]: https://en.wikipedia.org/wiki/Turing_machine
 [unix]: https://en.wikipedia.org/wiki/Unix
 [unix-shell]: https://en.wikipedia.org/wiki/Unix_shell
 [vim]: https://en.wikipedia.org/wiki/Vim_(text_editor)
@@ -1206,4 +1386,5 @@ The next time you run a command, your shell will **first look** in this director
 [vt100]: https://en.wikipedia.org/wiki/VT100
 [vui]: https://en.wikipedia.org/wiki/Voice_user_interface
 [windows-subsystem-for-linux]: https://docs.microsoft.com/en-us/windows/wsl/about
+[zsh]: https://en.wikipedia.org/wiki/Z_shell
 [zsh-site]: http://zsh.sourceforge.net/

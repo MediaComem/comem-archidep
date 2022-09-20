@@ -21,6 +21,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 - [What you will need](#what-you-will-need)
 - [Exercises](#exercises)
 - [Frequently Asked Questions](#frequently-asked-questions)
+  - [What is the meaning of life.](#what-is-the-meaning-of-life)
   - [How do I do *X* with the command line?](#how-do-i-do-x-with-the-command-line)
   - [How do I connect to my server and stuff?](#how-do-i-connect-to-my-server-and-stuff)
   - [How do I do *Y* with Git?](#how-do-i-do-y-with-git)
@@ -157,6 +158,7 @@ the end of each subject.
 
 - [The Linux Documentation Project](https://tldp.org)
   - [Advanced Bash-Scripting Guide](https://tldp.org/LDP/abs/html/)
+- [Building the Future of the Command Line](https://github.com/readme/featured/future-of-the-command-line)
 - [SSH, The Secure Shell: The Definitive Guide - Daniel J. Barrett, Richard E. Silverman, Robert G. Byrnes](https://books.google.ch/books/about/SSH_The_Secure_Shell_The_Definitive_Guid.html?id=9FSaScltd-kC&redir_esc=y)
 - [The Git Book](https://git-scm.com/book)
   - [Chapter 1 - Getting Started](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
