@@ -100,14 +100,26 @@ export async function loadData() {
     );
 
     const passwords = [];
+    const usernames = new Map();
 
     for (const student of students) {
-      student.defaultUsername = student.email
-        .toLowerCase()
-        .replace(/@.*/, '')
-        .replace(/[^a-z0-9]/g, '_');
+      student.defaultUsername = getDefaultStudentUsername(student);
       if (!student.username) {
         student.username = student.defaultUsername;
+      }
+
+      if (usernames.has(student.username)) {
+        throw new Error(
+          `Username ${JSON.stringify(
+            student.username
+          )} for email ${JSON.stringify(
+            student.email
+          )} is the same as for email ${JSON.stringify(
+            usernames.get(student.username).email
+          )}`
+        );
+      } else {
+        usernames.set(student.username, student);
       }
 
       // The goal is not to generate a secure password, or to have a good quality random distribution,
@@ -214,6 +226,34 @@ export async function sendMail(options) {
       err ? reject(err) : resolve(info)
     );
   });
+}
+
+function getDefaultStudentUsername({ email }) {
+  const parts = email.toLowerCase().replace(/@.*/, '').split('.');
+  if (parts.length !== 2) {
+    throw new Error(
+      `Unsupported email ${JSON.stringify(
+        email
+      )} (splitting the username on dot "." produces more than two parts)`
+    );
+  }
+
+  const [firstName, lastName] = parts;
+
+  const username = `${firstName[0]}${lastName[0]}${
+    lastName[lastName.length - 1]
+  }`;
+  if (!username.match(/^[a-z]{3}$/)) {
+    throw new Error(
+      `Unsupported default username ${JSON.stringify(
+        username
+      )} for email ${JSON.stringify(
+        email
+      )}; specify a custom username in the CSV file`
+    );
+  }
+
+  return username;
 }
 
 async function loadConfig() {

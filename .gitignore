@@ -4,6 +4,7 @@
 /config.local.js
 /config.yml
 /*.csv
+/*.csv.*
 /data.yml
 /ec2/inventory*
 /.envrc
