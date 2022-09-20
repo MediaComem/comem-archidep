@@ -20,7 +20,10 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 - [How to improve our basic deployment](#how-to-improve-our-basic-deployment)
 - [What you will need](#what-you-will-need)
 - [Exercises](#exercises)
-- [Useful links](#useful-links)
+- [Frequently Asked Questions](#frequently-asked-questions)
+  - [How do I do *X* with the command line?](#how-do-i-do-x-with-the-command-line)
+  - [How do I connect to my server and stuff?](#how-do-i-connect-to-my-server-and-stuff)
+  - [How do I do *Y* with Git?](#how-do-i-do-y-with-git)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -129,12 +132,22 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
     - [Architecture](ex/minesweeper-deployment.md#books-architecture)
   - [Configure nginx as a load balancer](ex/load-balancing-deployment.md)
 
-## Useful links
+## Frequently Asked Questions
 
-- [Command line cheatsheet](CLI-CHEATSHEET.md)
-- [System administration cheatsheet](SYSADMIN-CHEATSHEET.md)
-- [Git cheatsheet][git-cheatsheet]
-- [Final Test Matter](TEST-MATTER.md)
+### What is the meaning of life.
+
+42
+
+### How do I do *X* with the command line?
+
+[Read the command line cheatsheet](CLI-CHEATSHEET.md)
+### How do I connect to my server and stuff?
+
+[Read the system administration cheatsheet](SYSADMIN-CHEATSHEET.md)
+
+### How do I do *Y* with Git?
+
+[Read the Git cheatsheet][git-cheatsheet]
 
 ## References
 
