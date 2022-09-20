@@ -27,6 +27,7 @@ wildcard entry preconfigured to make various subdomains
   - [Spin up more instance of the FibScale application](#spin-up-more-instance-of-the-fibscale-application)
   - [Configure nginx to balance the load among the available FibScale instances](#configure-nginx-to-balance-the-load-among-the-available-fibscale-instances)
 - [Not the solution to all your problems](#not-the-solution-to-all-your-problems)
+- [Architecture](#architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

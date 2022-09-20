@@ -21,6 +21,7 @@ wildcard entry preconfigured to make various subdomains
   - [Disabling CORS](#disabling-cors)
 - [Using nginx to make both components appear as a single website](#using-nginx-to-make-both-components-appear-as-a-single-website)
 - [Troubleshooting](#troubleshooting)
+- [Architecture](#architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

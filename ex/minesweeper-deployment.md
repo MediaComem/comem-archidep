@@ -45,7 +45,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [:boom: Updating your fork of the repository](#boom-updating-your-fork-of-the-repository)
   - [:boom: `Error: error:0308010C:digital envelope routines::unsupported`](#boom-error-error0308010cdigital-envelope-routinesunsupported)
   - [:boom: `(Mix) Could not compile dependency :cowlib`](#boom-mix-could-not-compile-dependency-cowlib)
-  - [:boom: `Error creating new order :: too many certificates already issued for: archidep.ch`](#boom-error-creating-new-order--too-many-certificates-already-issued-for-archideptech)
+  - [:boom: `Error creating new order :: too many certificates already issued for: archidep.ch`](#boom-error-creating-new-order--too-many-certificates-already-issued-for-archidepch)
   - [:boom: My changes to `config/local.exs` are not taken into account](#boom-my-changes-to-configlocalexs-are-not-taken-into-account)
 - [:books: Architecture](#books-architecture)
 
