@@ -6,6 +6,7 @@ shell for most Linux distributions and macOS.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+- [I don't remember anything!](#i-dont-remember-anything)
 - [Getting help (`man`, `--help`)](#getting-help-man---help)
 - [Navigating](#navigating)
   - [Where am I? (`pwd`)](#where-am-i-pwd)
@@ -29,6 +30,37 @@ shell for most Linux distributions and macOS.
   - [Do I have that command? (`which`)](#do-i-have-that-command-which)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## I don't remember anything!
+
+Use the `history` command to list all the commands you previously typed:
+
+```bash
+$> history
+24 ls
+25 cd foo
+26 ssh jdoe@archidep.ch
+27 cat file.txt
+```
+
+Note that each command is prefixed by a number. Type an exclamation mark
+followed by that number to retrieve the command:
+
+```bash
+$> !26
+$> ssh jdoe@archidep.ch
+```
+
+If you're looking for a specific command, you can filter your command history by
+piping it into the `grep` command. For example, this will search for all
+commands containing the word "ssh" in your history:
+
+```bash
+$> history | grep ssh
+19 ssh-keygen --help
+20 ssh-keygen
+26 ssh jdoe@archidep.ch
+```
 
 ## Getting help (`man`, `--help`)
 
@@ -79,7 +111,7 @@ $> pwd
 | `.`  | The current directory (the same as indicated by `pwd`).       |
 | `..` | The parent directory (e.g. `/foo` if you are in `/foo/bar`).  |
 | `~`  | Your user's home directory (e.g. `/Users/username` in macOS). |
-| `/`  | The file system's root directory.                             |
+| `/`  | The file system's root directory on Unix systems.             |
 
 ## Reading
 
