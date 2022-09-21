@@ -77,8 +77,13 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 
 ## What you will need
 
-- A Unix CLI (Git Bash is included with Git on Windows)
+- A Unix CLI
+  - Linux/macOS users can use their standard Terminal
+  - Windows users should install [Git for Windows][git-for-windows] which
+    includes Git Bash
 - [Git][git-downloads]
+  - macOS users should [install the command-line tools][macos-cli]
+  - Windows users should install [Git for Windows][git-for-windows]
 - A free [GitHub][github] account
 - [Google Chrome][chrome] (recommended, any browser with developer tools will do)
 - A free [Render][render] account
@@ -205,8 +210,10 @@ and related articles:
 [comem-webdev]: https://github.com/MediaComem/comem-webdev
 [git-cheatsheet]: https://github.com/MediaComem/comem-webdev/blob/master/GIT-CHEATSHEET.md
 [git-downloads]: https://git-scm.com/downloads
+[git-for-windows]: https://gitforwindows.org
 [github]: https://github.com
 [heig]: http://www.heig-vd.ch
+[macos-cli]: https://www.freecodecamp.org/news/install-xcode-command-line-tools/
 [nginx]: https://www.nginx.com
 [owasp]: https://www.owasp.org
 [owasp-top10]: https://owasp.org/www-project-top-ten/
