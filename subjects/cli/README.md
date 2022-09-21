@@ -1254,7 +1254,7 @@ Add this line at the bottom of your file (use `i` to enter _insert_ mode if
 using Vim):
 
 ```vim
-export PATH="~/hello-program/bin:$PATH"
+export PATH="/absolute/path/to/hello-program/bin:$PATH"
 ```
 
 If you're in Vim, press `Esc` when you're done typing, then `:wq` and `Enter` to
