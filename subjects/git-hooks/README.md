@@ -19,13 +19,12 @@ Learn the basics of Git hooks.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [What is a Git hook?](#what-is-a-git-hook)
-    - [What kind of hooks are there?](#what-kind-of-hooks-are-there)
-    - [How can I create a hook?](#how-can-i-create-a-hook)
-        - [Hooks are not under version control](#hooks-are-not-under-version-control)
-    - [How do I use a hook?](#how-do-i-use-a-hook)
-    - [What are hooks good for?](#what-are-hooks-good-for)
+  - [What kind of hooks are there?](#what-kind-of-hooks-are-there)
+  - [How can I create a hook?](#how-can-i-create-a-hook)
+    - [Hooks are not under version control](#hooks-are-not-under-version-control)
+  - [How do I use a hook?](#how-do-i-use-a-hook)
+  - [What are hooks good for?](#what-are-hooks-good-for)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->

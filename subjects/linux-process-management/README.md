@@ -4,8 +4,22 @@ Learn about process management on Linux and how to do it with [systemd][systemd]
 
 <!-- slide-include ../../BANNER.md -->
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [What is process management?](#what-is-process-management)
+  - [Process managers](#process-managers)
+  - [Lightweight process managers](#lightweight-process-managers)
+- [Systemd](#systemd)
+  - [What is systemd?](#what-is-systemd)
+  - [Unit files](#unit-files)
+  - [Service unit file](#service-unit-file)
+  - [Location of unit files](#location-of-unit-files)
+  - [The `systemctl` command](#the-systemctl-command)
+  - [The `journalctl` command](#the-journalctl-command)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 

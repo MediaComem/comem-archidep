@@ -13,8 +13,33 @@ Learn what the Advanced Packaging Tool (APT) is and the basics of its `apt` comm
 
 * [Unix Administration](../unix-admin/)
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [What is APT?](#what-is-apt)
+  - [Why use a package manager?](#why-use-a-package-manager)
+  - [There are many package managers](#there-are-many-package-managers)
+  - [Package lists](#package-lists)
+- [The `apt` command line](#the-apt-command-line)
+  - [The `apt list` command](#the-apt-list-command)
+  - [The `apt search` command](#the-apt-search-command)
+  - [The `apt show` command](#the-apt-show-command)
+  - [The `apt install` command](#the-apt-install-command)
+    - [Installing with superuser privileges](#installing-with-superuser-privileges)
+    - [Using new packages](#using-new-packages)
+    - [Installing more complex (and useful) packages](#installing-more-complex-and-useful-packages)
+    - [Confirming installation](#confirming-installation)
+  - [The `apt update` command](#the-apt-update-command)
+    - [Checking for package updates](#checking-for-package-updates)
+  - [The `apt upgrade` and `apt full-upgrade` commands](#the-apt-upgrade-and-apt-full-upgrade-commands)
+    - [Upgrading packages](#upgrading-packages)
+    - [Rebooting after an upgrade](#rebooting-after-an-upgrade)
+  - [The `apt remove` command](#the-apt-remove-command)
+  - [The `apt autoremove` command](#the-apt-autoremove-command)
+  - [The `apt-get` and `apt-cache` commands](#the-apt-get-and-apt-cache-commands)
+- [Reference](#reference)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 

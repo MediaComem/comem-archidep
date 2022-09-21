@@ -12,8 +12,25 @@ Learn how to manage Unix environment variables.
 
 * [Unix Processes](../unix-processes/)
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Environment variables](#environment-variables)
+  - [What is an environment variable?](#what-is-an-environment-variable)
+  - [What are they for?](#what-are-they-for)
+- [Managing environment variables](#managing-environment-variables)
+  - [Getting an environment variable](#getting-an-environment-variable)
+  - [Listing all environment variables](#listing-all-environment-variables)
+  - [Setting an environment variable](#setting-an-environment-variable)
+    - [Setting a variable for one command](#setting-a-variable-for-one-command)
+    - [Setting a variable for a shell session](#setting-a-variable-for-a-shell-session)
+    - [Setting a variable in the shell configuration file](#setting-a-variable-in-the-shell-configuration-file)
+  - [Removing an environment variable](#removing-an-environment-variable)
+  - [Getting environment variables from code](#getting-environment-variables-from-code)
+  - [Environment variables are always strings](#environment-variables-are-always-strings)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 

@@ -15,8 +15,42 @@ Learn what a reverse proxy is, and put it in practice using nginx.
 * [Unix Networking](../unix-networking/)
 * [APT](../apt/)
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [What is a proxy?](#what-is-a-proxy)
+  - [Types of proxy servers](#types-of-proxy-servers)
+    - [Tunneling proxy](#tunneling-proxy)
+    - [Forward proxy](#forward-proxy)
+      - [Anonymous or transparent](#anonymous-or-transparent)
+    - [Reverse proxy](#reverse-proxy)
+- [Why use a reverse proxy?](#why-use-a-reverse-proxy)
+  - [Hiding internal architecture](#hiding-internal-architecture)
+  - [Hiding multi-component websites](#hiding-multi-component-websites)
+  - [SSL termination or authentication](#ssl-termination-or-authentication)
+  - [Scalability](#scalability)
+    - [Load balancing](#load-balancing)
+  - [Other uses](#other-uses)
+- [nginx](#nginx)
+  - [What is nginx?](#what-is-nginx)
+    - [Apache vs. nginx](#apache-vs-nginx)
+  - [Installing nginx](#installing-nginx)
+    - [Making sure it's working](#making-sure-its-working)
+  - [Nginx configuration files](#nginx-configuration-files)
+    - [The main configuration file](#the-main-configuration-file)
+    - [Includes](#includes)
+    - [`sites-available` vs. `sites-enabled`](#sites-available-vs-sites-enabled)
+    - [Reloading nginx's configuration](#reloading-nginxs-configuration)
+    - [Common nginx directives](#common-nginx-directives)
+- [nginx configuration examples](#nginx-configuration-examples)
+  - [How to use these examples](#how-to-use-these-examples)
+  - [Static website configuration](#static-website-configuration)
+  - [Reverse proxy configuration](#reverse-proxy-configuration)
+  - [Load balancing configuration](#load-balancing-configuration)
+- [References](#references)
+- [TODO](#todo)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 

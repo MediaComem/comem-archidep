@@ -1,3 +1,43 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Cloud Computing](#cloud-computing)
+  - [Client-server model](#client-server-model)
+    - [Server-side](#server-side)
+    - [Types of servers](#types-of-servers)
+    - [[Internet hosting][internet-hosting]](#internet-hostinginternet-hosting)
+      - [Types of web hosting](#types-of-web-hosting)
+    - [[Virtualization][virtualization]](#virtualizationvirtualization)
+      - [Virtualized server architecture](#virtualized-server-architecture)
+  - [Cloud computing](#cloud-computing)
+    - [What is cloud computing?](#what-is-cloud-computing)
+    - [Why use cloud computing?](#why-use-cloud-computing)
+    - [Deployment models](#deployment-models)
+      - [Other deployment models](#other-deployment-models)
+    - [Public clouds](#public-clouds)
+  - [Service models](#service-models)
+    - [What can I get?](#what-can-i-get)
+    - [On premise data center](#on-premise-data-center)
+    - [Infrastructure as a Service (IaaS)](#infrastructure-as-a-service-iaas)
+      - [How does IaaS work?](#how-does-iaas-work)
+    - [Platform as a Service (PaaS)](#platform-as-a-service-paas)
+      - [How does PaaS work?](#how-does-paas-work)
+    - [Function as a Service (FaaS)](#function-as-a-service-faas)
+      - [How does FaaS work?](#how-does-faas-work)
+    - [Mobile Backend as a Service (MBaas)](#mobile-backend-as-a-service-mbaas)
+      - [How does MBaaS work?](#how-does-mbaas-work)
+    - [Software as a Service (SaaS)](#software-as-a-service-saas)
+    - [Level of abstraction](#level-of-abstraction)
+  - [Trends](#trends)
+    - [Service-oriented architecture (SOA)](#service-oriented-architecture-soa)
+    - [Microservices](#microservices)
+      - [[Microservice architecture][microservices-in-practice]](#microservice-architecturemicroservices-in-practice)
+    - [Serverless computing](#serverless-computing)
+  - [References](#references)
+  - [TODO](#todo)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Cloud Computing
 
 Learn what cloud computing is and about the common service models available today.

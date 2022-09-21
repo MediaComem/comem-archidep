@@ -11,7 +11,7 @@ and learn the basics of navigating and manipulating your filesystem in a Unix sh
 - [A short history of computers & computer interfaces](#a-short-history-of-computers--computer-interfaces)
   - [In the beginning (1830s)](#in-the-beginning-1830s)
   - [Analytical engine (1837)](#analytical-engine-1837)
-  - [A century later (1940s)](#a-century-later-1940s-1)
+  - [A century later (1940s)](#a-century-later-1940s)
   - [ENIAC (1946)](#eniac-1946)
   - [Automated Computing Engine (1950s)](#automated-computing-engine-1950s)
   - [Punched cards for computers (1950s)](#punched-cards-for-computers-1950s)
@@ -69,6 +69,8 @@ and learn the basics of navigating and manipulating your filesystem in a Unix sh
   - [Updating the `PATH` variable](#updating-the-path-variable)
     - [Does it work?](#does-it-work)
     - [What have I done?](#what-have-i-done)
+- [Unleash your terminal](#unleash-your-terminal)
+  - [Oh My Zsh](#oh-my-zsh)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

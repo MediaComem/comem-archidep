@@ -1,3 +1,14 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Linux](#linux)
+  - [What is Linux?](#what-is-linux)
+    - [Unix history](#unix-history)
+    - [Why use Linux?](#why-use-linux)
+    - [Linux distribution timeline](#linux-distribution-timeline)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Linux
 
 Learn about the history of the Linux operating system.

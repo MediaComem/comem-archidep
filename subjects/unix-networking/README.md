@@ -14,8 +14,45 @@ Learn the basics of Unix networking and how to make TCP connections.
 * [Unix Administration](../unix-admin/)
 * [Unix Processes](../unix-processes/)
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Computer networking](#computer-networking)
+  - [OSI model](#osi-model)
+  - [TCP/IP model](#tcpip-model)
+  - [OSI vs. TCP/IP](#osi-vs-tcpip)
+  - [IP addressing](#ip-addressing)
+    - [IP networks](#ip-networks)
+    - [Subnetworks](#subnetworks)
+    - [Reserved address spaces](#reserved-address-spaces)
+    - [There's no place like 127.0.0.1](#theres-no-place-like-127001)
+    - [0.0.0.0 is everyone](#0000-is-everyone)
+    - [Network address translation](#network-address-translation)
+  - [Ports](#ports)
+    - [Multiplexing](#multiplexing)
+    - [Registered port numbers](#registered-port-numbers)
+    - [Well-known ports](#well-known-ports)
+  - [Domain name system](#domain-name-system)
+    - [DNS hierarchy](#dns-hierarchy)
+- [Unix networking](#unix-networking)
+  - [The `ip` command](#the-ip-command)
+  - [The `ping` command](#the-ping-command)
+  - [The `traceroute` command](#the-traceroute-command)
+  - [The `mtr` command](#the-mtr-command)
+  - [The `ss` command](#the-ss-command)
+  - [The `nc` command](#the-nc-command)
+- [Making connections](#making-connections)
+  - [Raw TCP connection](#raw-tcp-connection)
+  - [HTTP request](#http-request)
+    - [Making an HTTP request to Google](#making-an-http-request-to-google)
+    - [Following Google's redirect](#following-googles-redirect)
+  - [HTTP response](#http-response)
+    - [Making an HTTP request with a browser](#making-an-http-request-with-a-browser)
+    - [Sending a plain text HTTP response](#sending-a-plain-text-http-response)
+    - [Sending an HTTP response with HTML](#sending-an-http-response-with-html)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 

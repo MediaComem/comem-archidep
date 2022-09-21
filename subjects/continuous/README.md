@@ -8,8 +8,24 @@ Learn about continuous integration, continuous testing, continuous delivery and 
 
 * [Collaborating with Git](../git-collaborating/)
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [What is continuous software development?](#what-is-continuous-software-development)
+  - [Continuous et al.](#continuous-et-al)
+  - [The waterfall model](#the-waterfall-model)
+  - [Iterative software development](#iterative-software-development)
+    - [Advantages of iterative software development](#advantages-of-iterative-software-development)
+  - [Agile software development](#agile-software-development)
+  - [What is continuous software development, again?](#what-is-continuous-software-development-again)
+- [Continuous Integration (CI)](#continuous-integration-ci)
+- [Continuous Testing (CT)](#continuous-testing-ct)
+- [Continuous delivery (CDE)](#continuous-delivery-cde)
+- [Continuous deployment (CD)](#continuous-deployment-cd)
+- [Continuous software development](#continuous-software-development)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 

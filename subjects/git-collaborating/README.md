@@ -18,12 +18,15 @@ Learn how to collaborate on [GitHub][github] with [Git][git].
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [Group work](#group-work)
 - [Distributed version control system](#distributed-version-control-system)
   - [What is a remote?](#what-is-a-remote)
   - [Centralized workflow](#centralized-workflow)
   - [Working with GitHub](#working-with-github)
+    - [Create a free GitHub account](#create-a-free-github-account)
+    - [Create an SSH key](#create-an-ssh-key)
+    - [Copy the SSH key](#copy-the-ssh-key)
+    - [Add the SSH key to your GitHub account](#add-the-ssh-key-to-your-github-account)
 - [Sharing changes](#sharing-changes)
   - [Bob: create a repository on GitHub](#bob-create-a-repository-on-github)
   - [Bob: add B as a collaborator](#bob-add-b-as-a-collaborator)
@@ -46,6 +49,8 @@ Learn how to collaborate on [GitHub][github] with [Git][git].
   - [Alice: make other changes](#alice-make-other-changes)
   - [Alice: push the other changes](#alice-push-the-other-changes)
   - [Rejected pushes](#rejected-pushes)
+    - [Alice: fetch the changes](#alice-fetch-the-changes)
+    - [Alice: try to push again](#alice-try-to-push-again)
   - [Divergent history](#divergent-history)
   - [Alice: pull changes from the shared repository](#alice-pull-changes-from-the-shared-repository)
   - [Alice: check the conflict markers](#alice-check-the-conflict-markers)

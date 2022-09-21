@@ -13,8 +13,25 @@ Learn the basics of the [Domain Name System (DNS)][dns] and configure a domain n
 
 * [Unix Networking](../unix-networking/)
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [What is the Domain Name System?](#what-is-the-domain-name-system)
+  - [Domain name system](#domain-name-system)
+  - [DNS hierarchy](#dns-hierarchy)
+  - [DNS zone](#dns-zone)
+  - [DNS zone file](#dns-zone-file)
+    - [DNS record types](#dns-record-types)
+    - [DNS record example](#dns-record-example)
+    - [DNS subdomain record example](#dns-subdomain-record-example)
+- [Managing DNS on Gandi.net](#managing-dns-on-gandinet)
+  - [Buying a domain name](#buying-a-domain-name)
+  - [Configuring a domain](#configuring-a-domain)
+  - [Configuring the domain's DNS zone](#configuring-the-domains-dns-zone)
+    - [Seeing the raw DNS zone text](#seeing-the-raw-dns-zone-text)
+  - [Adding a DNS record](#adding-a-dns-record)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 

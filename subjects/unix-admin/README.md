@@ -1,3 +1,47 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Unix Administration](#unix-administration)
+  - [File system](#file-system)
+    - [Case-sensitivity](#case-sensitivity)
+    - [File hierarchy](#file-hierarchy)
+      - [Inspecting volumes](#inspecting-volumes)
+      - [Common Unix directories](#common-unix-directories)
+    - [Unix file types](#unix-file-types)
+  - [Unix users](#unix-users)
+    - [User access](#user-access)
+    - [Permissions](#permissions)
+      - [User categories](#user-categories)
+      - [Checking file permissions](#checking-file-permissions)
+  - [Administrative access](#administrative-access)
+    - [The `sudo` command](#the-sudo-command)
+      - [The sudoers file](#the-sudoers-file)
+    - [The `su` command](#the-su-command)
+      - [Performing tasks as another user](#performing-tasks-as-another-user)
+      - [Performing administrative tasks as root](#performing-administrative-tasks-as-root)
+    - [User database files](#user-database-files)
+      - [The `/etc/passwd` file](#the-etcpasswd-file)
+      - [The `/etc/group` file](#the-etcgroup-file)
+      - [The shadow files](#the-shadow-files)
+  - [User management](#user-management)
+    - [Creating a login user](#creating-a-login-user)
+      - [Checking the created login user](#checking-the-created-login-user)
+    - [Creating a system user](#creating-a-system-user)
+      - [Checking the created system user](#checking-the-created-system-user)
+    - [Difference between login and system users](#difference-between-login-and-system-users)
+    - [Other useful user management commands](#other-useful-user-management-commands)
+  - [Permission management](#permission-management)
+    - [The `chown` command](#the-chown-command)
+    - [The `chmod` command](#the-chmod-command)
+      - [Symbolic modes](#symbolic-modes)
+      - [Using symbolic modes](#using-symbolic-modes)
+      - [Octal modes](#octal-modes)
+      - [Using octal modes](#using-octal-modes)
+  - [References](#references)
+  - [TODO](#todo)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Unix Administration
 
 Learn the basics of Unix and Unix-like operating systems like Linux, and how to manage them from the command line.

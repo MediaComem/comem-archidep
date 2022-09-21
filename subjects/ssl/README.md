@@ -14,8 +14,33 @@ Learn about SSL certificates, how to create your own and how to request some fro
 
 * [Reverse Proxying](../reverse-proxy/)
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [What is a TLS or SSL certificate?](#what-is-a-tls-or-ssl-certificate)
+  - [Public key certificates](#public-key-certificates)
+  - [What is a TLS certificate good for?](#what-is-a-tls-certificate-good-for)
+- [Validity of TLS certificates](#validity-of-tls-certificates)
+  - [What's in a TLS certificate?](#whats-in-a-tls-certificate)
+    - [Decoding the contents of a TLS certificate](#decoding-the-contents-of-a-tls-certificate)
+  - [Configuring nginx to use you TLS certificate](#configuring-nginx-to-use-you-tls-certificate)
+  - [Invalid certificate authority](#invalid-certificate-authority)
+    - [Self-signed root certificate](#self-signed-root-certificate)
+  - [How to make a certificate valid](#how-to-make-a-certificate-valid)
+  - [Chain of trust](#chain-of-trust)
+    - [Viewing a certificate's chain of trust](#viewing-a-certificates-chain-of-trust)
+    - [Intermediate certificates](#intermediate-certificates)
+    - [Root certificate authorities](#root-certificate-authorities)
+  - [Root certificate validity](#root-certificate-validity)
+    - [Trusted CA Certificate Lists](#trusted-ca-certificate-lists)
+- [Obtaining a TLS certificate](#obtaining-a-tls-certificate)
+  - [Domain validation](#domain-validation)
+  - [Purchasing TLS certificates](#purchasing-tls-certificates)
+  - [Let's Encrypt](#lets-encrypt)
+    - [Certbot](#certbot)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 

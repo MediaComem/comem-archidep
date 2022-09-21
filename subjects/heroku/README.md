@@ -20,7 +20,6 @@ Learn to deploy an [Express][express] web application on the [Heroku][heroku] cl
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [What is Heroku?](#what-is-heroku)
   - [Cloud service models](#cloud-service-models)
   - [Infrastructure as a Service (IaaS)](#infrastructure-as-a-service-iaas)
@@ -31,10 +30,9 @@ Learn to deploy an [Express][express] web application on the [Heroku][heroku] cl
   - [Make it a Git repository](#make-it-a-git-repository)
   - [Do you have a credit card?](#do-you-have-a-credit-card)
   - [Create the app on Heroku (**with credit card**)](#create-the-app-on-heroku-with-credit-card)
-  - [Go to your dashboard (**with credit card**)](#go-to-your-dashboard-with-credit-card)
-  - [Provision a database add-on (**with credit card**)](#provision-a-database-add-on-with-credit-card)
-  - [Add the mLab add-on (**with credit card**)](#add-the-mlab-add-on-with-credit-card)
   - [Use an existing Heroku app (**without credit card**)](#use-an-existing-heroku-app-without-credit-card)
+  - [Go to your dashboard](#go-to-your-dashboard)
+  - [Provision database add-ons](#provision-database-add-ons)
   - [Configure your database URL from the environment](#configure-your-database-url-from-the-environment)
   - [Deploy it](#deploy-it)
   - [How?](#how)
