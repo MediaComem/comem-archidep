@@ -26,6 +26,12 @@ Connect to the server at the IP address `W.X.Y.Z` as the `john_doe` user:
 $> ssh john_doe@W.X.Y.Z
 ```
 
+Connect to the server at the domain `example.com` as the `john_doe` user:
+
+```bash
+$> ssh john_doe@example.com
+```
+
 ## How do I change my password?
 
 ```bash
