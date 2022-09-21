@@ -22,7 +22,7 @@
     "azure:inventory": "node scripts/generate-azure-inventory.js",
     "build": "courses-md build",
     "deploy": "courses-md publish",
-    "doctoc": "doctoc --notitle --github README.md CLI-CHEATSHEET.md SETUP.md SYSADMIN-CHEATSHEET.md TEST-MATTER.md ex",
+    "doctoc": "doctoc --notitle --github README.md CLI-CHEATSHEET.md GIT-CHEATSHEET.md SETUP.md SYSADMIN-CHEATSHEET.md TEST-MATTER.md ex",
     "ec2": "node scripts/manage-instances.js",
     "ec2:inventory": "node scripts/manage-instances.js inventory",
     "format": "prettier --check .",

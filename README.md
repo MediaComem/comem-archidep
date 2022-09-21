@@ -21,6 +21,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 - [What you will need](#what-you-will-need)
 - [Exercises](#exercises)
 - [Frequently Asked Questions](#frequently-asked-questions)
+  - [What is the meaning of life?](#what-is-the-meaning-of-life)
   - [How do I do *X* with the command line?](#how-do-i-do-x-with-the-command-line)
   - [How do I connect to my server and stuff?](#how-do-i-connect-to-my-server-and-stuff)
   - [How do I do *Y* with Git?](#how-do-i-do-y-with-git)
@@ -152,7 +153,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 
 ### How do I do *Y* with Git?
 
-[Read the Git cheatsheet][git-cheatsheet]
+[Read the Git cheatsheet](GIT-CHEATSHEET.md)
 
 ## References
 
@@ -208,7 +209,6 @@ and related articles:
 [chrome]: https://www.google.com/chrome/
 [comem]: http://www.heig-vd.ch/comem
 [comem-webdev]: https://github.com/MediaComem/comem-webdev
-[git-cheatsheet]: https://github.com/MediaComem/comem-webdev/blob/master/GIT-CHEATSHEET.md
 [git-downloads]: https://git-scm.com/downloads
 [git-for-windows]: https://gitforwindows.org
 [github]: https://github.com
