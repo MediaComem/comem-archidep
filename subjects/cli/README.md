@@ -10,9 +10,7 @@ and learn the basics of navigating and manipulating your filesystem in a Unix sh
 
 - [A short history of computers & computer interfaces](#a-short-history-of-computers--computer-interfaces)
   - [In the beginning (1830s)](#in-the-beginning-1830s)
-  - [In the beginning (1830s)](#in-the-beginning-1830s-1)
   - [Analytical engine (1837)](#analytical-engine-1837)
-  - [A century later (1940s)](#a-century-later-1940s)
   - [A century later (1940s)](#a-century-later-1940s-1)
   - [ENIAC (1946)](#eniac-1946)
   - [Automated Computing Engine (1950s)](#automated-computing-engine-1950s)
@@ -90,22 +88,6 @@ For old time's sake.
 
 <p class='center'><img class='w80' src='images/charles-babbage.jpg' /></p>
 
-<!-- slide-column -->
-
-<p class='center'><img class='w80' src='images/ada-lovelace.png' /></p>
-
-<!-- slide-container -->
-
-Who are these people?
-
-### In the beginning (1830s)
-
-<!-- slide-front-matter class: center -->
-
-<!-- slide-column -->
-
-<p class='center'><img class='w80' src='images/charles-babbage.jpg' /></p>
-
 [**Charles Babbage**][charles-babbage]
 
 Originated the concept of a [digital][digital] [programmable][programmable],
@@ -136,16 +118,6 @@ annotated a description of the engine, including a way to calculate [Bernoulli
 numbers][bernoulli-numbers] using the machine (widely considered to be the first
 complete computer program). She has been described as the first computer
 programmer.
-
-### A century later (1940s)
-
-<!-- slide-front-matter class: center -->
-
-<p class='center'><img class='w45' src='images/alan-turing.jpg' /></p>
-
-<!-- slide-container -->
-
-Who is this?
 
 ### A century later (1940s)
 
@@ -382,7 +354,7 @@ The prompt is not always `$>`.
 For example, on earlier macOS versions, it used to be `bash3.2$`, indicating the
 name of the shell ([Bash][bash]) and its version.
 
-On more recent macOS versions using [the Z shell (ZSH)][zsh], the prompt might
+On more recent macOS versions using [the Z shell (Zsh)][zsh], the prompt might
 indicate your computer's name, your username and the current directory, e.g.
 `MyComputer:~ root#`.
 
@@ -1267,7 +1239,7 @@ by your CLI interpreter (shell). This file depends upon the shell you are using:
 | CLI                        | File to edit      |
 | :------------------------- | :---------------- |
 | Git Bash                   | `~/.bash_profile` |
-| Terminal / [ZSH][zsh-site] | `~/.zshrc`        |
+| Terminal / [Zsh][zsh-site] | `~/.zshrc`        |
 
 Open the adequate file (`.bash_profile` for this example) from the CLI with
 `nano` or your favorite editor if it can display hidden files:
@@ -1338,6 +1310,26 @@ The next time you run a command, your shell will **first look** in this director
 * You must re-open your CLI for the change to take effect:
   the shell configuration file (e.g. `~/.bash_profile`) is only applied when the shell starts.
 
+## Unleash your terminal
+
+<!-- slide-front-matter class: center, middle -->
+
+<img class='w100' src='images/unleash-your-terminal.png' />
+
+### Oh My Zsh
+
+Command-line shells have been worked on for a very long time. Modern shells
+such as the [Z shell (Zsh)][zsh] have a whole community that created many
+plugins to simplify your daily command-line work.
+
+On macOS, you may want to install [Oh My Zsh][oh-my-zsh] to fully unleash the
+power of your Terminal. It has [plugins][oh-my-zsh-plugins] to integrate with
+Homebrew, Git, various programming languages like Ruby, PHP, Go, and much more.
+
+On Windows, you may want to [install the Windows Subsystem for Linux][wsl] so
+you can install a Linux distribution like Ubuntu. You can then [install Zsh and
+Oh My Zsh as well][oh-my-zsh-windows].
+
 
 
 [ace]: https://en.wikipedia.org/wiki/Automatic_Computing_Engine
@@ -1371,6 +1363,9 @@ The next time you run a command, your shell will **first look** in this director
 [mainframe]: https://en.wikipedia.org/wiki/Mainframe_computer
 [motion-sensing]: https://en.wikipedia.org/wiki/Motion_detection
 [nano]: https://en.wikipedia.org/wiki/GNU_nano
+[oh-my-zsh]: https://ohmyz.sh
+[oh-my-zsh-plugins]: https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
+[oh-my-zsh-windows]: http://kevinprogramming.com/using-zsh-in-windows-terminal/
 [programmable]: https://en.wikipedia.org/wiki/Computer_program
 [punched-card]: https://en.wikipedia.org/wiki/Punched_card
 [redirection]: https://en.wikipedia.org/wiki/Redirection_(computing)
@@ -1386,5 +1381,6 @@ The next time you run a command, your shell will **first look** in this director
 [vt100]: https://en.wikipedia.org/wiki/VT100
 [vui]: https://en.wikipedia.org/wiki/Voice_user_interface
 [windows-subsystem-for-linux]: https://docs.microsoft.com/en-us/windows/wsl/about
+[wsl]: https://learn.microsoft.com/en-us/windows/wsl/install
 [zsh]: https://en.wikipedia.org/wiki/Z_shell
 [zsh-site]: http://zsh.sourceforge.net/
