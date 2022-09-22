@@ -535,18 +535,17 @@ then hit `Tab` again to get the full path.
 You can get help on most advanced commands by executing them with the `--help` option.
 As the option's name implies, it's designed to **give you some help** on how to use the command:
 
-```bash
-tar --help
-```
+<p class='center'><img src='images/tar-help.png' width='60%' /></p>
 
-Some commands don't respond to the `--help` option.
-To try and get help, depending on what operating system you're on:
+Some commands don't have the `--help` option, but there are alternative sources
+of information depending on what operating system you're on:
 
 * On Linux or macOS, use `man ls` to display the **manual** for the `ls` command.
 * On Windows, use `help cd` to display help for the `cd` command;
   you can also type `help` to list available commands (only system commands).
-
-<p class='center'><img src='images/tar-help.png' width='70%' /></p>
+* If you have [Node.js and npm][node] installed, there is also [tldr
+  pages][tldr-pages]: a cross-platform tool that provides simplified and
+  community-driven manual pages.
 
 #### Interactive help pages
 
@@ -1365,6 +1364,7 @@ Oh My Zsh as well][oh-my-zsh-windows].
 [mainframe]: https://en.wikipedia.org/wiki/Mainframe_computer
 [motion-sensing]: https://en.wikipedia.org/wiki/Motion_detection
 [nano]: https://en.wikipedia.org/wiki/GNU_nano
+[node]: https://nodejs.org
 [oh-my-zsh]: https://ohmyz.sh
 [oh-my-zsh-plugins]: https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
 [oh-my-zsh-windows]: http://kevinprogramming.com/using-zsh-in-windows-terminal/
@@ -1373,6 +1373,7 @@ Oh My Zsh as well][oh-my-zsh-windows].
 [redirection]: https://en.wikipedia.org/wiki/Redirection_(computing)
 [slide-git]: ../git
 [stored-program-computer]: https://en.wikipedia.org/wiki/Stored-program_computer
+[tldr-pages]: https://tldr.sh
 [tty]: https://en.wikipedia.org/wiki/Teleprinter
 [tui]: https://en.wikipedia.org/wiki/Touch_user_interface
 [turing-machine]: https://en.wikipedia.org/wiki/Turing_machine
