@@ -3,7 +3,7 @@
   <head>
     <title>Git Introduction (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/ac457f1aae5e9d145bce59e6109b7d35c1a932e8/subjects/git/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/73b42b1ce991972d335ceba675b5bbbff16678a0/subjects/git/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -1151,17 +1151,15 @@ $> git add people.txt
 $> git status
 On branch main
 Changes to be committed:
-  `(use "git reset HEAD <file>..." to unstage)`
+  `(use "git restore --staged <file>..." to unstage)`
 
   modified:   people.txt
 ```
 
-Use `git reset` as instructed:
+Use `git restore` as instructed:
 
 ```bash
-$> git reset HEAD people.txt
-Unstaged changes after reset:
-M       people.txt
+$> git restore --staged people.txt
 ```
 
 The changes will still be in the file in the working directory.

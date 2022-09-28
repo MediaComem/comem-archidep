@@ -3,7 +3,7 @@
   <head>
     <title>Secure Shell (SSH) (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/ac457f1aae5e9d145bce59e6109b7d35c1a932e8/subjects/ssh/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/73b42b1ce991972d335ceba675b5bbbff16678a0/subjects/ssh/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -607,8 +607,10 @@ ssh [user@]hostname [command]
 Here's a few examples:
 
 * `ssh example.com` - Connect to the SSH server at `example.com` and log in (with the same username as in your current shell).
-* `ssh jdoe@example.com` - Connect to the SSH server at `example.com` and log in as user `jdoe`.
-* `ssh 192.168.50.4 hostname` - Run the `hostname` command as user `jdoe` on the SSH server at `192.168.50.4`.
+* `ssh jdoe@example.com` - Connect to the SSH server at `example.com` and log in
+  as user `jdoe`.
+* `ssh jdoe@192.168.50.4 hostname` - Run the `hostname` command as user `jdoe`
+  on the SSH server at `192.168.50.4`.
 
 Run `man ssh` to see available options (or just `ssh` in Git Bash).
 
