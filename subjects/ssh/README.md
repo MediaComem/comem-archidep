@@ -538,8 +538,10 @@ ssh [user@]hostname [command]
 Here's a few examples:
 
 * `ssh example.com` - Connect to the SSH server at `example.com` and log in (with the same username as in your current shell).
-* `ssh jdoe@example.com` - Connect to the SSH server at `example.com` and log in as user `jdoe`.
-* `ssh 192.168.50.4 hostname` - Run the `hostname` command as user `jdoe` on the SSH server at `192.168.50.4`.
+* `ssh jdoe@example.com` - Connect to the SSH server at `example.com` and log in
+  as user `jdoe`.
+* `ssh jdoe@192.168.50.4 hostname` - Run the `hostname` command as user `jdoe`
+  on the SSH server at `192.168.50.4`.
 
 Run `man ssh` to see available options (or just `ssh` in Git Bash).
 
