@@ -1027,17 +1027,15 @@ $> git add people.txt
 $> git status
 On branch main
 Changes to be committed:
-  `(use "git reset HEAD <file>..." to unstage)`
+  `(use "git restore --staged <file>..." to unstage)`
 
   modified:   people.txt
 ```
 
-Use `git reset` as instructed:
+Use `git restore` as instructed:
 
 ```bash
-$> git reset HEAD people.txt
-Unstaged changes after reset:
-M       people.txt
+$> git restore --staged people.txt
 ```
 
 The changes will still be in the file in the working directory.
