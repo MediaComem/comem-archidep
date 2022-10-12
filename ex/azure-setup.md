@@ -12,6 +12,8 @@ Azure](https://azure.microsoft.com) cloud platform.
 - [Launch a virtual server](#launch-a-virtual-server)
 - [(Optional) Get your instance's public SSH key](#optional-get-your-instances-public-ssh-key)
 - [Configure your virtual server](#configure-your-virtual-server)
+- [Add swap space to your virtual server](#add-swap-space-to-your-virtual-server)
+- [Finish](#finish)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -270,5 +272,14 @@ by encoded new lines (`\n`).
   john-doe.archidep.ch
   ```
 
+## Add swap space to your virtual server
+
+Follow [this
+guide](https://github.com/MediaComem/comem-archidep/blob/main/SYSADMIN-CHEATSHEET.md#add-swap-space-to-your-cloud-server)
+to add more swap space to your server. This will help prevent memory issues
+during the various deployment exercises.
+
+## Finish
+
 - Send your virtual server's **public IP address** and the **username of your
-  administrator account** to the teacher.
+  administrator account** to both teachers.
