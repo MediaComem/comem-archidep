@@ -274,10 +274,10 @@ by encoded new lines (`\n`).
 
 ## Add swap space to your virtual server
 
-Follow [this
-guide](https://github.com/MediaComem/comem-archidep/blob/main/SYSADMIN-CHEATSHEET.md#add-swap-space-to-your-cloud-server)
-to add more swap space to your server. This will help prevent memory issues
-during the various deployment exercises.
+* Follow [this
+  guide](https://github.com/MediaComem/comem-archidep/blob/main/SYSADMIN-CHEATSHEET.md#add-swap-space-to-your-cloud-server)
+  to add more swap space to your server. This will help prevent memory issues
+  during the various deployment exercises.
 
 ## Finish
 
