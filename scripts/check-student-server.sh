@@ -35,3 +35,10 @@ ssh -i id_rsa ${STUDENT_USER}@$STUDENT_IP "sudo ls -laR /home/*/.ssh"
 echo
 ssh -i id_rsa ${STUDENT_USER}@$STUDENT_IP hostname
 ssh -i id_rsa ${STUDENT_USER}@$STUDENT_IP cat /etc/hostname
+
+echo
+ssh -i id_rsa ${STUDENT_USER}@$STUDENT_IP ls -lah /swapfile || echo "Swap file not found"
+echo
+ssh -i id_rsa ${STUDENT_USER}@$STUDENT_IP cat /etc/fstab
+echo
+ssh -i id_rsa ${STUDENT_USER}@$STUDENT_IP free -h
