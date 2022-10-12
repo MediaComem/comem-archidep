@@ -30,6 +30,8 @@ for port in 80 443 3000 3001; do
 done
 
 ssh -i id_rsa ${STUDENT_USER}@$STUDENT_IP rm -f /home/${STUDENT_USER}/listen-server-ports.sh
+
+echo
 ssh -i id_rsa ${STUDENT_USER}@$STUDENT_IP "sudo ls -laR /home/*/.ssh"
 
 echo
