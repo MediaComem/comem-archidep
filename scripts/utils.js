@@ -88,8 +88,6 @@ export async function loadData() {
         columns: [
           'class',
           'name',
-          'orientation',
-          'mode',
           'email',
           'ip',
           'username',
