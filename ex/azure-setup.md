@@ -23,6 +23,8 @@ Apply to [Azure for Students](https://azure.microsoft.com/en-us/free/students/)
 **with your `@hes-so.ch` email address**, which will provide you with free
 Azure resources as a student.
 
+![Azure Start Free](../images/azure-start-free.png)
+
 ## Get your public SSH key
 
 You can display your public SSH key in your terminal with the following command:
