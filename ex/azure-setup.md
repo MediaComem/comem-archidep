@@ -78,12 +78,16 @@ using for the rest of the course.
     > cheapest.
 
     Under the **Administrator account** settings, choose a username, for example
-    `john_doe`.
+    `john_doe`, `john` or `jde`.
 
     > **WARNING:** your Unix username should not contain spaces, accented
     > characters (e.g. `é`), hyphens (`-`) or dots (`.`). It should start with a
     > letter (a-z) and contain only alphanumeric characters (a-z and 0-9) and
     > underscores (`_`).
+    >
+    > Choose something simple to type: you will need to type it often. If
+    > necessary, you can [change it
+    > later](https://github.com/MediaComem/comem-archidep/blob/main/SYSADMIN-CHEATSHEET.md#how-do-i-change-my-username).
 
     Select **SSH public key** authentication, set the source to **Use existing
     public key**, and paste your public SSH key (the one you copied earlier) in
