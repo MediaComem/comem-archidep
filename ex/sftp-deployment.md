@@ -6,29 +6,46 @@ using the PHP development server.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Setup](#setup)
-  - [Install MySQL](#install-mysql)
-  - [Install PHP](#install-php)
-- [Use a real password](#use-a-real-password)
-- [Upload the application](#upload-the-application)
-- [Initialize the database](#initialize-the-database)
-  - [Make sure it worked](#make-sure-it-worked)
-  - [Troubleshooting](#troubleshooting)
-- [Update the configuration](#update-the-configuration)
-- [Run the PHP development server](#run-the-php-development-server)
-- [What have I done?](#what-have-i-done)
-- [Architecture](#architecture)
+- [Legend](#legend)
+- [:exclamation: Setup](#exclamation-setup)
+  - [:exclamation: Install MySQL](#exclamation-install-mysql)
+  - [:exclamation: Install PHP](#exclamation-install-php)
+- [:exclamation: Use a real password](#exclamation-use-a-real-password)
+- [:exclamation: Upload the application](#exclamation-upload-the-application)
+- [:exclamation: Initialize the database](#exclamation-initialize-the-database)
+  - [:question: Make sure it worked](#question-make-sure-it-worked)
+  - [:boom: Troubleshooting](#boom-troubleshooting)
+- [:exclamation: Update the configuration](#exclamation-update-the-configuration)
+- [:exclamation: Run the PHP development server](#exclamation-run-the-php-development-server)
+- [:books: What have I done?](#books-what-have-i-done)
+- [:books: Architecture](#books-architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Setup
+## Legend
+
+Parts of this guide are annotated with the following icons:
+
+- :exclamation: A task you **MUST** perform to complete the exercise.
+- :question: An optional step that you _may_ perform to make sure that
+  everything is working correctly.
+- :warning: **Critically important information about the exercise.**
+- :gem: Tips on the exercise, reminders about previous exercises, or
+  explanations about how this exercise differs from the previous one.
+- :books: Additional information about the exercise or the commands and tools
+  used.
+- :space_invader: More advanced tips on how to save some time, or tips about the
+  bonus challenge.
+- :boom: Troubleshooting tips: how to fix common problems you might encounter.
+
+## :exclamation: Setup
 
 Use the previous PHP Todolist Exercice. Clone the [PHP Todolist
 Exercice][php-todolist] on your machine if you do not have it.
 
-### Install MySQL
+### :exclamation: Install MySQL
 
-**Connect to your server.**
+**Connect to your server with SSH.**
 
 Update your package lists and install the MySQL database server:
 
@@ -38,14 +55,16 @@ $> sudo apt update
 $> sudo apt install mysql-server
 ```
 
-APT should automatically run MySQL after installation.
-You can check this with the following command:
+APT should automatically run MySQL after installation. You can check this with
+the following command:
 
 ```bash
 $> sudo systemctl status mysql
 ```
 
-Secure your installation:
+Secure your installation by running the `mysql_secure_installation` tool that
+comes with MySQL. It will ask you several questions to help you improve the
+security of your MySQL installation:
 
 ```bash
 $> sudo mysql_secure_installation
@@ -114,15 +133,19 @@ Success.
 All done!
 ```
 
-### Install PHP
+### :exclamation: Install PHP
 
 Here you will install the bare minimum:
 
 - The PHP FastCGI process manager.
 - The PHP MySQL extension.
 
-> In this exercise, you will execute your PHP application directly from the
-> command line, without using a web server like Apache.
+> :books: Traditionally, PHP is deployed using the [Apache web server][apache],
+> which is a generic [web server][web-server] and [reverse proxy][reverse-proxy]
+> but is also capable of executing PHP code. To simplify things in this
+> exercise, we will not install Apache, but instead execute the PHP application
+> directly from the command line using the simpler [PHP development
+> server][php-dev-server].
 
 Simply run this command to install both:
 
@@ -130,14 +153,14 @@ Simply run this command to install both:
 $> sudo apt install php-fpm php-mysql
 ```
 
-## Use a real password
+## :exclamation: Use a real password
 
 The `todolist.sql` creates a `todolist` user with the password `chAngeMeN0w!` by
 default. You should change the password to a more secure value. Make sure that
 the password you choose is strong enough per the minimum password requirements
 you chose when you secured the MySQL installation.
 
-> It is good practice to create a different user and password for each
+> :books: It is good practice to create a different user and password for each
 > application that connects to the MySQL database server. That way, if one of
 > the applications is compromised, it cannot access or modify the databases of
 > the other applications (provided you configured appropriate access
@@ -147,17 +170,18 @@ you chose when you secured the MySQL installation.
 > application to its database. You, the system administrator, should be the only
 > person who knows that password.
 
-## Upload the application
+## :exclamation: Upload the application
 
-Use an SFTP client like [FileZilla][filezilla] to upload the application to the
-server.
+**On your local machine**, use an SFTP client like [FileZilla][filezilla] to
+upload the application to the server.
 
-Connect to your server first, using your SSH public key for authentication. Then
-copy the application to `/home/john_doe/todolist`.
+Connect the SFTP client to your server using your SSH public key for
+authentication. Then copy the application to `/home/john_doe/todolist`
+(replacing `john_doe` with your Unix username).
 
-## Initialize the database
+## :exclamation: Initialize the database
 
-Go into the uploaded directory on the server:
+**Connect to your server** and go into the uploaded directory:
 
 ```bash
 $> hostname
@@ -172,7 +196,7 @@ Execute the project's SQL file to create the database and table:
 $> sudo mysql < todolist.sql
 ```
 
-### Make sure it worked
+### :question: Make sure it worked
 
 To make sure everything worked, you can check that the table was created in the
 MySQL database server. You do not have a phpMyAdmin web interface to administer
@@ -208,7 +232,7 @@ $> sudo mysql -u root
 
 You may exit the interactive MySQL console like most shells by typing `exit`.
 
-### Troubleshooting
+### :boom: Troubleshooting
 
 An error may occur here. For example, MySQL may tell you the `todolist` user's
 password in the script is not strong enough, depending on the settings you
@@ -236,20 +260,20 @@ $> sudo mysql -u root
 > may have been created by the `todolist.sql` script, so you can start over with
 > a clean state.
 
-## Update the configuration
+## :exclamation: Update the configuration
 
 Update the first few lines of the `index.php` file with the correct configuration:
 
 ```php
 define('BASE_URL', '/');
 define('DB_USER', 'todolist');
-define('DB_PASS', 'chAngeMeN0w!');
+define('DB_PASS', 'your-secret-password');
 define('DB_NAME', 'todolist');
 define('DB_HOST', '127.0.0.1');
 define('DB_PORT', '3306');
 ```
 
-## Run the PHP development server
+## :exclamation: Run the PHP development server
 
 Also in the uploaded directory on the server, run a [PHP development
 server][php-dev-server] on port 3000:
@@ -258,7 +282,7 @@ server][php-dev-server] on port 3000:
 $> php -S 0.0.0.0:3000
 ```
 
-> You **must really use `0.0.0.0` for the `php -S` command, and not your
+> :books: You **must really use `0.0.0.0` for the `php -S` command, and not your
 > server's IP address**. `0.0.0.0` is not an actual IP address; it is a special
 > notation that tells the PHP development server to accept connections on any IP
 > address.
@@ -266,15 +290,15 @@ $> php -S 0.0.0.0:3000
 You (and everbody else) should be able to access the application in a browser at
 your server's IP address and the correct port (e.g. `W.X.Y.Z:3000`).
 
-## What have I done?
+## :books: What have I done?
 
-You have **deployed** a PHP application to a server running in the Amazon Web
-Services cloud.
+You have **deployed** a PHP application to a server running in the Microsoft
+Azure cloud.
 
 The application is now publicly accessible by anyone on the Internet, at your
-instance's elastic IP address.
+instance's public IP address.
 
-## Architecture
+## :books: Architecture
 
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise:
@@ -293,6 +317,9 @@ short-lived processes run during the exercise:
 
 > [Detailed architecture PDF version](sftp-deployment.pdf).
 
+[apache]: https://www.apache.org
 [filezilla]: https://filezilla-project.org/
 [php-dev-server]: https://www.php.net/manual/en/features.commandline.webserver.php
 [php-todolist]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
+[reverse-proxy]: https://en.wikipedia.org/wiki/Reverse_proxy
+[web-server]: https://en.wikipedia.org/wiki/Web_server
