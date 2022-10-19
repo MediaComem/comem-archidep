@@ -23,10 +23,11 @@ $> sudo useradd --create-home --shell /bin/bash alice
 ```
 
 Make sure other users can access and list the contents of `alice`'s home
-directory:
+directory and your home directory:
 
 ```bash
 $> sudo chmod o+rx /home/alice
+$> sudo chmod o+rx /home/john_doe
 ```
 
 ## The exercise
@@ -102,4 +103,14 @@ $> echo "Hello, I'm Alice" >> /home/john_doe/for_alice/writable.txt
 
 $> cat /home/john_doe/for_alice/writable.txt
 Hello, I'm Alice
+```
+
+## Restore proper permissions
+
+In newer Ubuntu versions, home directories are not accessible to other users
+by default for improved security. Make sure to restore these restrictions at
+least for your own user:
+
+```bash
+$> sudo chmod o-rwx /home/john_doe
 ```
