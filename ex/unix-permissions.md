@@ -11,6 +11,7 @@ Replace `john_doe` by your actual username.
 - [Setup](#setup)
 - [The exercise](#the-exercise)
 - [Check if it works](#check-if-it-works)
+- [Restore proper permissions](#restore-proper-permissions)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

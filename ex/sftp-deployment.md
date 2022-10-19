@@ -14,10 +14,12 @@ using the PHP development server.
 - [:exclamation: Upload the application](#exclamation-upload-the-application)
 - [:exclamation: Initialize the database](#exclamation-initialize-the-database)
   - [:question: Make sure it worked](#question-make-sure-it-worked)
-  - [:boom: Troubleshooting](#boom-troubleshooting)
 - [:exclamation: Update the configuration](#exclamation-update-the-configuration)
 - [:exclamation: Run the PHP development server](#exclamation-run-the-php-development-server)
-- [:books: What have I done?](#books-what-have-i-done)
+- [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+- [:boom: Troubleshooting](#boom-troubleshooting)
+  - [:boom: `SET PASSWORD has no significance` error when running `mysql_secure_installation`](#boom-set-password-has-no-significance-error-when-running-mysql_secure_installation)
+  - [:boom: Error running `todolist.sql`](#boom-error-running-todolistsql)
 - [:books: Architecture](#books-architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -56,7 +58,25 @@ $> sudo apt update
 $> sudo apt install mysql-server
 ```
 
-APT should automatically run MySQL after installation. You can check this with
+> :gem: When the installation of MySQL is complete, APT *may* prompt you to
+> restart outdated daemons (i.e. background services):
+>
+> ![Restart outdated daemons](../images/apt-outdated-daemons.png)
+>
+> Simply select "Ok" by pressing the Tab key, then Enter to confirm.
+>
+> :books: This sometimes happens because most recent Linux versions have
+> [unattended upgrades](linux-unattended-upgrades): a tool that automatically
+> installs daily security upgrades on your server without human intervention.
+> Sometimes, some of the background services running on your server may need to
+> be restarted for these upgrades to be applied.
+>
+> Since you are installing a new background service (the MySQL server) which
+> must be started, APT asks whether you want to apply upgrades to other
+> background services by restarting them. Rebooting your server would also have
+> the effect of restarting these services and applying the security upgrades.
+
+APT should automatically start MySQL after installation. You can check this with
 the following command:
 
 ```bash
@@ -233,34 +253,6 @@ $> sudo mysql -u root
 
 You may exit the interactive MySQL console like most shells by typing `exit`.
 
-### :boom: Troubleshooting
-
-An error may occur here. For example, MySQL may tell you the `todolist` user's
-password in the script is not strong enough, depending on the settings you
-selected when securing the MySQL installation.
-
-To start over, connect to the MySQL server as an administrator and type the
-following queries:
-
-```bash
-$> sudo mysql -u root
-
-> drop table todolist.todo;
-> drop user todolist@localhost;
-> drop database todolist;
-```
-
-> Some of these commands may cause errors if the `todolist.sql` script could not
-> execute entirely. For example, if the script could not create the `todolist`
-> user and/or the `todo` table, the first `drop table todolist.todo;` query will
-> fail with:
->
-> `ERROR 1051 (42S02): Unknown table 'todolist.todo'`
->
-> That's fine. Running the 3 queries will make sure you have nothing left that
-> may have been created by the `todolist.sql` script, so you can start over with
-> a clean state.
-
 ## :exclamation: Update the configuration
 
 Update the first few lines of the `index.php` file with the correct configuration:
@@ -299,6 +291,85 @@ Azure cloud.
 The application is now publicly accessible by anyone on the Internet, at your
 instance's public IP address.
 
+## :boom: Troubleshooting
+
+Here's a few tips about some problems you may encounter during this exercise.
+
+### :boom: `SET PASSWORD has no significance` error when running `mysql_secure_installation`
+
+You may encounter this error when `mysql_secure_installation` prompts you to set
+the password for the MySQL `root` user:
+
+```bash
+$> mysql_secure_installation
+...
+
+Please set the password for root here.
+
+New password:
+Re-enter new password:
+
+Estimated strength of the password: 50
+Do you wish to continue with the password provided?(Press y|Y for Yes, any other key for No) : y
+ ... Failed! Error: SET PASSWORD has no significance for user 'root'@'localhost'
+      as the authentication method used doesn't store authentication data in the
+      MySQL server. Please consider using ALTER USER instead if you want to
+      change authentication parameters.
+```
+
+If that happens, `mysql_secure_installation` will be stuck in a loop. Close your
+terminal window and **connect to your server again** in another terminal.
+
+Connect to the MySQL server:
+
+```bash
+$> sudo mysql
+```
+
+Your prompt should change to reflect the fact that you are connected to the
+MySQL server. You can then run the following query:
+
+```
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+```
+
+Then exit the MySQL server:
+
+```
+mysql> exit
+```
+
+The `mysql_secure_installation` command should now work.
+
+### :boom: Error running `todolist.sql`
+
+An error may occur when you execute the SQL queries in the `todolist.sql`
+script. For example, MySQL may tell you the `todolist` user's password in the
+script is not strong enough, depending on the settings you selected when
+securing the MySQL installation.
+
+To start over from scratch, connect to the MySQL server as an administrator and
+type the following queries:
+
+```bash
+$> sudo mysql -u root
+
+> drop table todolist.todo;
+> drop user todolist@localhost;
+> drop database todolist;
+```
+
+> Some of these commands may cause errors if the `todolist.sql` script could not
+> execute entirely. For example, if the script could not create the `todolist`
+> user and/or the `todo` table, the first `drop table todolist.todo;` query will
+> fail with:
+>
+> `ERROR 1051 (42S02): Unknown table 'todolist.todo'`
+>
+> That's fine. Running the 3 queries will make sure you have nothing left that
+> may have been created by the `todolist.sql` script, so you can start over with
+> a clean state.
+
 ## :books: Architecture
 
 This is a simplified architecture of the main running processes and
@@ -320,6 +391,7 @@ short-lived processes run during the exercise:
 
 [apache]: https://www.apache.org
 [filezilla]: https://filezilla-project.org/
+[linux-unattended-upgrades]: https://wiki.debian.org/UnattendedUpgrades
 [php-dev-server]: https://www.php.net/manual/en/features.commandline.webserver.php
 [php-todolist]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
 [reverse-proxy]: https://en.wikipedia.org/wiki/Reverse_proxy
