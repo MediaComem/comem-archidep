@@ -34,14 +34,15 @@ Parts of this guide are annotated with the following icons:
   explanations about how this exercise differs from the previous one.
 - :books: Additional information about the exercise or the commands and tools
   used.
-- :space_invader: More advanced tips on how to save some time, or tips about the
-  bonus challenge.
+- :space_invader: More advanced tips on how to save some time.
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
+- :checkered_flag: The end of the exercise.
 
 ## :exclamation: Setup
 
 Use the previous PHP Todolist Exercice. Clone the [PHP Todolist
-Exercice][php-todolist] on your machine if you do not have it.
+Exercice][php-todolist] on your machine if you do not have it. Be sure to use a
+version with the 3 SQL queries implemented.
 
 ### :exclamation: Install MySQL
 
@@ -140,6 +141,12 @@ Here you will install the bare minimum:
 - The PHP FastCGI process manager.
 - The PHP MySQL extension.
 
+Simply run this command to install both:
+
+```bash
+$> sudo apt install php-fpm php-mysql
+```
+
 > :books: Traditionally, PHP is deployed using the [Apache web server][apache],
 > which is a generic [web server][web-server] and [reverse proxy][reverse-proxy]
 > but is also capable of executing PHP code. To simplify things in this
@@ -147,18 +154,12 @@ Here you will install the bare minimum:
 > directly from the command line using the simpler [PHP development
 > server][php-dev-server].
 
-Simply run this command to install both:
-
-```bash
-$> sudo apt install php-fpm php-mysql
-```
-
 ## :exclamation: Use a real password
 
-The `todolist.sql` creates a `todolist` user with the password `chAngeMeN0w!` by
-default. You should change the password to a more secure value. Make sure that
-the password you choose is strong enough per the minimum password requirements
-you chose when you secured the MySQL installation.
+The `todolist.sql` files creates a `todolist` user with the password
+`chAngeMeN0w!` by default. You should change the password to a more secure
+value. Make sure that the password you choose is strong enough per the minimum
+password requirements you chose when you secured the MySQL installation.
 
 > :books: It is good practice to create a different user and password for each
 > application that connects to the MySQL database server. That way, if one of
@@ -290,7 +291,7 @@ $> php -S 0.0.0.0:3000
 You (and everbody else) should be able to access the application in a browser at
 your server's IP address and the correct port (e.g. `W.X.Y.Z:3000`).
 
-## :books: What have I done?
+## :checkered_flag: What have I done?
 
 You have **deployed** a PHP application to a server running in the Microsoft
 Azure cloud.
