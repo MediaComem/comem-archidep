@@ -22,6 +22,13 @@ Create a new `alice` user:
 $> sudo useradd --create-home --shell /bin/bash alice
 ```
 
+Make sure other users can access and list the contents of `alice`'s home
+directory:
+
+```bash
+$> sudo chmod o+rx /home/alice
+```
+
 ## The exercise
 
 - Create a file named `file.txt` in `alice`'s home directory that is readable by
