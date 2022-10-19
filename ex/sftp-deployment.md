@@ -341,6 +341,8 @@ mysql> exit
 
 The `mysql_secure_installation` command should now work.
 
+> :books: Source: https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04
+
 ### :boom: Error running `todolist.sql`
 
 An error may occur when you execute the SQL queries in the `todolist.sql`
