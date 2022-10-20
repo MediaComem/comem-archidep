@@ -17,12 +17,12 @@ using the PHP development server.
 - [:exclamation: Update the configuration](#exclamation-update-the-configuration)
 - [:exclamation: Run the PHP development server](#exclamation-run-the-php-development-server)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+  - [:books: Architecture](#books-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: `SET PASSWORD has no significance` error when running `mysql_secure_installation`](#boom-set-password-has-no-significance-error-when-running-mysql_secure_installation)
   - [:boom: Access denied for user 'root'@'localhost' (using password: NO)](#boom-access-denied-for-user-rootlocalhost-using-password-no)
   - [:boom: Error when running `todolist.sql`](#boom-error-when-running-todolistsql)
   - [:boom: HTTP ERROR 500 error when trying to access the todolist in my browser](#boom-http-error-500-error-when-trying-to-access-the-todolist-in-my-browser)
-- [:books: Architecture](#books-architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -330,6 +330,25 @@ Azure cloud.
 The application is now publicly accessible by anyone on the Internet, at your
 instance's public IP address.
 
+### :books: Architecture
+
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise:
+
+![Simplified architecture](sftp-deployment-simplified.png)
+
+> [Simplified architecture PDF version](sftp-deployment-simplified.pdf).
+
+Compare this with [the same exercise deployed on your local
+machine](https://github.com/MediaComem/comem-archidep-php-todo-exercise#architecture).
+
+The following diagram is a more detailed representation also including the
+short-lived processes run during the exercise:
+
+![Detailed architecture](sftp-deployment.png)
+
+> [Detailed architecture PDF version](sftp-deployment.pdf).
+
 ## :boom: Troubleshooting
 
 Here's a few tips about some problems you may encounter during this exercise.
@@ -560,25 +579,6 @@ be the password that was in the `todolist.sql` file when you executed it.
 > If you do not remember the password, follow the troubleshooting instructions
 > for an [error running `todolist.sql`](#boom-error-running-todolistsql) to
 > re-create the database, user and password.
-
-## :books: Architecture
-
-This is a simplified architecture of the main running processes and
-communication flow at the end of this exercise:
-
-![Simplified architecture](sftp-deployment-simplified.png)
-
-> [Simplified architecture PDF version](sftp-deployment-simplified.pdf).
-
-Compare this with [the same exercise deployed on your local
-machine](https://github.com/MediaComem/comem-archidep-php-todo-exercise#architecture).
-
-The following diagram is a more detailed representation also including the
-short-lived processes run during the exercise:
-
-![Detailed architecture](sftp-deployment.png)
-
-> [Detailed architecture PDF version](sftp-deployment.pdf).
 
 [apache]: https://www.apache.org
 [filezilla]: https://filezilla-project.org/
