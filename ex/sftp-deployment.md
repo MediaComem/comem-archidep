@@ -456,30 +456,31 @@ ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: N
 ```
 
 It means that your MySQL server is configured to require a password for the root
-user. You may have forgotten to
+user. You have two choices:
 
-* Either add the `-p` option to all `mysql` commands. It will then prompt you
-  for the MySQL `root` password (that you defined when running
+* **Either** add the `-p` option to all `mysql` commands. It will then prompt
+  you for the MySQL `root` password (that you defined when running
   `mysql_secure_installation`).
-* Configure MySQL to use [socket authentication][mysql-socket-auth] for the
-  `root` user (it will ask you for the MySQL root password you just defined):
+* **Or**, configure MySQL to use [socket authentication][mysql-socket-auth] for
+  the `root` user (the following command will ask you for the MySQL root
+  password you just defined):
 
-```bash
-$> sudo mysql -p
+  ```bash
+  $> sudo mysql -p
 
-mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;
+  mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;
 
-mysql> exit
-```
+  mysql> exit
+  ```
 
-If socket authentication is correctly configured, you should now be able to
-connect as the MySQL root user **without a password** with `sudo`:
+  If socket authentication is correctly configured, you should now be able to
+  connect as the MySQL root user **without a password** with `sudo`:
 
-```bash
-$> sudo mysql
+  ```bash
+  $> sudo mysql
 
-mysql> exit
-```
+  mysql> exit
+  ```
 
 > :books: See the explanations in the previous troubleshooting section for more
 > information about socket authentication.
