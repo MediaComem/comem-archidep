@@ -199,7 +199,7 @@ upload the application to the server.
 Connect the SFTP client to your server using SSH public key for authentication.
 In FileZilla, open the Site Manager and configure your connection like this:
 
-![Public key authentication with FileZilla](sftp-deployment-simplified.png)
+![Public key authentication with FileZilla](../images/filezilla-pubkey.png)
 
 > :gem: You must select your **private key** (`id_rsa` and not `id_rsa.pub`) in
 > FileZilla. Just like when you use SSH on the command line, FileZilla will use
