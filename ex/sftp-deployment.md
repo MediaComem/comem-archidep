@@ -20,7 +20,8 @@ using the PHP development server.
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: `SET PASSWORD has no significance` error when running `mysql_secure_installation`](#boom-set-password-has-no-significance-error-when-running-mysql_secure_installation)
   - [:boom: Access denied for user 'root'@'localhost' (using password: NO)](#boom-access-denied-for-user-rootlocalhost-using-password-no)
-  - [:boom: Error running `todolist.sql`](#boom-error-running-todolistsql)
+  - [:boom: Error when running `todolist.sql`](#boom-error-when-running-todolistsql)
+  - [:boom: "HTTP ERROR 500" error when trying to access the todolist in my browser](#boom-http-error-500-error-when-trying-to-access-the-todolist-in-my-browser)
 - [:books: Architecture](#books-architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -491,7 +492,7 @@ user. You have two choices:
 > :books: See the explanations in the previous troubleshooting section for more
 > information about socket authentication.
 
-### :boom: Error running `todolist.sql`
+### :boom: Error when running `todolist.sql`
 
 An error may occur when you execute the SQL queries in the `todolist.sql`
 script. For example, MySQL may tell you the `todolist` user's password in the
@@ -509,16 +510,56 @@ $> sudo mysql
 > drop database todolist;
 ```
 
-> Some of these commands may cause errors if the `todolist.sql` script could not
-> execute entirely. For example, if the script could not create the `todolist`
-> user and/or the `todo` table, the first `drop table todolist.todo;` query will
-> fail with:
+> :gem: Some of these commands may cause errors if the `todolist.sql` script
+> could not execute entirely. For example, if the script could not create the
+> `todolist` user and/or the `todo` table, the first `drop table todolist.todo;`
+> query will fail with:
 >
 > `ERROR 1051 (42S02): Unknown table 'todolist.todo'`
 >
 > That's fine. Running the 3 queries will make sure you have nothing left that
 > may have been created by the `todolist.sql` script, so you can start over with
 > a clean state.
+
+Once you have dropped everything, you can resume the exercise from the [database
+initialization step](#exclamation-initialize-the-database).
+
+### :boom: "HTTP ERROR 500" error when trying to access the todolist in my browser
+
+If you get an HTTP 500 error (which means an [internal server error][http-500]),
+look at the PHP development server logs in the terminal where you are running
+the `php -S 0.0.0.0:3000` command. You will probably see something like this:
+
+```
+$> php -S 0.0.0.0:3000
+[Thu Oct 20 09:29:40 2022] PHP 8.1.2 Development Server (http://0.0.0.0:3000) started
+[Thu Oct 20 09:29:41 2022] 213.3.2.128:44496 Accepted
+[Thu Oct 20 09:29:41 2022] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'todolist'@'localhost' (using password: YES) in /home/john_doe/todolist/index.php:17
+Stack trace:
+#0 /home/john_doe/todolist/index.php(17): PDO->__construct()
+#1 {main}
+  thrown in /home/john_doe/todolist/index.php on line 17
+[Thu Oct 20 09:29:41 2022] 213.3.2.128:44496 [500]: GET / - Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'todolist'@'localhost' (using password: YES) in /home/john_doe/todolist/index.php:17
+Stack trace:
+#0 /home/john_doe/todolist/index.php(17): PDO->__construct()
+#1 {main}
+  thrown in /home/john_doe/todolist/index.php on line 17
+[Thu Oct 20 09:29:41 2022] 213.3.2.128:44496 Closing
+[Thu Oct 20 09:29:41 2022] 213.3.2.128:44495 Accepted
+```
+
+If you see this `Access denied for user 'todolist'@'localhost' (using password:
+YES)` in the logs, it means that MySQL is not allowing the PHP todolist to open
+a MySQL connection as the `todolist` user. The `using password: YES` part
+indicates that a password is sent, but it is incorrect.
+
+You may be using the wrong password. Make sure the `DB_PASS` constant at the top
+of the `index.php` file on the server contains the correct password. This must
+be the password that was in the `todolist.sql` file when you executed it.
+
+> If you do not remember the password, follow the troubleshooting instructions
+> for an [error running `todolist.sql`](#boom-error-running-todolistsql) to
+> re-create the database, user and password.
 
 ## :books: Architecture
 
@@ -541,6 +582,7 @@ short-lived processes run during the exercise:
 
 [apache]: https://www.apache.org
 [filezilla]: https://filezilla-project.org/
+[http-500]: https://www.webfx.com/web-development/glossary/http-status-codes/what-is-a-500-status-code/
 [linux-unattended-upgrades]: https://wiki.debian.org/UnattendedUpgrades
 [mysql-socket-auth]: https://dev.mysql.com/doc/refman/8.0/en/socket-pluggable-authentication.html
 [php-dev-server]: https://www.php.net/manual/en/features.commandline.webserver.php
