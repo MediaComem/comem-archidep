@@ -19,6 +19,7 @@ using the PHP development server.
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: `SET PASSWORD has no significance` error when running `mysql_secure_installation`](#boom-set-password-has-no-significance-error-when-running-mysql_secure_installation)
+  - [:boom: Access denied for user 'root'@'localhost' (using password: NO)](#boom-access-denied-for-user-rootlocalhost-using-password-no)
   - [:boom: Error running `todolist.sql`](#boom-error-running-todolistsql)
 - [:books: Architecture](#books-architecture)
 
