@@ -206,6 +206,9 @@ FileZilla, open the Site Manager and configure your connection like this:
 > when you use SSH on the command line, FileZilla will use your private key to
 > prove to the server that you are the owner of your public key.
 >
+> :gem: On macOS, you can display hidden files and directories (like `.ssh` in
+> your home directory) with the shortcut `Cmd-Shift-.`.
+>
 > :gem: On Windows, FileZilla may ask you to convert your private key to another
 > format. You can do so.
 
