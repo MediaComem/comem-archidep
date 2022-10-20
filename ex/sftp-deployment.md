@@ -238,6 +238,12 @@ for the MySQL root user's password you defined earlier):
 $> sudo mysql < todolist.sql
 ```
 
+> :books: This uses the [Unix redirection operator `<`][unix-redirection] to
+> send the contents of the `todolist.sql` file into the [standard input
+> stream][unix-input-stream] of the `sudo mysql` command. When provided with SQL
+> queries on its input stream, the `mysql` command will connect to the MySQL
+> server and execute them, then stop.
+
 ### :question: Make sure it worked
 
 To make sure everything worked, you can check that the table was created in the
@@ -540,4 +546,6 @@ short-lived processes run during the exercise:
 [php-dev-server]: https://www.php.net/manual/en/features.commandline.webserver.php
 [php-todolist]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
 [reverse-proxy]: https://en.wikipedia.org/wiki/Reverse_proxy
+[unix-input-stream]: https://en.wikipedia.org/wiki/Standard_streams#Standard_input_(stdin)
+[unix-redirection]: https://www.guru99.com/linux-redirection.html
 [web-server]: https://en.wikipedia.org/wiki/Web_server
