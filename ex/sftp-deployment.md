@@ -196,15 +196,15 @@ password requirements you chose when you secured the MySQL installation.
 **On your local machine**, use an SFTP client like [FileZilla][filezilla] to
 upload the application to the server.
 
-Connect the SFTP client to your server using SSH public key for authentication.
-In FileZilla, open the Site Manager and configure your connection like this:
+Connect the SFTP client to your server using SSH public key authentication. In
+FileZilla, open the Site Manager and configure your connection like this:
 
 ![Public key authentication with FileZilla](../images/filezilla-pubkey.png)
 
 > :gem: You must select your **private key** (`id_rsa` and not `id_rsa.pub`) in
-> FileZilla. Just like when you use SSH on the command line, FileZilla will use
-> your private key to prove to the server that you are the owner of your public
-> key.
+> FileZilla. The server you are connecting to has your public key. Just like
+> when you use SSH on the command line, FileZilla will use your private key to
+> prove to the server that you are the owner of your public key.
 >
 > :gem: On Windows, FileZilla may ask you to convert your private key to another
 > format. You can do so.
