@@ -429,17 +429,19 @@ mysql> exit
 > ERROR 1045 (28000): Access denied for user 'alice'@'localhost' (using password: NO)
 > ```
 >
-> This is because MySQL has no `john_doe` or `alice` users (unless you have
-> created them yourself). It may also be because you are trying to connect as a
-> MySQL user authenticated with a password. In this case, you should add the
-> `-p` option to have MySQL prompt you for the password when connecting.
+> This is because MySQL has no `john_doe` or `alice` users (unless you created
+> them yourself). It may also be because you are trying to connect as a MySQL
+> user who has a password. In this case, you should add the `-p` option to have
+> MySQL prompt you for the password when connecting (e.g. `mysql -u alice -p`).
 >
-> When using the [socket authentication method][mysql-socket-auth], which you
-> just enabled for the MySQL `root` user, MySQL will compare the username of the
-> Unix user running the `mysql` command with the MySQL user you are trying to
-> connect as. It will only allow the connection if both are the same. In this
-> case, you are the Unix `root` user when using `sudo`, so it will allow a
-> connection as the MySQL `root` user without the need for a password.
+> If you followed the instructions above, you have replaced password
+> authentication for the MySQL `root` user with the [socket authentication
+> method][mysql-socket-auth] which delegates authentication to the Unix system.
+> With this method, MySQL will compare the username of the Unix user running the
+> `mysql` command with the MySQL user you are trying to connect as. It will only
+> allow the connection if both are the same. In this case, you are the Unix
+> `root` user when using `sudo`, so it will allow a connection as the MySQL
+> `root` user without the need for a password.
 >
 > (Source of the solution:
 > https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04)
