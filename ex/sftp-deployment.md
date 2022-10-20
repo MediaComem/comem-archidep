@@ -59,7 +59,7 @@ $> sudo apt install mysql-server
 ```
 
 > :gem: When the installation of MySQL is complete, APT *may* prompt you to
-> restart outdated daemons (i.e. background services):
+> reboot and/or to restart outdated daemons (i.e. background services):
 >
 > ![Restart outdated daemons](../images/apt-outdated-daemons.png)
 >
@@ -196,9 +196,22 @@ password requirements you chose when you secured the MySQL installation.
 **On your local machine**, use an SFTP client like [FileZilla][filezilla] to
 upload the application to the server.
 
-Connect the SFTP client to your server using your SSH public key for
-authentication. Then copy the application to `/home/john_doe/todolist`
-(replacing `john_doe` with your Unix username).
+Connect the SFTP client to your server using SSH public key for authentication.
+In FileZilla, open the Site Manager and configure your connection like this:
+
+![Public key authentication with FileZilla](sftp-deployment-simplified.png)
+
+> :gem: You must select your **private key** (`id_rsa` and not `id_rsa.pub`) in
+> FileZilla. Just like when you use SSH on the command line, FileZilla will use
+> your private key to prove to the server that you are the owner of your public
+> key.
+>
+> :gem: On Windows, FileZilla may ask you to convert your private key to another
+> format. You can do so.
+
+Once you are connected to your server with your SFTP client, copy the
+application to `/home/john_doe/todolist` (replacing `john_doe` with your Unix
+username).
 
 ## :exclamation: Initialize the database
 
