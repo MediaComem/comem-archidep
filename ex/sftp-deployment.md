@@ -463,7 +463,7 @@ user. You have two choices:
   `mysql_secure_installation`).
 * **Or**, configure MySQL to use [socket authentication][mysql-socket-auth] for
   the `root` user (the following command will ask you for the MySQL root
-  password you just defined):
+  password you defined when running `mysql_secure_installation`):
 
   ```bash
   $> sudo mysql -p
