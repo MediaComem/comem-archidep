@@ -216,6 +216,9 @@ Once you are connected to your server with your SFTP client, copy the
 application to `/home/john_doe/todolist` (replacing `john_doe` with your Unix
 username).
 
+In FileZilla, you can simply drag-and-drop the directory from your machine on
+the left to the server on the right. You can then rename it if necessary.
+
 ## :exclamation: Initialize the database
 
 **Connect to your server** and go into the uploaded directory:
@@ -224,10 +227,11 @@ username).
 $> hostname
 john-doe.archidep.ch
 
-$> cd /home/john_doe/todolist
+$> cd ~/todolist
 ```
 
-Execute the project's SQL file to create the database and table:
+Execute the project's SQL file to create the database and table (it will ask you
+for the MySQL root user's password you defined earlier):
 
 ```bash
 $> sudo mysql < todolist.sql
@@ -245,7 +249,7 @@ server as the administrator (the MySQL `root` user), then display the `todo`
 table's schema:
 
 ```bash
-$> sudo mysql -u root
+$> sudo mysql
 
 > connect todolist;
 
@@ -282,6 +286,17 @@ define('DB_HOST', '127.0.0.1');
 define('DB_PORT', '3306');
 ```
 
+> :gem: The `index.php` file **on the server** must be modified. There are
+> several ways you can do this:
+>
+> * Edit the file locally, then copy it to the server again using your SFTP
+>   client like FileZilla.
+> * Edit the file directly on the server with `nano` or `vim`.
+> * Some SFTP clients allow you to open a remote file in your local editor. In
+>   FileZilla, right-click a file, select View/Edit, then choose your favorite
+>   editor. Make your changes and save the file. FileZilla should automatically
+>   prompt you to upload the changes.
+
 ## :exclamation: Run the PHP development server
 
 Also in the uploaded directory on the server, run a [PHP development
@@ -297,7 +312,7 @@ $> php -S 0.0.0.0:3000
 > address.
 
 You (and everbody else) should be able to access the application in a browser at
-your server's IP address and the correct port (e.g. `W.X.Y.Z:3000`).
+your server's IP address and the correct port (e.g. `http://W.X.Y.Z:3000`).
 
 ## :checkered_flag: What have I done?
 
@@ -357,7 +372,90 @@ mysql> exit
 
 The `mysql_secure_installation` command should now work.
 
-> :books: Source: https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04
+Once you are done running `mysql_secure_installation`, you can reconfigure MySQL
+to use passwordless [socket
+authentication][mysql-socket-auth]
+(it will ask you for the MySQL root password you just defined):
+
+```bash
+$> sudo mysql -p
+
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;
+
+mysql> exit
+```
+
+If socket authentication is correctly configured, you should now be able to
+connect as the MySQL root user **without a password** with `sudo`:
+
+```bash
+$> sudo mysql
+
+mysql> exit
+```
+
+> :books: This does not mean that anyone can access MySQL without a password.
+> You can do so because you are using `sudo` and have just configured MySQL to
+> use [socket authentication][mysql-socket-auth] for its `root` user.
+>
+> There are two sets of users here: your server has a number of Unix users
+> (defined in `/etc/passwd`), one of them being the Unix `root` user. The MySQL
+> database server has its own list of MySQL users independent of the system.
+> There is also a MySQL user named `root` by default.
+>
+> By default, the MySQL command will attempt to connect as the MySQL user with
+> the same name as the Unix user running the command. You can also specify which
+> user to connect as with the `-u` (user) option:
+>
+> ```bash
+> $> whoami
+> john_doe
+>
+> $> mysql               # connect to MySQL as the MySQL "john_doe" user (because
+>                        # that is the name of the Unix user running the command)
+>
+> $> mysql -u alice      # connect to MySQL as the MySQL "alice" user
+>
+> $> sudo mysql          # connect as the MySQL `root` user (since you temporarily
+>                        # become the Unix "root" user when using "sudo")
+>
+> $> sudo mysql -u root  # equivalent to the previous command
+> ```
+>
+> The first two commands will probably fail:
+>
+> ```
+> ERROR 1045 (28000): Access denied for user 'john_doe'@'localhost' (using password: NO)
+> ERROR 1045 (28000): Access denied for user 'alice'@'localhost' (using password: NO)
+> ```
+>
+> This is because MySQL has no `john_doe` or `alice` users (unless you have
+> created them yourself). It may also be because you are trying to connect as a
+> MySQL user authenticated with a password. In this case, you should add the
+> `-p` option to have MySQL prompt you for the password when connecting.
+>
+> When using the [socket authentication method][mysql-socket-auth], which you
+> just enabled for the MySQL `root` user, MySQL will compare the username of the
+> Unix user running the `mysql` command with the MySQL user you are trying to
+> connect as. It will only allow the connection if both are the same. In this
+> case, you are the Unix `root` user when using `sudo`, so it will allow a
+> connection as the MySQL `root` user without the need for a password.
+>
+> (Source of the solution:
+> https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04)
+
+### :boom: Access denied for user 'root'@'localhost' (using password: NO)
+
+If you see this error after running a `sudo mysql` command:
+
+```
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+```
+
+It means that your MySQL server is configured to require a password for the root
+user. You may have forgotten to
+
+* Either add the `-p` option to all `mysql` commands. It will then prompt
 
 ### :boom: Error running `todolist.sql`
 
@@ -370,7 +468,7 @@ To start over from scratch, connect to the MySQL server as an administrator and
 type the following queries:
 
 ```bash
-$> sudo mysql -u root
+$> sudo mysql
 
 > drop table todolist.todo;
 > drop user todolist@localhost;
@@ -410,6 +508,7 @@ short-lived processes run during the exercise:
 [apache]: https://www.apache.org
 [filezilla]: https://filezilla-project.org/
 [linux-unattended-upgrades]: https://wiki.debian.org/UnattendedUpgrades
+[mysql-socket-auth]: https://dev.mysql.com/doc/refman/8.0/en/socket-pluggable-authentication.html
 [php-dev-server]: https://www.php.net/manual/en/features.commandline.webserver.php
 [php-todolist]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
 [reverse-proxy]: https://en.wikipedia.org/wiki/Reverse_proxy
