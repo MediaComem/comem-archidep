@@ -64,7 +64,7 @@ $> sudo apt install mysql-server
 >
 > ![Restart outdated daemons](../images/apt-outdated-daemons.png)
 >
-> Simply select "Ok" by pressing the Tab key, then Enter to confirm.
+> Simply select "Ok" by pressing the Tab key, then press Enter to confirm.
 >
 > :books: This sometimes happens because most recent Linux versions have
 > [unattended upgrades](linux-unattended-upgrades): a tool that automatically
