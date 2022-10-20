@@ -21,7 +21,7 @@ using the PHP development server.
   - [:boom: `SET PASSWORD has no significance` error when running `mysql_secure_installation`](#boom-set-password-has-no-significance-error-when-running-mysql_secure_installation)
   - [:boom: Access denied for user 'root'@'localhost' (using password: NO)](#boom-access-denied-for-user-rootlocalhost-using-password-no)
   - [:boom: Error when running `todolist.sql`](#boom-error-when-running-todolistsql)
-  - [:boom: "HTTP ERROR 500" error when trying to access the todolist in my browser](#boom-http-error-500-error-when-trying-to-access-the-todolist-in-my-browser)
+  - [:boom: HTTP ERROR 500 error when trying to access the todolist in my browser](#boom-http-error-500-error-when-trying-to-access-the-todolist-in-my-browser)
 - [:books: Architecture](#books-architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -524,7 +524,7 @@ $> sudo mysql
 Once you have dropped everything, you can resume the exercise from the [database
 initialization step](#exclamation-initialize-the-database).
 
-### :boom: "HTTP ERROR 500" error when trying to access the todolist in my browser
+### :boom: HTTP ERROR 500 error when trying to access the todolist in my browser
 
 If you get an HTTP 500 error (which means an [internal server error][http-500]),
 look at the PHP development server logs in the terminal where you are running
