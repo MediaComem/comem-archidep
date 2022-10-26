@@ -375,8 +375,11 @@ Do you wish to continue with the password provided?(Press y|Y for Yes, any other
       change authentication parameters.
 ```
 
-If that happens, `mysql_secure_installation` will be stuck in a loop. Close your
-terminal window and **connect to your server again** in another terminal.
+This is a bug that exists with the latest versions of
+`mysql_secure_installation` and recent Ubuntu installations (since July 2022).
+If you encounter this bug, `mysql_secure_installation` will be stuck in a loop.
+**Close your terminal window** and **connect to your server again** in another
+terminal.
 
 Connect to the MySQL server:
 
