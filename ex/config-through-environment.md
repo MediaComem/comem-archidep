@@ -8,7 +8,7 @@ hardcoded configuration values.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Legend](#legend)
-- [:tip: Setup](#tip-setup)
+- [:gem: Setup](#gem-setup)
 - [:exclamation: Update the configuration](#exclamation-update-the-configuration)
 - [:exclamation: Pull the latest version from the server](#exclamation-pull-the-latest-version-from-the-server)
 - [:exclamation: Run the PHP development server](#exclamation-run-the-php-development-server)
@@ -35,7 +35,7 @@ Parts of this guide are annotated with the following icons:
     exercise.
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
-## :tip: Setup
+## :gem: Setup
 
 Make sure you have completed the [previous exercise](git-clone-deployment.md)
 and the [Git
