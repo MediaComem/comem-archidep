@@ -29,6 +29,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [:space_invader: Allowing the dedicated `minesweeper` Unix user to control the Systemd service](#space_invader-allowing-the-dedicated-minesweeper-unix-user-to-control-the-systemd-service)
   - [:exclamation: Test the automated deployment](#exclamation-test-the-automated-deployment)
 - [:exclamation: Notify the teacher](#exclamation-notify-the-teacher)
+- [:checkered_flag: Architecture](#checkered_flag-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: `Could not find a Mix.Project`](#boom-could-not-find-a-mixproject)
   - [:boom: `Note no mix.exs was found in the current directory`](#boom-note-no-mixexs-was-found-in-the-current-directory)
@@ -47,7 +48,6 @@ previous exercices to deploy a new application from scratch on your server.
   - [:boom: `(Mix) Could not compile dependency :cowlib`](#boom-mix-could-not-compile-dependency-cowlib)
   - [:boom: `Error creating new order :: too many certificates already issued for: archidep.ch`](#boom-error-creating-new-order--too-many-certificates-already-issued-for-archidepch)
   - [:boom: My changes to `config/local.exs` are not taken into account](#boom-my-changes-to-configlocalexs-are-not-taken-into-account)
-- [:books: Architecture](#books-architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -108,6 +108,7 @@ Parts of this guide are annotated with the following icons:
 - :space_invader: More advanced tips on how to save some time, or tips about the
   bonus challenge.
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
+- :checkered_flag: The end of the exercise.
 
 ## The application
 
@@ -719,6 +720,16 @@ Here's some visible changes you could easily make:
 Send an email or a Teams message to the teacher **no later than January 13th
 2022** indicating that you have finished the exercise.
 
+## :checkered_flag: Architecture
+
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise (after completing [all previous
+course exercises][archidep-exercises]):
+
+![Simplified architecture](minesweeper-deployment-simplified.png)
+
+> [Simplified architecture PDF version](minesweeper-deployment-simplified.pdf).
+
 ## :boom: Troubleshooting
 
 Here's a few tips about some problems you may encounter during this exercise.
@@ -1173,16 +1184,6 @@ release_.
 Unlike with Apache & PHP, Elixir code (or Ruby code, or Python code, etc) is not
 reloaded automatically on each request. You must _also restart the application_
 to take your changes into account.
-
-## :books: Architecture
-
-This is a simplified architecture of the main running processes and
-communication flow at the end of this exercise (after completing [all previous
-course exercises][archidep-exercises]):
-
-![Simplified architecture](minesweeper-deployment-simplified.png)
-
-> [Simplified architecture PDF version](minesweeper-deployment-simplified.pdf).
 
 [alpinejs]: https://alpinejs.dev
 [app-config]: https://github.com/MediaComem/minesweeper#configuration

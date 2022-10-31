@@ -17,7 +17,7 @@ using the PHP development server.
 - [:exclamation: Update the configuration](#exclamation-update-the-configuration)
 - [:exclamation: Run the PHP development server](#exclamation-run-the-php-development-server)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
-  - [:books: Architecture](#books-architecture)
+  - [Architecture](#architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: `SET PASSWORD has no significance` error when running `mysql_secure_installation`](#boom-set-password-has-no-significance-error-when-running-mysql_secure_installation)
   - [:boom: Access denied for user 'root'@'localhost' (using password: NO)](#boom-access-denied-for-user-rootlocalhost-using-password-no)
@@ -330,7 +330,7 @@ Azure cloud.
 The application is now publicly accessible by anyone on the Internet, at your
 instance's public IP address.
 
-### :books: Architecture
+### Architecture
 
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise:
