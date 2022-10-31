@@ -404,7 +404,7 @@ You can now re-run the original command:
 
 ```bash
 $> sudo mysql_secure_installation
-...
+```
 
 Once is is done, you can reconfigure MySQL to use passwordless
 [socket authentication][mysql-socket-auth] (it will ask you for the MySQL root
