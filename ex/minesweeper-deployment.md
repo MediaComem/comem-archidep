@@ -108,6 +108,8 @@ Parts of this guide are annotated with the following icons:
 - :books: Additional information that you can read if you want to know more
   about the commands and tools used during this exercise.
 - :checkered_flag: The end of the exercise.
+  - :classical_building: The architecture of what you deployed during the
+    exercise.
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
 ## The application
