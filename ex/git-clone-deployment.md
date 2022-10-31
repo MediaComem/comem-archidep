@@ -43,8 +43,8 @@ exercise first.
 
 Stop your `php -S` command if it is still running.
 
-> :gem: **Reminder:** You can use Ctrl-C to stop any command currently running
-> in your terminal.
+> :gem: You can use Ctrl-C to stop any command currently running in your
+> terminal.
 
 ## :exclamation: Use your own repository
 
@@ -76,7 +76,7 @@ While connected to your server, you need to clone the repository somewhere. For
 example, you could clone it to the `todolist-repo` directory in your home
 directory.
 
-> :gem: **Reminder:** The command to clone a Git repository is `git clone <url>
+> :gem: The command to clone a Git repository is `git clone <url>
 > [<directory-name>]`. The directory name is optional, and defaults to the last
 > component of the URL's path without the ".git" extension. For example:
 >

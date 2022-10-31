@@ -42,8 +42,8 @@ exercise first.
 
 Stop your `php -S` command if it is still running.
 
-> :gem: **Reminder:** You can use Ctrl-C to stop any command currently running
-> in your terminal.
+> :gem: You can use Ctrl-C to stop any command currently running in your
+> terminal.
 
 ## :exclamation: Update the configuration
 
