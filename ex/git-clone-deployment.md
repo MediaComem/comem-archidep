@@ -7,12 +7,14 @@ instead of SFTP.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Setup](#setup)
-- [Clone the repository](#clone-the-repository)
-- [Update the configuration](#update-the-configuration)
-- [Run the PHP development server](#run-the-php-development-server)
-- [What have I done?](#what-have-i-done)
-- [Architecture](#architecture)
+- [Legend](#legend)
+- [:gem: Requirements](#gem-requirements)
+- [:exclamation: Use your own repository](#exclamation-use-your-own-repository)
+- [:exclamation: Clone the repository](#exclamation-clone-the-repository)
+- [:exclamation: Update the configuration](#exclamation-update-the-configuration)
+- [:exclamation: Run the PHP development server](#exclamation-run-the-php-development-server)
+- [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+  - [Architecture](#architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -32,23 +34,30 @@ Parts of this guide are annotated with the following icons:
 - :checkered_flag: The end of the exercise.
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
-## :exclamation: Setup
+## :gem: Requirements
 
 Make sure you have completed the [previous exercise](sftp-deployment.md) and the
 [Git
 collaboration](https://github.com/MediaComem/comem-archidep-php-todo-exercise)
-exercise first. If you were not Bob during the collaboration exercise (i.e. the
-person who owns the fork), create your own fork of the repository so that you
-can modify it independently.
+exercise first.
 
 Stop your `php -S` command if it is still running.
+
+> :gem: **Reminder:** You can use Ctrl-C to stop any command currently running
+> in your terminal.
+
+## :exclamation: Use your own repository
+
+If you were not Bob during the collaboration exercise (i.e. the person who owns
+the repository), [create your own fork of the repository][github-fork] so that
+you can modify it independently.
 
 ## :exclamation: Clone the repository
 
 Instead of manually uploading files through SFTP, you will connect to the server
 through SSH and clone the repository from GitHub.
 
-Copy your repository's public HTTP URL.
+Copy your repository's public HTTP URL:
 
 ![HTTP Clone URL](../images/github-http-clone-url.png)
 
@@ -56,12 +65,12 @@ Copy your repository's public HTTP URL.
 > public, it is simpler to use the HTTP URL to clone it, since it requires no
 > credentials.
 >
-> To clone the repository with the SSH URL from your server, you need to have
-> SSH public key authentication set up on your server the same way you did on
-> your local machine. You would need to generate an SSH key pair on the server,
-> and add its public key to your GitHub account (or to the repository's Deploy
-> Keys). Or you would need to put your own personal SSH key pair on the server,
-> which would make it vulnerable in the event the server is compromised.
+> To clone the repository with the SSH URL from your server, you would need to
+> have SSH public key authentication set up on your server the same way you did
+> on your local machine. You would need to generate an SSH key pair on the
+> server, and add its public key to your GitHub account (or to the repository's
+> Deploy Keys). Or you would need to put your own personal SSH key pair on the
+> server, which would make it vulnerable in the event the server is compromised.
 
 While connected to your server, you need to clone the repository somewhere. For
 example, you could clone it to the `todolist-repo` directory in your home
@@ -137,4 +146,5 @@ short-lived processes run during the exercise:
 
 > [Detailed architecture PDF version](git-clone-deployment.pdf).
 
+[github-fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [php-todolist]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
