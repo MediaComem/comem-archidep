@@ -16,7 +16,23 @@ instead of SFTP.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Setup
+## Legend
+
+Parts of this guide are annotated with the following icons:
+
+- :exclamation: A task you **MUST** perform to complete the exercise.
+- :question: An optional step that you _may_ perform to make sure that
+  everything is working correctly.
+- :warning: **Critically important information about the exercise.**
+- :gem: Tips on the exercise, reminders about previous exercises, or
+  explanations about how this exercise differs from the previous one.
+- :space_invader: More advanced tips on how to save some time.
+- :books: Additional information about the exercise or the commands and tools
+  used.
+- :checkered_flag: The end of the exercise.
+- :boom: Troubleshooting tips: how to fix common problems you might encounter.
+
+## :exclamation: Setup
 
 Make sure you have completed the [previous exercise](sftp-deployment.md) and the
 [Git
@@ -27,7 +43,7 @@ can modify it independently.
 
 Stop your `php -S` command if it is still running.
 
-## Clone the repository
+## :exclamation: Clone the repository
 
 Instead of manually uploading files through SFTP, you will connect to the server
 through SSH and clone the repository from GitHub.
@@ -36,37 +52,48 @@ Copy your repository's public HTTP URL.
 
 ![HTTP Clone URL](../images/github-http-clone-url.png)
 
-> **Why the HTTP and not the SSH URL?** As long as your repository is public, it
-> is simpler to use the HTTP URL to clone it, since it requires no credentials.
+> :books: **Why the HTTP and not the SSH URL?** As long as your repository is
+> public, it is simpler to use the HTTP URL to clone it, since it requires no
+> credentials.
 >
 > To clone the repository with the SSH URL from your server, you need to have
 > SSH public key authentication set up on your server the same way you did on
 > your local machine. You would need to generate an SSH key pair on the server,
 > and add its public key to your GitHub account (or to the repository's Deploy
-> Keys).
+> Keys). Or you would need to put your own personal SSH key pair on the server,
+> which would make it vulnerable in the event the server is compromised.
 
 While connected to your server, you need to clone the repository somewhere. For
 example, you could clone it to the `todolist-repo` directory in your home
 directory.
 
-> **Reminder:** The command to clone a Git repository is `git clone <url> [<directory-name>]`. The directory name is optional, and defaults to the last
-> component of the URL's path without the ".git" extension.
+> :gem: **Reminder:** The command to clone a Git repository is `git clone <url>
+> [<directory-name>]`. The directory name is optional, and defaults to the last
+> component of the URL's path without the ".git" extension. For example:
 >
-> For example, if the clone URL is "https://github.com/bob/awesome-repo.git",
-> the directory will be named "awesome-repo" by default, unless you specify
-> another name with the `<directory-name>` argument.
+> * `git clone https://github.com/bob/awesome-repo.git` will create a directory
+>   named "awesome-repo".
+> * `git clone https://github.com/bob/awesome-repo.git foo` will create a
+>   directory named "foo".
 
-## Update the configuration
+## :exclamation: Update the configuration
 
 Since your configuration is still hardcoded, you need to update the first few
 lines of `index.php` with the same configuration as for the previous exercise
 (`BASE_URL`, `DB_USER`, `DB_PASS`, etc).
 
-Go into the cloned repository on the server and edit `index.php` with nano or
-Vim, or edit it on your machine and overwrite it with FileZilla, as you prefer.
-Make sure the configuration is appropriate to your server's environment.
+There are several ways you can do this:
 
-## Run the PHP development server
+* Clone the repository locally (if you haven't already), make the change on your
+  local machine and commit and push it to GitHub. Then connect to your server,
+  move into the cloned repository and pull the latest changes from GitHub.
+* Go into the cloned repository on the server and edit `index.php` with nano or
+  Vim, or edit it on your machine and overwrite it with FileZilla, as you
+  prefer.
+
+In both cases, make sure the configuration fits your server's environment.
+
+## :exclamation: Run the PHP development server
 
 Run a PHP development server on port 3000 like you did during the previous
 exercise, but do it in the cloned repository this time:
@@ -78,7 +105,7 @@ $> php -S 0.0.0.0:3000
 You (and everybody else) should be able to access the application in a browser
 at the correct IP address and port (e.g. `W.X.Y.Z:3000`).
 
-## What have I done?
+## :checkered_flag: What have I done?
 
 You are now transfering code to your deployment environment (your server) using
 a version control tool (Git) instead of manually, as recommended in the
@@ -92,7 +119,7 @@ a mistake like:
 Using Git now also allows you to use Git commands like `git pull` to easily pull
 the latest changes from the repository.
 
-## Architecture
+### Architecture
 
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise. Note that it has not changed

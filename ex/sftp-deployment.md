@@ -36,11 +36,11 @@ Parts of this guide are annotated with the following icons:
 - :warning: **Critically important information about the exercise.**
 - :gem: Tips on the exercise, reminders about previous exercises, or
   explanations about how this exercise differs from the previous one.
+- :space_invader: More advanced tips on how to save some time.
 - :books: Additional information about the exercise or the commands and tools
   used.
-- :space_invader: More advanced tips on how to save some time.
-- :boom: Troubleshooting tips: how to fix common problems you might encounter.
 - :checkered_flag: The end of the exercise.
+- :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
 ## :exclamation: Setup
 
