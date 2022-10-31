@@ -13,7 +13,7 @@ hardcoded configuration values.
 - [:exclamation: Pull the latest version from the server](#exclamation-pull-the-latest-version-from-the-server)
 - [:exclamation: Run the PHP development server](#exclamation-run-the-php-development-server)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
-  - [Architecture](#architecture)
+  - [:classical_building: Architecture](#classical_building-architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -31,6 +31,8 @@ Parts of this guide are annotated with the following icons:
 - :books: Additional information about the exercise or the commands and tools
   used.
 - :checkered_flag: The end of the exercise.
+  - :classical_building: The architecture of what you deployed during the
+    exercise.
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
 ## :tip: Setup
@@ -157,7 +159,7 @@ the MySQL database server is exposed on a non-standard port like `5000`, simply
 set the `TODOLIST_DB_PORT` variable, and the application will happily connect to
 it.
 
-### Architecture
+### :classical_building: Architecture
 
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise. Note that it has not changed

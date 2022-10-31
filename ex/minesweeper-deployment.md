@@ -29,7 +29,8 @@ previous exercices to deploy a new application from scratch on your server.
   - [:space_invader: Allowing the dedicated `minesweeper` Unix user to control the Systemd service](#space_invader-allowing-the-dedicated-minesweeper-unix-user-to-control-the-systemd-service)
   - [:exclamation: Test the automated deployment](#exclamation-test-the-automated-deployment)
 - [:exclamation: Notify the teacher](#exclamation-notify-the-teacher)
-- [:checkered_flag: Architecture](#checkered_flag-architecture)
+- [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+  - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: `Could not find a Mix.Project`](#boom-could-not-find-a-mixproject)
   - [:boom: `Note no mix.exs was found in the current directory`](#boom-note-no-mixexs-was-found-in-the-current-directory)
@@ -722,7 +723,12 @@ Here's some visible changes you could easily make:
 Send an email or a Teams message to the teacher **no later than January 13th
 2022** indicating that you have finished the exercise.
 
-## :checkered_flag: Architecture
+## :checkered_flag: What have I done?
+
+You have deployed a new backend/frontend web application to your server from
+scratch, using the knowledge you acquired during previous deployment exercises.
+
+### :classical_building: Architecture
 
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise (after completing [all previous

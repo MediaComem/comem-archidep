@@ -10,7 +10,7 @@ The goal of this exercise is to set up a real domain name for your application.
 - [:exclamation: Connect to Gandi.net](#exclamation-connect-to-gandinet)
 - [:exclamation: Access the domain name](#exclamation-access-the-domain-name)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
-  - [Architecture](#architecture)
+  - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: I used the wrong IP address and then fixed it, but it doesn't work](#boom-i-used-the-wrong-ip-address-and-then-fixed-it-but-it-doesnt-work)
 
@@ -30,6 +30,8 @@ Parts of this guide are annotated with the following icons:
 - :books: Additional information about the exercise or the commands and tools
   used.
 - :checkered_flag: The end of the exercise.
+  - :classical_building: The architecture of what you deployed during the
+    exercise.
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
 ## :gem: Requirements
@@ -81,7 +83,7 @@ have configured.
 This allows your applications and websites to be accessible through a
 human-friendly domain name instead of an IP address.
 
-### Architecture
+### :classical_building: Architecture
 
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise:

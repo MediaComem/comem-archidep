@@ -13,7 +13,7 @@ This guide describes how to create a [systemd][systemd] service to run the PHP a
 - [:exclamation: Enable and start the todolist service](#exclamation-enable-and-start-the-todolist-service)
 - [:exclamation: Reboot and try again](#exclamation-reboot-and-try-again)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
-  - [Architecture](#architecture)
+  - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: My systemd service is not running](#boom-my-systemd-service-is-not-running)
 
@@ -33,6 +33,8 @@ Parts of this guide are annotated with the following icons:
 - :books: Additional information about the exercise or the commands and tools
   used.
 - :checkered_flag: The end of the exercise.
+  - :classical_building: The architecture of what you deployed during the
+    exercise.
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
 ## :gem: Requirements
@@ -249,7 +251,7 @@ no longer have to worry about:
 - Restarting the application after rebooting the server.
 - Restarting the application after it crashes due to a bug.
 
-### Architecture
+### :classical_building: Architecture
 
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise:

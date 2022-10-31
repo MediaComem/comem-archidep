@@ -14,7 +14,7 @@ instead of SFTP.
 - [:exclamation: Update the configuration](#exclamation-update-the-configuration)
 - [:exclamation: Run the PHP development server](#exclamation-run-the-php-development-server)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
-  - [Architecture](#architecture)
+  - [:classical_building: Architecture](#classical_building-architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -32,6 +32,8 @@ Parts of this guide are annotated with the following icons:
 - :books: Additional information about the exercise or the commands and tools
   used.
 - :checkered_flag: The end of the exercise.
+  - :classical_building: The architecture of what you deployed during the
+    exercise.
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
 ## :gem: Requirements
@@ -128,7 +130,7 @@ a mistake like:
 Using Git now also allows you to use Git commands like `git pull` to easily pull
 the latest changes from the repository.
 
-### Architecture
+### :classical_building: Architecture
 
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise. Note that it has not changed
