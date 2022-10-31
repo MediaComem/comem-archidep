@@ -359,7 +359,7 @@ You may encounter this error when `mysql_secure_installation` prompts you to set
 the password for the MySQL `root` user:
 
 ```bash
-$> mysql_secure_installation
+$> sudo mysql_secure_installation
 ...
 
 Please set the password for root here.
@@ -400,12 +400,15 @@ Then exit the MySQL server:
 mysql> exit
 ```
 
-The `mysql_secure_installation` command should now work.
+You can now re-run the original command:
 
-Once you are done running `mysql_secure_installation`, you can reconfigure MySQL
-to use passwordless [socket
-authentication][mysql-socket-auth]
-(it will ask you for the MySQL root password you just defined):
+```bash
+$> sudo mysql_secure_installation
+...
+
+Once is is done, you can reconfigure MySQL to use passwordless
+[socket authentication][mysql-socket-auth] (it will ask you for the MySQL root
+password you just defined):
 
 ```bash
 $> sudo mysql -p
