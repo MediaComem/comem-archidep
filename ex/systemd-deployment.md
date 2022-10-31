@@ -5,25 +5,47 @@ This guide describes how to create a [systemd][systemd] service to run the PHP a
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Setup](#setup)
-- [What you have done so far do to run your application](#what-you-have-done-so-far-do-to-run-your-application)
-- [Create a systemd unit configuration file](#create-a-systemd-unit-configuration-file)
-- [Enable and start the todolist service](#enable-and-start-the-todolist-service)
-  - [Troubleshooting](#troubleshooting)
-- [Reboot and try again](#reboot-and-try-again)
-- [What have I done?](#what-have-i-done)
-- [Architecture](#architecture)
+- [Legend](#legend)
+- [:gem: Requirements](#gem-requirements)
+- [:books: What you have done so far do to run your application](#books-what-you-have-done-so-far-do-to-run-your-application)
+- [:exclamation: Create a systemd unit configuration file](#exclamation-create-a-systemd-unit-configuration-file)
+  - [:gem: What's in a systemd unit configuration file](#gem-whats-in-a-systemd-unit-configuration-file)
+- [:exclamation: Enable and start the todolist service](#exclamation-enable-and-start-the-todolist-service)
+- [:exclamation: Reboot and try again](#exclamation-reboot-and-try-again)
+- [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+  - [Architecture](#architecture)
+- [:boom: Troubleshooting](#boom-troubleshooting)
+  - [:boom: My systemd service is not running](#boom-my-systemd-service-is-not-running)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Setup
+## Legend
+
+Parts of this guide are annotated with the following icons:
+
+- :exclamation: A task you **MUST** perform to complete the exercise.
+- :question: An optional step that you _may_ perform to make sure that
+  everything is working correctly.
+- :warning: **Critically important information about the exercise.**
+- :gem: Tips on the exercise, reminders about previous exercises, or
+  explanations about how this exercise differs from the previous one.
+- :space_invader: More advanced tips on how to save some time.
+- :books: Additional information about the exercise or the commands and tools
+  used.
+- :checkered_flag: The end of the exercise.
+- :boom: Troubleshooting tips: how to fix common problems you might encounter.
+
+## :gem: Requirements
 
 Make sure you have completed the [previous
 exercise](config-through-environment.md).
 
 Stop your `php -S` command if it is still running.
 
-## What you have done so far do to run your application
+> :gem: You can use Ctrl-C to stop any command currently running in your
+> terminal.
+
+## :books: What you have done so far do to run your application
 
 Running the PHP todolist manually in the previous exercises basically consists
 of these steps:
@@ -53,7 +75,7 @@ of these steps:
   $> TODOLIST_DB_PASS=changeme php -S 0.0.0.0:3000
   ```
 
-## Create a systemd unit configuration file
+## :exclamation: Create a systemd unit configuration file
 
 Now you want systemd to run the application automatically for you. You need to
 tell systemd how to do it. But you cannot simply tell systemd to execute the
@@ -77,14 +99,16 @@ Create your own unit file for the PHP todolist at
 `/etc/systemd/system/todolist.service`. You will have to use nano (or Vim) to
 create and edit this file directly on the server. You cannot use an SFTP client.
 
-> **Reminder:** You can edit a file with nano by running the following command:
-> `sudo nano <path>`. If the file does not exist, it will be created by nano
-> when you exit and save. The `sudo` is necessary because the
-> `/etc/systemd/system` directory is only writable by `root`.
+> :gem: You can edit a file with nano by running the following command: `sudo
+> nano <path>`. If the file does not exist, it will be created by nano when you
+> exit and save. The `sudo` is necessary because the `/etc/systemd/system`
+> directory is only writable by `root`.
 >
 > You cannot use FileZilla because you cannot connect with `root` over SFTP as
 > that is considered insecure and therefore not allowed by the default
 > configuration of the SSH server.
+
+### :gem: What's in a systemd unit configuration file
 
 You may find the following documentation useful to write your unit file:
 
@@ -107,39 +131,39 @@ Here are a few hints:
     be running for the PHP TodoList to work? If there is one, your application
     should start after it.
 
-    > **Hint:** You can use the `ls /lib/systemd/system` command to list
-    > other system services.
+    > :gem: You can use the `ls /lib/systemd/system` command to list other
+    > system services.
 
 - In the `[Service]` section of your unit file:
 
   - You should tell systemd what command to run your application with using the
     `ExecStart` option.
 
-    > **Hint:** You must use absolute command paths with `ExecStart`. For
-    > example, if you want to execute the `php` command, you cannot simply write
-    > `php`, you have to use the absolute path to the command instead.
+    > :gem: You must use absolute command paths with `ExecStart`. For example,
+    > if you want to execute the `php` command, you cannot simply write `php`,
+    > you have to use the absolute path to the command instead.
     >
     > You can find the path to any binary with the `which <command>` command.
 
   - You must tell systemd where to execute the command (in which directory) with
     the `WorkingDirectory` option. This must be an absolute path.
 
-    > **Hint:** Go in the application directory on the server and execute the
-    > `pwd` (print working directory) command if you are not sure what the
-    > absolute path is.
+    > :gem: Go in the application directory on the server and execute the `pwd`
+    > (print working directory) command if you are not sure what the absolute
+    > path is.
 
   - You should tell systemd which user must run the command with the `User`
-    option. You can use your own username.
+    option. Use your own username.
 
-    > It's bad practice to run an application with the `root` user. An
+    > :gem: It's bad practice to run an application with the `root` user. An
     > application running as the `root` user that has any security flaw could
     > allow an attacker to gain superuser privileges, and thus obtain complete
     > control over your server.
     >
-    > To go further, you could create a system user specifically to run this
-    > application. This would allow you to limit that user's privileges, also
-    > limiting the damage an attacker could make if your application is
-    > compromised.
+    > :space_invader: To go further, you could create a system user specifically
+    > to run this application. This would allow you to limit that user's
+    > privileges, also limiting the damage an attacker could make if your
+    > application is compromised.
 
   - If your application requires one or multiple environment variables to be
     set, you can set them by adding an `Environment` option. This option can be
@@ -154,11 +178,11 @@ Here are a few hints:
     start your application when the server boots. You can use the value
     `multi-user.target` for this option.
 
-    > `multi-user.target` means that the operating system has reached the
-    > multi-user [runlevel](https://en.wikipedia.org/wiki/Runlevel). In other
-    > words, it means that user management and networking have been initialized.
-    > This is typically when you want to start running other processes which
-    > depend on users and/or networking, like web applications.
+    > :books: `multi-user.target` means that the operating system has reached
+    > the multi-user [runlevel](https://en.wikipedia.org/wiki/Runlevel). In
+    > other words, it means that user management and networking have been
+    > initialized. This is typically when you want to start running other
+    > processes which depend on users and/or networking, like web applications.
 
 Here's another way to look at this information:
 
@@ -172,16 +196,16 @@ Here's another way to look at this information:
 | Restart the application automatically when it crashes | _Cannot be done manually_         | `Restart=<policy>` in the `[Service]` section                                   |
 | Have the application start automatically on boot      | _Cannot be done manually_         | `WantedBy=<target>` in the `[Install]` section                                  |
 
-> **Hint:** You should put comments in your unit file to explain what each
+> :gem: You should put comments in your unit file to explain what each
 > option is for. This can help you if you come back later and do not remember
 > what you did or why. Any line starting with `#` is considered a comment.
 
-## Enable and start the todolist service
+## :exclamation: Enable and start the todolist service
 
 Enable and start your new service.
 
-> **Reminder:** The systemd control command (`systemctl`) allows you to
-> manipulate services: `sudo systemctl <operation> <service-name>`.
+> :gem: The systemd control command (`systemctl`) allows you to manipulate
+> services: `sudo systemctl <operation> <service-name>`.
 >
 > The operations to enable and start are simply `enable` and `start`. The name
 > of the service is the name of your unit file without the ".unit" extension.
@@ -190,9 +214,9 @@ Enable and start your new service.
 
 Check that the service is running properly and that there were no errors.
 
-> You can also use the `systemctl` command to check the status of your service
-> with its `status` operation (instead of `enable` or `start`). It should also
-> show you the last few lines of its logs.
+> :gem: You can also use the `systemctl` command to check the status of your
+> service with its `status` operation (instead of `enable` or `start`). It
+> should also show you the last few lines of its logs.
 >
 > To see the complete logs, you can use the `sudo journalctl -u <service-name>`
 > command. Pay attention to the timestamps at the beginning of each line, which
@@ -202,13 +226,7 @@ You (and everybody else) should be able to access the running todolist
 application in your browser on your server's IP address and port 3000 (e.g.
 `W.X.Y.Z:3000`).
 
-### Troubleshooting
-
-If the status indicates a problem with your unit file, you should fix the
-problem in your unit file. Then, be sure to run `sudo systemctl daemon-reload`
-to take the changes into account. You may also need to run `sudo systemctl restart todolist` to restart your application.
-
-## Reboot and try again
+## :exclamation: Reboot and try again
 
 If you have configured your unit file correctly, your application should restart
 automatically if the server is rebooted.
@@ -221,7 +239,7 @@ $> sudo reboot
 
 The application should still be running.
 
-## What have I done?
+## :checkered_flag: What have I done?
 
 You have configured your operating system's process manager (systemd, which
 comes bundled with Ubuntu) to manage your application's lifecycle for you. You
@@ -231,7 +249,7 @@ no longer have to worry about:
 - Restarting the application after rebooting the server.
 - Restarting the application after it crashes due to a bug.
 
-## Architecture
+### Architecture
 
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise:
@@ -246,5 +264,19 @@ short-lived processes run during the exercise:
 ![Diagram](systemd-deployment.png)
 
 > [PDF version](systemd-deployment.pdf).
+
+## :boom: Troubleshooting
+
+Here's a few tips about some problems you may encounter during this exercise.
+
+### :boom: My systemd service is not running
+
+If `sudo systemctl status todolist` indicates a problem with your unit file, you
+should fix the problem in your unit file. Then, be sure to run `sudo systemctl
+daemon-reload` to take the changes into account. You may also need to run `sudo
+systemctl restart todolist` to restart your application.
+
+If the status command does not give you enough information, you can get more of
+your service's logs with the `sudo journalctl -u todolist` command.
 
 [systemd]: https://en.wikipedia.org/wiki/Systemd
