@@ -98,6 +98,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
   - [Permissions](ex/unix-permissions.md)
     - [Solutions](ex/unix-permissions-solutions.md)
   - [Pipeline](ex/unix-pipeline.md)
+    - [Solutions](ex/unix-pipeline-solutions.md)
 - **Basic deployment**
   - [Run your own virtual server on Microsoft Azure](ex/azure-setup.md)
   - [Deploy a PHP application with SFTP](ex/sftp-deployment.md)
