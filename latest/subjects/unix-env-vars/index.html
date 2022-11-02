@@ -3,7 +3,7 @@
   <head>
     <title>Unix Environment Variables (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/73b42b1ce991972d335ceba675b5bbbff16678a0/subjects/unix-env-vars/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/573c42d76203bcc6afcc337e873489396db5b1dc/subjects/unix-env-vars/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -30,6 +30,86 @@ This material is part of [architecture & deployment course](https://github.com/M
 
 ---
 class: center, middle
+## Environment
+
+.breadcrumbs[<a href="#1">Unix Environment Variables</a>]
+
+
+
+<img class='w80' src='images/environments.png' />
+
+---
+### What is an environment?
+
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#2">Environment</a>]
+
+In the context of software **deployment**, an [**environment**][env] is a
+computer system or set of systems in which a program or component is deployed
+and executed.
+
+.grid-50[
+
+<p class='center'><img class='w40' src='images/development-server.png' /></p>
+
+When you develop and/or execute a program locally, your local computer is an
+environment.
+
+
+]
+.grid-50[
+
+<p class='center'><img class='w40' src='images/web-server.png' /></p>
+
+When you transfer a program to a server and execute it there, that becomes
+another environment.
+
+
+]
+---
+### Deployment
+
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#2">Environment</a>]
+
+In industrial use, the **development environment** (where changes are originally
+made) and **production environment** (what end users use) are separated, often
+with several stages in between.
+
+<p class='center'><img class='w85' src='images/deployment.png' /></p>
+
+The configuration of each environment may vary to suit the requirements of
+development, testing, production, etc.
+
+---
+### Release management
+
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#2">Environment</a>]
+
+.grid-50[
+
+<p class='center'><img class='w100' src='images/release-management-cycle.jpg' /></p>
+
+
+]
+.grid-50[
+
+When using [agile software development][agile], teams are seeing much higher
+quantities of software releases.
+
+[Continuous delivery][cd] and [DevOps][devops] are processes where a program is
+packaged and "moved" from one environment to the other (i.e. deployed) until it
+reaches the production stage.
+
+Modern software development teams use automation to speed up this process.
+
+
+
+
+
+
+
+]
+---
+class: center, middle
 ## Environment variables
 
 .breadcrumbs[<a href="#1">Unix Environment Variables</a>]
@@ -43,7 +123,7 @@ Affecting processes since 1979.
 ---
 ### What is an environment variable?
 
-.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#2">Environment variables</a>]
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#6">Environment variables</a>]
 
 An environment variable is a **named value that can affect the way running processes will behave** on a computer.
 
@@ -62,7 +142,7 @@ an environment variable that indicates in which directories to look for binaries
 ---
 ### What are they for?
 
-.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#2">Environment variables</a>]
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#6">Environment variables</a>]
 
 Environment variables can **affect the behavior of programs without modifying them**.
 
@@ -92,7 +172,7 @@ Getting them, listing them, setting them, deleting them.
 ---
 ### Getting an environment variable
 
-.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#5">Managing environment variables</a>]
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#9">Managing environment variables</a>]
 
 To display the current value of an environment variable, use the `echo` command.
 A variable can be referenced by its name prefixed with a dollar sign (`$`):
@@ -122,7 +202,7 @@ $> echo $FOO
 ---
 ### Listing all environment variables
 
-.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#5">Managing environment variables</a>]
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#9">Managing environment variables</a>]
 
 The `env` command prints all environment variables currently set in your shell, and their values:
 
@@ -147,7 +227,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ---
 ### Setting an environment variable
 
-.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#5">Managing environment variables</a>]
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#9">Managing environment variables</a>]
 
 There are multiple ways to set an environment variable.
 The lifetime of the variable depends on how you set it:
@@ -174,7 +254,7 @@ $FOO is not set
 ---
 #### Setting a variable for one command
 
-.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#5">Managing environment variables</a> > <a href="#8">Setting an environment variable</a>]
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#9">Managing environment variables</a> > <a href="#12">Setting an environment variable</a>]
 
 You can prefix a command by an environment variable assigment:
 
@@ -194,7 +274,7 @@ $FOO is not set
 ---
 #### Setting a variable for a shell session
 
-.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#5">Managing environment variables</a> > <a href="#8">Setting an environment variable</a>]
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#9">Managing environment variables</a> > <a href="#12">Setting an environment variable</a>]
 
 The `export` command exports an environment variable to all the child processes running in the current shell session:
 
@@ -220,7 +300,7 @@ $FOO is not set
 ---
 #### Setting a variable in the shell configuration file
 
-.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#5">Managing environment variables</a> > <a href="#8">Setting an environment variable</a>]
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#9">Managing environment variables</a> > <a href="#12">Setting an environment variable</a>]
 
 If you add the `export` command to your shell configuration file (`.bash_profile` for [Bash][bash]),
 it will be run every time you start a new shell:
@@ -255,7 +335,7 @@ The value of $FOO is bar
 ---
 ### Removing an environment variable
 
-.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#5">Managing environment variables</a>]
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#9">Managing environment variables</a>]
 
 The `unset` command removes a variable from the environment:
 
@@ -278,7 +358,7 @@ $FOO is not set
 ---
 ### Getting environment variables from code
 
-.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#5">Managing environment variables</a>]
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#9">Managing environment variables</a>]
 
 Every programming language has a simple way of retrieving the value of environment variables:
 
@@ -300,7 +380,7 @@ Rust         | [`env::var("FOO")`](https://doc.rust-lang.org/std/env/fn.var.html
 ---
 ### Environment variables are always strings
 
-.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#5">Managing environment variables</a>]
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#9">Managing environment variables</a>]
 
 You may put whatever kind of value you want into an environment variable:
 
@@ -342,7 +422,11 @@ undefined
 
 
 
+[agile]: https://en.wikipedia.org/wiki/Agile_software_development
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
+[cd]: https://en.wikipedia.org/wiki/Continuous_delivery
+[devops]: https://en.wikipedia.org/wiki/DevOps
+[env]: https://en.wikipedia.org/wiki/Deployment_environment
 [env-var]: https://en.wikipedia.org/wiki/Environment_variable
 [path]: https://en.wikipedia.org/wiki/Path_(computing)
 
