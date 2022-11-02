@@ -15,6 +15,10 @@ Learn how to manage Unix environment variables.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+- [Environment](#environment)
+  - [What is an environment?](#what-is-an-environment)
+  - [Deployment](#deployment)
+  - [Release management](#release-management)
 - [Environment variables](#environment-variables)
   - [What is an environment variable?](#what-is-an-environment-variable)
   - [What are they for?](#what-are-they-for)
@@ -31,6 +35,65 @@ Learn how to manage Unix environment variables.
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
+
+
+
+## Environment
+
+<!-- slide-front-matter class: center, middle -->
+
+<img class='w80' src='images/environments.png' />
+
+### What is an environment?
+
+In the context of software **deployment**, an [**environment**][env] is a
+computer system or set of systems in which a program or component is deployed
+and executed.
+
+<!-- slide-column -->
+
+<p class='center'><img class='w40' src='images/development-server.png' /></p>
+
+When you develop and/or execute a program locally, your local computer is an
+environment.
+
+<!-- slide-column -->
+
+<p class='center'><img class='w40' src='images/web-server.png' /></p>
+
+When you transfer a program to a server and execute it there, that becomes
+another environment.
+
+### Deployment
+
+In industrial use, the **development environment** (where changes are originally
+made) and **production environment** (what end users use) are separated, often
+with several stages in between.
+
+<p class='center'><img class='w85' src='images/deployment.png' /></p>
+
+The configuration of each environment may vary to suit the requirements of
+development, testing, production, etc.
+
+### Release management
+
+<!-- slide-column -->
+
+<p class='center'><img class='w100' src='images/release-management-cycle.jpg' /></p>
+
+<!-- slide-column -->
+
+When using [agile software development][agile], teams are seeing much higher
+quantities of software releases.
+
+[Continuous delivery][cd] and [DevOps][devops] are processes where a program is
+packaged and "moved" from one environment to the other (i.e. deployed) until it
+reaches the production stage.
+
+Modern software development teams use automation to speed up this process.
+
 
 
 
@@ -306,6 +369,10 @@ undefined
 
 
 
+[agile]: https://en.wikipedia.org/wiki/Agile_software_development
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
+[cd]: https://en.wikipedia.org/wiki/Continuous_delivery
+[devops]: https://en.wikipedia.org/wiki/DevOps
+[env]: https://en.wikipedia.org/wiki/Deployment_environment
 [env-var]: https://en.wikipedia.org/wiki/Environment_variable
 [path]: https://en.wikipedia.org/wiki/Path_(computing)
