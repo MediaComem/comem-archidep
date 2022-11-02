@@ -45,18 +45,18 @@ It is both a **process manager** and a **FastCGI server**:
   [FastCGI protocol][fastcgi].
 
 > Use the following command for more information on how PHP FPM manages
-> processes (for version 7.4):
+> processes (for version 8.1):
 >
->     $> grep -A 50 -m 1 "child processes" /etc/php/7.4/fpm/pool.d/www.conf
+>     $> grep -A 50 -m 1 "child processes" /etc/php/8.1/fpm/pool.d/www.conf
 
 The `php-fpm` package is integrated with systemd out of the box (its service
-file is `/lib/systemd/system/php7.4-fpm.service` for version 7.4). It should
+file is `/lib/systemd/system/php8.1-fpm.service` for version 8.1). It should
 already be running:
 
 ```bash
-$> sudo systemctl status php7.4-fpm
-● php7.4-fpm.service - The PHP 7.4 FastCGI Process Manager
-   Loaded: loaded (/lib/systemd/system/php7.4-fpm.service; enabled; vendor preset: enabled)
+$> sudo systemctl status php8.1-fpm
+● php8.1-fpm.service - The PHP 8.1 FastCGI Process Manager
+   Loaded: loaded (/lib/systemd/system/php8.1-fpm.service; enabled; vendor preset: enabled)
    Active: active (running) since Thu 2019-01-10 17:58:07 UTC; 27min ago
    ...
 ```
@@ -75,10 +75,10 @@ Therefore, you need to configure PHP-FPM to add this variable to your
 application's environment.
 
 The PHP FPM configuration file which determines how processes are launched is
-`/etc/php/7.4/fpm/pool.d/www.conf` (for version 7.4). Edit this file:
+`/etc/php/8.1/fpm/pool.d/www.conf` (for version 8.1). Edit this file:
 
 ```bash
-$> sudo nano /etc/php/7.4/fpm/pool.d/www.conf
+$> sudo nano /etc/php/8.1/fpm/pool.d/www.conf
 ```
 
 Find the environment section which looks like this:
@@ -108,15 +108,15 @@ Add a line to define the `TODOLIST_DB_PASS` variable with the correct value.
 For the change to take effect, you must restart the PHP FPM service:
 
 ```bash
-$> sudo systemctl restart php7.4-fpm
+$> sudo systemctl restart php8.1-fpm
 ```
 
 Make sure it is still running:
 
 ```bash
-$> sudo systemctl status php7.4-fpm
-● php7.4-fpm.service - The PHP 7.4 FastCGI Process Manager
-   Loaded: loaded (/lib/systemd/system/php7.4-fpm.service; enabled; vendor preset: enabled)
+$> sudo systemctl status php8.1-fpm
+● php8.1-fpm.service - The PHP 8.1 FastCGI Process Manager
+   Loaded: loaded (/lib/systemd/system/php8.1-fpm.service; enabled; vendor preset: enabled)
    Active: active (running) since Thu 2019-01-10 17:58:07 UTC; 3s ago
    ...
 ```
@@ -174,20 +174,20 @@ but you need to make the following changes:
     the same machine by reading and writing to it).
 
     By default, PHP FPM is configured to listen on a Unix socket which is
-    located at `/var/run/php/php7.4-fpm.sock` (for version 7.4). Therefore,
+    located at `/var/run/php/php8.1-fpm.sock` (for version 8.1). Therefore,
     according to the [documentation][nginx-fastcgi-pass], you should configure a
-    FastCGI proxy to `unix:/var/run/php/php7.4-fpm.sock`.
+    FastCGI proxy to `unix:/var/run/php/php8.1-fpm.sock`.
 
     This will make nginx proxy HTTP requests to PHP FPM through the Unix socket.
     PHP FPM will then execute the PHP code and give the result to nginx, which
     will send it back to the client in the HTTP response.
 
     > PHP FPM either listens on a port or on a Unix socket depending on its
-    > configuration. You can check the `/etc/php/7.4/fpm/pool.d/www.conf` file
+    > configuration. You can check the `/etc/php/8.1/fpm/pool.d/www.conf` file
     > and look for the `listen = ...` option which should be near the top.
     >
     > You can use the following command to quickly find the `listen` option and
-    > print it along with the few lines preceding it: `grep -B 10 -m 1 "listen =" /etc/php/7.4/fpm/pool.d/www.conf`.
+    > print it along with the few lines preceding it: `grep -B 10 -m 1 "listen =" /etc/php/8.1/fpm/pool.d/www.conf`.
 
 ### Enable the nginx configuration
 
