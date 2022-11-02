@@ -3,24 +3,48 @@
 The goal of this exercise is to deploy a static website (only HTML, JavaScript
 and CSS) with [nginx][nginx].
 
-It assumes that you are familiar with [reverse proxying][slides] and that you
-have completed the [previous DNS configuration exercise][previous-ex], where you
-configured an A record for your server in the domain name system.
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Put the static website on the server](#put-the-static-website-on-the-server)
-- [Create an nginx configuration file to serve the website](#create-an-nginx-configuration-file-to-serve-the-website)
-  - [Enable the nginx configuration](#enable-the-nginx-configuration)
-  - [Reload the nginx configuration](#reload-the-nginx-configuration)
-- [See it in action](#see-it-in-action)
-- [What have I done?](#what-have-i-done)
-- [Architecture](#architecture)
+- [Legend](#legend)
+- [:gem: Requirements](#gem-requirements)
+- [:exclamation: Put the static website on the server](#exclamation-put-the-static-website-on-the-server)
+- [:exclamation: Create an nginx configuration file to serve the website](#exclamation-create-an-nginx-configuration-file-to-serve-the-website)
+  - [:exclamation: Enable the nginx configuration](#exclamation-enable-the-nginx-configuration)
+  - [:exclamation: Reload the nginx configuration](#exclamation-reload-the-nginx-configuration)
+- [:exclamation: See it in action](#exclamation-see-it-in-action)
+- [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+  - [:books: Architecture](#books-architecture)
+- [:boom: Troubleshooting](#boom-troubleshooting)
+  - [:boom: `[emerg] could not build the server_names_hash, you should increase server_names_hash_bucket_size`](#boom-emerg-could-not-build-the-server_names_hash-you-should-increase-server_names_hash_bucket_size)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Put the static website on the server
+## Legend
+
+Parts of this guide are annotated with the following icons:
+
+- :exclamation: A task you **MUST** perform to complete the exercise.
+- :question: An optional step that you _may_ perform to make sure that
+  everything is working correctly.
+- :warning: **Critically important information about the exercise.**
+- :gem: Tips on the exercise, reminders about previous exercises, or
+  explanations about how this exercise differs from the previous one.
+- :space_invader: More advanced tips on how to save some time.
+- :books: Additional information about the exercise or the commands and tools
+  used.
+- :checkered_flag: The end of the exercise.
+  - :classical_building: The architecture of what you deployed during the
+    exercise.
+- :boom: Troubleshooting tips: how to fix common problems you might encounter.
+
+## :gem: Requirements
+
+This guide assumes that you are familiar with [reverse proxying][slides] and
+that you have completed the [previous DNS configuration exercise][previous-ex],
+where you configured an A record for your server in the domain name system.
+
+## :exclamation: Put the static website on the server
 
 It is suggested that you use the provided [HTML, JavaScript and CSS
 clock][repo], but you could deploy any other static HTML website.
@@ -35,7 +59,7 @@ $> ls static-clock-website
 index.html  README.md  script.js  style.css
 ```
 
-## Create an nginx configuration file to serve the website
+## :exclamation: Create an nginx configuration file to serve the website
 
 Make sure you have nginx installed [as shown during the course][nginx-install].
 
@@ -50,7 +74,7 @@ course][nginx-static-conf] and put it in the file. You should modify it to:
 - Use the subdomain you configured for your server during the previous DNS
   exercise (e.g. `john-doe.archidep.ch`).
 
-  > This is done by customizing [nginx's `server_name`
+  > :gem: This is done by customizing [nginx's `server_name`
   > directive](http://nginx.org/en/docs/http/server_names.html) in your `server`
   > block. Read [How nginx processes a
   > request](http://nginx.org/en/docs/http/request_processing.html) if you want
@@ -58,29 +82,31 @@ course][nginx-static-conf] and put it in the file. You should modify it to:
 
 - Serve the files in the repository you just cloned.
 
-  > This is done by customizing [nginx's `root`
+  > :gem: This is done by customizing [nginx's `root`
   > directive](http://nginx.org/en/docs/http/ngx_http_core_module.html#root).
   > You can learn more about it in the [Serving Static Content section of the
   > nginx Beginner's
   > Guide](http://nginx.org/en/docs/beginners_guide.html#static).
 
-### Enable the nginx configuration
+### :exclamation: Enable the nginx configuration
 
 By default, configurations stored in the `sites-available` directory are
-available, but not enabled. Indeed, if you check what is included by the main
-`/etc/nginx/nginx.conf` file, you will see that `sites-enabled` is there, but
-not `sites-available`:
+available, but not enabled.
 
-```bash
-$> cat /etc/nginx/nginx.conf|grep include
-include /etc/nginx/modules-enabled/*.conf;
-include /etc/nginx/mime.types;
-include /etc/nginx/conf.d/*.conf;
-include /etc/nginx/sites-enabled/*;
-```
-
-> The command pipeline above uses `cat` and `grep` to print all the lines which
-> contain the word "include" in the specified file.
+> :books: Indeed, if you check what is included by the main
+> `/etc/nginx/nginx.conf` file, you will see that `sites-enabled` is there, but
+> not `sites-available`:
+>
+> ```bash
+> $> cat /etc/nginx/nginx.conf | grep include
+> include /etc/nginx/modules-enabled/*.conf;
+> include /etc/nginx/mime.types;
+> include /etc/nginx/conf.d/*.conf;
+> include /etc/nginx/sites-enabled/*;
+> ```
+>
+> :books: The command pipeline above uses `cat` and `grep` to print all the
+> lines which contain the word "include" in the specified file.
 
 To enable a configuration file, the convention is to create a symbolic link in
 `sites-enabled`, which points to the actual configuration file in
@@ -100,11 +126,12 @@ $> ls -l /etc/nginx/sites-enabled/clock
 lrwxrwxrwx 1 root root 32 Jan 10 17:07 /etc/nginx/sites-enabled/clock -> /etc/nginx/sites-available/clock
 ```
 
-### Reload the nginx configuration
+### :exclamation: Reload the nginx configuration
 
 Nginx does not automatically reload its configuration files when they change.
 
-First, you should check whether the changes you have made are valid. The `nginx -t` command loads all the nginx configuration (including files added with
+First, you should check whether the changes you have made are valid. The `nginx
+-t` command loads all the nginx configuration (including files added with
 `include`) and checks that they are valid:
 
 ```bash
@@ -113,15 +140,9 @@ nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
 
-> If an error occurs here, you may have made a mistake in the configuration.
->
-> If you get an error about `server_names_hash_bucket_size`, it may be because
-> your domain name (the value of your `server_name` directive) is too long for
-> nginx's default settings. In that case, edit the main nginx configuration with
-> `sudo nano /etc/nginx/nginx.conf` and add the following line **in the `http`
-> section**:
->
->     server_names_hash_bucket_size 256;
+> :gem: If an error occurs here, you may have made a mistake in the
+> configuration. (See [Troubleshooting](#boom-troubleshooting) if you get an
+> error about `server_names_hash_bucket_size`.)
 
 Nginx reloads its configuration [when it receives the `HUP`
 signal][nginx-signals]. You could find the process ID of the `nginx` master
@@ -139,13 +160,13 @@ $> sudo nginx -s reload
 If the command indicates no errors, nginx should have reloaded its
 configuration.
 
-## See it in action
+## :exclamation: See it in action
 
 Visit the subdomain of your server, e.g. http://john-doe.archidep.ch
 (replacing `john-doe` with your username) and you should see the website
 working.
 
-## What have I done?
+## :checkered_flag: What have I done?
 
 You have configured nginx to act as a web server to serve static content (HTML,
 JavaScript and CSS that can be sent unmodified to the client) under your custom
@@ -156,7 +177,7 @@ many separate websites as you want under different domains by creating multiple
 configuration files with different `server_name` directives, all on the same
 server (your AWS instance).
 
-## Architecture
+### :books: Architecture
 
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise:
@@ -171,6 +192,23 @@ short-lived processes run during the exercise:
 ![Detailed architecture](nginx-static-deployment.png)
 
 > [Detailed architecture PDF version](nginx-static-deployment.pdf).
+
+## :boom: Troubleshooting
+
+Here's a few tips about some problems you may encounter during this exercise.
+
+### :boom: `[emerg] could not build the server_names_hash, you should increase server_names_hash_bucket_size`
+
+If you get an error about `server_names_hash_bucket_size`, it may be because
+your domain name (the value of your `server_name` directive) is too long for
+nginx's default settings.
+
+In that case, edit the main nginx configuration with `sudo nano
+/etc/nginx/nginx.conf` and add the following line **in the `http` section**:
+
+```
+server_names_hash_bucket_size 256;
+```
 
 [nginx]: http://nginx.org/
 [nginx-install]: https://mediacomem.github.io/comem-archidep/2022-2023/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#18
