@@ -177,7 +177,7 @@ many separate websites as you want under different domains by creating multiple
 configuration files with different `server_name` directives, all on the same
 server (your AWS instance).
 
-### :books: Architecture
+### :classical_building: Architecture
 
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise:
