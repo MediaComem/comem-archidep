@@ -585,7 +585,7 @@ of the `index.php` file on the server contains the correct password. This must
 be the password that was in the `todolist.sql` file when you executed it.
 
 > If you do not remember the password, follow the troubleshooting instructions
-> for an [error running `todolist.sql`](#boom-error-running-todolistsql) to
+> for an [error running `todolist.sql`](#boom-error-when-running-todolistsql) to
 > re-create the database, user and password.
 
 [apache]: https://www.apache.org
