@@ -14,7 +14,7 @@ and CSS) with [nginx][nginx].
   - [:exclamation: Reload the nginx configuration](#exclamation-reload-the-nginx-configuration)
 - [:exclamation: See it in action](#exclamation-see-it-in-action)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
-  - [:books: Architecture](#books-architecture)
+  - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: `[emerg] could not build the server_names_hash, you should increase server_names_hash_bucket_size`](#boom-emerg-could-not-build-the-server_names_hash-you-should-increase-server_names_hash_bucket_size)
 
