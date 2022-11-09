@@ -16,6 +16,7 @@ This guide describes how to create a [systemd][systemd] service to run the PHP a
   - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: My systemd service is not running](#boom-my-systemd-service-is-not-running)
+  - [:boom: Failed to resolve unit specifiers](#boom-failed-to-resolve-unit-specifiers)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -280,5 +281,17 @@ systemctl restart todolist` to restart your application.
 
 If the status command does not give you enough information, you can get more of
 your service's logs with the `sudo journalctl -u todolist` command.
+
+### :boom: Failed to resolve unit specifiers
+
+If you have a `%` (percent character) in the password you provide with the
+`TODOLIST_DB_PASS` variable, and systemd indicates an error about failing to
+resolve specifiers, it is because the `%` character has special meaning to
+systemd.
+
+You must escape it by adding another `%` character, e.g.
+`TODOLIST_DB_PASS=foo%%bar` instead of `TODOLIST_DB_PASS=foo%bar`.
+
+
 
 [systemd]: https://en.wikipedia.org/wiki/Systemd
