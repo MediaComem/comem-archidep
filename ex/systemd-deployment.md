@@ -190,7 +190,7 @@ Here's another way to look at this information:
 
 | Things you do to run the application                  | How to do it manually             | How to tell systemd to do it                                                    |
 | :---------------------------------------------------- | :-------------------------------- | :------------------------------------------------------------------------------ |
-| Run commands as user `john_doe`                       | Connect as `john_doe` with SSH    | `User=john_doe` in the `[Unit]` section                                         |
+| Run commands as user `john_doe`                       | Connect as `john_doe` with SSH    | `User=john_doe` in the `[Service]` section                                      |
 | Make sure a service is started                        | `sudo systemctl status <service>` | `After=<service>` in the `[Unit]` section                                       |
 | Move into a directory                                 | `cd <path>`                       | `WorkingDirectory=<path>` in the `[Service]` section                            |
 | Set an environment variable                           | `KEY=value ...`                   | `Environment="KEY=value"` in the `[Service]` section                            |
