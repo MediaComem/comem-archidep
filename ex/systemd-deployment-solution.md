@@ -1,5 +1,8 @@
 # Solution: [Manage a PHP application with systemd as a Process Manager](./systemd-deployment.md)
 
+<!-- START doctoc -->
+<!-- END doctoc -->
+
 The `/lib/systemd/system/todolist.service` file on your server
 should look something this:
 
