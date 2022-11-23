@@ -373,7 +373,7 @@ origin matches.
 You should now disable CORS because we will explore another solution to this
 problem during the rest of this exercise.
 
-Update the Systemd unit file `/etc/systemd/systemd/revprod-backend.service` for
+Update the Systemd unit file `/etc/systemd/system/revprod-backend.service` for
 the backend and set the value of the `REVPROD_CORS` variable to false:
 
 ```conf
