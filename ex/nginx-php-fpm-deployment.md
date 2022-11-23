@@ -61,17 +61,17 @@ time_.
 During the [SFTP exercise][sftp-ex], you installed the `php-fpm` package,
 which provides the PHP [FastCGI Process Manager (FPM)][php-fpm].
 
+>:warning: **The version of php-fpm running on your server will depend on which Ubuntu version you chose when configuring your Azure instance. It will likely be 7.4 or 8.1.**
+>
+>     $> dpkg --list | grep php-fpm
+> **The instructions herein assume you have php-fpm v8.1 installed. If that is not the case, you will need to modify the commands containing the version name accordingly.**
+
 It is both a **process manager** and a **FastCGI server**:
 
 - It will run multiple PHP processes to be able to serve requests from multiple
   clients at the same time.
 - A web server (such as nginx) can ask it to execute PHP files using the
   [FastCGI protocol][fastcgi].
-
->:warning: **The version of php-fpm running on your server will depend on which Ubuntu version you chose when configuring your Azure instance. It will likely be 7.4 or 8.1**
->
->     $> dpkg --list | grep php-fpm
-> **The commands in this tutorial assume you have php-fpm v.8.1 installed. If that is not the case, you will need to modify the commands containing the version name accordingly.**
 
 > :gem: Use the following command for more information on how PHP FPM manages
 > processes (for version 8.1):
