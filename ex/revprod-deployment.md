@@ -25,13 +25,31 @@ wildcard entry preconfigured to make various subdomains
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Requirements
+## Legend
 
-The following requirements should be installed on your server:
+Parts of this guide are annotated with the following icons:
 
-- [Node.js][node] 16.x ([installation instructions][node-install])
+- :exclamation: A task you **MUST** perform to complete the exercise.
+- :question: An optional step that you _may_ perform to make sure that
+  everything is working correctly.
+- :warning: **Critically important information about the exercise.**
+- :gem: Tips on the exercise, reminders about previous exercises, or
+  explanations about how this exercise differs from the previous one.
+- :space_invader: More advanced tips on how to save some time.
+- :books: Additional information about the exercise or the commands and tools
+  used.
+- :checkered_flag: The end of the exercise.
+  - :classical_building: The architecture of what you deployed during the
+    exercise.
+- :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
-## The application
+## :gem: Requirements
+
+The following requirements must be installed on your server:
+
+- [Node.js][node] 18.x ([installation instructions][node-install])
+
+## :gem: The application
 
 The application you will deploy is **Revprod**, a marketing web application
 where customers can leave testimonials about **The Revolutionary Product**. This
@@ -51,8 +69,8 @@ application has been developed as two separate components:
   This component stores the customers' testimonials in an embedded file
   database.
 
-> This separation is for the purposes of the exercise, but large applications
-> are often split like this for various reasons.
+> :books: This separation is for the purposes of the exercise, but large
+> applications are often split like this for various reasons.
 >
 > Some **advantages** of a multi-component application are that each component
 > can be developed and deployed separately. Each componetn could be developed by
@@ -65,7 +83,7 @@ application has been developed as two separate components:
 > break that contract. On the deployment side, you have to make sure that you
 > always deploy compatible versions of all components together.
 
-## Deploy the components separately
+## :exclamation: Deploy the components separately
 
 Let's start by deploying the revprod backend and frontend separately at these
 URLs (replacing `john-doe` with your name):
@@ -73,7 +91,7 @@ URLs (replacing `john-doe` with your name):
 - `http://revprod-backend.john-doe.archidep.ch`
 - `http://revprod-landing.john-doe.archidep.ch`
 
-### Deploy the revprod landing page
+### :exclamation: Deploy the revprod landing page
 
 Clone the landing page repository on your server and install the required
 dependencies:
@@ -155,7 +173,7 @@ http://revprod-landing.john-doe.archidep.ch.
 
 ![Revprod landing page](../images/revprod-landing.png)
 
-### Deploy the revprod backend
+### :exclamation: Deploy the revprod backend
 
 Clone the backend repository on your server and install the required
 dependencies:
@@ -241,7 +259,7 @@ Take the time to share your thoughts about The Revolutionary Product!
 
 ![Share your testimonial in the Revprod backend](../images/revprod-backend-share.png)
 
-## It's not working!
+## :exclamation: It's not working!
 
 If you have followed the instructions so far, you should be able to access the
 revprod backend and landing page in your browser, you should be able to create
@@ -271,6 +289,8 @@ remote resource at http://revprod-backend.john-doe.archidep.ch/comments.
 
 ![Revprod SOP error in the developer console](../images/revprod-sop-error.png)
 
+### :books: The Same-Origin Policy
+
 The landing page's AJAX request to fetch the comments from the backend has been
 blocked by the browser because the request is to a different **origin**: the
 landing page is at `http://revprod-landing.john-doe.archidep.ch` and is
@@ -288,15 +308,11 @@ the user is signed into) or a company intranet (which is protected from direct
 access by the attacker by not having a public IP address) and relaying that data
 to the attacker.
 
-## Using Cross-Origin Request Sharing (CORS)
+## :question: Using Cross-Origin Request Sharing (CORS)
 
 One way to solve this issue is with [Cross-Origin Request Sharing (CORS)][cors]:
 the backend can use HTTP response headers to indicate to the frontend that it
 can perform requests from a different origin.
-
-> CORS relies on a mechanism by which browsers make a "preflight" request to the
-> server hosting the cross-origin resource, in order to check that the server
-> will permit the actual request.
 
 The revprod backend already supports sending the appropriate CORS headers to
 allow cross-origin requests. Update the Systemd unit file
@@ -333,7 +349,7 @@ origin matches.
 
 ![Revprod CORS](../images/revprod-cors.png)
 
-### Disabling CORS
+### :question: Disabling CORS
 
 You should now disable CORS because we will explore another solution to this
 problem during the rest of this exercise.
@@ -359,7 +375,7 @@ http://revprod-landing.john-doe.archidep.ch.
 
 ![Revprod SOP error](../images/revprod-sop.png)
 
-## Using nginx to make both components appear as a single website
+## :exclamation: Using nginx to make both components appear as a single website
 
 The problem we have is that our two components are deployed on separate domains,
 therefore a request from the landing page to the backend is a **cross-origin
@@ -403,35 +419,30 @@ $> sudo systemctl restart revprod-backend
 $> sudo systemctl restart revprod-landing
 ```
 
-Create a new nginx site configuration file `/etc/nginx/sites-available/revprod`:
+You must create a new nginx site configuration file
+`/etc/nginx/sites-available/revprod`. This site configuration must fulfill
+the following criteria:
 
-```conf
-server {
-  listen 80;
-  server_name revprod.john-doe.archidep.ch;
-  root /home/john_doe/revprod-landing-page/public;
+* There must be only **one server block**.
+* The `server_name` directive must be `revprod.john-doe.archidep.ch` (replacing
+  `john_doe` with your name).
+* The `root` directive must be the same as the one from the landing page's site
+  configuration.
+* There must be **multiple `location` blocks** in the `server` block, to serve
+  both the backend and frontend components, each with their own `proxy_pass`
+  directive. These blocks will be similar to but not exactly the same as those
+  used earlier in the exercise. You must make sure the following holds true:
 
-  location ~ /(comments|share) {
-    proxy_pass http://127.0.0.1:4200;
-  }
+  * Requests to `/` are proxied to the landing page.
+  * Requests to `/comments` or `/share` are proxied to the backend.
 
-  location / {
-    proxy_pass http://127.0.0.1:4201;
-  }
-}
-```
-
-Note that this file has **two `location` blocks**:
-
-- The `~ /(comments|share)` location block proxies all requests starting with
-  either `/comments` or `/share`
-  to the revprod backend.
-- The `/` location block proxies all other requests to the revprod landing page.
-
-> We are configuring **different proxies based on the request path**. This is
-> just one example of how you can vary your site's configuration based on the
-> request. For more information, read [Understanding Nginx Server and Location
-> Block Selection Algorithms][nginx-server-and-location].
+  > :gem: A `location` block can match specific requests depending on how you
+  > write it. Read the "Configuring Locations" section of [Configuring nginx as
+  > a Web Server][configuring-nginx-as-a-web-server].
+  >
+  > :books: You can read [Understanding Nginx Server and Location Block
+  > Selection Algorithms][nginx-server-and-location] if you want more detailed
+  > information.
 
 Enable the new configuration with the following command:
 
@@ -449,8 +460,8 @@ $> sudo nginx -s reload
 You should now be able to access the revprod application at
 http://revprod.john-doe.archidep.ch and everything should work!
 
-Note that your are no longer switching from
-`http://revprod-landing.john-doe.archidep.ch` to
+If your new site configuration is correct, note that your are no longer
+switching from `http://revprod-landing.john-doe.archidep.ch` to
 `http://revprod-backend.john-doe.archidep.ch` when navigating in the
 application. Everything is served under `http://revprod.john-doe.archidep.ch`
 because everything goes through nginx which then proxies it **internally** to
@@ -466,7 +477,27 @@ longer any cross-origin request, so the same-origin policy does not apply.
 
 ![Revprod with no SOP error behind nginx](../images/revprod-rp-no-sop.png)
 
-## Troubleshooting
+## :checkered_flag: What have I done?
+
+You have deployed a multi-component website in a way that makes it appear as a
+single website to the end user. You have achieved this by properly configuring
+your reverse proxy (nginx) to appropriately proxy requests to each component.
+
+### :classical_building: Architecture
+
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise (after completing [all previous
+course exercises][archidep-exercises]):
+
+![Simplified architecture](revprod-deployment-simplified.png)
+
+> [Simplified architecture PDF version](revprod-deployment-simplified.pdf).
+
+## :boom: Troubleshooting
+
+Here's a few tips about some problems you may encounter during this exercise.
+
+### :boom: `nginx: [emerg] could not build server_names_hash`
 
 If you encounter the following error:
 
@@ -485,17 +516,10 @@ configuration with `sudo nano /etc/nginx/nginx.conf` and add the following line
 server_names_hash_bucket_size 256;
 ```
 
-## Architecture
 
-This is a simplified architecture of the main running processes and
-communication flow at the end of this exercise (after completing [all previous
-course exercises][archidep-exercises]):
-
-![Simplified architecture](revprod-deployment-simplified.png)
-
-> [Simplified architecture PDF version](revprod-deployment-simplified.pdf).
 
 [archidep-exercises]: https://github.com/MediaComem/comem-archidep#exercises
+[configuring-nginx-as-a-web-server]: https://docs.nginx.com/nginx/admin-guide/web-server/web-server/
 [cors]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 [nginx-server-and-location]: https://www.digitalocean.com/community/tutorials/understanding-nginx-server-and-location-block-selection-algorithms
 [node]: https://nodejs.org
