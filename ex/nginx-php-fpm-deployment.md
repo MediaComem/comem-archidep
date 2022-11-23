@@ -52,9 +52,11 @@ the [systemd exercise][systemd-ex].
 
 ## :warning: Identify your PHP FPM version
 
-The version of `php-fpm` running on your server will depend on which Ubuntu
-version you chose when configuring your Azure instance. It will likely be `7.4`
-for Ubuntu 20.04 or `8.1` for Ubuntu 22.04.
+During this exercise, you will use a package and service called `php-fpm` that
+you installed on your server back during the first deployment exercise. The
+version of `php-fpm` running on your server will depend on which Ubuntu version
+you chose when configuring your Azure instance. It will likely be `7.4` for
+Ubuntu 20.04 or `8.1` for Ubuntu 22.04.
 
 You can check which version you have by running either of the following
 commands:
@@ -68,7 +70,7 @@ ii  php-fpm   2:8.1+92ubuntu1   ...
 ```
 
 In this case, the output indicates that version `8.1` is installed. The
-remaining sections of the exercise assume that this is the case. If not, you
+remaining sections of the exercise assume that this is the case. **If not**, you
 will need to **modify the commands containing the version number accordingly**,
 for example replace `8.1` by `7.4` in every command (if that is the version you
 have installed).
