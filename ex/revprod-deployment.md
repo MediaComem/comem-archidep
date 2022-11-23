@@ -14,13 +14,14 @@ wildcard entry preconfigured to make various subdomains
 - [Legend](#legend)
 - [:gem: Requirements](#gem-requirements)
 - [:gem: The application](#gem-the-application)
+  - [:books: Multi-component applications](#books-multi-component-applications)
 - [:exclamation: Deploy the components separately](#exclamation-deploy-the-components-separately)
   - [:exclamation: Deploy the revprod landing page](#exclamation-deploy-the-revprod-landing-page)
   - [:exclamation: Deploy the revprod backend](#exclamation-deploy-the-revprod-backend)
 - [:exclamation: It's not working!](#exclamation-its-not-working)
   - [:books: The Same-Origin Policy](#books-the-same-origin-policy)
-- [:question: Using Cross-Origin Request Sharing (CORS)](#question-using-cross-origin-request-sharing-cors)
-  - [:question: Disabling CORS](#question-disabling-cors)
+- [:exclamation: Using Cross-Origin Request Sharing (CORS)](#exclamation-using-cross-origin-request-sharing-cors)
+  - [:exclamation: Disabling CORS](#exclamation-disabling-cors)
 - [:exclamation: Using nginx to make both components appear as a single website](#exclamation-using-nginx-to-make-both-components-appear-as-a-single-website)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
   - [:classical_building: Architecture](#classical_building-architecture)
@@ -73,24 +74,32 @@ application has been developed as two separate components:
   This component stores the customers' testimonials in an embedded file
   database.
 
-> :books: This separation is for the purposes of the exercise, but large
-> applications are often split like this for various reasons.
->
-> Some **advantages** of a multi-component application are that each component
-> can be developed and deployed separately. Each componetn could be developed by
-> a separate team, using their favorite programming language and tools, and each
-> could deploy new versions of their component independently.
->
-> The **disadvantages** are that it is more complex to manage the development
-> and deployment of a multi-component application. Separate teams working
-> together must agree on the API that the components use to communicate and not
-> break that contract. On the deployment side, you have to make sure that you
-> always deploy compatible versions of all components together.
+### :books: Multi-component applications
+
+This separation is for the purposes of the exercise, but large applications are
+often split like this for various reasons.
+
+Some **advantages** of a multi-component application are:
+
+* Each component can be developed and deployed separately.
+* Each component could be developed by a separate team, using their favorite
+  programming language and tools.
+* Each team could deploy new versions of their component independently.
+
+The **disadvantages** are:
+
+* It is more complex to manage the development and
+  deployment of a multi-component application.
+* Separate teams working together must agree on the API that the components use
+  to communicate and not break that contract.
+* On the deployment side, you have to make sure that you always deploy
+  compatible versions of all components together.
 
 ## :exclamation: Deploy the components separately
 
 Let's start by deploying the revprod backend and frontend separately at these
-URLs (replacing `john-doe` with your name):
+URLs (replacing `john-doe` with your name as you configured it during the DNS
+exercise):
 
 - `http://revprod-backend.john-doe.archidep.ch`
 - `http://revprod-landing.john-doe.archidep.ch`
@@ -108,7 +117,7 @@ $> npm ci
 ```
 
 Create a Systemd unit file named `/etc/systemd/system/revprod-landing.service`
-(e.g. with `nano`) to execute this component:
+(e.g. with `nano`) to execute this component and make it listen on port 4201:
 
 ```conf
 [Unit]
@@ -127,7 +136,7 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 
-> Replace `john_doe` with your name in the `WorkingDirectory` and `User`
+> :gem: Replace `john_doe` with your name in the `WorkingDirectory` and `User`
 > options, as well as `john-doe` in the second `Environment` option indicating
 > the URL of the landing page.
 
@@ -138,7 +147,8 @@ $> sudo systemctl enable revprod-landing
 $> sudo systemctl start revprod-landing
 ```
 
-> You can check that it is running with `sudo systemctl status revprod-landing`.
+> :gem: You can check that it is running with `sudo systemctl status
+> revprod-landing`.
 
 Create an nginx site configuration file
 `/etc/nginx/sites-available/revprod-landing` (e.g. with `nano`) to expose this
@@ -156,8 +166,8 @@ server {
 }
 ```
 
-> Replace `john-doe` with your name in the `server_name` directive, as well as
-> `john_doe` in the `root` directive.
+> :gem: Replace `john-doe` with your name in the `server_name` directive, as
+> well as `john_doe` in the `root` directive.
 
 Enable that configuration with the following command:
 
@@ -190,7 +200,7 @@ $> npm ci
 ```
 
 Create a Systemd unit file named `/etc/systemd/system/revprod-backend.service`
-(e.g. with `nano`) to execute this component:
+(e.g. with `nano`) to execute this component and make it listen on port 4200:
 
 ```conf
 [Unit]
@@ -209,7 +219,7 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 
-> Replace `john_doe` with your name in the `WorkingDirectory` and `User`
+> :gem: Replace `john_doe` with your name in the `WorkingDirectory` and `User`
 > options, as well as `john-doe` in the second `Environment` option indicating
 > the URL of the landing page.
 
@@ -220,7 +230,8 @@ $> sudo systemctl enable revprod-backend
 $> sudo systemctl start revprod-backend
 ```
 
-> You can check that it is running with `sudo systemctl status revprod-backend`.
+> :gem: You can check that it is running with `sudo systemctl status
+> revprod-backend`.
 
 Create an nginx site configuration file
 `/etc/nginx/sites-available/revprod-backend` (e.g. with `nano`) to expose this
@@ -238,8 +249,8 @@ server {
 }
 ```
 
-> Replace `john-doe` with your name in the `server_name` directive, as well as
-> `john_doe` in the `root` directive.
+> :gem: Replace `john-doe` with your name in the `server_name` directive, as
+> well as `john_doe` in the `root` directive.
 
 Enable that configuration with the following command:
 
@@ -269,10 +280,11 @@ If you have followed the instructions so far, you should be able to access the
 revprod backend and landing page in your browser, you should be able to create
 testimonials in the backend page.
 
-Note that the URL switches from `http://revprod-landing.john-doe.archidep.ch`
-to `http://revprod-backend.john-doe.archidep.ch` (and back) when you navigate
-from the landing page to the Share page. The user can clearly see that these are
-two separate sites.
+Note that the URL switches from `http://revprod-landing.john-doe.archidep.ch` to
+`http://revprod-backend.john-doe.archidep.ch` (and back) when you navigate from
+the landing page to the Share page. Both components use exactly the same theme
+so that the transition is seamless, however by looking at **the URL** the user
+can clearly see that these are **two separate sites**.
 
 ![From the Revprod landing page to the backend](../images/revprod-landing-switch.png)
 ![From the Revprod backend to the landing page](../images/revprod-backend-switch.png)
@@ -299,7 +311,7 @@ The landing page's AJAX request to fetch the comments from the backend has been
 blocked by the browser because the request is to a different **origin**: the
 landing page is at `http://revprod-landing.john-doe.archidep.ch` and is
 attempting to access `http://revprod-backend.john-doe.archidep.ch` which is
-another domain entirely.
+**another domain entirely**.
 
 This is called the [**Same-Origin Policy**][sop]. It is a critical security
 mechanism that restricts how a document or script loaded by one origin can
@@ -307,12 +319,12 @@ interact with a resource from another origin.
 
 It helps isolate potentially malicious documents, reducing possible attack
 vectors. For example, it prevents a malicious website on the Internet from
-running JS in a browser to read data from a third-party webmail service (which
-the user is signed into) or a company intranet (which is protected from direct
-access by the attacker by not having a public IP address) and relaying that data
-to the attacker.
+running JS in a browser to read data from a third-party webmail or e-banking
+service (which the user is signed into) or a company intranet (which is
+protected from direct access by the attacker by not having a public IP address)
+and relaying that data to the attacker.
 
-## :question: Using Cross-Origin Request Sharing (CORS)
+## :exclamation: Using Cross-Origin Request Sharing (CORS)
 
 One way to solve this issue is with [Cross-Origin Request Sharing (CORS)][cors]:
 the backend can use HTTP response headers to indicate to the frontend that it
@@ -328,6 +340,9 @@ section to enable CORS:
 Environment="REVPROD_CORS=true"
 Environment="REVPROD_CORS_ORIGINS=http://revprod-landing.john-doe.archidep.ch"
 ```
+
+> :gem: Replace `john-doe` with your name in the definition of the second
+> environment variable.
 
 Reload the Systemd configuration and restart the backend service:
 
@@ -353,7 +368,7 @@ origin matches.
 
 ![Revprod CORS](../images/revprod-cors.png)
 
-### :question: Disabling CORS
+### :exclamation: Disabling CORS
 
 You should now disable CORS because we will explore another solution to this
 problem during the rest of this exercise.
@@ -375,7 +390,7 @@ $> sudo systemctl restart revprod-backend
 Check that the comments no longer work by refreshing
 http://revprod-landing.john-doe.archidep.ch.
 
-> You may need to force a refresh by holding the Shift key.
+> :gem: You may need to force a refresh by holding the Shift key.
 
 ![Revprod SOP error](../images/revprod-sop.png)
 
@@ -389,8 +404,8 @@ _What if we had **only one domain**, and therefore only one origin?_
 
 A reverse proxy like nginx is a very powerful tool. You have so far configured
 two separate nginx sites with separate proxies to the backend and landing page,
-but nothing says it has to be that way. You can actually configure one site to
-proxy to both components depending on various criteria.
+but nothing says it has to be that way. You can actually configure **one site to
+proxy to both components** depending on various criteria.
 
 Let's assume that we want the revprod application (both the backend and the
 landing page) to be accessible at one URL:
@@ -427,7 +442,9 @@ You must create a new nginx site configuration file
 `/etc/nginx/sites-available/revprod`. This site configuration must fulfill
 the following criteria:
 
-* There must be only **one server block**.
+* There must be **only one `server` block**.
+* The `listen` directive must still use port `80` like the previous
+  configurations in this exercise.
 * The `server_name` directive must be `revprod.john-doe.archidep.ch` (replacing
   `john_doe` with your name).
 * The `root` directive must be the same as the one from the landing page's site
@@ -483,9 +500,10 @@ longer any cross-origin request, so the same-origin policy does not apply.
 
 ## :checkered_flag: What have I done?
 
-You have deployed a multi-component website in a way that makes it appear as a
-single website to the end user. You have achieved this by properly configuring
-your reverse proxy (nginx) to appropriately proxy requests to each component.
+You have deployed a **multi-component website** in a way that makes it **appear
+as a single website** to the end user. You have achieved this by running each
+component separately, and then configuring your reverse proxy (nginx) to
+appropriately proxy requests to each component.
 
 ### :classical_building: Architecture
 
