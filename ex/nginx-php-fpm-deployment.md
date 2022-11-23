@@ -160,6 +160,12 @@ sure the value is set to `127.0.0.1` (local clients only):
 listen.allowed_clients = 127.0.0.1
 ```
 
+For these changes to take effect, you must restart the PHP FPM service:
+
+```bash
+$> sudo systemctl restart php8.1-fpm
+```
+
 ### :question: Optional: check something is listening on port 9000
 
 Running the `ss -tlpn` command should confirm that there is indeed a process
