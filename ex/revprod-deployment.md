@@ -11,17 +11,21 @@ wildcard entry preconfigured to make various subdomains
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Requirements](#requirements)
-- [The application](#the-application)
-- [Deploy the components separately](#deploy-the-components-separately)
-  - [Deploy the revprod landing page](#deploy-the-revprod-landing-page)
-  - [Deploy the revprod backend](#deploy-the-revprod-backend)
-- [It's not working!](#its-not-working)
-- [Using Cross-Origin Request Sharing (CORS)](#using-cross-origin-request-sharing-cors)
-  - [Disabling CORS](#disabling-cors)
-- [Using nginx to make both components appear as a single website](#using-nginx-to-make-both-components-appear-as-a-single-website)
-- [Troubleshooting](#troubleshooting)
-- [Architecture](#architecture)
+- [Legend](#legend)
+- [:gem: Requirements](#gem-requirements)
+- [:gem: The application](#gem-the-application)
+- [:exclamation: Deploy the components separately](#exclamation-deploy-the-components-separately)
+  - [:exclamation: Deploy the revprod landing page](#exclamation-deploy-the-revprod-landing-page)
+  - [:exclamation: Deploy the revprod backend](#exclamation-deploy-the-revprod-backend)
+- [:exclamation: It's not working!](#exclamation-its-not-working)
+  - [:books: The Same-Origin Policy](#books-the-same-origin-policy)
+- [:question: Using Cross-Origin Request Sharing (CORS)](#question-using-cross-origin-request-sharing-cors)
+  - [:question: Disabling CORS](#question-disabling-cors)
+- [:exclamation: Using nginx to make both components appear as a single website](#exclamation-using-nginx-to-make-both-components-appear-as-a-single-website)
+- [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+  - [:classical_building: Architecture](#classical_building-architecture)
+- [:boom: Troubleshooting](#boom-troubleshooting)
+  - [:boom: `nginx: [emerg] could not build server_names_hash`](#boom-nginx-emerg-could-not-build-server_names_hash)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
