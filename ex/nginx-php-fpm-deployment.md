@@ -11,6 +11,7 @@ deployment.
 
 - [Legend](#legend)
 - [:gem: Requirements](#gem-requirements)
+- [:warning: Identify your PHP FPM version](#warning-identify-your-php-fpm-version)
 - [:books: Using PHP FPM instead of the PHP development server](#books-using-php-fpm-instead-of-the-php-development-server)
 - [:exclamation: Configure PHP FPM to listen on a port](#exclamation-configure-php-fpm-to-listen-on-a-port)
   - [:question: Optional: check something is listening on port 9000](#question-optional-check-something-is-listening-on-port-9000)
@@ -49,6 +50,29 @@ This guide assumes that you are familiar with [reverse proxying][slides], that
 you have nginx installed, and that you have done the [DNS exercise][dns-ex] and
 the [systemd exercise][systemd-ex].
 
+## :warning: Identify your PHP FPM version
+
+The version of `php-fpm` running on your server will depend on which Ubuntu
+version you chose when configuring your Azure instance. It will likely be `7.4`
+for Ubuntu 20.04 or `8.1` for Ubuntu 22.04.
+
+You can check which version you have by running either of the following
+commands:
+
+```bash
+$> ls /etc/php
+8.1
+
+$> dpkg --list | grep php-fpm
+ii  php-fpm   2:8.1+92ubuntu1   ...
+```
+
+In this case, the output indicates that version `8.1` is installed. The
+remaining sections of the exercise assume that this is the case. If not, you
+will need to **modify the commands containing the version number accordingly**,
+for example replace `8.1` by `7.4` in every command (if that is the version you
+have installed).
+
 ## :books: Using PHP FPM instead of the PHP development server
 
 When you did the [systemd exercise][systemd-ex], you used the PHP development
@@ -60,16 +84,6 @@ time_.
 
 During the [SFTP exercise][sftp-ex], you installed the `php-fpm` package,
 which provides the PHP [FastCGI Process Manager (FPM)][php-fpm].
-
-> :warning: **The version of php-fpm running on your server will depend on which
-> Ubuntu version you chose when configuring your Azure instance. It will likely
-> be 7.4 or 8.1.**
->
->     $> dpkg --list | grep php-fpm
->
-> **The instructions herein assume you have php-fpm v8.1 installed. If that is
-> not the case, you will need to modify the commands containing the version name
-> accordingly.**
 
 PHP FPM is both a **process manager** and a **FastCGI server**:
 
