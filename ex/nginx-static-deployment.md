@@ -17,6 +17,9 @@ and CSS) with [nginx][nginx].
   - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: `[emerg] could not build the server_names_hash, you should increase server_names_hash_bucket_size`](#boom-emerg-could-not-build-the-server_names_hash-you-should-increase-server_names_hash_bucket_size)
+  - [:boom: The nginx configuration is correct but I get an error page](#boom-the-nginx-configuration-is-correct-but-i-get-an-error-page)
+    - [:boom: 404 Not Found](#boom-404-not-found)
+    - [:boom: 403 Forbidden](#boom-403-forbidden)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -208,6 +211,38 @@ In that case, edit the main nginx configuration with `sudo nano
 
 ```
 server_names_hash_bucket_size 256;
+```
+
+### :boom: The nginx configuration is correct but I get an error page
+
+You can take a look at the nginx error log to see if it helps identify the
+issue:
+
+```bash
+$> sudo cat /var/log/nginx/error.log
+```
+
+#### :boom: 404 Not Found
+
+If you get a 404 Not Found error page, it means nginx cannot find the
+`index.html` page in the directory you have specified with the `root` directive.
+
+Are you sure that the value of your `root` directive is correct?
+
+#### :boom: 403 Forbidden
+
+If you get a 403 Forbidden error, it means that nginx cannot access the
+directory you have specified with the `root` directive.
+
+If you have Ubuntu 22+, the permissions of your Unix user's home directory are
+more restrictive than in the past. You should give permission to the `www-data`
+user (the user nginx runs as) to access your home directory.
+
+You can do that by adding it to your group (replace `john_doe` with your Unix
+username):
+
+```bash
+$> sudo usermod -a -G john_doe www-data
 ```
 
 [nginx]: http://nginx.org/
