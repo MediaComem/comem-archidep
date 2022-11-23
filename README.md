@@ -141,6 +141,7 @@ fix during the rest of the course:
   - [Configure a PHP application through environment variables](ex/config-through-environment.md)
     - [Architecture](ex/config-through-environment.md#architecture)
   - [Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md)
+    - [Solution](ex/systemd-deployment-solution.md)
     - [Architecture](ex/systemd-deployment.md#architecture)
   - [Configure a domain name](ex/dns-configuration.md)
     - [Architecture](ex/dns-configuration.md#architecture)
