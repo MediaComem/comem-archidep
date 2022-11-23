@@ -17,9 +17,9 @@ and CSS) with [nginx][nginx].
   - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: `[emerg] could not build the server_names_hash, you should increase server_names_hash_bucket_size`](#boom-emerg-could-not-build-the-server_names_hash-you-should-increase-server_names_hash_bucket_size)
-  - [:boom: The nginx configuration is correct but I get an error page](#boom-the-nginx-configuration-is-correct-but-i-get-an-error-page)
-    - [:boom: 404 Not Found](#boom-404-not-found)
+  - [:boom: The nginx configuration is correct but I get an error page in the browser](#boom-the-nginx-configuration-is-correct-but-i-get-an-error-page-in-the-browser)
     - [:boom: 403 Forbidden](#boom-403-forbidden)
+    - [:boom: 404 Not Found](#boom-404-not-found)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -213,37 +213,78 @@ In that case, edit the main nginx configuration with `sudo nano
 server_names_hash_bucket_size 256;
 ```
 
-### :boom: The nginx configuration is correct but I get an error page
+### :boom: The nginx configuration is correct but I get an error page in the browser
 
-You can take a look at the nginx error log to see if it helps identify the
-issue:
+If your nginx configuration is syntactically correct (i.e. `sudo nginx -t` shows
+no error) but you still get an error page in the browser, you can take a look at
+the nginx error log to see if it helps identify the issue:
 
 ```bash
 $> sudo cat /var/log/nginx/error.log
 ```
 
-#### :boom: 404 Not Found
-
-If you get a 404 Not Found error page, it means nginx cannot find the
-`index.html` page in the directory you have specified with the `root` directive.
-
-Are you sure that the value of your `root` directive is correct?
+Also take a look at the following subsections depending on the error you see in
+your browser.
 
 #### :boom: 403 Forbidden
 
-If you get a 403 Forbidden error, it means that nginx cannot access the
-directory you have specified with the `root` directive.
+If you get a 403 Forbidden error, it usually means that nginx has insufficient
+permissions to access the directory you have specified with the `root` directive
+(or the `index.html` file in that directory). Make sure that the `www-data` user
+nginx is running as can access all the directories in the `root` you have
+specified.
 
-If you have Ubuntu 22+, the permissions of your Unix user's home directory are
-more restrictive than in the past. You should give permission to the `www-data`
-user (the user nginx runs as) to access your home directory.
+If you have Ubuntu 22+, this may be due to the fact that the permissions of your
+Unix user's home directory are more restrictive than in the past. You can check
+whether this is the case by listing all home directories with their permissions:
 
-You can do that by adding it to your group (replace `john_doe` with your Unix
-username):
+```bash
+$> ls -la /home
+total 16
+drwxr-xr-x  4 root      root      4096 Oct 19 13:01 .
+drwxr-xr-x 19 root      root      4096 Nov 23 11:23 ..
+drwxr-x--- 15 john_doe  john_doe  4096 Nov 23 15:34 john_doe
+```
+
+If the permissions of your home directory are `drwxr-xr-x`, then this solution
+does not apply to you. However, if the permissions are `drwxr-x---` like above,
+then read on.
+
+You should give permission to the `www-data` user (the user nginx runs as) to
+access your home directory. You can do this by adding it to your group (replace
+`john_doe` with your Unix username):
 
 ```bash
 $> sudo usermod -a -G john_doe www-data
 ```
+
+> :books: This is not necessarily the best solution from a security standpoint.
+> It means that nginx will likely have read/execution access to all the
+> directories and files owned by your user. This is probably more than it should
+> have.
+>
+> The clean and secure solution would be to put the files in a dedicated
+> directory with appropriate permissions, somewhere outside your home directory.
+>
+> For example, you could create a `/var/www/clock` directory owned by you and
+> clone the repository there. If you don't want other users to access this
+> directory, you could even restrict permissions further by making this
+> directory owned by you and the `www-data` group (e.g. `sudo chown
+> john_doe:www-data /var/www/clock`), and removing all permissions for other
+> users (e.g. with `sudo chmod o-a /var/www/clock`).
+>
+> If you don't care about security at all `(ㆆ _ ㆆ)`, you can also simply
+> revert the permissions of your home directory to what they would have been
+> before, i.e. give access to everyone with `sudo chmod o+rx /home/john_doe`.
+
+#### :boom: 404 Not Found
+
+If you get a 404 Not Found error page, it usually means nginx cannot find a file
+to serve (e.g. the `index.html` page) in the directory you have specified with
+the `root` directive.
+
+Are you sure that the value of your `root` directive is correct? Does that
+directory actually exist?
 
 [nginx]: http://nginx.org/
 [nginx-install]: https://mediacomem.github.io/comem-archidep/2022-2023/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#18
