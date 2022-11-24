@@ -19,6 +19,7 @@ using the PHP development server.
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
   - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
+  - [:boom: Daemons using outdated libraries](#boom-daemons-using-outdated-libraries)
   - [:boom: `SET PASSWORD has no significance` error when running `mysql_secure_installation`](#boom-set-password-has-no-significance-error-when-running-mysql_secure_installation)
   - [:boom: Access denied for user 'root'@'localhost' (using password: NO)](#boom-access-denied-for-user-rootlocalhost-using-password-no)
   - [:boom: Error when running `todolist.sql`](#boom-error-when-running-todolistsql)
@@ -62,23 +63,9 @@ $> sudo apt update
 $> sudo apt install mysql-server
 ```
 
-> :gem: When the installation of MySQL is complete, APT *may* prompt you to
-> reboot and/or to restart outdated daemons (i.e. background services):
->
-> ![Restart outdated daemons](../images/apt-outdated-daemons.png)
->
-> Simply select "Ok" by pressing the Tab key, then press Enter to confirm.
->
-> :books: This sometimes happens because most recent Linux versions have
-> [unattended upgrades](linux-unattended-upgrades): a tool that automatically
-> installs daily security upgrades on your server without human intervention.
-> Sometimes, some of the background services running on your server may need to
-> be restarted for these upgrades to be applied.
->
-> Since you are installing a new background service (the MySQL server) which
-> must be started, APT asks whether you want to apply upgrades to other
-> background services by restarting them. Rebooting your server would also have
-> the effect of restarting these services and applying the security upgrades.
+> :gem: APT may prompt you to restart some services. See the troubleshooting
+> section about [:boom: Daemons using outdated
+> libraries](#boom-daemons-using-outdated-libraries) if necessary.
 
 APT should automatically start MySQL after installation. You can check this with
 the following command:
@@ -354,6 +341,26 @@ short-lived processes run during the exercise:
 ## :boom: Troubleshooting
 
 Here's a few tips about some problems you may encounter during this exercise.
+
+### :boom: Daemons using outdated libraries
+
+When you install a package with APT (e.g. MySQL), it *may* prompt you to reboot
+and/or to restart outdated daemons (i.e. background services):
+
+![Restart outdated daemons](../images/apt-outdated-daemons.png)
+
+Simply select "Ok" by pressing the Tab key, then press Enter to confirm.
+
+> :books: This happens because most recent Linux versions have [unattended
+> upgrades](linux-unattended-upgrades): a tool that automatically installs daily
+> security upgrades on your server without human intervention. Sometimes, some
+> of the background services running on your server may need to be restarted for
+> these upgrades to be applied.
+>
+> Since you are installing a new background service (the MySQL server) which
+> must be started, APT asks whether you want to apply upgrades to other
+> background services by restarting them. Rebooting your server would also have
+> the effect of restarting these services and applying the security upgrades.
 
 ### :boom: `SET PASSWORD has no significance` error when running `mysql_secure_installation`
 
