@@ -332,7 +332,7 @@ can perform requests from a different origin.
 
 The revprod backend already supports sending the appropriate CORS headers to
 allow cross-origin requests. Update the Systemd unit file
-`/etc/systemd/systemd/revprod-backend.service` for the backend and add the
+`/etc/systemd/system/revprod-backend.service` for the backend and add the
 [appropriate environment variables][revprod-backend-config] to the `[Service]`
 section to enable CORS:
 
