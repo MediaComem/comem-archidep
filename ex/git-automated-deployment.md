@@ -89,7 +89,7 @@ should get a `404 Not Found` error from nginx since there are no files in the
 ## :exclamation: Create a bare Git repository on the server
 
 Git will not let you push commits to a normal repository with a working tree,
-so you need to use a bare repository instead, with only its git directory:
+so you need to use a bare repository instead, with only its Git directory:
 
 ```bash
 $> cd ~/todolist-automated-repo
@@ -97,11 +97,10 @@ $> git init --bare
 Initialized empty Git repository in /home/john_doe/todolist-automated-repo/
 ```
 
-> :books: A bare repository is a repository with only a git directory and no
+> :books: A bare repository is a repository with only a Git directory and no
 > working tree. The project's files are not checked out. It's used mostly on
-> servers for sharing or automation.
->
-> Read [What is a bare repository?][git-bare] for more information.
+> servers for sharing or automation. Read [What is a bare repository?][git-bare]
+> for more information.
 
 ### :exclamation: Add a `post-receive` hook to the Git repository
 
@@ -137,8 +136,8 @@ This script will take the latest version of the code in the
 > repository itself as the working tree.
 >
 > By setting the `GIT_DIR` environment variable, you are instructing Git to use
-> a different Git directory which could be anywhere (in this case, it isthe bare
-> repository you created earlier).
+> a different Git directory which could be anywhere (in this case, it is the
+> bare repository you created earlier).
 >
 > By setting the `GIT_WORK_TREE` environment variable, you are instructing Git
 > to use a different directory as the working tree. The files will be checked
@@ -180,8 +179,10 @@ $> cd /path/to/projects/comem-archidep-php-todo-exercise
 ```
 
 As you have already seen with GitHub, Git can communicate over SSH. This is not
-limited to GitHub: you can define a remote to an SSH URL on your own server. Add
-an [SSH remote][git-ssh-protocol] to the bare repository you created earlier
+limited to GitHub: you can define a remote using an SSH URL that points to your
+own server.
+
+Add an [SSH remote][git-ssh-protocol] to the bare repository you created earlier
 (replace `john_doe` with your username and `W.X.Y.Z` with your server's IP
 address):
 
@@ -217,8 +218,8 @@ To W.X.Y.Z:todolist-automated-repo
 :warning: If your repo has a `master` branch instead of a `main` branch, replace
 `main` by `master` in the `git push archidep main` command in your hook.
 
-> If you have set up your `post-receive` hook correctly, you will see the output
-> of its `echo` commands displayed when you run `git push`. In the above
+> :gem: If you have set up your `post-receive` hook correctly, you will see the
+> output of its `echo` commands displayed when you run `git push`. In the above
 > example, they are the two lines starting with `remote:`.
 
 The site at http://todolist.john-doe.archidep.ch should work again.
