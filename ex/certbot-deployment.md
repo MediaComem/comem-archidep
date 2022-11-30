@@ -151,6 +151,10 @@ There are two things you need to do:
 Make sure your sites work at their new address. If they do, the `certbot`
 command should now also detect them.
 
+> :gem: It may take a few minutes for the new DNS entries to propagate. If you
+> are sure the new DNS entries are correct but it doesn't work, try again a
+> little while later.
+
 [ca]: https://en.wikipedia.org/wiki/Certificate_authority
 [certbot]: https://certbot.eff.org
 [certificate]: https://en.wikipedia.org/wiki/Public_key_certificate
