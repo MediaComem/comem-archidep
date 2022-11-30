@@ -123,8 +123,8 @@ will have to change your subdomain for Certbot to recognize it as valid.
 
 There are two things you need to do:
 
-* Log back into Gandi.net and add a new A record for your Azure VM just like you
-  did during the [Configure a domain
+* Log back into [Gandi.net][gandi] and add a new A record for
+  your Azure VM just like you did during the [Configure a domain
   name](https://github.com/MediaComem/comem-archidep/blob/main/ex/dns-configuration.md)
   exercise.
 
@@ -155,6 +155,7 @@ command should now also detect them.
 [certbot]: https://certbot.eff.org
 [certificate]: https://en.wikipedia.org/wiki/Public_key_certificate
 [domain-validation]: https://en.wikipedia.org/wiki/Domain-validated_certificate
+[gandi]: https://www.gandi.net
 [http-challenge]: https://letsencrypt.org/docs/challenge-types/#http-01-challenge
 [letsencrypt]: https://letsencrypt.org
 [tls]: https://en.wikipedia.org/wiki/Transport_Layer_Security
