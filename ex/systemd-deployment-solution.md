@@ -3,7 +3,7 @@
 <!-- START doctoc -->
 <!-- END doctoc -->
 
-The `/lib/systemd/system/todolist.service` file on your server
+The `/etc/systemd/system/todolist.service` file on your server
 should look something this:
 
 ```
