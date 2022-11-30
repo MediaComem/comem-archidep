@@ -13,6 +13,8 @@ using [Certbot][certbot].
 - [:exclamation: Obtain a TLS certificate from Let's Encrypt](#exclamation-obtain-a-tls-certificate-from-lets-encrypt)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
   - [:classical_building: Architecture](#classical_building-architecture)
+- [:boom: Troubleshooting](#boom-troubleshooting)
+  - [:boom: No names were found in your configuration files](#boom-no-names-were-found-in-your-configuration-files)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -102,6 +104,52 @@ The only thing that has changed compared to [the previous
 exercise](./nginx-php-fpm-deployment.md#architecture) is that you are now
 accessing your application over an encrypted HTTPS/TLS connection instead of
 insecure HTTP.
+
+## :boom: Troubleshooting
+
+Here's a few tips about some problems you may encounter during this exercise.
+
+### :boom: No names were found in your configuration files
+
+If Certbot tells you that you that "No names were found in your configuration
+files" but you have nginx sites that are configured, this may be because you
+have an underscore character (`_`) in your subdomains, e.g.
+`john_doe.archidep.ch`.
+
+Although many tools support it, [underscore are technically not allowed in
+domain
+names](https://www.ssl.com/faqs/underscores-not-allowed-in-domain-names/). You
+will have to change your subdomain for Certbot to recognize it as valid.
+
+There are two things you need to do:
+
+* Log back into Gandi.net and add a new A record for your Azure VM just like you
+  did during the [Configure a domain
+  name](https://github.com/MediaComem/comem-archidep/blob/main/ex/dns-configuration.md)
+  exercise.
+
+  This time, use `john-doe` instead of `john_doe` and `*.john-doe` instead of
+  `*.john_doe` (or something shorter like `jde` and `*.jde` as long as it does
+  not conflict with anyone else's subdomain), with the same IP address as before
+  (the public IP address of your Azure VM).
+* Replace your old subdomain by the new one in all your nginx configuration
+  files, for example:
+
+  ```bash
+  $> sudo nano /etc/nginx/sites-available/clock
+  $> sudo nano /etc/nginx/sites-available/revprod
+  $> sudo nano /etc/nginx/sites-available/todolist
+  ```
+
+  Then test and reload the nginx configuration with:
+
+  ```bash
+  $> sudo nginx -t
+  $> sudo nginx -s reload
+  ```
+
+Make sure your sites work at their new address. If they do, the `certbot`
+command should now also detect them.
 
 [ca]: https://en.wikipedia.org/wiki/Certificate_authority
 [certbot]: https://certbot.eff.org
