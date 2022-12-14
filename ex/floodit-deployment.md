@@ -547,7 +547,8 @@ be displayed, indicating that all tests were successful:
 [INFO] ------------------------------------------------------------------------
 ```
 
-> :books: If you are curious, the source code for these tests is in [the `test`
+> :books: If you are curious, the source code for these tests is in [the
+> `backend/src/test`
 > directory](https://github.com/MediaComem/floodit/tree/main/backend/src/test/java/ch/comem/archidep/floodit).
 
 ### :question: Optional: run the application in development mode
