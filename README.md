@@ -158,7 +158,7 @@ fix during the rest of the course:
     - [Architecture](ex/certbot-deployment.md#architecture)
   - [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
     - [Architecture](ex/git-automated-deployment.md#architecture)
-  - Deploy a web application with a database (**graded**, _not yet available_)
+  - [Deploy Flood It, a Spring Boot (Java) & Angular application with a PostgreSQL database (**graded**)](ex/floodit-deployment.md)
   - [Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
     - [Architecture](ex/fibscale-deployment.md#architecture)
 - **Platform-as-a-Service deployment**
