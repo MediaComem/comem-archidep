@@ -240,7 +240,9 @@ described in the [project's README][readme] on your server:
   ```
 
   > :gem: If you prefer not to run a strange script from the Internet on your
-  > server, you can also read the script and execute the commands yourself.
+  > server, you can also read [the
+  > script](https://github.com/MediaComem/floodit/blob/main/maven-install.sh)
+  > and execute the commands yourself.
 
 - **How to install Node.js:** there are several methods to install Node.js. One
   of the simplest is to use the [binary distributions provided by
