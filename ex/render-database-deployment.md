@@ -80,11 +80,11 @@ Let's push this new branch to GitHub:
   * [new branch]      docker-postgres -> docker-postgres
  ```
 
- You can go check on GitHub if your new branch has been pushed by displaying the branch dropdown:
+ You can go check on GitHub if your new branch has been pushed, by displaying the branch dropdown:
 
  ![Check branch is on GitHub](../images/render-database-branch.png)
 
->:books: Let's note that this whole step has nothing to do with PaaS deployments in and of themselves. It is just a corollary of some code changes that had to be made for the Todolist to work with Postgres and the fact that we didn't you to have to implement those changes manually.
+>:books: Let's note that this whole step has nothing to do with PaaS deployments in and of themselves. It is just a corollary of some code changes that had to be made for the Todolist to work with Postgres and the fact that we didn't want you to have to implement those changes manually.
 
 ## :exclamation: Create a Postgres Database on Render
 
@@ -101,6 +101,8 @@ This will take you to the following configuration page, where you will need to s
 - A username
 - The region where the database is deployed (pick the one closest to your customers).
 
+A password will be automatically generated for you.
+
  ![Configure Postgres](../images/render-database-postgres-configure.png)
 
 When you are done, click **Create Database** and your PostgreSQL database will be provisioned automatically for you. Be patient, this process can take a few minutes.
@@ -109,14 +111,64 @@ At this point you will be taken to a page with information pertaining to your ne
 ![Postgres Deployed](../images/render-database-postgres-created.png)
 
 ## :exclamation: Run the todolist.sql file
-At this point, you have a Database. Congratulations. But there's still need to configure the tables. As we did in the first Todolist tutorial, we will be running a ``todolist.sql`` on the database.
+At this point, you have a database. Congratulations. But we still need to configure the tables. As we did in the first Todolist tutorial, we will be running a ``todolist.sql`` on the database.
 
-> :books:This time the script is a bit different because of two factors:
-> - We are using PostgrSQL instead of MySQL
-> - We do not need to create a database.
->
+> :books: The script is a bit different because of two factors: First, we are using PostgreSQL instead of MySQL. Second, we do not need to create a database. As a metter of fact, this script is simpler than the previous one.
 
+Let's go back to our terminal. Make sure you are in your repository, and on the ``docker-postgres`` branch:
 
+```bash
+$> git branch --show-current
+docker-postgres
+```
+
+If not, check out your the correct branch with the ``git checkout docker-postgres`` command.
+
+Next, let's connect to out PostgreSQL database from the command line. On the Render dashboard, you should be able to see a **Connections** section. This is where all the connection information to your database lives. You will need this information more than once, so keep that tab open.
+
+What we need right now is located in the **PSQL Command** field. You can display or copy the contents of this field by clicking the icons next to the left of the hidden characters.
+
+![Postgres Connection Information](../images/render-database-postgres-connections.png)
+
+Copy and paste the command in your terminal: this will connect you directly to the remote database deployed by Render.
+
+```bash
+$> PGPASSWORD=your_password psql -h your_host.frankfurt-postgres.render.com -U your_user your_database
+psql (14.6 (Homebrew), server 15.1)
+WARNING: psql major version 14, server major version 15.
+         Some psql features might not work.
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_128_GCM_SHA256, bits: 128, compression: off)
+Type "help" for help.
+
+your_database=>
+```
+
+You can now execute the ``todolist.sql`` file:
+
+```bash
+your_database=> \i todolist.sql
+
+CREATE TABLE
+```
+Make sure the script worked by displaying all the ``todo`` table's columns:
+```bash
+your_database=> \d+ todo
+
+   Column   |            Type             |             Default              | Storage  |
+------------+-----------------------------+----------------------------------+----------
+ id         | integer                     | nextval('todo_id_seq'::regclass) | plain    |
+ title      | character varying(2048)     |                                  | extended |
+ done       | boolean                     | false                            | plain    |
+ created_at | timestamp without time zone | CURRENT_TIMESTAMP                | plain    |
+
+```
+Now quit the Postgres shell by entering ``\q`` .
+
+## :exclamation: Create a Render Web Service with GitHub hooks
+
+## :exclamation: Configure Environment Variables
+
+## :checkered_flag: What have I done?
 
 
 [automated-deployment-ex]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md
