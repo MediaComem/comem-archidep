@@ -29,7 +29,7 @@ This guide assumes that you are familiar with [git][git-slides] and that you hav
 
 > :warning: Although you *could* work on this exercise from your Azure server, we suggest follow the exercise on your local machine.
 
-## :exclamation: Getting code updates from upstream
+## :exclamation: Fetching an upstream branch
 
 When you started working on the Todolist application, you forked an existing codebase from a GitHub repository. While you were working on your configuration, the team with access to the original repository implemented the changes necessary for a PaaS deployment in a branch called ``docker-postgres``.
 
