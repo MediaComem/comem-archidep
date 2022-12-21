@@ -1,3 +1,18 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Deploy web applications with a database to Render](#deploy-web-applications-with-a-database-to-render)
+  - [Legend](#legend)
+  - [:gem: Requirements](#gem-requirements)
+  - [:exclamation: Fetching an upstream branch](#exclamation-fetching-an-upstream-branch)
+  - [:exclamation: Create a Postgres Database on Render](#exclamation-create-a-postgres-database-on-render)
+  - [:exclamation: Run the todolist.sql file](#exclamation-run-the-todolistsql-file)
+  - [:exclamation: Create a Render Web Service with GitHub hooks](#exclamation-create-a-render-web-service-with-github-hooks)
+  - [:exclamation: Configure Environment Variables](#exclamation-configure-environment-variables)
+  - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Deploy web applications with a database to Render
 
 The goal of this exercice is to deploy the same [PHP Todolist][repo] application as in previous exercises, but this time on the Render Platform-as-a-service (PaaS) cloud instead of your own server in the Infrastructure-as-a-Service (IaaS) Microsoft Azure Web Services cloud. This illustrates the difference between the two cloud service models.
@@ -60,7 +75,7 @@ From https://github.com/MediaComem/comem-archidep-php-todo-exercise
  * [new branch]      main            -> upstream/main
  * [new branch]      master          -> upstream/master
 ```
-As you can see, this gives us access to upstream branches, including one called ``upstream/docker-postgres``. The next step is to create our own branch and copy the contents of the upstream.
+As you can see, this gives you access to upstream branches, including one called ``upstream/docker-postgres``. With the next command you will copy the content of that upstream branch into your own branch.
 
 ```bash
 $> git checkout -b docker-postgres upstream/docker-postgres
@@ -88,7 +103,7 @@ Let's push this new branch to GitHub:
 
 ## :exclamation: Create a Postgres Database on Render
 
-Instead of manually configuring a Linux server, we will be provisioning a couple of services on Render. The first is a PostgreSQL Database.
+Instead of manually configuring a Linux server, you will be provisioning a couple of services on Render. The first is a PostgreSQL Database.
 
 Sign-in to your Render account, and click the **new PostgreSQL** button:
  ![Create Postgres](../images/render-database-postgres-create.png)
@@ -105,28 +120,28 @@ A password will be automatically generated for you.
 
  ![Configure Postgres](../images/render-database-postgres-configure.png)
 
-When you are done, click **Create Database** and your PostgreSQL database will be provisioned automatically for you. Be patient, this process can take a few minutes.
+When you are done, click **Create Database** and your PostgreSQL database will be provisioned automatically. Be patient, this process can take a few minutes.
 
 At this point you will be taken to a page with information pertaining to your new database and you should see the following:
 ![Postgres Deployed](../images/render-database-postgres-created.png)
 
 ## :exclamation: Run the todolist.sql file
-At this point, you have a database. Congratulations. But we still need to configure the tables. As we did in the first Todolist tutorial, we will be running a ``todolist.sql`` on the database.
+At this point, you have a database. Congratulations. But you still need to set its tables up. As you did in the first Todolist tutorial, ypi will be running a ``todolist.sql`` on the database.
 
-> :books: The script is a bit different because of two factors: First, we are using PostgreSQL instead of MySQL. Second, we do not need to create a database. As a metter of fact, this script is simpler than the previous one.
+> :books: The script is a bit different because of two factors: First, we are using PostgreSQL instead of MySQL. Second, we do not need to create a database. As a metter of fact, this script is a bit simpler than the previous one.
 
-Let's go back to our terminal. Make sure you are in your repository, and on the ``docker-postgres`` branch:
+Go back to your terminal and make sure you are in your repository and on the ``docker-postgres`` branch:
 
 ```bash
 $> git branch --show-current
 docker-postgres
 ```
 
-If not, check out your the correct branch with the ``git checkout docker-postgres`` command.
+If not, check out the correct branch with the ``git checkout docker-postgres`` command.
 
-Next, let's connect to out PostgreSQL database from the command line. On the Render dashboard, you should be able to see a **Connections** section. This is where all the connection information to your database lives. You will need this information more than once, so keep that tab open.
+Next, connect to your PostgreSQL database from the command line. On the Render dashboard, you should be able to see a **Connections** section. This is where all the connection information to your database lives. You will need this information more than once, so keep this tab open.
 
-What we need right now is located in the **PSQL Command** field. You can display or copy the contents of this field by clicking the icons next to the left of the hidden characters.
+What you need to connect to the database shell is located in the **PSQL Command** field. You can display or copy the contents of this field by clicking the icons next to the left of the hidden characters.
 
 ![Postgres Connection Information](../images/render-database-postgres-connections.png)
 
