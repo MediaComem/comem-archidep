@@ -31,7 +31,7 @@ This guide assumes that you are familiar with [git][git-slides] and that you hav
 
 ## :exclamation: Getting code updates from upstream
 
-When you started working on the Todolist application, you forked an existing codebase from a GitHub repository. While you were working on your configuration, the team with access to the original repository implemented the changes necessary for a deployment PaaS in a branch called ``docker-postgres``.
+When you started working on the Todolist application, you forked an existing codebase from a GitHub repository. While you were working on your configuration, the team with access to the original repository implemented the changes necessary for a PaaS deployment in a branch called ``docker-postgres``.
 
 By default, your fork should've stopped tracking changes from the original repo, which is also referred to as the **upstream**. Let's reconfigure our repository so that it can fetch data from there.
 
@@ -44,7 +44,7 @@ $> cd comem-archidep-php-todo-exercise
 $> git remote add upstream https://github.com/MediaComem/comem-archidep-php-todo-exercise.git
 ```
 
->:gem: Unlike the [automated deployment exercise][automated-deployment-ex], the goal of this remote is not be used for pushing. We will instead reference this remote for fetching data.
+>:gem: Unlike the [automated deployment exercise][automated-deployment-ex], we will not be pushing to this remote (we couldn't anyway, as we are not collaborators on the upstream). We will instead use it to fetch up-to-date data.
 
 Not let's fetch data from the upstream:
 
@@ -68,9 +68,10 @@ branch 'docker-postgres' set up to track 'upstream/docker-postgres'.
 Switched to a new branch 'docker-postgres'
 ```
 
-This command will create a new branch on **your** repository, based on the contents of the upstream branch. This command automatically switches you to the new branch.
+This command will create a new branch on **your** repository, based on the contents of the upstream branch. This command automatically switches you to the new branch. If you browse through the project in a code editor, you should now be able to see changes to ``todolist.sql``, as well as a mysterious new ``Dockerfile``.
 
-If you browser through the project in a code editor, you should now be able to see changes to ``todolist.sql``, as well as a mysterious new ``Dockerfile``.
+> :books: Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and ship it all out as one package. A Dockerfile is a text file that contains instructions for how to build a Docker image. Docker is beyond the scope of this course, but you can learn more [on the Docker website][docker].
+
 
 Let's push this new branch to GitHub:
  ```bash
@@ -79,12 +80,28 @@ Let's push this new branch to GitHub:
   * [new branch]      docker-postgres -> docker-postgres
  ```
 
+ You can go check on GitHub if your new branch has been pushed by displaying the branch dropdown:
+
+ ![Check branch is on GitHub](../images/render-database-branch.png)
 
 >:books: Let's note that this whole step has nothing to do with PaaS deployments in and of themselves. It is just a corollary of some code changes that had to be made for the Todolist to work with Postgres and the fact that we didn't you to have to implement those changes manually.
+
+## :exclamation: Setting-up a Postgres Database on Render
+Instead of manually configuring a Linux server, we will be provisioning a couple of services on Render. The first is a Postgres Database.
+
+Sign-in to your Render account, and click the **new PostgreSQL** button:
+ ![Create PostgreSQL](../images/render-database-postgres-create.png)
+
+>:warning: You can only have 1 active PostgreSQL deployment in the free Render tier. If you want more, you gotta pay.
+
+This will take you to the following configuration page, where you will need to setup the following a name for your deployment, a name for the database, a username and the region where the database is deployed (pick the one closest to your customers).
+
+ ![Configure Postgres](../images/render-database-postgres-configure.png)
 
 
 
 [automated-deployment-ex]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md
-[repo]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
+[docker]: https://www.docker.com/
 [git-slides]: https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git/?home=MediaComem%2Fcomem-archidep%23readme#1
 [render-register]: https://dashboard.render.com/register
+[repo]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
