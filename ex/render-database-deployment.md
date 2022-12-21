@@ -86,17 +86,36 @@ Let's push this new branch to GitHub:
 
 >:books: Let's note that this whole step has nothing to do with PaaS deployments in and of themselves. It is just a corollary of some code changes that had to be made for the Todolist to work with Postgres and the fact that we didn't you to have to implement those changes manually.
 
-## :exclamation: Setting-up a Postgres Database on Render
-Instead of manually configuring a Linux server, we will be provisioning a couple of services on Render. The first is a Postgres Database.
+## :exclamation: Create a Postgres Database on Render
+
+Instead of manually configuring a Linux server, we will be provisioning a couple of services on Render. The first is a PostgreSQL Database.
 
 Sign-in to your Render account, and click the **new PostgreSQL** button:
- ![Create PostgreSQL](../images/render-database-postgres-create.png)
+ ![Create Postgres](../images/render-database-postgres-create.png)
 
 >:warning: You can only have 1 active PostgreSQL deployment in the free Render tier. If you want more, you gotta pay.
 
-This will take you to the following configuration page, where you will need to setup the following a name for your deployment, a name for the database, a username and the region where the database is deployed (pick the one closest to your customers).
+This will take you to the following configuration page, where you will need to setup the following:
+- A name for your deployment
+- A name for the database
+- A username
+- The region where the database is deployed (pick the one closest to your customers).
 
  ![Configure Postgres](../images/render-database-postgres-configure.png)
+
+When you are done, click **Create Database** and your PostgreSQL database will be provisioned automatically for you. Be patient, this process can take a few minutes.
+
+At this point you will be taken to a page with information pertaining to your new database and you should see the following:
+![Postgres Deployed](../images/render-database-postgres-created.png)
+
+## :exclamation: Run the todolist.sql file
+At this point, you have a Database. Congratulations. But there's still need to configure the tables. As we did in the first Todolist tutorial, we will be running a ``todolist.sql`` on the database.
+
+> :books:This time the script is a bit different because of two factors:
+> - We are using PostgrSQL instead of MySQL
+> - We do not need to create a database.
+>
+
 
 
 
