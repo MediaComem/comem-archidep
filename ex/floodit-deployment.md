@@ -773,7 +773,7 @@ Here's some visible changes you could easily make:
 
 ## :exclamation: Notify the teachers
 
-Send an email or a Teams message to both teachers **no later than December 13th
+Send an email or a Teams message to both teachers **no later than December 23rd
 2022 at 23:59 CET** indicating that you have finished the exercise.
 
 ## :checkered_flag: What have I done?
