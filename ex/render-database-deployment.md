@@ -7,8 +7,7 @@
   - [:exclamation: Fetching an upstream branch](#exclamation-fetching-an-upstream-branch)
   - [:exclamation: Create a Postgres Database on Render](#exclamation-create-a-postgres-database-on-render)
   - [:exclamation: Run the todolist.sql file](#exclamation-run-the-todolistsql-file)
-  - [:exclamation: Create a Render Web Service with GitHub hooks](#exclamation-create-a-render-web-service-with-github-hooks)
-  - [:exclamation: Configure Environment Variables](#exclamation-configure-environment-variables)
+  - [:exclamation: Create a Render Web Service](#exclamation-create-a-render-web-service)
   - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -196,7 +195,7 @@ If you signed up using GitHub, you should see a list of all the repositories you
 
 > :books: As you can see, you can connect any public Git repository to Render by entering an URL in the field below.
 
-Once you have connected the repository, you will need to configure the deployment. Make sure you set the following options up:
+Once you have connected the repository, you will need to configure the deployment. Make sure you set the following basic options up:
 - A name for your web service
 - The region where the service is deployed (pick the one closest to your customers).
 - The branch from your repository that should be deployed (docker-postgres)
@@ -205,16 +204,56 @@ Once you have connected the repository, you will need to configure the deploymen
 
 ![Render Web Service configuration](../images/render-service-configure.png)
 
-## :exclamation: Configure Environment Variables
+In addition to these basic options, we will directly setup our environment variables on this page. Scroll down a bit and click the **Advanced** button. From there, you can add an arbitrary amount of envionment variables. You will use following ones to connect you application to the PostgreSQL database you created earlier. All of the values can be found in the connection panel of your database's dashboard.
 
-## :question: Domain Name Setup
+| Environment variable              | Description                                                                              |
+| :-------------------------------- | :--------------------------------------------------------------------------------------- |
+| `DB_HOST`                         | The host at which the PostgreSQL database can be reached.                                |
+| `DB_PORT`                         | The port at which the PostgreSQL database can be reached.                                |
+| `DB_NAME`                         | The name of the PostgreSQL database.                                                     |
+| `DB_USER`                         | The PostgreSQL user to connect as.                                                       |
+| `DB_PASS`                         | The password of the PostgreSQL user.                                                     |
+
+![Render Environment Variables](../images/render-service-variables.png)
+
+> :books: You can store secret files (like .env or .npmrc files and private keys) in Render. These files can be accessed during builds and in your code just like regular files. You can upload those right in this configuration panel or from the service's dashboard, post-deployment.
+
+Once you are done configuring your deployment, you may click the **Create Web Service** button at the bottom of the page. This will take you to the deployment page, where you will be able to follow along the logs and discover the domain Render has attributed to your app.
+
+![Render Environment Variables](../images/render-service-deploy.png)
+
+Once the deployment has succeeded, you will be able to visit the todolist at the URL provided Render. You may also use a custom domain by following [this tutorial][render-custom-domains].
+
+>:warning: **This is a free service, so there are some obvious limitations. First, deploys are slooooooow. Second, bandwidth and running hours are limited. Third, your service will shut down if there is no activity for more than 15 minutes: This can cause a response delay of up to 30 seconds for the first request that comes in after a period of inactivity. Learn more about the limits of free Render accounts [here][render-limits].**
+
 
 ## :checkered_flag: What have I done?
+A whole lot! By using Render, GitHub and Docker, you automated a bunch of things that were done manually in the previous exercises. Here's what was configured for you:
 
+- PHP-FPM
+- nginx
+- SSL encryption
+- Automated deployment
+
+But this isn't magic, it's building of the work of others:
+
+- First, there's the ``Dockerfile``. It may not seem like a whole lot, but if you look at the first line, you might notice that we are importing something from [``richarvey/nginx-php-fpm``][nginx-php-fpm]. This is actually a popular (and fairly complex) Dockerfile build by somebody else. This is what automatically sets up PHP-FPM and nginx for us.
+
+- Second, there's Render: despite it's limitations in the free tier, we are getting free hosting, automated deployments and encryption.
+
+- Finally, there's GitHub whose API allows the connection between your repo and Render to be very very easily configured.
+
+**If I have seen further it is by standing on the shoulders of giants.**
+Isaac Newton
+
+Most of the technology and software that we have used throughout this course has been made possible by the contributions of others in the open community. Consider how you can contribute to open source projects by submitting code, writing documentation or reporting bugs and issues.
 
 [automated-deployment-ex]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md
 [docker]: https://www.docker.com/
 [gitlab]: https://about.gitlab.com/
 [git-slides]: https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git/?home=MediaComem%2Fcomem-archidep%23readme#1
+[render-custom-domains]: https://render.com/docs/custom-domains
+[render-limits]: https://render.com/docs/free#free-web-services
 [render-register]: https://dashboard.render.com/register
 [repo]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
+[nginx-php-fpm]: https://github.com/richarvey/nginx-php-fpm
