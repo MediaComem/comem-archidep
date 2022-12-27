@@ -40,9 +40,7 @@ Parts of this guide are annotated with the following icons:
 
 This guide assumes that you are familiar with [git][git-slides] and that you have a basic understanding of what a Platform-as-a-Service is.
 
-**You will also need to [register a Render account][render-register]**.
-
-> :warning: Although you *could* work on this exercise from your Azure server, we suggest follow the exercise on your local machine.
+> :warning: **Although you *could* work on this exercise from your Azure server, we suggest you follow this exercise on your local machine.**
 
 ## :exclamation: Fetching an upstream branch
 
@@ -59,7 +57,7 @@ $> cd comem-archidep-php-todo-exercise
 $> git remote add upstream https://github.com/MediaComem/comem-archidep-php-todo-exercise.git
 ```
 
->:gem: Unlike the [automated deployment exercise][automated-deployment-ex], we will not be pushing to this remote (we couldn't anyway, as we are not collaborators on the upstream). We will instead use it to fetch up-to-date data.
+>:gem: Unlike the [automated deployment exercise][automated-deployment-ex], you will not be pushing to this remote (you couldn't anyway, as you are not collaborators on the upstream repo Instead you will use it to fetch up-to-date data from a branch.
 
 Not let's fetch data from the upstream:
 
@@ -105,10 +103,14 @@ Let's push this new branch to GitHub:
 
 Instead of manually configuring a Linux server, you will be provisioning a couple of services on Render. The first is a PostgreSQL Database.
 
+Start by creating a new [Render][render-register] account. Choose to register using GitHub. This will allow you to skip linking these two accounts together later:
+
+![Create a new Render account](../images/render-signup.png)
+
 Sign-in to your Render account, and click the **new PostgreSQL** button:
  ![Create Postgres](../images/render-database-postgres-create.png)
 
->:warning: You can only have 1 active PostgreSQL deployment in the free Render tier. If you want more, you gotta pay.
+>:warning: **You can only have 1 active PostgreSQL deployment in the free Render tier. If you want more, you gotta pay.**
 
 This will take you to the following configuration page, where you will need to setup the following:
 - A name for your deployment
@@ -179,15 +181,40 @@ your_database=> \d+ todo
 ```
 Now quit the Postgres shell by entering ``\q`` .
 
-## :exclamation: Create a Render Web Service with GitHub hooks
+## :exclamation: Create a Render Web Service
+Now that you have a database in place, it is time to deploy the web application itself: from your Render dashboard, hover over the purple **"new"** button and select **Web Service**.
+
+![Create a new Render Web Service](../images/render-service-add.png)
+
+Render web services need to be connected to a Git repository hosted either on GitHub or GitLab. This step will allow you to automate deployments from your codebase. Instead of manually setting up hooks like in the [Automated Deployment exercise][automated-deployment-ex], you will rely on Render to take care of this for you.
+
+> :books: Similar to GitHub, [GitLab][Gitlab] is both version control platform that allows developers to manage and track changes to their codebase. They both use the Git version control system. Although they share the majority of their feature sets, GitLab can be self-hosted, which means that you can install and run it on your own servers. This can be useful for organizations that want to have more control over their infrastructure or that have specific security or compliance requirements.
+
+If you signed up using GitHub, you should see a list of all the repositories you can use to create your service. If not, you will need to follow the procedure to link your GitHub account to Render. Choose to appropriate repository for the purposes of this deployment and click **connect**.
+
+![Connect GitHub repository to Render](../images/render-service-connect-repo.png)
+
+> :books: As you can see, you can connect any public Git repository to Render by entering an URL in the field below.
+
+Once you have connected the repository, you will need to configure the deployment. Make sure you set the following options up:
+- A name for your web service
+- The region where the service is deployed (pick the one closest to your customers).
+- The branch from your repository that should be deployed (docker-postgres)
+- The runtime environment (should automagically have Docker selected)
+- The pricing tier.
+
+![Render Web Service configuration](../images/render-service-configure.png)
 
 ## :exclamation: Configure Environment Variables
+
+## :question: Domain Name Setup
 
 ## :checkered_flag: What have I done?
 
 
 [automated-deployment-ex]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md
 [docker]: https://www.docker.com/
+[gitlab]: https://about.gitlab.com/
 [git-slides]: https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git/?home=MediaComem%2Fcomem-archidep%23readme#1
 [render-register]: https://dashboard.render.com/register
 [repo]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
