@@ -56,7 +56,7 @@ $> cd comem-archidep-php-todo-exercise
 $> git remote add upstream https://github.com/MediaComem/comem-archidep-php-todo-exercise.git
 ```
 
->:gem: Unlike the [automated deployment exercise][automated-deployment-ex], you will not be pushing to this remote (you couldn't anyway, as you are not collaborators on the upstream repo Instead you will use it to fetch up-to-date data from a branch.
+>:gem: Unlike the [automated deployment exercise][automated-deployment-ex], you will not be pushing to this remote (you couldn't anyway, as you are not collaborators on the upstream repo).Instead, you will use it to fetch up-to-date code from a branch.
 
 Not let's fetch data from the upstream:
 
@@ -80,7 +80,7 @@ branch 'docker-postgres' set up to track 'upstream/docker-postgres'.
 Switched to a new branch 'docker-postgres'
 ```
 
-This command will create a new branch on **your** repository, based on the contents of the upstream branch. This command automatically switches you to the new branch. If you browse through the project in a code editor, you should now be able to see changes to ``todolist.sql``, as well as a mysterious new ``Dockerfile``.
+This command will create a new branch in **your** repository, based on the contents of the upstream branch. This command automatically switches you to the new branch. If you browse through the project in a code editor or by using ``cat``, you should now be able to see changes to ``todolist.sql``, as well as a mysterious new ``Dockerfile``.
 
 > :books: Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and ship it all out as one package. A Dockerfile is a text file that contains instructions for how to build a Docker image. Docker is beyond the scope of this course, but you can learn more [on the Docker website][docker].
 
@@ -96,38 +96,36 @@ Let's push this new branch to GitHub:
 
  ![Check branch is on GitHub](../images/render-database-branch.png)
 
->:books: Let's note that this whole step has nothing to do with PaaS deployments in and of themselves. It is just a corollary of some code changes that had to be made for the Todolist to work with Postgres and the fact that we didn't want you to have to implement those changes manually.
+>:books: Let's note that this whole step has nothing to do with PaaS deployments in and of themselves. It is just a corollary of some code changes that had to be made for the Todolist to work with Postgres and Docker.
 
 ## :exclamation: Create a Postgres Database on Render
 
-Instead of manually configuring a Linux server, you will be provisioning a couple of services on Render. The first is a PostgreSQL Database.
-
-Start by creating a new [Render][render-register] account. Choose to register using GitHub. This will allow you to skip linking these two accounts together later:
+Instead of manually configuring a Linux server, you will be provisioning a couple of services on Render. The first is a PostgreSQL Database. Start by creating a [new Render account][render-register]. If you chose to register using GitHub, you will be able to skip linking these two accounts together later:
 
 ![Create a new Render account](../images/render-signup.png)
 
-Sign-in to your Render account, and click the **new PostgreSQL** button:
+Sign-in to your Render account and click the **new PostgreSQL** button:
+
  ![Create Postgres](../images/render-database-postgres-create.png)
 
 >:warning: **You can only have 1 active PostgreSQL deployment in the free Render tier. If you want more, you gotta pay.**
 
-This will take you to the following configuration page, where you will need to setup the following:
+This will take you to the following setup page, where you will need to configure:
 - A name for your deployment
 - A name for the database
 - A username
 - The region where the database is deployed (pick the one closest to your customers).
 
-A password will be automatically generated for you.
+**A password will be automatically generated for you.**
 
- ![Configure Postgres](../images/render-database-postgres-configure.png)
+![Configure Postgres](../images/render-database-postgres-configure.png)
 
-When you are done, click **Create Database** and your PostgreSQL database will be provisioned automatically. Be patient, this process can take a few minutes.
+When you are done, click **Create Database** and your PostgreSQL database will be provisioned automatically. Be patient, this process can take a few minutes. Once it is deployed you will be taken to a page with information pertaining to your new database and you should see the following:
 
-At this point you will be taken to a page with information pertaining to your new database and you should see the following:
 ![Postgres Deployed](../images/render-database-postgres-created.png)
 
 ## :exclamation: Run the todolist.sql file
-At this point, you have a database. Congratulations. But you still need to set its tables up. As you did in the first Todolist tutorial, ypi will be running a ``todolist.sql`` on the database.
+At this point, you have a database. Congratulations. But you still need to set its tables up. As you did in the first Todolist tutorial, you will be running the ``todolist.sql`` script on the database, albeit remotely.
 
 > :books: The script is a bit different because of two factors: First, we are using PostgreSQL instead of MySQL. Second, we do not need to create a database. As a metter of fact, this script is a bit simpler than the previous one.
 
@@ -142,11 +140,11 @@ If not, check out the correct branch with the ``git checkout docker-postgres`` c
 
 Next, connect to your PostgreSQL database from the command line. On the Render dashboard, you should be able to see a **Connections** section. This is where all the connection information to your database lives. You will need this information more than once, so keep this tab open.
 
-What you need to connect to the database shell is located in the **PSQL Command** field. You can display or copy the contents of this field by clicking the icons next to the left of the hidden characters.
+The information you need to connect to the database shell is located in the **PSQL Command** field. You can display or copy the contents of this field by clicking the icons to the left of the hidden characters.
 
 ![Postgres Connection Information](../images/render-database-postgres-connections.png)
 
-Copy and paste the command in your terminal: this will connect you directly to the remote database deployed by Render.
+Copy and paste the command in your terminal. This will connect you directly to the remote database deployed by Render.
 
 ```bash
 $> PGPASSWORD=your_password psql -h your_host.frankfurt-postgres.render.com -U your_user your_database
@@ -181,7 +179,7 @@ your_database=> \d+ todo
 Now quit the Postgres shell by entering ``\q`` .
 
 ## :exclamation: Create a Render Web Service
-Now that you have a database in place, it is time to deploy the web application itself: from your Render dashboard, hover over the purple **"new"** button and select **Web Service**.
+Now that you have a database in place, it is time to deploy the web application itself. From your Render dashboard, hover over the purple **"new"** button and select **Web Service**.
 
 ![Create a new Render Web Service](../images/render-service-add.png)
 
@@ -189,17 +187,17 @@ Render web services need to be connected to a Git repository hosted either on Gi
 
 > :books: Similar to GitHub, [GitLab][Gitlab] is both version control platform that allows developers to manage and track changes to their codebase. They both use the Git version control system. Although they share the majority of their feature sets, GitLab can be self-hosted, which means that you can install and run it on your own servers. This can be useful for organizations that want to have more control over their infrastructure or that have specific security or compliance requirements.
 
-If you signed up using GitHub, you should see a list of all the repositories you can use to create your service. If not, you will need to follow the procedure to link your GitHub account to Render. Choose to appropriate repository for the purposes of this deployment and click **connect**.
+If you signed up using GitHub, you should see a list of all the repositories that can be used to create a web service. If not, you will need to follow the procedure to link your GitHub account to Render. Choose to appropriate repository for the purposes of this deployment and click **connect**.
 
 ![Connect GitHub repository to Render](../images/render-service-connect-repo.png)
 
 > :books: As you can see, you can connect any public Git repository to Render by entering an URL in the field below.
 
 Once you have connected the repository, you will need to configure the deployment. Make sure you set the following basic options up:
-- A name for your web service
+- A name for your web service.
 - The region where the service is deployed (pick the one closest to your customers).
-- The branch from your repository that should be deployed (docker-postgres)
-- The runtime environment (should automagically have Docker selected)
+- The branch from your repository that should be deployed (docker-postgres).
+- The runtime environment (should automagically have Docker selected).
 - The pricing tier.
 
 ![Render Web Service configuration](../images/render-service-configure.png)
@@ -252,8 +250,8 @@ Most of the technology and software that we have used throughout this course has
 [docker]: https://www.docker.com/
 [gitlab]: https://about.gitlab.com/
 [git-slides]: https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git/?home=MediaComem%2Fcomem-archidep%23readme#1
+[nginx-php-fpm]: https://github.com/richarvey/nginx-php-fpm
 [render-custom-domains]: https://render.com/docs/custom-domains
 [render-limits]: https://render.com/docs/free#free-web-services
 [render-register]: https://dashboard.render.com/register
 [repo]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
-[nginx-php-fpm]: https://github.com/richarvey/nginx-php-fpm
