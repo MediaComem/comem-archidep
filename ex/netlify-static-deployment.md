@@ -210,13 +210,14 @@ $> git push
 After a few seconds, the changes should be visible at the Netlify URL!
 
 ## :checkered_flag: What have I done?
-In this exercise, you deployed a static website to Netlify PaaS using the Netlify CLI. Netlify automatically configured the following stuff for us:
+In this exercise, you deployed a static website to Netlify PaaS using the Netlify CLI. Netlify automatically configured the following stuff for you:
 
 - Hosting
 - SSL encryption
 - Automated deployments
 - Domain name
 
+Pretty cool, for the price of **free**. We have just scratched the surface of what Netlify can do, so feel free to explore the platform further.
 
 [asdf]: https://asdf-vm.com
 [n]:https://github.com/tj/n
