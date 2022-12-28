@@ -98,19 +98,25 @@ This command will create a new branch in **your** repository, based on the conte
 
  ![Check branch is on GitHub](../images/render-database-branch.png)
 
->:books: Let's note that this whole step has nothing to do with PaaS deployments in and of themselves. It is just a corollary of some code changes that had to be made for the Todolist to work with Postgres and Docker.
+:gem: Let's note that this whole step has nothing to do with PaaS deployments in and of themselves. It is just a corollary of some code changes that had to be made for the Todolist to work with Postgres and Docker.
 
-## :exclamation: Create a Postgres Database on Render
+## :exclamation: Create and configure a PostgreSQL Database on Render
 
-Instead of manually configuring a Linux server, you will be provisioning a couple of services on Render. The first is a PostgreSQL Database. Start by creating a [new Render account][render-register]. If you chose to register using GitHub, you will be able to skip linking these two accounts together later:
+Instead of manually configuring a Linux server, you will be provisioning a couple of services on Render. The first is a PostgreSQL Database.
+
+### :exclamation: Create a Render account
+
+Start by creating a [new Render account][render-register]. If you chose to register using GitHub, you will be able to skip linking these two accounts together later:
 
 ![Create a new Render account](../images/render-signup.png)
+
+### :exclamation: Create a PostgreSQL instance
 
 Sign-in to your Render account and click the **new PostgreSQL** button:
 
  ![Create Postgres](../images/render-database-postgres-create.png)
 
->:warning: **You can only have 1 active PostgreSQL deployment in the free Render tier. If you want more, you gotta pay.**
+:warning: **You can only have 1 active PostgreSQL deployment in the free Render tier. If you want more, you gotta pay.**
 
 This will take you to the following setup page, where you will need to configure:
 - A name for your deployment
@@ -126,12 +132,13 @@ When you are done, click **Create Database** and your PostgreSQL database will b
 
 ![Postgres Deployed](../images/render-database-postgres-created.png)
 
-## :exclamation: Run the todolist.sql file
+### :exclamation: Run the todolist.sql file
+
 At this point, you have a database. Congratulations. But you still need to set its tables up. As you did in the first Todolist tutorial, you will be running the ``todolist.sql`` script on the database, albeit remotely.
 
-> :books: The script is a bit different because of two factors: First, we are using PostgreSQL instead of MySQL. Second, we do not need to create a database. As a metter of fact, this script is a bit simpler than the previous one.
+ :books: The script is a bit different because than the previous one because of two factors: First, we are using PostgreSQL instead of MySQL. Second, we do not need to create a database. As a metter of fact, this script is a bit simpler than the previous one.
 
-Go back to your terminal and make sure you are in your repository and on the ``docker-postgres`` branch:
+:question: Go back to your terminal and make sure you are in your repository and on the ``docker-postgres`` branch:
 
 ```bash
 $> git branch --show-current
@@ -140,7 +147,7 @@ docker-postgres
 
 If not, check out the correct branch with the ``git checkout docker-postgres`` command.
 
-Next, connect to your PostgreSQL database from the command line. On the Render dashboard, you should be able to see a **Connections** section. This is where all the connection information to your database lives. You will need this information more than once, so keep this tab open.
+:exclamation: Next, connect to your PostgreSQL database from the command line. On the Render dashboard, you should be able to see a **Connections** section. This is where all the connection information to your database lives. You will need this information more than once, so keep this tab open.
 
 The information you need to connect to the database shell is located in the **PSQL Command** field. You can display or copy the contents of this field by clicking the icons to the left of the hidden characters.
 
@@ -166,7 +173,7 @@ your_database=> \i todolist.sql
 
 CREATE TABLE
 ```
-Make sure the script worked by displaying all the ``todo`` table's columns:
+:question: Make sure the script worked by displaying all the ``todo`` table's columns:
 ```bash
 your_database=> \d+ todo
 
