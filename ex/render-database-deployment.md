@@ -104,6 +104,8 @@ This command will create a new branch in **your** repository, based on the conte
 
 Instead of manually configuring a Linux server, you will be provisioning a couple of services on Render. The first is a PostgreSQL Database.
 
+> : books: PostgreSQL is a relation database management system that is very similar to MySQL. We use it here because we can deploy it with one click on Render. Other benefits of using PostgreSQL are performance, concurrency and SQL language support.
+
 ### :exclamation: Create a Render account
 
 Start by creating a [new Render account][render-register]. If you chose to register using GitHub, you will be able to skip linking these two accounts together later:
@@ -132,7 +134,7 @@ When you are done, click **Create Database** and your PostgreSQL database will b
 
 ![Postgres Deployed](../images/render-database-postgres-created.png)
 
-### :exclamation: Run the todolist.sql file
+### :exclamation: Connect to the database and create tables
 
 At this point, you have a database. Congratulations. But you still need to set its tables up. As you did in the first Todolist tutorial, you will be running the ``todolist.sql`` script on the database, albeit remotely.
 
@@ -187,8 +189,13 @@ your_database=> \d+ todo
 ```
 Now quit the Postgres shell by entering ``\q`` .
 
-## :exclamation: Create a Render Web Service
-Now that you have a database in place, it is time to deploy the web application itself. From your Render dashboard, hover over the purple **"new"** button and select **Web Service**.
+## :exclamation: Deploy the application
+Now that you have a database in place, it is time to deploy the web application itself.
+
+
+### :exclamation: Create a Web Service
+
+From your Render dashboard, hover over the purple **"new"** button and select **Web Service**.
 
 ![Create a new Render Web Service](../images/render-service-add.png)
 
@@ -211,6 +218,8 @@ Once you have connected the repository, you will need to configure the deploymen
 
 ![Render Web Service configuration](../images/render-service-configure.png)
 
+### :exclamation: Define environment variables
+
 In addition to these basic options, we will directly setup our environment variables on this page. Scroll down a bit and click the **Advanced** button. From there, you can add an arbitrary amount of envionment variables. You will use following ones to connect you application to the PostgreSQL database you created earlier. All of the values can be found in the connection panel of your database's dashboard.
 
 | Environment variable              | Description                                                                              |
@@ -225,13 +234,15 @@ In addition to these basic options, we will directly setup our environment varia
 
 > :books: You can store secret files (like .env or .npmrc files and private keys) in Render. These files can be accessed during builds and in your code just like regular files. You can upload those right in this configuration panel or from the service's dashboard, post-deployment.
 
+### :exclamation: Deploy the Web Service
+
 Once you are done configuring your deployment, you may click the **Create Web Service** button at the bottom of the page. This will take you to the deployment page, where you will be able to follow along the logs and discover the domain Render has attributed to your app.
 
 ![Render Environment Variables](../images/render-service-deploy.png)
 
 Once the deployment has succeeded, you will be able to visit the todolist at the URL provided Render. You may also use a custom domain by following [this tutorial][render-custom-domains].
 
->:warning: **This is a free service, so there are some obvious limitations. First, deploys are slooooooow. Second, bandwidth and running hours are limited. Third, your service will shut down if there is no activity for more than 15 minutes: This can cause a response delay of up to 30 seconds for the first request that comes in after a period of inactivity. Learn more about the limits of free Render accounts [here][render-limits].**
+ :warning: **This is a free service, so there are some obvious limitations. First, deploys are slooooooow. Second, bandwidth and running hours are limited. Third, your service will shut down if there is no activity for more than 15 minutes: This can cause a response delay of up to 30 seconds for the first request that comes in after a period of inactivity. Learn more about the limits of free Render accounts [here][render-limits].**
 
 
 ## :checkered_flag: What have I done?
