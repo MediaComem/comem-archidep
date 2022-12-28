@@ -149,7 +149,73 @@ To see all available commands run: netlify help
 
 ## :exclamation: Launch!
 
+Make sure you are in the `static-clock-website` directory and run:
+```bash
+$> netlify init
+```
+
+Follow the configuration assistant by reading carefully and entering the relevant options. At some point, a GitHub authorization page will open in your browser.
+
+:warning: **Use default options except for your site name**
+
+```bash
+? What would you like to do? +  Create & configure a new site
+? Team: alice's team
+? Site name (leave blank for a random name; you can change it later): static-clock-website
+
+Site Created
+
+Admin URL: https://app.netlify.com/sites/static-clock-website
+URL:       https://static-clock-website.netlify.app
+Site ID:   690799cd-e26f-4625-9f1e-257cdba76e87
+
+Linked to static-clock-website
+
+(node:57377) ExperimentalWarning: The Fetch API is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+? Your build command (hugo build/yarn run build/etc): # no build command
+? Directory to deploy (blank for current dir): .
+? No netlify.toml detected. Would you like to create one with these build settings? Yes
+
+Adding deploy key to repository...
+Deploy key added!
+
+Creating Netlify GitHub Notification Hooks...
+Netlify Notification Hooks configured!
+
+Success! Netlify CI/CD Configured!
+
+This site is now configured to automatically deploy from github branches & pull requests
+
+Next steps:
+
+  git push       Push to your git repository to trigger new site builds
+  netlify open   Open the Netlify admin URL of your site
+```
+
+If you travel to the **URL** printed in your terminal, you should be able to witness the static clock website up and running!
+
+### :question: Push a change and witness continuous deployment!
+
+Open the `static-clock-website` website in your code editor and change the `background-color` property on the `<body>` element in the `style.css` file.
+
+Stage, commit and push the changes to your GitHub repository:
+
+```bash
+$> git add .
+$> git commit -m "New body background color"
+$> git push
+```
+After a few seconds, the changes should be visible at the Netlify URL!
+
 ## :checkered_flag: What have I done?
+In this exercise, you deployed a static website to Netlify PaaS using the Netlify CLI. Netlify automatically configured the following stuff for us:
+
+- Hosting
+- SSL encryption
+- Automated deployments
+- Domain name
+
 
 [asdf]: https://asdf-vm.com
 [n]:https://github.com/tj/n

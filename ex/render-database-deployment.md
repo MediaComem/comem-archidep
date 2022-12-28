@@ -252,7 +252,6 @@ Once the deployment has succeeded, you will be able to visit the todolist at the
 
  :warning: **This is a free service, so there are some obvious limitations. First, deploys are slooooooow. Second, bandwidth and running hours are limited. Third, your service will shut down if there is no activity for more than 15 minutes: This can cause a response delay of up to 30 seconds for the first request that comes in after a period of inactivity. Learn more about the limits of free Render accounts [here][render-limits].**
 
-
 ## :checkered_flag: What have I done?
 A whole lot! By using Render, GitHub and Docker, you automated a bunch of things that were done manually in the previous exercises. Here's what was configured for you:
 
