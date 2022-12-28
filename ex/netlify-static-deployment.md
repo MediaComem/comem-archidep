@@ -1,3 +1,21 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Deploy static sites to Netlify](#deploy-static-sites-to-netlify)
+  - [Legend](#legend)
+  - [:gem: Requirements](#gem-requirements)
+  - [:exclamation: Create a Netlify account](#exclamation-create-a-netlify-account)
+    - [:books: What is Netlify?](#books-what-is-netlify)
+  - [:exclamation: Install Node.js and the Netlify CLI](#exclamation-install-nodejs-and-the-netlify-cli)
+    - [:exclamation: Install Node.js](#exclamation-install-nodejs)
+    - [:books: What is Node?](#books-what-is-node)
+    - [:question: Check Node.js installation](#question-check-nodejs-installation)
+    - [Install Netlify CLI](#install-netlify-cli)
+  - [:exclamation: Launch!](#exclamation-launch)
+  - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Deploy static sites to Netlify
 
 The goal of this exercice is to deploy a static website (only HTML, JavaScript and CSS) on the Netlify PaaS instead of your own server in the Infrastructure-as-a-Service (IaaS) Microsoft Azure Web Services cloud.
