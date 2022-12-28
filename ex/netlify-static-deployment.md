@@ -15,6 +15,7 @@
     - [:books: What is NPM](#books-what-is-npm)
     - [:exclamation: Authenticate Netlify CLI](#exclamation-authenticate-netlify-cli)
   - [:exclamation: Launch!](#exclamation-launch)
+    - [:question: Push a change and witness continuous deployment!](#question-push-a-change-and-witness-continuous-deployment)
   - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
