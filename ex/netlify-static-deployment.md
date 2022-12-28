@@ -4,6 +4,7 @@
 - [Deploy static sites to Netlify](#deploy-static-sites-to-netlify)
   - [Legend](#legend)
   - [:gem: Requirements](#gem-requirements)
+  - [:exclamation: Fork and clone the clock project](#exclamation-fork-and-clone-the-clock-project)
   - [:exclamation: Create a Netlify account](#exclamation-create-a-netlify-account)
     - [:books: What is Netlify?](#books-what-is-netlify)
   - [:exclamation: Install Node.js and the Netlify CLI](#exclamation-install-nodejs-and-the-netlify-cli)
@@ -41,7 +42,25 @@ Parts of this guide are annotated with the following icons:
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
 ## :gem: Requirements
-This exercise assumees that you are familiar with the command-line and git. You will also need to clone the [Static Clock Website][static-clock-website] to your local machine.
+This exercise assumees that you are familiar with the command-line and git.
+
+## :exclamation: Fork and clone the clock project
+
+Fork the [static clock website repository][static-clock-repo]:
+![Fork the static clock repo](../images/netlify-clock-repo.png)
+
+Clone **your fork** onto your machine and travel to the directory.
+
+```bash
+$> git clone https://github.com/username/static-clock-website.git
+Cloning into 'static-clock-website'...
+remote: Enumerating objects: 6, done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 6
+Receiving objects: 100% (6/6), done.
+
+$> cd static-clock-website
+```
+
 
 ## :exclamation: Create a Netlify account
 
@@ -141,5 +160,5 @@ To see all available commands run: netlify help
 [node-downloads]: https://nodejs.org/en/download/
 [npm]: https://www.npmjs.com/
 [nvm]: https://github.com/nvm-sh/nvm
-[static-clock-website]: https://github.com/MediaComem/static-clock-website
+[static-clock-repo]: https://github.com/MediaComem/static-clock-website
 [volta]: https://github.com/volta-cli/volta
