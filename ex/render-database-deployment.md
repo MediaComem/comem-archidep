@@ -16,7 +16,6 @@
 
 The goal of this exercice is to deploy the same [PHP Todolist][repo] application as in previous exercises, but this time on the Render Platform-as-a-service (PaaS) cloud instead of your own server in the Infrastructure-as-a-Service (IaaS) Microsoft Azure Web Services cloud. This illustrates the difference between the two cloud service models.
 
-
 ## Legend
 
 Parts of this guide are annotated with the following icons:
@@ -39,15 +38,17 @@ Parts of this guide are annotated with the following icons:
 
 This guide assumes that you are familiar with [git][git-slides] and that you have a basic understanding of what a Platform-as-a-Service is.
 
-> :warning: **Although you *could* work on this exercise from your Azure server, we suggest you follow this exercise on your local machine.**
+:warning: **Although you *could* work on this exercise from your Azure server, we suggest you follow this exercise on your local machine.**
 
-## :exclamation: Fetching an upstream branch
+## :exclamation: Getting you Todolist fork up-to-date.
 
 When you started working on the Todolist application, you forked an existing codebase from a GitHub repository. While you were working on your configuration, the team with access to the original repository implemented the changes necessary for a PaaS deployment in a branch called ``docker-postgres``.
 
 By default, your fork should've stopped tracking changes from the original repo, which is also referred to as the **upstream**. Let's reconfigure our repository so that it can fetch data from there.
 
-> :question: If you do not remember where the Todolist repository is stored on your local machine, you can simply clone it again from GitHub by running ``git clone https://github.com/username/comem-archidep-php-todo-exercise.git``. Don't forget to replace the placeholder with your GitHub handle.
+:question: If you do not remember where the Todolist repository is stored on your local machine, you can simply clone it again from GitHub by running ``git clone https://github.com/username/comem-archidep-php-todo-exercise.git``. Don't forget to replace the placeholder with your GitHub handle.
+
+### :exclamation: Add the upstream as a remote
 
 From the terminal, travel to your repository and add the upstream repository as a remote:
 
@@ -56,9 +57,10 @@ $> cd comem-archidep-php-todo-exercise
 $> git remote add upstream https://github.com/MediaComem/comem-archidep-php-todo-exercise.git
 ```
 
->:gem: Unlike the [automated deployment exercise][automated-deployment-ex], you will not be pushing to this remote (you couldn't anyway, as you are not collaborators on the upstream repo).Instead, you will use it to fetch up-to-date code from a branch.
+:gem: Unlike the [automated deployment exercise][automated-deployment-ex], you will not be pushing to this remote (you couldn't anyway, as you are not collaborators on the upstream repo).Instead, you will use it to fetch up-to-date code from a branch.
 
-Not let's fetch data from the upstream:
+
+### :exclamation: Fetch data from upstream
 
 ```bash
 $> git fetch upstream
@@ -84,8 +86,8 @@ This command will create a new branch in **your** repository, based on the conte
 
 > :books: Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and ship it all out as one package. A Dockerfile is a text file that contains instructions for how to build a Docker image. Docker is beyond the scope of this course, but you can learn more [on the Docker website][docker].
 
+### :exclamation: Push the new branch to GitHub
 
-Let's push this new branch to GitHub:
  ```bash
  $> git push origin
  ...
