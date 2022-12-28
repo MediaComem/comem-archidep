@@ -12,6 +12,7 @@
     - [:question: Check Node.js installation](#question-check-nodejs-installation)
     - [:exclamation: Install Netlify CLI using NPM](#exclamation-install-netlify-cli-using-npm)
     - [:books: What is NPM](#books-what-is-npm)
+    - [:exclamation: Authenticate Netlify CLI](#exclamation-authenticate-netlify-cli)
   - [:exclamation: Launch!](#exclamation-launch)
   - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
 
@@ -43,6 +44,14 @@ Parts of this guide are annotated with the following icons:
 This exercise assumees that you are familiar with the command-line and git. You will also need to clone the [Static Clock Website][static-clock-website] to your local machine.
 
 ## :exclamation: Create a Netlify account
+
+Go to the [Netlify signup page][netlify-signup] and create an account using GitHub:
+
+![Register a Netlify Account](../images/netlify-signup.png)
+
+Once you are done with the registration, you will be asked to deploy your first project. You can try either try it out or skip this step:
+
+![Skip onboarding deploy](../images/netlify-signup-skip.png)
 
 ### :books: What is Netlify?
 [Netlify][netlify] is a popular hosting platform for static sites, which are websites that are composed of HTML, CSS, and JavaScript files that are served to the client exactly as they are stored on the server. Netlify provides a range of features and tools to help developers build, deploy, and manage static sites, including:
@@ -94,9 +103,30 @@ netlify-cli/12.5.0 darwin-arm64 node-v18.12.1
 ```
 
 ### :books: What is NPM
-[NPM][npm] (short for Node Package Manager) is a package manager for the JavaScript programming language. It is the default package manager for Node.js. NPM provides a way to install and manage packages (libraries, frameworks, tools, etc.) that you can use in your own projects. When you install a package using NPM, it installs the package in the current working directory, in a subdirectory called `node_modules`. If you want to use the package in your project, you can import it in your code.
+[NPM][npm] (short for Node Package Manager) is a package manager for JavaScript. It is the default package manager for Node.js. NPM provides a way to install and manage packages (libraries, frameworks, tools, etc.) that you can use in your own projects. When you install a package using NPM, it installs the package in the current working directory, in a subdirectory called `node_modules`. If you want to use the package in your project, you can import it in your code.
 
 In this case, you installed a global module, since you want to access the Netlify CLI from anywhere. Global modules are installed globally, which means they are available to use in any project on your computer. You can install a global module using the `-g` flag with the `npm install` command.
+
+### :exclamation: Authenticate Netlify CLI
+You need to link the Netlify CLI to your Netlify account. To do so, run:
+
+```bash
+$> netlify login
+Logging into your Netlify account...
+Opening https://app.netlify.com/authorize?response_type=ticket&ticket=0b81336689cba2392265b135549df0e7
+⠴ Waiting for authorization...
+```
+This will open a page in your browser window asking you to authorize the Netlify CLI to access your account:
+
+![Link Netlify and Netlify CLI](../images/netlify-authorize.png)
+
+Once you click **authorize**, you should see the following in your Terminal:
+
+```bash
+You are now logged into your Netlify account!
+Run netlify status for account details
+To see all available commands run: netlify help
+```
 
 ## :exclamation: Launch!
 
@@ -106,6 +136,7 @@ In this case, you installed a global module, since you want to access the Netlif
 [n]:https://github.com/tj/n
 [netlify]: https://www.netlify.com/
 [netlify-cli]: https://docs.netlify.com/cli/get-started/
+[netlify-signup]: https://app.netlify.com/signup
 [node]: https://nodejs.org/en/
 [node-downloads]: https://nodejs.org/en/download/
 [npm]: https://www.npmjs.com/
