@@ -68,9 +68,9 @@ Codename:	focal
   ```
 ### Ubuntu 20.04
 
-Things are a bit more complicated with this version of Ubuntu. The ruby packages from apt installs gems in restricted folders like `usr/bin` or `var/lib/gems`. Bundler does not like root privileges and you should avoid changing permissions on these folders. We will therefore be using a rbenv, a Ruby environment manager that will install all the requirements in your home folder.
+Things are a bit more complicated with this version of Ubuntu. The ruby packages from apt install gems in restricted folders like `usr/bin` or `var/lib/gems`. Bundler does not like root privileges and you should avoid changing permissions on these folders. We will therefore be using rbenv, a Ruby environment manager that will install all the requirements in your home folder.
 
-Rbenv is a lightweight command-line tool that allows you to easily switch Ruby versions. By default, rbenv doesn’t handle installing Ruby. We’ll use ruby-build to do that. It is available as a standalone program and as a plugin for [rbenv][rbenv].
+[rbenv][rbenv] is a lightweight command-line tool that allows you to easily switch Ruby versions. By default, rbenv doesn’t handle installing Ruby. We’ll use ruby-build to do that. It is available as a standalone program and as a plugin for rbenv.
 The ruby-build script installs Ruby from the source. To be able to build Ruby, install the required libraries and compilers:
 
 ```bash
@@ -96,7 +96,7 @@ Checking for `rbenv' in PATH: not found
   your `~/.bashrc', `~/.zshrc', or `~/.config/fish/config.fish'.
 ```
 
-Indeed, the rbenv installation script does not configure our ``PATH`` environment variable with the location of the rbenv executables. You can configure the new PATH either by editing ``.bashrc`` or running the following commands:
+Indeed, the rbenv installation script does not configure our ``PATH`` environment variable with the location of the rbenv executables. You can configure the new PATH either by editing ``.bashrc`` manually or running the following commands:
 
 ```bash
 $> echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
@@ -290,7 +290,7 @@ This will add the `locust` command to your system:
 
 ```bash
 $> locust -V
-locust 2.6.1
+locust 2.14.2
 ```
 
 To use Locust, you would normally [write a locustfile][locustfile] describing a
@@ -520,6 +520,8 @@ Environment="FIBSCALE_DELAY=1"
 User=john_doe
 Restart=on-failure
 ```
+
+> Don't forget that if you installed Bundler using the Ubuntu 20.04 installation instructions, the path to the executable will be different. Replace the first part of the `ExecStart` option with the output of the following command: `which bundle`
 
 Let's now create the Systemd target file `/etc/systemd/system/fibscales.target`
 file with the following contents:
