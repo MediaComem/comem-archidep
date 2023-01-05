@@ -36,6 +36,22 @@ wildcard entry preconfigured to make various subdomains
 The following requirements should be installed on your server:
 
 - [Ruby][ruby] 2.7.x or 3.x and compilation tools
+- [Bundler][bundler], a command-line tool that downloads Ruby gems (i.e.
+  packages)
+
+The installation method for these requirements will differ depending on your Ubuntu version.
+You can see what it is with the following command:
+
+```bash
+$> lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 20.04.5 LTS
+**Release:	20.04**
+Codename:	focal
+```
+
+### Ubuntu 22.04
 
   You can install those by running the following commands:
 
@@ -44,14 +60,78 @@ The following requirements should be installed on your server:
   $> sudo apt install ruby-full build-essential
   ```
 
-- [Bundler][bundler], a command-line tool that downloads Ruby gems (i.e.
-  packages)
 
   Once your have Ruby installed, you can install Bundler with the `gem` command:
 
   ```bash
   $> sudo gem install bundler
   ```
+### Ubuntu 20.04
+
+Things are a bit more complicated with this version of Ubuntu. The ruby packages from apt installs gems in restricted folders like `usr/bin` or `var/lib/gems`. Bundler does not like root privileges and you should avoid changing permissions on these folders. We will therefore be using a rbenv, a Ruby environment manager that will install all the requirements in your home folder.
+
+Rbenv is a lightweight command-line tool that allows you to easily switch Ruby versions. By default, rbenv doesn’t handle installing Ruby. We’ll use ruby-build to do that. It is available as a standalone program and as a plugin for [rbenv][rbenv].
+The ruby-build script installs Ruby from the source. To be able to build Ruby, install the required libraries and compilers:
+
+```bash
+$> sudo apt update
+$> sudo apt install git curl autoconf bison build-essential \
+    libssl-dev libyaml-dev libreadline6-dev zlib1g-dev \
+    libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev
+```
+
+The simplest way to install the rbenv tool is to use the installation shell script. Run the following [curl][curl] and execute the script. **You should usually be careful when running shell scripts straight from the interwebs**:
+
+```bash
+$> curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+```
+
+The script clones both rbenv and ruby-build repositories from GitHub to the ``~/.rbenv`` directory. The installer script also calls another script that verifies the installation. The output of the script will look something like below:
+
+```bash
+Running doctor script to verify installation...
+Checking for `rbenv' in PATH: not found
+  You seem to have rbenv installed in `/home/john_doe/.rbenv/bin', but that
+  directory is not present in PATH. Please add it to PATH by configuring
+  your `~/.bashrc', `~/.zshrc', or `~/.config/fish/config.fish'.
+```
+
+Indeed, the rbenv installation script does not configure our ``PATH`` environment variable with the location of the rbenv executables. You can configure the new PATH either by editing ``.bashrc`` or running the following commands:
+
+```bash
+$> echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+$> echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+$> source ~/.bashrc
+```
+
+Make sure rbenv is installed by running:
+```bash
+$> rbenv -v
+rbenv 1.2.0-52-g61747c0
+```
+
+rbenv allows you to install different versions of Ruby and switch between them on-demand. You can see the list of available versions by running ``rbenv install -l``.
+
+For this exercise you will install Ruby 3.2.0:
+
+```bash
+$> rbenv install 3.2.0
+Installing ruby-3.2.0
+```
+
+**This will take a while**
+
+Once this is done, you must tell rbenv that you want to use this version of Ruby as a global installation. You can do so by running:
+
+```bash
+$> rbenv global 3.2.0
+```
+
+You can **finally** install Bundler at this point:
+
+```bash
+$> gem install bundler
+```
 
 ## The application
 
@@ -87,6 +167,8 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
+
+> If you installed Bundler using the Ubuntu 20.04 installation instructions, the path the executable will be different. Replace the first part of the `ExecStart` option with the output of the following command: `which bundle`
 
 > Replace `john_doe` with your name in the `WorkingDirectory` and `User`
 > options.
@@ -657,6 +739,7 @@ course exercises][archidep-exercises]):
 
 [archidep-exercises]: https://github.com/MediaComem/comem-archidep#exercises
 [bundler]: https://bundler.io
+[curl]: https://linuxize.com/post/curl-command-examples/
 [dos]: https://en.wikipedia.org/wiki/Denial-of-service_attack
 [fib]: https://en.wikipedia.org/wiki/Fibonacci_number
 [fibscale]: https://github.com/MediaComem/fibscale
@@ -672,4 +755,5 @@ course exercises][archidep-exercises]):
 [python]: https://www.python.org
 [rate-limiting]: https://en.wikipedia.org/wiki/Rate_limiting
 [ruby]: https://www.ruby-lang.org
+[rbenv]: https://github.com/rbenv/rbenv
 [scaling]: https://en.wikipedia.org/wiki/Scalability
