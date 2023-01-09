@@ -55,7 +55,7 @@ This guide assumes that you are familiar with [git][git-slides] and that you hav
 
 ## :exclamation: Install PostgreSQL
 
-PostgreSQL is a relation database management system that is very similar to MySQL. We use it here because we can deploy it with one click on Render. Other benefits of using PostgreSQL are performance, concurrency and SQL language support. You will need to install PostgreSQL on your own machine in order to access the remote instance hosted on Render using ``psql`` command-line interface. The installation procedure differs on PC and MAC.
+PostgreSQL is a relational database management system that is very similar to MySQL. We use it here because we can deploy it with one click on Render. Other benefits of using PostgreSQL are performance, concurrency and SQL language support. You will need to install PostgreSQL on your own machine in order to access the remote instance hosted on Render using the ``psql`` command-line interface. The installation procedure differs on PC and MAC.
 
 ### MacOS
 To install PostgreSQL, you will be using [Homebrew][homebrew], the leading package manager for Mac. You may install it directly from your terminal, by entering:
@@ -64,7 +64,7 @@ To install PostgreSQL, you will be using [Homebrew][homebrew], the leading packa
 $> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-Once this is done, you can easily install by packages by writing ``brew install`` followed by the name of the package:
+Once this is done, you can easily install packages by writing ``brew install`` followed by the name of the package:
 
 ```bash
 $> brew install postgresql
@@ -79,7 +79,7 @@ psql (PostgreSQL) 14.6 (Homebrew)
 ### Windows
 Go to the [PostgreSQL downloads page][postgres-downloads] and choose version **14.6 for Windows x86-64**. Launch the installer and follow the installation instructions. You can decide to install **only** the command-line tools. The following instructions assume you installed Postgres in the default directory on your C drive.
 
-The installer does not take care of adding ``psql`` to your shell's path. You will therefore add it manually. Open Git Bash and enter the following command:
+The installer does not take care of adding ``psql`` to your shell's path. You will therefore add it manually. Open Git Bash and enter the following commands:
 
 ```bash
 $> echo 'export PATH=$PATH:"/c/Program Files/PostgreSQL/14/bin/"' >> ~/.bashrc
