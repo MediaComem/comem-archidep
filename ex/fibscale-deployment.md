@@ -20,7 +20,7 @@ wildcard entry preconfigured to make various subdomains
 - [:exclamation: Load-testing the application](#exclamation-load-testing-the-application)
   - [:exclamation: Deploy a Locust instance](#exclamation-deploy-a-locust-instance)
   - [:exclamation: Start load-testing the application with a small number of users](#exclamation-start-load-testing-the-application-with-a-small-number-of-users)
-  - [Increase the load](#increase-the-load)
+  - [:exclamation: Increase the load](#exclamation-increase-the-load)
 - [:gem: What to do?](#gem-what-to-do)
 - [:exclamation: Horizontally scale the FibScale application](#exclamation-horizontally-scale-the-fibscale-application)
   - [:exclamation: Transform the FibScale Systemd unit into a template](#exclamation-transform-the-fibscale-systemd-unit-into-a-template)
@@ -393,7 +393,7 @@ requests per seconds stabilizing at ~1. Everything is as we expect so far.
 
 ![Locust charts with 2 users](../images/fibscale-locust-2-users-charts.png)
 
-### Increase the load
+### :exclamation: Increase the load
 
 Now change the **Number of users** to 10 and leave the **Spawn rate** to 1. This
 will add 8 more users to our existing 2.
