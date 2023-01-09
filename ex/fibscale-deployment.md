@@ -78,6 +78,9 @@ The following requirements should be installed on your server:
   $> sudo gem install bundler
   ```
 
+  > :books: Bundler is Ruby's package manager much like Composer for PHP or npm
+  > for Node.js.
+
 > :gem: You can check that everything has been correctly installed with the
 > following commands:
 >
@@ -185,30 +188,31 @@ documentation][fibscale-config], you can do that by setting the
 `$FIBSCALE_DELAY` environment variable to a number of seconds. Each computation
 will be artificially delayed by that amount of time.
 
-Once our application is slower, we will see how we can make it faster.
+Once our application is slower, we will see how we can use horizontal scaling to
+make it faster.
 
 > :books: **Why not compute a very high Fibonacci number instead of adding a
 > fake delay?**
 >
-> If you have played with the application, you may have noticed that the higher
-> the Fibonacci number you try to compute, the more time it takes with the
-> recursive algorithm. For example, computing the 37th Fibonacci number with the
-> recursive algorithm usually takes more than 3 seconds with the Azure servers
-> recommended for this course.
+> If you have played with FibScale, you may have noticed that the higher the
+> Fibonacci number you try to compute, the more time it takes with the recursive
+> algorithm. For example, computing the 37th Fibonacci number with the recursive
+> algorithm usually takes more than 3 seconds with the Azure servers recommended
+> for this course.
 >
 > Why then introduce an artificial delay instead of simply computing a high
 > Fibonacci number?
 >
-> Because scaling an application is a complex task and is done differently
-> depending on the cause of the slowdown (e.g. CPU-bound or I/O-bound). If we
-> slow down the computation by consuming more CPU (i.e. computing a high
-> Fibonacci number), we may hit the limits of our server's CPU(s). By
-> artificially slowing down computation without consuming more CPU or other
+> Because scaling an application is a complex task and you may not do it the
+> same way depending on the cause of the slowdown (e.g. CPU-bound or I/O-bound).
+> If we slow down the computation by consuming more CPU (i.e. computing a high
+> Fibonacci number), we may hit the limits of our server's CPU(s) too quickly.
+> By artificially slowing down computation without consuming more CPU or other
 > resources, we can simplify the demonstration and concentrate on configuring
 > load balancing with nginx.
 >
 > For more information, see [the additional explanations at the end of the
-> exercise](#not-the-solution-to-all-your-problems).
+> exercise](#books-not-the-solution-to-all-your-problems).
 
 Add the following line to the `[Service]` section of the
 `/etc/systemd/system/fibscale.service` Systemd unit file:
@@ -238,9 +242,16 @@ We now have a simulation of a slow application. Or do we? As the saying goes:
 You will use [Locust][locust], an open-source [load testing][load-testing] tool
 written in Python, and use it to measure the performance of the FibScale
 application. **Load testing** is the process of putting demand on a system and
-measuring its response time. In this case, we will simulate multiple users
-trying to use FibScale concurrently, add see how much time it takes for each
-user to get a response.
+measuring its response time and error rate. In this case, we will simulate
+multiple users trying to use FibScale concurrently, add see how much time it
+takes for each user to get a response.
+
+:warning: Do not stray too far from the instructions below when load testing
+when it comes to the number of users. You are going to simulate many users
+sending requests to your application concurrently. If you simulate too many
+users, you may bring down your server, or your test may easily be misconstrued
+as a [DoS attack][dos] by the Azure cloud. Your server may end up being
+blacklisted.
 
 ### :exclamation: Deploy a Locust instance
 
@@ -438,9 +449,9 @@ Let's assume that:
 * The slowness is not caused by a lack of resources on the server (CPU, memory
   or I/O performance).
 
-> :books: These assumptions do not necessarily represent every real-world
-> scenario, but since they are true for this exercise, it will allow us to
-> perform scaling on our single server.
+> :books: These assumptions do not necessarily represent a real-world scenario,
+> but since they are true for this exercise, it will allow us to perform scaling
+> on our single server.
 
 If we have resources to spare on the server, and one instance of the FibScale
 application cannot serve enough users at the same time, let's **spin up more
@@ -588,8 +599,8 @@ passed as argument).
 
 Access Locust at http://locust.fibscale.john-doe.archidep.ch and run the same
 load testing scenario as before: test the **Host**
-http://fibscale.john-doe.archidep.test with the **Number of users** set to 10
-and the **Spawn rate** set to 1.
+http://fibscale.john-doe.archidep.ch with the **Number of users** set to 10 and
+the **Spawn rate** set to 1.
 
 ![Configure Locust with 10 users again](../images/fibscale-locust-10-users-again.png)
 
@@ -695,6 +706,8 @@ your performance problems, especially on a single server.
 Actually, **deploying more instances of your application on the same server may
 even make the problem worse** depending on the cause!
 
+### :books: Causes of bad performance
+
 Three of the main causes of performance issues are: using too much CPU, not
 having enough memory, performing too much I/O (input/output, e.g. disk access).
 Whether horizontal scaling will work depends on the cause and on many other
@@ -711,16 +724,16 @@ factors:
     **spinning up multiple instances of the application will only increase
     performance as long as you have CPU capacity to spare**.
 
-    Once CPU usage reaches 100%, running more instances is unlikely to improve
-    performance because one core cannot run things parallel. It can run things
-    concurrently using [multithreading][multithreading], but that will probably
-    not be enough change the overall throughput. Performance will start
+    **Once CPU usage reaches 100%, running more instances is unlikely to improve
+    performance** because one core cannot run things in parallel. It can run
+    things concurrently using [multithreading][multithreading], but that will
+    probably not be enough change the overall throughput. Performance will start
     decreasing as you add more instances.
   - Does your server have multiple CPU cores?
 
     - Is the application single-threaded (i.e. it can only serve one request at
-      a time)? (This depends on which programming language it is implemented in
-      and how it is implemented.)
+      a time)? This depends on which programming language it is implemented in
+      and how it is implemented.
 
       In this case, spinning up more instances will probably increase
       performance because the different cores can execute your code in parallel.
@@ -746,9 +759,9 @@ factors:
   by spinning up more instances of your application is to bring down your whole
   server due to a lack of memory.
 - If your application is **slow due to I/O** (e.g. it regularly stores/retrieves
-  data from disk or from a database), **increasing the number of instances may
-  increase performance, but only IF the I/O work can be parallelized**, which
-  depends entirely on what kind of work it is.
+  data from disk or from a database), **increasing the number of instances will
+  probably increase performance, but only IF the I/O work can be parallelized**,
+  which depends entirely on what kind of work it is.
 
   File access can be parallelized up to a point, but at some point there will be
   too many accesses for your server's hard drive (or even SSD) to keep up.
@@ -757,47 +770,68 @@ factors:
   of your hardware, but again there is a limit, especially if it's running on
   the same server as your application. At some point, running more instances
   will slow everything down.
-- Running the load testing tool (Locust) on the same server as the application
-  your are testing is actually a rather bad idea. As you increase the load,
-  Locust itself will start consuming CPU and memory to simulate users. This will
-  slow down your server and make your application slower than it would normally
-  be.
+
+### :books: Optimizing the application
+
+If your application consumes too much CPU or memory, or performs too much I/O,
+you can of course try to identify the bottlenecks in the implementation and
+optimize them to consume less resources. The application may then be able to
+process more requests or with a shorter response time.
+
+This is a programming issue not directly related to architecture.
+
+### :books: Scaling further
+
+Running the load testing tool (Locust) on the same server as the application
+your are testing is actually quite a bad idea. As you increase the load, Locust
+itself will start consuming CPU and memory to simulate users. This will slow
+down your server and make your application slower than it would normally be.
 
 Regardless of the reason why your application is slow, you also have to make
-sure that your implementation supports concurrency (concurrent access to files,
-to the database, etc) before you start spinning multiple instances.
+sure that it supports concurrency (concurrent access to files, to the database,
+etc) before you start spinning multiple instances, or else they might run into
+conflicts with each other.
 
-Once you reach the limits of a single server, you will have to launch other
-servers and run new instances of your application on those servers. In this
-exercise, you have configured an nginx `upstream` that only contacts `127.0.0.1`
-(your server itself), but nothing prevents you from pointing to other IP
-addresses (or domain names) to spread the work among multiple servers. Of
-course, in this case you have to make sure that your application supports being
-distributed across multiple servers.
+Once you reach the limits of a single server, you can launch other servers and
+run new instances of your application on those servers. In this exercise, you
+have configured an nginx `upstream` that only contacts `127.0.0.1` (your server
+itself), but nothing prevents you from pointing to other IP addresses (or domain
+names) to spread the work among multiple servers. Of course, in this case you
+have to make sure that your application supports being distributed across
+multiple servers.
 
 If you are very successful and reach 10,000+ concurrent clients, nginx may also
 become a bottleneck in your architecture and you may have to set up load
 balancing at the DNS level.
 
-In summary: **performance is a very complex issue**. Again, before setting up
-anything: **don't guess, measure!**
+### :books: Performance is hard
+
+In summary: **performance is a very complex issue**.
+
+Again, before setting up anything: **don't guess, measure!**
+
+> :gem: Again, **be careful of issues such as [rate limiting][rate-limiting] and
+> [(D)DoS][dos] protection when load-testing**. Load tests can look a lot like a
+> DoS attack. You may inadvertently be banned by your cloud provider if you're
+> not careful.
+
+### :books: Scaling FibScale horizontally
 
 For your information, the FibScale application is very easy to scale
-horizontally on a single server because it consumes little CPU (at least when
-using the iterative algorithm) and is neither memory-bound or I/O bound. Its
-slowness in this exercise is artificially caused by a [call to Ruby's `sleep`
-function](https://github.com/AlphaHydrae/fibscale/blob/00dba541f53468c94b239b692372a714f5b919e1/fibscale.rb#L84).
-This consumes neither CPU nor memory, and does not perform any I/O.
+horizontally on a single server because:
 
-Also, since each computation of a Fibonacci number is independent of the others,
-and there is no shared resource to access (e.g. a database), there is no issue
-with running multiple instances. They never need to talk to each other or
-synchronize access to anything.
-
-> :gem: Also **be careful of issues such as [rate limiting][rate-limiting] and
-> [(D)DOS][dos] protection when load-testing**. Load tests can look a lot like a
-> DOS attack. You may inadvertently be banned by your cloud provider if you're
-> not careful.
+* It consumes little CPU (when using the iterative algorithm) and is neither
+  memory-bound nor I/O bound. Its slowness in this exercise is artificially
+  caused by a [call to Ruby's `sleep`
+  function](https://github.com/AlphaHydrae/fibscale/blob/00dba541f53468c94b239b692372a714f5b919e1/fibscale.rb#L84).
+  This consumes neither CPU nor memory, and does not perform any I/O.
+* It is [pre-configured to be
+  single-threaded](https://github.com/AlphaHydrae/fibscale/blob/00dba541f53468c94b239b692372a714f5b919e1/config/puma.rb#L4-L5)
+  so that spreading its work among multiple processes shows a clear improvement.
+* Since each computation of a Fibonacci number is independent of the others, and
+  there is no shared resource to access (e.g. a database), there is no issue
+  with running multiple instances. They never need to talk to each other or
+  synchronize access to anything.
 
 ## :checkered_flag: What have I done?
 
