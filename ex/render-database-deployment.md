@@ -44,9 +44,51 @@ Parts of this guide are annotated with the following icons:
 
 ## :gem: Requirements
 
+[PostgreSQL][postgres] 14.6
+
 This guide assumes that you are familiar with [git][git-slides] and that you have a basic understanding of what a Platform-as-a-Service is.
 
 :warning: **Although you *could* work on this exercise from your Azure server, we suggest you follow this exercise on your local machine.**
+
+## Install PostgreSQL
+
+PostgreSQL is a relation database management system that is very similar to MySQL. We use it here because we can deploy it with one click on Render. Other benefits of using PostgreSQL are performance, concurrency and SQL language support. You will need to install PostgreSQL on your own machine in order to access the remote instance hosted on Render using ``psql`` command-line interface. The installation procedure differs on PC and MAC.
+
+### MacOS
+To install PostgreSQL, you will be using [Homebrew][homebrew], the leading package manager for Mac. You may install it directly from your terminal, by entering:
+
+```bash
+$> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Once this is done, you can easily install by packages by writing ``brew install`` followed by the name of the package:
+
+```bash
+$> brew install postgresql
+```
+
+Check that you have access to the ``psql`` command by entering:
+
+```bash
+$> psql --version
+psql (PostgreSQL) 14.6 (Homebrew)
+```
+### Windows
+Go to the [PostgreSQL downloads page][postgres-downloads] and choose version **14.6 for Windows x86-64**. Launch the installer and follow the installation instructions. You can decide to install **only** the command-line tools. The following instructions assume you installed Postgres in the default directory on your C drive.
+
+The installer does not take care of adding ``psql`` to your shell's path. You will therefore add it manually. Open Git Bash and enter the following command:
+
+```bash
+$> echo 'export PATH=$PATH:"/c/Program Files/PostgreSQL/14/bin/"' >> ~/.bashrc
+$> source .bashrc
+```
+
+Check that you have access to the ``psql`` command by entering:
+
+```bash
+$> psql --version
+psql (PostgreSQL) 14.6 (Homebrew)
+```
 
 ## :exclamation: Getting you Todolist fork up-to-date.
 
@@ -111,8 +153,6 @@ This command will create a new branch in **your** repository, based on the conte
 ## :exclamation: Create and configure a PostgreSQL Database on Render
 
 Instead of manually configuring a Linux server, you will be provisioning a couple of services on Render. The first is a PostgreSQL Database.
-
-> : books: PostgreSQL is a relation database management system that is very similar to MySQL. We use it here because we can deploy it with one click on Render. Other benefits of using PostgreSQL are performance, concurrency and SQL language support.
 
 ### :exclamation: Create a Render account
 
@@ -277,7 +317,10 @@ Most of the technology and software that we have used throughout this course has
 [docker]: https://www.docker.com/
 [gitlab]: https://about.gitlab.com/
 [git-slides]: https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git/?home=MediaComem%2Fcomem-archidep%23readme#1
+[homebrew]: https://brew.sh/
 [nginx-php-fpm]: https://github.com/richarvey/nginx-php-fpm
+[postgresql]: https://www.postgresql.org/
+[postgresql-downloads]: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
 [render-custom-domains]: https://render.com/docs/custom-domains
 [render-limits]: https://render.com/docs/free#free-web-services
 [render-register]: https://dashboard.render.com/register
