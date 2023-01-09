@@ -163,7 +163,7 @@ fix during the rest of the course:
   - [Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
     - [Architecture](ex/fibscale-deployment.md#architecture)
 - **Platform-as-a-Service deployment**
-  - Deploy a PHP web page to Render (_not yet available_)
+  - [Deploy a static site to Netlify](./ex/netlify-static-deployment.md)
   - Deploy web applications with a database to Render (_not yet available_)
 - _Extra_
   - [Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database](ex/one-chat-room-deployment.md)
