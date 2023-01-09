@@ -13,6 +13,8 @@ wildcard entry preconfigured to make various subdomains
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Requirements](#requirements)
+  - [Ubuntu 22.04](#ubuntu-2204)
+  - [Ubuntu 20.04](#ubuntu-2004)
 - [The application](#the-application)
 - [Deploy the application](#deploy-the-application)
 - [Artificially slow down the application](#artificially-slow-down-the-application)
