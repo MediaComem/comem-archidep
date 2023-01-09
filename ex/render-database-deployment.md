@@ -4,6 +4,9 @@
 - [Deploy web applications with a database to Render](#deploy-web-applications-with-a-database-to-render)
   - [Legend](#legend)
   - [:gem: Requirements](#gem-requirements)
+  - [:exclamation: Install PostgreSQL](#exclamation-install-postgresql)
+    - [MacOS](#macos)
+    - [Windows](#windows)
   - [:exclamation: Getting you Todolist fork up-to-date.](#exclamation-getting-you-todolist-fork-up-to-date)
     - [:exclamation: Add the upstream as a remote](#exclamation-add-the-upstream-as-a-remote)
     - [:exclamation: Fetch data from upstream](#exclamation-fetch-data-from-upstream)
@@ -50,7 +53,7 @@ This guide assumes that you are familiar with [git][git-slides] and that you hav
 
 :warning: **Although you *could* work on this exercise from your Azure server, we suggest you follow this exercise on your local machine.**
 
-## Install PostgreSQL
+## :exclamation: Install PostgreSQL
 
 PostgreSQL is a relation database management system that is very similar to MySQL. We use it here because we can deploy it with one click on Render. Other benefits of using PostgreSQL are performance, concurrency and SQL language support. You will need to install PostgreSQL on your own machine in order to access the remote instance hosted on Render using ``psql`` command-line interface. The installation procedure differs on PC and MAC.
 
