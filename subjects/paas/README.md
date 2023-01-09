@@ -1,21 +1,20 @@
-# Heroku
+# Platform-as-a-Service (PaaS)
 
-Learn to deploy an [Express][express] web application on the [Heroku][heroku] cloud application platform.
+Learn to deploy web applications on Platform-as-a-Service (PaaS) cloud
+application platforms such as [GitHub Pages][github-pages], [Netlify][netlify]
+and [Render][render].
 
 <!-- slide-include ../../BANNER.md -->
 
 **You will need**
 
 * [Git][git]
-* A free [Heroku][heroku] account
-* The [Heroku CLI][heroku-cli]
-* [Node.js][node] 8+
+* A free [GitHub][github] account
 
 **Recommended reading**
 
 * [Command line](../cli/)
-* [Express](../express/)
-* [Mongoose](../mongoose/)
+* [Git](../git/), [Git branching](../git-branching/)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -496,6 +495,8 @@ Typically, **database add-ons** will add an environment variable with the **data
 [getting-started]: https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction
 [git]: https://git-scm.com
 [git-hooks]: https://git-scm.com/book/gr/v2/Customizing-Git-Git-Hooks
+[github]: https://github.com
+[github-pages]: https://pages.github.com
 [heroku]: https://www.heroku.com/home
 [heroku-cleardb]: https://devcenter.heroku.com/articles/cleardb
 [heroku-cli]: https://devcenter.heroku.com/articles/heroku-cli
@@ -503,9 +504,11 @@ Typically, **database add-ons** will add an environment variable with the **data
 [heroku-postgres]: https://devcenter.heroku.com/articles/heroku-postgresql
 [heroku-redis]: https://devcenter.heroku.com/articles/heroku-redis
 [iaas]: https://en.wikipedia.org/wiki/Cloud_computing
+[netlify]: https://www.netlify.com
 [node]: https://nodejs.org/en/
 [node-process-env]: https://nodejs.org/api/process.html#process_process_env
 [paas]: https://en.wikipedia.org/wiki/Platform_as_a_service
 [php-getenv]: https://www.php.net/manual/en/function.getenv.php
 [pricing]: https://www.heroku.com/pricing
+[render]: https://render.com
 [saas]: https://en.wikipedia.org/wiki/Software_as_a_service
