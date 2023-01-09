@@ -844,12 +844,11 @@ You have installed a web application and identified a performance problem by
 using [Locust][locust], a [load testing][load-testing] tool, to measure the
 average response time to clients.
 
-To improve the user experience, you have performed [horizontal
-scaling][scalability] of your application by spinning up multiple instances and
-[load balancing incoming requests][load-balancing] to these various instances
-through nginx. This allows new instances to serve new clients while others are
-busy, increasing the overall throughput and decreasing the response time for
-each client.
+To improve the user experience, you have performed [horizontal scaling][scaling]
+of your application by spinning up multiple instances and [load balancing
+incoming requests][load-balancing] to these various instances through nginx.
+This allows new instances to serve new clients while others are busy, increasing
+the overall throughput and decreasing the response time for each client.
 
 ### :classical_building: Architecture
 
