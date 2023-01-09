@@ -876,5 +876,6 @@ for more detailed explanations.
 [ruby]: https://www.ruby-lang.org
 [rbenv]: https://github.com/rbenv/rbenv
 [scaling]: https://en.wikipedia.org/wiki/Scalability
+[slides]: https://mediacomem.github.io/comem-archidep/2022-2023/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#1
 [space-complexity]: https://en.wikipedia.org/wiki/Space_complexity
 [time-complexity]: https://en.wikipedia.org/wiki/Time_complexity
