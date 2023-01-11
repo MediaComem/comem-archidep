@@ -46,7 +46,7 @@ Parts of this guide are annotated with the following icons:
 
 ## :gem: Requirements
 
-[PostgreSQL][postgresql] 14.6
+* [PostgreSQL][postgresql] 14.6
 
 This guide assumes that you are familiar with [Git][git-slides] and that you
 have a basic understanding of what a Platform-as-a-Service is.
