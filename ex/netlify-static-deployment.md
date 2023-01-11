@@ -59,7 +59,7 @@ website repository][static-clock-repo]:
 Clone **your fork** onto your machine and move into the directory:
 
 ```bash
-$> git clone https://github.com/john-doe/static-clock-website.git
+$> git clone git@github.com:john-doe/static-clock-website.git
 Cloning into 'static-clock-website'...
 remote: Enumerating objects: 6, done.
 remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 6
