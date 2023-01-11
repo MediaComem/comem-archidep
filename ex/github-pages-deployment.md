@@ -50,7 +50,7 @@ under your GitHub username:
 
 ## :exclamation: Configure GitHub Pages
 
-Go the the **Pages Settings** and configure GitHub Pages to deploy the *root of
+Go the the **Pages Settings** and configure GitHub Pages to deploy the **root of
 the `main` branch**:
 
 ![Configure GitHub Pages](../images/github-pages-configure.png)
