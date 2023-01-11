@@ -51,11 +51,12 @@ This exercise assumees that you are familiar with the command line and Git.
 
 ## :exclamation: Fork and clone the clock project
 
-Fork the [static clock website repository][static-clock-repo]:
+If you haven't already done it in the previous exercise, fork the [static clock
+website repository][static-clock-repo]:
 
 ![Fork the static clock repo](../images/netlify-clock-repo.png)
 
-Clone **your fork** onto your machine and travel to the directory.
+Clone **your fork** onto your machine and move into the directory:
 
 ```bash
 $> git clone https://github.com/john-doe/static-clock-website.git
@@ -287,7 +288,8 @@ In this exercise, you deployed a static website to Netlify PaaS using the
 Netlify CLI. Netlify automatically configured the following stuff for you:
 
 - Hosting
-- SSL encryption
+- Reverse proxying
+- TLS/SSL encryption
 - Automated deployments
 - Domain name
 

@@ -162,6 +162,7 @@ fix during the rest of the course:
   - [Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
     - [Architecture](ex/fibscale-deployment.md#architecture)
 - **Platform-as-a-Service deployment**
+  - [Deploy a static site to GitHub Pages](./ex/github-pages-deployment.md)
   - [Deploy a static site to Netlify](./ex/netlify-static-deployment.md)
   - Deploy web applications with a database to Render (_not yet available_)
 - _Extra_
