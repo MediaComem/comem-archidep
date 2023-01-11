@@ -48,7 +48,7 @@ Parts of this guide are annotated with the following icons:
 
 [PostgreSQL][postgresql] 14.6
 
-This guide assumes that you are familiar with [git][git-slides] and that you
+This guide assumes that you are familiar with [Git][git-slides] and that you
 have a basic understanding of what a Platform-as-a-Service is.
 
 :warning: **Work on your local machine, NOT your Azure server**. The goal of
