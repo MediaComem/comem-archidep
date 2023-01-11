@@ -126,7 +126,7 @@ so that it can fetch data from there.
 
 :question: If you do not remember where the Todolist repository is stored on
 your local machine, you can simply clone it again from GitHub by running `git
-clone https://github.com/johndoe/comem-archidep-php-todo-exercise.git`. Don't
+clone git@github.com:johndoe/comem-archidep-php-todo-exercise.git`. Don't
 forget to replace `johndoe` with your GitHub username.
 
 ### :exclamation: Add the upstream as a remote
