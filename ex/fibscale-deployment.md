@@ -652,7 +652,7 @@ the additional instances.
 ### :exclamation: Configure nginx to balance the load among the available FibScale instances
 
 Update the `upstream` definition in the nginx site configuration file
-`/etc/nginx/sites-availble/fibscale` to add your new FibScale instances. Since
+`/etc/nginx/sites-available/fibscale` to add your new FibScale instances. Since
 the instance parameter `%i` is `2` and `3` for our 2 new instances, we know
 they're listening on ports `42002` and `42003`:
 
