@@ -20,31 +20,13 @@ and [Render][render].
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [What is Heroku?](#what-is-heroku)
+- [What is PaaS?](#what-is-paas)
   - [Cloud service models](#cloud-service-models)
   - [Infrastructure as a Service (IaaS)](#infrastructure-as-a-service-iaas)
   - [Platform as a Service (PaaS)](#platform-as-a-service-paas)
-  - [How does Heroku work?](#how-does-heroku-work)
-- [Getting started on Heroku with Node.js](#getting-started-on-heroku-with-nodejs)
-  - [Create an Express app](#create-an-express-app)
-  - [Make it a Git repository](#make-it-a-git-repository)
-  - [Do you have a credit card?](#do-you-have-a-credit-card)
-  - [Create the app on Heroku (**with credit card**)](#create-the-app-on-heroku-with-credit-card)
-  - [Use an existing Heroku app (**without credit card**)](#use-an-existing-heroku-app-without-credit-card)
-  - [Go to your dashboard](#go-to-your-dashboard)
-  - [Provision database add-ons](#provision-database-add-ons)
-  - [Configure your database URL from the environment](#configure-your-database-url-from-the-environment)
-  - [Deploy it](#deploy-it)
-  - [How?](#how)
-  - [When do I pay?](#when-do-i-pay)
-  - [Databases](#databases)
-- [Troubleshooting](#troubleshooting)
-- [Configuration](#configuration)
-  - [Server listening port configuration](#server-listening-port-configuration)
-  - [Accessing environment variables in Node.js](#accessing-environment-variables-in-nodejs)
-  - [Setting environment variables locally](#setting-environment-variables-locally)
-  - [Setting environment variables on Heroku](#setting-environment-variables-on-heroku)
-- [Resources](#resources)
+  - [How does a PaaS platform work?](#how-does-a-paas-platform-work)
+  - [Is it magic?](#is-it-magic)
+  - [How do I use a PaaS platform?](#how-do-i-use-a-paas-platform)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -81,11 +63,13 @@ Cloud-computing providers offer their services according to **different models**
 
 ### Infrastructure as a Service (IaaS)
 
-With traditional cloud providers, you have to **set up, maintain and operate** the **infrastructure** on which your applications are run:
+With traditional cloud providers, you have to **set up, maintain and operate**
+the **infrastructure** on which your applications are run:
 
 <p class='center'><img src='images/iaas.png' width='70%' /></p>
 
-You'll often need a professional **system administrator** to do that for sizable projects.
+You'll often need a professional **system administrator** to do that for sizable
+projects.
 
 
 
@@ -150,8 +134,9 @@ out your credit card and pay to use it longer, or to have more
 storage/power/etc.
 
 When you need to **configure your application**, PaaS platforms will usually
-allow you to define **environment variables** through a web interface. These
-variables will be provided to your application when it is deployed.
+allow you to define [**environment variables**][env-vars] through a web
+interface. These variables will be provided to your application when it is
+deployed.
 
 Some PaaS platforms provide **command line tools** to help make and manage your
 deployments. For example, there is the [Heroku CLI][heroku-cli] and the [Netlify
@@ -159,32 +144,19 @@ CLI][netlify-cli].
 
 
 
-[dev-center]: https://devcenter.heroku.com
 [devops]: https://en.wikipedia.org/wiki/DevOps
 [env-vars]: https://en.wikipedia.org/wiki/Environment_variable
-[express]: https://expressjs.com
-[express-generator]: https://www.npmjs.com/package/express-generator
 [faas]: https://en.wikipedia.org/wiki/Function_as_a_Service
 [fly]: https://fly.io
-[free-dyno-hours]: https://devcenter.heroku.com/articles/free-dyno-hours
-[getting-started]: https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction
 [git]: https://git-scm.com
 [git-hooks]: https://git-scm.com/book/gr/v2/Customizing-Git-Git-Hooks
 [github]: https://github.com
 [github-pages]: https://pages.github.com
 [heroku]: https://www.heroku.com/home
-[heroku-cleardb]: https://devcenter.heroku.com/articles/cleardb
 [heroku-cli]: https://devcenter.heroku.com/articles/heroku-cli
-[heroku-dashboard]: https://dashboard.heroku.com
-[heroku-postgres]: https://devcenter.heroku.com/articles/heroku-postgresql
-[heroku-redis]: https://devcenter.heroku.com/articles/heroku-redis
 [iaas]: https://en.wikipedia.org/wiki/Cloud_computing
 [netlify]: https://www.netlify.com
 [netlify-cli]: https://docs.netlify.com/cli/get-started/
-[node]: https://nodejs.org/en/
-[node-process-env]: https://nodejs.org/api/process.html#process_process_env
 [paas]: https://en.wikipedia.org/wiki/Platform_as_a_service
-[php-getenv]: https://www.php.net/manual/en/function.getenv.php
-[pricing]: https://www.heroku.com/pricing
 [render]: https://render.com
 [saas]: https://en.wikipedia.org/wiki/Software_as_a_service
