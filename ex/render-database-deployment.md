@@ -1,31 +1,30 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Deploy web applications with a database to Render](#deploy-web-applications-with-a-database-to-render)
-  - [Legend](#legend)
-  - [:gem: Requirements](#gem-requirements)
-  - [:exclamation: Install PostgreSQL](#exclamation-install-postgresql)
-    - [MacOS](#macos)
-    - [Windows](#windows)
-  - [:exclamation: Getting you Todolist fork up-to-date.](#exclamation-getting-you-todolist-fork-up-to-date)
-    - [:exclamation: Add the upstream as a remote](#exclamation-add-the-upstream-as-a-remote)
-    - [:exclamation: Fetch data from upstream](#exclamation-fetch-data-from-upstream)
-    - [:exclamation: Push the new branch to GitHub](#exclamation-push-the-new-branch-to-github)
-  - [:exclamation: Create and configure a PostgreSQL Database on Render](#exclamation-create-and-configure-a-postgresql-database-on-render)
-    - [:exclamation: Create a Render account](#exclamation-create-a-render-account)
-    - [:exclamation: Create a PostgreSQL instance](#exclamation-create-a-postgresql-instance)
-    - [:exclamation: Connect to the database and create tables](#exclamation-connect-to-the-database-and-create-tables)
-  - [:exclamation: Deploy the application](#exclamation-deploy-the-application)
-    - [:exclamation: Create a Web Service](#exclamation-create-a-web-service)
-    - [:exclamation: Define environment variables](#exclamation-define-environment-variables)
-    - [:exclamation: Deploy the Web Service](#exclamation-deploy-the-web-service)
-  - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # Deploy web applications with a database to Render
 
 The goal of this exercice is to deploy the same [PHP Todolist][repo] application as in previous exercises, but this time on the Render Platform-as-a-service (PaaS) cloud instead of your own server in the Infrastructure-as-a-Service (IaaS) Microsoft Azure Web Services cloud. This illustrates the difference between the two cloud service models.
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Legend](#legend)
+- [:gem: Requirements](#gem-requirements)
+- [:exclamation: Install PostgreSQL](#exclamation-install-postgresql)
+  - [MacOS](#macos)
+  - [Windows](#windows)
+- [:exclamation: Getting you Todolist fork up-to-date.](#exclamation-getting-you-todolist-fork-up-to-date)
+  - [:exclamation: Add the upstream as a remote](#exclamation-add-the-upstream-as-a-remote)
+  - [:exclamation: Fetch data from upstream](#exclamation-fetch-data-from-upstream)
+  - [:exclamation: Push the new branch to GitHub](#exclamation-push-the-new-branch-to-github)
+- [:exclamation: Create and configure a PostgreSQL Database on Render](#exclamation-create-and-configure-a-postgresql-database-on-render)
+  - [:exclamation: Create a Render account](#exclamation-create-a-render-account)
+  - [:exclamation: Create a PostgreSQL instance](#exclamation-create-a-postgresql-instance)
+  - [:exclamation: Connect to the database and create tables](#exclamation-connect-to-the-database-and-create-tables)
+- [:exclamation: Deploy the application](#exclamation-deploy-the-application)
+  - [:exclamation: Create a Web Service](#exclamation-create-a-web-service)
+  - [:exclamation: Define environment variables](#exclamation-define-environment-variables)
+  - [:exclamation: Deploy the Web Service](#exclamation-deploy-the-web-service)
+- [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Legend
 
