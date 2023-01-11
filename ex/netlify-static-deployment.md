@@ -52,6 +52,7 @@ This exercise assumees that you are familiar with the command line and Git.
 ## :exclamation: Fork and clone the clock project
 
 Fork the [static clock website repository][static-clock-repo]:
+
 ![Fork the static clock repo](../images/netlify-clock-repo.png)
 
 Clone **your fork** onto your machine and travel to the directory.

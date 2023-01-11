@@ -62,8 +62,8 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 - Automated deployment
   - [Shell scripting](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
   - [Git hooks](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
-- Platform-as-a-Service (PaaS)
-  - Render (_not yet available_)
+- Managed deployments
+  - [Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/paas?home=MediaComem%2Fcomem-archidep%23readme)
 - _Software development (extra)_
   - [Continuous software development](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
   - [Automated testing (2018)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
