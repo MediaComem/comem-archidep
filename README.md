@@ -164,7 +164,7 @@ fix during the rest of the course:
 - **Platform-as-a-Service deployment**
   - [Deploy a static site to GitHub Pages](./ex/github-pages-deployment.md)
   - [Deploy a static site to Netlify](./ex/netlify-static-deployment.md)
-  - Deploy web applications with a database to Render (_not yet available_)
+  - [Deploy web applications with a database to Render](./ex/render-database-deployment.md)
 - _Extra_
   - [Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database](ex/one-chat-room-deployment.md)
     - [Diagram](ex/end-result.pdf)
