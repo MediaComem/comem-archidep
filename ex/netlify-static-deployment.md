@@ -311,10 +311,27 @@ Execute the following commands to switch to a directory owned by you:
 ```bash
 $> mkdir ~/.npm-global
 $> npm config set prefix '~/.npm-global'
-$> echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bash_profile
 ```
 
-Re-launch your terminal to take the changes to your PATH into account. The `npm
+You should now add the new NPM global installation directory to your path. The command will depend on what shell you are using. Find out with:
+
+```bash
+$> echo $0
+```
+
+**If using `bash`**
+```bash
+$> echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bash_profile
+$> source ~/.bash_profile
+```
+
+**If using `zsh`**
+```bash
+$> echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.zshrc
+$> source ~/.zshrc
+```
+
+The `npm
 install` command which previously failed should now work.
 
 [asdf]: https://asdf-vm.com
