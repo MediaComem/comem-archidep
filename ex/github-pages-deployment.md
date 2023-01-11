@@ -62,7 +62,7 @@ Save the changes.
 You're done! It's as simple as that.
 
 You should be able to access your deployed static website at
-https://JohnDoe.github.io/static-clock-website (replacing `JohnDoe` with your
+https://johndoe.github.io/static-clock-website (replacing `johndoe` with your
 GitHub username).
 
 > :gem: It may take a couple of minutes for the site to become available.
