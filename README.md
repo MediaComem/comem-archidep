@@ -60,7 +60,7 @@ Parts of this guide are annotated with the following icons:
   - [:book: Version control with Git](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
   - [:book: Git branching](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
   - [:book: Collaborating with Git](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
-  - [:collision: :hammer: Collaborative exercise](https://github.com/MediaComem/comem-archidep-php-todo-exercise)
+  - **[:collision: :hammer: Collaborative exercise](https://github.com/MediaComem/comem-archidep-php-todo-exercise)**
   - [:hammer: Clone a repository from a server](ex/git-clone-from-server.md)
   - [:hammer: Push a repository to a server](ex/git-push-to-server.md)
 - Security
@@ -120,7 +120,7 @@ Parts of this guide are annotated with the following icons:
     - [Architecture](ex/git-automated-deployment.md#architecture)
 
 - Complete Deployments
-  - [:collision: :hammer: Deploy Flood It, a Spring Boot (Java) & Angular application with a PostgreSQL database](ex/floodit-deployment.md)
+  - **[:collision: :hammer: Deploy Flood It, a Spring Boot (Java) & Angular application with a PostgreSQL database](ex/floodit-deployment.md)**
   - [:hammer: Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database](ex/one-chat-room-deployment.md) (_extra_)
     - [Diagram](ex/end-result.pdf)
   - [:hammer: Deploy Big Browser, a Nest.js (Node.js) application with a Redis database](ex/big-browser-deployment.md) (_extra_)
