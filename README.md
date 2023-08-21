@@ -28,6 +28,16 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+
+## Legend
+
+Parts of this guide are annotated with the following icons:
+
+- :book: Slides or written documents pertaining to the various topics discussed during this course.
+- :hammer: An exercise aimed at practicing a topic discussed in class.
+- **:collision: This exercise is graded.**
+
+
 ## What you will need
 
 - A Unix CLI
@@ -110,13 +120,13 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
     - [Architecture](ex/git-automated-deployment.md#architecture)
 
 - Complete Deployments
-  - [:hammer: Deploy Flood It, a Spring Boot (Java) & Angular application with a PostgreSQL database](ex/floodit-deployment.md) (**graded**)
+  - [:collision: :hammer: Deploy Flood It, a Spring Boot (Java) & Angular application with a PostgreSQL database](ex/floodit-deployment.md)
   - [:hammer: Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database](ex/one-chat-room-deployment.md) (_extra_)
     - [Diagram](ex/end-result.pdf)
   - [:hammer: Deploy Big Browser, a Nest.js (Node.js) application with a Redis database](ex/big-browser-deployment.md) (_extra_)
   - [:hammer: Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md) (_extra_)
   - [:hammer: Deploy RPS, a Node.js & Svelte web application with a PostgreSQL database](ex/rps-deployment.md) (_extra_)
-  - [:hammer:Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md) (_extra_)
+  - [:hammer: Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md) (_extra_)
     - [Architecture](ex/minesweeper-deployment.md#books-architecture)
 
 - Managed deployments
