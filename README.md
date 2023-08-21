@@ -37,6 +37,7 @@ Parts of this guide are annotated with the following icons:
 - :hammer: An exercise aimed at practicing a topic discussed in class.
 - **:collision: This exercise is graded.**
 
+For you to succeed in this course, it is highly recommended that you read and complete all the content that is not labeled "_extra_".
 
 ## What you will need
 
@@ -72,6 +73,7 @@ Parts of this guide are annotated with the following icons:
 
 - Basic deployment
   - [:book: Cloud computing](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: Run your own virtual server on Microsoft Azure](ex/azure-setup.md)
   - [:book: Linux](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
   - [:book: Unix basics & administration](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Permissions](ex/unix-permissions.md)
@@ -81,7 +83,6 @@ Parts of this guide are annotated with the following icons:
   - [:book: Unix processes](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
   - [:book: Unix networking](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
   - [:book: APT](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
-  - [:hammer: Run your own virtual server on Microsoft Azure](ex/azure-setup.md)
   - [:hammer: Deploy a PHP application with SFTP](ex/sftp-deployment.md)
     - [Architecture](ex/sftp-deployment.md#architecture)
 
