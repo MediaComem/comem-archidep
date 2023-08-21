@@ -8,7 +8,7 @@ The goal of this exercice is to deploy the same [PHP Todolist][repo] application
 - [Legend](#legend)
 - [:gem: Requirements](#gem-requirements)
 - [:exclamation: Install PostgreSQL](#exclamation-install-postgresql)
-  - [MacOS](#macos)
+  - [macOS](#macos)
   - [Windows](#windows)
 - [:exclamation: Getting you Todolist fork up-to-date.](#exclamation-getting-you-todolist-fork-up-to-date)
   - [:exclamation: Add the upstream as a remote](#exclamation-add-the-upstream-as-a-remote)
