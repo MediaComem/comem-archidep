@@ -1,21 +1,20 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Hello Shell](#hello-shell)
-  - [Legend](#legend)
-  - [:exclamation: Creating Directories and files](#exclamation-creating-directories-and-files)
-  - [:exclamation: Adding Clues](#exclamation-adding-clues)
-  - [:question: Test the treasure hunt](#question-test-the-treasure-hunt)
-  - [:exclamation: Automate the treasure hunt using shell scripting](#exclamation-automate-the-treasure-hunt-using-shell-scripting)
-  - [:exclamation: Make `auto_hunt` executable from any directory](#exclamation-make-auto_hunt-executable-from-any-directory)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # Hello Shell
 
 In this exercise you will be setting up a little [Command Line][command-line] treasure hunt for adventurers who might wind up on your server. You will then automate the hunt using [Shell Scripting][shell-scripting]. The goal of this exercise is to familiarise yourself with the command line and its basic programs, as well as the automatisation of tasks using basic scripting.
 
 > :warning: **These tasks should only be completed using Terminal or Git Bash. Using GUI tools would be pointless**.
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Legend](#legend)
+- [:exclamation: Creating Directories and files](#exclamation-creating-directories-and-files)
+- [:exclamation: Adding Clues](#exclamation-adding-clues)
+- [:question: Test the treasure hunt](#question-test-the-treasure-hunt)
+- [:exclamation: Automate the treasure hunt using shell scripting](#exclamation-automate-the-treasure-hunt-using-shell-scripting)
+- [:exclamation: Make `auto_hunt` executable from any directory](#exclamation-make-auto_hunt-executable-from-any-directory)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Legend
 
