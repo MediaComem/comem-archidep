@@ -73,6 +73,7 @@ Write a short script automating the whole treasure hunt. To do so, create a file
 - Save your script and exit your text editor.
 - Test your script by running `sh auto_hunt.sh`
 
+<details>
 <summary>Solution</summary>
 
 ```bash
@@ -91,6 +92,7 @@ read_clue forest/tree.txt
 
 sh forest/tree.txt
 ```
+</details>
 
 
 [command-line]: (https://mediacomem.github.io/comem-archidep/2022-2023/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
