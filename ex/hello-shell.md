@@ -54,7 +54,7 @@ Using your preferred method, update the files we just created with the specified
 ## :question: Test the treasure hunt
 Ensure your setup is in order:
 
-- Transition to the treasure_hunt directory.
+- Transition to the `treasure_hunt` directory.
 - Examine the contents of `echo.txt` within the cave directory.
 - Guided by the clue, proceed to the subsequent directory.
 - Unravel the next hint and move forward accordingly.
@@ -72,7 +72,8 @@ Follow these steps to script and automate your entire treasure hunt:
 - Systematically script the commands to journey through the treasure hunt. Introduce a theatrical pause of 2 seconds between commands using the `sleep` command for heightened suspense.
   >:books: The sleep command is a simple yet useful utility in Unix-like operating systems that pauses the execution of a program or script for a specified duration. For beginners getting acquainted with scripting or command-line tasks, think of sleep as a way to introduce deliberate delays. By inputting sleep followed by a number, the system will pause for that many seconds. For instance, sleep 5 will introduce a pause of five seconds.
 
-  >:gem: You could also write a function combining the reading of the file and the short pause for reusability's sake.
+  >:gem: For a touch of efficiency, consider crafting a function that merges the file reading and short delay. This promotes reusability throughout your script.
+
 - To execute the command found within `forest/tree.txt`, incorporate: `sh forest/tree.txt`.
 - Preserve your hard work by saving the script and gracefully exiting your text editor.
 - Jumpstart your treasure hunt automation with the command:
@@ -103,20 +104,20 @@ sh forest/tree.txt
 </details>
 
 ## :exclamation: Make `auto_hunt` executable from any directory
-As of now, we need to use the `sh` command and provide an accurate filepath to run the shell script. Try running:
+Currently, to execute the shell script, you must use the sh command followed by the script's precise filepath. Assuming you are in the home directory, try running:
 
 ```bash
 $> ./auto_hunt
 permission denied: ./auto_hunt
 ```
-The error message `permission denied: ./auto_hunt` that you see is coming from the shell, indicating that it has been denied the permission to execute the file named auto_hunt. In Unix-like operating systems, files have certain permissions associated with them, determining who can read, write, or execute them. When you try to run ./auto_hunt without the necessary execute permission, the system prevents it from being executed, leading to this error.
+The error message `permission denied: ./auto_hunt` that you see indicates that the shell  has been denied the permission to execute the file named `auto_hunt`. In Unix-like operating systems, files have certain permissions associated with them, determining who can read, write, or execute them. When you try to run `./auto_hunt` without the necessary execute permission, the system prevents it from being executed, leading to this error.
 
-Let's fix this error by making `auto_hunt` executable :
+To address this, let's grant the `auto_hunt` script execute permissions:
 
 ```bash
 $> chmod +x auto_hunt
 ```
-:warning: **You do not need to understand the intricacies of Unix permissions at this point in the course. We will be introducing this topic later in the semester**.
+:warning: **At this juncture in the course, delving into the intricacies of Unix permissions isn't required. We'll embark on a deeper exploration of this topic as the semester progresses.**.
 
 Running the script now works:
 
@@ -126,66 +127,74 @@ To find the next clue, search where the water flows
 ...
 ```
 
-But wouldn't it be nice to be able to run this script without the path leading to it, like other commands we've been using? Try running:
+Wouldn't it be convenient to execute this script without specifying its full path, much like the other commands we've utilized so far? Give this a shot by trying:
 
 ```bash
 $> auto_hunt
 command not found: auto_hunt
 ```
-The error message `command not found: auto_hunt` essentially means that the shell couldn't find a command or program named auto_hunt in the places it usually looks for such commands.
+The error message `command not found: auto_hunt` essentially means that the shell couldn't find a command or program named `auto_hunt` in the places it usually looks for such commands. When you type a command in the terminal, the shell searches for that command in a list of directories specified in a variable called `PATH`. If the command or program isn't located in any of these directories, you'll get the "command not found" error.
 
-When you type a command in the terminal, the shell searches for that command in a list of directories specified in a variable called `PATH`. If the command or program isn't located in any of these directories, you'll get the "command not found" error.
+Let's probe where our shell currently scouts for executable programs:
 
-To add `auto_hunt` to your `PATH`, you need to update the `PATH` environment variable to include the directory containing the `auto_hunt` script or program. Here's how you can do it:
+```bash
+$> echo $PATH
+/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+```
+
+The above command displays the contents of the `PATH` environment variable. The response enumerates the directories where the shell scans for executable files. As evident, the `~/treasure_hunt` directory is conspicuously absent from this compilation. Consequently, our shell remains oblivious to any executable linked with the `auto_hunt` command.
+
+
+To add `auto_hunt` to your `PATH`, you need to update the `PATH` environment variable to include the directory containing the `auto_hunt` script. Here's how you can do it:
 
 You can temporarily add the directory to your `PATH` for the current session with:
 
 ```bash
 $> export PATH=$PATH:~/treasure_hunt
-$> auto_hunt
-To find the next clue, search where the water flows
 ```
 
-However, if you close your shell session, this change to the `PATH` will not be saved. To permemenantly change the `PATH`, you'll need to add the export line to your shell's startup file. The specific file depends on the shell you're using:
-
-- For bash (Git Bash), it's typically `~/.bashrc` or `~/.bash_profile`.
-
-- For zsh (MacOS), it's `~/.zshrc`.
-
-You can add the line using a text editor. For example, to add it to `~/.bashrc`:
+If you now run the following, you will see that your script is executed:
 
 ```bash
-$> nano ~/.bashrc
+$> auto_hunt
+To find the next clue, search where the water flows
+...
 ```
 
-At the bottom of the file, add the following line:
+Restart your shell and attempt executing auto_hunt once more. Oops! It seems our PATH has reverted to its original configuration.
+
+To permemenantly change the `PATH`, you'll need to add the export line to your shell's initialization file. The specific file depends on the shell you're using:
+
+- For `bash` (Git Bash), it's typically `~/.bashrc` or `~/.bash_profile`.
+
+- For `zsh` (MacOS), it's `~/.zshrc`.
+
+With your preferred command-line text editor, append the following line to the end of your shell's initialization file:
 
 ```bash
 export PATH=$PATH:~/treasure_hunt
 ```
 
->:books: Let's break this line down.
->
-> **`export`**: This is a shell builtin command used to mark variables for export to subsequent commands or to child processes. By exporting a variable, it becomes an environment variable and can be accessed by any child processes (like scripts or other programs) that the shell spawns.
->
->**`PATH`**: This is one of the most critical environment variables in Unix-like operating systems. It tells the shell where to look for executable files in response to commands entered by the user. Its value is a list of directories separated by colons (:).
->
->**`$PATH`**: Here, the $ is used to retrieve the current value of the `PATH` variable. So, `$PATH` represents whatever directories are currently in your `PATH`.
->
->**`:`** : In the context of the PATH variable, the colon (:) is used as a delimiter to separate different directory paths.
->
->**`~/treasure_hunt`**: This is a directory named treasure_hunt located within the user's home directory.
->
->By combining all these components this line, retrieves the current value of `PATH` with `$PATH`, appends `~/treasure_hunt` to that value, which effectively adds the `treasure_hunt` directory from the user's home to the list of directories the shell searches when looking for executables. In simple terms, after executing this command, the shell will also look in the ~/treasure_hunt directory when you try to run a command, in addition to all the other directories already in your PATH.
+Let's break this line down.
 
+ **`export`**: This command tells the shell to make a variable available for other processes or commands that come after. When you export a variable, it's like announcing to programs and scripts you might run next, "Hey, you can use this!"
 
-To apply the changes made to the configuration file without having to close and reopen the terminal, you can source it:
+**`PATH`**: This is one of the most critical environment variables in Unix-like operating systems. It tells the shell where to look for executable files in response to commands entered by the user. Its value is a list of directories separated by colons (:).
+
+**`$PATH`**: Here, the $ is used to retrieve the current value of the `PATH` variable. So, `$PATH` represents whatever directories are currently in your `PATH`.
+
+**`:`** : In the context of the PATH variable, the colon (:) is used as a delimiter to separate different directory paths.
+
+**`~/treasure_hunt`**: This is a directory named treasure_hunt located within the user's home directory.
+
+n this command, we merge several elements together. Firstly, `$PATH` retrieves the present PATH value. Then, `~/treasure_hunt` gets tacked onto that value. Essentially, this operation adds the `treasure_hunt` directory in the user's home to the roster of directories the shell peruses when seeking executables. Put plainly, after initiating this command, the shell will extend its search to the `~/treasure_hunt` directory whenever a command is run, supplementing the directories already listed in your `PATH`.
+
+To incorporate the modifications made to the startup file without restarting your terminal, simply "source" the file:
 
 For bash:
 ```bash
 $> source ~/.bashrc
 ```
-
 
 For zsh:
 ```bash
@@ -217,6 +226,14 @@ cNo..lXXXXXXXXXOolkXXXXXXXXXkl,..;:';.
   ';.:xxxxxocccoxxxxxxxxxxxxxxxxxxxxxxl::'.';;.
   ';........................................;l'
 ```
+
+:checkered_flag: What just happened?
+
+In this exercise, we navigated through basic Unix commands. We started by creating directories and files using basic Unix commands. We then crafted a "treasure hunt", where we used these commands to create and modify files.
+
+We further explored the curl command and its capabilities in interacting with the internet directly from the command line. Transitioning to shell scripting, we automated the treasure hunt sequence with the `auto_hunt` script.
+
+A challenge arose when trying to run the script from any directory, which led us to tinker with file permissions and the PATH environment variable. By modifying permissions and adjusting the PATH, we ensured our script was easily accessible from any location in the terminal.
 
 [command-line]: (https://mediacomem.github.io/comem-archidep/2022-2023/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
 [shell-scripting]: (https://mediacomem.github.io/comem-archidep/2022-2023/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
