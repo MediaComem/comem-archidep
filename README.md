@@ -56,6 +56,8 @@ For you to succeed in this course, it is highly recommended that you read and co
 
 - Introduction
   - [:book: Command line](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Shell scripting](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: Hello Shell](ex/hello-shell.md)
   - [:book: Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
 - Version control
   - [:book: Version control with Git](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
@@ -115,7 +117,6 @@ For you to succeed in this course, it is highly recommended that you read and co
     - [Architecture](ex/certbot-deployment.md#architecture)
 
 - Automated deployment
-  - [:book: Shell scripting](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
   - [:book: Git hooks](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
     - [Architecture](ex/git-automated-deployment.md#architecture)
