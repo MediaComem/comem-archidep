@@ -166,7 +166,7 @@ To find the next clue, search where the water flows
 ...
 ```
 
-Restart your shell and attempt executing auto_hunt once more. Oops! It seems our PATH has reverted to its original configuration.
+Restart your shell and attempt executing `auto_hunt` once more. Oops! It seems our PATH has reverted to its original configuration.
 
 To permemenantly change the `PATH`, you'll need to add the export line to your shell's initialization file. The specific file depends on the shell you're using:
 
@@ -188,11 +188,11 @@ Let's break this line down.
 
 **`$PATH`**: Here, the $ is used to retrieve the current value of the `PATH` variable. So, `$PATH` represents whatever directories are currently in your `PATH`.
 
-**`:`** : In the context of the PATH variable, the colon (:) is used as a delimiter to separate different directory paths.
+**`:`** : In the context of the `PATH` variable, the colon (:) is used as a delimiter to separate different directory paths.
 
 **`~/treasure_hunt`**: This is a directory named treasure_hunt located within the user's home directory.
 
-n this command, we merge several elements together. Firstly, `$PATH` retrieves the present PATH value. Then, `~/treasure_hunt` gets tacked onto that value. Essentially, this operation adds the `treasure_hunt` directory in the user's home to the roster of directories the shell peruses when seeking executables. Put plainly, after initiating this command, the shell will extend its search to the `~/treasure_hunt` directory whenever a command is run, supplementing the directories already listed in your `PATH`.
+n this command, we merge several elements together. Firstly, `$PATH` retrieves the present `PATH`` value. Then, `~/treasure_hunt` gets tacked onto that value. Essentially, this operation adds the `treasure_hunt` directory in the user's home to the roster of directories the shell peruses when seeking executables. Put plainly, after initiating this command, the shell will extend its search to the `~/treasure_hunt` directory whenever a command is run, supplementing the directories already listed in your `PATH`.
 
 To incorporate the modifications made to the startup file without restarting your terminal, simply "source" the file:
 
@@ -238,7 +238,7 @@ In this exercise, we navigated through basic Unix commands. We started by creati
 
 We further explored the curl command and its capabilities in interacting with the internet directly from the command line. Transitioning to shell scripting, we automated the treasure hunt sequence with the `auto_hunt` script.
 
-A challenge arose when trying to run the script from any directory, which led us to tinker with file permissions and the PATH environment variable. By modifying permissions and adjusting the PATH, we ensured our script was easily accessible from any location in the terminal.
+A challenge arose when trying to run the script from any directory, which led us to tinker with file permissions and the `PATH` environment variable. By modifying permissions and adjusting the `PATH`, we ensured our script was easily accessible from any location in the terminal.
 
 [command-line]: (https://mediacomem.github.io/comem-archidep/2022-2023/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
 [shell-scripting]: (https://mediacomem.github.io/comem-archidep/2022-2023/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
