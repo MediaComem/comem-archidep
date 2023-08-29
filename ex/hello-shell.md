@@ -12,7 +12,9 @@ In this exercise, you'll set up a mini treasure hunt for adventurers navigating 
 - [:exclamation: Adding Clues](#exclamation-adding-clues)
 - [:question: Test the treasure hunt](#question-test-the-treasure-hunt)
 - [:exclamation: Automate the treasure hunt using shell scripting](#exclamation-automate-the-treasure-hunt-using-shell-scripting)
-- [:exclamation: Make `auto_hunt` executable from any directory](#exclamation-make-auto_hunt-executable-from-any-directory)
+- [:exclamation: Make `auto_hunt` executable](#exclamation-make-auto_hunt-executable)
+- [:exclamation: Running `auto_hunt` from any directory](#exclamation-running-auto_hunt-from-any-directory)
+- [:checkered_flag: What just happened?](#checkered_flag-what-just-happened)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -103,7 +105,8 @@ sh forest/tree.txt
 ```
 </details>
 
-## :exclamation: Make `auto_hunt` executable from any directory
+## :exclamation: Make `auto_hunt` executable
+
 Currently, to execute the shell script, you must use the sh command followed by the script's precise filepath. Assuming you are in the home directory, try running:
 
 ```bash
@@ -126,6 +129,8 @@ $> ./auto_hunt
 To find the next clue, search where the water flows
 ...
 ```
+
+## :exclamation: Running `auto_hunt` from any directory
 
 Wouldn't it be convenient to execute this script without specifying its full path, much like the other commands we've utilized so far? Give this a shot by trying:
 
@@ -227,7 +232,7 @@ cNo..lXXXXXXXXXOolkXXXXXXXXXkl,..;:';.
   ';........................................;l'
 ```
 
-:checkered_flag: What just happened?
+## :checkered_flag: What just happened?
 
 In this exercise, we navigated through basic Unix commands. We started by creating directories and files using basic Unix commands. We then crafted a "treasure hunt", where we used these commands to create and modify files.
 
