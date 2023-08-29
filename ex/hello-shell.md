@@ -7,7 +7,7 @@
   - [:exclamation: Adding Clues](#exclamation-adding-clues)
   - [:question: Test the treasure hunt](#question-test-the-treasure-hunt)
   - [:exclamation: Automate the treasure hunt using shell scripting](#exclamation-automate-the-treasure-hunt-using-shell-scripting)
-  - [Make your `auto_hunt` executable from any directory](#make-your-auto_hunt-executable-from-any-directory)
+  - [:exclamation: Make `auto_hunt` executable from any directory](#exclamation-make-auto_hunt-executable-from-any-directory)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -97,7 +97,7 @@ sh forest/tree.txt
 ```
 </details>
 
-## Make your `auto_hunt` executable from any directory
+## :exclamation: Make `auto_hunt` executable from any directory
 As of now, we need to use the `sh` command and provide an accurate filepath to run the shell script. Try running:
 
 ```bash
