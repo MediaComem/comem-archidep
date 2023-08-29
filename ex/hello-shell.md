@@ -192,7 +192,7 @@ Let's break this line down.
 
 **`~/treasure_hunt`**: This is a directory named treasure_hunt located within the user's home directory.
 
-n this command, we merge several elements together. Firstly, `$PATH` retrieves the present `PATH`` value. Then, `~/treasure_hunt` gets tacked onto that value. Essentially, this operation adds the `treasure_hunt` directory in the user's home to the roster of directories the shell peruses when seeking executables. Put plainly, after initiating this command, the shell will extend its search to the `~/treasure_hunt` directory whenever a command is run, supplementing the directories already listed in your `PATH`.
+n this command, we merge several elements together. Firstly, `$PATH` retrieves the present `PATH` value. Then, `~/treasure_hunt` gets tacked onto that value. Essentially, this operation adds the `treasure_hunt` directory in the user's home to the roster of directories the shell peruses when seeking executables. Put plainly, after initiating this command, the shell will extend its search to the `~/treasure_hunt` directory whenever a command is run, supplementing the directories already listed in your `PATH`.
 
 To incorporate the modifications made to the startup file without restarting your terminal, simply "source" the file:
 
