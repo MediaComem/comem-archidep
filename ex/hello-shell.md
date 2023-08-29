@@ -73,6 +73,24 @@ Write a short script automating the whole treasure hunt. To do so, create a file
 - Save your script and exit your text editor.
 - Test your script by running `sh auto_hunt.sh`
 
+<summary>Solution</summary>
+
+```bash
+cd ~/treasure_hunt
+
+read_clue() {
+        cat $1
+        sleep 2
+}
+
+read_clue cave/echo.txt
+
+read_clue lake/fish.txt
+
+read_clue forest/tree.txt
+
+sh forest/tree.txt
+```
 
 
 [command-line]: (https://mediacomem.github.io/comem-archidep/2022-2023/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
