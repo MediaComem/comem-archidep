@@ -16,11 +16,11 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Plan](#plan)
-- [How to improve our basic deployment](#how-to-improve-our-basic-deployment)
+- [Legend](#legend)
 - [What you will need](#what-you-will-need)
-- [Exercises](#exercises)
+- [Plan](#plan)
 - [Frequently Asked Questions](#frequently-asked-questions)
+  - [What is the meaning of life?](#what-is-the-meaning-of-life)
   - [How do I do *X* with the command line?](#how-do-i-do-x-with-the-command-line)
   - [How do I connect to my server and stuff?](#how-do-i-connect-to-my-server-and-stuff)
   - [How do I do *Y* with Git?](#how-do-i-do-y-with-git)
@@ -28,84 +28,16 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Plan
 
-- Introduction
-  - [Command line](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
-  - [Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
-- Version control
-  - [Version control with Git](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
-  - [Git branching](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
-  - [Collaborating with Git](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
-- Security
-  - [Open Web Application Security Project][owasp]
-  - [OWASP Top 10 - The Ten Most Critical Web Application Security Risks][owasp-top10]
-  - [The image gallery](./ex/security-gallery.md)
-  - [The CSRF bank](https://github.com/MediaComem/csrf-bank)
-    - [Phishing page](https://github.com/MediaComem/phishing)
-- Basic deployment
-  - [Cloud computing](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
-  - [Linux](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
-  - [Unix basics & administration](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
-  - [Unix processes](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
-  - [Unix networking](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
-  - [APT](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
-- [How to improve our basic deployment](#how-to-improve-our-basic-deployment)
-- Advanced deployment
-  - [Twelve-factor app][12factor]
-  - [Unix environment variables](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
-  - [Linux process management](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
-  - [Domain Name System (DNS)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
-  - [Reverse proxying](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
-  - [TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
-- Automated deployment
-  - [Shell scripting](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
-  - [Git hooks](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
-- Managed deployments
-  - [Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/paas?home=MediaComem%2Fcomem-archidep%23readme)
-- _Software development (extra)_
-  - [Continuous software development](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
-  - [Automated testing (2018)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
-  - [Automated testing (2020)](https://mediacomem.github.io/comem-archioweb/2022-2023/subjects/automated-testing/?home=MediaComem%2Fcomem-archioweb%23readme#1)
-    - [YouTube: Expecting Profesionnalism – Robert C. Martin](https://youtu.be/BSaAMQVq01E)
-    - [YouTube: GOTO 2017 – The Scribe's Oath – Robert C. Martin](https://youtu.be/Tng6Fox8EfI)
-    - [YouTube: The Future of Programming – Robert C. Martin](https://youtu.be/ecIWPzGEbFc)
+## Legend
 
-## How to improve our basic deployment
+Parts of this guide are annotated with the following icons:
 
-The basic SFTP deployment of the PHP TodoList has several flaws which we will
-fix during the rest of the course:
+- :book: Slides or written documents pertaining to the various topics discussed during this course.
+- :hammer: An exercise aimed at practicing a topic discussed in class.
+- **:collision: This exercise is graded.**
 
-- Transfering files manually through SFTP is slow and error-prone. We will use
-  **Git** to reliably transfer files [from our central
-  codebase][12factor-codebase] and easily keep our deployment up-to-date over
-  time.
-- [Hardcoding configuration is a bad practice][12factor-config]. We will use
-  **environment variables** so that our application can be dynamically
-  configured and deployed in any environment without changing its source code.
-- Starting our application manually is not suitable for a production deployment.
-  We will use a **process manager** to manage the lifecycle of our application:
-  starting it automatically when the server boots, and restarting it
-  automatically if it crashes.
-- Accessing a web application through an IP address is not user-friendly. We
-  will obtain a domain and configure its DNS zone file so that our application
-  is accessible with a human-readable **domain name**.
-- Using a non-standard port is not user-friendly either. We will run the
-  application on **port 80 or 443** so that the end user does not have to
-  specify a port in the browser's address bar.
-- Running our application server directly on port 80 or 443 will cause a
-  problem: only one process can listen on a given port at the same time. We need
-  another tool to support **multiple production deployments on the same
-  server**. That will be the job of a reverse proxy like [Apache][apache] or
-  [nginx][nginx].
-- Our application is not secure as indicated by the browser, because it is
-  served over HTTP and not HTTPS. We will obtain a **TLS/SSL certificate**
-  signed by a trusted certificate authority so that our application can be
-  served over HTTPS and recognized as secure by browsers.
-- The [PHP Development Server][php-dev-server] is not meant to deploy
-  applications in production environments. We will use the [**FastCGI Process
-  Manager**][php-fpm] to perform a production-grade deployment, making our
-  application more resilient and able to serve more clients concurrently.
+For you to succeed in this course, it is highly recommended that you read and complete all the content that is not labeled "_extra_".
 
 ## What you will need
 
@@ -120,60 +52,102 @@ fix during the rest of the course:
 - [Google Chrome][chrome] (recommended, any browser with developer tools will do)
 - A free [Render][render] account
 
-## Exercises
+## Plan
 
-- **Version control**
-  - [Collaborative exercise](https://github.com/MediaComem/comem-archidep-php-todo-exercise) (**graded**)
-  - [Clone a repository from a server](ex/git-clone-from-server.md)
-  - [Push a repository to a server](ex/git-push-to-server.md)
-- **Unix**
-  - [Permissions](ex/unix-permissions.md)
+- Introduction
+  - [:book: Command line](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Shell scripting](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: Hello Shell](ex/hello-shell.md)
+  - [:book: Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
+- Version control
+  - [:book: Version control with Git](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Git branching](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Collaborating with Git](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
+  - **[:collision: :hammer: Collaborative exercise](https://github.com/MediaComem/comem-archidep-php-todo-exercise)**
+  - [:hammer: Clone a repository from a server](ex/git-clone-from-server.md)
+  - [:hammer: Push a repository to a server](ex/git-push-to-server.md)
+- Security
+  - [:book: Open Web Application Security Project][owasp]
+  - [:book: OWASP Top 10 - The Ten Most Critical Web Application Security Risks][owasp-top10]
+  - [:book: The image gallery](./ex/security-gallery.md)
+  - [:book: The CSRF bank](https://github.com/MediaComem/csrf-bank)
+  - [:book: Phishing page](https://github.com/MediaComem/phishing)
+
+- Basic deployment
+  - [:book: Cloud computing](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: Run your own virtual server on Microsoft Azure](ex/azure-setup.md)
+  - [:book: Linux](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Unix basics & administration](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: Permissions](ex/unix-permissions.md)
     - [Solutions](ex/unix-permissions-solutions.md)
-  - [Pipeline](ex/unix-pipeline.md)
+  - [:hammer: Pipeline](ex/unix-pipeline.md)
     - [Solutions](ex/unix-pipeline-solutions.md)
-- **Basic deployment**
-  - [Run your own virtual server on Microsoft Azure](ex/azure-setup.md)
-  - [Deploy a PHP application with SFTP](ex/sftp-deployment.md)
+  - [:book: Unix processes](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Unix networking](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: APT](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: Deploy a PHP application with SFTP](ex/sftp-deployment.md)
     - [Architecture](ex/sftp-deployment.md#architecture)
-- **Advanced deployment**
-  - [Deploy a PHP application with Git](ex/git-clone-deployment.md)
+
+- Advanced deployment
+  - [:hammer: Deploy a PHP application with Git](ex/git-clone-deployment.md)
     - [Architecture](ex/git-clone-deployment.md#architecture)
-  - [Configure a PHP application through environment variables](ex/config-through-environment.md)
+  - [:book: Twelve-factor app][12factor]
+  - [:book: Unix environment variables](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: Configure a PHP application through environment variables](ex/config-through-environment.md)
     - [Architecture](ex/config-through-environment.md#architecture)
-  - [Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md)
+  - [:book: Linux process management](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md)
     - [Solution](ex/systemd-deployment-solution.md)
     - [Architecture](ex/systemd-deployment.md#architecture)
-  - [Configure a domain name](ex/dns-configuration.md)
+  - [:book: Domain Name System (DNS)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: Configure a domain name](ex/dns-configuration.md)
     - [Architecture](ex/dns-configuration.md#architecture)
-  - [Deploy a static site with nginx](ex/nginx-static-deployment.md)
+  - [:book: Reverse proxying](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: Deploy a static site with nginx](ex/nginx-static-deployment.md)
     - [Solution](ex/nginx-static-deployment-solution.md)
     - [Architecture](ex/nginx-static-deployment.md#architecture)
-  - [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
+  - [:hammer: Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
     - [Solution](ex/nginx-php-fpm-deployment-solution.md)
     - [Architecture](ex/nginx-php-fpm-deployment.md#architecture)
-  - [Deploy a multi-component web application with nginx](./ex/revprod-deployment.md)
+  - [:hammer: Deploy a multi-component web application with nginx](./ex/revprod-deployment.md)
     - [Solution](ex/revprod-deployment-solution.md)
     - [Architecture](ex/revprod-deployment.md#architecture)
-  - [Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
+  - [:book: TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
     - [Architecture](ex/certbot-deployment.md#architecture)
-  - [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
+
+- Automated deployment
+  - [:book: Git hooks](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
     - [Architecture](ex/git-automated-deployment.md#architecture)
-  - [Deploy Flood It, a Spring Boot (Java) & Angular application with a PostgreSQL database (**graded**)](ex/floodit-deployment.md)
-  - [Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
-    - [Architecture](ex/fibscale-deployment.md#architecture)
-- **Platform-as-a-Service deployment**
-  - [Deploy a static site to GitHub Pages](./ex/github-pages-deployment.md)
-  - [Deploy a static site to Netlify](./ex/netlify-static-deployment.md)
-  - [Deploy web applications with a database to Render](./ex/render-database-deployment.md)
-- _Extra_
-  - [Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database](ex/one-chat-room-deployment.md)
+
+- Complete Deployments
+  - **[:collision: :hammer: Deploy Flood It, a Spring Boot (Java) & Angular application with a PostgreSQL database](ex/floodit-deployment.md)**
+  - [:hammer: Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database](ex/one-chat-room-deployment.md) (_extra_)
     - [Diagram](ex/end-result.pdf)
-  - [Deploy Big Browser, a Nest.js (Node.js) application with a Redis database](ex/big-browser-deployment.md)
-  - [Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md)
-  - [Deploy RPS, a Node.js & Svelte web application with a PostgreSQL database](ex/rps-deployment.md)
-  - [Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md)
+  - [:hammer: Deploy Big Browser, a Nest.js (Node.js) application with a Redis database](ex/big-browser-deployment.md) (_extra_)
+  - [:hammer: Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md) (_extra_)
+  - [:hammer: Deploy RPS, a Node.js & Svelte web application with a PostgreSQL database](ex/rps-deployment.md) (_extra_)
+  - [:hammer: Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md) (_extra_)
     - [Architecture](ex/minesweeper-deployment.md#books-architecture)
-  - [Configure nginx as a load balancer](ex/load-balancing-deployment.md)
+
+- Managed deployments
+  - [:book: Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/paas?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: Deploy a static site to GitHub Pages](./ex/github-pages-deployment.md)
+  - [:hammer: Deploy a static site to Netlify](./ex/netlify-static-deployment.md)
+  - [:hammer: Deploy web applications with a database to Render](./ex/render-database-deployment.md)
+
+- _Advanced Topics (extra)_
+  - [:book: Continuous software development](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Automated testing (2018)](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Automated testing (2020)](https://mediacomem.github.io/comem-archioweb/2022-2023/subjects/automated-testing/?home=MediaComem%2Fcomem-archioweb%23readme#1)
+    - [:movie_camera: YouTube: Expecting Profesionnalism – Robert C. Martin](https://youtu.be/BSaAMQVq01E)
+    - [:movie_camera: YouTube: GOTO 2017 – The Scribe's Oath – Robert C. Martin](https://youtu.be/Tng6Fox8EfI)
+    - [:movie_camera: YouTube: The Future of Programming – Robert C. Martin](https://youtu.be/ecIWPzGEbFc)
+  - [:hammer: Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
+    - [Architecture](ex/fibscale-deployment.md#architecture)
+  - [:hammer: Configure nginx as a load balancer](ex/load-balancing-deployment.md)
+
 
 ## Frequently Asked Questions
 
