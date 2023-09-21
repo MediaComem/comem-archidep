@@ -33,6 +33,7 @@
     "watch": "courses-md watch"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
     "chalk": "^5.0.1",
     "commander": "^11.0.0",
     "courses-md": "~0.7.5",
@@ -43,7 +44,6 @@
     "inquirer": "^9.1.1",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.20",
-    "nodemailer": "^6.4.11",
     "ora": "^7.0.0",
     "prettier": "^3.0.3",
     "table": "^6.0.3",

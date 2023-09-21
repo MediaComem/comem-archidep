@@ -1,3 +1,4 @@
+import sendgrid from '@sendgrid/mail';
 import chalk from 'chalk';
 import { createHmac } from 'crypto';
 import { parse as parseCsvNode } from 'csv-parse';
@@ -6,7 +7,6 @@ import inquirer from 'inquirer';
 import { load as loadYaml } from 'js-yaml';
 import isFunction from 'lodash/isFunction.js';
 import mapValues from 'lodash/mapValues.js';
-import nodemailer from 'nodemailer';
 import { dirname, join as joinPath, resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -198,18 +198,15 @@ export async function readFile(absolutePath, options = 'utf8') {
 }
 
 export async function sendMail(options) {
-  const config = await loadConfig();
-  const transporter = await loadMailTransporter();
+  const apiKey = await loadConfigProperty('sendgrid_api_key');
+  sendgrid.setApiKey(apiKey);
 
-  const mailOptions = {
-    from: config.smtp_address,
+  const fromName = await loadConfigProperty('sendgrid_from_name');
+  const fromEmail = await loadConfigProperty('sendgrid_from_email');
+
+  return sendgrid.send({
+    from: `${fromName} <${fromEmail}>`,
     ...options
-  };
-
-  return new Promise((resolve, reject) => {
-    transporter.sendMail(mailOptions, (err, info) =>
-      err ? reject(err) : resolve(info)
-    );
   });
 }
 
@@ -243,24 +240,6 @@ function getDefaultStudentUsername({ email }) {
 
 async function loadConfig() {
   return readContent(configFile, loadYaml);
-}
-
-async function loadMailTransporter() {
-  if (!mailTransporterCache) {
-    const config = await loadConfig();
-
-    mailTransporterCache = nodemailer.createTransport({
-      host: config.smtp_host,
-      port: config.smtp_port,
-      secure: config.smtp_secure,
-      auth: {
-        user: config.smtp_username,
-        pass: config.smtp_password
-      }
-    });
-  }
-
-  return mailTransporterCache;
 }
 
 async function parseCsv(...args) {
