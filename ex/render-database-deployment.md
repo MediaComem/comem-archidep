@@ -449,7 +449,7 @@ writing documentation or reporting bugs and issues.
 [automated-deployment-ex]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md
 [docker]: https://www.docker.com/
 [gitlab]: https://about.gitlab.com/
-[git-slides]: https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git/?home=MediaComem%2Fcomem-archidep%23readme#1
+[git-slides]: https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git/?home=MediaComem%2Fcomem-archidep%23readme#1
 [homebrew]: https://brew.sh/
 [nginx-php-fpm]: https://github.com/richarvey/nginx-php-fpm
 [postgresql]: https://www.postgresql.org/

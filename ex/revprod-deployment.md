@@ -547,5 +547,5 @@ server_names_hash_bucket_size 256;
 [node]: https://nodejs.org
 [node-install]: https://github.com/nodesource/distributions/blob/master/README.md
 [revprod-backend-config]: https://github.com/MediaComem/revprod-backend#configuration
-[slides]: https://mediacomem.github.io/comem-archidep/2022-2023/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#1
+[slides]: https://mediacomem.github.io/comem-archidep/2023-2024/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#1
 [sop]: https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy

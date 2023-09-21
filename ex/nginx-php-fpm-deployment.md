@@ -282,7 +282,7 @@ words, nginx should ask PHP FPM to execute the application's PHP code, because
 nginx itself does not know how to execute PHP code).
 
 You can start with the [reverse proxy
-configuration](https://mediacomem.github.io/comem-archidep/2022-2023/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29),
+configuration](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29),
 but you need to make the following changes:
 
 - Like in the previous exercise, adapt the server name and root directory.
@@ -421,7 +421,7 @@ short-lived processes run during the exercise:
 [nginx-ex]: nginx-static-deployment.md
 [nginx-fastcgi-pass]: http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
 [nginx-proxy-pass]: http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
-[slides]: https://mediacomem.github.io/comem-archidep/2022-2023/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#1
+[slides]: https://mediacomem.github.io/comem-archidep/2023-2024/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#1
 [sftp-ex]: sftp-deployment.md
 [systemd-ex]: systemd-deployment.md
 [unix-socket]: https://en.wikipedia.org/wiki/Unix_domain_socket

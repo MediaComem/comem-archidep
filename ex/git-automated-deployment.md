@@ -287,6 +287,6 @@ short-lived processes run during the exercise:
 > [Detailed architecture PDF version](git-automated-deployment.pdf).
 
 [git-bare]: https://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/
-[git-dir-work-tree]: https://mediacomem.github.io/comem-archidep/2022-2023/subjects/git/?home=MediaComem%2Fcomem-archidep%23readme#15
+[git-dir-work-tree]: https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git/?home=MediaComem%2Fcomem-archidep%23readme#15
 [git-ssh-protocol]: https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_ssh_protocol
 [php-fpm-ex]: nginx-php-fpm-deployment.md
