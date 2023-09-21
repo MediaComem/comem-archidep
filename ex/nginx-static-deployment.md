@@ -178,7 +178,7 @@ subdomain.
 You can serve any static web content this way. You can also make nginx serve as
 many separate websites as you want under different domains by creating multiple
 configuration files with different `server_name` directives, all on the same
-server (your AWS instance).
+server (your Azure instance).
 
 ### :classical_building: Architecture
 

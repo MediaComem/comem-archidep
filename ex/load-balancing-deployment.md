@@ -1,9 +1,8 @@
 # Configure nginx as a load balancer for a Node.js application run with PM2
 
 The goal of this exercice is to use [PM2][pm2], a Node.js process manager, to
-deploy 3 instances of a Node.js web application on your AWS server, and to
-configure Nginx as a load balancer to distribute incoming traffic to these 3
-instances.
+deploy 3 instances of a Node.js web application on your server, and to configure
+Nginx as a load balancer to distribute incoming traffic to these 3 instances.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->

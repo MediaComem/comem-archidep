@@ -46,20 +46,6 @@ export function executeScript(func) {
     });
 }
 
-export async function loadAwsCredentials() {
-  if (!process.env.AWS_ACCESS_KEY_ID) {
-    process.env.AWS_ACCESS_KEY_ID = await loadConfigProperty(
-      'aws_access_key_id'
-    );
-  }
-
-  if (!process.env.AWS_SECRET_ACCESS_KEY) {
-    process.env.AWS_SECRET_ACCESS_KEY = await loadConfigProperty(
-      'aws_secret_access_key'
-    );
-  }
-}
-
 export async function loadConfigProperty(name) {
   const config = await loadConfig();
   if (!config[name]) {

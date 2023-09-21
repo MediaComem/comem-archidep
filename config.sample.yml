@@ -1,22 +1,7 @@
-aws_access_key_id: 'changeme'
-aws_secret_access_key: 'changeme'
-aws_base_domain: archidep.ch
-aws_instance_type: t3.small
-aws_key_name: ArchiDep
-aws_regions:
-  eu-west-1:
-    image: ami-0ac019f4fcb7cb7e6
-    limit: 10
-    security_group: sg-changeme
-  eu-west-2:
-    image: ami-0ac019f4fcb7cb7e6
-    limit: 5
-    security_group: sg-changemetoo
-aws_subnet: subnet-changeme
-aws_alice_password: changeme
 smtp_address: no-reply@example.com
 smtp_host: mail.example.com
 smtp_port: 465
 smtp_secure: true
 smtp_username: no-reply@example.com
 smtp_password: 'changeme'
+vm_base_domain: example.com
