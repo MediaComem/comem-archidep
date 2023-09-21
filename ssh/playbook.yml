@@ -50,7 +50,15 @@
       lineinfile:
         path: /etc/ssh/sshd_config
         regexp: '^PasswordAuthentication '
-        line: 'PasswordAuthentication {{ "yes" if (ssh_password_authentication | bool) else "no" }}'
+        line: 'PasswordAuthentication {{ "yes" if (ssh_password_authentication | bool) else "no" }}'
+      when: ssh_password_authentication is defined
+      tags: [ssh]
+
+    - name: Enable SSH password authentication
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^ChallengeResponseAuthentication '
+        line: 'ChallengeResponseAuthentication {{ "yes" if (ssh_password_authentication | bool) else "no" }}'
       when: ssh_password_authentication is defined
       tags: [ssh]
 
