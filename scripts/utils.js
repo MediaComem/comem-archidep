@@ -106,11 +106,12 @@ export async function loadData() {
         usernames.set(student.username, student);
       }
 
-      // The goal is not to generate a secure password, or to have a good quality random distribution,
-      // but just to set an initial password for each student that looks random and is different from the others.
+      // The goal is not to generate a secure password, or to have a good
+      // quality random distribution, but just to set an initial password for
+      // each student that looks random and is different from the others.
       student.password = createHmac('sha1', secret)
         .update(student.username)
-        .digest('base64')
+        .digest('hex')
         .slice(0, 10);
 
       const i = passwords.indexOf(student.password);
