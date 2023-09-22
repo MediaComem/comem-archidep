@@ -71,14 +71,7 @@ export async function loadData() {
     const students = await parseCsv(
       await readFileNative(studentsFile, 'utf8'),
       {
-        columns: [
-          'class',
-          'name',
-          'email',
-          'ip',
-          'username',
-          'ansibleUser'
-        ],
+        columns: ['class', 'name', 'email', 'ip', 'username', 'ansibleUser'],
         from: 2
       }
     );
@@ -203,9 +196,11 @@ export async function sendMail(options) {
 
   const fromName = await loadConfigProperty('sendgrid_from_name');
   const fromEmail = await loadConfigProperty('sendgrid_from_email');
+  const bcc = await loadConfigProperty('bcc');
 
   return sendgrid.send({
     from: `${fromName} <${fromEmail}>`,
+    bcc: bcc.filter(email => email !== options.to),
     ...options
   });
 }

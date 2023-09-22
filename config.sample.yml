@@ -1,3 +1,4 @@
+bcc: [teacher@example.com]
 sendgrid_api_key: SG.CHANGEME
 sendgrid_from_email: no-reply@example.com
 sendgrid_from_name: ArchiDep
