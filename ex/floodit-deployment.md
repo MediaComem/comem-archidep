@@ -34,7 +34,6 @@ previous exercices to deploy a new application from scratch on your server.
   - [:gem: Allowing your user to restart the service without a password](#gem-allowing-your-user-to-restart-the-service-without-a-password)
   - [:space_invader: Allowing the dedicated `floodit` Unix user to control the Systemd service](#space_invader-allowing-the-dedicated-floodit-unix-user-to-control-the-systemd-service)
   - [:exclamation: Test the automated deployment](#exclamation-test-the-automated-deployment)
-- [:exclamation: Notify the teachers](#exclamation-notify-the-teachers)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: Daemons using outdated libraries](#boom-daemons-using-outdated-libraries)

@@ -711,7 +711,7 @@ $
 ```
 
 > Note that you may have a different command line prompt once you are connected,
-in this example `$` instead of `$>`.
+> in this example `$` instead of `$>`.
 
 ### Typing commands while connected through SSH
 

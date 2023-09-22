@@ -28,7 +28,6 @@ previous exercices to deploy a new application from scratch on your server.
   - [:gem: Allowing your user to restart the service without a password](#gem-allowing-your-user-to-restart-the-service-without-a-password)
   - [:space_invader: Allowing the dedicated `minesweeper` Unix user to control the Systemd service](#space_invader-allowing-the-dedicated-minesweeper-unix-user-to-control-the-systemd-service)
   - [:exclamation: Test the automated deployment](#exclamation-test-the-automated-deployment)
-- [:exclamation: Notify the teacher](#exclamation-notify-the-teacher)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
   - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
