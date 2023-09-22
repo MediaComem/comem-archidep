@@ -35,7 +35,7 @@ Parts of this guide are annotated with the following icons:
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
 ## :exclamation: Creating Directories and files
-We're already familiar with the `pwd`, `cd`, `ls`, `tar`, `mkdir`, `touch`, `echo`, and `cat` commands. Using the relevant commands, perform the tasks below:
+We're already familiar with the `pwd`, `cd`, `ls`, `mkdir`, `touch`, `echo`, and `cat` commands. Using the relevant commands, perform the tasks below:
 
 - Starting from your home (~) directory, create a new directory named `treasure_hunt`.
 - Within the `treasure_hunt` directory, craft three additional directories: `cave`, `forest`, and `lake`.
@@ -48,7 +48,7 @@ Using your preferred method, update the files we just created with the specified
 
 - `cave/echo.txt`: To uncover the next clue, explore where the water flows.
 - `lake/fish.txt`: Venture deep into the woods to discover the last hint.
-- `forest/tree.txt`: curl parrot.live.
+- `forest/tree.txt`: curl parrot.live
 
 
 >:books: The `curl` command is a versatile tool used primarily for transferring data using various protocols, most commonly HTTP and HTTPS. For beginners diving into the world of command-line operations, think of `curl` as a way to communicate with websites and servers directly from the terminal without the need for a web browser. Whether you're trying to fetch the contents of a web page, download a file, or interact with APIs, `curl` is your go-to utility. Its name stands for "Client URL," underscoring its capability to work with URLs to retrieve or send data. Beginners often start with basic `curl` commands, like `curl https://example.com`, which fetches and displays the content of the specified web page in the terminal. As users become more accustomed to it, they'll find that `curl` offers a wide range of options and parameters to customize requests, making it an indispensable tool for many developers and system administrators.
@@ -72,7 +72,7 @@ Follow these steps to script and automate your entire treasure hunt:
 - Launch your go-to command-line text editor to edit the `auto_hunt` file.
 - Add the following line at the top of the file: `#!/bin/bash`
 - Systematically script the commands to journey through the treasure hunt. Introduce a theatrical pause of 2 seconds between commands using the `sleep` command for heightened suspense.
-  >:books: The sleep command is a simple yet useful utility in Unix-like operating systems that pauses the execution of a program or script for a specified duration. For beginners getting acquainted with scripting or command-line tasks, think of sleep as a way to introduce deliberate delays. By inputting sleep followed by a number, the system will pause for that many seconds. For instance, sleep 5 will introduce a pause of five seconds.
+  >:books: The sleep command is a simple yet useful utility in Unix-like operating systems that pauses the execution of a program or script for a specified duration. For beginners getting acquainted with scripting or command-line tasks, think of sleep as a way to introduce deliberate delays. By inputting sleep followed by a number, the system will pause for that many seconds. For instance, `sleep 5` will introduce a pause of five seconds.
 
   >:gem: For a touch of efficiency, consider crafting a function that merges the file reading and short delay. This promotes reusability throughout your script.
 
