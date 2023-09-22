@@ -718,11 +718,6 @@ Here's some visible changes you could easily make:
   `lib/minesweeper_web/templates/home/index.html.eex`
   file](https://github.com/MediaComem/minesweeper/blob/ca3e6fb2956afc751274ce2589ff9490c90c5e00/lib/minesweeper_web/templates/home/index.html.eex#L5-L8).
 
-## :exclamation: Notify the teacher
-
-Send an email or a Teams message to the teacher **no later than January 13th
-2022** indicating that you have finished the exercise.
-
 ## :checkered_flag: What have I done?
 
 You have deployed a new backend/frontend web application to your server from
