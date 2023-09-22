@@ -139,7 +139,7 @@ For you to succeed in this course, it is highly recommended that you read and co
   - Complete deployments
     - [:hammer: Deploy Flood It, a Spring Boot (Java) & Angular application with a PostgreSQL database](ex/floodit-deployment.md)
     - [:hammer: Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md) (_extra_)
-      - [:classical_building: Architecture](ex/minesweeper-deployment.md#books-architecture)
+      - [:classical_building: Architecture](ex/minesweeper-deployment.md#classical_building-architecture)
     - [:hammer: Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md) (_extra_)
     - [:hammer: Deploy RPS, a Node.js & Svelte web application with a PostgreSQL database](ex/rps-deployment.md) (_extra_)
     - [:hammer: Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database](ex/one-chat-room-deployment.md) (_extra_)
