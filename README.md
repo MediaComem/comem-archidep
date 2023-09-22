@@ -19,6 +19,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 - [Legend](#legend)
 - [What you will need](#what-you-will-need)
 - [Plan](#plan)
+- [Extra](#extra)
 - [Frequently Asked Questions](#frequently-asked-questions)
   - [What is the meaning of life?](#what-is-the-meaning-of-life)
   - [How do I do *X* with the command line?](#how-do-i-do-x-with-the-command-line)
@@ -36,6 +37,10 @@ Parts of this guide are annotated with the following icons:
 - :book: Slides or written documents pertaining to the various topics discussed during this course.
 - :hammer: An exercise aimed at practicing a topic discussed in class.
 - **:collision: This exercise is graded.**
+- :key: Solution(s) for an exercise.
+- :movie_camera: A video related to a subject.
+- :classical_building: The deployment architecture put in place during an
+  exercise.
 
 For you to succeed in this course, it is highly recommended that you read and complete all the content that is not labeled "_extra_".
 
@@ -79,57 +84,47 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:book: Linux](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
   - [:book: Unix basics & administration](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Permissions](ex/unix-permissions.md)
-    - [Solutions](ex/unix-permissions-solutions.md)
+    - [:key: Solutions](ex/unix-permissions-solutions.md)
   - [:hammer: Pipeline](ex/unix-pipeline.md)
-    - [Solutions](ex/unix-pipeline-solutions.md)
+    - [:key: Solutions](ex/unix-pipeline-solutions.md)
   - [:book: Unix processes](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
   - [:book: Unix networking](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
   - [:book: APT](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Deploy a PHP application with SFTP](ex/sftp-deployment.md)
-    - [Architecture](ex/sftp-deployment.md#architecture)
+    - [:classical_building: Architecture](ex/sftp-deployment.md#classical_building-architecture)
 
 - Advanced deployment
   - [:hammer: Deploy a PHP application with Git](ex/git-clone-deployment.md)
-    - [Architecture](ex/git-clone-deployment.md#architecture)
+    - [:classical_building: Architecture](ex/git-clone-deployment.md#classical_building-architecture)
   - [:book: Twelve-factor app][12factor]
   - [:book: Unix environment variables](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Configure a PHP application through environment variables](ex/config-through-environment.md)
-    - [Architecture](ex/config-through-environment.md#architecture)
+    - [:classical_building: Architecture](ex/config-through-environment.md#classical_building-architecture)
   - [:book: Linux process management](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md)
-    - [Solution](ex/systemd-deployment-solution.md)
-    - [Architecture](ex/systemd-deployment.md#architecture)
+    - [:key: Solution](ex/systemd-deployment-solution.md)
+    - [:classical_building: Architecture](ex/systemd-deployment.md#classical_building-architecture)
   - [:book: Domain Name System (DNS)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Configure a domain name](ex/dns-configuration.md)
-    - [Architecture](ex/dns-configuration.md#architecture)
+    - [:classical_building: Architecture](ex/dns-configuration.md#classical_building-architecture)
   - [:book: Reverse proxying](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Deploy a static site with nginx](ex/nginx-static-deployment.md)
-    - [Solution](ex/nginx-static-deployment-solution.md)
-    - [Architecture](ex/nginx-static-deployment.md#architecture)
+    - [:key: Solution](ex/nginx-static-deployment-solution.md)
+    - [:classical_building: Architecture](ex/nginx-static-deployment.md#classical_building-architecture)
   - [:hammer: Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
-    - [Solution](ex/nginx-php-fpm-deployment-solution.md)
-    - [Architecture](ex/nginx-php-fpm-deployment.md#architecture)
+    - [:key: Solution](ex/nginx-php-fpm-deployment-solution.md)
+    - [:classical_building: Architecture](ex/nginx-php-fpm-deployment.md#classical_building-architecture)
   - [:hammer: Deploy a multi-component web application with nginx](./ex/revprod-deployment.md)
-    - [Solution](ex/revprod-deployment-solution.md)
-    - [Architecture](ex/revprod-deployment.md#architecture)
+    - [:key: Solution](ex/revprod-deployment-solution.md)
+    - [:classical_building: Architecture](ex/revprod-deployment.md#classical_building-architecture)
   - [:book: TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
-    - [Architecture](ex/certbot-deployment.md#architecture)
+    - [:classical_building: Architecture](ex/certbot-deployment.md#classical_building-architecture)
 
 - Automated deployment
   - [:book: Git hooks](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
-    - [Architecture](ex/git-automated-deployment.md#architecture)
-
-- Complete Deployments
-  - **[:collision: :hammer: Deploy Flood It, a Spring Boot (Java) & Angular application with a PostgreSQL database](ex/floodit-deployment.md)**
-  - [:hammer: Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database](ex/one-chat-room-deployment.md) (_extra_)
-    - [Diagram](ex/end-result.pdf)
-  - [:hammer: Deploy Big Browser, a Nest.js (Node.js) application with a Redis database](ex/big-browser-deployment.md) (_extra_)
-  - [:hammer: Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md) (_extra_)
-  - [:hammer: Deploy RPS, a Node.js & Svelte web application with a PostgreSQL database](ex/rps-deployment.md) (_extra_)
-  - [:hammer: Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md) (_extra_)
-    - [Architecture](ex/minesweeper-deployment.md#books-architecture)
+    - [:classical_building: Architecture](ex/git-automated-deployment.md#classical_building-architecture)
 
 - Managed deployments
   - [:book: Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/paas?home=MediaComem%2Fcomem-archidep%23readme)
@@ -137,16 +132,28 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:hammer: Deploy a static site to Netlify](./ex/netlify-static-deployment.md)
   - [:hammer: Deploy web applications with a database to Render](./ex/render-database-deployment.md)
 
-- _Advanced Topics (extra)_
-  - [:book: Continuous software development](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
-  - [:book: Automated testing (2018)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
-  - [:book: Automated testing (2020)](https://mediacomem.github.io/comem-archioweb/2023-2024/subjects/automated-testing/?home=MediaComem%2Fcomem-archioweb%23readme#1)
-    - [:movie_camera: YouTube: Expecting Profesionnalism – Robert C. Martin](https://youtu.be/BSaAMQVq01E)
-    - [:movie_camera: YouTube: GOTO 2017 – The Scribe's Oath – Robert C. Martin](https://youtu.be/Tng6Fox8EfI)
-    - [:movie_camera: YouTube: The Future of Programming – Robert C. Martin](https://youtu.be/ecIWPzGEbFc)
+- More practice
   - [:hammer: Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
-    - [Architecture](ex/fibscale-deployment.md#architecture)
+    - [:classical_building: Architecture](ex/fibscale-deployment.md#classical_building-architecture)
   - [:hammer: Configure nginx as a load balancer](ex/load-balancing-deployment.md)
+  - Complete deployments
+    - [:hammer: Deploy Flood It, a Spring Boot (Java) & Angular application with a PostgreSQL database](ex/floodit-deployment.md)
+    - [:hammer: Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md) (_extra_)
+      - [:classical_building: Architecture](ex/minesweeper-deployment.md#books-architecture)
+    - [:hammer: Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md) (_extra_)
+    - [:hammer: Deploy RPS, a Node.js & Svelte web application with a PostgreSQL database](ex/rps-deployment.md) (_extra_)
+    - [:hammer: Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database](ex/one-chat-room-deployment.md) (_extra_)
+      - [:classical_building: Architecture](ex/end-result.pdf)
+    - [:hammer: Deploy Big Browser, a Nest.js (Node.js) application with a Redis database](ex/big-browser-deployment.md) (_extra_)
+
+## Extra
+
+- [:book: Continuous software development](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
+- [:book: Automated testing (2018)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
+- [:book: Automated testing (2020)](https://mediacomem.github.io/comem-archioweb/2023-2024/subjects/automated-testing/?home=MediaComem%2Fcomem-archioweb%23readme#1)
+  - [:movie_camera: YouTube: Expecting Profesionnalism – Robert C. Martin](https://youtu.be/BSaAMQVq01E)
+  - [:movie_camera: YouTube: GOTO 2017 – The Scribe's Oath – Robert C. Martin](https://youtu.be/Tng6Fox8EfI)
+  - [:movie_camera: YouTube: The Future of Programming – Robert C. Martin](https://youtu.be/ecIWPzGEbFc)
 
 
 ## Frequently Asked Questions
