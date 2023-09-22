@@ -19,6 +19,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 - [Legend](#legend)
 - [What you will need](#what-you-will-need)
 - [Plan](#plan)
+- [More Practice](#more-practice)
 - [Extra](#extra)
 - [Frequently Asked Questions](#frequently-asked-questions)
   - [What is the meaning of life?](#what-is-the-meaning-of-life)
@@ -132,19 +133,21 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:hammer: Deploy a static site to Netlify](./ex/netlify-static-deployment.md)
   - [:hammer: Deploy web applications with a database to Render](./ex/render-database-deployment.md)
 
-- More practice
-  - [:hammer: Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
-    - [:classical_building: Architecture](ex/fibscale-deployment.md#classical_building-architecture)
-  - [:hammer: Configure nginx as a load balancer](ex/load-balancing-deployment.md)
-  - Complete deployments
-    - [:hammer: Deploy Flood It, a Spring Boot (Java) & Angular application with a PostgreSQL database](ex/floodit-deployment.md)
-    - [:hammer: Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md) (_extra_)
-      - [:classical_building: Architecture](ex/minesweeper-deployment.md#classical_building-architecture)
-    - [:hammer: Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md) (_extra_)
-    - [:hammer: Deploy RPS, a Node.js & Svelte web application with a PostgreSQL database](ex/rps-deployment.md) (_extra_)
-    - [:hammer: Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database](ex/one-chat-room-deployment.md) (_extra_)
-      - [:classical_building: Architecture](ex/end-result.pdf)
-    - [:hammer: Deploy Big Browser, a Nest.js (Node.js) application with a Redis database](ex/big-browser-deployment.md) (_extra_)
+## More Practice
+
+- [:hammer: Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
+  - [:classical_building: Architecture](ex/fibscale-deployment.md#classical_building-architecture)
+- [:hammer: Configure nginx as a load balancer](ex/load-balancing-deployment.md)
+
+- Complete deployments
+  - [:hammer: Deploy Flood It, a Spring Boot (Java) & Angular application with a PostgreSQL database](ex/floodit-deployment.md)
+  - [:hammer: Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md)
+    - [:classical_building: Architecture](ex/minesweeper-deployment.md#classical_building-architecture)
+  - [:hammer: Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md)
+  - [:hammer: Deploy RPS, a Node.js & Svelte web application with a PostgreSQL database](ex/rps-deployment.md)
+  - [:hammer: Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database](ex/one-chat-room-deployment.md)
+    - [:classical_building: Architecture](ex/end-result.pdf)
+  - [:hammer: Deploy Big Browser, a Nest.js (Node.js) application with a Redis database](ex/big-browser-deployment.md)
 
 ## Extra
 
