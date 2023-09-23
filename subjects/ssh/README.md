@@ -857,8 +857,9 @@ This has advantages over password authentication:
 
 ### How does public key authentication work?
 
-To authenticate you, the server will need your **public key**.
-That way, you will be able to prove, using your **private key**, that you are the owner of that public key.
+To authenticate you, the server will need your **public key**. That way, you
+will be able to prove, using your **private key**, that you are the owner of
+that public key.
 
 > Remember, **your private key MUST remain private** (i.e. the `id_rsa` file).
 > You should **never** give it to any person, server or web service.

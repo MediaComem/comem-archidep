@@ -316,9 +316,9 @@ entering the password again each time.
 
 There are several ways to run an SSH agent. You can run it in the background:
 
-* [Single sign-on using SSH][ssh-agent-run]
 * [Generating a new SSH key and adding it to the ssh-agent
   (GitHub)][ssh-agent-run-github]
+* [Single sign-on using SSH][ssh-agent-run]
 
 Or you can run an agent and have it start a new shell for you:
 
