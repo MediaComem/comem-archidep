@@ -65,6 +65,7 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:book: Shell scripting](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Hello Shell](ex/hello-shell.md)
   - [:book: Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: Hello SSH](ex/hello-ssh.md)
 - Version control
   - [:book: Version control with Git](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
   - [:book: Git branching](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
