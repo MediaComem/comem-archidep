@@ -75,10 +75,10 @@ To connect to the server:
   > :books: The password's characters will not appear as you type or after
   > pasting. This is a feature, not a bug. Passwords are not displayed to make
   > it harder for someone looking over your shoulder to read them.
-* You should now be connected to the server. You should see a welcome banner
-  giving you some information about the server's operating system, and the
-  prompt should have changed. Any command you type is now executed on the remote
-  server.
+
+You should now be connected to the server. You should see a welcome banner
+giving you some information about the server's operating system, and the prompt
+should have changed. Any command you type is now executed on the remote server.
 
 ## :question: Spot the difference
 
@@ -91,6 +91,8 @@ Open another console and run these commands again. Since this is a fresh
 console, they will be executed on your local machine this time. Observe the
 difference in output when you are connected to the server or running the
 commands on your local machine.
+
+![SSH and local](../images/ssh-local-side-by-side.png)
 
 Another interesting command to run to see the difference between your machine
 and the server is the [`uname` command][uname-command]. Try running it on the
