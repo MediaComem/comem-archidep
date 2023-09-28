@@ -1,0 +1,236 @@
+---
+- hosts: all
+  become: true
+
+  vars:
+    archioweb_rest_demo_base_url: https://{{ archioweb_rest_demo_domain }}
+    archioweb_rest_demo_directory: /var/www/archioweb-rest-demo
+    archioweb_rest_demo_domain: demo.archioweb.ch
+    archioweb_rest_demo_tls: false
+    archioweb_rest_demo_user: archioweb_rest_demo
+    certbot_email: simon.oulevay@heig-vd.ch
+    server_name: archidep.ch
+
+  vars_files:
+    - vars/secrets.yml
+
+  handlers:
+    - name: Restart nginx
+      service:
+        name: nginx
+        state: reloaded
+      tags: [nginx]
+
+  tasks:
+    - name: Upgrade all packages
+      apt:
+        name: '*'
+        autoremove: true
+        force_apt_get: true
+        state: latest
+
+    - name: Set hostname
+      hostname:
+        name: '{{ server_name }}'
+
+    - name: Install required packages
+      apt:
+        name:
+          - acl
+          - curl
+          - gnupg
+        state: present
+
+    - name: Save MongoDB APT key
+      get_url:
+        url: https://pgp.mongodb.com/server-7.0.asc
+        dest: /usr/share/keyrings/mongodb-server-7.0.asc
+      tags: [mongo]
+
+    - name: Add MongoDB APT repository
+      apt_repository:
+        repo: deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.asc ] https://repo.mongodb.org/apt/ubuntu {{ ansible_distribution_release }}/mongodb-org/7.0 multiverse
+        state: present
+      tags: [mongo]
+
+    - name: Install MongoDB
+      apt:
+        name:
+          - mongodb-org=7.0.1
+          - mongodb-org-database=7.0.1
+          - mongodb-org-server=7.0.1
+          - mongodb-mongosh=2.0.1
+          - mongodb-org-mongos=7.0.1
+          - mongodb-org-tools=7.0.1
+        update_cache: true
+        state: present
+      tags: [mongo]
+
+    - name: Start MongoDB
+      service:
+        name: mongod
+        state: started
+      tags: [mongo]
+
+    - name: Add PostgreSQL APT repository
+      apt_repository:
+        repo: deb https://apt.postgresql.org/pub/repos/apt {{ ansible_distribution_release }}-pgdg main
+        state: present
+      tags: [postgres]
+
+    - name: Add PostgreSQL APT key
+      apt_key:
+        url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+        state: present
+      tags: [postgres]
+
+    - name: Install PostgreSQL
+      apt:
+        name: postgresql-16
+        update_cache: true
+        state: present
+      tags: [postgres]
+
+    - name: Download Node.js setup script
+      uri:
+        url: https://deb.nodesource.com/setup_20.x
+        return_content: yes
+      register: node_setup
+      tags: [node]
+
+    - name: Set up Node.js
+      shell:
+        cmd: sh -s -- -y
+        stdin: '{{ node_setup.content }}'
+      tags: [node]
+
+    - name: Install Node.js
+      apt:
+        name: nodejs
+        update_cache: true
+        state: present
+      tags: [node]
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+      tags: [nginx]
+
+    - name: Install certbot
+      snap:
+        name: certbot
+        classic: true
+      tags: [certbot]
+
+    - name: Register certbot
+      command:
+        cmd: certbot --non-interactive register --agree-tos -m '{{ certbot_email | quote }}'
+        creates: /etc/letsencrypt/accounts
+      tags: [certbot]
+
+    - name: Create ArchiOWeb REST demo user
+      user:
+        name: '{{ archioweb_rest_demo_user }}'
+        comment: ArchiOWeb REST demo
+        shell: /bin/bash
+        system: true
+      tags: [archioweb]
+
+    - name: Create ArchiOWeb REST demo directory
+      file:
+        path: '{{ archioweb_rest_demo_directory }}'
+        owner: '{{ archioweb_rest_demo_user }}'
+        group: www-data
+        mode: '0750'
+        state: directory
+      tags: [archioweb]
+
+    - name: Clone/update ArchiOWeb REST demo
+      git:
+        repo: https://github.com/MediaComem/comem-rest-demo.git
+        dest: '{{ archioweb_rest_demo_directory }}'
+        version: main
+      become_user: '{{ archioweb_rest_demo_user }}'
+      register: archioweb_rest_demo_clone
+      tags: [archioweb]
+
+    - name: Install ArchiOWeb REST demo dependencies
+      npm:
+        path: '{{ archioweb_rest_demo_directory }}'
+        ci: true
+      become_user: '{{ archioweb_rest_demo_user }}'
+      when: archioweb_rest_demo_clone is changed
+      tags: [archioweb]
+
+    - name: Create ArchiOWeb REST demo service
+      template:
+        src: archioweb-rest-demo.service
+        dest: /etc/systemd/system/archioweb-rest-demo.service
+      tags: [archioweb]
+
+    - name: Start ArchiOWeb REST demo
+      service:
+        name: archioweb-rest-demo
+        enabled: true
+        state: started
+      tags: [archioweb]
+
+    - name: Check whether the ArchiOWeb REST demo certificate exists
+      stat:
+        path: /etc/letsencrypt/live/{{ archioweb_rest_demo_domain }}/fullchain.pem
+      register: archioweb_rest_demo_certificate
+      changed_when: false
+      tags: [archioweb]
+
+    - name: Set the ArchiOWeb REST demo certificate flag
+      set_fact:
+        archioweb_rest_demo_tls: '{{ archioweb_rest_demo_certificate.stat.exists }}'
+      changed_when: false
+      tags: [archioweb]
+
+    - name: Create ArchiOWeb REST demo nginx configuration
+      template:
+        src: archioweb-rest-demo.conf
+        dest: /etc/nginx/sites-available/archioweb-rest-demo.conf
+      notify: Restart nginx
+      register: archioweb_rest_demo_nginx_config
+      tags: [archioweb]
+
+    - name: Create a symbolic link
+      file:
+        src: /etc/nginx/sites-available/archioweb-rest-demo.conf
+        dest: /etc/nginx/sites-enabled/archioweb-rest-demo.conf
+        state: link
+      notify: Restart nginx
+      register: archioweb_rest_demo_nginx_link
+      tags: [archioweb]
+
+    - name: Restart nginx to deploy the ArchiOWeb REST demo
+      service:
+        name: nginx
+        state: restarted
+      when: archioweb_rest_demo_nginx_config is changed or archioweb_rest_demo_nginx_link is changed
+      tags: [archioweb]
+
+    - name: Obtain a TLS certificate for the ArchiOWeb REST demo
+      command:
+        cmd: certbot certonly --non-interactive --nginx --domains {{ archioweb_rest_demo_domain | quote }} --preferred-challenges http
+        creates: /etc/letsencrypt/live/{{ archioweb_rest_demo_domain }}/fullchain.pem
+      register: archioweb_rest_demo_certificate
+      when: not archioweb_rest_demo_tls
+      tags: [archioweb]
+
+    - name: Enable the ArchiOWeb REST demo certificate flag
+      set_fact:
+        archioweb_rest_demo_tls: true
+      when: not archioweb_rest_demo_tls
+      tags: [archioweb]
+
+    - name: Update ArchiOWeb REST demo nginx configuration
+      template:
+        src: archioweb-rest-demo.conf
+        dest: /etc/nginx/sites-available/archioweb-rest-demo.conf
+      notify: Restart nginx
+      when: archioweb_rest_demo_tls
+      tags: [archioweb]
