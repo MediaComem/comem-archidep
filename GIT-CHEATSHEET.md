@@ -32,6 +32,28 @@ book](https://git-scm.com/book/en/v2) (online & free).
 
 * Enable [Git Rerere](https://git-scm.com/book/en/v2/Git-Tools-Rerere).
 
+## One-time configuration
+
+### Configure your identity
+You must configure identity using your user name and e-mail address. This is important because every Git commit uses this information, and it's immutably baked into every commit you make. **You should obviously replace your `"John Doe"` and `john.doe@example.com` with your own information.**
+
+```bash
+$> git config --global user.name "John Doe"
+$> git config --global user.email john.doe@example.com
+```
+### Automagically exclude annoying .``DS_Store`` files from your commits. (Mac only)
+
+You can create a global ignore file in your home directory to ignore them:
+
+```bash
+$> echo ".DS_Store" >> ~/.gitignore
+```
+
+Run the following command to configure Git to use this file. You only have to do it once on each machine:
+
+```bash
+$> git config --global core.excludesfile ~/.gitignore
+```
 
 
 ## Frequent operations
