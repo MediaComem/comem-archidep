@@ -615,7 +615,7 @@ $> git status
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+  (use "git restore <file>..." to discard changes in working directory)
 
   modified:   hello.txt
   modified:   hi.txt
@@ -636,13 +636,13 @@ $> git add hello.txt
 $> git status
 On branch main
 Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
+  (use "git restore --staged <file>..." to unstage)
 
   modified:   hello.txt
 
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+  (use "git restore <file>..." to discard changes in working directory)
 
   modified:   hi.txt
 ```
@@ -659,13 +659,13 @@ $> echo "I see trees of green" >> hello.txt
 $> git status
 On branch main
 Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
+  (use "git restore --staged <file>..." to unstage)
 
   modified:   hello.txt
 
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+  (use "git restore <file>..." to discard changes in working directory)
 
   modified:   hello.txt
   modified:   hi.txt
@@ -749,7 +749,7 @@ $> git status
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+  (use "git restore <file>..." to discard changes in working directory)
 
   modified:   hello.txt
   modified:   hi.txt
@@ -785,7 +785,7 @@ $> git status
 On branch main
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+  (use "git restore <file>..." to discard changes in working directory)
 
   deleted:    hi.txt
 
@@ -807,7 +807,7 @@ $> git add .
 $> git status
 On branch main
 Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
+  (use "git restore --staged <file>..." to unstage)
 
   renamed:    hi.txt -> people.txt
 ```
@@ -996,17 +996,17 @@ $> git status
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
-  `(use "git checkout -- <file>..." to discard changes in working directory)`
+  `(use "git restore <file>..." to discard changes in working directory)`
 
   modified:   people.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-Simply use `git checkout` as instructed:
+Simply use `git restore` as instructed:
 
 ```bash
-$> git checkout people.txt
+$> git restore people.txt
 
 $> git status
 On branch main
@@ -1038,8 +1038,8 @@ Use `git restore` as instructed:
 $> git restore --staged people.txt
 ```
 
-The changes will still be in the file in the working directory.
-If you want to completely get rid of them, you can use `git checkout` as shown before.
+The changes will still be in the file in the working directory. If you want to
+completely get rid of them, you can use `git restore` as shown before.
 
 
 
