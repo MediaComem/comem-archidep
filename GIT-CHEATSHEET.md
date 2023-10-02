@@ -7,6 +7,9 @@ book](https://git-scm.com/book/en/v2) (online & free).
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Best practices](#best-practices)
+- [One-time configuration](#one-time-configuration)
+  - [Configure your identity](#configure-your-identity)
+  - [Automagically exclude annoying `.DS_Store` files from your commits. (Mac only)](#automagically-exclude-annoying-ds_store-files-from-your-commits-mac-only)
 - [Frequent operations](#frequent-operations)
   - [Create a new empty repository](#create-a-new-empty-repository)
   - [Put an existing project on GitHub](#put-an-existing-project-on-github)
@@ -32,16 +35,22 @@ book](https://git-scm.com/book/en/v2) (online & free).
 
 * Enable [Git Rerere](https://git-scm.com/book/en/v2/Git-Tools-Rerere).
 
+
+
 ## One-time configuration
 
 ### Configure your identity
-You must configure identity using your user name and e-mail address. This is important because every Git commit uses this information, and it's immutably baked into every commit you make. **You should obviously replace your `"John Doe"` and `john.doe@example.com` with your own information.**
+
+You must configure identity using your user name and e-mail address. This is
+important because every Git commit uses this information, and it's immutably
+baked into every commit you make. **You should obviously replace your `"John
+Doe"` and `john.doe@example.com` with your own information.**
 
 ```bash
 $> git config --global user.name "John Doe"
 $> git config --global user.email john.doe@example.com
 ```
-### Automagically exclude annoying .``DS_Store`` files from your commits. (Mac only)
+### Automagically exclude annoying `.DS_Store` files from your commits. (Mac only)
 
 You can create a global ignore file in your home directory to ignore them:
 
@@ -54,6 +63,7 @@ Run the following command to configure Git to use this file. You only have to do
 ```bash
 $> git config --global core.excludesfile ~/.gitignore
 ```
+
 
 
 ## Frequent operations
