@@ -56,12 +56,12 @@
     - name: Install MongoDB
       apt:
         name:
-          - mongodb-org=7.0.1
-          - mongodb-org-database=7.0.1
-          - mongodb-org-server=7.0.1
+          - mongodb-org=7.0.2
+          - mongodb-org-database=7.0.2
+          - mongodb-org-server=7.0.2
           - mongodb-mongosh=2.0.1
-          - mongodb-org-mongos=7.0.1
-          - mongodb-org-tools=7.0.1
+          - mongodb-org-mongos=7.0.2
+          - mongodb-org-tools=7.0.2
         update_cache: true
         state: present
       tags: [mongo]
