@@ -24,12 +24,9 @@
       - [How does PaaS work?](#how-does-paas-work)
     - [Function as a Service (FaaS)](#function-as-a-service-faas)
       - [How does FaaS work?](#how-does-faas-work)
-    - [Mobile Backend as a Service (MBaas)](#mobile-backend-as-a-service-mbaas)
-      - [How does MBaaS work?](#how-does-mbaas-work)
     - [Software as a Service (SaaS)](#software-as-a-service-saas)
     - [Level of abstraction](#level-of-abstraction)
   - [Trends](#trends)
-    - [Service-oriented architecture (SOA)](#service-oriented-architecture-soa)
     - [Microservices](#microservices)
       - [[Microservice architecture][microservices-in-practice]](#microservice-architecturemicroservices-in-practice)
     - [Serverless computing](#serverless-computing)
@@ -402,43 +399,6 @@ The platform provides various services to connect these functions together and t
 
 <img class='w100' src='images/faas-workflow.jpg' />
 
-### Mobile Backend as a Service (MBaas)
-
-<!-- slide-column 40 -->
-
-<img class='w100' src='images/stack-mbaas.jpg' />
-
-<!-- slide-column -->
-
-[**MBaaS**][mbaas] provides **cloud storage and APIs** to power web and mobile applications,
-with features such as user management, push notifications and social network integration.
-
-A working backend is provided out of the box with this model.
-The customer simply **uses the provided cloud APIs** in their frontend application,
-and may configure how to handle data access and events.
-
-This is the **quickest** solution to develop a frontend application,
-since much less work needs to be done on the backend.
-
-But it's also **less flexible** as you must use the specific services provided by the platform.
-It also produces the most **vendor lock-in**: it would be difficult to switch a mobile application from one MBaaS platform to another.
-
-#### How does MBaaS work?
-
-<!-- slide-column 60 -->
-
-Developers are provided a backend in the form of ready-made cloud APIs.
-Most of the time, they can simply apply configuration instead of writing code.
-For example, Google's [Firebase][firebase] platform provides a real-time database which automatically handles synchronization of updates to all devices.
-
-<!-- slide-column -->
-
-<p class='center'><img class='w100' src='images/firebase-features.png' /></p>
-
-<!-- slide-container -->
-
-<p class='center'><img class='w55' src='images/firebase.png' /></p>
-
 ### Software as a Service (SaaS)
 
 <!-- slide-column 40 -->
@@ -461,7 +421,7 @@ These models can be ordered by increasing level of abstraction,
 from IaaS being the lowest level and most flexible service model,
 to SaaS being the highest level and fastest-to-use service model.
 
-<p class='center'><img class='w100' src='images/cloud-abstraction.png' /></p>
+<p class='center'><img class='w85' src='images/cloud-abstraction.png' /></p>
 
 
 
@@ -472,14 +432,6 @@ to SaaS being the highest level and fastest-to-use service model.
 <img class='w60' src='images/trends.png' />
 
 What's happening in the clouds?
-
-### Service-oriented architecture (SOA)
-
-[Service-oriented architecture][soa] is a software design style where services are provided by application components over a network.
-This is popular in the cloud as it is easy to provision resources to deploy new components,
-instead of having large monolithic applications.
-
-<p class='center'><img class='w80' src='images/soa.png' /></p>
 
 ### Microservices
 
@@ -544,8 +496,6 @@ It just means that **the server is abstracted** and managed by the platform prov
 
 ## TODO
 
-* Additional diagrams for MBaaS & SaaS
-* SOA, EaaS, https://en.wikipedia.org/wiki/Service-oriented_architecture
 * Containers, CaaS
 * container pictures
 
