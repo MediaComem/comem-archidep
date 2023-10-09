@@ -16,7 +16,6 @@ chmod 700 "$dir"
 echo -n OK > "$dir/test.txt"
 cd $dir
 
-
 busybox httpd -f -p 80 &
 pids="$pids $!"
 
