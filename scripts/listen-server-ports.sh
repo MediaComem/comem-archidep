@@ -1,21 +1,35 @@
 #!/bin/bash
 
 pids=''
+dir="/tmp/listen-server-ports"
 
-echo OK | nc -k -l 80 &
+function cleanup() {
+  echo "Cleaning up..."
+  rm -rf "$dir"
+  test -n "$pids" && kill $pids
+}
+
+trap "cleanup" EXIT
+
+mkdir -p "$dir"
+chmod 700 "$dir"
+echo -n OK > "$dir/test.txt"
+cd $dir
+
+
+busybox httpd -f -p 80 &
 pids="$pids $!"
 
-echo OK | nc -k -l 443 &
+busybox httpd -f -p 443 &
 pids="$pids $!"
 
-echo OK | nc -k -l 3000 &
+busybox httpd -f -p 3000 &
 pids="$pids $!"
 
-echo OK | nc -k -l 3001 &
+busybox httpd -f -p 3001 &
 pids="$pids $!"
 
 echo PIDS: $pids
-trap "kill $pids" EXIT
 
 while true; do
   sleep 1

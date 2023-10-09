@@ -20,14 +20,16 @@ sleep 3
 echo
 for port in 80 443 3000 3001; do
   echo
-  echo $port; nc -w 1 $STUDENT_IP $port
+  echo $port; curl --fail-with-body "http://$STUDENT_IP:$port/test.txt" || echo NOK
+  echo
 done
 
 ssh -i id_rsa ${STUDENT_USER}@$STUDENT_IP sudo killall listen-server-ports.sh
 
 echo
 for port in 80 443 3000 3001; do
-  echo $port; nc -w 1 $STUDENT_IP $port && echo NOK || echo closed
+  echo $port; curl --fail-with-body "http://$STUDENT_IP:$port/test.txt" 2>/dev/null && echo NOK || echo closed
+  echo
 done
 
 ssh -i id_rsa ${STUDENT_USER}@$STUDENT_IP rm -f /home/${STUDENT_USER}/listen-server-ports.sh
