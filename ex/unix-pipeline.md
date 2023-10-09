@@ -5,6 +5,7 @@
 
 - [Setup](#setup)
 - [The exercise](#the-exercise)
+- [Example](#example)
 - [Your tools](#your-tools)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -38,6 +39,15 @@ Use command pipelines and stream redirections to:
 - Count the number of times the word `the` is used.
 - Display a list of the unique words in the text along with the number of times each word is used,
   sorted from the least used to the most used.
+
+## Example
+
+For example, the following command counts the number of words in the text:
+
+```bash
+$> cat rainbow.txt | wc -w
+255
+```
 
 ## Your tools
 

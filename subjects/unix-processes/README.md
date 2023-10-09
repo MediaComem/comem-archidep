@@ -33,6 +33,14 @@ Learn about processes in Unix operating systems, as well as how to manage them a
   - [Retrieving the exit status in a shell](#retrieving-the-exit-status-in-a-shell)
   - [Retrieving the exit status in code](#retrieving-the-exit-status-in-code)
   - [Meaning of exit statuses](#meaning-of-exit-statuses)
+- [Signals](#signals)
+  - [What is a signal?](#what-is-a-signal)
+  - [Common Unix signals](#common-unix-signals)
+    - [The terminal interrupt signal (`SIGINT`)](#the-terminal-interrupt-signal-sigint)
+  - [The `kill` command](#the-kill-command)
+    - [Trapping signals](#trapping-signals)
+    - [The `KILL` signal](#the-kill-signal)
+  - [Unix signals in the real world](#unix-signals-in-the-real-world)
 - [Standard streams](#standard-streams)
   - [The good old days](#the-good-old-days)
   - [Unix streams](#unix-streams)
@@ -62,17 +70,6 @@ Learn about processes in Unix operating systems, as well as how to manage them a
   - [A simple pipeline](#a-simple-pipeline)
   - [The Unix philosophy](#the-unix-philosophy)
   - [A more complex pipeline](#a-more-complex-pipeline)
-  - [Trying it out](#trying-it-out)
-    - [Pipelines and redirections](#pipelines-and-redirections)
-    - [Your tools](#your-tools)
-- [Signals](#signals)
-  - [What is a signal?](#what-is-a-signal)
-  - [Common Unix signals](#common-unix-signals)
-    - [The terminal interrupt signal (`SIGINT`)](#the-terminal-interrupt-signal-sigint)
-  - [The `kill` command](#the-kill-command)
-    - [Trapping signals](#trapping-signals)
-    - [The `KILL` signal](#the-kill-signal)
-  - [Unix signals in the real world](#unix-signals-in-the-real-world)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -126,9 +123,9 @@ which have the following features:
 | :---                        | :---                                                                                                                |
 | [Process ID (PID)][pid]     | A number uniquely identifying a process at a given time.                                                            |
 | [Exit status][exit-status]  | A number given when a process exits, indicating whether it was successful.                                          |
+| [Signals][signals]          | Notifications sent to a process, a form of [inter-process communication (IPC)][ipc].                                |
 | [Standard streams][streams] | Preconnected input and output communication channels between a process and its environment.                         |
 | [Pipelines][pipes]          | A way to chain processes in sequence by their standard streams, a form of [inter-process communication (IPC)][ipc]. |
-| [Signals][signals]          | Notifications sent to a process, a form of [inter-process communication (IPC)][ipc].                                |
 
 > These features have been standardized for Unix-like systems
 > as the [Portable Operating System Interface (POSIX)][posix].
@@ -373,6 +370,143 @@ is that **0 is good, anything else is probably bad**.
 
 
 
+## Signals
+
+<!-- slide-front-matter class: center, middle -->
+
+> Sending notifications to processes, and then killing them.
+
+<p class='center'><img class='w40' src='images/kill-9.jpg' /></p>
+
+### What is a signal?
+
+A signal is an **asynchronous notification sent to a process** to notify it that an event has occurred.
+
+<p class='center'><img class='w80' src='images/sighup-diagram.jpg' /></p>
+
+If the process has registered a **signal handler** for that specific signal, it is executed.
+Otherwise the **default signal handler** is executed.
+
+### Common Unix signals
+
+A signal is defined by the `SIG` prefix followed by a mnemonic name for the signal.
+Some signals also have a standard number assigned to them.
+Here are the most commonly encountered Unix signals:
+
+Signal     | Number | Default handler       | Description
+:---       | ---:   | :---                  | :---
+`SIGHUP`   | 1      | Terminate             | Hangup.
+`SIGINT`   | 2      | Terminate             | Terminal interrupt signal.
+`SIGKILL`  | 9      | Terminate             | Kill (cannot be caught or ignored).
+`SIGQUIT`  | 3      | Terminate (core dump) | Terminal quit signal.
+`SIGTERM`  | 15     | Terminate             | Termination signal.
+`SIGUSR1`  | -      | Terminate             | User-defined signal 1.
+`SIGUSR2`  | -      | Terminate             | User-defined signal 2.
+`SIGWINCH` | -      | Ignore                | Terminal window size changed.
+
+Here's a more complete list: [POSIX signals][signals-list].
+
+#### The terminal interrupt signal (`SIGINT`)
+
+When you type `Ctrl-C` in your terminal to terminate a running process, you are actually using Unix signals.
+
+The shortcut is interpreted by your shell,
+which then sends a **terminal interrupt signal**, or **`SIGINT`**, to the running process.
+
+Most processes handle that signal by terminating (altough some don't respond to it, like some interactive helps, e.g. `man ls`).
+
+### The `kill` command
+
+The `kill` command **sends a signal to a process**.
+
+Since the default signal handler for most signals is to terminate the process,
+it often has that effect, hence the name "kill".
+
+Its syntax is:
+
+```
+kill [-<SIGNAL>] <PID>
+kill [-s <SIGNAL>] <PID>
+```
+
+.commands-table[
+
+Command             | Effect
+:---                | :---
+`kill 10000`        | Send the **default `SIGTERM` signal** to process with PID `10000`.
+`kill -s HUP 10000` | Send the `SIGHUP` signal to that same process.
+`kill -HUP 10000`   | Equivalent to the previous command.
+`kill -1 10000`     | Equivalent to the previous command (1 is the official POSIX number for `SIGHUP`).
+
+]
+
+#### Trapping signals
+
+This command will run a
+[badly behaved script](https://gist.github.com/AlphaHydrae/162f28e3e2bd9355a95914e04cd4dd0c/91dda64d9e0ca26168d25195a189ca6a69a14ee6)
+which traps and ignores all signals sent to it:
+
+```bash
+$> curl -s -L https://git.io/JitFQ|sh -s
+Hi, I'm running with PID 10000
+Try and kill me!
+```
+
+Since it ignores the `SIGINT` signal among others,
+you will not be able to stop it with `Ctrl-C`.
+
+Open another terminal and try to kill the process by referring to its PID
+(which is `10000` in this example but will be different on your machine):
+
+```bash
+$> kill 10000
+$> kill -s HUP 10000
+$> kill -s QUIT 10000
+$> kill -s USR1 10000
+```
+
+The script will simply log that it is ignoring your signal and continue executing.
+
+#### The `KILL` signal
+
+There is one signal that cannot be ignored: **the `KILL` signal**.
+
+Although a process can detect the signal and attempt to perform additional operations,
+**the OS will permanently kill the process** shortly after it is received,
+and the process can do nothing to prevent it.
+
+Send a `KILL` signal to the process with the same PID as before:
+
+```bash
+$> kill -s KILL 10000
+```
+
+The script will finally have the decency to die.
+
+### Unix signals in the real world
+
+Many widely-used programs react to Unix signals, for example:
+
+* [Nginx][nginx-signals]
+* [PostgreSQL][postgres-signals]
+* [OpenSSH][sshd-signals]
+
+<!-- slide-column -->
+
+A common example is the `SIGHUP` signal.
+Originally it was meant to indicate that the modem hanged up.
+
+That's not relevant to programs not directly connected to a terminal, but some programs repurposed it for another use.
+
+Many background services like Nginx and PostgreSQL will reload their configuration (without shutting down) when receiving that signal.
+Many other tools follow this convention.
+
+<!-- slide-column 30 -->
+
+<img class='w100' src='images/sighup.jpg' />
+
+
+
 ## Standard streams
 
 <!-- slide-front-matter class: center, middle -->
@@ -429,11 +563,9 @@ Stream          | Shorthand | Description
 :---            | :---      | :---
 Standard input  | `stdin`   | Stream **data** (often text) **going into a program**.
 Standard output | `stdout`  | Stream where a program writes its **output data**.
-Standard error  | `stderr`  | Another output stream programs can use to output **error messages or diagnostics**. It is independent from standard output, allowing output and errors to be distinguished.
+Standard error  | `stderr`  | Another output stream programs can use to output **error messages or diagnostics**. It is separate from standard output, allowing output and errors to be distinguished (solving the [semipredicate problem][semipredicate]).
 
-> There are 2 output streams in order to solve the [semipredicate problem][semipredicate]:
-> it's difficult to distinguish between actual output data and error messages
-> if both are in the form of text and displayed in the same place.
+<p class='center'><img class='w60' src='images/streams.jpg' /></p>
 
 #### Streams, the keyboard, and the terminal
 
@@ -509,6 +641,13 @@ the **standard output stream (file descriptor `1`) is redirected** to the file `
 
 ```bash
 $> ls -a `1> data.txt`
+
+$> cat data.txt
+.
+..
+file1
+directory1
+...
 ```
 
 #### How to use standard output redirection
@@ -517,6 +656,9 @@ You can do the same with any command that produces output:
 
 ```bash
 $> echo Hello `1> data.txt`
+
+$> cat data.txt
+Hello
 ```
 
 Note that the `>` operator **overwrites the file**.
@@ -524,6 +666,10 @@ Use `>>` instead to **append to the end of the file**:
 
 ```bash
 $> echo World `1>> data.txt`
+
+$> cat data.txt
+Hello
+World
 ```
 
 If you specify no file descriptor, **standard output is redirected by default**:
@@ -953,199 +1099,6 @@ $> `find . -type f | \`
 
 The final result is a list of file extensions and the number of files with that extension.
 
-### Trying it out
-
-Here's a link to a file containing some text: https://git.io/fAjRa
-
-Download it to your computer with the following command:
-
-```bash
-$> curl -L https://git.io/fAjRa > rainbow.txt
-```
-
-#### Pipelines and redirections
-
-Start by simply displaying the file:
-
-```bash
-$> cat rainbow.txt
-Somewhere over the rainbow
-...
-```
-
-**Use command pipelines and stream redirections to**:
-
-* Count the number of lines and characters in the text.
-* Print the lines of the text containing the word `rainbow`.
-  * Do the same but without any duplicates
-* Print the second word of each line in the text.
-* Compress the text and save it to `rainbow.txt.gz`.
-* Count the number of times the letter `e` or the word `the` is used.
-* Display a list of the unique words in the text along with the number of times each word is used,
-  sorted from the least used to the most used.
-
-> For example, `cat rainbow.txt | wc -w` counts the number of words in the text.
-
-#### Your tools
-
-Here are commands you might find useful for the exercise.
-They all operate on the data received from their standard input stream,
-and print the result on their standard output stream,
-so they can be piped into each other:
-
-.commands-table[
-
-Command                             | Description
-:---                                | :---
-`cut -d ' ' -f <n>`                 | Select word in column `<n>` of each line (using one space as the delimiter).
-`fold -w 1`                         | Print one character by line.
-`grep <letterOrWord>`               | Select only lines that contain a given letter or word, e.g. `grep foo`.
-`gzip -c`                           | Compress data.
-`sort`                              | Sort lines alphabetically.
-`tr '[:upper:]' '[:lower:]'`        | Convert all uppercase characters to lowercase.
-`tr -s '[[:punct:][:space:]]' '\n'` | Split by word.
-`uniq [-c]`                         | Filter out repeated lines (`-c` also counts them).
-`wc [-l] [-w] [-m]`                 | Count lines, words or characters.
-
-]
-
-
-
-## Signals
-
-<!-- slide-front-matter class: center, middle -->
-
-> Sending notifications to processes, and then killing them.
-
-<p class='center'><img class='w40' src='images/kill-9.jpg' /></p>
-
-### What is a signal?
-
-A signal is an **asynchronous notification sent to a process** to notify it that an event has occurred.
-
-<p class='center'><img class='w80' src='images/sighup-diagram.jpg' /></p>
-
-If the process has registered a **signal handler** for that specific signal, it is executed.
-Otherwise the **default signal handler** is executed.
-
-### Common Unix signals
-
-A signal is defined by the `SIG` prefix followed by a mnemonic name for the signal.
-Some signals also have a standard number assigned to them.
-Here are the most commonly encountered Unix signals:
-
-Signal     | Number | Default handler       | Description
-:---       | ---:   | :---                  | :---
-`SIGHUP`   | 1      | Terminate             | Hangup.
-`SIGINT`   | 2      | Terminate             | Terminal interrupt signal.
-`SIGKILL`  | 9      | Terminate             | Kill (cannot be caught or ignored).
-`SIGQUIT`  | 3      | Terminate (core dump) | Terminal quit signal.
-`SIGTERM`  | 15     | Terminate             | Termination signal.
-`SIGUSR1`  | -      | Terminate             | User-defined signal 1.
-`SIGUSR2`  | -      | Terminate             | User-defined signal 2.
-`SIGWINCH` | -      | Ignore                | Terminal window size changed.
-
-Here's a more complete list: [POSIX signals][signals-list].
-
-#### The terminal interrupt signal (`SIGINT`)
-
-When you type `Ctrl-C` in your terminal to terminate a running process, you are actually using Unix signals.
-
-The shortcut is interpreted by your shell,
-which then sends a **terminal interrupt signal**, or **`SIGINT`**, to the running process.
-
-Most processes handle that signal by terminating (altough some don't respond to it, like some interactive helps, e.g. `man ls`).
-
-### The `kill` command
-
-The `kill` command **sends a signal to a process**.
-
-Since the default signal handler for most signals is to terminate the process,
-it often has that effect, hence the name "kill".
-
-Its syntax is:
-
-```
-kill [-<SIGNAL>] <PID>
-kill [-s <SIGNAL>] <PID>
-```
-
-.commands-table[
-
-Command             | Effect
-:---                | :---
-`kill 10000`        | Send the **default `SIGTERM` signal** to process with PID `10000`.
-`kill -s HUP 10000` | Send the `SIGHUP` signal to that same process.
-`kill -HUP 10000`   | Equivalent to the previous command.
-`kill -1 10000`     | Equivalent to the previous command (1 is the official POSIX number for `SIGHUP`).
-
-]
-
-#### Trapping signals
-
-This command will run a
-[badly behaved script](https://gist.github.com/AlphaHydrae/162f28e3e2bd9355a95914e04cd4dd0c/91dda64d9e0ca26168d25195a189ca6a69a14ee6)
-which traps and ignores all signals sent to it:
-
-```bash
-$> curl -s -L https://git.io/JitFQ|sh -s
-Hi, I'm running with PID 10000
-Try and kill me!
-```
-
-Since it ignores the `SIGINT` signal among others,
-you will not be able to stop it with `Ctrl-C`.
-
-Open another terminal and try to kill the process by referring to its PID
-(which is `10000` in this example but will be different on your machine):
-
-```bash
-$> kill 10000
-$> kill -s HUP 10000
-$> kill -s QUIT 10000
-$> kill -s USR1 10000
-```
-
-The script will simply log that it is ignoring your signal and continue executing.
-
-#### The `KILL` signal
-
-There is one signal that cannot be ignored: **the `KILL` signal**.
-
-Although a process can detect the signal and attempt to perform additional operations,
-**the OS will permanently kill the process** shortly after it is received,
-and the process can do nothing to prevent it.
-
-Send a `KILL` signal to the process with the same PID as before:
-
-```bash
-$> kill -s KILL 10000
-```
-
-The script will finally have the decency to die.
-
-### Unix signals in the real world
-
-Many widely-used programs react to Unix signals, for example:
-
-* [Nginx][nginx-signals]
-* [PostgreSQL][postgres-signals]
-* [OpenSSH][sshd-signals]
-
-<!-- slide-column -->
-
-A common example is the `SIGHUP` signal.
-Originally it was meant to indicate that the modem hanged up.
-
-That's not relevant to programs not directly connected to a terminal, but some programs repurposed it for another use.
-
-Many background services like Nginx and PostgreSQL will reload their configuration (without shutting down) when receiving that signal.
-Many other tools follow this convention.
-
-<!-- slide-column 30 -->
-
-<img class='w100' src='images/sighup.jpg' />
-
 
 
 ## References
@@ -1178,10 +1131,10 @@ Many other tools follow this convention.
 [pid]: https://en.wikipedia.org/wiki/Process_identifier
 [pipes]: https://en.wikipedia.org/wiki/Pipeline_(Unix)
 [posix]: https://en.wikipedia.org/wiki/POSIX
-[postgres-signals]: https://www.postgresql.org/docs/current/static/app-postgres.html#id-1.9.5.13.9
+[postgres-signals]: https://www.postgresql.org/docs/current/static/app-postgres.html#id-1.9.5.14.9
 [process]: https://en.wikipedia.org/wiki/Process_(computing)
 [ps-fields]: https://kb.iu.edu/d/afnv
-[semipredicate]: https://en.wikipedia.org/wiki/Semipredicate_problem#Multivalued_return
+[semipredicate]: https://en.wikipedia.org/wiki/Semipredicate_problem
 [signals]: https://en.wikipedia.org/wiki/Signal_(IPC)
 [signals-list]: https://en.wikipedia.org/wiki/Signal_(IPC)#POSIX_signals
 [sshd-signals]: https://linux.die.net/man/8/sshd
