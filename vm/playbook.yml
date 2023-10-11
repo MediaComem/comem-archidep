@@ -7,6 +7,7 @@
     archioweb_rest_demo_directory: /var/www/archioweb-rest-demo
     archioweb_rest_demo_domain: demo.archioweb.ch
     archioweb_rest_demo_tls: false
+    archioweb_rest_demo_update: false
     archioweb_rest_demo_user: archioweb_rest_demo
     certbot_email: simon.oulevay@heig-vd.ch
     server_name: archidep.ch
@@ -15,11 +16,16 @@
     - vars/secrets.yml
 
   handlers:
-    - name: Restart nginx
+    - name: Reload nginx
       service:
         name: nginx
         state: reloaded
       tags: [nginx]
+    - name: Retart ArchiOWeb REST demo
+      service:
+        name: archioweb-rest-demo
+        state: restarted
+      tags: [archioweb]
 
   tasks:
     - name: Upgrade all packages
@@ -56,12 +62,12 @@
     - name: Install MongoDB
       apt:
         name:
-          - mongodb-org=7.0.2
-          - mongodb-org-database=7.0.2
-          - mongodb-org-server=7.0.2
-          - mongodb-mongosh=2.0.1
-          - mongodb-org-mongos=7.0.2
-          - mongodb-org-tools=7.0.2
+          - mongodb-org>=7.0.2
+          - mongodb-org-database>=7.0.2
+          - mongodb-org-server>=7.0.2
+          - mongodb-mongosh>=2.0.1
+          - mongodb-org-mongos>=7.0.2
+          - mongodb-org-tools>=7.0.2
         update_cache: true
         state: present
       tags: [mongo]
@@ -91,17 +97,25 @@
         state: present
       tags: [postgres]
 
+    - name: Check whether Node.js is installed
+      command: dpkg -l nodejs
+      changed_when: false
+      failed_when: false
+      register: node_installed
+
     - name: Download Node.js setup script
       uri:
         url: https://deb.nodesource.com/setup_20.x
         return_content: yes
       register: node_setup
+      when: node_installed.rc != 0
       tags: [node]
 
     - name: Set up Node.js
       shell:
         cmd: sh -s -- -y
         stdin: '{{ node_setup.content }}'
+      when: node_installed.rc != 0
       tags: [node]
 
     - name: Install Node.js
@@ -109,6 +123,7 @@
         name: nodejs
         update_cache: true
         state: present
+      when: node_installed.rc != 0
       tags: [node]
 
     - name: Install nginx
@@ -151,6 +166,8 @@
         repo: https://github.com/MediaComem/comem-rest-demo.git
         dest: '{{ archioweb_rest_demo_directory }}'
         version: main
+        update: '{{ archioweb_rest_demo_update }}'
+      notify: Retart ArchiOWeb REST demo
       become_user: '{{ archioweb_rest_demo_user }}'
       register: archioweb_rest_demo_clone
       tags: [archioweb]
@@ -159,6 +176,7 @@
       npm:
         path: '{{ archioweb_rest_demo_directory }}'
         ci: true
+      notify: Retart ArchiOWeb REST demo
       become_user: '{{ archioweb_rest_demo_user }}'
       when: archioweb_rest_demo_clone is changed
       tags: [archioweb]
@@ -193,7 +211,7 @@
       template:
         src: archioweb-rest-demo.conf
         dest: /etc/nginx/sites-available/archioweb-rest-demo.conf
-      notify: Restart nginx
+      notify: Reload nginx
       register: archioweb_rest_demo_nginx_config
       tags: [archioweb]
 
@@ -202,11 +220,11 @@
         src: /etc/nginx/sites-available/archioweb-rest-demo.conf
         dest: /etc/nginx/sites-enabled/archioweb-rest-demo.conf
         state: link
-      notify: Restart nginx
+      notify: Reload nginx
       register: archioweb_rest_demo_nginx_link
       tags: [archioweb]
 
-    - name: Restart nginx to deploy the ArchiOWeb REST demo
+    - name: Reload nginx to deploy the ArchiOWeb REST demo
       service:
         name: nginx
         state: restarted
@@ -231,6 +249,6 @@
       template:
         src: archioweb-rest-demo.conf
         dest: /etc/nginx/sites-available/archioweb-rest-demo.conf
-      notify: Restart nginx
+      notify: Reload nginx
       when: archioweb_rest_demo_tls
       tags: [archioweb]
