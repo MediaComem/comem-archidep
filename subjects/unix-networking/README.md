@@ -23,7 +23,8 @@ Learn the basics of Unix networking and how to make TCP connections.
   - [OSI vs. TCP/IP](#osi-vs-tcpip)
   - [IP addressing](#ip-addressing)
     - [IP networks](#ip-networks)
-    - [Subnetworks](#subnetworks)
+    - [IP global networks](#ip-global-networks)
+    - [IP local networks](#ip-local-networks)
     - [Reserved address spaces](#reserved-address-spaces)
     - [There's no place like 127.0.0.1](#theres-no-place-like-127001)
     - [0.0.0.0 is everyone](#0000-is-everyone)
@@ -127,11 +128,22 @@ For example, assuming we use the address `40.127.1.70` and a prefix of 16 bits:
 
 This allows the physical routing devices that are part of the Internet to direct traffic to the correct geographical area and machine(s).
 
-> The [Internet Assigned Numbers Authority (IANA)][iana] is the organization responsible for dividing the Internet itself into global networks,
-> each in turn administered by regional organizations.
-> You can find the list of registered networks in the [IPv4 Address Space Registry][iana-ipv4] and [IPv6 Address Space Registry][iana-ipv6].
+#### IP global networks
 
-#### Subnetworks
+The [Internet Assigned Numbers Authority (IANA)][iana] is the organization
+responsible for dividing the Internet itself into global networks, each
+administered by regional organizations.
+
+The [Regional Internet Registries (RIR)][rir], in turn, follow their regional
+policies to delegate resources to their customers, which include [Internet
+Service Providers (ISP)][isp] and end-user organizations.
+
+<p class="center"><img class="w75" src="./images/regional-internet-registries.svg" /></p>
+
+You can find the list of registered networks in the [IPv4 Address Space
+Registry][iana-ipv4] and [IPv6 Address Space Registry][iana-ipv6].
+
+#### IP local networks
 
 [Subnetting][subnet] can be used to further improve efficiency in the utilization of the relatively small address space available.
 
@@ -688,6 +700,7 @@ You should see the HTML text appear in your browser.
 [ip]: https://en.wikipedia.org/wiki/Internet_Protocol
 [ipv4]: https://en.wikipedia.org/wiki/IPv4
 [ipv6]: https://en.wikipedia.org/wiki/IPv6
+[isp]: https://en.wikipedia.org/wiki/Internet_service_provider
 [loopback]: https://en.wikipedia.org/wiki/Loopback#Virtual_loopback_interface
 [mtr]: https://en.wikipedia.org/wiki/MTR_(software)
 [nat]: https://en.wikipedia.org/wiki/Network_address_translation
@@ -697,6 +710,7 @@ You should see the HTML text appear in your browser.
 [ping-sonar]: https://en.wikipedia.org/wiki/Sonar#Active_sonar
 [port]: https://en.wikipedia.org/wiki/Port_(computer_networking)
 [registered-ports]: https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+[rir]: https://en.wikipedia.org/wiki/Regional_Internet_registry
 [socket]: https://en.wikipedia.org/wiki/Network_socket
 [ss]: http://man7.org/linux/man-pages/man8/ss.8.html
 [subnet]: https://en.wikipedia.org/wiki/Subnetwork
