@@ -38,8 +38,6 @@ Learn the basics of Unix networking and how to make TCP connections.
 - [Unix networking](#unix-networking)
   - [The `ip` command](#the-ip-command)
   - [The `ping` command](#the-ping-command)
-  - [The `traceroute` command](#the-traceroute-command)
-  - [The `mtr` command](#the-mtr-command)
   - [The `ss` command](#the-ss-command)
   - [The `nc` command](#the-nc-command)
 - [Making connections](#making-connections)
@@ -51,6 +49,9 @@ Learn the basics of Unix networking and how to make TCP connections.
     - [Making an HTTP request with a browser](#making-an-http-request-with-a-browser)
     - [Sending a plain text HTTP response](#sending-a-plain-text-http-response)
     - [Sending an HTTP response with HTML](#sending-an-http-response-with-html)
+- [Other useful commands](#other-useful-commands)
+  - [The `traceroute` command](#the-traceroute-command)
+  - [The `mtr` command](#the-mtr-command)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -385,55 +386,6 @@ and that the round-trip to that computer took 1.12 milliseconds.
 
 > Remove the `-c 1` option to keep pinging once per second.
 
-### The `traceroute` command
-
-The [`traceroute` command][traceroute] displays the path and transit delays of packets across an IP network.
-
-```bash
-$> traceroute google.com
-traceroute to google.com (172.217.22.78), 30 hops max, 60 byte packets
- 1  example.amazonaws.com (54.93.0.48)  18.214 ms ...
- 2  100.66.0.184 (100.66.0.184)  13.718 ms ...
- 3  100.66.0.91 (100.66.0.91)  25.227 ms ...
- ...
- 7  52.93.111.27 (52.93.111.27)  18.485 ms ...
- 8  74.125.49.104 (74.125.49.104)  0.740 ms ...
- 9  108.170.251.129 (108.170.251.129)  1.636 ms ...
-10  72.14.232.35 (72.14.232.35)  0.689 ms ...
-11  example.net (172.217.22.78) 0.583 ms ...
-```
-
-<!-- slide-column -->
-
-Router addresses can be superimposed upon maps of their physical locations.
-This example shows a request from New Zealand to an IP in Massachusetts which takes a route that passes through Europe.
-
-<!-- slide-column -->
-
-<img class='w100' src='images/traceroute.png' />
-
-### The `mtr` command
-
-The `mtr` command, originally named **M**att's **tr**aceroute, combines the `ping` and `traceroute` utilities into a single network diagnostic tool.
-
-```bash
-$> mtr google.com
-                           My traceroute  [v0.92]
-ip-172-31-39-219 (172.31.39.219)                   2018-12-05T15:55:42+0000
- Host                            Loss%   Snt   Last   Avg  Best  Wrst StDev
- 1. ???
- 2. ???
- 3. ???
- 4. 100.65.1.225                 0.0%    13    0.4   0.5   0.4   1.1   0.2
- 5. 52.93.23.133                 0.0%    13    3.9   1.8   1.4   3.9   0.8
- 6. 54.239.107.138               0.0%    13    1.9   2.7   1.8   7.2   1.7
- 7. 52.93.111.11                 0.0%    13    1.6   2.3   1.4   9.9   2.3
- 8. 209.85.149.182               0.0%    13    3.2   3.9   1.5  22.5   5.8
- 9. 108.170.252.1                0.0%    13    2.4   2.3   2.1   3.0   0.2
-10. 66.249.95.169                0.0%    13    2.2   2.2   1.8   3.4   0.5
-11. example.net                  0.0%    13    1.2   1.2   1.2   1.5   0.1
-```
-
 ### The `ss` command
 
 The [**s**ocket **s**tatistics (`ss`) command][ss] (or the older `netstat` command) displays information about the open [**network sockets**][socket] on the computer.
@@ -670,6 +622,63 @@ Content-Type: text/html
 
 Stop netcat with Ctrl-C.
 You should see the HTML text appear in your browser.
+
+
+
+## Other useful commands
+
+<!-- slide-front-matter class: center, middle -->
+
+<img class='w50' src='./images/other-tools.png' />
+
+### The `traceroute` command
+
+The [`traceroute` command][traceroute] displays the path and transit delays of packets across an IP network.
+
+```bash
+$> traceroute google.com
+traceroute to google.com (172.217.22.78), 30 hops max, 60 byte packets
+ 1  example.amazonaws.com (54.93.0.48)  18.214 ms ...
+ 2  100.66.0.184 (100.66.0.184)  13.718 ms ...
+ 3  100.66.0.91 (100.66.0.91)  25.227 ms ...
+ ...
+ 7  52.93.111.27 (52.93.111.27)  18.485 ms ...
+ 8  74.125.49.104 (74.125.49.104)  0.740 ms ...
+ 9  108.170.251.129 (108.170.251.129)  1.636 ms ...
+10  72.14.232.35 (72.14.232.35)  0.689 ms ...
+11  example.net (172.217.22.78) 0.583 ms ...
+```
+
+<!-- slide-column -->
+
+Router addresses can be superimposed upon maps of their physical locations.
+This example shows a request from New Zealand to an IP in Massachusetts which takes a route that passes through Europe.
+
+<!-- slide-column -->
+
+<img class='w100' src='images/traceroute.png' />
+
+### The `mtr` command
+
+The `mtr` command, originally named **M**att's **tr**aceroute, combines the `ping` and `traceroute` utilities into a single network diagnostic tool.
+
+```bash
+$> mtr google.com
+                           My traceroute  [v0.92]
+ip-172-31-39-219 (172.31.39.219)                   2018-12-05T15:55:42+0000
+ Host                            Loss%   Snt   Last   Avg  Best  Wrst StDev
+ 1. ???
+ 2. ???
+ 3. ???
+ 4. 100.65.1.225                 0.0%    13    0.4   0.5   0.4   1.1   0.2
+ 5. 52.93.23.133                 0.0%    13    3.9   1.8   1.4   3.9   0.8
+ 6. 54.239.107.138               0.0%    13    1.9   2.7   1.8   7.2   1.7
+ 7. 52.93.111.11                 0.0%    13    1.6   2.3   1.4   9.9   2.3
+ 8. 209.85.149.182               0.0%    13    3.2   3.9   1.5  22.5   5.8
+ 9. 108.170.252.1                0.0%    13    2.4   2.3   2.1   3.0   0.2
+10. 66.249.95.169                0.0%    13    2.2   2.2   1.8   3.4   0.5
+11. example.net                  0.0%    13    1.2   1.2   1.2   1.5   0.1
+```
 
 
 
