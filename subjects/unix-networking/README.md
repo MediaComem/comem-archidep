@@ -233,7 +233,8 @@ A port is represented as an unsigned 16-bit number, from 0 to 65,535
 
 A port number is always associated with an IP address and the type of transport
 protocol used for communication. For example, when a browser displays a web
-page, it is generally making a TCP connection to an IP address on port 80.
+page, it is generally making a TCP connection to an IP address on port 80 or
+443.
 
 You can see this information if you access a web page with a command-line HTTP
 client like [cURL][curl]:
