@@ -1,6 +1,6 @@
 # Make TCP connections
 
-This guide describes how to establish raw TCP connections with the
+This guide describes how to establish and use raw TCP connections with the
 [**n**et**c**at (`nc`) command][nc].
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -100,7 +100,8 @@ Once you're done, you can close the connection with `Ctrl-C`.
 
 Let's do something that your browser does every day: an HTTP request.
 
-Find out Google's IP address (`O.P.Q.R` in this example):
+Find out Google's IP address (`O.P.Q.R` in this example) using the [`ping`
+command][ping]:
 
 ```bash
 $> ping -c 1 google.com
@@ -115,7 +116,7 @@ Open a TCP connection to the Google IP address you found:
 $> nc O.P.Q.R 80
 ```
 
-Now, talk to the Google server, but not in English or French, in the [HTTP
+Now, talk to this Google server, but not in English or French, in the [HTTP
 protocol][http]:
 
 ```bash
@@ -123,11 +124,24 @@ GET / HTTP/1.1
 Host: www.google.com
 ```
 
-> :gem: Be sure to type *exactly* the text above. Your request must be a valid
+> :books: By sending this text over the TCP connection, you are communicating in
+> the HTTP protocol, a text protocol: you are sending an HTTP request to
+> retrieve (`GET`) the resource at the path `/` of host `www.google.com` (the
+> landing page of the Google website), using version `1.1` of the HTTP protocol.
+>
+> :gem: Be sure to type **exactly** the text above. Your request must be a valid
 > HTTP request or Google's server will not be able to interpret it correctly. If
 > you have made a mistake, exit with `Ctrl-C` and start over.
 
 Press `Enter` twice and you should receive the HTML for Google's home page.
+
+> :boom: If you get a `400 Bad Request` response, it means that your HTTP
+> request is invalid. You probably did not type exactly the text above.
+>
+> :boom: If you don't get a response, it may be because you took too long to
+> type the text, and the request has timed out. Try again a little faster.
+
+Once you're done, you can close the connection with `Ctrl-C`.
 
 If you open your browser, visit `http://www.google.com`, and display the source
 code of the page, you should see the same result.
@@ -139,3 +153,4 @@ Now you can appreciate what your browser does for you every day.
 
 [http]: https://en.wikipedia.org/wiki/HTTP
 [nc]: https://en.wikipedia.org/wiki/Netcat
+[ping]: https://en.wikipedia.org/wiki/Ping_(networking_utility)
