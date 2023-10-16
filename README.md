@@ -89,6 +89,7 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:book: Unix processes](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Pipeline](ex/unix-pipeline.md)
   - [:book: Unix networking](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: TCP](ex/tcp.md)
   - [:book: APT](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Deploy a PHP application with SFTP](ex/sftp-deployment.md)
     - [:classical_building: Architecture](ex/sftp-deployment.md#classical_building-architecture)
