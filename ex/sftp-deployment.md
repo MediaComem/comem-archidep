@@ -184,8 +184,8 @@ password requirements you chose when you secured the MySQL installation.
 
 ## :exclamation: Upload the application
 
-**On your local machine**, use an SFTP client like [FileZilla][filezilla] to
-upload the application to the server.
+**On your local machine**, use an SFTP client like [FileZilla][filezilla] or
+[Cyberduck][cyberduck] to upload the application to the server.
 
 Connect the SFTP client to your server using SSH public key authentication. In
 FileZilla, open the Site Manager and configure your connection like this:
@@ -596,7 +596,8 @@ be the password that was in the `todolist.sql` file when you executed it.
 > re-create the database, user and password.
 
 [apache]: https://www.apache.org
-[filezilla]: https://filezilla-project.org/
+[cyberduck]: https://cyberduck.io
+[filezilla]: https://filezilla-project.org
 [http-500]: https://www.webfx.com/web-development/glossary/http-status-codes/what-is-a-500-status-code/
 [linux-unattended-upgrades]: https://wiki.debian.org/UnattendedUpgrades
 [mysql-socket-auth]: https://dev.mysql.com/doc/refman/8.0/en/socket-pluggable-authentication.html
