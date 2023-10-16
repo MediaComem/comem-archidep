@@ -396,16 +396,20 @@ The [**s**ocket **s**tatistics (`ss`) command][ss] (or the older `netstat` comma
 
 ```bash
 $> ss -tlpn
-State   Recv-Q  Send-Q  Local Address:Port  Peer Address:Port
+State   Recv-Q  Send-Q  Local Address:Port  Peer Address:Port  Process
 LISTEN  0       80          127.0.0.1:3306       0.0.0.0:*     mysqld...
 LISTEN  0       128     127.0.0.53%lo:53         0.0.0.0:*     systemd-resolve...
 LISTEN  0       128           0.0.0.0:22         0.0.0.0:*     sshd...
 LISTEN  0       128              [::]:22            [::]:*     sshd...
 ```
 
-The above command shows which processes are listening for TCP connections.
-In this example, we can see that there is a MySQL database listening on port 3306,
-a DNS resolver on port 53, and an SSH server on port 22.
+The above command lists the processes listening for TCP connections. In this
+example, we can see that there is a MySQL database listening on port 3306, a DNS
+resolver on port 53, and an SSH server on port 22.
+
+> On some systems, you may need to add the `-e` option to display process
+> information. You can remove the `-n` (or `--numeric`) option to see service
+> names (e.g. `ssh` instead of `22`).
 
 ### The `nc` command
 
