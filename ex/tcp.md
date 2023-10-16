@@ -130,7 +130,7 @@ Host: www.google.com
 >
 > :books: By sending this text over the TCP connection, you are communicating in
 > the HTTP protocol, a text protocol: you are sending an HTTP request to
-> retrieve (`GET`) the resource at the path `/` of host `www.google.com` (the
+> retrieve (`GET`) the resource at path `/` of host `www.google.com` (the
 > landing page of the Google website), using version `1.1` of the HTTP protocol.
 
 Press `Enter` twice and you should receive the HTML for Google's home page.
