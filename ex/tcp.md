@@ -124,14 +124,14 @@ GET / HTTP/1.1
 Host: www.google.com
 ```
 
+> :gem: Be sure to type **exactly** the text above. Your request must be a valid
+> HTTP request or Google's server will not be able to interpret it correctly. If
+> you have made a mistake, exit with `Ctrl-C` and start over.
+>
 > :books: By sending this text over the TCP connection, you are communicating in
 > the HTTP protocol, a text protocol: you are sending an HTTP request to
 > retrieve (`GET`) the resource at the path `/` of host `www.google.com` (the
 > landing page of the Google website), using version `1.1` of the HTTP protocol.
->
-> :gem: Be sure to type **exactly** the text above. Your request must be a valid
-> HTTP request or Google's server will not be able to interpret it correctly. If
-> you have made a mistake, exit with `Ctrl-C` and start over.
 
 Press `Enter` twice and you should receive the HTML for Google's home page.
 
