@@ -32,7 +32,7 @@ Learn the basics of Unix networking and how to make TCP connections.
   - [Ports](#ports)
     - [Multiplexing](#multiplexing)
     - [Registered port numbers](#registered-port-numbers)
-    - [Well-known ports](#well-known-ports)
+    - [Well-known & dynamic ports](#well-known--dynamic-ports)
   - [Domain name system](#domain-name-system)
     - [DNS hierarchy](#dns-hierarchy)
 - [Unix networking](#unix-networking)
@@ -287,12 +287,25 @@ Port    | Use
 
 See the [full list][registered-ports].
 
-#### Well-known ports
+#### Well-known & dynamic ports
 
 The port numbers in the range from 0 to 1023 are the **well-known ports** or **system ports**.
 They are used by system processes that provide widely used types of network services, such as SSH or DNS.
 
+<!-- slide-column -->
+
 On Unix-like operating systems, a process must execute with **superuser privileges** to be able to bind a network socket on a well-known port.
+
+<!-- slide-column 70 -->
+
+<img class="w100" src="./images/secure.jpeg" />
+
+<!-- slide-container -->
+
+> The port numbers in the range from 49152 to 65535 contains **dynamic or
+> private ports** that cannot be registered with IANA. This range is used for
+> private or customized services, for temporary purposes, and for automatic
+> allocation of [ephemeral ports][ephemeral-ports].
 
 ### Domain name system
 
@@ -683,6 +696,7 @@ You should see the HTML text appear in your browser.
 [cidr]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
 [curl]: https://curl.haxx.se
 [dns]: https://en.wikipedia.org/wiki/Domain_Name_System
+[ephemeral-ports]: https://en.wikipedia.org/wiki/Ephemeral_port
 [gtld]: https://en.wikipedia.org/wiki/Generic_top-level_domain
 [http-301]: https://httpstatuses.com/301
 [http-headers]: https://en.wikipedia.org/wiki/List_of_HTTP_header_fields
