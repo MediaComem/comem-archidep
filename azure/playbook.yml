@@ -1,11 +1,19 @@
 ---
 - hosts: "{{ playbook_hosts | default('all') }}"
-  serial: 1
   become: true
+  vars:
+    course_ssh_public_keys: |
+      ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8EFCKV787Lx138wXkVDuoLWj3JFseTutPk1i5XgPYArAhoIvrIsgblZowye6v2tfFHGkGn1F/RJzBk9lCsQVaFQtKaJjau+SGl88CwEp8HBdxyaDWrpnVhK5Z5xPtv7ZMoB6jcY9C0PyWjygqHwNkfxTlIZOergzezE6jQoKEbe6X7jEWTK4CGW1jFiO/m0IdQ7Y8/qrPJtx4+/LnVq3HEzT16A1hba8VxRayXj1EVvfckVAd/oUeNaHl9TiKPLcmlks/hBQ/hRBwdvnnm/tVYpljEzEPTy0vwyXNfBSr+CA8PkN+vLJ3HZSbOtPuRxre91/XN+JyhWg8b9LKq9O3 archidep
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBqkIY4qhWguKekA2WeV1L7gx3tRrZiJZnz3P1HHn2pi simon.oulevay@heig-vd.ch (vlr)
+      ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQDLU7DQ+dUtWZvuCX/oJHzbjpWnHf0xwSg28+ozL2hua10yFkPX1ad7zPUlwHlnRSSsfqZq9ZNSRMRyVWPUj78qdastQ8lBvukvgStCiffE7IwyXtBlrEXv9EsvSvIxSwKr5ncqt1YXkSqco1mNofLVBbu+YScbMOwAsxcdqTvvr7bny4+V75we0647mcFkD95m7Jha03WGyiI7f8UMq25fAn4xMCFL1SpgGBClX4A6oKIwjPjda1yOtp74+F6On/2pFr0hbRcwfp2fmvptSDOtuLfjQqbTNlYH1B9HCrMjlfhTwz4TSbX94259NQWDEowIVM92PysoyLVu2qFM9fnMakRwokclKaDnbCFbQO4ok+8iTaunrhnD//NpYWYf7xsqfuYhNAsy5bHpF1TyHBWfw/G8Q/ZV2qZai0UUtovBUVqtmAT6s/PafKxV6VyRGFofTZAmmZsliBKHs2Jr/XiKpZc21ssiZt056gIEHR4oofqnGcGH1jvNip+kf0pfuDR/3BEb03PB0sbJB931GY7m/fuqW3P/2AtZ58iMVhhlqIRstdmGyPNn+VVBxv8TyZdK6P7lDo1ZfKIpRsmRgzWvrrkA7Cs7rQZokQOrxy2Eui540JAa2QgOVUotpu2mZerEFB4zo/uPXbIi6cgpY9nq2OKJzhl4mGxVIsA9h6oyhLHdnZL7gIM823OiAZYjKY/OoyLeh6NwkgCI1uL7eIvsWN4a9CUyt9F87bylQKhrbA2B12I7NOitJlwnNarjztNmZrNGEd0KxSilhUdDpypCgAM0P7LoREjug+q52OvcE2yz2jE6Fy/Eptg3mfbV1LhXIKxAk1h4yi7jLVtK42XvqXnploxapcdtJBUtTJ4J6CNp5FiNtcf7/bW4aaros4dtZbX52VbDfiS622M7Ko28exoXd6v8/GHuImZ8/P2dfWcDgQ6KXMJxMLkVhF0XeGi2ds2dF8KaxyRa4iRNlvWt0BcUZWkIC7g3QH9Vv1vC3ih8gjG86KoakYfwtvdfgbxD/GNrAs4ntGJHtyNSZ8EjrnL5pkSPaCmFN5Sswrrc79UkldkU3o0XckImR7RcprekrNhdetKijf29c6DB35h9RDRSd5ZzQZgsxVkqJPiWR+Jui63xg55cNTsZHhbwhNYY4gemkzUfF5YSBt+bd+GyLePE4xm7kN28l4Oe0vJo4XIuYb+Tl3izHuySTcglcyr93n1CkGUu2rGimwcupWbqfD1uFC1cj5ZqrP+Zu5WuNIWgMdkEOrI8xPHa/IlPQDRGHBNqt8CM988QhP6D4EwDhtBPTkAgvJSdw1CRgj974YLU3AUZbMMi3u6Diox+TG1T8QHEYMObCiaCTpXeoRAD simon.oulevay@heig-vd.ch (mnt)
   tasks:
+    - name: Add course SSH key to student user
+      ansible.posix.authorized_key:
+        user: '{{ ansible_user }}'
+        key: '{{ course_ssh_public_keys }}'
+        state: present
     - name: Add course SSH key to root user
       ansible.posix.authorized_key:
         user: root
-        key: '{{ course_ssh_public_key }}'
-        comment: comem-archidep
+        key: '{{ course_ssh_public_keys }}'
         state: present
