@@ -37,7 +37,6 @@ async function generateInventory() {
         memo[student.defaultUsername] = {
           ansible_become: true,
           ansible_host: student.ip,
-          ansible_ssh_private_key_file: sshPrivateKeyFile,
           ansible_user: student.ansibleUser ?? student.username,
           base_domain: baseDomain,
           student_email: student.email,
@@ -49,7 +48,7 @@ async function generateInventory() {
         return memo;
       }, {}),
       vars: {
-        course_ssh_public_key: sshPublicKey
+        ansible_ssh_private_key_file: sshPrivateKeyFile
       }
     }
   };
