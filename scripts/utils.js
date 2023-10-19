@@ -71,7 +71,15 @@ export async function loadData() {
     const students = await parseCsv(
       await readFileNative(studentsFile, 'utf8'),
       {
-        columns: ['class', 'name', 'email', 'ip', 'username', 'ansibleUser'],
+        columns: [
+          'class',
+          'name',
+          'email',
+          'ip',
+          'username',
+          'ansibleUser',
+          'comment'
+        ],
         from: 2
       }
     );
