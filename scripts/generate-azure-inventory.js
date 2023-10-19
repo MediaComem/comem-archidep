@@ -8,14 +8,12 @@ import {
   loadConfigProperty,
   loadData,
   loading,
-  readFile,
   root,
   studentsFile
 } from './utils.js';
 
 const inventoryFile = joinPath(root, 'azure', 'inventory');
 const sshPrivateKeyFile = joinPath(root, 'id_rsa');
-const sshPublicKeyFile = joinPath(root, 'id_rsa.pub');
 
 executeScript(generateInventory);
 
@@ -28,7 +26,6 @@ async function generateInventory() {
   );
 
   const baseDomain = await loadConfigProperty('vm_base_domain');
-  const sshPublicKey = await readFile(sshPublicKeyFile);
 
   const inventory = {
     all: {
