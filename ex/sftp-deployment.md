@@ -185,7 +185,7 @@ password requirements you chose when you secured the MySQL installation.
 ## :exclamation: Upload the application
 
 **On your local machine**, use an SFTP client like [FileZilla][filezilla] or
-[Cyberduck][cyberduck] to upload the application to the server.
+[Cyberduck][cyberduck] (macOS) to upload the application to the server.
 
 Connect the SFTP client to your server using SSH public key authentication. In
 FileZilla, open the Site Manager and configure your connection like this:
