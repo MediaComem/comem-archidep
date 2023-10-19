@@ -6,7 +6,6 @@
 /*.csv
 /*.csv.*
 /data.yml
-/ec2/inventory*
 /.envrc
 /heroku.csv
 /id_ed25519*

@@ -23,8 +23,6 @@
     "build": "courses-md build",
     "deploy": "courses-md publish",
     "doctoc": "doctoc --notitle --github README.md CLI-CHEATSHEET.md GIT-CHEATSHEET.md SETUP.md SYSADMIN-CHEATSHEET.md TEST-MATTER.md ex subjects",
-    "ec2": "node scripts/manage-instances.js",
-    "ec2:inventory": "node scripts/manage-instances.js inventory",
     "format": "prettier --check .",
     "format:write": "prettier --write .",
     "mails": "node scripts/send-students-data.js",
