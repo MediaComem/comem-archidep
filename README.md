@@ -19,6 +19,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 - [Legend](#legend)
 - [What you will need](#what-you-will-need)
 - [Plan](#plan)
+- [How to improve our basic deployment](#how-to-improve-our-basic-deployment)
 - [More Practice](#more-practice)
 - [Extra](#extra)
 - [Frequently Asked Questions](#frequently-asked-questions)
@@ -95,8 +96,7 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:book: APT](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Deploy a PHP application with SFTP](ex/sftp-deployment.md)
     - [:classical_building: Architecture](ex/sftp-deployment.md#classical_building-architecture)
-
-- [How to improve our basic deployment](#how-to-improve-our-basic-deployment)
+  - [:book: How to improve our basic deployment](#how-to-improve-our-basic-deployment)
 
 - Advanced deployment
   - [:hammer: Deploy a PHP application with Git](ex/git-clone-deployment.md)
