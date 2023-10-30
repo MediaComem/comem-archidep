@@ -7,8 +7,10 @@ The goal of this exercise is to set up a real domain name for your application.
 
 - [Legend](#legend)
 - [:gem: Requirements](#gem-requirements)
-- [:exclamation: Connect to Gandi.net](#exclamation-connect-to-gandinet)
+- [:exclamation: Choose your subdomain](#exclamation-choose-your-subdomain)
+- [:exclamation: Configure a DNS zone with Gandi.net](#exclamation-configure-a-dns-zone-with-gandinet)
 - [:exclamation: Access the domain name](#exclamation-access-the-domain-name)
+- [:question: Adapt your server's hostname](#question-adapt-your-servers-hostname)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
   - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
@@ -38,20 +40,47 @@ Parts of this guide are annotated with the following icons:
 
 Make sure you have completed the [previous exercise](systemd-deployment.md).
 
-## :exclamation: Connect to Gandi.net
+## :exclamation: Choose your subdomain
 
-Connect to [Gandi.net](https://gandi.net) with the provided user account and
-create two new `A` record to map subdomains to your server's IP address:
+In this exercise, you will configure actual subdomains in the worldwide DNS
+system to point to your server. You must now choose your personal subdomain for
+this course.
 
-1. Your first subdomain should be `john-doe.archidep.ch`, where `john-doe`
-   is your name on your server, meaning that you should use `john-doe` (your
-   username) as the **name of the DNS record**.
-2. Then, create a wildcard subdomain using `*.john-doe` as the **name of the DNS
-   record**, and the same IP address. This will direct any second-level
-   subdomain like `foo.john-doe.archidep.ch` to your server.
+First, select one of the following domains depending on your class:
+
+* Students of the M51/1 class should use `archidep.ch`.
+* Students of the M51/2 class should use `archidep2.ch`.
+
+Then, choose a subdomain of that domain. For example, you may use the same name
+as your Unix user (e.g. `john_doe` or `jde`), although you **MUST** replace any
+underscores (`_`) by hyphens (`-`), e.g. `john-doe` instead of `john_doe`.
+Alternatively, you can call your server whatever you want, e.g. `my-precious`,
+as long as it does not conflict with the names chosen by the other students.
+
+For example, your full subdomain should look like `john-doe.archidep.ch` or
+`jde.archidep2.ch`. Proceed with the next steps once you have decided what it
+is.
+
+## :exclamation: Configure a DNS zone with Gandi.net
+
+* Connect to [Gandi.net](https://gandi.net) with the user account provided to
+  you by the teacher.
+* Go under the "Domain" tab in the left menu and select `archidep.ch` or
+  `archidep2.ch` depending on your class (`archidep.ch` for M51/1 and
+  `archidep2.ch` for M51/2).
+* Go under the "DNS Records" tab in the domain's top menu.
+* Add two new `A` records to map subdomains to **your server's public IP
+  address**:
+
+  1. Assuming your personal subdomain for the course is `john-doe.archidep.ch`,
+     you should use `john-doe` as the **name of the DNS record**.
+  2. Then, create a wildcard subdomain using `*.john-doe` as the **name of the
+    DNS record**, and the same IP address. This will direct any second-level
+    subdomain like `foo.john-doe.archidep.ch` to your server.
 
 Assuming your server's IP address is `W.X.Y.Z` and your username is `john-doe`,
-you should have the following DNS records (among others) in your zone file:
+you should have the following DNS records (among others) in the domain's zone
+file:
 
 ```
 *.john-doe 1800 IN A W.X.Y.Z
@@ -68,6 +97,24 @@ your browser (if you have completed the previous exercises).
 > especially if you make a mistake in configuring the DNS record and then fix
 > it. This is because DNS records are cached for a time (the TTL you
 > configured), by all intermediaries and also by your machine.
+
+## :question: Adapt your server's hostname
+
+When you originally ran your Microsoft Azure server, you were asked to [set a
+hostname](https://github.com/MediaComem/comem-archidep/blob/main/ex/azure-setup.md#exclamation-change-the-hostname-of-your-virtual-machine)
+. This hostname is purely informative: it is displayed in the prompt when you
+connect over SSH but otherwise has no impact on anything else.
+
+However, for consistency, it is recommended that you adapt your hostname
+to match your personal subdomain.
+
+So if you chose, for example, `john-doe.archidep.ch`, run the following commands
+ to update the hostname on your server:
+
+```bash
+$> sudo hostname john-doe.archidep.ch
+$> echo "john-doe.archidep.ch" | sudo tee /etc/hostname
+```
 
 ## :checkered_flag: What have I done?
 
