@@ -131,6 +131,8 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:hammer: Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
     - [:classical_building: Architecture](ex/git-automated-deployment.md#classical_building-architecture)
 
+- **:collision: :hammer: Graded deployment exercise (*not yet available*)**
+
 - Managed deployments
   - [:book: Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/paas?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Deploy a static site to GitHub Pages](./ex/github-pages-deployment.md)
