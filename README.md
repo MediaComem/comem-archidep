@@ -104,6 +104,7 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:book: Twelve-factor app][12factor]
   - [:book: Unix environment variables](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Configure a PHP application through environment variables](ex/config-through-environment.md)
+    - [:key: Solution](ex/config-through-environment-solution.md)
     - [:classical_building: Architecture](ex/config-through-environment.md#classical_building-architecture)
   - [:book: Linux process management](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md)
