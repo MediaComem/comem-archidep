@@ -120,6 +120,8 @@ For you to succeed in this course, it is highly recommended that you read and co
     - [:classical_building: Architecture](ex/nginx-php-fpm-deployment.md#classical_building-architecture)
   - [:hammer: Deploy a multi-component web application with nginx](./ex/revprod-deployment.md)
     - [:classical_building: Architecture](ex/revprod-deployment.md#classical_building-architecture)
+  - [:hammer: Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
+    - [:classical_building: Architecture](ex/fibscale-deployment.md#classical_building-architecture)
   - [:book: TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
     - [:classical_building: Architecture](ex/certbot-deployment.md#classical_building-architecture)
@@ -166,8 +168,6 @@ fix during the rest of the course:
 
 ## More Practice
 
-- [:hammer: Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
-  - [:classical_building: Architecture](ex/fibscale-deployment.md#classical_building-architecture)
 - [:hammer: Configure nginx as a load balancer](ex/load-balancing-deployment.md)
 
 **Complete deployments**
