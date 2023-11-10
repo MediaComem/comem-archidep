@@ -52,7 +52,7 @@ Parts of this guide are annotated with the following icons:
 
 The following requirements must be installed on your server:
 
-- [Node.js][node] 18.x ([installation instructions][node-install])
+- [Node.js][node] 20.x ([installation instructions][node-install])
 
 ## :gem: The application
 
