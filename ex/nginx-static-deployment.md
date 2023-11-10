@@ -8,6 +8,7 @@ and CSS) with [nginx][nginx].
 
 - [Legend](#legend)
 - [:gem: Requirements](#gem-requirements)
+- [:exclamation: Install nginx on the server](#exclamation-install-nginx-on-the-server)
 - [:exclamation: Put the static website on the server](#exclamation-put-the-static-website-on-the-server)
 - [:exclamation: Create an nginx configuration file to serve the website](#exclamation-create-an-nginx-configuration-file-to-serve-the-website)
   - [:exclamation: Enable the nginx configuration](#exclamation-enable-the-nginx-configuration)
@@ -47,12 +48,17 @@ This guide assumes that you are familiar with [reverse proxying][slides] and
 that you have completed the [previous DNS configuration exercise][previous-ex],
 where you configured an A record for your server in the domain name system.
 
+## :exclamation: Install nginx on the server
+
+**Connect to your server** and make sure you have nginx installed [as shown
+during the course][nginx-install].
+
 ## :exclamation: Put the static website on the server
 
 It is suggested that you use the provided [HTML, JavaScript and CSS
 clock][repo], but you could deploy any other static HTML website.
 
-**Connect to your server**, then clone the following repository into your home
+**Still on your server**, clone the following repository into your home
 directory: https://github.com/MediaComem/static-clock-website
 
 Make sure the files are there:
@@ -63,8 +69,6 @@ index.html  README.md  script.js  style.css
 ```
 
 ## :exclamation: Create an nginx configuration file to serve the website
-
-Make sure you have nginx installed [as shown during the course][nginx-install].
 
 Create an nginx configuration file for the website. You may name the file
 `clock` and put it in nginx's `/etc/nginx/sites-available` directory. You can do
