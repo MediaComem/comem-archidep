@@ -67,6 +67,7 @@
 <li><a href="#legend">Legend</a></li>
 <li><a href="#what-you-will-need">What you will need</a></li>
 <li><a href="#plan">Plan</a></li>
+<li><a href="#how-to-improve-our-basic-deployment">How to improve our basic deployment</a></li>
 <li><a href="#more-practice">More Practice</a></li>
 <li><a href="#extra">Extra</a></li>
 <li><a href="#frequently-asked-questions">Frequently Asked Questions</a><ul>
@@ -146,9 +147,15 @@ includes Git Bash</li>
 <li><a href="ex/azure-setup.md">:hammer: Run your own virtual server on Microsoft Azure</a></li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2023-2024/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme">:book: Linux</a></li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme">:book: Unix basics &amp; administration</a></li>
-<li><a href="ex/unix-permissions.md">:hammer: Permissions</a></li>
+<li><a href="ex/unix-permissions.md">:hammer: Permissions</a><ul>
+<li><a href="ex/unix-permissions-solutions.md">:key: Solutions</a></li>
+</ul>
+</li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme">:book: Unix processes</a></li>
-<li><a href="ex/unix-pipeline.md">:hammer: Pipeline</a></li>
+<li><a href="ex/unix-pipeline.md">:hammer: Pipeline</a><ul>
+<li><a href="ex/unix-pipeline-solutions.md">:key: Solutions</a></li>
+</ul>
+</li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme">:book: Unix networking</a></li>
 <li><a href="ex/tcp.md">:hammer: TCP</a></li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2023-2024/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme">:book: APT</a></li>
@@ -156,6 +163,7 @@ includes Git Bash</li>
 <li><a href="ex/sftp-deployment.md#classical_building-architecture">:classical_building: Architecture</a></li>
 </ul>
 </li>
+<li><a href="#how-to-improve-our-basic-deployment">:book: How to improve our basic deployment</a></li>
 </ul>
 </li>
 <li><p>Advanced deployment</p>
@@ -167,11 +175,13 @@ includes Git Bash</li>
 <li><a href="https://12factor.net">:book: Twelve-factor app</a></li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme">:book: Unix environment variables</a></li>
 <li><a href="ex/config-through-environment.md">:hammer: Configure a PHP application through environment variables</a><ul>
+<li><a href="ex/config-through-environment-solution.md">:key: Solution</a></li>
 <li><a href="ex/config-through-environment.md#classical_building-architecture">:classical_building: Architecture</a></li>
 </ul>
 </li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2023-2024/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme">:book: Linux process management</a></li>
 <li><a href="ex/systemd-deployment.md">:hammer: Manage a PHP application with systemd as a Process Manager</a><ul>
+<li><a href="ex/systemd-deployment-solution.md">:key: Solution</a></li>
 <li><a href="ex/systemd-deployment.md#classical_building-architecture">:classical_building: Architecture</a></li>
 </ul>
 </li>
@@ -193,6 +203,10 @@ includes Git Bash</li>
 <li><a href="ex/revprod-deployment.md#classical_building-architecture">:classical_building: Architecture</a></li>
 </ul>
 </li>
+<li><a href="./ex/fibscale-deployment.md">:hammer: Horizontally scale a web application with nginx as a load balancer</a><ul>
+<li><a href="ex/fibscale-deployment.md#classical_building-architecture">:classical_building: Architecture</a></li>
+</ul>
+</li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2023-2024/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme">:book: TLS/SSL certificates</a></li>
 <li><a href="ex/certbot-deployment.md">:hammer: Provision a Let&#39;s Encrypt TLS certificate with Certbot</a><ul>
 <li><a href="ex/certbot-deployment.md#classical_building-architecture">:classical_building: Architecture</a></li>
@@ -209,6 +223,8 @@ includes Git Bash</li>
 </li>
 </ul>
 </li>
+<li><p><strong>:collision: :hammer: Graded deployment exercise (<em>not yet available</em>)</strong></p>
+</li>
 <li><p>Managed deployments</p>
 <ul>
 <li><a href="https://mediacomem.github.io/comem-archidep/2023-2024/subjects/paas?home=MediaComem%2Fcomem-archidep%23readme">:book: Platform-as-a-Service (PaaS)</a></li>
@@ -218,12 +234,36 @@ includes Git Bash</li>
 </ul>
 </li>
 </ul>
+<h2 id="how-to-improve-our-basic-deployment">How to improve our basic deployment</h2>
+<p>The basic SFTP deployment of the PHP TodoList has several flaws which we will
+fix during the rest of the course:</p>
+<ul>
+<li>Transfering files manually through SFTP is slow and error-prone. We will use
+<strong>Git</strong> to reliably transfer files <a href="https://12factor.net/codebase">from our central
+codebase</a> and easily keep our deployment up-to-date over
+time.</li>
+<li><a href="https://12factor.net/config">Hardcoding configuration is a bad practice</a>. We will use
+<strong>environment variables</strong> so that our application can be dynamically
+configured and deployed in any environment without changing its source code.</li>
+<li>Starting our application manually is not suitable for a production deployment.
+We will use a <strong>process manager</strong> to manage the lifecycle of our application:
+starting it automatically when the server boots, and restarting it
+automatically if it crashes.</li>
+<li>Accessing a web application through an IP address is not user-friendly. We
+will obtain a domain and configure its DNS zone file so that our application
+is accessible with a human-readable <strong>domain name</strong>.</li>
+<li>Using a non-standard port is not user-friendly either. We will run the
+application on <strong>port 80 or 443</strong> so that the end user does not have to
+specify a port in the browser&#39;s address bar.</li>
+<li><em>Not discussed yet</em></li>
+<li>Our application is not secure as indicated by the browser, because it is
+served over HTTP and not HTTPS. We will obtain a <strong>TLS/SSL certificate</strong>
+signed by a trusted certificate authority so that our application can be
+served over HTTPS and recognized as secure by browsers.</li>
+<li><em>Not discussed yet</em></li>
+</ul>
 <h2 id="more-practice">More Practice</h2>
 <ul>
-<li><a href="./ex/fibscale-deployment.md">:hammer: Horizontally scale a web application with nginx as a load balancer</a><ul>
-<li><a href="ex/fibscale-deployment.md#classical_building-architecture">:classical_building: Architecture</a></li>
-</ul>
-</li>
 <li><a href="ex/load-balancing-deployment.md">:hammer: Configure nginx as a load balancer</a></li>
 </ul>
 <p><strong>Complete deployments</strong></p>
@@ -271,7 +311,7 @@ the end of each subject.</p>
 </ul>
 </li>
 <li><a href="https://github.com/readme/featured/future-of-the-command-line">Building the Future of the Command Line</a></li>
-<li><a href="https://books.google.ch/books/about/SSH_The_Secure_Shell_The_Definitive_Guid.html?id=9FSaScltd-kC&redir_esc=y">SSH, The Secure Shell: The Definitive Guide - Daniel J. Barrett, Richard E. Silverman, Robert G. Byrnes</a></li>
+<li><a href="https://books.google.ch/books/about/SSH_The_Secure_Shell_The_Definitive_Guid.html?id=9FSaScltd-kC&amp;redir_esc=y">SSH, The Secure Shell: The Definitive Guide - Daniel J. Barrett, Richard E. Silverman, Robert G. Byrnes</a></li>
 <li><a href="https://git-scm.com/book">The Git Book</a><ul>
 <li><a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">Chapter 1 - Getting Started</a></li>
 <li><a href="https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository">Chapter 2 - Git Basics</a></li>
