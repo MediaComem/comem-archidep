@@ -134,7 +134,7 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:hammer: Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
     - [:classical_building: Architecture](ex/git-automated-deployment.md#classical_building-architecture)
 
-- **:collision: :hammer: Graded deployment exercise (*not yet available*)**
+- **[:collision: :hammer: Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md)**
 
 - Managed deployments
   - [:book: Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/paas?home=MediaComem%2Fcomem-archidep%23readme)
@@ -180,7 +180,6 @@ fix during the rest of the course:
 - [:hammer: Deploy Flood It, a Spring Boot (Java) & Angular application with a PostgreSQL database](ex/floodit-deployment.md)
 - [:hammer: Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md)
   - [:classical_building: Architecture](ex/minesweeper-deployment.md#classical_building-architecture)
-- [:hammer: Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md)
 - [:hammer: Deploy RPS, a Node.js & Svelte web application with a PostgreSQL database](ex/rps-deployment.md)
 - [:hammer: Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database](ex/one-chat-room-deployment.md)
   - [:classical_building: Architecture](ex/end-result.pdf)
