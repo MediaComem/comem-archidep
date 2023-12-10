@@ -299,11 +299,10 @@ deployment to work correctly:
 ### :gem: Allow your user to restart the service without a password
 
 In order for the new `post-receive` hook to work, your user must be able to run
-`sudo systemctl restart minesweeper` (assuming you have named your service
-`minesweeper`) without entering a password, otherwise it will not work in a Git
-hook. This is because a Git hook is not an interactive program. You are not
-running it yourself, so you are not available to enter your password where
-prompted.
+`sudo systemctl restart wopr` (assuming you have named your service `wopr`)
+without entering a password, otherwise it will not work in a Git hook. This is
+because a Git hook is not an interactive program. You are not running it
+yourself, so you are not available to enter your password where prompted.
 
 If you are using the administrator user account that came with your Azure VM to
 run the application, it already has the right to use `sudo` without a password.
