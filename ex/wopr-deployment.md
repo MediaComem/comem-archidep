@@ -519,6 +519,7 @@ that port?
 [nginx-php-fpm-ex]: nginx-php-fpm-deployment.md
 [nginx-rp-conf]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29
 [node]: https://nodejs.org
+[node-install]: https://github.com/nodesource/distributions/blob/master/README.md
 [nosql]: https://en.wikipedia.org/wiki/NoSQL
 [npm]: https://www.npmjs.com
 [readme]: https://github.com/MediaComem/comem-wopr#readme
