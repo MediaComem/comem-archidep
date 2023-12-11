@@ -54,7 +54,7 @@ sudo apt install certbot python3-certbot-nginx
 
 Follow the [instructions for nginx and Ubuntu
 20.04](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal) **starting
-at step 7**:
+at step 6**:
 
 > :gem: When the instructions ask you to "Choose how you'd like to run Certbot",
 > you can choose the simplest option which is to "get a certificate and have
@@ -62,8 +62,8 @@ at step 7**:
 
 Once you are done, your web site or application should be accessible over HTTPS.
 
-You should take a look at your nginx site configuration file(s) in
-`/etc/nginx/sites-available`, to see the changes Certbot has made.
+You should take a look at your nginx site configuration file(s) in the
+`/etc/nginx/sites-available` directory, to see the changes Certbot has made.
 
 ## :checkered_flag: What have I done?
 
