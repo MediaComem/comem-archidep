@@ -107,7 +107,8 @@ play against the computer. Its code is [available on GitHub][repo].
 
 The application uses the following ~~buzzword salad~~ technologies:
 
-- [Sinatra][sinatra], a [Ruby][ruby] microframework, for the backend.
+- [Sinatra][sinatra], a [Ruby][ruby] DSL for quickly creating web applications
+  with minimal effort, for the backend.
 - [Svelte][svelte], a JavaScript framework, for the frontend.
 - [Redis][redis], an in-memory [NoSQL][nosql] database, for the database.
 
@@ -143,10 +144,18 @@ in the project's README. This way you will have push access to your repository.
 You may want to start by making sure you have installed all the requirements
 described in the [project's README][readme] on your server.
 
-- **How to install Ruby:** there are several methods to install Ruby. You should look for installation instructions specific to your
-  operating system (your AWS instance is running either Ubuntu 20.04 Focal or
-  Ubuntu 22.04 Jammy). Where possible, you should find instructions to install
-  with the apt package manager.
+- **How to install Ruby:** there are several methods to install Ruby. You will
+  find more information on the [Ruby website][ruby]. You should look for
+  installation instructions specific to your operating system (your AWS instance
+  is running either Ubuntu 20.04 Focal or Ubuntu 22.04 Jammy). Where possible,
+  you should find instructions to install with the apt package manager.
+
+  You will also need to installer [Bundler][bundler], the package manager for
+  Ruby. You can do so with the following command:
+
+  ```bash
+  $> sudo apt install ruby-bundler
+  ```
 - **How to install Node.js:** there are several methods to install Node.js. One
   of the simplest is to use the [binary distributions provided by
   NodeSource][node-install]. You should look for installation instructions
@@ -162,14 +171,21 @@ described in the [project's README][readme] on your server.
   installed with the following command:
 
   ```bash
-  ruby -e 'puts "Ruby #{RUBY_VERSION} is installed and working"'
+  $> ruby -e 'puts "Ruby #{RUBY_VERSION} is installed and working"'
+  ```
+
+  You can check that Bundler has been correctly installed by displaying its
+  version:
+
+  ```bash
+  $> bundle --version
   ```
 
 - **Check your Node.js installation:** you can check that Node.js has been
   correctly installed with the following command:
 
   ```bash
-  node -e 'console.log(`Node.js ${process.version} is installed and working`)'
+  $> node -e 'console.log(`Node.js ${process.version} is installed and working`)'
   ```
 
 - **Check your Redis installation:** step 2 of the article mentionned above
@@ -195,8 +211,12 @@ $> sudo apt install -y g++ make
 
 Before attempting to set up the systemd service, nginx configuration and
 automated deployment, you can run the application manually in development mode
-to make sure it works. The [project's README][readme] explains how to run the
+to make sure it works. The [project's README][readme] explains how to get and run the
 application and how to configure it.
+
+:warning: Use your forked repository's HTTPS clone URL instead of the one
+indicated in the project's README. This way you will be able to pull the updates
+you push later.
 
 You can set the `PORT` environment variable to `3001` for this simple test, as
 that is one of the ports that should be open in your AWS instance's firewall.
@@ -383,6 +403,41 @@ Note that some of these errors can happen in various situations:
 - When systemd tries to start your service.
 - When your `post-receive` Git hook executes.
 
+### :boom: `Unable to locate package ...`
+
+If you see an error message similar to this:
+
+```bash
+$> sudo apt install ruby-full
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+E: Unable to locate package ruby-full
+```
+
+It might be because you have not updated APT's package sources. The list of
+available packages must be refreshed manually.
+
+Try running `sudo apt update`, then try installing your package again.
+
+### :boom: `Command 'bundle' not found`
+
+If you see an error message similar to this:
+
+```bash
+$> bundle config set path 'vendor/bundle'
+
+Command 'bundle' not found, but can be installed with:
+
+sudo snap install ruby          # version 3.2.2, or
+sudo apt  install ruby-bundler  # version 2.1.4-1
+
+See 'snap info ruby' for additional versions.
+```
+
+It is because you have not installed Bundler, the package manager for Ruby. Read
+the [requirements section](#exclamation-install-the-requirements) again.
+
 ### :boom: `ENOENT open package.json`
 
 If you see an error message similar to this:
@@ -509,11 +564,13 @@ defined. Check your nginx configuration to make sure that you are using the
 correct address and port. Are you sure your application is actually listening on
 that port?
 
-[app]: https://comem-wopr.herokuapp.com
+[app]: https://wopr.archidep.ch
 [auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md
 [automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md#update-the-todolist-nginx-configuration
+[bundler]: https://bundler.io
 [certbot-ex]: certbot-deployment.md
 [change]: https://github.com/MediaComem/comem-wopr/blob/4b75cc6c2c83c2fce1723ce655a12d5537c0bfbd/src/app.svelte#L26-L30
+[fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [make]: https://www.gnu.org/software/make/
 [nginx-php-fpm-ex]: nginx-php-fpm-deployment.md
 [nginx-rp-conf]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29
