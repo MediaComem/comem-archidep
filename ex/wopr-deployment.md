@@ -110,8 +110,11 @@ play against the computer. Its code is [available on GitHub][repo].
 
 The application uses the following ~~buzzword salad~~ technologies:
 
-- [Sinatra][sinatra], a [Ruby][ruby] DSL for quickly creating web applications
-  with minimal effort, for the backend.
+- [Ruby][ruby], a dynamic, open source programming language with a focus on
+  simplicity and productivity. It has an elegant syntax that is natural to read
+  and easy to write.
+- [Sinatra][sinatra], a Ruby DSL for quickly creating web applications with
+  minimal effort, for the backend.
 - [Svelte][svelte], a JavaScript framework, for the frontend.
 - [Redis][redis], an in-memory [NoSQL][nosql] database, for the database.
 
