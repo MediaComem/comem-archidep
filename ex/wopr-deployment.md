@@ -77,10 +77,6 @@ As an optional bonus challenge:
   personal user.
 - Set up the automated deployment with the dedicated user instead of your
   personal user.
-- Use the application's local configuration file instead of environment
-  variables (see its documentation), and set up file/directory permissions so
-  that only the dedicated user has access to the configuration file (the `root`
-  user will of course have access as well).
 
 ## Legend
 
