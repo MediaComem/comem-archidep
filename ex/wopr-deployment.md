@@ -36,6 +36,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [:boom: `rimraf: not found`](#boom-rimraf-not-found)
   - [:boom: `remote: sudo: no tty present and no askpass program specified`](#boom-remote-sudo-no-tty-present-and-no-askpass-program-specified)
   - [:boom: `code=exited, status=200/CHDIR`](#boom-codeexited-status200chdir)
+  - [:boom: `code=exited, status=217/USER`](#boom-codeexited-status217user)
   - [:boom: `502 Bad Gateway`](#boom-502-bad-gateway)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -581,6 +582,19 @@ It means that systemd failed to move into the directory you specified (`CHDIR`
 means **ch**ange **dir**ectory). Check your systemd configuration file to make
 sure that the working directory you have configured is the correct one and
 really exists.
+
+### :boom: `code=exited, status=217/USER`
+
+If you see an error message similar to this in your systemd service's status:
+
+```
+code=exited, status=217/USER
+```
+
+It means that systemd failed to run the service's command with the user you
+specified (as indicated by the `USER` error code). Check your systemd
+configuration file to make sure that the user you have configured is the correct
+one.
 
 ### :boom: `502 Bad Gateway`
 
