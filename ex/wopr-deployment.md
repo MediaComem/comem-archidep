@@ -32,7 +32,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [:boom: `Command 'bundle' not found`](#boom-command-bundle-not-found)
   - [:boom: `ENOENT open package.json`](#boom-enoent-open-packagejson)
   - [:boom: `Could not locate Gemfile`](#boom-could-not-locate-gemfile)
-  - [:boom: `Could not find concurrent-ruby-1.1.5 in any of the sources`](#boom-could-not-find-concurrent-ruby-115-in-any-of-the-sources)
+  - [:boom: `Could not find base64-0.2.0 in any of the sources`](#boom-could-not-find-base64-020-in-any-of-the-sources)
   - [:boom: `rimraf: not found`](#boom-rimraf-not-found)
   - [:boom: `remote: sudo: no tty present and no askpass program specified`](#boom-remote-sudo-no-tty-present-and-no-askpass-program-specified)
   - [:boom: `code=exited, status=200/CHDIR`](#boom-codeexited-status200chdir)
@@ -495,13 +495,12 @@ will download.
 For this exercise, you want to run this command in the directory where the WOPR
 application's files are located (as explained in the project's README).
 
-### :boom: `Could not find concurrent-ruby-1.1.5 in any of the sources`
+### :boom: `Could not find base64-0.2.0 in any of the sources`
 
 If you see an error message similar to this:
 
 ```
-Could not find concurrent-ruby-1.1.5 in any of the sources
-Run `bundle install` to install missing gems.
+Could not find base64-0.2.0 in any of the sources (Bundler::GemNotFound)
 ```
 
 You are probably trying to execute the WOPR application without having installed
