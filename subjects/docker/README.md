@@ -54,6 +54,10 @@ world of software development, this is a *significant* number, likely second onl
 
 
 
+## Docker concepts
+
+
+
 ### Docker concepts - Images
 
 
@@ -70,6 +74,10 @@ world of software development, this is a *significant* number, likely second onl
 
 
 
+## Docker Workflow
+
+
+
 ### Docker workflow - Client
 
 
@@ -82,7 +90,7 @@ world of software development, this is a *significant* number, likely second onl
 
 
 
-### Installing Docker
+## Installing and using Docker
 
 
 
