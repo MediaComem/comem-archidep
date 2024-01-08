@@ -74,7 +74,7 @@ world of software development, this is a *significant* number, likely second onl
 
 
 
-### Docker workflow - Host (Daemon)
+### Docker workflow - Host (Daemon)
 
 
 
@@ -82,7 +82,7 @@ world of software development, this is a *significant* number, likely second onl
 
 
 
-### Installing Docker
+### Installing Docker
 
 
 
@@ -124,5 +124,6 @@ world of software development, this is a *significant* number, likely second onl
 
 
 [git]: https://git-scm.com
+[github]: https://github.com
 [render]: https://render.com
 [stack-overflow-survey]: https://survey.stackoverflow.co/2023/
