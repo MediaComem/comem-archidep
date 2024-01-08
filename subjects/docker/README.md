@@ -25,9 +25,6 @@
 
 # Docker
 
-<!-- slide-column -->
-<p class='center'><img class='w100' src='images/docker-logo.svg' /></p>
-
 
 <!-- slide-column -->
 
@@ -40,6 +37,10 @@ Learn how to containerize your web applications with Docker and deploy them on c
 * A free [Render][render] account
 
 
+<!-- slide-column -->
+<p class='center'><img class='w100' src='images/docker-logo.svg' /></p>
+
+
 
 ## "It works on my machine."
 
@@ -49,32 +50,74 @@ Learn how to containerize your web applications with Docker and deploy them on c
 > such as MacOS, but not on another? Have you ever struggled to juggle
 > different Node.js versions for various web applications? Odds are, you have.
 
-> Docker was launched in 2013 with the intent to address this critical
+> [Docker][docker] was launched in 2013 with the intent to address this critical
 > issue in software development and deployment: **portability**.
+
+
+
+### Portability
+
+<!-- slide-column -->
+
+Portability in computing refers to the ability of software to be run on various hardware or operating system environments with little or no modification. This concept has been pivotal in software development for decades, facilitating the adaptation of applications across diverse systems. Before containers and Docker, portability was often achieved through careful coding practices, the use of virtual machines, or cross-platform programming languages and libraries. Why is portability such a challenge?
+
+<!-- slide-column -->
+* **Hardware Dependencies**: Different hardware architectures can affect software performance and compatibility.
+* **Operating System Variations**: Software that runs on one operating system might not run on another without significant changes.
+* **Dependency Management**: Ensuring all the necessary libraries and tools are present and compatible across systems is a major challenge.
+
+
+
+### Virtual Machines
+
+<!-- slide-column -->
+<p class='center'><img src='images/vms.png' /></p>
+
+<!-- slide-column -->
+
+Virtual machine solve the portability problem by providing isolation and environment consistency. At its core, virtualization involves creating virtual versions of physical resources, such as servers, storage devices, and networks using a hypervisor.
+
+**Hypervisor**: The central component of hardware virtualization is the hypervisor, a software layer that enables multiple operating systems to share a single hardware host.
+
+Virtualization forms the foundation of cloud computing and is pivotal in data center management.
+
+
+
+### Containers
+
+<!-- slide-column -->
+<p class='center'><img src='images/containers.png' /></p>
+
+<!-- slide-column -->
+While VMs are fantastic technology and incredibly useful in numerous scenarios, it doesn't necessarily make sense to package an entire operating system just to get a web application to work.
+
+Containers are an alternative that address this drawback of virtual machines. They tackle the challenges of portability by providing isolation and environment consistency, all while sharing a host system's kernel and without requiring a full operating system for each instance.
+
+
+
+### Which is better?
+
+|                        | Virtual Machine  | Container                                     |
+| :---                   | :---                                                             |
+| **Architecture**       | Full OS          | Application and dependencies                  |
+| **Isolation**          | Complete isolation     | Process-level                           |
+| **Performance**        | Slower, but full access to hardware ressources | Faster, rapid scaling    |
+
+As usual, it depends. However, in the case of web development, containers make a lot of sense. They offer the speed and agility required in a dynamic web development environment, where rapid iteration and deployment are key. With their process-level isolation, they provide a balanced approach to security and resource efficiency. Their architecture, which includes only the application and its dependencies, simplifies deployment across different environments.
+
+### What is Docker?
 
 
 
 ### Who uses Docker?
 
-<p class='center'><img class='w100' src='images/stack-overflow-survey.png' /></p>
+<p class='center'><img src='images/stack-overflow-survey.png' /></p>
 
 Almost everyone.
 
 In the [2023 Stack Overflow Developer Survey][stack-overflow-survey],
 56.61% of professional developers reported using Docker. In the fragmented
 world of software development, this is a *significant* number, likely second only to [Git][git] in terms of adoption. This indicates that Docker is an essential tool to learn for aspiring developers seeking employment.
-
-
-
-### Portability is an old idea
-
-
-
-### Virtual Machines vs. Containers
-
-
-
-### What is Docker?
 
 
 
@@ -126,7 +169,7 @@ world of software development, this is a *significant* number, likely second onl
 
 <!-- slide-column -->
 
-Docker can build images automatically by reading the instructions from a Dockerfile. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. This page describes the commands you can use in a Dockerfile.
+Docker can build images automatically by reading the instructions from a Dockerfile. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.
 
 <!-- slide-column -->
 ```dockerfile
@@ -160,7 +203,7 @@ COPY . .
 
 To see a full list of Dockerfile instructions, see the [Dockerfile reference][dockerfile-reference].
 
-
+[docker]: https://www.docker.com/
 [dockerfile-reference]: https://docs.docker.com/engine/reference/builder/
 [git]: https://git-scm.com
 [github]: https://github.com
