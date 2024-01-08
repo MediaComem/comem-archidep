@@ -1,4 +1,35 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Docker](#docker)
+  - ["It works on my machine."](#it-works-on-my-machine)
+    - [Who uses Docker?](#who-uses-docker)
+    - [Portability is an old idea](#portability-is-an-old-idea)
+    - [Virtual Machines vs. Containers](#virtual-machines-vs-containers)
+    - [What is Docker?](#what-is-docker)
+    - [Why use Docker?](#why-use-docker)
+  - [Docker concepts](#docker-concepts)
+    - [Docker concepts - Images](#docker-concepts---images)
+    - [Docker concepts - Containers](#docker-concepts---containers)
+    - [Docker concepts - Volumes](#docker-concepts---volumes)
+    - [Docker concepts - Network](#docker-concepts---network)
+  - [Docker Workflow](#docker-workflow)
+    - [Docker workflow - Client](#docker-workflow---client)
+    - [Docker workflow - Host (Daemon)](#docker-workflow---host-daemon)
+    - [Docker workflow - Registry (Hub)](#docker-workflow---registry-hub)
+  - [Installing and using Docker](#installing-and-using-docker)
+    - [Create a Docker Image with Dockerfile](#create-a-docker-image-with-dockerfile)
+    - [Dockerfile instructions](#dockerfile-instructions)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Docker
+
+<!-- slide-column -->
+<p class='center'><img class='w100' src='images/docker-logo.svg' /></p>
+
+
+<!-- slide-column -->
 
 Learn how to containerize your web applications with Docker and deploy them on cloud application platforms such as [Render][render].
 
@@ -25,11 +56,8 @@ Learn how to containerize your web applications with Docker and deploy them on c
 
 ### Who uses Docker?
 
-<!-- slide-column -->
-
 <p class='center'><img class='w100' src='images/stack-overflow-survey.png' /></p>
 
-<!-- slide-column -->
 Almost everyone.
 
 In the [2023 Stack Overflow Developer Survey][stack-overflow-survey],
@@ -117,19 +145,16 @@ COPY . .
 
 ### Dockerfile instructions
 
-The following instructions – among others – can be used within a Dockerfile:
-
 | Command                | Purpose                                                          |
 | :---                   | :---                                                             |
-| `FROM image_name`           | Specifies the base image to use for the new image.               |
+| `FROM image_name`           | Specifies the base image to use for the new image.          |
 | `WORKDIR /some/path`   | Sets the working directory for the instructions that follow.     |
 | `COPY <src> <dest>`    | Copies files or directories from the build context to the image. |
 | `RUN <command>`        | Executes commands in the shell during image builds.              |
 | `EXPOSE <port>`        | Port(s) Docker will be listening on at runtime.                  |
 | `ENV KEY=VALUE`        | Sets environment variables.                                      |
 | `ARG KEY=VALUE`        | Defines build time variables.                                    |
-| `VOLUME /volume`       | Creates a mount point for externally mounted volumes. It is the location in your container to which you can attach external storage.                                                                    |
-| `ARG KEY=VALUE`        | Defines build time variables.                                    |
+| `VOLUME /volume`       | Creates a mount point for externally mounted volumes.            |
 | `CMD <command>`        | The default command to execute when the container starts.        |
 | `ENTRYPOINT <command>` | Similar as `CMD`, but cannot be overriden.                       |
 
