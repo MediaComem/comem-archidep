@@ -142,24 +142,53 @@ As usual, the choice depends on the use case. However, in the context of web dev
 
 
 ## Docker concepts
+<!-- slide-column -->
+<p class='center'><img src='images/docker-image.png' /></p>
+<p class='center'>Images</p>
+
+<!-- slide-column -->
+<p class='center'><img src='images/docker-container.png' /></p>
+<p class='center'>Containers</p>
 
 
 
 ### Docker concepts - Images
+<!-- slide-column -->
+<p class='center'><img src='images/docker-image.png' /></p>
 
+<!-- slide-column -->
+A Docker image is a **lightweight**, **standalone** and **executable package** that includes everything needed to run a piece of software:
 
+* Code
+* Runtimes
+* Libraries
+* System Tools
+* Operating System
+
+Think of a Docker Image as a recipe containing both ingredients and instructions.
 
 ### Docker concepts - Containers
+<!-- slide-column -->
+<p class='center'><img class='w100' src='images/docker-container.png' /></p>
 
+<!-- slide-column -->
 
+A Docker Container is a **runable instance** of a Docker Image. A Container takes everything specified in the Docker Image and follows its instructions by executing specfied commands.
+
+If the image is a recipe, then the container is the completed dish.
+
+Multiple containers can be created from a single Docker Image.
 
 ### Docker concepts - Volumes
+<!-- slide-column -->
+<p class='center'><img class='w100' src='images/docker-volume.png' /></p>
 
+<!-- slide-column -->
+A Docker Volume is a **persistent data storage mechanism** that allows data to be shared between a container and a host machine, or among multiple containers.
 
+It insures data durability and persistence even if the container is stopped or removed.
 
-### Docker concepts - Network
-
-
+Think of a Docker Volume as a shared folder that exists outside the container.
 
 ## Docker Workflow
 
