@@ -3,20 +3,21 @@
 
 - [Docker](#docker)
   - ["It works on my machine."](#it-works-on-my-machine)
-    - [Who uses Docker?](#who-uses-docker)
-    - [Portability is an old idea](#portability-is-an-old-idea)
-    - [Virtual Machines vs. Containers](#virtual-machines-vs-containers)
+    - [Portability](#portability)
+    - [Virtual Machines](#virtual-machines)
+    - [Containers](#containers)
     - [What is Docker?](#what-is-docker)
+    - [Who uses Docker?](#who-uses-docker)
     - [Why use Docker?](#why-use-docker)
+    - [Wait, why not just use good old VMs?](#wait-why-not-just-use-good-old-vms)
   - [Docker concepts](#docker-concepts)
     - [Docker concepts - Images](#docker-concepts---images)
     - [Docker concepts - Containers](#docker-concepts---containers)
     - [Docker concepts - Volumes](#docker-concepts---volumes)
-    - [Docker concepts - Network](#docker-concepts---network)
   - [Docker Workflow](#docker-workflow)
     - [Docker workflow - Client](#docker-workflow---client)
-    - [Docker workflow - Host (Daemon)](#docker-workflow---host-daemon)
-    - [Docker workflow - Registry (Hub)](#docker-workflow---registry-hub)
+    - [Docker Workflow - Host (Daemon)](#docker-workflow---host-daemon)
+    - [Docker workflow - Registry](#docker-workflow---registry)
   - [Installing and using Docker](#installing-and-using-docker)
     - [Create a Docker Image with Dockerfile](#create-a-docker-image-with-dockerfile)
     - [Dockerfile instructions](#dockerfile-instructions)
@@ -33,9 +34,10 @@ Learn how to containerize your web applications with Docker and deploy them on c
 **You will need**
 
 * [Git][git]
-* A free [GitHub][github] account
-* A free [Render][render] account
-
+* A [GitHub][github] account
+* A [Render][render] account
+* A [Docker][docker] account
+* [Docker Desktop][docker-desktop] installed on your machine.
 
 <!-- slide-column -->
 <p class='center'><img class='w100' src='images/docker-logo.svg' /></p>
@@ -157,15 +159,17 @@ As usual, the choice depends on the use case. However, in the context of web dev
 <p class='center'><img src='images/docker-image.png' /></p>
 
 <!-- slide-column -->
-A Docker image is a **lightweight**, **standalone** and **executable package** that includes everything needed to run a piece of software:
+A Docker image is a **lightweight**, **standalone**, and **executable package** that includes everything needed to run a piece of software:
 
 * Code
-* Runtimes
+* Runtime
 * Libraries
 * System Tools
 * Operating System
 
-Think of a Docker Image as a recipe containing both ingredients and instructions.
+Think of a Docker image as a recipe containing both the ingredients and the instructions.
+
+
 
 ### Docker concepts - Containers
 <!-- slide-column -->
@@ -173,11 +177,12 @@ Think of a Docker Image as a recipe containing both ingredients and instructions
 
 <!-- slide-column -->
 
-A Docker Container is a **runable instance** of a Docker Image. A Container takes everything specified in the Docker Image and follows its instructions by executing specfied commands.
+A Docker Container is a **runnable instance** of a Docker Image. A Container takes everything specified in the Docker Image and follows its instructions by executing specified commands.
 
 If the image is a recipe, then the container is the completed dish.
 
 Multiple containers can be created from a single Docker Image.
+
 
 ### Docker concepts - Volumes
 <!-- slide-column -->
@@ -186,23 +191,50 @@ Multiple containers can be created from a single Docker Image.
 <!-- slide-column -->
 A Docker Volume is a **persistent data storage mechanism** that allows data to be shared between a container and a host machine, or among multiple containers.
 
-It insures data durability and persistence even if the container is stopped or removed.
+It ensures data durability and persistence even if the container is stopped or removed.
 
 Think of a Docker Volume as a shared folder that exists outside the container.
 
+
+
 ## Docker Workflow
 
+<p class='center'><img class='w100' src='images/docker-architecture.webp' /></p>
+
+The Docker workflow encompasses several key components that work together to manage the lifecycle of Docker containers: the **Client**, the **Daemon (Host)**, and the **Registry**.
 
 
 ### Docker workflow - Client
+<p class='center'><img class='w70' src='images/docker-desktop.png' /></p>
+
+The [Docker Client][docker-desktop] provides a **user interface** to issue commands to the **Docker Host**.
+
+This interface can be used through the **command line** or with Docker Desktop (pictured above), a GUI implementation of the client.
 
 
+### Docker Workflow - Daemon (Host)
 
-### Docker workflow - Host (Daemon)
+The Docker daemon, or `dockerd`, is the **heart of the Docker platform**, running on the host machine where containers are deployed. It manages the entire lifecycle of Docker containers on the system.
+
+`dockerd` listens for Docker API requests and **manages Docker objects such as images, containers, networks, and volumes**. It's the component that does the heavy lifting of building and running containers.
+
+It is responsible for **pulling images from Docker registries and building new images**. It stores these images locally, providing a cache to speed up future container launches.
+
+`dockerd` also handles **logging and monitoring** of container activity, providing insights into container performance and health.
+
+`dockerd` and the Docker Client are often referred to together as the **Docker Engine**.
 
 
+### Docker workflow - Registry
+<!-- slide-column -->
+<p class='center'><img src='images/docker-hub.png' /></p>
 
-### Docker workflow - Registry (Hub)
+<!-- slide-column -->
+A Docker Registry is a **storage and content delivery system** that holds named Docker images, available in different tagged versions.
+
+The most well-known registry is **[Docker Hub][docker-hub]**, which is a public, cloud-based registry provided by Docker. Essentially, Docker Hub is to Docker what GitHub is to Git.
+
+Besides Docker Hub, there are other registries like [Amazon ECR (Elastic Container Registry)][amazon-ecr], [Google Artifact Registry][google-artifact-registry], and private, self-hosted options.
 
 
 
@@ -248,9 +280,14 @@ COPY . .
 
 To see a full list of Dockerfile instructions, see the [Dockerfile reference][dockerfile-reference].
 
+[amazon-ecr]: https://aws.amazon.com/ecr/
 [docker]: https://www.docker.com/
+[docker-desktop]: https://www.docker.com/products/docker-desktop/
+[docker-engine]: https://docs.docker.com/engine/
+[docker-hub]: https://hub.docker.com/
 [dockerfile-reference]: https://docs.docker.com/engine/reference/builder/
 [git]: https://git-scm.com
 [github]: https://github.com
+[google-artifact-registry]: https://cloud.google.com/artifact-registry
 [render]: https://render.com
 [stack-overflow-survey]: https://survey.stackoverflow.co/2023/
