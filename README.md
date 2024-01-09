@@ -138,9 +138,15 @@ For you to succeed in this course, it is highly recommended that you read and co
 
 - Managed deployments
   - [:book: Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/paas?home=MediaComem%2Fcomem-archidep%23readme)
-  - [:hammer: Deploy a static site to GitHub Pages](./ex/github-pages-deployment.md)
-  - [:hammer: Deploy a static site to Netlify](./ex/netlify-static-deployment.md)
-  - [:hammer: Deploy web applications with a database to Render](./ex/render-database-deployment.md)
+    - [:hammer: Deploy a static site to GitHub Pages](./ex/github-pages-deployment.md)
+    - [:hammer: Deploy a static site to Netlify](./ex/netlify-static-deployment.md)
+    - [:hammer: Deploy web applications with a database to Render](./ex/render-database-deployment.md)
+
+- Containerisation
+  - :book: Docker (not yet available)
+    - :hammer: Docker Exercise (not yet availble)
+  - :book: Docker Compose (not yet available)
+    - :hammer: Docker Compose Exercise (not yet available)
 
 ## How to improve our basic deployment
 
