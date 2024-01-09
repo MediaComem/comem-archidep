@@ -95,17 +95,11 @@ Containers are an alternative that address this drawback of virtual machines. Th
 
 
 
-### Which is better?
-
-|                        | Virtual Machine  | Container                                     |
-| :---                   | :---                                                             |
-| **Architecture**       | Full OS          | Application and dependencies                  |
-| **Isolation**          | Complete isolation     | Process-level                           |
-| **Performance**        | Slower, but full access to hardware ressources | Faster, rapid scaling    |
-
-As usual, it depends. However, in the case of web development, containers make a lot of sense. They offer the speed and agility required in a dynamic web development environment, where rapid iteration and deployment are key. With their process-level isolation, they provide a balanced approach to security and resource efficiency. Their architecture, which includes only the application and its dependencies, simplifies deployment across different environments.
-
 ### What is Docker?
+
+Docker is an open-source platform that automates the deployment, scaling, and management of applications inside lightweight, portable **containers**. It has revolutionized how developers build, ship, and run applications, making it simpler to create and manage consistent environments.
+
+In essence, Docker streamlines the development lifecycle by allowing developers to work in standardized environments using local containers which provide your applications and services. Docker has become a key component of many toolchains, integrating smoothly with various tools and platforms.
 
 
 
@@ -122,6 +116,28 @@ world of software development, this is a *significant* number, likely second onl
 
 
 ### Why use Docker?
+
+* **Environment Consistency**: Apps run the same on your machine, your colleague's machine, and your boss's machine. No more "it works on my machine." It also means everyone executes the same commands to run the app, regardless of the computer. The operating system becomes irrelevant, which makes collaboration and deployment much easier.
+
+* **Portability**: Docker containers can be moved across operating systems without needing to modify the codebase.
+
+* **Isolation**: Docker maintains a clear boundary between your app and its dependencies. That means there are no more clashes between applications. This improves security and makes debugging simpler.
+
+* **Scaling**: You can deploy as many instances of the container as needed.
+
+* **DevOps**: Docker streamlines workflows between coding and deployment.
+
+
+
+### Wait, why not just use good old VMs?
+
+|                        | Virtual Machine  | Container                                     |
+| :---                   | :---             | :---                                          |
+| **Architecture**       | Full OS          | Application and dependencies                  |
+| **Isolation**          | Complete isolation| Process-level isolation                       |
+| **Performance**        | Slower, but full access to hardware resources | Faster, supports rapid scaling |
+
+As usual, the choice depends on the use case. However, in the context of web development, containers make a lot of sense. They offer the speed and agility required in a dynamic web development environment, where rapid iteration and deployment are key. With their process-level isolation, they provide a balanced approach to security and resource efficiency. Their architecture, which includes only the application and its dependencies, simplifies deployment across different environments.
 
 
 
