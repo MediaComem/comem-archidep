@@ -188,19 +188,6 @@ Multiple containers can be created from a single Docker Image.
 
 
 
-### Docker concepts - Volumes
-<!-- slide-column -->
-<p class='center'><img class='w100' src='images/docker-volume.png' /></p>
-
-<!-- slide-column -->
-A Docker Volume is a **persistent data storage mechanism** that allows data to be shared between a container and a host machine, or among multiple containers.
-
-It ensures data durability and persistence even if the container is stopped or removed.
-
-Think of a Docker Volume as a shared folder that exists outside the container.
-
-
-
 ## Docker Workflow
 
 <p class='center'><img class='w100' src='images/docker-architecture.webp' /></p>
@@ -285,6 +272,22 @@ root@bf545ce9cbdb:/#
 
 As you can see, you can now interact with a containerised version of Ubuntu. Try interacting with the filesystem using standard UNIX commands such as `cd` and `ls`.
 
+
+
+### Wait. I thought Docker Containers did not contain an OS?
+In a typical **Linux distribution**, you usually get:
+
+* A **bootloader**, which loads a kernel
+* A **kernel**, which manages the system and loads an init system
+* An **init system**, which sets up and runs everything else
+* **Everything else** (binaries, shared libraries, etc.)
+
+The **Docker Engine** replaces the kernel and init system, and the **container** replaces "everything else".
+
+An **Ubuntu Docker image** contains the minimal set of Ubuntu binaries and shared libraries, as well as the `apt` package manager. For instance, `systemd` is not included.
+
+
+
 ### Container management
 You can manage Docker Containers by using a host of commands:
 
@@ -301,24 +304,15 @@ You can manage Docker Containers by using a host of commands:
 
 
 
-### Wait. I thought Docker Containers did not contain an OS?
-In a typical **Linux distribution**, you usually get:
-
-* A **bootloader**, which loads a kernel
-* A **kernel**, which manages the system and loads an init system
-* An **init system**, which sets up and runs everything else
-* **Everything else** (binaries, shared libraries, etc.)
-
-The **Docker Engine** replaces the kernel and init system, and the **container** replaces "everything else".
-
-An **Ubuntu Docker image** contains the minimal set of Ubuntu binaries and shared libraries, as well as the `apt` package manager. For instance, `systemd` is not included.
-
-
-### Create a Docker Image with Dockerfile
-
+### Creating your own Docker images.
 <!-- slide-column -->
+If the goal is to package your applications into **portable and shareable images**, then you must be able to do more than just use existing images from Docker Hub.
 
-Docker can build images automatically by reading the instructions from a Dockerfile. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.
+Docker can build images by reading the instructions from a [**Dockerfile**][dockerfile-reference]. A Dockerfile is a text document that uses a specific syntax to contain all the instructions necessary to assemble an image.
+
+There are a few rules:
+* A Dockerfile must be named **`Dockerfile`**, with no extension.
+* A Docker Image must be based on an **existing base image** from official repositories such as [`node`][docker-images-node].
 
 <!-- slide-column -->
 ```dockerfile
@@ -326,11 +320,9 @@ FROM node
 
 WORKDIR /app
 
-COPY package*.json ./
-
-RUN npm install
-
 COPY . .
+
+ENTRYPOINT node app.js
 ```
 
 
@@ -352,10 +344,31 @@ COPY . .
 
 To see a full list of Dockerfile instructions, see the [Dockerfile reference][dockerfile-reference].
 
-### Building the image
-To build from the image, use the `docker build` command. You must specify a **PATH or URL** that specify the build's context – which makes sense if you need to copy things from a folder to the container.
 
-It is also a good idea to tag your container with a name, using the `-t` flag.
+
+### Building the image
+To build an image, use the `docker build` command followed by the **PATH or URL**. This specifies the build's context, which is necessary if you need to copy files from a folder into the container.
+
+It's also recommended to tag your image with a name using the `-t` flag. The example below builds an image from a Dockerfile present in the current working directory.
+```bash
+$> docker build -t hello-docker .
+[+] Building 1.3s (9/9) FINISHED
+ => [internal] load build definition from Dockerfile
+ => => transferring dockerfile: 94B
+ => [internal] load .dockerignore
+ => => transferring context: 2B
+ => [internal] load metadata for docker.io/library/node:latest
+ => [auth] library/node:pull token for registry-1.docker.io
+ => [1/3] FROM docker.io/library/node@sha256:73a9c498369c6e6f864359979c8f4895f28323c07411605e6c870d696a0143fa
+ => [internal] load build context
+ => => transferring context: 56B
+ => CACHED [2/3] WORKDIR /app
+ => CACHED [3/3] COPY . .
+ => exporting to image
+ => => exporting layers
+ => => writing image sha256:9cc4ea715ff536e18366516d5b5bb403a5633297fab9fb1cd489d1e789a18cd7
+ => => naming to docker.io/library/hello-docker
+```
 
 
 [amazon-ecr]: https://aws.amazon.com/ecr/
@@ -374,6 +387,7 @@ It is also a good idea to tag your container with a name, using the `-t` flag.
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
 [docker-engine]: https://docs.docker.com/engine/
 [docker-hub]: https://hub.docker.com/
+[docker-images-node]: https://hub.docker.com/_/node
 [docker-images-ubuntu]: https://hub.docker.com/_/ubuntu
 [dockerfile-reference]: https://docs.docker.com/engine/reference/builder/
 [git]: https://git-scm.com
