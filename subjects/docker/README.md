@@ -16,11 +16,14 @@
     - [Docker concepts - Volumes](#docker-concepts---volumes)
   - [Docker Workflow](#docker-workflow)
     - [Docker workflow - Client](#docker-workflow---client)
-    - [Docker Workflow - Host (Daemon)](#docker-workflow---host-daemon)
+    - [Docker workflow - Daemon (Host)](#docker-workflow---daemon-host)
     - [Docker workflow - Registry](#docker-workflow---registry)
-  - [Installing and using Docker](#installing-and-using-docker)
+  - [Getting existing Docker images](#getting-existing-docker-images)
+    - [Running a pre-built image](#running-a-pre-built-image)
+    - [Wait. I thought Docker Containers did not contain an OS?](#wait-i-thought-docker-containers-did-not-contain-an-os)
     - [Create a Docker Image with Dockerfile](#create-a-docker-image-with-dockerfile)
     - [Dockerfile instructions](#dockerfile-instructions)
+    - [Building the image](#building-the-image)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -176,12 +179,12 @@ Think of a Docker image as a recipe containing both the ingredients and the inst
 <p class='center'><img class='w100' src='images/docker-container.png' /></p>
 
 <!-- slide-column -->
-
 A Docker Container is a **runnable instance** of a Docker Image. A Container takes everything specified in the Docker Image and follows its instructions by executing specified commands.
 
 If the image is a recipe, then the container is the completed dish.
 
 Multiple containers can be created from a single Docker Image.
+
 
 
 ### Docker concepts - Volumes
@@ -204,6 +207,7 @@ Think of a Docker Volume as a shared folder that exists outside the container.
 The Docker workflow encompasses several key components that work together to manage the lifecycle of Docker containers: the **Client**, the **Daemon (Host)**, and the **Registry**.
 
 
+
 ### Docker workflow - Client
 <p class='center'><img class='w70' src='images/docker-desktop.png' /></p>
 
@@ -212,7 +216,8 @@ The [Docker Client][docker-desktop] provides a **user interface** to issue comma
 This interface can be used through the **command line** or with Docker Desktop (pictured above), a GUI implementation of the client.
 
 
-### Docker Workflow - Daemon (Host)
+
+### Docker workflow - Daemon (Host)
 
 The Docker daemon, or `dockerd`, is the **heart of the Docker platform**, running on the host machine where containers are deployed. It manages the entire lifecycle of Docker containers on the system.
 
@@ -223,6 +228,7 @@ It is responsible for **pulling images from Docker registries and building new i
 `dockerd` also handles **logging and monitoring** of container activity, providing insights into container performance and health.
 
 `dockerd` and the Docker Client are often referred to together as the **Docker Engine**.
+
 
 
 ### Docker workflow - Registry
@@ -238,8 +244,59 @@ Besides Docker Hub, there are other registries like [Amazon ECR (Elastic Contain
 
 
 
-## Installing and using Docker
+## Getting existing Docker images
+Before proceeding, ensure that you have installed **[Docker Desktop][docker-desktop]**. This software includes everything you'll need to use **Docker**. It's recommended to use the default settings.
 
+The first step is to **download an image** from **Docker Hub** using the [**`docker pull`**][docker-commands-pull] command.
+
+In this example, we'll pull the [**official Ubuntu image**][docker-images-ubuntu]. The download might take some time, but it's **cached** for future use until a new version is released, assuming you're using the latest version.
+
+```bash
+$> docker pull ubuntu
+Using default tag: latest
+latest: Pulling from library/ubuntu
+005e2837585d: Pull complete
+Digest: sha256:6042500cf4b44023ea1894effe7890666b0c5c7871ed83a97c36c76ae560bb9b
+Status: Downloaded newer image for ubuntu:latest
+docker.io/library/ubuntu:latest
+```
+To use a **specific version** of an image, append `:tag_name` to the image name. For example, to pull Ubuntu 23.10 Mantic Minotaur, run `docker pull ubuntu:mantic`. The default tag `latest` refers to the latest long-term support release.
+
+
+
+### Running a pre-built image
+You can check the images available on your machine by running the [**`docker images`**][docker-commands-images] command.
+
+```bash
+$> docker images
+REPOSITORY     TAG       IMAGE ID       CREATED          SIZE
+ubuntu         latest    da935f064913   4 weeks ago      69.3MB
+```
+
+An image downloaded from **Docker Hub** comes pre-built, which means you can directly create a container from it using the [`docker run <image_name>`][docker-commands-run] command.
+
+The `run` command has a myriad of options. Our goal here is to create an **interactive shell** from the image. Thus, we will use the `--interactive` and `--tty` flags in our command (abbreviated to `-it`).
+
+```bash
+$> docker run -it ubuntu
+root@bf545ce9cbdb:/#
+```
+
+As you can see, you can now interact with a containerised version of Ubuntu. Try interacting with the filesystem using standard UNIX commands such as `cd` and `ls`.
+
+
+
+### Wait. I thought Docker Containers did not contain an OS?
+In a typical **Linux distribution**, you usually get:
+
+* A **bootloader**, which loads a kernel
+* A **kernel**, which manages the system and loads an init system
+* An **init system**, which sets up and runs everything else
+* **Everything else** (binaries, shared libraries, etc.)
+
+The **Docker Engine** replaces the kernel and init system, and the **container** replaces "everything else".
+
+An **Ubuntu Docker image** contains the minimal set of Ubuntu binaries and shared libraries, as well as the `apt` package manager. For instance, `systemd` is not included.
 
 
 ### Create a Docker Image with Dockerfile
@@ -250,7 +307,7 @@ Docker can build images automatically by reading the instructions from a Dockerf
 
 <!-- slide-column -->
 ```dockerfile
-FROM node:20-alpine
+FROM node
 
 WORKDIR /app
 
@@ -280,11 +337,22 @@ COPY . .
 
 To see a full list of Dockerfile instructions, see the [Dockerfile reference][dockerfile-reference].
 
+### Building the image
+To build from the image, use the `docker build` command. You must specify a **PATH or URL** that specify the build's context – which makes sense if you need to copy things from a folder to the container.
+
+It is also a good idea to tag your container with a name, using the `-t` flag.
+
+
 [amazon-ecr]: https://aws.amazon.com/ecr/
 [docker]: https://www.docker.com/
+[docker-commands-build]: https://docs.docker.com/engine/reference/commandline/build/
+[docker-commands-images]: https://docs.docker.com/engine/reference/commandline/images/
+[docker-commands-pull]: https://docs.docker.com/engine/reference/commandline/pull/
+[docker-commands-run]: https://docs.docker.com/engine/reference/commandline/run/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
 [docker-engine]: https://docs.docker.com/engine/
 [docker-hub]: https://hub.docker.com/
+[docker-images-ubuntu]: https://hub.docker.com/_/ubuntu
 [dockerfile-reference]: https://docs.docker.com/engine/reference/builder/
 [git]: https://git-scm.com
 [github]: https://github.com
