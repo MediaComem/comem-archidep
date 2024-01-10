@@ -143,7 +143,7 @@ For you to succeed in this course, it is highly recommended that you read and co
     - [:hammer: Deploy web applications with a database to Render](./ex/render-database-deployment.md)
   - :book: Docker (not yet available)
     - :hammer: Docker Exercise (not yet availble)
-  - :book: Docker Compose (not yet available)
+  - :book: Docker Compose, Volumes and Networks (not yet available)
     - :hammer: Docker Compose Exercise (not yet available)
 
 ## How to improve our basic deployment

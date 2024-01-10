@@ -314,6 +314,7 @@ There are a few rules:
 * A Dockerfile must be named **`Dockerfile`**, with no extension.
 * A Docker Image must be based on an **existing base image** from official repositories such as [`node`][docker-images-node].
 
+
 <!-- slide-column -->
 ```dockerfile
 FROM node
@@ -338,7 +339,7 @@ ENTRYPOINT node app.js
 | `EXPOSE <port>`        | Port(s) Docker will be listening on at runtime.                  |
 | `ENV KEY=VALUE`        | Sets environment variables.                                      |
 | `ARG KEY=VALUE`        | Defines build time variables.                                    |
-| `VOLUME /volume`       | Creates a mount point for externally mounted volumes.            |
+| `USER user`            | Set user and group ID.                                           |
 | `CMD <command>`        | The default command to execute when the container starts.        |
 | `ENTRYPOINT <command>` | Similar as `CMD`, but cannot be overriden.                       |
 
@@ -347,7 +348,7 @@ To see a full list of Dockerfile instructions, see the [Dockerfile reference][do
 
 
 ### Building the image
-To build an image, use the `docker build` command followed by the **PATH or URL**. This specifies the build's context, which is necessary if you need to copy files from a folder into the container.
+To build an image, use the `docker build` command followed by the **PATH or URL**. This specifies the build context, which is necessary if you need to copy files from a folder into the container.
 
 It's also recommended to tag your image with a name using the `-t` flag. The example below builds an image from a Dockerfile present in the current working directory.
 ```bash
@@ -369,6 +370,13 @@ $> docker build -t hello-docker .
  => => writing image sha256:9cc4ea715ff536e18366516d5b5bb403a5633297fab9fb1cd489d1e789a18cd7
  => => naming to docker.io/library/hello-docker
 ```
+
+
+
+### Dockerfile best practices
+
+* layers
+* .dockerignore
 
 
 [amazon-ecr]: https://aws.amazon.com/ecr/
