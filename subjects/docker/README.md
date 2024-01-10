@@ -13,18 +13,18 @@
   - [Docker concepts](#docker-concepts)
     - [Docker concepts - Images](#docker-concepts---images)
     - [Docker concepts - Containers](#docker-concepts---containers)
-    - [Docker concepts - Volumes](#docker-concepts---volumes)
   - [Docker Workflow](#docker-workflow)
     - [Docker workflow - Client](#docker-workflow---client)
     - [Docker workflow - Daemon (Host)](#docker-workflow---daemon-host)
     - [Docker workflow - Registry](#docker-workflow---registry)
-  - [Getting existing Docker images](#getting-existing-docker-images)
+  - [Running existing Docker images](#running-existing-docker-images)
     - [Running a pre-built image](#running-a-pre-built-image)
-    - [Container management](#container-management)
     - [Wait. I thought Docker Containers did not contain an OS?](#wait-i-thought-docker-containers-did-not-contain-an-os)
-    - [Create a Docker Image with Dockerfile](#create-a-docker-image-with-dockerfile)
+    - [Container management](#container-management)
+  - [Creating your own Docker images](#creating-your-own-docker-images)
     - [Dockerfile instructions](#dockerfile-instructions)
     - [Building the image](#building-the-image)
+    - [Run a container based on the custom image](#run-a-container-based-on-the-custom-image)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -33,13 +33,12 @@
 
 <!-- slide-column -->
 
-Learn how to containerize your web applications with Docker and deploy them on cloud application platforms such as [Render][render].
+Learn how to containerize your web applications with Docker.
 
 **You will need**
 
 * [Git][git]
 * A [GitHub][github] account
-* A [Render][render] account
 * A [Docker][docker] account
 * [Docker Desktop][docker-desktop] installed on your machine.
 
@@ -232,7 +231,7 @@ Besides Docker Hub, there are other registries like [Amazon ECR (Elastic Contain
 
 
 
-## Getting existing Docker images
+## Running existing Docker images
 Before proceeding, ensure that you have installed **[Docker Desktop][docker-desktop]**. This software includes everything you'll need to use **Docker**. It's recommended to use the default settings.
 
 The first step is to **download an image** from **Docker Hub** using the [**`docker pull`**][docker-commands-pull] command.
@@ -304,7 +303,7 @@ You can manage Docker Containers by using a host of commands:
 
 
 
-### Creating your own Docker images.
+## Creating your own Docker images
 <!-- slide-column -->
 If the goal is to package your applications into **portable and shareable images**, then you must be able to do more than just use existing images from Docker Hub.
 
@@ -348,7 +347,7 @@ To see a full list of Dockerfile instructions, see the [Dockerfile reference][do
 
 
 ### Building the image
-To build an image, use the `docker build` command followed by the **PATH or URL**. This specifies the build context, which is necessary if you need to copy files from a folder into the container.
+To build an image, use the `docker build <context>` command followed by a **PATH or URL**. This specifies the build context, which is necessary if you need to copy files from a folder into the container.
 
 It's also recommended to tag your image with a name using the `-t` flag. The example below builds an image from a Dockerfile present in the current working directory.
 ```bash
@@ -372,12 +371,26 @@ $> docker build -t hello-docker .
 ```
 
 
+### Run a container based on the custom image
+Check the image has been created with `docker images`
+```bash
+$> docker images
+REPOSITORY     TAG       IMAGE ID       CREATED       SIZE
+hello-docker   latest    9cc4ea715ff5   5 hours ago   1.1GB
+```
 
-### Dockerfile best practices
+And create a container from it with `docker run`
+```bash
+$> docker run hello-docker
+Hello Docker!
+```
 
-* layers
-* .dockerignore
+A Docker container operates by running a specific **process, defined by the `CMD` or `ENTRYPOINT` in your Dockerfile**. This process keeps the container alive. The container will remain active as long as this process is running. In our example, the container is running a Node.js script** that logs "Hello Docker!" to the console. Once this script finishes executing and the Node.js runtime exits, the container will also stop running. Running `docker ps` will therefore not display the container you just executed.
 
+```bash
+$> docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
 
 [amazon-ecr]: https://aws.amazon.com/ecr/
 [docker]: https://www.docker.com/
