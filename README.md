@@ -141,7 +141,7 @@ For you to succeed in this course, it is highly recommended that you read and co
     - [:hammer: Deploy a static site to GitHub Pages](./ex/github-pages-deployment.md)
     - [:hammer: Deploy a static site to Netlify](./ex/netlify-static-deployment.md)
     - [:hammer: Deploy web applications with a database to Render](./ex/render-database-deployment.md)
-  - :book: Docker (not yet available)
+  - [:book: Introduction to Docker](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/docker?home=MediaComem%2Fcomem-archidep%23readme)
     - :hammer: Docker Exercise (not yet availble)
   - :book: Docker Compose, Volumes and Networks (not yet available)
     - :hammer: Docker Compose Exercise (not yet available)
