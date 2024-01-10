@@ -269,7 +269,7 @@ $> docker run -it ubuntu
 root@bf545ce9cbdb:/#
 ```
 
-As you can see, you can now interact with a containerised version of Ubuntu. Try interacting with the filesystem using standard UNIX commands such as `cd` and `ls`.
+As you can see, you can now interact with a containerized version of Ubuntu. Try interacting with the filesystem using standard UNIX commands such as `cd` and `ls`.
 
 
 
@@ -385,7 +385,7 @@ $> docker run hello-docker
 Hello Docker!
 ```
 
-A Docker container operates by running a specific **process, defined by the `CMD` or `ENTRYPOINT` in your Dockerfile**. This process keeps the container alive. The container will remain active as long as this process is running. In our example, the container is running a Node.js script** that logs "Hello Docker!" to the console. Once this script finishes executing and the Node.js runtime exits, the container will also stop running. Running `docker ps` will therefore not display the container you just executed.
+A Docker container operates by running a specific **process, defined by the `CMD` or `ENTRYPOINT` in your Dockerfile**. This process keeps the container alive. The container will remain active as long as this process is running. In our example, the container is running a Node.js script that logs "Hello Docker!" to the console. Once this script finishes executing and the Node.js runtime exits, the container will also stop running. Running `docker ps` will therefore not display the container you just executed.
 
 ```bash
 $> docker ps
