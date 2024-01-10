@@ -20,6 +20,7 @@
     - [Docker workflow - Registry](#docker-workflow---registry)
   - [Getting existing Docker images](#getting-existing-docker-images)
     - [Running a pre-built image](#running-a-pre-built-image)
+    - [Container management](#container-management)
     - [Wait. I thought Docker Containers did not contain an OS?](#wait-i-thought-docker-containers-did-not-contain-an-os)
     - [Create a Docker Image with Dockerfile](#create-a-docker-image-with-dockerfile)
     - [Dockerfile instructions](#dockerfile-instructions)
@@ -284,6 +285,20 @@ root@bf545ce9cbdb:/#
 
 As you can see, you can now interact with a containerised version of Ubuntu. Try interacting with the filesystem using standard UNIX commands such as `cd` and `ls`.
 
+### Container management
+You can manage Docker Containers by using a host of commands:
+
+| Command                | Purpose                                                             |
+| :---                   | :---                                                                |
+| [`docker run IMAGE`][docker-commands-run]            | Create and start a container.         |
+| [`docker ps`][docker-commands-ps]                    | Lists running containers.             |
+| [`docker stop CONTAINER_ID`][docker-commands-stop]   | Gracefully stops a running container. |
+| [`docker start CONTAINER_ID`][docker-commands-start] | Restarts a stopped container.         |
+| [`docker rm CONTAINER_ID`][docker-commands-rm]       | Removes a container.                  |
+| [`docker exec -it CONTAINER_ID /bin/bash`][docker-commands-exec] | Provides shell access to a running container.  |
+| [`docker logs CONTAINER_ID`][docker-commands-logs] | Displays a container's logs.            |
+| [`docker stats`][docker-commands-stats]   | Shows a live stream of container(s) resource usage statistics |
+
 
 
 ### Wait. I thought Docker Containers did not contain an OS?
@@ -322,7 +337,7 @@ COPY . .
 
 ### Dockerfile instructions
 
-| Command                | Purpose                                                          |
+| Instruction            | Purpose                                                          |
 | :---                   | :---                                                             |
 | `FROM image_name`           | Specifies the base image to use for the new image.          |
 | `WORKDIR /some/path`   | Sets the working directory for the instructions that follow.     |
@@ -346,9 +361,16 @@ It is also a good idea to tag your container with a name, using the `-t` flag.
 [amazon-ecr]: https://aws.amazon.com/ecr/
 [docker]: https://www.docker.com/
 [docker-commands-build]: https://docs.docker.com/engine/reference/commandline/build/
+[docker-commands-exec]: https://docs.docker.com/engine/reference/commandline/exec/
 [docker-commands-images]: https://docs.docker.com/engine/reference/commandline/images/
+[docker-commands-logs]: https://docs.docker.com/engine/reference/commandline/logs/
 [docker-commands-pull]: https://docs.docker.com/engine/reference/commandline/pull/
+[docker-commands-ps]: https://docs.docker.com/engine/reference/commandline/ps/
+[docker-commands-rm]: https://docs.docker.com/engine/reference/commandline/rm/
 [docker-commands-run]: https://docs.docker.com/engine/reference/commandline/run/
+[docker-commands-start]: https://docs.docker.com/engine/reference/commandline/start/
+[docker-commands-stats]: https://docs.docker.com/engine/reference/commandline/stats/
+[docker-commands-stop]: https://docs.docker.com/engine/reference/commandline/stop/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
 [docker-engine]: https://docs.docker.com/engine/
 [docker-hub]: https://hub.docker.com/
