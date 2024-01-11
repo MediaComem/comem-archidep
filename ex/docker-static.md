@@ -1,3 +1,9 @@
+# Containerize an in-development static site using Docker
+
+In this exercise, you will apply your knowledge of Docker and Linux administration to containerize a static site built with the Parcel JavaScript bundler. The site you will be containerizing is a completed version of your final ProgWeb challenge.
+
+You can complete this exercise directly on your local machine; there is **no** need to connect to your Azure VM.
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -12,12 +18,6 @@
   - [:exclamation: Copy files to the working directory](#exclamation-copy-files-to-the-working-directory)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# Containerize an in-development static site using Docker
-
-In this exercise, you will apply your knowledge of Docker and Linux administration to containerize a static site built with the Parcel JavaScript bundler. The site you will be containerizing is a completed version of your final ProgWeb challenge.
-
-You can complete this exercise directly on your local machine; there is **no** need to connect to your Azure VM.
 
 ## Legend
 
@@ -118,7 +118,7 @@ WORKDIR /lightness
 
 The `WORKDIR` instruction in a Dockerfile is used to set the working directory for any subsequent `RUN`, `CMD`, `ENTRYPOINT`, `COPY`, and `ADD` instructions in the Dockerfile.
 
-## :exclamation: Copy files to the working directory
+## :exclamation: Copy files to the working directory and change permissions
 At this point, you have a base image, a new user and a working directory. However, none of your project files are actually anywhere in the image. Let's do that now by using the `COPY` instruction.
 
 The `COPY` instruction follows the syntax `COPY <source> <destination>`. Here, `<source>` refers to the file(s) or directory(s) you want to copy from the Docker build context (the directory containing the Dockerfile and other resources), and `<destination>` is the path within the container where these files should be placed.
@@ -129,8 +129,19 @@ To copy everything in your project folder to the working directory, enter the fo
 COPY . .
 ```
 
+To ensure that our application runs under the `lightness` user with the necessary permissions, we need to adjust the permissions of the working directory. This involves setting the directory's permissions to allow the `lightness` user to read, write, and execute files within it. By doing this, we ensure that the `lightness` user can fully interact with the application files in the specified directory.
+
+In a standard Linux environment, we would do this by running the following command, assuming we were in the correct directory:
+
+```bash
+$> chown -R lightness:lightness .
+```
+
+**Execute the same command when building your Docker image by using the `RUN` command in your `Dockerfile`.**
+
 [docker]: https://www.docker.com/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
 [docker-hub]: https://hub.docker.com/search?q=&image_filter=official
+[dockerfile-reference]: https://docs.docker.com/engine/reference/builder/
 [lightness-repo]: https://github.com/MediaComem/comem-progweb-lightness
 [lightness-repo-installation]: https://github.com/MediaComem/comem-progweb-lightness?tab=readme-ov-file#-getting-started
