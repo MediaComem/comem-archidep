@@ -92,6 +92,28 @@ This command does two things. First, it creates a new group named `lightness` wi
 
 **Given this information, insert the `RUN` instructions to your `Dockerfile`, followed by the command.**
 
+## :exclamation: Create a working directory
+Its a good idea to define dedicated workspace within the container for our app. It avoids the need for repetitive cd (change directory) commands and reduces the risk of file misplacement or path errors, ensuring that all operations are performed in the intended directory, thus making the Dockerfile more organized and error-resistant.
+
+You can create this workspace by adding the following line to your `Dockerfile`:
+
+```Dockerfile
+WORKDIR /lightness
+```
+
+The `WORKDIR` instruction in a Dockerfile is used to set the working directory for any subsequent `RUN`, `CMD`, `ENTRYPOINT`, `COPY`, and `ADD` instructions in the Dockerfile.
+
+## :exclamation: Copy files to the working directory
+At this point, you have a base image, a new user and a working directory. However, none of your project files are actually anywhere in the image. Let's do that now by using the `COPY` instruction.
+
+The `COPY` instruction follows the syntax `COPY <source> <destination>`. Here, `<source>` refers to the file(s) or directory(s) you want to copy from the Docker build context (the directory containing the Dockerfile and other resources), and `<destination>` is the path within the container where these files should be placed.
+
+To copy everything in your project folder to the working directory, enter the following line in your `Dockerfile`:
+
+```dockerfile
+COPY . .
+```
+
 [docker]: https://www.docker.com/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
 [docker-hub]: https://hub.docker.com/search?q=&image_filter=official
