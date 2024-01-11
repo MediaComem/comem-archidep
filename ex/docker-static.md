@@ -7,15 +7,19 @@ You can complete this exercise directly on your local machine; there is **no** n
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Containerize an in-development static site using Docker](#containerize-an-in-development-static-site-using-docker)
-  - [Legend](#legend)
-  - [:gem: Requirements](#gem-requirements)
-  - [:question: Run the app locally](#question-run-the-app-locally)
-  - [:exclamation: Create a `.dockerignore` file](#exclamation-create-a-dockerignore-file)
-  - [:exclamation: Create a Dockerfile and find a base image.](#exclamation-create-a-dockerfile-and-find-a-base-image)
-  - [:exclamation: Create a group and user](#exclamation-create-a-group-and-user)
-  - [:exclamation: Create a working directory](#exclamation-create-a-working-directory)
-  - [:exclamation: Copy files to the working directory](#exclamation-copy-files-to-the-working-directory)
+- [Legend](#legend)
+- [:gem: Requirements](#gem-requirements)
+- [:question: Run the app locally](#question-run-the-app-locally)
+- [:exclamation: Create a `.dockerignore` file](#exclamation-create-a-dockerignore-file)
+- [:exclamation: Create a Dockerfile and find a base image.](#exclamation-create-a-dockerfile-and-find-a-base-image)
+- [:exclamation: Create a group and user](#exclamation-create-a-group-and-user)
+- [:exclamation: Create a working directory](#exclamation-create-a-working-directory)
+- [:exclamation: Copy files to the working directory and change permissions](#exclamation-copy-files-to-the-working-directory-and-change-permissions)
+- [:exclamation: Switch user and install dependencies](#exclamation-switch-user-and-install-dependencies)
+- [:exclamation: Launch the Parcel development server](#exclamation-launch-the-parcel-development-server)
+- [:exclamation: Building and running the image](#exclamation-building-and-running-the-image)
+- [:exclamation: Mapping Your Container's Ports](#exclamation-mapping-your-containers-ports)
+- [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -155,9 +159,9 @@ RUN npm ci
 ## :exclamation: Launch the Parcel development server
 The last step in your Dockerfile will be to determine the command executed when running the container. This is done using the `CMD` instruction, which there can only be one of. In our case, this command will be launching the Parcel developement server, or: `npm start`.
 
-:important: **Don't confuse `RUN` with `CMD`. `RUN` actually runs a command and commits the result; `CMD` doesn't execute anything at build time, but specifies the intended command for the image.**
+:warning: **Don't confuse `RUN` with `CMD`. `RUN` actually runs a command and commits the result; `CMD` doesn't execute anything at build time, but specifies the intended command for the image.**
 
-:space-invader: We are using the development server only for the sake of this basic exercise. Ideally, this app would first be built using `npm run build` then served with nginx or another production web server. Doing so with best practices in mind would require creating two container, which we will see next week with Docker Compose.
+> :space_invader: We are using the development server only for the sake of this basic exercise. Ideally, this app would first be built using `npm run build` then served with nginx or another production web server. Doing so with best practices in mind would require creating two container, which we will see next week with Docker Compose.
 
 ## :exclamation: Building and running the image
 Your Dockerfile should now be ready to be built. To do so, navigate to your project directory in the command line and start the building process:
@@ -198,15 +202,27 @@ Packaging & Optimizing...
 
 Beautiful, it looks like the Parcel developement server is up and running in our container. Let's try to visit the website by opening [http://localhost:1234](http://localhost:1234) is our navigator...
 
-😢 **ERR_CONNECTION_REFUSED** 😢
+💥😢 **ERR_CONNECTION_REFUSED** 😢💥
 
 Pause and think about what could possibly be wrong.
 
-## :exclamation: Mapping your container's ports
+## :exclamation: Mapping Your Container's Ports
+When you run a Docker container, it operates in its own isolated network environment. This means that services running inside the container, such as your Parcel development server, aren't automatically accessible outside of it. To make your application accessible from your host machine (or outside the container's network), you need to map the container's ports to your host's ports. This is where the `-p` or `--publish` flag in the `docker run` command becomes essential.
 
+The Parcel server inside your container is set to listen on port 1234. However, this port is only exposed within the container's private network. To access your application from a web browser on your host machine, you must map the container's port 1234 to a port on your host machine. For example, if you want to access the application via port 8080 on your local machine, you would start the container with the following command:
 
+```bash
+$> docker run -p 8080:1234 lightness
+```
 
+Here, `-p 8080:1234` instructs Docker to forward traffic coming into your host's port 8080 to port 1234 on the container. As a result, when you navigate to [http://localhost:8080](http://localhost:8080) on your browser, Docker routes these requests to port 1234 on the container, where your Parcel server is listening. 🎉 **Success** 🎉
 
+This port mapping is crucial for web development and testing with Docker, as it bridges the gap between the isolated container environment and your accessible host network, allowing you to interact with your web application as if it were running natively on your local machine. Remember, port numbers on both sides of the colon can be changed based on your needs and the availability of ports on your system.
+
+> :space_invader: For clarity and best practice, it's advisable to specify in your Dockerfile which ports the container is expected to use, by incorporating the `EXPOSE` instruction. While this instruction doesn't actually open or map any ports, it serves as an important form of documentation. It informs anyone using the image about the ports that the application within the container is set to listen on. This helps users understand how to interact with the containerized application and can guide them in setting up proper port mappings when they run the container.
+
+## :checkered_flag: What have I done?
+Through this exercise, you've taken a static site built with the Parcel JavaScript bundler and transformed it into a containerized application, harnessing the power and flexibility of Docker. You started by setting up your environment, creating a .dockerignore file to optimize the build process, and crafting a Dockerfile with a carefully chosen base image. You've learned the importance of security by running the container as a non-root user, and you've mastered the intricacies of setting up a working directory, copying project files, and managing file permissions within the Docker environment. Launching the Parcel development server inside the container and making it accessible via port mapping were critical steps that brought your application to life. Additionally, you've documented the exposed ports in your Dockerfile, thereby enhancing the clarity and usability of your Docker image.
 
 
 [docker]: https://www.docker.com/
