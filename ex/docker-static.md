@@ -136,8 +136,17 @@ In a standard Linux environment, we would do this by running the following comma
 ```bash
 $> chown -R lightness:lightness .
 ```
+**:warning: **Do not, I repeat, DO NOT run this in your terminal!!! :warning:**
 
-**Execute the same command when building your Docker image by using the `RUN` command in your `Dockerfile`.**
+
+**Execute the same command when building your Docker image by using the `RUN` instruction in your `Dockerfile`.**
+
+## :exclamation: Switch user and install dependencies
+Previously, we established a new user named `lightness` in our Docker environment, but until now, all actions have been performed with root privileges. This approach is acceptable for initial setup tasks, but as we move to handle our application's files, it's important to switch to the less privileged `lightness` user for enhanced security. **To execute this user switch, the `USER` instruction should be used in the `Dockerfile`, which changes the user context for all subsequent commands.**
+
+The `USER` instruction in a Dockerfile sets the user identity for any `RUN`, `CMD`, `ENTRYPOINT`, and `COPY` instructions that follow it in the Dockerfile.
+
+
 
 [docker]: https://www.docker.com/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
