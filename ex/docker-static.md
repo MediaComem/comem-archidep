@@ -23,7 +23,7 @@ Parts of this guide are annotated with the following icons:
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
 ## :gem: Requirements
-* To follow this exercise, you will to have Docker installed on your machine. To do so, install [Docker Desktop][docker-desktop] and follow use the recommended settings.
+* To follow this exercise, you will to have Docker installed on your machine. To do so, install [Docker Desktop][docker-desktop] and use the recommended settings.
 
 * **Fork** and clone the [Lightness repository][lightness-repo]:
 
@@ -65,8 +65,8 @@ Excluding the `dist` folder, especially in projects built with Parcel, is recomm
 
 **Given this information, create a `.dockerignore` file at the root of the project and exclude these irrelevant folders. The syntax is the same as `.gitignore` file.**
 
-## Create a Dockerfile and find a base image.
-To build our Docker image, we will need to create a `Dockerfile`, so go ahead and do that.
+## :exclamation: Create a Dockerfile and find a base image.
+To build a Docker image, you will need to create a `Dockerfile` at the root of the project, so go ahead and do that.
 
 The first step when building an image is to choose a **base image**. A base image in a Dockerfile serves as the foundational layer upon which all other layers of a Docker container are built. It typically includes the operating system and essential system libraries, providing the basic environment and tools necessary for running applications and services within the container.
 
@@ -74,10 +74,23 @@ Given that our app's only requirement is **Node.js 20+**, explore [Docker Hub][d
 
 > :space_invader: Using the Node base image in Docker without specifying a tag, like `node:latest`, can lead to unpredictable behaviors, as it always pulls the latest version, which may introduce breaking changes or incompatibilities. In contrast, specifying a tag like `node:20-alpine` ensures consistency and reliability; it uses a specific Node version (20 in this case) based on the lightweight and secure Alpine Linux distribution. This approach not only provides a stable and predictable environment but also results in a smaller and more efficient Docker image, benefiting from Alpine's minimalistic footprint.
 
-**Given this information, insert the `FROM` instruction at the top of your `Dockerfile`.
+**Given this information, insert the `FROM` instruction followed by the base image you chose at the top of your `Dockerfile`.**
 
+## :exclamation: Create a group and user
 
+**:warning: Friends don't let friends run containers as root**
 
+By default, Docker containers run with the root privilege (uid 0), including the application that runs inside them. This is considered a significant security risk because it grants full administrative privileges inside the container. If an attacker gains access to the container, they could exploit these elevated privileges to perform malicious activities, such as accessing sensitive data, installing unauthorized software, or attacking other parts of the system. This is particularly dangerous because the effects can potentially extend beyond the container, especially if the container runtime is not properly isolated or if there are vulnerabilities in the host system. To mitigate this risk, it's best practice to run containers with a non-root user, thereby limiting the potential impact of a security breach.
+
+The next step in your `Dockerfile` will be to create a new user and group that cannot access the rest of the system. In a traditional Linux environment, creating a group and user can be done using the following command:
+
+```bash
+$> addgroup -S lightness && adduser -S lightness -G lightness
+```
+
+This command does two things. First, it creates a new group named `lightness` with the `-S` flag indicating it's a system group, and then it creates a new user named `lightness`, adds them to the `lightness` group with `-G lightness`, and marks them as a system user with `-S`, reducing the privileges associated with this user and group.
+
+**Given this information, insert the `RUN` instructions to your `Dockerfile`, followed by the command.**
 
 [docker]: https://www.docker.com/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
