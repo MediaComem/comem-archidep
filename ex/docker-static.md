@@ -136,7 +136,7 @@ In a standard Linux environment, we would do this by running the following comma
 ```bash
 $> chown -R lightness:lightness .
 ```
-**:warning: **Do not, I repeat, DO NOT run this in your terminal!!! :warning:**
+**:warning: Do not, I repeat, DO NOT run this in your terminal!!! :warning:**
 
 
 **Execute the same command when building your Docker image by using the `RUN` instruction in your `Dockerfile`.**
