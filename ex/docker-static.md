@@ -1,4 +1,4 @@
-# Containerize an in-development static site using Docker
+# Containerize a static site using Docker
 
 In this exercise, you will apply your knowledge of Docker and Linux administration to containerize a static site built with the Parcel JavaScript bundler. The site you will be containerizing is a completed version of your final ProgWeb challenge.
 
@@ -81,7 +81,7 @@ Excluding the `dist` folder, especially in projects built with Parcel, is recomm
 **Given this information, create a `.dockerignore` file at the root of the project and exclude these irrelevant folders. The syntax is the same as `.gitignore` file.**
 
 ## :exclamation: Create a Dockerfile and find a base image.
-To build a Docker image, you will need to create a `Dockerfile` at the root of the project, so go ahead and do that.
+To build a Docker image, you will need to create a Dockerfile at the root of the project, so go ahead and do that.
 
 The first step when building an image is to choose a **base image**. A base image in a Dockerfile serves as the foundational layer upon which all other layers of a Docker container are built. It typically includes the operating system and essential system libraries, providing the basic environment and tools necessary for running applications and services within the container.
 
@@ -89,7 +89,7 @@ Given that our app's only requirement is **Node.js 20+**, explore [Docker Hub][d
 
 > :space_invader: Using the Node base image in Docker without specifying a tag, like `node:latest`, can lead to unpredictable behaviors, as it always pulls the latest version, which may introduce breaking changes or incompatibilities. In contrast, specifying a tag like `node:20-alpine` ensures consistency and reliability; it uses a specific Node version (20 in this case) based on the lightweight and secure Alpine Linux distribution. This approach not only provides a stable and predictable environment but also results in a smaller and more efficient Docker image, benefiting from Alpine's minimalistic footprint.
 
-**Given this information, insert the `FROM` instruction followed by the base image you chose at the top of your `Dockerfile`.**
+**Given this information, insert the `FROM` instruction followed by the base image you chose at the top of your Dockerfile.**
 
 ## :exclamation: Create a group and user
 
@@ -97,7 +97,7 @@ Given that our app's only requirement is **Node.js 20+**, explore [Docker Hub][d
 
 By default, Docker containers run with the root privilege (uid 0), including the application that runs inside them. This is considered a significant security risk because it grants full administrative privileges inside the container. If an attacker gains access to the container, they could exploit these elevated privileges to perform malicious activities, such as accessing sensitive data, installing unauthorized software, or attacking other parts of the system. This is particularly dangerous because the effects can potentially extend beyond the container, especially if the container runtime is not properly isolated or if there are vulnerabilities in the host system. To mitigate this risk, it's best practice to run containers with a non-root user, thereby limiting the potential impact of a security breach.
 
-The next step in your `Dockerfile` will be to create a new user and group that cannot access the rest of the system. In a traditional Linux environment, creating a group and user can be done using the following command:
+The next step in your Dockerfile will be to create a new user and group that cannot access the rest of the system. In a traditional Linux environment, creating a group and user can be done using the following command:
 
 ```bash
 $> addgroup -S lightness && adduser -S lightness -G lightness
@@ -105,12 +105,12 @@ $> addgroup -S lightness && adduser -S lightness -G lightness
 
 This command does two things. First, it creates a new group named `lightness` with the `-S` flag indicating it's a system group, and then it creates a new user named `lightness`, adds them to the `lightness` group with `-G lightness`, and marks them as a system user with `-S`, reducing the privileges associated with this user and group.
 
-**Given this information, insert the `RUN` instructions to your `Dockerfile`, followed by the command.**
+**Given this information, insert the `RUN` instructions to your Dockerfile, followed by the command.**
 
 ## :exclamation: Create a working directory
 Its a good idea to define dedicated workspace within the container for our app. It avoids the need for repetitive cd (change directory) commands and reduces the risk of file misplacement or path errors, ensuring that all operations are performed in the intended directory, thus making the Dockerfile more organized and error-resistant.
 
-You can create this workspace by adding the following line to your `Dockerfile`:
+You can create this workspace by adding the following line to your Dockerfile:
 
 ```Dockerfile
 WORKDIR /lightness
@@ -123,7 +123,7 @@ At this point, you have a base image, a new user and a working directory. Howeve
 
 The `COPY` instruction follows the syntax `COPY <source> <destination>`. Here, `<source>` refers to the file(s) or directory(s) you want to copy from the Docker build context (the directory containing the Dockerfile and other resources), and `<destination>` is the path within the container where these files should be placed.
 
-To copy everything in your project folder to the working directory, enter the following line in your `Dockerfile`:
+To copy everything in your project folder to the working directory, enter the following line in your Dockerfile:
 
 ```dockerfile
 COPY . .
@@ -139,12 +139,73 @@ $> chown -R lightness:lightness .
 **:warning: Do not, I repeat, DO NOT run this in your terminal!!! :warning:**
 
 
-**Execute the same command when building your Docker image by using the `RUN` instruction in your `Dockerfile`.**
+**Execute the same command when building your Docker image by using the `RUN` instruction in your Dockerfile.**
 
 ## :exclamation: Switch user and install dependencies
-Previously, we established a new user named `lightness` in our Docker environment, but until now, all actions have been performed with root privileges. This approach is acceptable for initial setup tasks, but as we move to handle our application's files, it's important to switch to the less privileged `lightness` user for enhanced security. **To execute this user switch, the `USER` instruction should be used in the `Dockerfile`, which changes the user context for all subsequent commands.**
+Up to this point in our Docker environment, we have created a user named `lightness`, yet all operations have been executed with root privileges. While using the root user is fine for initial configuration tasks, it's essential to shift to the `lightness` user when we start working with our application files, in order to enhance security.
 
-The `USER` instruction in a Dockerfile sets the user identity for any `RUN`, `CMD`, `ENTRYPOINT`, and `COPY` instructions that follow it in the Dockerfile.
+**To make this transition, employ the `USER` instruction in your Dockerfile.** This instruction changes the user context, meaning that all subsequent `RUN`, `CMD`, `ENTRYPOINT`, and `COPY` instructions in the Dockerfile will be executed under the `lightness` user, rather than the root.
+
+You may then install the app's dependencies with the following line in your Dockerfile:
+
+```dockerfile
+RUN npm ci
+```
+
+## :exclamation: Launch the Parcel development server
+The last step in your Dockerfile will be to determine the command executed when running the container. This is done using the `CMD` instruction, which there can only be one of. In our case, this command will be launching the Parcel developement server, or: `npm start`.
+
+:important: **Don't confuse `RUN` with `CMD`. `RUN` actually runs a command and commits the result; `CMD` doesn't execute anything at build time, but specifies the intended command for the image.**
+
+:space-invader: We are using the development server only for the sake of this basic exercise. Ideally, this app would first be built using `npm run build` then served with nginx or another production web server. Doing so with best practices in mind would require creating two container, which we will see next week with Docker Compose.
+
+## :exclamation: Building and running the image
+Your Dockerfile should now be ready to be built. To do so, navigate to your project directory in the command line and start the building process:
+
+```bash
+$> cd comem-progweb-lightness
+$> docker build -t lightness .
+```
+
+Let's break down the second command:
+
+1. `docker build`: This is the Docker command used to build an image from a Dockerfile and a "context". The context is typically a set of files at a specified location, which are required for building the image.
+
+2. `-t lightness`: The `-t` flag stands for "tag". It allows you to assign a name to the image you're creating. In this case, the name (or tag) you're giving to your new Docker image is `lightness`. Naming images is crucial for identification and later use, especially when you want to run or push the image to a registry.
+
+3. `.`: The dot at the end of the command represents the current directory, indicating that Docker should look for the Dockerfile in the current directory. This current directory is also considered as the build context sent to the Docker daemon. It means Docker includes the files and folders in this directory (except those specified in `.dockerignore`, if present) to build the image.
+
+If the build succeeds, you should see it in your list of available images by running:
+
+```bash
+$> docker images
+REPOSITORY     TAG       IMAGE ID       CREATED         SIZE
+lightness      latest    44bdf838bf5b   2 minutes ago   599MB
+```
+
+You can now run the image by running:
+```bash
+$> docker run lightness
+> lightness@1.0.0 start
+> parcel src/index.html
+
+Server running at http://localhost:1234
+Building...
+Bundling...
+Packaging & Optimizing...
+✨ Built in 427ms
+```
+
+Beautiful, it looks like the Parcel developement server is up and running in our container. Let's try to visit the website by opening [http://localhost:1234](http://localhost:1234) is our navigator...
+
+😢 **ERR_CONNECTION_REFUSED** 😢
+
+Pause and think about what could possibly be wrong.
+
+## :exclamation: Mapping your container's ports
+
+
+
 
 
 
