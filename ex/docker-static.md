@@ -1,3 +1,18 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Containerize an in-development static site using Docker](#containerize-an-in-development-static-site-using-docker)
+  - [Legend](#legend)
+  - [:gem: Requirements](#gem-requirements)
+  - [:question: Run the app locally](#question-run-the-app-locally)
+  - [:exclamation: Create a `.dockerignore` file](#exclamation-create-a-dockerignore-file)
+  - [:exclamation: Create a Dockerfile and find a base image.](#exclamation-create-a-dockerfile-and-find-a-base-image)
+  - [:exclamation: Create a group and user](#exclamation-create-a-group-and-user)
+  - [:exclamation: Create a working directory](#exclamation-create-a-working-directory)
+  - [:exclamation: Copy files to the working directory](#exclamation-copy-files-to-the-working-directory)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Containerize an in-development static site using Docker
 
 In this exercise, you will apply your knowledge of Docker and Linux administration to containerize a static site built with the Parcel JavaScript bundler. The site you will be containerizing is a completed version of your final ProgWeb challenge.
