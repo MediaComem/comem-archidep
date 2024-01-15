@@ -3,7 +3,7 @@
   <head>
     <title>Docker (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/82867f2e84621c9d3818f0c791b5a597adf17bd3/subjects/docker/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/46b9d86cd95c0b9bf0ea93bfccbbb340ee44a80d/subjects/docker/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -334,7 +334,7 @@ $> docker run -it ubuntu
 root@bf545ce9cbdb:/#
 ```
 
-As you can see, you can now interact with a containerised version of Ubuntu. Try interacting with the filesystem using standard UNIX commands such as `cd` and `ls`.
+As you can see, you can now interact with a containerized version of Ubuntu. Try interacting with the filesystem using standard UNIX commands such as `cd` and `ls`.
 
 
 
@@ -472,7 +472,7 @@ $> docker run hello-docker
 Hello Docker!
 ```
 
-A Docker container operates by running a specific **process, defined by the `CMD` or `ENTRYPOINT` in your Dockerfile**. This process keeps the container alive. The container will remain active as long as this process is running. In our example, the container is running a Node.js script** that logs "Hello Docker!" to the console. Once this script finishes executing and the Node.js runtime exits, the container will also stop running. Running `docker ps` will therefore not display the container you just executed.
+A Docker container operates by running a specific **process, defined by the `CMD` or `ENTRYPOINT` in your Dockerfile**. This process keeps the container alive. The container will remain active as long as this process is running. In our example, the container is running a Node.js script that logs "Hello Docker!" to the console. Once this script finishes executing and the Node.js runtime exits, the container will also stop running. Running `docker ps` will therefore not display the container you just executed.
 
 ```bash
 $> docker ps
