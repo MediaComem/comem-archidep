@@ -113,7 +113,7 @@ $> psql --version
 psql (PostgreSQL) 14.6 (Homebrew)
 ```
 
-## :exclamation: Getting you Todolist fork up-to-date.
+## :exclamation: Getting your Todolist fork up-to-date.
 
 When you started working on the Todolist application, you forked an existing
 codebase from a GitHub repository. While you were working on your configuration,
