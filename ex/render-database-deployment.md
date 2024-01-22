@@ -10,7 +10,7 @@ The goal of this exercice is to deploy the same [PHP Todolist][repo] application
 - [:exclamation: Install PostgreSQL](#exclamation-install-postgresql)
   - [macOS](#macos)
   - [Windows](#windows)
-- [:exclamation: Getting you Todolist fork up-to-date.](#exclamation-getting-you-todolist-fork-up-to-date)
+- [:exclamation: Getting your Todolist fork up-to-date.](#exclamation-getting-your-todolist-fork-up-to-date)
   - [:exclamation: Add the upstream as a remote](#exclamation-add-the-upstream-as-a-remote)
   - [:exclamation: Fetch data from upstream](#exclamation-fetch-data-from-upstream)
   - [:exclamation: Push the new branch to GitHub](#exclamation-push-the-new-branch-to-github)

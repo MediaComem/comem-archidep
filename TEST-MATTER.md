@@ -7,6 +7,13 @@ It also indicates what you do not need to remember by heart.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Plan](#plan)
+  - [Introduction](#introduction)
+  - [Version control](#version-control)
+  - [Security](#security)
+  - [Basic deployment](#basic-deployment)
+  - [Advanced deployment](#advanced-deployment)
+  - [Automated deployment](#automated-deployment)
+  - [Managed Deployments](#managed-deployments)
 - [Exercices](#exercices)
 - [Architecture](#architecture)
   - [Examples](#examples)
@@ -15,7 +22,7 @@ It also indicates what you do not need to remember by heart.
 
 ## Plan
 
-- Introduction
+### Introduction
 
   - [Command line](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
 
@@ -65,7 +72,7 @@ It also indicates what you do not need to remember by heart.
     - The syntax of the `scp` command
     - How to use an SSH agent.
 
-- Version control
+### Version control
 
   - [Version control with Git](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
 
@@ -120,7 +127,7 @@ It also indicates what you do not need to remember by heart.
 
     - The precise syntax of the Git subcommands.
 
-- Security
+### Security
 
   - [Open Web Application Security Project][owasp]
 
@@ -156,7 +163,7 @@ It also indicates what you do not need to remember by heart.
       course. (Although it is a good thing to know, and the attack is
       [documented by OWASP](https://owasp.org/www-community/attacks/csrf).)
 
-- Basic deployment
+### Basic deployment
 
   - [Cloud computing](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
 
@@ -257,7 +264,7 @@ It also indicates what you do not need to remember by heart.
     - The other package managers.
     - How to use the `apt` command line.
 
-- Advanced deployment
+### Advanced deployment
 
   - [Twelve-factor app][12factor]
 
@@ -345,7 +352,7 @@ It also indicates what you do not need to remember by heart.
     - How to configure nginx to use one.
     - About purchasing TLS certificates.
 
-- Automated deployment
+### Automated deployment
 
   - [Git hooks](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
 
@@ -358,7 +365,8 @@ It also indicates what you do not need to remember by heart.
     - The list of Git hooks.
     - How to create a Git hook.
 
-- [Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/paas/?home=MediaComem%2Fcomem-archidep%23readme#1)
+### Managed Deployments
+  - [Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/paas/?home=MediaComem%2Fcomem-archidep%23readme#1)
 
     You must know:
 
@@ -371,9 +379,9 @@ It also indicates what you do not need to remember by heart.
     - The getting started procedure.
     - The precise steps to configure environment variables.
 
-- Docker
+  - Docker
 
-  - [Introduction to Docker](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/docker/?home=MediaComem%2Fcomem-archidep%23readme#1)
+    - [Introduction to Docker](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/docker/?home=MediaComem%2Fcomem-archidep%23readme#1)
 
     You must know:
     - The difference between a Virtual Machine and a Container
