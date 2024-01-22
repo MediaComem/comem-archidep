@@ -1,5 +1,6 @@
 # COMEM+ Architecture & Deployment course
 
+
 In this course you will learn:
 
 - How to deploy applications on a Linux server on an IaaS platform (Microsoft Azure).
@@ -16,6 +17,7 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+- [:collision: Exam](#collision-exam)
 - [Legend](#legend)
 - [What you will need](#what-you-will-need)
 - [Plan](#plan)
@@ -31,6 +33,8 @@ This course is a [COMEM+][comem] [web development course][comem-webdev] taught a
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+## :collision: Exam
+Your exam will take place on **Thursday February 8th at 13:15**. No material but pen and paper will be allowed for this exam. We have prepared a [document highlighting all the things you *must* know to succeed](TEST-MATTER.md).
 
 ## Legend
 
