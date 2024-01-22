@@ -394,6 +394,7 @@ It also indicates what you do not need to remember by heart.
     - Other Dockerfile instructions.
     - Private Docker Image registries.
 
+  - Docker Compose, Volumes and Networks (coming soon)
 
 ## Exercices
 
