@@ -25,13 +25,24 @@ It also indicates what you do not need to remember by heart.
     - What the Unix paths `.`, `..` and `~` are.
     - The difference between a relative and an absolute path.
     - What the following commands do and their basic syntax (not their options): `cd`, `ls`, `pwd`.
+    - What the `PATH` is and how it works.
 
     You do not need to know:
 
-    - What the `PATH` is and how it works.
     - The history of computer interfaces.
     - Vim or nano usage.
     - The specifics of particular commands.
+
+  - [Shell scripting](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
+
+    You must know:
+
+    - What a shell script is.
+    - What a shebang is.
+
+    You do not need to know:
+
+    - The shell script basics.
 
   - [Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
 
@@ -125,14 +136,14 @@ It also indicates what you do not need to remember by heart.
 
     - The list of attacks or the details of those attacks.
 
-  - The Root Image Gallery security demonstration (26 Nov. 2021)
+  - The Root Image Gallery security demonstration
 
     You must know:
 
     - Why it's not a good idea to run a web application (or any application in
       general) as `root`.
 
-  - The CSRF security demonstration (28 Jan. 2022)
+  - The CSRF security demonstration
 
     You must know:
 
@@ -237,10 +248,12 @@ It also indicates what you do not need to remember by heart.
     - The Unix networking commands (`ip`, `ping`, etc).
 
   - [APT](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
-
-    You do not need to know
+    You must know:
 
     - What APT is.
+
+    You do not need to know:
+
     - The other package managers.
     - How to use the `apt` command line.
 
@@ -334,17 +347,6 @@ It also indicates what you do not need to remember by heart.
 
 - Automated deployment
 
-  - [Shell scripting](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
-
-    You must know:
-
-    - What a shell script is.
-    - What a shebang is.
-
-    You do not need to know:
-
-    - The shell script basics.
-
   - [Git hooks](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
 
     You must know:
@@ -356,19 +358,34 @@ It also indicates what you do not need to remember by heart.
     - The list of Git hooks.
     - How to create a Git hook.
 
-- Platform-as-a-Service (PaaS)
-
-  - [Heroku](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/heroku?home=MediaComem%2Fcomem-archidep%23readme)
+- [Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/paas/?home=MediaComem%2Fcomem-archidep%23readme#1)
 
     You must know:
 
-    - What Heroku is and how the platform works on principle.
-    - That you can configure environment variables for your Heroku applications.
+    - What Netlify is and how the platform works on principle.
+    - What Render is and how the platform works on principle.
+    - That you can configure environment variables for your Render applications.
 
     You do not need to know:
 
     - The getting started procedure.
-    - The precise commands used to configure environment variables.
+    - The precise steps to configure environment variables.
+
+- Docker
+
+  - [Introduction to Docker](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/docker/?home=MediaComem%2Fcomem-archidep%23readme#1)
+
+    You must know:
+    - The difference between a Virtual Machine and a Container
+    - What a Docker Image is
+    - What a Docker Container is.
+    - The different parts of a Docker workflow.
+    - What a Dockerfile is and what the `FROM`, `WORKDIR`, `COPY` and `CMD` instruction do.
+
+    You do not need to know:
+    - Other Dockerfile instructions.
+    - Private Docker Image registries.
+
 
 ## Exercices
 
@@ -394,7 +411,7 @@ following exercises:
 
 - [Deploy a static site with nginx](ex/nginx-static-deployment.md) [(architecture)](ex/nginx-static-deployment.md#architecture)
 - [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) [(architecture)](ex/nginx-php-fpm-deployment.md#architecture)
-- [Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](ex/minesweeper-deployment.md) [(architecture)](ex/minesweeper-deployment.md#books-architecture)
+- [Deploy WOPR, a Sinatra & Svelte web application with a Redis database](ex/wopr-deployment.md) [(architecture)](ex/wopr-deployment.md#books-architecture)
 - [Deploy a multi-component web application with nginx](./ex/revprod-deployment.md) [(architecture)](ex/revprod-deployment.md#architecture)
 - [Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md) [(architecture)](ex/fibscale-deployment.md#architecture)
 
@@ -402,16 +419,20 @@ You must understand how to set up automated deployments with Git hooks,
 which you put in practice during the following exercises:
 
 - [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md) [(architecture)](ex/git-automated-deployment.md#architecture)
-- [Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](ex/minesweeper-deployment.md) [(architecture)](ex/minesweeper-deployment.md#books-architecture)
-
-This [diagram](ex/end-result.pdf) shows the end result of previous exercises.
+- [Deploy WOPR, a Sinatra & Svelte web application with a Redis database](ex/wopr-deployment.md) [(architecture)](ex/wopr-deployment.md#books-architecture)
 
 You must understand how to deploy various applications to a cloud platform
 with the Platform-as-a-Service (PaaS) service model, which you put in practice
 during the following exercises:
 
-- [Deploy a PHP web page to Heroku](https://github.com/MediaComem/php-hello-world-form)
-- [Deploy web applications with a database to Heroku](ex/heroku-deployment.md)
+- [Deploy a static site to Netlify](ex/netlify-static-deployment.md)
+- [Deploy web applications with a database to Render](ex/render-database-deployment.md)
+
+You must understand how to containerize various applications with Docker and deploy
+them with the Platform-as-a-Service (PaaS) service model.
+
+- [Deploy web applications with a database to Render](ex/render-database-deployment.md)
+- [Containerize a static site using Docker](ex/docker-static.md)
 
 ## Architecture
 
