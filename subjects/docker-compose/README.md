@@ -50,13 +50,19 @@ replicas may be launched. New containers will replace crashed ones.
 
 ### The Docker philosophy: isolation
 
-> Docker containers are in essence **isolated services**, not virtual machine replacements.
+> Docker containers are **isolated services**, not VM replacements.
+
+<p class="center">
+  <img class="w85" src="./images/docker-isolation.png" />
+</p>
+
+### Single responsibility principle
 
 A container should have **only one mission**: Containers allow subdividing the
 functions of a system into smaller collaborating pieces.
 
 * A Docker image should **contain what it needs** to provide its service and run
-  as quickly as possible, and nothing else!
+  as quickly as possible, and nothing else! Minimize your dependencies.
 * For maximum efficiency and isolation, each container should address one
 specific area of concern and **delegate other functions to other containers**,
   e.g. a web application container will delegate storage to a separate database
@@ -66,35 +72,35 @@ specific area of concern and **delegate other functions to other containers**,
 
 ## What is Docker Compose?
 
-Docker Compose is a tool for defining and running multi-container applications. It is the key to unlocking a streamlined and efficient development and deployment experience.
+Docker Compose is a tool for defining and running multi-container applications,
+making it easy to manage services, networks, and volumes in a single,
+comprehensible YAML configuration file. Then, using the command line, you can:
 
-Compose simplifies the control of your entire application stack, making it easy to manage services, networks, and volumes in a single, comprehensible YAML configuration file. Then, with a single command, you create and start all the services from your configuration file.
-
-Compose works in all environments; production, staging, development, testing, as well as CI workflows. It also has commands for managing the whole lifecycle of your application:
-
-    Start, stop, and rebuild services
-    View the status of running services
-    Stream the log output of running services
-    Run a one-off command on a service
+* Start, stop, and rebuild services
+  * `docker compose up [service]`
+  * `docker compose stop [service]`
+  * `docker compose build [service]`
+* View the status of running services
+  * `docker compose ps [service]`
+* Stream the log output of running services
+  * `docker compose logs [--follow] [service]`
+* Run a one-off command on a service
+  * `docker-compose run <service> <command> [args...]`
 
 ## Why use Docker Compose?
 
-Why use Compose?
-Key benefits of Docker Compose
+* **Simplified control**: Orchestrate multi-container applications in a single
+  file, making your application environment easy to replicate.
+* **Efficient collaboration**: Compose files are easy to share, facilitating
+  collaboration among developers, operations teams, and other stakeholders.
+* **Rapid application development**: Compose caches its configuration. When you
+  restart a service that has not changed, Compose re-uses the existing
+  containers. Re-using containers means that you can make changes to your
+  environment very quickly.
+* **Portability across environments**: Compose supports variables to customize
+  your containers for different environments or users.
 
-Using Docker Compose offers several benefits that streamline the development, deployment, and management of containerized applications:
-
-    Simplified control: Docker Compose allows you to define and manage multi-container applications in a single YAML file. This simplifies the complex task of orchestrating and coordinating various services, making it easier to manage and replicate your application environment.
-
-    Efficient collaboration: Docker Compose configuration files are easy to share, facilitating collaboration among developers, operations teams, and other stakeholders. This collaborative approach leads to smoother workflows, faster issue resolution, and increased overall efficiency.
-
-    Rapid application development: Compose caches the configuration used to create a container. When you restart a service that has not changed, Compose re-uses the existing containers. Re-using containers means that you can make changes to your environment very quickly.
-
-    Portability across environments: Compose supports variables in the Compose file. You can use these variables to customize your composition for different environments, or different users.
-
-    Extensive community and support: Docker Compose benefits from a vibrant and active community, which means abundant resources, tutorials, and support. This community-driven ecosystem contributes to the continuous improvement of Docker Compose and helps users troubleshoot issues effectively.
-
-Common use cases of Docker Compose
+## Common use cases of Docker Compose
 
 Compose can be used in many different ways. Some common use cases are outlined below.
 Development environments
