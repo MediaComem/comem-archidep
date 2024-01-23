@@ -1,3 +1,9 @@
+# Cloud Computing
+
+Learn what cloud computing is and about the common service models available today.
+
+<!-- slide-include ../../BANNER.md -->
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -34,12 +40,6 @@
   - [TODO](#todo)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# Cloud Computing
-
-Learn what cloud computing is and about the common service models available today.
-
-<!-- slide-include ../../BANNER.md -->
 
 
 

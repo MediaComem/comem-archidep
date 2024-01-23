@@ -1,3 +1,21 @@
+# Docker
+
+<!-- slide-column -->
+
+Learn how to containerize your web applications with Docker.
+
+<!-- slide-include ../../BANNER.md -->
+
+**You will need**
+
+* [Git][git]
+* A [GitHub][github] account
+* A [Docker][docker] account
+* [Docker Desktop][docker-desktop] installed on your machine.
+
+<!-- slide-column -->
+<p class='center'><img class='w100' src='images/docker-logo.svg' /></p>
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -27,23 +45,6 @@
     - [Run a container based on the custom image](#run-a-container-based-on-the-custom-image)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# Docker
-
-
-<!-- slide-column -->
-
-Learn how to containerize your web applications with Docker.
-
-**You will need**
-
-* [Git][git]
-* A [GitHub][github] account
-* A [Docker][docker] account
-* [Docker Desktop][docker-desktop] installed on your machine.
-
-<!-- slide-column -->
-<p class='center'><img class='w100' src='images/docker-logo.svg' /></p>
 
 
 
