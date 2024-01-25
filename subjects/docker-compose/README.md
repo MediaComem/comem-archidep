@@ -155,6 +155,14 @@ For details on using production-oriented features, see Compose in production.
 
 
 
+## Going further
+
+* Docker Swarm
+* Traefik
+* Kubernetes
+
+
+
 ## References
 
 * [Docker Compose][docker-compose]
