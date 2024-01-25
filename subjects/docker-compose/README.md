@@ -23,8 +23,20 @@ running **multi-container applications**.
 
 * [Docker](../docker/)
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [The Docker philosophy](#the-docker-philosophy)
+  - [The Docker philosophy: isolation](#the-docker-philosophy-isolation)
+  - [The Docker philosophy: microservice architecture](#the-docker-philosophy-microservice-architecture)
+- [What is Docker Compose?](#what-is-docker-compose)
+  - [The Docker Compose command line](#the-docker-compose-command-line)
+- [Why use Docker Compose?](#why-use-docker-compose)
+- [Common use cases of Docker Compose](#common-use-cases-of-docker-compose)
+- [Going further](#going-further)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 

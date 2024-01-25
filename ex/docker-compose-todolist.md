@@ -5,8 +5,37 @@ application with Docker Compose. You will create a portable Compose file that
 can be used to deploy the same containers on both your local machine and your
 cloud server.
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Legend](#legend)
+- [:gem: Your best friends](#gem-your-best-friends)
+- [:exclamation: Make sure you have everything you need](#exclamation-make-sure-you-have-everything-you-need)
+- [:exclamation: Create a compose file to deploy the PHP todolist application](#exclamation-create-a-compose-file-to-deploy-the-php-todolist-application)
+  - [:exclamation: Define the database service](#exclamation-define-the-database-service)
+  - [:exclamation: Define the application service](#exclamation-define-the-application-service)
+    - [:exclamation: Create a Dockerfile for the PHP todolist](#exclamation-create-a-dockerfile-for-the-php-todolist)
+    - [:exclamation: Write the application service](#exclamation-write-the-application-service)
+    - [:exclamation: Run the application service](#exclamation-run-the-application-service)
+  - [:exclamation: Define the reverse proxy service](#exclamation-define-the-reverse-proxy-service)
+    - [:exclamation: Create an nginx site configuration file](#exclamation-create-an-nginx-site-configuration-file)
+    - [:exclamation: Write the reverse proxy service](#exclamation-write-the-reverse-proxy-service)
+    - [:exclamation: Run the reverse proxy service](#exclamation-run-the-reverse-proxy-service)
+- [:exclamation: Run services in the background](#exclamation-run-services-in-the-background)
+- [:exclamation: Make it persist](#exclamation-make-it-persist)
+- [:exclamation: Deploy it on your cloud server](#exclamation-deploy-it-on-your-cloud-server)
+  - [:exclamation: Retrieve your Compose project on the server](#exclamation-retrieve-your-compose-project-on-the-server)
+  - [:exclamation: Install Docker on your cloud server](#exclamation-install-docker-on-your-cloud-server)
+  - [:exclamation: Copy your `.env` file to the server](#exclamation-copy-your-env-file-to-the-server)
+  - [:exclamation: Run the Compose project on your server](#exclamation-run-the-compose-project-on-your-server)
+- [:books: Going further](#books-going-further)
+  - [:gem: Make it more configurable](#gem-make-it-more-configurable)
+  - [:gem: Make it even more secure](#gem-make-it-even-more-secure)
+  - [:gem: One-command horizontal scaling](#gem-one-command-horizontal-scaling)
+  - [:gem: Drop the additional reverse proxy](#gem-drop-the-additional-reverse-proxy)
+- [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 
