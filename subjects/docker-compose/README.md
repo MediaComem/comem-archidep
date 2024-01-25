@@ -44,9 +44,9 @@ replicas may be launched. New containers will replace crashed ones.
 * Any code running in your container should be included in the image. **If the
   code needs revision, update the image** and run a new container.
 * Pass **configuration** via environment variables.
-* Do not manage **persistent storage** within containers. Delegate storage to
-  another container (e.g. running a database), or mount a volume to keep data
-  when a container is created again.
+* Do not manage **persistent storage** within containers. Delegate storage to a
+  third-party service, another container (e.g. running a database), or mount a
+  volume to keep data when a container is created again.
 
 ### The Docker philosophy: isolation
 
@@ -56,13 +56,14 @@ replicas may be launched. New containers will replace crashed ones.
   <img class="w85" src="./images/docker-isolation.png" />
 </p>
 
-### Single responsibility principle
+### The Docker philosophy: microservice architecture
 
-A container should have **only one mission**: Containers allow subdividing the
+A container should have **only one mission**. Containers allow subdividing the
 functions of a system into smaller collaborating pieces.
 
 * A Docker image should **contain what it needs** to provide its service and run
-  as quickly as possible, and nothing else! Minimize your dependencies.
+  as quickly as possible, and nothing else! Minimize your dependencies. The
+  simpler it is, the more portable it is.
 * For maximum efficiency and isolation, each container should address one
 specific area of concern and **delegate other functions to other containers**,
   e.g. a web application container will delegate storage to a separate database
@@ -72,9 +73,35 @@ specific area of concern and **delegate other functions to other containers**,
 
 ## What is Docker Compose?
 
+<!-- slide-column -->
+
 Docker Compose is a tool for defining and running multi-container applications,
-making it easy to manage services, networks, and volumes in a single,
-comprehensible YAML configuration file. Then, using the command line, you can:
+making it easy to manage **services, networks, and volumes** in a single,
+comprehensible [YAML][yaml] **configuration file**.
+
+<!-- slide-column -->
+
+```yml
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DB_URL: postgres://db:5432/app
+    ports:
+      - "8080:80"
+    restart: always
+  db:
+    image: redis:7.2.4-alpine
+    restart: always
+    volumes:
+      - ./todolist.sql:/init.sql:ro
+```
+
+### The Docker Compose command line
+
+Docker Compose is also a Docker subcommand. With it, you can:
 
 * Start, stop, and rebuild services
   * `docker compose up [service]`
@@ -139,3 +166,4 @@ For details on using production-oriented features, see Compose in production.
 [docker]: https://www.docker.com
 [docker-compose]: https://docs.docker.com/compose/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
+[yaml]: https://yaml.org
