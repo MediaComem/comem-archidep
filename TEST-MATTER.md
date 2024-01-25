@@ -380,11 +380,10 @@ It also indicates what you do not need to remember by heart.
     - The getting started procedure.
     - The precise steps to configure environment variables.
 
-  - Docker
-
-    - [Introduction to Docker](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/docker/?home=MediaComem%2Fcomem-archidep%23readme#1)
+  - [Docker](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/docker/?home=MediaComem%2Fcomem-archidep%23readme#1)
 
     You must know:
+
     - The difference between a Virtual Machine and a Container
     - What a Docker Image is
     - What a Docker Container is.
@@ -392,10 +391,24 @@ It also indicates what you do not need to remember by heart.
     - What a Dockerfile is and what the `FROM`, `WORKDIR`, `COPY` and `CMD` instruction do.
 
     You do not need to know:
+
     - Other Dockerfile instructions.
     - Private Docker Image registries.
 
-  - Docker Compose, Volumes and Networks (coming soon)
+  - [Docker Compose](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/docker/?home=MediaComem%2Fcomem-archidep%23readme#1)
+
+    You must know:
+
+    - The Docker philosophy.
+    - What is the purpose of Docker Compose.
+    - What a Compose file is in principle.
+      - What is a Compose service.
+    - What you can do with the Docker Compose commands (manage services).
+
+    You do not need to know:
+
+    - The syntax of Docker Compose commands and options.
+    - The syntax of Compose files.
 
 ## Exercices
 
@@ -438,11 +451,11 @@ during the following exercises:
 - [Deploy a static site to Netlify](ex/netlify-static-deployment.md)
 - [Deploy web applications with a database to Render](ex/render-database-deployment.md)
 
-You must understand how to containerize various applications with Docker and deploy
-them with the Platform-as-a-Service (PaaS) service model.
+You must understand how to containerize various applications with Docker and
+define a portable, easily deployable architecture with Docker Compose.
 
-- [Deploy web applications with a database to Render](ex/render-database-deployment.md)
 - [Containerize a static site using Docker](ex/docker-static.md)
+- [Deploy a web application with Docker Compose](ex/docker-compose-todolist.md)
 
 ## Architecture
 

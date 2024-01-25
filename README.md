@@ -145,10 +145,10 @@ For you to succeed in this course, it is highly recommended that you read and co
     - [:hammer: Deploy a static site to GitHub Pages](./ex/github-pages-deployment.md)
     - [:hammer: Deploy a static site to Netlify](./ex/netlify-static-deployment.md)
     - [:hammer: Deploy web applications with a database to Render](./ex/render-database-deployment.md)
-  - [:book: Introduction to Docker](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/docker?home=MediaComem%2Fcomem-archidep%23readme)
-    - :hammer: [Containerize a static site using Docker](./ex/docker-static.md)
-  - :book: Docker Compose, Volumes and Networks (not yet available)
-    - :hammer: Docker Compose Exercise (not yet available)
+  - [:book: Docker](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/docker?home=MediaComem%2Fcomem-archidep%23readme)
+    - [:hammer: Containerize a static site using Docker](./ex/docker-static.md)
+  - [:book: Docker Compose](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/docker-compose?home=MediaComem%2Fcomem-archidep%23readme)
+    - [:hammer: Deploy a web application with Docker Compose](./ex/docker-compose-todolist.md)
 
 ## How to improve our basic deployment
 

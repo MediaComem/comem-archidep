@@ -1,4 +1,4 @@
-# Deploy the PHP todolist with Docker Compose
+# Deploy a web application with Docker Compose
 
 The goal of this exercise is to learn to deploy a multi-container web
 application with Docker Compose. You will create a portable Compose file that
@@ -29,10 +29,10 @@ cloud server.
   - [:exclamation: Copy your `.env` file to the server](#exclamation-copy-your-env-file-to-the-server)
   - [:exclamation: Run the Compose project on your server](#exclamation-run-the-compose-project-on-your-server)
 - [:books: Going further](#books-going-further)
-  - [:gem: Make it more configurable](#gem-make-it-more-configurable)
-  - [:gem: Make it even more secure](#gem-make-it-even-more-secure)
-  - [:gem: One-command horizontal scaling](#gem-one-command-horizontal-scaling)
-  - [:gem: Drop the additional reverse proxy](#gem-drop-the-additional-reverse-proxy)
+  - [:books: Make it more configurable](#books-make-it-more-configurable)
+  - [:books: Make it more secure](#books-make-it-more-secure)
+  - [:books: One-command horizontal scaling](#books-one-command-horizontal-scaling)
+  - [:books: Drop the additional reverse proxy](#books-drop-the-additional-reverse-proxy)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -1060,7 +1060,7 @@ your browser and see your Compose deployment live online!
 There's a lot more you can do with Docker and Docker Compose. Here's a few
 ideas.
 
-### :gem: Make it more configurable
+### :books: Make it more configurable
 
 You have hardcoded a few things in this exercise that should probably be more
 configurable, for example port `12000`.
@@ -1086,7 +1086,7 @@ ports:
 That way, it will use port `12000` by default, but you can also change it simply
 by adding `TODOLIST_PORT=...` to the `.env` file.
 
-### :gem: Make it even more secure
+### :books: Make it more secure
 
 Docker is all about **isolation**, including network isolation. As you've seen,
 Compose creates a default network to connect all the services defined in your
@@ -1133,7 +1133,7 @@ are both in the frontend network. It also allows the application and database to
 communicate since they are both in the backend network. However, the reverse
 proxy and database cannot reach each other, as it should be.
 
-### :gem: One-command horizontal scaling
+### :books: One-command horizontal scaling
 
 If you performed the [horizontal scaling exercise with the Fibscale
 application](./fibscale-deployment.md), you may recall that it was fairly
@@ -1166,7 +1166,7 @@ reverse proxy service's container to the application service's containers.
 
 Well, that was easy.
 
-### :gem: Drop the additional reverse proxy
+### :books: Drop the additional reverse proxy
 
 Our new deployment wastes some resources because we actually have two nginx
 reverse proxies when communicating with our new todolist deployment:
