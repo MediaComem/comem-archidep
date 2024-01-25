@@ -359,6 +359,7 @@ It also indicates what you do not need to remember by heart.
     You must know:
 
     - What a Git hook is.
+    - When the `post-receive` hook is executed.
 
     You do not not need to know:
 
