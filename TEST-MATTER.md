@@ -463,17 +463,17 @@ Infrastructure-as-a-Service (IaaS) service model, which you put in practice
 during the following exercises:
 
 - [Deploy a PHP application with SFTP](ex/sftp-deployment.md)
-  [(:classical_building: architecture)](ex/sftp-deployment.md#classical_building-architecture)
+  [:classical_building (architecture)](ex/sftp-deployment.md#classical_building-architecture)
 - [Deploy a PHP application with Git](ex/git-clone-deployment.md)
-  [(:classical_building: architecture)](ex/git-clone-deployment.md#classical_building-architecture)
+  [:classical_building (architecture)](ex/git-clone-deployment.md#classical_building-architecture)
 - [Configure a PHP application through environment variables](ex/config-through-environment.md)
-  [(:classical_building: architecture)](ex/config-through-environment.md#classical_building-architecture)
+  [:classical_building (architecture)](ex/config-through-environment.md#classical_building-architecture)
 - [Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md)
-  [(:classical_building: architecture)](ex/systemd-deployment.md#classical_building-architecture)
+  [:classical_building (architecture)](ex/systemd-deployment.md#classical_building-architecture)
 - [Configure a domain name](ex/dns-configuration.md)
-  [(:classical_building: architecture)](ex/dns-configuration.md#classical_building-architecture)
+  [:classical_building (architecture)](ex/dns-configuration.md#classical_building-architecture)
 - [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
-  [(:classical_building: architecture)](ex/nginx-php-fpm-deployment.md#classical_building-architecture)
+  [:classical_building (architecture)](ex/nginx-php-fpm-deployment.md#classical_building-architecture)
 
 You must understand how to use a reverse proxy to deploy several web sites or
 applications on the same server and use other features such as SSL termination,
@@ -481,23 +481,23 @@ hiding multiple components or scaling, which you put in practice during the
 following exercises:
 
 - [Deploy a static site with nginx](ex/nginx-static-deployment.md)
-  [(:classical_building: architecture)](ex/nginx-static-deployment.md#classical_building-architecture)
+  [:classical_building (architecture)](ex/nginx-static-deployment.md#classical_building-architecture)
 - [Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
-  [(:classical_building: architecture)](ex/nginx-php-fpm-deployment.md#classical_building-architecture)
+  [:classical_building (architecture)](ex/nginx-php-fpm-deployment.md#classical_building-architecture)
 - [Deploy WOPR, a Sinatra & Svelte web application with a Redis database](ex/wopr-deployment.md)
-  [(:classical_building: architecture)](ex/wopr-deployment.md#classical_building-architecture)
+  [:classical_building (architecture)](ex/wopr-deployment.md#classical_building-architecture)
 - [Deploy a multi-component web application with nginx](./ex/revprod-deployment.md)
-  [(:classical_building: architecture)](ex/revprod-deployment.md#classical_building-architecture)
+  [:classical_building (architecture)](ex/revprod-deployment.md#classical_building-architecture)
 - [Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
-  [(:classical_building: architecture)](ex/fibscale-deployment.md#classical_building-architecture)
+  [:classical_building (architecture)](ex/fibscale-deployment.md#classical_building-architecture)
 
 You must understand how to set up automated deployments with Git hooks, which
 you put in practice during the following exercises:
 
 - [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
-  [(:classical_building: architecture)](ex/git-automated-deployment.md#classical_building-architecture)
+  [:classical_building (architecture)](ex/git-automated-deployment.md#classical_building-architecture)
 - [Deploy WOPR, a Sinatra & Svelte web application with a Redis database](ex/wopr-deployment.md)
-  [(:classical_building: architecture)](ex/wopr-deployment.md#classical_building-architecture)
+  [:classical_building (architecture)](ex/wopr-deployment.md#classical_building-architecture)
 
 You must understand how to deploy various applications to a cloud platform with
 the Platform-as-a-Service (PaaS) service model, which you put in practice during
@@ -511,9 +511,9 @@ define a portable, easily deployable architecture with Docker Compose.
 
 - [Containerize a static site using Docker](ex/docker-static.md)
 - [Deploy a PHP application with Docker Compose](ex/docker-compose-todolist.md)
-  [(:classical_building: architecture)](ex/docker-compose-todolist.md#classical_building-architecture)
+  [:classical_building (architecture)](ex/docker-compose-todolist.md#classical_building-architecture)
 - [Deploy a more complex web application with Docker Compose](ex/docker-compose-wopr.md)
-  [(:classical_building: architecture)](ex/docker-compose-wopr.md#classical_building-architecture)
+  [:classical_building (architecture)](ex/docker-compose-wopr.md#classical_building-architecture)
 
 ## Architecture
 
