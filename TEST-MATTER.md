@@ -28,10 +28,12 @@ It also indicates what you do not need to remember by heart.
 
     You must know:
 
-    - What a command line interface is, what a command is, and general command syntax.
+    - What a command line interface is, what a command is, and general command
+      syntax.
     - What the Unix paths `.`, `..` and `~` are.
     - The difference between a relative and an absolute path.
-    - What the following commands do and their basic syntax (not their options): `cd`, `ls`, `pwd`, `touch`, `mkdir`, `cat`.
+    - What the following commands do and their basic syntax (not their options):
+      `cd`, `ls`, `pwd`, `touch`, `mkdir`, `cat`.
     - What the `PATH` is and how it works.
 
     You do not need to know:
@@ -56,10 +58,12 @@ It also indicates what you do not need to remember by heart.
     You must know:
 
     - What SSH is and what is is used for.
-    - The fact that establishing the secure channel and authenticating are 2 separate processes.
+    - The fact that establishing the secure channel and authenticating are 2
+      separate processes.
     - The basic syntax of the SSH command: `ssh user@hostname`.
-    - The difference between password authentication and public key authentication,
-      and how to use a private and public key pair in the context of SSH authentication.
+    - The difference between password authentication and public key
+      authentication, and how to use a private and public key pair in the
+      context of SSH authentication.
     - That when SSH warns you that host authenticity cannot be established the
       first time you connect to a server, it is your responsibility to verify
       that the server's public key is the correct one before answering yes.
@@ -82,11 +86,13 @@ It also indicates what you do not need to remember by heart.
     - What Git is and what its basic components are
       (the Git directory, the staging area and the working directory).
     - The basic Git workflow.
-    - The purpose (but not the syntax or options) of the main Git subcommands used to perform that workflow:
+    - The purpose (but not the syntax or options) of the main Git subcommands
+      used to perform that workflow:
       - `git checkout`
       - `git add`
       - `git commit`
-    - The purpose (but not the syntax or options) of the other basic Git subcommands:
+    - The purpose (but not the syntax or options) of the other basic Git
+      subcommands:
       - `git init`
       - `git log`
       - `git status`
@@ -115,7 +121,8 @@ It also indicates what you do not need to remember by heart.
     You must know:
 
     - What a Git remote is.
-    - The purpose (but not the syntax or options) of the Git subcommands used to work with remotes:
+    - The purpose (but not the syntax or options) of the Git subcommands used to
+      work with remotes:
       - `git clone`
       - `git push`
       - `git pull`
@@ -137,7 +144,8 @@ It also indicates what you do not need to remember by heart.
 
     You must know:
 
-    - That the OWASP Top 10 list exists and that it lists the ten most critical web application security risks.
+    - That the OWASP Top 10 list exists and that it lists the ten most critical
+      web application security risks.
 
     You do not need to know:
 
@@ -150,18 +158,21 @@ It also indicates what you do not need to remember by heart.
     - Why it's not a good idea to run a web application (or any application in
       general) as `root`.
 
-  - The CSRF security demonstration
+  - ~~The CSRF security demonstration~~
 
-    You must know:
+    *We did not perform this demonstration in 2023-2024, so this does not
+    apply.*
 
-    - That the OWASP organization has resouces to help you know about and
-      protect against attacks on web applications.
+    ~~You must know:~~
 
-    You do not need to know:
+    - ~~That the OWASP organization has resouces to help you know about and
+      protect against attacks on web applications.~~
 
-    - The specifics of the CSRF attack or the demonstration made during the
+    ~~You do not need to know:~~
+
+    - ~~The specifics of the CSRF attack or the demonstration made during the
       course. (Although it is a good thing to know, and the attack is
-      [documented by OWASP](https://owasp.org/www-community/attacks/csrf).)
+      [documented by OWASP](https://owasp.org/www-community/attacks/csrf).)~~
 
 ### Basic deployment
 
@@ -175,14 +186,16 @@ It also indicates what you do not need to remember by heart.
     - What cloud computing is and why it is useful.
     - What a public cloud is.
     - What are the 3 most popular cloud service models (IaaS, PaaS and SaaS),
-      what the difference between them are, and what are their advantages and disadvantages.
+      what the difference between them are, and what are their advantages and
+      disadvantages.
 
     You do not need to know:
 
     - What are private clouds, hybrid clouds or other cloud deployment models.
     - The FaaS and MBaaS service models.
     - The diagrams on the "How does IaaS/PaaS/FaaS/MBaaS work?" slides.
-    - Service-oriented architecture (SOA), microservices or serverless computing.
+    - Service-oriented architecture (SOA), microservices or serverless
+      computing.
 
   - [Linux](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
 
@@ -200,12 +213,15 @@ It also indicates what you do not need to remember by heart.
     You must know:
 
     - That Linux uses a case-sensitive file system by default.
-    - That Unix-like systems use a rooted file system and that the path of the root directory is `/`.
+    - That Unix-like systems use a rooted file system and that the path of the
+      root directory is `/`.
     - What are users, groups and the superuser in a Unix-like system.
-    - How file permissions are represented (`r`, `w`, `x` and the concept of owner, group and others).
+    - How file permissions are represented (`r`, `w`, `x` and the concept of
+      owner, group and others).
     - What the `sudo` command is and how to use it.
     - What the `/etc/sudoers` file is in principle (not its syntax).
-    - What the `chmod` and `chown` commands are in principle (not their syntax or options).
+    - What the `chmod` and `chown` commands are in principle (not their syntax
+      or options).
 
     You do not need to know:
 
@@ -213,8 +229,10 @@ It also indicates what you do not need to remember by heart.
     - The `df` command, common Unix directories or Unix file types.
     - The syntax of the `/etc/sudoers` file.
     - The `su` command.
-    - Unix user database files, user management commands, login users or system users.
-    - The syntax of the `chmod` and `chown` commands (e.g. symbolic and octal modes).
+    - Unix user database files, user management commands, login users or system
+      users.
+    - The syntax of the `chmod` and `chown` commands (e.g. symbolic and octal
+      modes).
 
   - [Unix processes](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
 
@@ -243,14 +261,17 @@ It also indicates what you do not need to remember by heart.
 
     - What HTTP and TCP are and how they are related.
     - What an IP address and a port is, and how they are related to TCP.
+    - That there are address spaces reserved for private networks (you do not
+      need to remember which addresses).
     - What is the hostname `localhost` and the IP address `127.0.0.1`.
     - What are the standard HTTP(S) ports (80 and 443).
-    - What a well-known port or system port is and how they are different from other ports.
+    - What a well-known port or system port is and how they are different from
+      other ports.
     - What the Domain Name System (DNS) is.
 
     You do not need to know:
 
-    - IP networks, subnetworks, reserved address spaces or network address translation.
+    - IP networks, subnetworks or network address translation.
     - The list of registered port numbers (except ports 80 and 443).
     - The Unix networking commands (`ip`, `ping`, etc).
 
@@ -291,10 +312,13 @@ It also indicates what you do not need to remember by heart.
 
     You must know:
 
-    - What a process manager is and that operating systems usually have one built in.
-    - That Systemd is the standard process management tool on many Linux systems like Ubuntu.
+    - What a process manager is and that operating systems usually have one
+      built in.
+    - That Systemd is the standard process management tool on many Linux systems
+      like Ubuntu.
     - That Systemd uses unit files to configure process management.
-    - That you can use Systemd to control processes (start them, stop them, restart them, etc).
+    - That you can use Systemd to control processes (start them, stop them,
+      restart them, etc).
 
     You do not need to know:
 
@@ -322,12 +346,17 @@ It also indicates what you do not need to remember by heart.
     - The main uses of a reverse proxy (hiding internal architecture or
       multi-component websites, SSL termination and load balancing).
     - That nginx is a web server and reverse proxy.
+    - The purpose (not the syntax) of the following directives:
+      - [`proxy_pass`](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass)
+      - [`root`](http://nginx.org/en/docs/http/ngx_http_core_module.html#root),
+      - [`server_name`](http://nginx.org/en/docs/http/ngx_http_core_module.html#server_name)
 
     You do not need to know:
 
     - What tunneling proxies, gateways or forward proxies are.
     - Other uses of reverse proxies (e.g. caching or optimization).
-    - The paths to nginx configuration files or their syntax and directives.
+    - The paths to nginx configuration files or their syntax and directives
+      (except the purpose of those mentioned above).
     - That nginx uses configuration files and the difference between an
       available and an enabled configuration (i.e. how to use the
       `sites-available` and `sites-enabled` directories).
@@ -367,12 +396,13 @@ It also indicates what you do not need to remember by heart.
     - How to create a Git hook.
 
 ### Managed Deployments
+
   - [Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/paas/?home=MediaComem%2Fcomem-archidep%23readme#1)
 
     You must know:
 
-    - What Netlify is and how the platform works on principle.
-    - What Render is and how the platform works on principle.
+    - What Netlify is and how the platform works in principle.
+    - What Render is and how the platform works in principle.
     - That you can configure environment variables for your Render applications.
 
     You do not need to know:
@@ -388,7 +418,8 @@ It also indicates what you do not need to remember by heart.
     - What a Docker Image is
     - What a Docker Container is.
     - The different parts of a Docker workflow.
-    - What a Dockerfile is and what the `FROM`, `WORKDIR`, `COPY` and `CMD` instruction do.
+    - What a Dockerfile is and what the `FROM`, `WORKDIR`, `COPY` and `CMD`
+      instruction do.
 
     You do not need to know:
 
@@ -402,7 +433,14 @@ It also indicates what you do not need to remember by heart.
     - The Docker philosophy.
     - What is the purpose of Docker Compose.
     - What a Compose file is in principle.
-      - What is a Compose service.
+      - What is a Compose service and how it relates to Docker containers.
+      - The purpose (not the syntax) of the following Compose file service keys:
+        - [`depends_on`](https://docs.docker.com/compose/compose-file/05-services/#depends_on)
+        - [`environment`](https://docs.docker.com/compose/compose-file/05-services/#environment)
+        - [`image`](https://docs.docker.com/compose/compose-file/05-services/#image)
+        - [`ports`](https://docs.docker.com/compose/compose-file/05-services/#ports)
+        - [`restart`](https://docs.docker.com/compose/compose-file/05-services/#restart)
+        - [`volumes`](https://docs.docker.com/compose/compose-file/05-services/#volumes)
     - What you can do with the Docker Compose commands (manage services).
 
     You do not need to know:
@@ -412,9 +450,9 @@ It also indicates what you do not need to remember by heart.
 
 ## Exercices
 
-> The exercises of this course illustrate the theoretical concepts.
-> You should understand the concepts behind what you did during the exercises,
-> but you do not need to remember the exact commands used.
+> The exercises of this course illustrate the theoretical concepts. You should
+> understand the concepts behind what you did during the exercises, but you do
+> not need to remember the exact commands used.
 
 You must know how to deploy a PHP web application on a cloud platform with the
 Infrastructure-as-a-Service (IaaS) service model, which you put in practice
@@ -455,7 +493,8 @@ You must understand how to containerize various applications with Docker and
 define a portable, easily deployable architecture with Docker Compose.
 
 - [Containerize a static site using Docker](ex/docker-static.md)
-- [Deploy a web application with Docker Compose](ex/docker-compose-todolist.md)
+- [Deploy a PHP application with Docker Compose](ex/docker-compose-todolist.md)
+- [Deploy a more complex web application with Docker Compose](ex/docker-compose-wopr.md)
 
 ## Architecture
 
