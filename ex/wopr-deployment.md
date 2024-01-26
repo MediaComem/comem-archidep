@@ -26,6 +26,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [:space_invader: Allowing the dedicated `wopr` Unix user to control the Systemd service](#space_invader-allowing-the-dedicated-wopr-unix-user-to-control-the-systemd-service)
   - [:exclamation: Test the automated deployment](#exclamation-test-the-automated-deployment)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+  - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: `Unable to locate package ...`](#boom-unable-to-locate-package-)
   - [:boom: Daemons using outdated libraries](#boom-daemons-using-outdated-libraries)
