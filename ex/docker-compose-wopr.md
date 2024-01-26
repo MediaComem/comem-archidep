@@ -25,6 +25,7 @@ cloud server.
 - [:exclamation: Run the Compose project](#exclamation-run-the-compose-project)
 - [:exclamation: Deploy it on your cloud server](#exclamation-deploy-it-on-your-cloud-server)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+  - [:classical_building: Architecture](#classical_building-architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -480,6 +481,16 @@ You have learned how to build and deploy a more complex multi-stack web
 application with Docker and Docker Compose. As you can see, a project can use
 any number of technologies; between multi-stage Dockerfile builds and
 multi-container Compose projects, Docker and Docker Compose have you covered.
+
+### :classical_building: Architecture
+
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise (only including the processes
+relevant to this exercise and not those from previous exercises):
+
+![Simplified architecture](docker-compose-wopr-simplified.png)
+
+> [Simplified architecture PDF version](docker-compose-wopr-simplified.pdf).
 
 
 

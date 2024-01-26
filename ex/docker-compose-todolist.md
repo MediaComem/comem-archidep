@@ -38,6 +38,7 @@ cloud server.
   - [:books: Make it more secure](#books-make-it-more-secure)
   - [:books: One-command horizontal scaling](#books-one-command-horizontal-scaling)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+  - [:classical_building: Architecture](#classical_building-architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -1212,6 +1213,16 @@ Compose. As you have seen, once you have your Compose file working locally,
 deploying it to a server is trivial. You basically only need to install Docker
 and deploy away. Docker Compose really makes it easy to package an entire
 project's architecture and replicate it on other machines.
+
+### :classical_building: Architecture
+
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise (only including the processes
+relevant to this exercise and not those from previous exercises):
+
+![Simplified architecture](docker-compose-todolist-simplified.png)
+
+> [Simplified architecture PDF version](docker-compose-todolist-simplified.pdf).
 
 
 

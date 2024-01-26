@@ -507,6 +507,13 @@ on the server):
 
 ![Diagram](ex/systemd-deployment-simplified.png)
 
+This is a simple architecture diagram representing the deployment performed in
+the [_Deploy a PHP application with Docker
+Compose_](ex/docker-compose-todolist.md) exercise (assuming nothing else is
+deployed on the server):
+
+![Diagram](ex/docker-compose-todolist-simplified.png)
+
 Check out the **architecture** links in the list of exercises for more examples
 of architecture diagrams.
 
