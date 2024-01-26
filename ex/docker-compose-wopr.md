@@ -65,8 +65,9 @@ list what is different.
 
 ## :gem: Make sure you have everything you need
 
-You need a fork of the [WOPR repo][wopr-repo], which you should already have if
-you performed the [WOPR deployment exercise](./wopr-deployment.md).
+You need a fork of the [WOPR repo][wopr-repo] on GitHub, which you should
+already have if you performed the [WOPR deployment
+exercise](./wopr-deployment.md).
 
 Make sure you have a clone of this fork somewhere **on your local machine**, and
 also **on your cloud server**. Likewise, you should already have them somewhere.
@@ -97,7 +98,8 @@ and a JavaScript frontend, you need to run 2 isolated containers for them.
 However, the JavaScript frontend, once compiled, is composed of purely static
 files. The Ruby backend knows how to serve these static files to the client's
 browser, where the JavaScript is executed. There is no need for an extra
-container for the frontend's static files.
+container for the frontend's static files, since there is nothing to execute on
+the server.
 
 So, our Compose file for the WOPR application will look something like this:
 
@@ -178,8 +180,8 @@ and [an official `node` Docker image][node-docker-image], but there is no
 "official Ruby & Node.js image".
 
 You could make such an image with both Ruby and Node.js yourself (and someone
-may already have done and published it on Docker Hub), but that's not really the
-Docker philosophy.
+may already have done it and published it on Docker Hub), but that's not really
+the Docker philosophy.
 
 ### :exclamation: Write a multi-stage Dockerfile
 
@@ -231,8 +233,27 @@ dependencies; and `npm run build`, which builds the frontend's static files.
 That's what you need to put in a [`RUN` command][dockerfile-run] in the first
 stage.
 
+> :books: When you have multiple commands to run like this, you can either use
+> multiple `RUN` commands in the Dockerfile:
+>
+> ```Dockerfile
+> RUN npm ci
+> RUN npm run build
+> ```
+>
+> Or you can use one long `RUN` command with the shell's [`&&`
+> operator](https://www.gnu.org/software/bash/manual/html_node/Conditional-Constructs.html):
+>
+> ```Dockerfile
+> RUN npm ci && npm run build
+> ```
+>
+> The second one is considered better because it only creates one additional
+> layer in the Docker image, making a slightly more lightweight image.
+
 Of course, to run these commands, the image will need the WOPR application's
-files, so you'll need a [`COPY` command][dockerfile-copy] first.
+files, so you'll need a [`COPY` command][dockerfile-copy] to copy the files
+first.
 
 It's also good practice to define a working directory with the [`WORKDIR`
 command][dockerfile-workdir] so you know where the files are during the build.
@@ -288,8 +309,8 @@ RUN apk add --no-cache build-base
 There's one last thing you need to do. When you performed the original WOPR
 exercise, the `npm run build` command created the `public` directory containing
 the frontend's compiled files. But now that you have a multi-stage Dockerfile,
-the two stage builds are isolated by default. So the final stage is missing the
-result of the first stage.
+the two build stages are isolated by default: they have different file systems.
+So the final stage is missing the result of the first stage.
 
 You need to manually copy over the result from the first build stage into the
 final stage:
@@ -307,8 +328,8 @@ COPY --chown=wopr:wopr --from=build /app/public/ ./public/
 > dedicated `wopr` user and group you created earlier.
 
 One last thing: your image must actually run the WOPR application. Reading
-[WOPR's documentation][wopr-repo], you might remember that the command to do so
-is `bundle exec ruby app.rb`.
+[WOPR's documentation][wopr-repo], you can see that the command to do so is
+`bundle exec ruby app.rb`.
 
 Add the appropriate [`CMD` command][dockerfile-cmd] at the end of the final
 build stage to run the application.
@@ -346,12 +367,13 @@ services:
   # ...
 ```
 
-On principle, this is the same as [during the previous exercise](./docker-compose-todolist.md#exclamation-write-the-application-service).
+In principle, this is the same as [the previous exercise's application
+service](./docker-compose-todolist.md#exclamation-write-the-application-service).
 
 The only real difference is that instead of setting the `$TODOLIST_DB_HOST` and
 `$TODOLIST_DB_PASS` (and optionally other) variables, you need to set the
 `$WOPR_REDIS_URL` variable as per [WOPR's documented
-configuration][wopr-repo#configuration].
+configuration][wopr-repo-config].
 
 The value needs to be a Redis connection URL in the format
 `redis://<host>:<port>`. You can replace `<host>` with `db`, like in the
@@ -475,3 +497,4 @@ multi-container Compose projects, Docker and Docker Compose have you covered.
 [ruby]: https://www.ruby-lang.org
 [ruby-docker-image]: https://hub.docker.com/_/ruby
 [wopr-repo]: https://github.com/MediaComem/comem-wopr
+[wopr-repo-config]: https://github.com/MediaComem/comem-wopr#configuration
