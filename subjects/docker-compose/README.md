@@ -30,9 +30,10 @@ running **multi-container applications**.
   - [The Docker philosophy: isolation](#the-docker-philosophy-isolation)
   - [The Docker philosophy: microservice architecture](#the-docker-philosophy-microservice-architecture)
 - [What is Docker Compose?](#what-is-docker-compose)
+  - [Compose services](#compose-services)
   - [The Docker Compose command line](#the-docker-compose-command-line)
+  - [Other Compose concepts](#other-compose-concepts)
 - [Why use Docker Compose?](#why-use-docker-compose)
-- [Common use cases of Docker Compose](#common-use-cases-of-docker-compose)
 - [Going further](#going-further)
 - [References](#references)
 
@@ -217,6 +218,8 @@ container.
 constraint for this usage. Services can only access secrets when explicitly
 granted in the Compose file. Secrets are either read from files or from the
 environment.
+
+
 
 ## Why use Docker Compose?
 

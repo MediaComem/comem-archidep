@@ -13,6 +13,11 @@ cloud server.
 - [:exclamation: Make sure you have everything you need](#exclamation-make-sure-you-have-everything-you-need)
 - [:exclamation: Create a compose file to deploy the PHP todolist application](#exclamation-create-a-compose-file-to-deploy-the-php-todolist-application)
   - [:exclamation: Define the database service](#exclamation-define-the-database-service)
+    - [:gem: Think about what you need](#gem-think-about-what-you-need)
+    - [:gem: Use the correct Docker image](#gem-use-the-correct-docker-image)
+    - [:gem: Configure the service appropriately](#gem-configure-the-service-appropriately)
+    - [:exclamation: Write the database service](#exclamation-write-the-database-service)
+    - [:exclamation: Run the database service](#exclamation-run-the-database-service)
   - [:exclamation: Define the application service](#exclamation-define-the-application-service)
     - [:exclamation: Create a Dockerfile for the PHP todolist](#exclamation-create-a-dockerfile-for-the-php-todolist)
     - [:exclamation: Write the application service](#exclamation-write-the-application-service)
@@ -170,6 +175,8 @@ services:
   db:
 ```
 
+#### :gem: Think about what you need
+
 If you remember the very first [PHP todolist SFTP deployment
 exercise](./sftp-deployment.md), you had to do a few things to set up the
 database:
@@ -184,9 +191,13 @@ database:
 
 You will now learn to do the same in a Docker container with Docker Compose.
 
+#### :gem: Use the correct Docker image
+
 There is an [official MySQL Docker image][mysql-docker-image] which provides you
 with a fully functional and configurable MySQL database server container. That
 takes care of step 1 and most of step 2.
+
+#### :gem: Configure the service appropriately
 
 Look at the **Environment Variables** section of the image's documentation. It
 describes a few variables you will find useful. As part of step 2, you manually
@@ -271,6 +282,8 @@ production deployments.
 > assume the responsibility of managing the containers, e.g. starting and
 > restarting them, depending on how you define your Compose services. The Docker
 > daemon itself will be managed by Systemd.
+
+#### :exclamation: Write the database service
 
 So, let's recap what you need to define your MySQL Compose service:
 
@@ -362,6 +375,8 @@ Here are a few things you want to watch out for:
   the following question: does the container need to modify this file or
   directory to work? If no, mount it as read-only to minimize the attack surface
   of your container. Better safe than sorry.
+
+#### :exclamation: Run the database service
 
 Once you are done, you can run this service:
 

@@ -5,8 +5,28 @@ application with Docker Compose. You will create a portable Compose file that
 can be used to deploy the same containers on both your local machine and your
 cloud server.
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Legend](#legend)
+- [:gem: Meet the new boss, same as the old boss](#gem-meet-the-new-boss-same-as-the-old-boss)
+- [:gem: Make sure you have everything you need](#gem-make-sure-you-have-everything-you-need)
+- [:gem: Spot the differences](#gem-spot-the-differences)
+- [:exclamation: Create the Compose file](#exclamation-create-the-compose-file)
+- [:exclamation: Define the database service](#exclamation-define-the-database-service)
+- [:exclamation: Define the application service](#exclamation-define-the-application-service)
+  - [:exclamation: Write a multi-stage Dockerfile](#exclamation-write-a-multi-stage-dockerfile)
+    - [:exclamation: Write the first build stage](#exclamation-write-the-first-build-stage)
+    - [:exclamation: Write the final build stage](#exclamation-write-the-final-build-stage)
+  - [:exclamation: Add a `.dockerignore` file](#exclamation-add-a-dockerignore-file)
+  - [:question: Build your Docker image](#question-build-your-docker-image)
+  - [:exclamation: Write the application service](#exclamation-write-the-application-service)
+- [:exclamation: Define the reverse proxy service](#exclamation-define-the-reverse-proxy-service)
+- [:exclamation: Run the Compose project](#exclamation-run-the-compose-project)
+- [:exclamation: Deploy it on your cloud server](#exclamation-deploy-it-on-your-cloud-server)
+- [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 
@@ -128,8 +148,8 @@ This means that the [official `redis` Docker image][redis-docker-image] requires
 basically no configuration, so you can omit the `environment` key compare to the
 [previous exercise](./docker-compose-todolist.md).
 
-Move into the WOPR repository **on your local machine** and
-add a `compose.yml` file with the following contents:
+Move into the WOPR repository **on your local machine** and add a `compose.yml`
+file with the following contents:
 
 ```yml
 name: wopr
@@ -223,7 +243,8 @@ the context of the specified working directory.
 #### :exclamation: Write the final build stage
 
 Complete the `FROM` command of the final build stage to use the [official `ruby`
-Docker image][ruby-docker-image].
+Docker image][ruby-docker-image]. Use an Alpine-based image for a smaller
+footprint.
 
 > :warning: Use Ruby 3.2.x and not the latest Ruby 3.3.x. There is currently a
 > bug with Ruby 3.3.x on some processor architectures which will cause a
@@ -231,9 +252,28 @@ Docker image][ruby-docker-image].
 
 Define a `WORKDIR` like in the previous build.
 
-To set up the backend, you basically have one command to run as per [WOPR's documentation][wopr-repo]: `bundle install`. Put that in a `RUN` command in the final stage.
+Like in the first Docker exercise, you want to [create a dedicated group and
+user](./docker-static.md#exclamation-create-a-group-and-user) to avoid
+`root`-related security issues. You can do so with the following `RUN` command:
 
-Of course, this command needs the application's files, so add the appropriate `COPY` command before the `RUN` command.
+```Dockerfile
+RUN addgroup -S wopr && adduser -S wopr -G wopr && \
+    chown -R wopr:wopr /app
+```
+
+> :gem: The above `RUN` command assumes that you have chosen `/app` as your
+> `WORKDIR`. Change it if necessary.
+
+To set up the backend, you basically have one command to run as per [WOPR's
+documentation][wopr-repo]: `bundle install`. Put that in a `RUN` command in the
+final stage.
+
+Of course, this command needs the application's files, so add the appropriate
+`COPY` command before the `RUN` command.
+
+> :gem: Read the [`COPY` command's documentation][dockerfile-copy] and be sure
+> to use the `--chown` option. You want the copied files to be owned by the
+> dedicated `wopr` user and group you just created.
 
 Some of the WOPR application's dependencies need to be compiled, so you need to
 install compilation tools [like you did during the WOPR
@@ -242,8 +282,7 @@ of the following commands at the beginning of the final stage (it needs to be
 before running `bundle install`):
 
 ```Dockerfile
-RUN apk add --no-cache build-base  # For Alpine-based images
-RUN apt update -y && apt install -y build-essential  # For Ubuntu/Debian-based images
+RUN apk add --no-cache build-base
 ```
 
 There's one last thing you need to do. When you performed the original WOPR
@@ -256,11 +295,16 @@ You need to manually copy over the result from the first build stage into the
 final stage:
 
 ```Dockerfile
-COPY --from=build /app/public/ ./public/
+COPY --chown=wopr:wopr --from=build /app/public/ ./public/
 ```
 
 > :gem: The above `COPY` command assumes that you chose `/app` as your
 > `WORKDIR`. Change it if necessary.
+>
+> :books: The `chown` option of the `COPY` command, named after Unix's
+> equivalent `chown` command, sets the ownership of the copied files in the
+> target stage. In this case, you want all the files to be owned by the
+> dedicated `wopr` user and group you created earlier.
 
 One last thing: your image must actually run the WOPR application. Reading
 [WOPR's documentation][wopr-repo], you might remember that the command to do so
@@ -269,7 +313,13 @@ is `bundle exec ruby app.rb`.
 Add the appropriate [`CMD` command][dockerfile-cmd] at the end of the final
 build stage to run the application.
 
-#### :question: Build your Docker image
+### :exclamation: Add a `.dockerignore` file
+
+Do not forget to add a `.dockerignore` file to the WOPR repository. The main
+artifacts you want to ignore in this case are the `node_modules` and the
+`public` directories.
+
+### :question: Build your Docker image
 
 If you have written the Dockerfile correctly, you should be able to build it
 without errors:
@@ -278,7 +328,7 @@ without errors:
 $> docker build -t wopr/app .
 ```
 
-#### :exclamation: Write the application service
+### :exclamation: Write the application service
 
 You can now add the WOPR application service to the Compose file:
 
@@ -341,49 +391,73 @@ server {
 }
 ```
 
+Choose a different port to publish the reverse proxy service, say `14000`.
+
 
 
 ## :exclamation: Run the Compose project
 
-...
+You now have the whole Compose architecture for this exercise: the database, the
+application, and the reverse proxy.
 
+All that's left to do is run it:
 
-
-## TMP: final result
-
-```yml
-services:
-  # Reverse proxy service
-  rp:
-    image: nginx:1.25.3-alpine
-    depends_on:
-      - app
-    ports:
-      - "8080:80"
-    restart: always
-    volumes:
-      - ./site.conf:/etc/nginx/conf.d/default.conf
-
-  # Application service
-  app:
-    image: wopr/app
-    build: .
-    depends_on:
-      - db
-    environment:
-      WOPR_REDIS_URL: redis://db:6379/0
-    restart: always
-
-  # Database service
-  db:
-    image: redis:7.2.4-alpine
-    restart: always
-    volumes:
-      - db_data:/data
-
-volumes:
-  db_data:
+```bash
+$> docker compose up --build --detach rp
 ```
+
+You should see your services running:
+
+```bash
+$> docker compose ps
+NAME         IMAGE                 COMMAND                  SERVICE   CREATED         STATUS         PORTS
+wopr-app-1   wopr/app              "bundle exec ruby ap…"   app       8 seconds ago   Up 7 seconds
+wopr-db-1    redis:7.2.4-alpine    "docker-entrypoint.s…"   db        10 hours ago    Up 6 minutes   6379/tcp
+wopr-rp-1    nginx:1.25.3-alpine   "/docker-entrypoint.…"   rp        8 seconds ago   Up 7 seconds   0.0.0.0:14000->80/tcp
+```
+
+> :boom: If not everything is running, you might want to stop everything with
+> `docker compose down` and run the project in the foreground with `docker
+> compose up --build rp`. It will be easier to see errors that way. Otherwise
+> you can use `docker compose logs`.
+
+Assuming you chose port `14000` and that you have configured everything
+correctly, you should be able to use the WOPR application at
+http://localhost:14000!
+
+Yay! 🎉
+
+
+
+## :exclamation: Deploy it on your cloud server
+
+The final deployment step of this exercise is basically [the same as in the
+previous
+exercise](./docker-compose-todolist.md#exclamation-deploy-it-on-your-cloud-server),
+except that:
+
+* You must of course use the WOPR repositories on your local machine, GitHub and
+  your cloud server instead of the PHP todolist repositories.
+* You have already installed Docker on your cloud server, so no need to do it
+  again.
+* An `.env` file is not required for WOPR since there is no sensitive value in
+  the configuration (although you could use one to make the project more
+  configurable).
+* Choose another `server_name`, e.g. `wopr-docker.john-doe.archidep.ch`, and
+  another nginx site configuration file name, e.g. `wopr-docker`.
+
+If you follow the previous exercise's instructions and take these changes into
+account, you should be able to easily replicate your Compose WOPR deployment on
+your cloud server and access it at http://wopr-docker.john-doe.archidep.ch!
+
+
+
+## :checkered_flag: What have I done?
+
+You have learned how to build and deploy a more complex multi-stack web
+application with Docker and Docker Compose. As you can see, a project can use
+any number of technologies; between multi-stage Dockerfile builds and
+multi-container Compose projects, Docker and Docker Compose have you covered.
 
 
 
