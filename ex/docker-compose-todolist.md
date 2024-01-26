@@ -144,6 +144,8 @@ Start by naming these services. Choose a naming convention:
 The basic structure of your Compose file will be something like:
 
 ```yml
+name: todolist
+
 services:
   rp:
     # define the reverse proxy service
@@ -162,6 +164,8 @@ Create a `compose.yml` file in the PHP todolist repository with the following
 (incomplete) contents for now:
 
 ```yml
+name: todolist
+
 services:
   db:
 ```
@@ -345,6 +349,10 @@ Here are a few things you want to watch out for:
         VAR1: value1  # hardcoded value
         VAR2:         # no value, will be read from .env or the environment
   ```
+
+  > :books: An even better way to manage sensitive information in a Compose
+  > project is to use [Compose `secrets`][compose-secrets], but we will not go
+  > that far in this exercise.
 * When you specify volume mounts, whether they are files or directories, the
   mounts are **read-write** by default, meaning that the process running inside
   the container can modify the file and/or directories you are mounting from the
@@ -1015,10 +1023,10 @@ The same containers should now be running on your server:
 
 ```bash
 $> sudo docker compose ps
-NAME                  IMAGE                 COMMAND                  SERVICE   CREATED          STATUS          PORTS
-todolist-repo-app-1   todolist/app          "php-fpm -F --pid /o…"   app       2 minutes ago    Up 2 minutes    9000/tcp
-todolist-repo-db-1    mysql:8.3.0           "docker-entrypoint.s…"   db        20 minutes ago   Up 20 minutes   3306/tcp, 33060/tcp
-todolist-repo-rp-1    nginx:1.25.3-alpine   "/docker-entrypoint.…"   rp        2 minutes ago    Up 2 minutes    0.0.0.0:12000->80/tcp, :::12000->80/tcp
+NAME             IMAGE                 COMMAND                  SERVICE   CREATED          STATUS          PORTS
+todolist-app-1   todolist/app          "php-fpm -F --pid /o…"   app       2 minutes ago    Up 2 minutes    9000/tcp
+todolist-db-1    mysql:8.3.0           "docker-entrypoint.s…"   db        20 minutes ago   Up 20 minutes   3306/tcp, 33060/tcp
+todolist-rp-1    nginx:1.25.3-alpine   "/docker-entrypoint.…"   rp        2 minutes ago    Up 2 minutes    0.0.0.0:12000->80/tcp, :::12000->80/tcp
 ```
 
 Create a new nginx site configuration file on your server with `sudo nano
@@ -1278,6 +1286,7 @@ project's architecture and replicate it on other machines.
 [compose-file-top-volumes]: https://docs.docker.com/compose/compose-file/07-volumes/
 [compose-interpolation]: https://docs.docker.com/compose/environment-variables/env-file/#interpolation
 [compose-networking]: https://docs.docker.com/compose/networking/
+[compose-secrets]: https://docs.docker.com/compose/compose-file/09-secrets/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
 [docker-hub]: https://hub.docker.com
 [dockerfile-copy]: https://docs.docker.com/engine/reference/builder/#copy
