@@ -120,7 +120,8 @@ Your inescapable references for this exercise are the following documents:
 ## :exclamation: Create a compose file to deploy the PHP todolist application
 
 Take a look at the [architecture of the PHP todolist deployment with nginx and
-the FastCGI process manager]:
+the FastCGI process
+manager](./nginx-php-fpm-deployment.md#classical_building-architecture):
 
 ![Simplified architecture](nginx-php-fpm-deployment-simplified.png)
 
