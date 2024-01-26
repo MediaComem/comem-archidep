@@ -148,7 +148,8 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:book: Docker](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/docker?home=MediaComem%2Fcomem-archidep%23readme)
     - [:hammer: Containerize a static site using Docker](./ex/docker-static.md)
   - [:book: Docker Compose](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/docker-compose?home=MediaComem%2Fcomem-archidep%23readme)
-    - [:hammer: Deploy a web application with Docker Compose](./ex/docker-compose-todolist.md)
+    - [:hammer: Deploy a PHP application with Docker Compose](./ex/docker-compose-todolist.md)
+    - [:hammer: Deploy a more complex web application with Docker Compose](./ex/docker-compose-wopr.md)
 
 ## How to improve our basic deployment
 
