@@ -3,7 +3,7 @@
   <head>
     <title>Docker Compose (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/5f54eb27040c09a9c799eb5f9f0da8562fb45ba9/subjects/docker-compose/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/9674cc4535edbac93a10cdb8cdcae9ad59755ff3/subjects/docker-compose/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -93,14 +93,30 @@ functions of a system into smaller collaborating pieces.
 
 * A Docker image should **contain what it needs** to provide its service and run
   as quickly as possible, and nothing else! Minimize your dependencies. The
-  simpler it is, the more portable it is.
+  simpler it is, the more reusable and portable it is.
 * For maximum efficiency and isolation, each container should address one
 specific area of concern and **delegate other functions to other containers**,
   e.g. a web application container will delegate storage to a separate database
   container.
 
+.grid-60[
+
+<p class="center">
+  <img class="w85" src="./images/fat-container.png">
+</p>
 
 
+]
+.grid-40[
+
+<p class="center">
+  <img class="w80" src="./images/light-containers.png">
+</p>
+
+
+
+
+]
 ---
 ## What is Docker Compose?
 
@@ -110,7 +126,9 @@ specific area of concern and **delegate other functions to other containers**,
 
 Docker Compose is a tool for defining and running multi-container applications,
 making it easy to manage **services, networks, and volumes** in a single,
-comprehensible [YAML][yaml] **configuration file**.
+comprehensible [YAML][yaml] configuration file called the **Compose file**.
+
+<img class="w100" src="./images/multi-container.png" />
 
 
 ]
@@ -118,6 +136,7 @@ comprehensible [YAML][yaml] **configuration file**.
 
 ```yml
 services:
+  # Application service
   app:
     build: .
     depends_on:
@@ -127,13 +146,71 @@ services:
     ports:
       - "8080:80"
     restart: always
+  # Database service
   db:
-    image: redis:7.2.4-alpine
+    image: postgres:16.1-alpine
+    environment:
+      POSTGRES_DB: awesome-db
+      POSTGRES_USER: example
+      POSTGRES_PASSWORD: changeme
     restart: always
     volumes:
-      - ./todolist.sql:/init.sql:ro
+      - "dat:/var/lib/postgresql/data"
+volumes:
+  dat:
 ```
 
+
+]
+---
+### Compose services
+
+.breadcrumbs[<a href="#1">Docker Compose</a> > <a href="#5">What is Docker Compose?</a>]
+
+.grid-50[
+
+The main unit of work with Docker Compose is a **service**: A service is an
+**abstract definition of a computing resource within an application** which can
+be scaled or replaced independently from other components. Services are defined
+in the **Compose file**.
+
+
+]
+.grid-50[
+
+```yml
+app:
+  build: .
+  depends_on:
+    - db
+  environment:
+    DB_URL: postgres://db:5432/app
+  ports:
+    - "8080:80"
+  restart: always
+```
+
+
+]
+.container[
+
+.grid-50[
+
+<p class="center">
+  <img src="./images/docker-container.png" />
+</p>
+
+
+]
+.grid-50[
+
+**Services are backed by one or multiple containers**, run by the platform
+according to specified requirements. As services are backed by containers, they
+are defined by a Docker image and set of runtime arguments. All containers
+within a service are identically created with these arguments.
+
+
+]
 
 ]
 ---
@@ -141,19 +218,64 @@ services:
 
 .breadcrumbs[<a href="#1">Docker Compose</a> > <a href="#5">What is Docker Compose?</a>]
 
-Docker Compose is also a Docker subcommand. With it, you can:
+Docker Compose is also a **Docker subcommand**. Based on a Compose file, it can:
 
-* Start, stop, and rebuild services
+* Start, stop, and rebuild services:
   * `docker compose up [service]`
   * `docker compose stop [service]`
   * `docker compose build [service]`
-* View the status of running services
+* View the status of running services:
   * `docker compose ps [service]`
-* Stream the log output of running services
+* Stream the log output of running services:
   * `docker compose logs [--follow] [service]`
-* Run a one-off command on a service
+* Run a one-off command on a service:
   * `docker-compose run <service> <command> [args...]`
 
+> See `docker compose help` for more commands.
+
+---
+### Other Compose concepts
+
+.breadcrumbs[<a href="#1">Docker Compose</a> > <a href="#5">What is Docker Compose?</a>]
+
+.grid-50[
+
+**Networks** are the layer that allow services to communicate with each other.
+Compose lets you configure named networks that can be reused across multiple
+services for greater control and security.
+
+
+]
+.grid-50[
+
+**Volumes** are persistent data stores implemented by the container engine.
+Compose offers a neutral way for services to mount volumes, and configuration
+parameters to allocate them to infrastructure.
+
+
+]
+.container[
+
+.grid-50[
+
+**Configs** allow services to adapt their behaviour without the need to rebuild
+a Docker image. Services can only access configs when explicitly granted in the
+Compose file. Configs are mounted as files into the file system of a service's
+container.
+
+
+]
+.grid-50[
+
+**Secrets** are a flavor of Configs focusing on sensitive data, with specific
+constraint for this usage. Services can only access secrets when explicitly
+granted in the Compose file. Secrets are either read from files or from the
+environment.
+
+
+]
+
+]
 ---
 ## Why use Docker Compose?
 
@@ -170,35 +292,6 @@ Docker Compose is also a Docker subcommand. With it, you can:
 * **Portability across environments**: Compose supports variables to customize
   your containers for different environments or users.
 
----
-## Common use cases of Docker Compose
-
-.breadcrumbs[<a href="#1">Docker Compose</a>]
-
-Compose can be used in many different ways. Some common use cases are outlined below.
-Development environments
-
-When you're developing software, the ability to run an application in an isolated environment and interact with it is crucial. The Compose command line tool can be used to create the environment and interact with it.
-
-The Compose file provides a way to document and configure all of the application's service dependencies (databases, queues, caches, web service APIs, etc). Using the Compose command line tool you can create and start one or more containers for each dependency with a single command (docker compose up).
-
-Together, these features provide a convenient way for you to get started on a project. Compose can reduce a multi-page "developer getting started guide" to a single machine-readable Compose file and a few commands.
-Automated testing environments
-
-An important part of any Continuous Deployment or Continuous Integration process is the automated test suite. Automated end-to-end testing requires an environment in which to run tests. Compose provides a convenient way to create and destroy isolated testing environments for your test suite. By defining the full environment in a Compose file, you can create and destroy these environments in just a few commands:
-
- docker compose up -d
-
- ./run_tests
-
- docker compose down
-
-Single host deployments
-
-Compose has traditionally been focused on development and testing workflows, but with each release we're making progress on more production-oriented features.
-
-For details on using production-oriented features, see Compose in production.
-
 
 
 ---
@@ -206,9 +299,22 @@ For details on using production-oriented features, see Compose in production.
 
 .breadcrumbs[<a href="#1">Docker Compose</a>]
 
-* Docker Swarm
-* Traefik
-* Kubernetes
+The following tools are (completely) out of scope for this course, but
+interesting to learn about if you want to go further with Docker:
+
+* [Traefik][traefik] is a **reverse proxy developed to integrate with
+  microservices** (like Docker Compose services). Using it, you can get rid of
+  nginx and its site configuration files. Traefik can interrogate the Docker
+  Daemon about running containers and [configure itself
+  automatically](https://doc.traefik.io/traefik/providers/docker/).
+* [Docker Swarm][swarm] can network a cluster of Docker engines together across
+  multiple servers, allowing you to **aggregate separate machines into one giant
+  pool of resources**. You can then simply deploy Compose services to the swarm
+  and containers will be automatically spawned on one of the cluster's machines.
+* If you want to go even further into large-scale Docker deployments, look at
+  [Kubernetes][k8s], an open-source system for **automating deployment, scaling,
+  and management of containerized applications**. It groups containers that make
+  up an application into logical units for easy management and discovery.
 
 
 
@@ -226,6 +332,13 @@ For details on using production-oriented features, see Compose in production.
 [docker]: https://www.docker.com
 [docker-compose]: https://docs.docker.com/compose/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
+[compose-configs]: https://docs.docker.com/compose/compose-file/08-configs/
+[compose-networks]: https://docs.docker.com/compose/compose-file/06-networks/
+[compose-secrets]: https://docs.docker.com/compose/compose-file/09-secrets/
+[compose-volumes]: https://docs.docker.com/compose/compose-file/07-volumes/
+[k8s]: https://kubernetes.io
+[swarm]: https://docs.docker.com/engine/swarm/
+[traefik]: https://traefik.io
 [yaml]: https://yaml.org
 
     </textarea>
