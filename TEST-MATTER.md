@@ -416,9 +416,9 @@ It also indicates what you do not need to remember by heart.
 > You should understand the concepts behind what you did during the exercises,
 > but you do not need to remember the exact commands used.
 
-You must know how to deploy a PHP web application on a cloud platform
-with the Infrastructure-as-a-Service (IaaS) service model,
-which you put in practice during the following exercises:
+You must know how to deploy a PHP web application on a cloud platform with the
+Infrastructure-as-a-Service (IaaS) service model, which you put in practice
+during the following exercises:
 
 - [Deploy a PHP application with SFTP](ex/sftp-deployment.md) [(architecture)](ex/sftp-deployment.md#architecture)
 - [Deploy a PHP application with Git](ex/git-clone-deployment.md) [(architecture)](ex/git-clone-deployment.md#architecture)
@@ -438,15 +438,15 @@ following exercises:
 - [Deploy a multi-component web application with nginx](./ex/revprod-deployment.md) [(architecture)](ex/revprod-deployment.md#architecture)
 - [Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md) [(architecture)](ex/fibscale-deployment.md#architecture)
 
-You must understand how to set up automated deployments with Git hooks,
-which you put in practice during the following exercises:
+You must understand how to set up automated deployments with Git hooks, which
+you put in practice during the following exercises:
 
 - [Set up an automated deployment with Git hooks](ex/git-automated-deployment.md) [(architecture)](ex/git-automated-deployment.md#architecture)
 - [Deploy WOPR, a Sinatra & Svelte web application with a Redis database](ex/wopr-deployment.md) [(architecture)](ex/wopr-deployment.md#books-architecture)
 
-You must understand how to deploy various applications to a cloud platform
-with the Platform-as-a-Service (PaaS) service model, which you put in practice
-during the following exercises:
+You must understand how to deploy various applications to a cloud platform with
+the Platform-as-a-Service (PaaS) service model, which you put in practice during
+the following exercises:
 
 - [Deploy a static site to Netlify](ex/netlify-static-deployment.md)
 - [Deploy web applications with a database to Render](ex/render-database-deployment.md)
@@ -484,9 +484,6 @@ You do not need to represent:
   processes).
 - The commands used to run each process.
 - The configuration files involed.
-
-You do not need to know how to represent a deployment using the PHP FastCGI
-Process Manager (PHP-FPM).
 
 When drawing processes, you can simplify by assuming that each program runs only
 one process when executed.

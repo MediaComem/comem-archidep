@@ -397,6 +397,16 @@ For example, some of the text displayed in the main page is [in the file
 You have deployed a new backend/frontend web application to your server from
 scratch, using the knowledge you acquired during previous deployment exercises.
 
+### :classical_building: Architecture
+
+This is a simplified architecture of the main running processes and
+communication flow at the end of this exercise (only including the processes
+relevant to this exercise and not those from previous exercises):
+
+![Simplified architecture](wopr-deployment-simplified.png)
+
+> [Simplified architecture PDF version](wopr-deployment-simplified.pdf).
+
 ## :boom: Troubleshooting
 
 Here's a few tips about some problems you may encounter during this exercise.

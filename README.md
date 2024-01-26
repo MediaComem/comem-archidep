@@ -139,6 +139,7 @@ For you to succeed in this course, it is highly recommended that you read and co
     - [:classical_building: Architecture](ex/git-automated-deployment.md#classical_building-architecture)
 
 - **[:collision: :hammer: Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md)**
+  - [:classical_building: Architecture](./ex/wopr-deployment.md#classical_building-architecture)
 
 - Managed deployments
   - [:book: Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/paas?home=MediaComem%2Fcomem-archidep%23readme)
