@@ -418,8 +418,12 @@ It also indicates what you do not need to remember by heart.
     - What a Docker Image is
     - What a Docker Container is.
     - The different parts of a Docker workflow.
-    - What a Dockerfile is and what the `FROM`, `WORKDIR`, `COPY` and `CMD`
-      instruction do.
+    - What a Dockerfile is the purpose (not the syntax) of the following
+      instructions:
+      - [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd)
+      - [`COPY`](https://docs.docker.com/engine/reference/builder/#copy)
+      - [`FROM`](https://docs.docker.com/engine/reference/builder/#from)
+      - [`WORKDIR`](https://docs.docker.com/engine/reference/builder/#workdir)
 
     You do not need to know:
 
