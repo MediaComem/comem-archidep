@@ -37,7 +37,6 @@ cloud server.
   - [:books: Make it more configurable](#books-make-it-more-configurable)
   - [:books: Make it more secure](#books-make-it-more-secure)
   - [:books: One-command horizontal scaling](#books-one-command-horizontal-scaling)
-  - [:books: Drop the additional reverse proxy](#books-drop-the-additional-reverse-proxy)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -200,12 +199,13 @@ takes care of step 1 and most of step 2.
 
 #### :gem: Configure the service appropriately
 
-Look at the **Environment Variables** section of the image's documentation. It
-describes a few variables you will find useful. As part of step 2, you manually
-configured the MySQL root password in the original deployment exercise. With
-this Docker image, you will do that simply by setting the `$MYSQL_ROOT_PASSWORD`
-environment variable in the container. The root password will then be
-automatically set for you when the container starts.
+Look at the **"Environment Variables"** section of the [image's
+documentation][mysql-docker-image]. It describes a few variables you will find
+useful. As part of step 2, you manually configured the MySQL root password in
+the original deployment exercise. With this Docker image, you will do that
+simply by setting the `$MYSQL_ROOT_PASSWORD` environment variable in the
+container. The root password will then be automatically set for you when the
+container starts.
 
 > :books: When running a container manually, you set environment variables with
 > the `-e VAR=VALUE` or `--env VAR=VALUE` options, e.g. `docker run -e
@@ -213,8 +213,9 @@ automatically set for you when the container starts.
 > this exercise. You will describe the configuration of the database service in
 > the Compose file, and Docker Compose will run the container for you.
 
-During step 3, you then executed the PHP todolist's `todolist.sql` script. For
-the purposes of this exercise, this script can be divided into two sections:
+During step 3 of the original deployment exercise, you then executed the PHP
+todolist's `todolist.sql` script. For the purposes of this exercise, this script
+can be divided into two sections:
 
 * The [database creation, user creation & privileges
   configuration](https://github.com/MediaComem/comem-archidep-php-todo-exercise/blob/83415041ddec4e61dffa5ccf7317d9d5ff1fc3aa/todolist.sql#L1-L8):
@@ -239,7 +240,7 @@ the purposes of this exercise, this script can be divided into two sections:
   );
   ```
 
-If you read **Environment Variables** section of the MySQL Docker image's
+If you read the **"Environment Variables"** section of the MySQL Docker image's
 documentation again, you will notice that there are 3 environment variables you
 can set that will take care of the first part of the setup for you:
 
@@ -252,15 +253,17 @@ required setup when it starts for the first time.
 
 That leaves only the creation of the database structure. This cannot simply be
 done by setting an environment variable, since this part is not generic: it is
-completely dependent on the specific application you are deploying.
+completely dependent on the specific application you are deploying, in this case
+the PHP todolist.
 
 So you need to run the second part of the `todolist.sql` script in the context
 of the MySQL database server running in the container. How?
 
-Read the **Initializing a fresh instance** section of the MySQL Docker image's
-documentation. It explains that any script you place in the
-`/docker-entrypoint-initdb.d` directory of the container will be executed when
-the MySQL database server is initialized the first time the container starts.
+Read the **"Initializing a fresh instance"** section of the [MySQL Docker
+image's documentation][mysql-docker-image]. It explains that any SQL script you
+place in the `/docker-entrypoint-initdb.d` directory of the container will be
+executed when the MySQL database server is initialized the first time the
+container starts.
 
 This means that you simply have to put the `todolist.sql` script in this
 directory, and it will be magically run for you!
@@ -275,8 +278,8 @@ is, without any changes.
 There is one last thing that you did not actually do yourself during the
 original deployment exercise, but was done for you when you installed the MySQL
 server. As indicated in the architecture diagram: MySQL is managed by Systemd,
-meaning, which will automatically start it when your server starts, and restart
-it if it crashes. You also want this with your Compose deployment, at least for
+which will automatically start it when your server starts, and restart it if it
+crashes. You also want this with your Compose deployment, at least for
 production deployments.
 
 > :books: When running containers with Docker Compose, the Docker daemon will
@@ -308,6 +311,8 @@ Execute `todolist.sql`    | [`volumes`][compose-file-volumes]
 Read the documentation and fill in the definition for your `db` service:
 
 ```yml
+name: todolist
+
 services:
   db:
     image: # ...
@@ -396,7 +401,8 @@ db-1  | 2024-01-25T18:38:23.262642Z 0 [System] [MY-010931] [Server] /usr/sbin/my
 
 > :books: As you can see in the above example, the logs should indicate the
 > execution of the `todolist.sql` script, as well as the successful launch of
-> the MySQL database server at the end.
+> the MySQL database server at the end. (There will probably be lots of logs in
+> between, as indicated by the `...`.)
 
 > :boom: If you get errors, stop the container with `Ctrl-C`, delete everything
 > with `docker compose down`, fix your Compose file, and try again.
@@ -604,8 +610,8 @@ address or domain) at which the database can be reached. The database container
 will have an IP address when it runs, but you cannot know that in advance, so
 you cannot put it in the Compose file.
 
-If you read up on [Compose networking][compose-networking], you will see
-that Docker Compose really performs lots of magic to help you there. It will:
+If you read up on [Compose networking][compose-networking], you will see that
+Docker Compose performs lots of magic to help you there. It will:
 
 * Automatically create a default network that all service containers will join.
 * Give a resolvable name to each container based on the service name.
@@ -643,7 +649,7 @@ moment.
 
 It's also unfortunate that FPM is not a web application server, it's only a
 protocol for a web server to interpret PHP code. So even if you published the
-application container's FPM port (which happens to be 9000) on your host, you
+application container's FPM port (which happens to be `9000`) on your host, you
 could not see the PHP todolist working yet.
 
 You can stop the command with `Ctrl-C`.
@@ -665,11 +671,13 @@ deployment exercise.
 The reverse proxy needs to **listen on a port**, e.g. `80`, the default HTTP
 port, or maybe a custom port for local testing. It already listens on a port
 inside the container, but you will need to **publish the port** on your host,
-much like you did during the [previous Docker exercise](./docker-static.md).
+much like you did during the [previous Docker
+exercise](./docker-static.md#exclamation-mapping-your-containers-ports).
 
 The reverse proxy must **proxy requests to the application** service. You know
-how to do this from the [FPM exercise](./nginx-php-fpm-deployment.md): you
-must create an nginx site configuration file to serve the application.
+how to do this from the [FPM
+exercise](./nginx-php-fpm-deployment.md#exclamation-create-an-nginx-configuration-file-to-serve-the-application):
+you must create an nginx site configuration file to serve the application.
 
 If you read the [`nginx` image's documentation][nginx-docker-image] and run a
 few commands to look around in the container, you will see that the setup of
@@ -677,24 +685,28 @@ nginx is a little bit simpler than your cloud server's full-fledged
 installation:
 
 ```bash
+# List the contents of the /etc/nginx directory
 $> docker run --rm -it --entrypoint ls nginx:1.25.3-alpine /etc/nginx
 conf.d fastcgi.conf fastcgi_params mime.types modules nginx.conf scgi_params uwsgi_params
 
+# List the includes in nginx's main configuration file
 $> docker run --rm -it --entrypoint grep nginx:1.25.3-alpine include /etc/nginx/nginx.conf
     include       /etc/nginx/mime.types;
     include /etc/nginx/conf.d/*.conf;
 
+# Display the contents of the default site configuration present in the image
 $> docker run --rm -it --entrypoint ls nginx:1.25.3-alpine /etc/nginx/conf.d
 default.conf
 ```
 
 Instead of the `sites-available` and `sites-enabled` directories, there is
-simply `conf.d` with a `default.conf` site configuration there by default.
+simply a single `conf.d` directory with a `default.conf` site configuration
+there by default.
 
-As you can see in the image's documentation, there are several ways to add
-your site's configuration to the container, including a template system. But
-for the purposes of this exercise, let's keep it simple and simply overwrite
-the `/etc/nginx/conf.d/default.conf` file.
+As you can see in the [image's documentation][nginx-docker-image], there are
+several ways to add your site's configuration to the container, including a
+template system. But for the purposes of this exercise, let's keep it simple and
+simply overwrite the `/etc/nginx/conf.d/default.conf` file.
 
 Just like the other services in your Compose project, the reverse proxy also
 needs to be restarted if it crashes.
@@ -929,7 +941,7 @@ volumes:
 ```
 
 Note that you are using `db_data`, a name, instead of a path like `./data`
-above. This tells data that you want to mount a named volume in place of the
+above. This tells Compose that you want to mount a named volume in place of the
 `/var/lib/mysql` directory. This named volume must be defined under the
 [`volumes` key at the top level of the Compose file][compose-file-top-volumes]
 as shown in the example.
@@ -1023,8 +1035,9 @@ $> scp .env jde@W.X.Y.Z:todolist-repo
 > todolist resides on your server.
 
 > :gem: If you prefer, you could also copy the contents of your local `.env`
-> file, open a new `.env` file on your cloud server with `nano .env`, and paste
-> and save the contents there.
+> file with your favorite text editor, open a new `.env` file on your cloud
+> server in the todolist repository with `nano .env`, and paste and save the
+> contents there.
 
 ### :exclamation: Run the Compose project on your server
 
@@ -1160,8 +1173,8 @@ proxy and database cannot reach each other, as it should be.
 ### :books: One-command horizontal scaling
 
 If you performed the [horizontal scaling exercise with the Fibscale
-application](./fibscale-deployment.md), you may recall that it was fairly
-involved configuring horizontal scaling with Systemd.
+application](./fibscale-deployment.md), you may recall that configuring
+horizontal scaling with Systemd was fairly complex.
 
 Do you know what it takes to perform horizontal scaling on your server with
 Docker Compose?
@@ -1189,94 +1202,6 @@ Not only that, but Compose will automagically load-balance traffic from the
 reverse proxy service's container to the application service's containers.
 
 Well, that was easy.
-
-### :books: Drop the additional reverse proxy
-
-Our new deployment wastes some resources because we actually have two nginx
-reverse proxies when communicating with our new todolist deployment:
-
-    nginx (installed on server) -> rp container (also running nginx) -> app container -> db container
-
-It may be desirable to skip the extra reverse proxy container:
-
-    nginx (installed on server) -> app container -> db container
-
-You only need to make two changes to your Compose file and to the nginx site
-configuration on the server:
-
-* Update your `compose.yml` file to publish the application container's FPM
-  port, for example on port `12001`:
-
-  ```yml
-  services:
-    app:
-      # ...
-      ports:
-        - "12001:9000"
-    # ...
-  ```
-
-  Make that change **on your local machine**, then commit and push it to GitHub.
-  **Connect to your cloud server**, pull the change, destroy the reverse proxy
-  service and re-run the application service:
-
-  ```bash
-  $> cd todolist-repo
-  $> git pull
-  $> sudo docker compose down rp
-  $> sudo docker compose up --build --detach app
-  ```
-
-  > :gem: If you tried the horizontal scaling step, make sure to scale it down:
-  >
-  > ```bash
-  > $> sudo docker compose scale app=1
-  > ```
-  >
-  > This new way to connect the nginx reverse proxy running on the server with
-  > the application service in your Compose project will only work with one
-  > instance of the application container.
-
-  The necessary containers will be updated and the reverse proxy container
-  should be gone:
-
-  ```bash
-  $> sudo docker compose ps
-  NAME                  IMAGE          COMMAND                  SERVICE   CREATED          STATUS          PORTS
-  todolist-repo-app-1   todolist/app   "php-fpm -F --pid /o…"   app       19 minutes ago   Up 19 minutes   0.0.0.0:12001->9000/tcp, :::12001->9000/tcp
-  todolist-repo-db-1    mysql:8.3.0    "docker-entrypoint.s…"   db        37 minutes ago   Up 37 minutes   3306/tcp, 33060/tcp
-  ```
-* You can now modify the server's nginx configuration (with `nano
-  /etc/nginx/sites-available/todolist-docker`) to proxy directly to the
-  application service instead of the reverse proxy service:
-
-  ```conf
-  server {
-    listen 80;
-    server_name todolist-docker.john-doe.archidep.ch;
-    root /app;
-
-    location / {
-      try_files $uri $uri/index.php;
-    }
-
-    location ~ \.php$ {
-      include fastcgi.conf;
-      fastcgi_pass localhost:12001;
-      fastcgi_index index.php;
-    }
-  }
-  ```
-
-  Reload the nginx configuration:
-
-  ```bash
-  $> sudo nginx -t
-  $> sudo nginx -s reload
-  ```
-
-The PHP todolist at http://todolist.john-doe.archidep.ch should work like it did
-before, with one fewer container taking up resources!
 
 
 
