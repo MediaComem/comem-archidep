@@ -89,12 +89,14 @@ specific area of concern and **delegate other functions to other containers**,
 
 Docker Compose is a tool for defining and running multi-container applications,
 making it easy to manage **services, networks, and volumes** in a single,
-comprehensible [YAML][yaml] **configuration file**.
+comprehensible [YAML][yaml] configuration file called the **Compose file**.
 
 <!-- slide-column -->
 
 ```yml
 services:
+
+  # Application service
   app:
     build: .
     depends_on:
@@ -104,6 +106,8 @@ services:
     ports:
       - "8080:80"
     restart: always
+
+  # Database service
   db:
     image: redis:7.2.4-alpine
     restart: always
@@ -111,9 +115,24 @@ services:
       - ./todolist.sql:/init.sql:ro
 ```
 
+### Compose services
+
+The main unit of work with Docker Compose is a **service**:
+
+* A service is an **abstract definition of a computing resource within an
+  application** which can be scaled or replaced independently from other
+  components.
+* **Services are backed by a set of containers**, run by the platform according
+  to replication requirements and placement constraints. As services are backed
+  by containers, they are defined by a Docker image and set of runtime
+  arguments. All containers within a service are identically created with these
+  arguments.
+
+Services are defined in the **Compose file**.
+
 ### The Docker Compose command line
 
-Docker Compose is also a Docker subcommand. With it, you can:
+Docker Compose is also a **Docker subcommand**. Based on a Compose file, it can:
 
 * Start, stop, and rebuild services
   * `docker compose up [service]`
@@ -139,39 +158,26 @@ Docker Compose is also a Docker subcommand. With it, you can:
 * **Portability across environments**: Compose supports variables to customize
   your containers for different environments or users.
 
-## Common use cases of Docker Compose
-
-Compose can be used in many different ways. Some common use cases are outlined below.
-Development environments
-
-When you're developing software, the ability to run an application in an isolated environment and interact with it is crucial. The Compose command line tool can be used to create the environment and interact with it.
-
-The Compose file provides a way to document and configure all of the application's service dependencies (databases, queues, caches, web service APIs, etc). Using the Compose command line tool you can create and start one or more containers for each dependency with a single command (docker compose up).
-
-Together, these features provide a convenient way for you to get started on a project. Compose can reduce a multi-page "developer getting started guide" to a single machine-readable Compose file and a few commands.
-Automated testing environments
-
-An important part of any Continuous Deployment or Continuous Integration process is the automated test suite. Automated end-to-end testing requires an environment in which to run tests. Compose provides a convenient way to create and destroy isolated testing environments for your test suite. By defining the full environment in a Compose file, you can create and destroy these environments in just a few commands:
-
- docker compose up -d
-
- ./run_tests
-
- docker compose down
-
-Single host deployments
-
-Compose has traditionally been focused on development and testing workflows, but with each release we're making progress on more production-oriented features.
-
-For details on using production-oriented features, see Compose in production.
-
 
 
 ## Going further
 
-* Docker Swarm
-* Traefik
-* Kubernetes
+The following tools are (completely) out of scope for this course, but
+interesting to learn about if you want to go further with Docker:
+
+* [Traefik][traefik] is a **reverse proxy developed to integrate with
+  microservices** (like Docker Compose services). Using it, you can get rid of
+  nginx and its site configuration files. Traefik can interrogate the Docker
+  Daemon about running containers and [configure itself
+  automatically](https://doc.traefik.io/traefik/providers/docker/).
+* [Docker Swarm][swarm] can network a cluster of Docker engines together across
+  multiple servers, allowing you to **aggregate separate machines into one giant
+  pool of resources**. You can then simply deploy Compose services to the swarm
+  and containers will be automatically spawned on one of the cluster's machines.
+* If you want to go even further into large-scale Docker deployments, look at
+  [Kubernetes][k8s], an open-source system for **automating deployment, scaling,
+  and management of containerized applications**. It groups containers that make
+  up an application into logical units for easy management and discovery.
 
 
 
@@ -186,4 +192,7 @@ For details on using production-oriented features, see Compose in production.
 [docker]: https://www.docker.com
 [docker-compose]: https://docs.docker.com/compose/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
+[k8s]: https://kubernetes.io
+[swarm]: https://docs.docker.com/engine/swarm/
+[traefik]: https://traefik.io
 [yaml]: https://yaml.org

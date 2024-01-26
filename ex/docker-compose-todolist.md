@@ -1,4 +1,4 @@
-# Deploy a web application with Docker Compose
+# Deploy a PHP application with Docker Compose
 
 The goal of this exercise is to learn to deploy a multi-container web
 application with Docker Compose. You will create a portable Compose file that
@@ -125,9 +125,9 @@ Aside from Systemd, your server-side deployment is composed of 3 processes:
 * The PHP todolist, the **application** itself.
 * A MySQL **database** server.
 
-In a Compose deployment, you want to isolate them as separate services as per
-the Docker philosophy. Therefore, your goal is to write a Compose file defining
-3 services.
+In a Compose deployment, you want to isolate them as separate services per the
+Docker philosophy. Therefore, your goal is to write a Compose file defining 3
+services.
 
 Start by naming these services. Choose a naming convention:
 
@@ -375,7 +375,7 @@ db-1  | 2024-01-25T18:38:23.262642Z 0 [System] [MY-010931] [Server] /usr/sbin/my
 > the MySQL database server at the end.
 
 > :boom: If you get errors, stop the container with `Ctrl-C`, delete everything
-> with `docker compose down -v`, fix your Compose file, and try again.
+> with `docker compose down`, fix your Compose file, and try again.
 
 Great, you have the database running! It's not accessible by anything, so that's
 not very interesting. Stop it with `Ctrl-C`, and let's move on to the next step.
