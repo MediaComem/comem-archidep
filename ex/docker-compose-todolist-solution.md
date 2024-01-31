@@ -33,7 +33,7 @@ Here's a sample `.dockerignore` file to go with it:
 Here's an example of what the `compose.yml` file in your PHP todolist repository
 can look like:
 
-```conf
+```yml
 name: todolist
 
 services:
