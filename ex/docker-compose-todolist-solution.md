@@ -96,6 +96,12 @@ volumes:
   db_data:
 ```
 
+> :books: This Compose file example includes the configurability and network
+> isolation improvements suggested in the [Make it more
+> configurable](./docker-compose-todolist.md#books-make-it-more-configurable)
+> and [Make it more
+> secure](./docker-compose-todolist.md#books-make-it-more-secure) sections.
+
 Here's a sample `.env` file you could use with this `compose.yml` file:
 
 ```

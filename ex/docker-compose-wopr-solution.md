@@ -39,9 +39,9 @@ COPY --chown=wopr:wopr --from=build /usr/src/app/public/ ./public/
 CMD ["bundle", "exec", "ruby", "app.rb"]
 ```
 
-> :books: This version goes a little bit further than what is asked in the
-> exercise: the `RUN` commands are split to take advantage of Compose's caching
-> and [optimize the build][compose-build-optimization].
+> :books: This Dockerfile example goes a little bit further than what is asked
+> in the exercise: the `RUN` commands are split to take advantage of Compose's
+> caching and [optimize the build][compose-build-optimization].
 >
 > In the first build stage, by copying only the `package.json` and
 > `package-lock.json` files first, the long-running `npm ci` command will only
@@ -92,7 +92,7 @@ services:
     networks:
       - front-tier
     ports:
-      - "8080:80"
+      - "${WOPR_PORT:-14000}:80"
     restart: always
     volumes:
       # Overwrite the default configuration in the container with the site
@@ -132,6 +132,13 @@ networks:
 volumes:
   db_data:
 ```
+
+> :books: This Compose file example includes the configurability and network
+> isolation improvements suggested in the [Make it more
+> configurable](./docker-compose-todolist.md#books-make-it-more-configurable)
+> and [Make it more
+> secure](./docker-compose-todolist.md#books-make-it-more-secure) sections of
+> the previous exercise.
 
 
 
