@@ -8,8 +8,8 @@ In this exercise, you'll set up a mini treasure hunt for adventurers navigating 
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Legend](#legend)
-- [:exclamation: Creating Directories and files](#exclamation-creating-directories-and-files)
-- [:exclamation: Adding Clues](#exclamation-adding-clues)
+- [:exclamation: Creating directories and files](#exclamation-creating-directories-and-files)
+- [:exclamation: Adding clues](#exclamation-adding-clues)
 - [:question: Test the treasure hunt](#question-test-the-treasure-hunt)
 - [:exclamation: Automate the treasure hunt using shell scripting](#exclamation-automate-the-treasure-hunt-using-shell-scripting)
 - [:exclamation: Make `auto_hunt` executable](#exclamation-make-auto_hunt-executable)
@@ -34,7 +34,7 @@ Parts of this guide are annotated with the following icons:
 - :checkered_flag: The end of the exercise.
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
-## :exclamation: Creating Directories and files
+## :exclamation: Creating directories and files
 We're already familiar with the `pwd`, `cd`, `ls`, `mkdir`, `touch`, `echo`, and `cat` commands. Using the relevant commands, perform the tasks below:
 
 - Starting from your home (~) directory, create a new directory named `treasure_hunt`.
@@ -43,7 +43,7 @@ We're already familiar with the `pwd`, `cd`, `ls`, `mkdir`, `touch`, `echo`, and
 
 > :books: In Unix-like operating systems, the tilde (~) symbol is a shorthand representation for a user's home directory. It's a convenient way to refer to this directory without needing to know or type the full path. For instance, if a user's home directory is `/home/username`, typing `cd ~` in the terminal would navigate them directly to that location. The tilde is recognized and expanded to the full path by the shell, making it an efficient shortcut. Additionally, the tilde can be combined with other directory or file names, such as `~/Documents`, to quickly reference subdirectories or files within the home directory. The adoption of the tilde as a shortcut has become a deeply ingrained convention in the command-line world, providing users with a quick and consistent way to access their personal files and settings.
 
-## :exclamation: Adding Clues
+## :exclamation: Adding clues
 Using your preferred method, update the files we just created with the specified content:
 
 - `cave/echo.txt`: To uncover the next clue, explore where the water flows.
@@ -120,7 +120,9 @@ To address this, let's grant the `auto_hunt` script execute permissions:
 ```bash
 $> chmod +x auto_hunt
 ```
-:warning: **At this juncture in the course, delving into the intricacies of Unix permissions isn't required. We'll embark on a deeper exploration of this topic as the semester progresses.**.
+:books: **At this juncture in the course, delving into the intricacies of Unix
+permissions isn't required. We'll embark on a deeper exploration of this topic
+as the semester progresses.**
 
 Running the script now works:
 
@@ -168,10 +170,9 @@ To find the next clue, search where the water flows
 
 Restart your shell and attempt executing `auto_hunt` once more. Oops! It seems our PATH has reverted to its original configuration.
 
-To permemenantly change the `PATH`, you'll need to add the export line to your shell's initialization file. The specific file depends on the shell you're using:
+To permanently change the `PATH`, you'll need to add the export line to your shell's initialization file. The specific file depends on the shell you're using:
 
 - For `bash` (Git Bash), it's typically `~/.bashrc` or `~/.bash_profile`.
-
 - For `zsh` (MacOS), it's `~/.zshrc`.
 
 With your preferred command-line text editor, append the following line to the end of your shell's initialization file:
@@ -192,13 +193,13 @@ Let's break this line down.
 
 **`~/treasure_hunt`**: This is a directory named treasure_hunt located within the user's home directory.
 
-n this command, we merge several elements together. Firstly, `$PATH` retrieves the present `PATH` value. Then, `~/treasure_hunt` gets tacked onto that value. Essentially, this operation adds the `treasure_hunt` directory in the user's home to the roster of directories the shell peruses when seeking executables. Put plainly, after initiating this command, the shell will extend its search to the `~/treasure_hunt` directory whenever a command is run, supplementing the directories already listed in your `PATH`.
+In this command, we merge several elements together. Firstly, `$PATH` retrieves the present `PATH` value. Then, `~/treasure_hunt` gets tacked onto that value. Essentially, this operation adds the `treasure_hunt` directory in the user's home to the roster of directories the shell peruses when seeking executables. Put plainly, after initiating this command, the shell will extend its search to the `~/treasure_hunt` directory whenever a command is run, supplementing the directories already listed in your `PATH`.
 
 To incorporate the modifications made to the startup file without restarting your terminal, simply "source" the file:
 
-For bash:
+For Bash:
 ```bash
-$> source ~/.bashrc
+$> source ~/.bash_profile
 ```
 
 For zsh:
@@ -234,7 +235,7 @@ cNo..lXXXXXXXXXOolkXXXXXXXXXkl,..;:';.
 
 ## :checkered_flag: What just happened?
 
-In this exercise, we navigated through basic Unix commands. We started by creating directories and files using basic Unix commands. We then crafted a "treasure hunt", where we used these commands to create and modify files.
+In this exercise, we navigated through basic Unix commands. We started by creating directories and files, and then crafted a "treasure hunt", where we used these commands to create and modify files.
 
 We further explored the curl command and its capabilities in interacting with the internet directly from the command line. Transitioning to shell scripting, we automated the treasure hunt sequence with the `auto_hunt` script.
 

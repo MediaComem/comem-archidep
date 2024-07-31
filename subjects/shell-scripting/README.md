@@ -70,6 +70,9 @@ For example, the following is a valid shebang:
 In this example, it tells the operating system that the **interpreter** which should run this file is `/bin/bash`,
 meaning that this is a [Bash][bash] script.
 
+> Note that there must not be any space between `#!` and the path of the
+> interpreter `/bin/bash`.
+
 ### What can I put in a script?
 
 In a bash script, you can put anything you could type in a Bash shell:
@@ -98,7 +101,10 @@ Simply create your script:
 $> printf '#!/bin/bash\necho Hello World' > test.sh
 ```
 
-Make it an executable:
+> The `printf` (**print** **f**ormat) command is similar to the `echo` command
+> but it has better support for special characters like new lines (`\n`).
+
+Make it executable:
 
 ```bash
 $> chmod +x test.sh
@@ -113,7 +119,7 @@ Hello World
 
 ### All kinds of scripts
 
-The following a few examples of shebangs, but it is nowhere near exhaustive:
+The following are a few examples of shebangs, but it is nowhere near exhaustive:
 
 Shebang             | Script contents
 :---                | :---
