@@ -1,7 +1,7 @@
 # Run your own virtual server on Microsoft Azure
 
-This guide describes how to run a virtual server appropriate for the COMEM+
-Architecture & Deployment course on the [Microsoft
+This guide describes how to run a virtual server appropriate for the Media
+Engineering Architecture & Deployment course on the [Microsoft
 Azure](https://azure.microsoft.com) cloud platform.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->

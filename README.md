@@ -1,4 +1,4 @@
-# COMEM+ Architecture & Deployment course
+# Media Engineering Architecture & Deployment course
 
 
 In this course you will learn:
@@ -12,7 +12,8 @@ In pursuit of this goal, you will learn:
 - The basics of Unix system administration and cloud computing architectures.
 - Good security practices related to system administration and web applications.
 
-This course is a [COMEM+][comem] [web development course][comem-webdev] taught at [HEIG-VD][heig].
+This course is a [Media Engineering][comem] web development course taught at
+[HEIG-VD][heig].
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -280,7 +281,6 @@ and related articles:
 [apache]: https://httpd.apache.org
 [chrome]: https://www.google.com/chrome/
 [comem]: http://www.heig-vd.ch/comem
-[comem-webdev]: https://github.com/MediaComem/comem-webdev
 [git-downloads]: https://git-scm.com/downloads
 [git-for-windows]: https://gitforwindows.org
 [github]: https://github.com

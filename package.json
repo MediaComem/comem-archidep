@@ -1,7 +1,7 @@
 {
   "name": "comem-archidep",
   "version": "1.0.0",
-  "description": "COMEM+ architecture & deployment course",
+  "description": "Media Engineering Architecture & Deployment Course",
   "private": true,
   "repository": {
     "type": "git",
