@@ -164,32 +164,7 @@ For you to succeed in this course, it is highly recommended that you read and co
 
 ## How to improve our basic deployment
 
-The basic SFTP deployment of the PHP TodoList has several flaws which we will
-fix during the rest of the course:
-
-- Transfering files manually through SFTP is slow and error-prone. We will use
-  **Git** to reliably transfer files [from our central
-  codebase][12factor-codebase] and easily keep our deployment up-to-date over
-  time.
-- [Hardcoding configuration is a bad practice][12factor-config]. We will use
-  **environment variables** so that our application can be dynamically
-  configured and deployed in any environment without changing its source code.
-- Starting our application manually is not suitable for a production deployment.
-  We will use a **process manager** to manage the lifecycle of our application:
-  starting it automatically when the server boots, and restarting it
-  automatically if it crashes.
-- Accessing a web application through an IP address is not user-friendly. We
-  will obtain a domain and configure its DNS zone file so that our application
-  is accessible with a human-readable **domain name**.
-- Using a non-standard port is not user-friendly either. We will run the
-  application on **port 80 or 443** so that the end user does not have to
-  specify a port in the browser's address bar.
-- *Not discussed yet*
-- Our application is not secure as indicated by the browser, because it is
-  served over HTTP and not HTTPS. We will obtain a **TLS/SSL certificate**
-  signed by a trusted certificate authority so that our application can be
-  served over HTTPS and recognized as secure by browsers.
-- *Not discussed yet*
+*Stay tuned for more.*
 
 ## More Practice
 
