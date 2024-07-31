@@ -3,8 +3,9 @@
 
 In this course you will learn:
 
-- How to deploy applications on a Linux server on an IaaS platform (Microsoft Azure).
-- How to deploy applications on a PaaS platform (Render).
+- How to deploy applications on a Linux server on an IaaS platform ([Microsoft
+  Azure][azure]).
+- How to deploy applications on a PaaS platform ([Render][render]).
 
 In pursuit of this goal, you will learn:
 
@@ -60,6 +61,9 @@ For you to succeed in this course, it is highly recommended that you read and co
 - [Git][git-downloads]
   - macOS users should [install the command-line tools][macos-cli]
   - Windows users should install [Git for Windows][git-for-windows]
+  - Linux users on Debian/Ubuntu-based systems can [install Git with the `sudo
+    apt install git` command][install-git-on-linux], or with their other
+    distributions' package managers.
 - A free [GitHub][github] account
 - [Google Chrome][chrome] (recommended, any browser with developer tools will do)
 - A free [Render][render] account
@@ -279,12 +283,14 @@ and related articles:
 [12factor-codebase]: https://12factor.net/codebase
 [12factor-config]: https://12factor.net/config
 [apache]: https://httpd.apache.org
+[azure]: https://azure.microsoft.com
 [chrome]: https://www.google.com/chrome/
 [comem]: http://www.heig-vd.ch/comem
 [git-downloads]: https://git-scm.com/downloads
 [git-for-windows]: https://gitforwindows.org
 [github]: https://github.com
 [heig]: http://www.heig-vd.ch
+[install-git-on-linux]: https://www.atlassian.com/git/tutorials/install-git#linux
 [macos-cli]: https://www.freecodecamp.org/news/install-xcode-command-line-tools/
 [nginx]: https://www.nginx.com
 [owasp]: https://www.owasp.org
