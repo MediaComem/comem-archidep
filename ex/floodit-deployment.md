@@ -743,7 +743,7 @@ Add the following line to the file:
 > listed commands with `sudo` without having to enter a password (hence the
 > `NOPASSWD` option).
 
-Exit with `Ctrl-X` if you are using Nano or with Esc then `:wq` if you are using
+Exit with `Ctrl-X` if you are using nano or with Esc then `:wq` if you are using
 Vim.
 
 > :gem: If you are using nano, the filename you are asked to confirm will be

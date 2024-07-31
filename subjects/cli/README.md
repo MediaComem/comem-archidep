@@ -51,15 +51,15 @@ and learn the basics of navigating and manipulating your filesystem in a Unix sh
   - [Windows users](#windows-users)
 - [Vim](#vim)
   - [WHY?!](#why)
-  - [How vim works](#how-vim-works)
+  - [How Vim works](#how-vim-works)
   - [Normal mode](#normal-mode)
   - [Command mode](#command-mode)
 - [Nano](#nano)
   - [An alternative to Vim](#an-alternative-to-vim)
-  - [Editing files with Nano](#editing-files-with-nano)
+  - [Editing files with nano](#editing-files-with-nano)
     - [Saving files](#saving-files)
     - [Confirming the filename](#confirming-the-filename)
-  - [Setting Nano as the default editor](#setting-nano-as-the-default-editor)
+  - [Setting nano as the default editor](#setting-nano-as-the-default-editor)
 - [The `PATH` variable](#the-path-variable)
   - [Understanding the `PATH`](#understanding-the-path)
   - [Finding commands](#finding-commands)
@@ -208,11 +208,11 @@ Unix is the ancestor of [Linux][linux].
 
 <!-- slide-column -->
 
-In Unix-like systems, The program serving as the **command line interpreter**
+In Unix-like systems, the program serving as the **command line interpreter**
 (handling input/output from the terminal) is called a [**shell**][unix-shell].
 
 > It is called this way because it is the outermost layer around the operating
-> system; it wraps and hides the lower-level kernel interface).
+> system; it wraps and hides the lower-level kernel interface.
 
 <!-- slide-column 40 -->
 
@@ -299,9 +299,12 @@ You can use it right away, as it's the _de-facto_ standard.
 
 <!-- slide-column -->
 
-On **Windows**, the default CLI is called **cmd** (or **Invite de commandes** in French)
+On **Windows**, the default CLI is called **cmd** (or **Invite de commandes** in
+French) However, it does not use the same syntax as Unix-like CLIs _(plus, it's
+bad)_.
 
-However, it does not use the same syntax as Unix-like CLIs _(plus, it's bad)_.
+You also have [PowerShell][powershell] which is better, but is not a Unix-like
+CLI either.
 
 > **You'll need to install an alternative.**
 
@@ -351,14 +354,14 @@ execute.
 
 <!-- slide-column -->
 
-The prompt is not always `$>`.
-
-For example, on earlier macOS versions, it used to be `bash3.2$`, indicating the
-name of the shell ([Bash][bash]) and its version.
-
-On more recent macOS versions using [the Z shell (Zsh)][zsh], the prompt might
-indicate your computer's name, your username and the current directory, e.g.
-`MyComputer:~ root#`.
+> The prompt is not always `$>`.
+>
+> For example, on earlier macOS versions, it used to be `bash3.2$`, indicating the
+> name of the shell ([Bash][bash]) and its version.
+>
+> On more recent macOS versions using [the Z shell (Zsh)][zsh], the prompt might
+> indicate your computer's name, your username and the current directory, e.g.
+> `MyComputer:~ root#`.
 
 <!-- slide-column 30 -->
 
@@ -413,7 +416,7 @@ Note the use of **spaces** to separate the differents **arguments** of a command
 
 
 
-### Options vs. arguments
+### Options vs. values
 
 There are two types of arguments to use with a command (if needed):
 
@@ -426,49 +429,58 @@ By convention, they are preceded by `-` or `--`:
 $> ls `-a` `-l`
 ```
 
-We use the `ls` command to list the content of the current directory. The options tell `ls` **how** it should do so:
+We use the `ls` command to **l**i**s**t the content of the current directory.
+The options tell `ls` **how** it should do so:
 
 * `-a` tells it to print **a**ll elements (including hidden ones).
 * `-l` tells it to print elements in a **l**ist format, rather than on one line.
 
 <!-- slide-column -->
 
-**Other arguments** not preceded by anything usually specify **what** will be used by the command:
+**Values** not preceded by anything usually specify **what** will be used by the
+command:
 
 ```bash
 $> cd `/Users/Batman`
 ```
 
-Here, we use the `cd` command to move to another directory.
+Here, we use the `cd` command to move to another directory (or **c**hange
+**d**irectory).
 
-And the argument `/Users/Batman` tells the command **what** directory we want to move to.
+And the argument `/Users/Batman` tells the command **what** directory we want to
+move to.
 
 <!-- slide-notes -->
 
-In the **first example**, we use the `ls` command to list elements in the current directory. We also use options to tell `ls` how it should print elements:
+In the **first example**, we use the `ls` command to **l**i**s**t elements in
+the current directory. We also use options to tell `ls` how it should print
+elements:
 
 * `--all` tells it to print all elements.
 * `-l` tells it to print elements in a list format, rather than on one line..
 
 #### Options with values
 
-Some options require a **value**:
+**Values** can also be linked to an option:
 
 ```bash
 tar -c -v `-f compressed.tar.gz` file-to-compress
 ```
 
-`tar` is a command to bundle and compress files.
-In this example, it takes **three options**:
+The [`tar` (**t**ape **ar**chive)][tar] command bundles and compresses files. In
+this example, it takes **three options**:
 
-* `-c` tells it to compress (instead of uncompressing).
-* `-v` tells it to be verbose (print more information to the CLI).
-* `-f` tells it where to store the compressed file;
-  this is followed **immediately** by `compressed.tar.gz` which is the **value** of that option.
+* `-c` tells it to **c**ompress (instead of uncompressing).
+* `-v` tells it to be **v**erbose (print more information to the CLI).
+* `-f` tells it where to store the compressed **f**ile; this is followed
+  **immediately** by `compressed.tar.gz` which is the **value** of that option.
 
-It then takes **one argument**:
+It then takes **one value**:
 
 * `file-to-compress` is the file (or directory) to compress
+
+There are two values in this example: one linked to the `-f` option, and one
+used by the overall command.
 
 
 
@@ -570,8 +582,8 @@ ls [-ABCFGHLOPRSTUW@abcdefghiklmnopqrstuwx1] [file ...]
 
 Here are some explanations:
 
-* `[]`: Whatever's inside is **optionnal** (ex: `[-e]`).
-* `|`: You have to **chose between** options (ex: `-L|-P`).
+* `[]`: Whatever's inside is **optional** (ex: `[-e]`).
+* `|`: You have to **choose between** options (ex: `-L|-P`).
 * `...`: Whatever's before can be **repeated** (ex: `[file ...]`).
 
 Depending on the documentation, you will also see symbols like this:
@@ -592,8 +604,8 @@ Replace it by an appropriate value for that option or argument.
 
 ### The `pwd` command
 
-When you open a CLI, it places you in your **home directory**.
-From there you can navigate your filesystem to go to other directories _(more on that later)_.
+When you open a CLI, it places you in your **home directory**. From there you
+can navigate your filesystem to go to other directories _(more on that later)_.
 
 But first, you might want to check **where** you currently are.
 Use the `pwd` command:
@@ -603,7 +615,8 @@ $> pwd
 /Users/Batman
 ```
 
-> `pwd` means "print working directory": it gives you the absolute path to the directory you're currently in.
+> `pwd` means "**p**rint **w**orking **d**irectory": it gives you the absolute
+> path to the directory you're currently in.
 
 
 
@@ -617,7 +630,7 @@ Use the `ls` command:
 $> ls
 (lots and lots of files)
 ```
-> `ls` means "list": it lists the contents of a directory.
+> `ls` means "**l**i**s**t": it lists the contents of a directory.
 
 By default, `ls` doesn't list **hidden elements**.
 By convention in Unix-like systems, files that start with `.` (a dot) are hidden.
@@ -635,21 +648,32 @@ $> ls -a
 
 It's time to go out a little and move to another directory.
 
-Suppose you have a `Documents` directory in your home directory, that contains another directory `TopSecret` where you want to go.
-Use the `cd` command, passing it as argument **the path to the directory** you want to go to:
+Suppose you have a `Documents` directory in your home directory, that contains
+another directory `TopSecret` where you want to go. Use the `cd` (**c**hange
+**d**irectory) command, passing it as argument **the path to the directory** you
+want to go to:
 
 ```bash
 $> pwd
 /Users/Batman
+
 $> cd Documents/TopSecret
+
+$> pwd
+/Users/Batman/Documents/TopSecret
 ```
 
 This is a **relative path**: it is relative to the current working directory.
+
+#### Absolute paths
 
 You can also go to a specific directory anywhere on your filesystem like this:
 
 ```bash
 $> cd /Users/Batman/Documents
+
+$> pwd
+/Users/Batman/Documents
 ```
 
 This is an **absolute path** because it starts with a `/` character. It starts
@@ -659,22 +683,18 @@ at the root of your filesystem so it does not matter where you are now.
 
 #### The `.` path
 
-The `.` path represents the current directory.
-The following sequences of commands are strictly equivalent:
+The `.` path represents the current directory. The following sequences of
+commands are strictly equivalent:
 
 <!-- slide-column -->
 
 ```bash
-$> pwd
-/Users/Batman
 $> cd Documents/TopSecret
 ```
 
 <!-- slide-column -->
 
 ```bash
-$> pwd
-/Users/Batman
 $> cd ./Documents/TopSecret
 ```
 
@@ -685,7 +705,9 @@ You can also *not go anywhere*:
 ```bash
 $> pwd
 /Users/Batman
+
 $> `cd .`
+
 $> pwd
 /Users/Batman
 ```
@@ -744,6 +766,8 @@ $> pwd
 
 #### Path reference
 
+<!-- slide-front-matter class: commands-table -->
+
 Path        | Where
 :---------- | :----------------------------------------------------------------------------------------------------------------
 `.`         | The current directory.
@@ -783,6 +807,8 @@ Use the `mkdir` (**m**a**k**e **dir**ectory) command to create a new directory i
 
 ```bash
 $> mkdir BatmobileSchematics
+$> ls
+BatmobileSchematics
 ```
 
 You can also create a directory elsewhere:
@@ -791,8 +817,9 @@ You can also create a directory elsewhere:
 $> mkdir ~/Documents/TopSecret/BatmobileSchematics
 ```
 
-This will only work if all directories down to `TopSecret` already exist.
-To automatically create all intermediate directories, add the `-p` option:
+This will only work if all directories down to `TopSecret` already exist. To
+automatically create all intermediate directories, add the `-p` (**p**arents)
+option:
 
 ```bash
 $> mkdir -p ~/Documents/TopSecret/BatmobileSchematics
@@ -885,7 +912,8 @@ As you can see, the command keeps executing and you **no longer have a prompt**.
 Anything you type is ignored, as it is no longer interpreted by the shell,
 but by the `sleep` command instead (which doesn't do anything with it).
 
-By convention in Unix shells, you can always terminate a running command by typing `Ctrl-C`.
+By convention in Unix shells, you can always terminate a running command by
+typing `Ctrl-C` (press the **C** key while holding the **C**on**tr**o**l** key).
 
 > Note that `Ctrl-C` **forces termination** of a running command.
 > It might not have finished what it was doing.
@@ -901,18 +929,21 @@ $> cd /c/foo/bar
 $> cd /d/foo
 ```
 
-(In the Windows Subsystem for Linux, it's `/mnt/c` instead of `/c`.)
+> In the Windows Subsystem for Linux, it's `/mnt/c` instead of `/c`.
 
 **Copy/Paste**
 
-Since `Ctrl-C` is used to stop the current process, it **can't** be used as a shortcut to copy things from the CLI.
-
-Instead, Git Bash has two custom shortcuts:
+Since `Ctrl-C` is used to stop the current process, it **can't** be used as a
+shortcut to copy things from the CLI. Instead, Git Bash has two custom
+shortcuts:
 
 * `Ctrl-Insert` to **copy** things from the CLI
+
+  > You can also simply **select any text** in Git Bash and it will
+  > automatically be copied to your clipboard.
 * `Shift-Insert` to **paste** things to the CLI
 
-> You can also use **Right-click > Paste** if you don't have an `Insert` key.
+  > Or use **Right-click & Paste** if you don't have an `Insert` key.
 
 
 
@@ -922,6 +953,9 @@ Instead, Git Bash has two custom shortcuts:
 
 > [**Vim**][vim] is an infamous CLI editor originally developed in 1976 (WHAT?!)
 > for the Unix operating system.
+>
+> The name comes from "**vi** i**m**proved", because Vim is an improved clone of
+> an earlier editor: [vi][vi] (from **vi**sual).
 
 
 
@@ -930,13 +964,14 @@ Instead, Git Bash has two custom shortcuts:
 Why would you need to learn it?
 
 Sometimes it's just the **only editor you have** (e.g. on a server).
-Also **some developer tools might open vim** for user input.
+Also **some developer tools might open Vim** for user input.
 
 If this happens (_and it will_), there's **one** imperative rule to follow:
 
 **DO NOT PANIC!**
 
-Open a file by running the `vim` command with the path to the file you want to create/edit:
+Open a file by running the `vim` command with the path to the file you want to
+create/edit:
 
 ```bash
 vim test.txt
@@ -944,20 +979,20 @@ vim test.txt
 
 
 
-### How vim works
+### How Vim works
 
 Vim can be unsettling at first, until you know how it works.
 
-*Let go of your mouse*, it's mostly useless in Vim.
+**Let go of your fear. And your mouse**, it's mostly useless in Vim.
 You control Vim by **typing**.
 
 The first thing to understand whith Vim is that it has *3 modes*:
 
 * **Normal** mode (the one you're in when Vim starts).
-* **Command** mode (the one to use to save or quit).
+* **Command** mode (the one to use to save and/or quit).
 * **Insert** mode (the one to use to insert text).
 
-To go into each mode use this keys :
+To go into each mode use this keys:
 
 | From           | Type    | To go to |
 | :------------- | :------ | :----    |
@@ -976,12 +1011,12 @@ You can also use some commands to interact with the text:
 
 | Command | Effect                                                           |
 | :------ | :--------------------------------------------------------------- |
-| `:`     | Enter **Command** mode (to save and/or quit)                     |
-| `i`     | Enter **Insert** mode (to type text)                             |
 | `x`     | Delete the character under the cursor                            |
 | `dw`    | Delete a word, with the cursor standing before the first letter  |
 | `dd`    | Delete the complete line the cursor is on                        |
 | `u`     | Undo the last command                                            |
+| `:`     | Enter **Command** mode (to save and/or quit)                     |
+| `i`     | Enter **Insert** mode (to type text)                             |
 
 > At anytime, you can hit the `Esc` key to go back to the **Normal** mode.
 
@@ -995,12 +1030,12 @@ is the one you'll mostly use to save and/or quit.
 To enter the **Command** mode, hit the `:` key.
 From there, you can use some commands:
 
-| Command     | Effect                                                     |
-| :---------- | :--------------------------------------------------------- |
-| `q`         | **Q**uit Vim (will fail if you have unsaved modifications) |
-| `w`         | **W**rite (save) the file and all its modifications        |
-| `q!`        | Force Vim to quit (any unsaved modification will be lost)  |
-| `wq` or `x` | **W**rite and **q**uit, i.e. save the file then quit Vim.  |
+| Command     | Effect                                                                |
+| :---------- | :-------------------------------------------------------------------- |
+| `q`         | **Q**uit Vim (will fail if you have unsaved modifications)            |
+| `w`         | **W**rite (save) the file and all its modifications                   |
+| `q!`        | Force (**!**) Vim to **q**uit (any unsaved modification will be lost) |
+| `wq` or `x` | **W**rite and **q**uit, i.e. save the file then quit Vim.             |
 
 <!-- TODO: add link http://www.openvim.com/ -->
 
@@ -1018,11 +1053,11 @@ From there, you can use some commands:
 
 ### An alternative to Vim
 
-If vim is a bit too much for you, [Nano][nano] is another CLI editor that is
+If Vim is a bit too much for you, [nano][nano] is another CLI editor that is
 much simpler to use and is also usually installed on most Unix-like systems (and
 in Git Bash).
 
-You can open a file with Nano in much the same way as vim, using the `nano`
+You can open a file with nano in much the same way as Vim, using the `nano`
 command instead:
 
 ```bash
@@ -1031,9 +1066,9 @@ $> nano test.txt
 
 
 
-### Editing files with Nano
+### Editing files with nano
 
-Editing files is much more straightforward and intuitive with Nano. Once the
+Editing files is much more straightforward and intuitive with nano. Once the
 file is open, you can simply type your text and move around with arrow keys:
 
 <p class='center'><img src='images/nano.png' class='p80' /></p>
@@ -1042,11 +1077,11 @@ file is open, you can simply type your text and move around with arrow keys:
 > window. The most important one is `^X` for Exit. In keyboard shortcut
 > parlance, the `^` symbol always represents the control key.
 
-So, **to exit from Nano, type `Ctrl-X`**.
+So, **to exit from nano, type `Ctrl-X`**.
 
 #### Saving files
 
-When you exit Nano with `Ctrl-X`, it will ask you whether you want to save your
+When you exit nano with `Ctrl-X`, it will ask you whether you want to save your
 changes:
 
 <p class='center'><img src='images/nano-save.png' class='p80' /></p>
@@ -1055,20 +1090,20 @@ Press the `y` key to save or the `n` key to discard your changes.
 
 #### Confirming the filename
 
-When saving changes, Nano will always ask you to **confirm the filename** where
+When saving changes, nano will always ask you to **confirm the filename** where
 the changes should be saved:
 
 <p class='center'><img src='images/nano-filename.png' class='p80' /></p>
 
 As you can see, it tells you the name of the file you opened. Now you can:
 
-* Simply **press `Enter`** to save the file.
+* Simply press `Enter` to save the file.
 * Or, change the name to save your changes to another file (and keep the
   unmodified original).
 
 
 
-### Setting Nano as the default editor
+### Setting nano as the default editor
 
 Editing the shell configuration will depend on your shell: for Zsh (the default
 terminal shell on macOS) or Bash shell (the default in Git Bash and most Linux
@@ -1091,7 +1126,7 @@ $> echo $0
 bash
 ```
 
-> **Hint:** now that you know how to use Nano, you can edit your Bash profile
+> **Hint:** now that you know how to use nano, you can edit your Bash profile
 > file with the following command: `nano ~/.bash_profile`.
 
 <!-- slide-notes -->
@@ -1113,7 +1148,8 @@ When you type a command in the CLI, it will try to see **if it knows this comman
 $> rubbish
 bash: rubbish: command not found
 ```
-> This means that the CLI failed to found the executable named `rubbish` in any of the directories where it looked.
+> This means that the CLI failed to find the executable named `rubbish` in any
+> of the directories where it looked.
 
 The list of the directories (and their paths) in which the CLI searches is stored in the `PATH` environment variable, each of them being separated with a `:`.
 
@@ -1159,10 +1195,10 @@ $> which ls
 ```
 
 If there are multiple versions of a command in your `PATH`, you can add the `-a`
-option to list them all:
+option to list them **a**ll:
 
 ```bash
-$> which -a
+$> which -a git
 /opt/homebrew/bin/git
 /usr/bin/git
 ```
@@ -1192,6 +1228,9 @@ $> mkdir -p ~/hello-program/bin
 $> curl -o ~/hello-program/bin/hello https://gist.githubusercontent.com/AlphaHydrae/8e09bf8790cbd6e3c7d9974988da3c28/raw/74372a1be35e973897c0a1fc946f3d18012a860c/hello.sh
 $> chmod 755 ~/hello-program/bin/hello
 ```
+
+> The `curl` command is used to download the script file, and the `chmod`
+> command to make that file executable.
 
 You should now be able to find it in the `~/hello-program/bin` directory:
 
@@ -1249,7 +1288,7 @@ Open the adequate file (`.bash_profile` for this example) from the CLI with
 $> nano ~/.bash_profile
 ```
 
-Add this line at the bottom of your file (use `i` to enter _insert_ mode if
+Add this line at the bottom of your file (use `i` to enter **insert** mode if
 using Vim):
 
 ```vim
@@ -1257,19 +1296,24 @@ export PATH="$HOME/hello-program/bin:$PATH"
 ```
 
 If you're in Vim, press `Esc` when you're done typing, then `:wq` and `Enter` to
-save and quit. If you're in Nano, press `Ctrl-X`, then ansert `Yes` and confirm
+save and quit. If you're in nano, press `Ctrl-X`, then answer `Yes` and confirm
 the filename.
 
 #### Does it work?
 
 > Remember to **close and re-open your CLI** to have the shell reload its configuration file.
 
-You should now be able to run the Hello World shell script as a command simply by typing `hello`:
+<!-- slide-column -->
+
+You should now be able to run the Hello World shell script as a command simply
+by typing `hello`:
 
 ```bash
 $> hello
 Hello World
 ```
+
+<!-- slide-column -->
 
 You don't even have to be in the correct directory:
 
@@ -1281,11 +1325,20 @@ $> hello
 Hello World
 ```
 
+<!-- slide-container -->
+
 And your CLI knows where it is:
 
 ```bash
 $> which hello
 /Users/jdoe/hello-program/bin/hello
+```
+
+It knows this because the directory containing the script is now in your PATH:
+
+```bash
+$> echo $PATH
+/Users/jdoe/hello-program/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 ```
 
 #### What have I done?
@@ -1307,7 +1360,6 @@ The next time you run a command, your shell will **first look** in this director
 
 * What you must put in the `PATH` is **NOT** the path to the executable,
   but the path to the **directory containing the executable**.
-
 * You must re-open your CLI for the change to take effect:
   the shell configuration file (e.g. `~/.bash_profile`) is only applied when the shell starts.
 
@@ -1368,17 +1420,20 @@ Oh My Zsh as well][oh-my-zsh-windows].
 [oh-my-zsh]: https://ohmyz.sh
 [oh-my-zsh-plugins]: https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
 [oh-my-zsh-windows]: http://kevinprogramming.com/using-zsh-in-windows-terminal/
+[powershell]: https://en.wikipedia.org/wiki/PowerShell
 [programmable]: https://en.wikipedia.org/wiki/Computer_program
 [punched-card]: https://en.wikipedia.org/wiki/Punched_card
 [redirection]: https://en.wikipedia.org/wiki/Redirection_(computing)
 [slide-git]: ../git
 [stored-program-computer]: https://en.wikipedia.org/wiki/Stored-program_computer
+[tar]: https://en.wikipedia.org/wiki/Tar_(computing)
 [tldr-pages]: https://tldr.sh
 [tty]: https://en.wikipedia.org/wiki/Teleprinter
 [tui]: https://en.wikipedia.org/wiki/Touch_user_interface
 [turing-machine]: https://en.wikipedia.org/wiki/Turing_machine
 [unix]: https://en.wikipedia.org/wiki/Unix
 [unix-shell]: https://en.wikipedia.org/wiki/Unix_shell
+[vi]: https://en.wikipedia.org/wiki/Vi_(text_editor)
 [vim]: https://en.wikipedia.org/wiki/Vim_(text_editor)
 [virtual-reality]: https://en.wikipedia.org/wiki/Virtual_reality
 [vt100]: https://en.wikipedia.org/wiki/VT100

@@ -411,7 +411,7 @@ a generated commit message:
 ```
 
 If you are in Vim, type `:wq` (**w**rite and **q**uit) to save and exit. If you
-are in Nano, use `Ctrl-X`.
+are in nano, use `Ctrl-X`.
 
 #### Merge commit
 
@@ -637,7 +637,7 @@ $> git commit -m "Merge better-sub into main"
 
 If you do not specify a commit message with `-m`, Git will generate one for you
 and open the configured editor (Vim by default) for you to check and/or change
-the message. Type `:wq` to exit from Vim or `Ctrl-X` to exit from Nano, and make
+the message. Type `:wq` to exit from Vim or `Ctrl-X` to exit from nano, and make
 the commit.
 
 #### The state after merging

@@ -148,7 +148,7 @@ Find the section configuring the listening address (the `listen = ...` key):
 listen = /run/php/php8.1-fpm.sock
 ```
 
-> :gem: You can search for a specific word in Nano by typing the `Ctrl-W`
+> :gem: You can search for a specific word in nano by typing the `Ctrl-W`
 > shortcut, then typing your word (e.g. "listen") and finally pressing the
 > `Enter` key. This will scroll to the first occurrence of the word in the file.
 > You can find further occurrences of the word by typing `Ctrl-W` followed by
