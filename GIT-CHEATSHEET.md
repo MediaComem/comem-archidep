@@ -22,17 +22,29 @@ book](https://git-scm.com/book/en/v2) (online & free).
 
 ## Best practices
 
-* [**Commit early and often, perfect later** (Seth Robertson)](https://sethrobertson.github.io/GitBestPractices/):
-  Git only takes full responsibility for your data when you commit.
-  If you fail to commit and then do something poorly thought out, you can run into trouble.
-  Additionally, having periodic checkpoints means that you can understand how you broke something.
+* [**Commit early and often, perfect later** (Seth
+  Robertson)](https://sethrobertson.github.io/GitBestPractices/):
 
+  Git only takes full responsibility for your data when you commit. If you fail
+  to commit and then do something poorly thought out, you can run into trouble.
+  Additionally, having periodic checkpoints means that you can understand how
+  you broke something.
+* [**Writing a good commit message**
+  (GitKraken)](https://www.gitkraken.com/learn/git/best-practices/git-commit-message)
+
+  If by taking a quick look at previous commit messages, you can discern what
+  each commit does and why the change was made, you’re on the right track. But
+  if your commit messages are confusing or disorganized, then you can help your
+  future self and your team by improving your commit message practices with help
+  from this article.
+* [**Conventional Commits**](https://www.conventionalcommits.org)
+
+  If you want to go further, look at *Conventional Commits*, a specification for
+  adding human and machine readable meaning to commit messages.
 * Choose a **branching workflow**:
   * [Create a short-lived branch for each feature](http://dymitruk.com/blog/2012/02/05/branch-per-feature/).
   * [A successful branching model](http://nvie.com/posts/a-successful-git-branching-model/) (for large teams).
-
 * Use a [Git-aware prompt](https://github.com/magicmonty/bash-git-prompt).
-
 * Enable [Git Rerere](https://git-scm.com/book/en/v2/Git-Tools-Rerere).
 
 
