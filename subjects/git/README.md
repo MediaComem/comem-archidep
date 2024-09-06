@@ -17,11 +17,11 @@ This is a condensed version of the first chapters of the [Git Book](https://git-
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [What is Git?](#what-is-git)
-- [What is version control?](#what-is-version-control)
+- [What is a version control system?](#what-is-a-version-control-system)
 - [A short history](#a-short-history)
-  - [**Local** version control systems](#local-version-control-systems)
-  - [**Centralized** version control systems](#centralized-version-control-systems)
-  - [**Distributed** version control systems](#distributed-version-control-systems)
+  - [**Local** version control systems (1980s)](#local-version-control-systems-1980s)
+  - [**Centralized** version control systems (1990s)](#centralized-version-control-systems-1990s)
+  - [**Distributed** version control systems (2000+)](#distributed-version-control-systems-2000)
 - [Git basics](#git-basics)
   - [Snapshots, not differences](#snapshots-not-differences)
   - [Git has integrity](#git-has-integrity)
@@ -62,6 +62,7 @@ This is a condensed version of the first chapters of the [Git Book](https://git-
   - [Unstaging a staged file](#unstaging-a-staged-file)
   - [Changing the commit message](#changing-the-commit-message)
   - [Adding changes to a commit](#adding-changes-to-a-commit)
+- [Best practices](#best-practices)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

@@ -24,12 +24,13 @@ Learn how to collaborate on [GitHub][github] with [Git][git].
   - [Centralized workflow](#centralized-workflow)
   - [Working with GitHub](#working-with-github)
     - [Create a free GitHub account](#create-a-free-github-account)
+    - [Check your SSH key](#check-your-ssh-key)
     - [Create an SSH key](#create-an-ssh-key)
     - [Copy the SSH key](#copy-the-ssh-key)
     - [Add the SSH key to your GitHub account](#add-the-ssh-key-to-your-github-account)
 - [Sharing changes](#sharing-changes)
   - [Bob: create a repository on GitHub](#bob-create-a-repository-on-github)
-  - [Bob: add B as a collaborator](#bob-add-b-as-a-collaborator)
+  - [Bob: add Alice as a collaborator](#bob-add-alice-as-a-collaborator)
   - [Bob: copy the remote SSH URL](#bob-copy-the-remote-ssh-url)
   - [Bob: add the remote to your local repository](#bob-add-the-remote-to-your-local-repository)
   - [Bob: push your commits to the shared repository](#bob-push-your-commits-to-the-shared-repository)
@@ -57,6 +58,7 @@ Learn how to collaborate on [GitHub][github] with [Git][git].
   - [Alice: check the state of branches](#alice-check-the-state-of-branches-1)
   - [Alice: push the changes](#alice-push-the-changes)
   - [Bob: pull the changes](#bob-pull-the-changes)
+- [Resources](#resources)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

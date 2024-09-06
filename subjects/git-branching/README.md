@@ -42,7 +42,7 @@ which you should read if you want more detailed information on the subject.
   - [Fast-forward](#fast-forward)
   - [Delete a branch](#delete-a-branch)
   - [Continue working on a feature branch](#continue-working-on-a-feature-branch)
-  - [Merge a divergent history](#merge-a-divergent-history)
+  - [Merging a divergent history](#merging-a-divergent-history)
     - [Merge commit message](#merge-commit-message)
     - [Merge commit](#merge-commit)
     - [Delete `feature-sub`](#delete-feature-sub)
@@ -61,7 +61,7 @@ which you should read if you want more detailed information on the subject.
   - [Make a conflicting file change](#make-a-conflicting-file-change)
   - [Merge the conflicting branch](#merge-the-conflicting-branch-1)
   - [Check the status of the file conflict](#check-the-status-of-the-file-conflict)
-  - [Resolving the file conflict](#resolving-the-file-conflict)
+  - [Resolve the file conflict](#resolve-the-file-conflict)
   - [Final state](#final-state)
 - [Resources](#resources)
 
