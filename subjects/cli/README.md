@@ -13,6 +13,7 @@ and learn the basics of navigating and manipulating your filesystem in a Unix sh
   - [Analytical engine (1837)](#analytical-engine-1837)
   - [A century later (1940s)](#a-century-later-1940s)
   - [ENIAC (1946)](#eniac-1946)
+  - [The first computer bug (1947)](#the-first-computer-bug-1947)
   - [Automated Computing Engine (1950s)](#automated-computing-engine-1950s)
   - [Punched cards for computers (1950s)](#punched-cards-for-computers-1950s)
   - [TeleTYpewriter (1960s)](#teletypewriter-1960s)
@@ -28,7 +29,7 @@ and learn the basics of navigating and manipulating your filesystem in a Unix sh
 - [How to use the CLI](#how-to-use-the-cli)
   - [Work in progress...](#work-in-progress)
   - [Writing commands](#writing-commands)
-  - [Options vs. arguments](#options-vs-arguments)
+  - [Options vs. values](#options-vs-values)
     - [Options with values](#options-with-values)
   - [Naming things when using CLI](#naming-things-when-using-cli)
   - [Auto-completion](#auto-completion)
@@ -39,6 +40,7 @@ and learn the basics of navigating and manipulating your filesystem in a Unix sh
   - [The `pwd` command](#the-pwd-command)
   - [The `ls` command](#the-ls-command)
   - [The `cd` command](#the-cd-command)
+    - [Absolute paths](#absolute-paths)
     - [The `.` path](#the--path)
     - [The `..` path](#the--path)
     - [Path reference](#path-reference)
@@ -117,15 +119,15 @@ mathematician and computer pioneer [Charles Babbage][charles-babbage].
 
 In 1842, [Ada Lovelace][ada-lovelace] translated into English and extensively
 annotated a description of the engine, including a way to calculate [Bernoulli
-numbers][bernoulli-numbers] using the machine (widely considered to be the first
-complete computer program). She has been described as the first computer
-programmer.
+numbers][bernoulli-numbers] using the machine (widely considered to be the
+[first complete computer program][note-g]). She has been described as the first
+computer programmer.
 
 ### A century later (1940s)
 
 <!-- slide-front-matter class: center -->
 
-<p class='center'><img class='w45' src='images/alan-turing.jpg' /></p>
+<p class='center'><img class='w40' src='images/alan-turing.jpg' /></p>
 
 [**Alan Turing**][alan-turing]
 
@@ -134,6 +136,8 @@ with the [Turing machine][turing-machine]. He is widely considered to be the
 father of theoretical [computer science][computer-science] and [artificial
 intelligence][artificial-intelligence].
 
+> Did you see [The Imitation Game][the-imitation-game]?
+
 ### ENIAC (1946)
 
 At that time, there was no such thing as a stored computer program.
@@ -141,6 +145,18 @@ Programs were **physically hard-coded**.
 On the [ENIAC][eniac], this was done using function tables with **hundreds of ten-way switches**, which took weeks.
 
 <p class='center'><img class='w75' src='images/eniac.jpg' /></p>
+
+### The first computer bug (1947)
+
+Computers like these are [electro-mechanical
+computers][electro-mechanical-computers] because they were based on switches and
+relays, as opposed to the [transistors][transistor] our current electronic
+computers are based on.
+
+<p class='center'><img class='w55' src='images/bug.jpg' /></p>
+
+When you had a bug in one of these computers, *debugging* meant getting your
+hands dirty and finding the [actual bug][bug] in the physical machine.
 
 ### Automated Computing Engine (1950s)
 
@@ -1395,6 +1411,7 @@ Oh My Zsh as well][oh-my-zsh-windows].
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
 [bernoulli-numbers]: https://en.wikipedia.org/wiki/Bernoulli_number
 [brain-interface]: https://en.wikipedia.org/wiki/Brain–computer_interface
+[bug]: https://en.wikipedia.org/wiki/Bug_(engineering)#History
 [building-the-future-of-the-command-line]: https://github.com/readme/featured/future-of-the-command-line
 [c]: https://en.wikipedia.org/wiki/C_(programming_language)
 [cat]: https://en.wikipedia.org/wiki/Cat_(Unix)
@@ -1404,6 +1421,7 @@ Oh My Zsh as well][oh-my-zsh-windows].
 [computer-science]: https://en.wikipedia.org/wiki/Computer_science
 [delay-line-memory]: https://en.wikipedia.org/wiki/Delay-line_memory
 [digital]: https://en.wikipedia.org/wiki/Digital_data
+[electro-mechanical-computers]: https://en.wikipedia.org/wiki/Mechanical_computer#Electro-mechanical_computers
 [eniac]: https://en.wikipedia.org/wiki/ENIAC
 [freebsd]: https://en.wikipedia.org/wiki/FreeBSD
 [general-purpose-computer]: https://en.wikipedia.org/wiki/Computer
@@ -1417,6 +1435,7 @@ Oh My Zsh as well][oh-my-zsh-windows].
 [motion-sensing]: https://en.wikipedia.org/wiki/Motion_detection
 [nano]: https://en.wikipedia.org/wiki/GNU_nano
 [node]: https://nodejs.org
+[note-g]: https://en.wikipedia.org/wiki/Note_G
 [oh-my-zsh]: https://ohmyz.sh
 [oh-my-zsh-plugins]: https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
 [oh-my-zsh-windows]: http://kevinprogramming.com/using-zsh-in-windows-terminal/
@@ -1427,7 +1446,9 @@ Oh My Zsh as well][oh-my-zsh-windows].
 [slide-git]: ../git
 [stored-program-computer]: https://en.wikipedia.org/wiki/Stored-program_computer
 [tar]: https://en.wikipedia.org/wiki/Tar_(computing)
+[the-imitation-game]: https://en.wikipedia.org/wiki/The_Imitation_Game
 [tldr-pages]: https://tldr.sh
+[transistor]: https://en.wikipedia.org/wiki/Transistor
 [tty]: https://en.wikipedia.org/wiki/Teleprinter
 [tui]: https://en.wikipedia.org/wiki/Touch_user_interface
 [turing-machine]: https://en.wikipedia.org/wiki/Turing_machine
