@@ -582,14 +582,14 @@ in production mode.
 >
 > :books: The `npm run build` command used in the instructions bundles the
 > frontend's files in production mode, compressing and digesting them. To
-> "digest" a web asset is to include a hash of its contents in the filename [for
-> the purposes of caching][webpack-caching]. This optimizes the delivery of web
-> assets to browsers especially when they come back to your website after having
-> already visited once.
+> "digest" a web asset is to include a hash of its contents in the file name
+> [for the purposes of caching][webpack-caching]. This optimizes the delivery of
+> web assets to browsers especially when they come back to your website after
+> having already visited once.
 >
 > :books: You can list the `frontend/dist` directory to see the digested assets:
 > `ls frontend/dist`. Observe that a file named `runtime.a185471aecb581c1.js`
-> (the hash may differ) has appeared. The hash part of the filename
+> (the hash may differ) has appeared. The hash part of the file name
 > (`a185471aecb581c1` in this case) depends on the content. When the content
 > changes, the hash changes. This means you can instruct client browsers to
 > cache web assets indefinitely, since you know that an asset's name will not
@@ -746,7 +746,7 @@ Add the following line to the file:
 Exit with `Ctrl-X` if you are using nano or with Esc then `:wq` if you are using
 Vim.
 
-> :gem: If you are using nano, the filename you are asked to confirm will be
+> :gem: If you are using nano, the file name you are asked to confirm will be
 > `/etc/sudoers.d/floodit.tmp` instead of `/etc/sudoers.d/floodit`. This is
 > normal, because `visudo` uses a temporary file to validate your changes before
 > saving the actual file. You may confirm without changes.

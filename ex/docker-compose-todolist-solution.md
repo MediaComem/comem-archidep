@@ -1,3 +1,10 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Solution: Deploy a PHP application with Docker Compose](#solution-deploy-a-php-application-with-docker-compose)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Solution: [Deploy a PHP application with Docker Compose](./docker-compose-todolist.md)
 
 The Dockerfile in your PHP todolist repository should look something like

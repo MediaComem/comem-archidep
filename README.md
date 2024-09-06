@@ -77,12 +77,10 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:book: Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Hello SSH](ex/hello-ssh.md)
 - Version control
-  - [:book: Version control with Git](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
-  - [:book: Git branching](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: :book: Version control with Git](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: :book: Git branching](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: :book: Collaborating with Git](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
   - **[:collision: :hammer: Collaborative exercise](https://github.com/MediaComem/comem-archidep-php-todo-exercise)**
-  - [:hammer: Clone a repository from a server](ex/git-clone-from-server.md)
-  - [:hammer: Push a repository to a server](ex/git-push-to-server.md)
 - Security
   - [:book: Open Web Application Security Project][owasp]
   - [:book: OWASP Top 10 - The Ten Most Critical Web Application Security Risks][owasp-top10]

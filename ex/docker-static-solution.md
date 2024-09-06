@@ -1,3 +1,10 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Solution: Containerize a static site using Docker](#solution-containerize-a-static-site-using-docker)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Solution: [Containerize a static site using Docker](./docker-static.md)
 
 1. Create a `.dockerignore` file at the root of the project directory. Add the following content to the file:

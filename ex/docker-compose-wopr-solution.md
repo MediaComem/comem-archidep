@@ -1,3 +1,10 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Solution: Deploy a more complex web application with Docker Compose](#solution-deploy-a-more-complex-web-application-with-docker-compose)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Solution: [Deploy a more complex web application with Docker Compose](./docker-compose-wopr.md)
 
 Here's an example of what the Dockerfile in your WOPR repository could look

@@ -374,7 +374,7 @@ Add the following line to the file:
 Exit with `Ctrl-X` if you are using nano or with Esc then `:wq` if you are using
 Vim.
 
-> :gem: If you are using nano, the filename you are asked to confirm will be
+> :gem: If you are using nano, the file name you are asked to confirm will be
 > `/etc/sudoers.d/wopr.tmp` instead of `/etc/sudoers.d/wopr`. This is normal,
 > because `visudo` uses a temporary file to validate your changes before saving
 > the actual file. You may confirm without changes.

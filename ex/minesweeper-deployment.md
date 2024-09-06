@@ -516,14 +516,14 @@ in production mode.
 > :books: The `MIX_ENV=prod mix do frontend.build, phx.digest` command used in
 > the instructions bundles the frontend's files in production mode, compressing
 > and digesting them. To "digest" a web asset is to include a hash of its
-> contents in the filename [for the purposes of caching][webpack-caching]. This
+> contents in the file name [for the purposes of caching][webpack-caching]. This
 > optimizes the delivery of web assets to browsers especially when they come
 > back to your website after having already visited once.
 >
 > :books: You can list the `priv/static` directory to see the digested assets:
 > `ls priv/static`. Observe that a file named
 > `priv/static/favicon-a8ca4e3a2bb8fea46a9ee9e102e7d3eb.ico` (the hash may
-> differ) has appeared. The hash part of the filename
+> differ) has appeared. The hash part of the file name
 > (`a8ca4e3a2bb8fea46a9ee9e102e7d3eb` in this case) depends on the content. When
 > the content changes, the hash changes. This means you can instruct client
 > browsers to cache web assets indefinitely, since you know that an asset's name
@@ -692,7 +692,7 @@ Add the following line to the file:
 Exit with `Ctrl-X` if you are using nano or with Esc then `:wq` if you are using
 Vim.
 
-> :gem: If you are using nano, the filename you are asked to confirm will be
+> :gem: If you are using nano, the file name you are asked to confirm will be
 > `/etc/sudoers.d/minesweeper.tmp` instead of `/etc/sudoers.d/minesweeper`. This
 > is normal, because `visudo` uses a temporary file to validate your changes
 > before saving the actual file. You may confirm without changes.
