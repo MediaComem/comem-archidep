@@ -48,8 +48,10 @@ There are many [reasons to use it][linux-pros]:
 
 Some of these properties make Linux an ideal for:
 
-* [Embedded systems][embedded] (e.g. [BusyBox][busybox] is only 2.1MB compressed).
-* [Servers][linux-servers] (Linux is used as the operating system on more than 50% of all servers, and is used on most supercomputers).
+* [Embedded systems][embedded] (e.g. [BusyBox][busybox] is only 2.1MB
+  compressed)
+* [Servers][linux-servers] (Linux is used as the operating system on more than
+  50% of all servers, and is used on most supercomputers)
 
 > Note that no system is perfect.
 > Linux also has [barriers to adoption][linux-cons],
@@ -57,8 +59,9 @@ Some of these properties make Linux an ideal for:
 
 ### Linux distribution timeline
 
-Linux is not just one operating systems, it is a family of systems called [Linux distributions][linux-distros].
-For example, on desktop or server, the most popular is [Ubuntu][ubuntu].
+Linux is not just one operating system, it is a family of systems called [Linux
+distributions][linux-distros]. For example, on desktop or server, the most
+popular is [Ubuntu][ubuntu].
 
 <p class='center'><img src='images/major-linux-distributions-history.png' width='70%' /></p>
 
