@@ -10,9 +10,9 @@ Learn what cloud computing is and about the common service models available toda
 - [Client-server model](#client-server-model)
   - [Server-side](#server-side)
   - [Types of servers](#types-of-servers)
-  - [[Internet hosting][internet-hosting]](#internet-hostinginternet-hosting)
+  - [Internet hosting](#internet-hosting)
     - [Types of web hosting](#types-of-web-hosting)
-  - [[Virtualization][virtualization]](#virtualizationvirtualization)
+  - [Virtualization](#virtualization)
     - [Virtualized server architecture](#virtualized-server-architecture)
 - [Cloud computing](#cloud-computing)
   - [What is cloud computing?](#what-is-cloud-computing)
@@ -33,10 +33,9 @@ Learn what cloud computing is and about the common service models available toda
   - [Level of abstraction](#level-of-abstraction)
 - [Trends](#trends)
   - [Microservices](#microservices)
-    - [[Microservice architecture][microservices-in-practice]](#microservice-architecturemicroservices-in-practice)
+    - [Microservice architecture](#microservice-architecture)
   - [Serverless computing](#serverless-computing)
 - [References](#references)
-- [TODO](#todo)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

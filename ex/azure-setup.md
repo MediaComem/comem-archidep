@@ -19,6 +19,7 @@ Azure](https://azure.microsoft.com) cloud platform.
   - [:exclamation: Reboot the server](#exclamation-reboot-the-server)
   - [:exclamation: Add swap space to your virtual server](#exclamation-add-swap-space-to-your-virtual-server)
 - [:exclamation: Finish](#exclamation-finish)
+- [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
   - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: Azure does not accept by SSH public key](#boom-azure-does-not-accept-by-ssh-public-key)
@@ -56,8 +57,11 @@ Azure resources as a student.
 You can display your public SSH key in your terminal with the following command:
 
 ```bash
-$> cat ~/.ssh/id_rsa.pub
+$> cat ~/.ssh/id_e25519.pub
 ```
+
+> :gem: If you have an older SSH client, you may want to try displaying the
+> contents of `~/.ssh/id_rsa.pub` instead.
 
 You should copy the output of this command. You will need it later.
 
@@ -76,12 +80,12 @@ using for the rest of the course.
 
   ![Azure: create a new virtual machine](../images/azure-vms.png)
 
-  - In the **Basics** settings, configure the **virtual machine details**: the
-    machine's name, region, image and size:
+  - In the **Basics** settings, configure the **virtual machine details** (the
+    machine's name, region, image and size):
 
     ![Azure: virtual machine instance details](../images/azure-vm-instance-details.png)
 
-    Be sure to select the **Ubuntu 22.04** image and the **B1s** size. You can
+    Be sure to select the **Ubuntu 24.04** image and the **B1s** size. You can
     select this size from the complete list of VM sizes:
 
     ![Azure: virtual machine size](../images/azure-vm-size.png)
@@ -142,8 +146,8 @@ using for the rest of the course.
     > do this, it will not be reachable from outside the Azure network. For
     > example, for a web application running on your virtual server to be
     > reachable, ports 80 (HTTP) and 443 (HTTPS) must accept incoming requests.
-    > Port 22 is for SSH connections. Ports 3000 & 3001 will be used in various
-    > exercises.
+    > Port 22 is for SSH connections. Ports 3000 and 3001 will be used in
+    > various exercises.
 
   - Use the default **Management**, **Advanced** and **Tags** settings.
   - Review and create your virtual machine.
@@ -162,7 +166,7 @@ get the usual warning that its authenticity cannot be verified:
 
 ```
 The authenticity of host '20.71.227.143 (20.71.227.143)' can't be established.
-ECDSA key fingerprint is SHA256:0000000000000000000000000000000000000000000.
+ECDSA key fingerprint is SHA256:0TORCgUgzrPGeDHzV5fGAarkpGpc5Nbkhb7q2dbG0OA.
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
 
@@ -295,7 +299,7 @@ you can still connect and that your hostname is correct:
 
 ```bash
 $> ssh john_doe@W.X.Y.Z
-Welcome to Ubuntu 22.04 LTS
+Welcome to Ubuntu 24.04 LTS
 ...
 
 $> hostname
@@ -316,6 +320,16 @@ administrator account** to both teachers.
 
 > :gem: If you connect to your server using `ssh john_doe@W.X.Y.Z`, then
 > `john_doe` is your username and `W.X.Y.Z` is your public IP address.
+
+## :checkered_flag: What have I done?
+
+You have used a popular Infrastructure-as-a-Service (IaaS) cloud service
+(Microsoft Azure) to set up a virtual machine for your own use. You are renting
+this virtual machine for a monthly fee (using your free education credits).
+
+You have used what you have learned about the command line and SSH to connect to
+this virtual machine and perform some basic setup steps in preparation for
+future deployment exercises.
 
 ### :classical_building: Architecture
 
