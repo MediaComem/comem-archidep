@@ -207,7 +207,7 @@ $> nano /path/to/file.txt
 
 > Nano will always display available commands at the bottom of the screen.
 > `Ctrl-X` is the one you will use most often, which saves and exits. Note that
-> **nano will ask you to confirm the filename**. Just press Enter (unless you
+> **nano will ask you to confirm the file name**. Just press Enter (unless you
 > want to save your changes to another file, to keep the original one).
 
 If you need superuser privileges to access the file, you can use `sudo`:

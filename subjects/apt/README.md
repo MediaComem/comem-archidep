@@ -71,7 +71,7 @@ For **operating systems**:
 Package manager                          | OS
 :---                                     | :---
 [Advanced Package Tool (APT)][apt]       | Debian, Ubuntu
-[Homebrew (brew)][homebrew]              | Mac OS X
+[Homebrew (brew)][homebrew]              | macOS
 [Yellowdog Updater, Modified (yum)][yum] | RHEL, Fedora, CentOS
 
 For **programming languages**:
