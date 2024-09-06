@@ -1,6 +1,11 @@
 # Git Branching
 
-Learn how to work on isolated, parallel lines of development with [Git][git] branches.
+Learn how to work on isolated, parallel lines of development with [Git][git]
+branches.
+
+This is a condensed version of the [branching chapter of the Git
+Book](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell),
+which you should read if you want more detailed information on the subject.
 
 <!-- slide-include ../../BANNER.md -->
 
@@ -11,7 +16,7 @@ Learn how to work on isolated, parallel lines of development with [Git][git] bra
 
 **Recommended reading**
 
-* [Git introduction](../git/)
+* [Version control with Git](../git/)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -81,9 +86,10 @@ Git has a very powerful branching model that is very **lightweight and fast**: i
 Many teams using Git create a **separate branch** to develop **each feature**.
 This has many advantages:
 
-* Each developer can work on his own feature, **isolated** from changes going on elsewhere
-* They can pull in changes from the mainline **at their own pace**
-* The team can choose **which features to release** and when
+* Each developer can work on his own feature, **isolated** from changes going on
+  elsewhere.
+* Each developer can pull in changes from the main line **at their own pace**.
+* The team can choose **which features to release** and when.
 
 
 
@@ -93,14 +99,15 @@ Remember that Git stores data as a series of snapshots.
 
 <git-memoir name='internals' chapter='internals' controls='false' svg-height='137px'></git-memoir>
 
-Each **commit** contains a pointer to the snapshot of the content you staged,
-represented by the blue **T**ree objects above (as they refer to a *tree* of file snapshots).
+Each **commit** (the circles above) contains a pointer to the snapshot of the
+content you staged, represented by the blue **T**ree rectangles (as they
+refer to a *tree* of file snapshots).
 
 Each commit also contains:
 
-* The user name and e-mail or the author.
-* The date at which the commit was created.
-* A pointer to the previous commit (or commits).
+* The user name and e-mail or the author
+* The date at which the commit was created
+* A pointer to the previous commit (or commits)
 
 #### Branches point to commits
 
@@ -127,7 +134,8 @@ $> git clone https://github.com/MediaComem/comem-archidep-git-branching.git
 $> cd comem-archidep-git-branching
 ```
 
-Remove the link to the remote repository (will we talk more about it in [Collaborating with Git](../git-collaborating/)):
+Remove the link to the remote repository (we will talk more about it in
+[Collaborating with Git](../git-collaborating/)):
 
 ```bash
 $> git remote rm origin
@@ -146,7 +154,8 @@ Open the project with your favorite editor and open the `index.html` page in a b
 
 ### Showing branches on the command line
 
-The `git log` command can show you a representation of the commit graph and its branches:
+The [`git log` command][git-log] can show you a representation of the commit
+graph and its branches:
 
 ```bash
 $> git log --oneline --decorate --graph --all
@@ -158,7 +167,7 @@ $> git log --oneline --decorate --graph --all
 In fact, this command is so useful you should make an **alias**, as we will use it a lot in this tutorial:
 
 ```bash
-$> git config --global alias.graph "log --oneline --graph --decorate --all"
+$> git config --global alias.graph "log --oneline --decorate --graph --all"
 
 $> git graph
  * 4f94fa (HEAD -> main) Improve layout
@@ -173,7 +182,8 @@ $> git graph
 > **Exercise:** our JavaScript calculator is missing some code.
 > Let's create a branch to implement subtraction.
 
-It's very fast and simple to create a new branch:
+It's very fast and simple to create a new branch. Run the following command to
+create a branch called "feature-sub":
 
 ```bash
 $> git branch feature-sub
@@ -186,7 +196,8 @@ Note that `HEAD` didn't move – we are still on the `main` branch.
 
 #### Showing the current branch
 
-You can use `git branch` without arguments to simply see the list of branches and which one you are currently on:
+You can use `git branch` without arguments to simply see the list of branches
+and which one you are currently on:
 
 ```bash
 $> git branch
@@ -194,11 +205,13 @@ $> git branch
    feature-sub
 ```
 
+> The star is displayed next to the current branch.
+
 
 
 ### Switch branches
 
-Now let's switch branches:
+Now let's switch to the `feature-sub` branch:
 
 ```bash
 $> git checkout feature-sub
@@ -217,14 +230,18 @@ Nothing else happened because `HEAD` is still pointing to the same commit as `ma
 
 ### Commit on a branch
 
-Once you're done, it's time to add and commit your changes.
+Once you're done, it's time to add and commit your changes:
 
 ```bash
 $> git add subtraction.js
+
 $> git commit -m "Implement subtraction"
+[feature-sub 712ff2] Implement subtraction
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 ```
 
-As you commit, the current branch (the one pointed to by `HEAD`), moves forward to the new commit:
+As you commit, the current branch (the one pointed to by `HEAD`) moves forward
+to the new commit:
 
 <git-memoir name='branchingOneLine' chapter='commit-on-a-branch' svg-height='137px'></git-memoir>
 
@@ -233,8 +250,8 @@ As you commit, the current branch (the one pointed to by `HEAD`), moves forward 
 ### Switch back to `main`
 
 > **Exercise:** oops, you just noticed that addition is not working correctly.
-> You need to make a bugfix, but you don't want to mix that code with the new subtraction feature.
-> Let's **go back to `main`**.
+> You need to make a bug fix, but you don't want to mix that code with the new
+> subtraction feature. Let's **go back to `main`**:
 
 ```bash
 $> git checkout main
@@ -256,9 +273,10 @@ You have essentially **rewinded** the work you've done in `feature-sub`, and are
 
 ### Create another branch
 
-> **Exercise:** let's a create a new branch to fix the bug.
+> **Exercise:** let's create a new branch to fix the bug.
 
-You can create a new branch *and* switch to it in one command:
+You can create a new branch *and* switch to it in one command with the `-b` (new
+**b**ranch) option of the `checkout` command:
 
 ```bash
 $> git checkout -b fix-add
@@ -293,8 +311,9 @@ You can **switch back and forth** between the branches with `git checkout`.
 
 <git-memoir name='branching' chapter='switch-branches' svg-height='250px'></git-memoir>
 
-Every time you checkout one of these branches,
-the files in your **working directory** are updated to reflect the state of the corresponding commit, or snapshot.
+Every time you check out one of these branches, the files in your **working
+directory** are updated to reflect the state of the corresponding commit, or
+snapshot.
 
 
 
@@ -317,8 +336,8 @@ $> git checkout main
 
 ### Merge a branch
 
-Now that you are on the correct branch,
-you can **merge** the changes from `fix-add`:
+Now that you are on the correct branch, you can **merge** the changes from the
+`fix-add` branch:
 
 ```bash
 $> git merge fix-add
@@ -342,8 +361,9 @@ This is what is called a **fast-forward**.
 
 ### Delete a branch
 
-> **Exercise:** now that we've brought our fix back into `main`, we don't need the `fix-add` branch anymore.
-  Let's delete it.
+> **Exercise:** now that we've brought our fix back into `main`, we don't need
+> the `fix-add` branch anymore. Let's delete it with the `-d` (**d**elete)
+> option of the `branch` command:
 
 ```bash
 $> git branch -d fix-add
@@ -370,16 +390,16 @@ $> git commit -m "Comment subtract function"
 
 
 
-### Merge a divergent history
+### Merging a divergent history
 
 <git-memoir name='branching' chapter='work-on-feature-branch' controls='false' svg-height='200px'></git-memoir>
 
 Now that we're happy with our new subtraction feature, we want to **merge** it into `main` as well.
 But the `feature-sub` branch has **diverged from some older point compared to `main`**, so Git cannot do a fast-forward:
 
-* `feature-sub` points to commit `f92ab0` which contains our feature
-* `main` points to commit `2817bc` which contains the addition fix
-* Commit `4f94fa` is the common ancestor
+* `feature-sub` points to commit `f92ab0` which contains our feature.
+* `main` points to commit `2817bc` which contains the addition fix.
+* Commit `4f94fa` is the common ancestor.
 
 Git will do a **three-way merge** instead, combining together the changes of `main` and `feature-sub` (compared to the common ancestor).
 A **new commit** will be created representing that state.
@@ -396,9 +416,9 @@ Merge made by the 'recursive' strategy.
   1 file changed, 4 insertions(+), 1 deletion(-)
 ```
 
-Git will need to create a new commit when you run the merge command, so it will
-**open the configured editor** (Vim by default if you have not changed it) with
-a generated commit message:
+Git will need to create a new commit when you run the `merge` command, so it
+will **open the configured editor** (Vim by default if you have not changed it)
+with a generated commit message:
 
 ```txt
  Merge branch 'feature-sub'
@@ -444,8 +464,9 @@ Let's pretend that a colleague of yours also implemented the subtraction functio
 
 ### Find the common ancestor
 
-We want to make it look as if your colleague did his work **at the same time** as you.
-Let's find the original starting point (the common ancestor where `feature-sub` and `fix-add` diverged) and start a new branch from there:
+We want to make it look as if your colleague did his work **at the same time**
+as you. Let's find the original starting point (the common ancestor where
+`feature-sub` and `fix-add` diverged) and start a new branch from there.
 
 ```bash
 $> git graph
@@ -462,11 +483,15 @@ $> git graph
 
 Make a copy of that commit hash.
 
+> Note that the actual hash of the commit on your machine may be different than
+> the one in this slide.
+
 
 
 ### Create a branch "in the past"
 
-You can create a branch at any point in the project's history by passing an additional commit reference to `git checkout`:
+You can create a branch at any point in the project's history by passing an
+additional commit reference to `git checkout`:
 
 ```bash
 $> git checkout -b better-sub 4f94fa
@@ -474,7 +499,7 @@ $> git checkout -b better-sub 4f94fa
 
 <git-memoir name='branching' chapter='checkout-past' svg-height='250px'></git-memoir>
 
-`HEAD` also moved since we used the `-b` option.
+The `HEAD` has now moved to that point in the project's past history.
 
 
 
@@ -504,7 +529,7 @@ Commit your changes:
 
 ```bash
 $> git add subtraction.js
-$> git commit -m "Implemented a better subtract"
+$> git commit -m "Implement a better subtract"
 ```
 
 #### The state before merging
@@ -517,7 +542,7 @@ Viewing the graph of commits, it's clear that the change has been made **in para
 
 ### Merge the conflicting branch
 
-Go back to `main` and merge `better-sub`:
+Go back to `main` and merge the `better-sub` branch:
 
 ```bash
 $> git checkout main
@@ -554,9 +579,11 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
 * Git tells you that the merge is **not complete**:
-  * You can either fix the conflicts and run `git commit` to end the merge, or cancel the whole thing with `git merge --abort`
-* `subtraction.js` was modified in **both** the **current branch** and the **branch we are trying to merge in**
-* You can use `git add <file>` to **mark the conflicts in a file as resolved**
+  * You can either fix the conflicts and run `git commit` to end the merge, or
+    cancel the whole thing with `git merge --abort`.
+* `subtraction.js` was modified in **both** the **current branch** and the
+  **branch we are trying to merge in**.
+* You can use `git add` to **mark the conflicts in a file as resolved**.
 
 
 
@@ -604,8 +631,8 @@ Take a closer look at the conflict markers:
 
 Since Git cannot know which is better, it's **your responsibility** to:
 
-* Remove the version you don't want
-* Remove the marker conflicts
+* Remove the version you don't want, and...
+* Remove the marker conflicts.
 
 ```js
 return -b + a;
@@ -637,12 +664,12 @@ $> git commit -m "Merge better-sub into main"
 
 If you do not specify a commit message with `-m`, Git will generate one for you
 and open the configured editor (Vim by default) for you to check and/or change
-the message. Type `:wq` to exit from Vim or `Ctrl-X` to exit from nano, and make
-the commit.
+the message. Type `:wq` to exit from Vim or `Ctrl-X` to exit from nano, and to
+make the commit.
 
 #### The state after merging
 
-Finally, delete the branch:
+Finally, delete the `better-sub` branch:
 
 ```bash
 $> git branch -d better-sub
@@ -677,7 +704,7 @@ This time, this colleague decided to delete `subtraction.js` in his branch becau
 ```bash
 $> rm subtraction.js
 $> git add .
-$> git commit -m "Remove incomplete implementations"
+$> git commit -m "Remove incomplete implementation"
 ```
 
 <git-memoir name='branching' chapter='conflicting-file-change' svg-height='300px'></git-memoir>
@@ -698,9 +725,10 @@ Automatic merge failed; fix conflicts and then commit the result.
 
 Git tells you immediately that there is a conflict and that:
 
-* `subtraction.js` was **deleted** in the `cleanup` branch
-* `subtraction.js` was **modified** in the current branch (`HEAD`)
-* Git **doesn't know** whether it should apply the deletion or the modification, so it left the modified file for you to check
+* `subtraction.js` was **deleted** in the `cleanup` branch.
+* `subtraction.js` was **modified** in the current branch (`HEAD`).
+* Git **doesn't know** whether it should apply the deletion or the modification,
+  so it left the modified file for you to check.
 
 
 
@@ -725,18 +753,19 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 Again, Git gives us some information:
 
-* `subtraction.js` was **deleted by "them"**, meaning that it was deleted by someone else in the branch you're trying to merge in
-  (if *you* had deleted it and they had modified it, it would be *deleted by "us"*)
-* Use either `git add` or `git rm` to mark the conflict as resolved
+* `subtraction.js` was **deleted by "them"**, meaning that it was deleted in the
+  branch you're trying to merge in (if it had been deleted in the current branch
+  and modified in the other branch, it would be *deleted by "us"*).
+* Use either `git add` or `git rm` to mark the conflict as resolved.
 
 
 
-### Resolving the file conflict
+### Resolve the file conflict
 
-You have to choose whether you want to:
+You have to choose whether you want to either:
 
-* Keep the modified file (use `git add`)
-* Delete it (use `git rm`)
+* Keep the modified file (use `git add`), or...
+* Remove it (use `git rm`)
 
 Let's keep it:
 
@@ -779,4 +808,5 @@ And you're done!
 [advanced-merging]: https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging
 [branching]: https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
 [git]: https://git-scm.com
+[git-log]: https://git-scm.com/docs/git-log
 [understanding-branches]: https://blog.thoughtram.io/git/rebase-book/2015/02/10/understanding-branches-in-git.html

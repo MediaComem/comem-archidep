@@ -12,7 +12,7 @@ Learn how to collaborate on [GitHub][github] with [Git][git].
 
 **Recommended reading**
 
-* [Git introduction](../git/)
+* [Version control with Git](../git/)
 * [Git branching](../git-branching/)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -97,53 +97,70 @@ Here we will use a simple **centralized workflow**:
 
 In this workflow:
 
-* A **shared central repository** hosted on GitHub
-* Each developer has a **repository on their local machine**
-  * Each developer will add the shared repository as a **remote**
+* A **shared central repository** is hosted on GitHub.
+* Each developer has a **repository on their local machine**.
+  * Each developer will add the shared repository as a **remote**.
 
 
 
 ### Working with GitHub
 
 > "[GitHub][github] is a web-based Git repository and Internet hosting service.
-  It offers all of the **distributed version control** and **source code management (SCM)** functionality of **Git**
-  as well other features like access control, bug tracking, feature requests, task management, and wikis for every project."
+> It offers all of the **distributed version control** and **source code
+> management (SCM)** functionality of **Git** as well as other features like
+> access control, bug tracking, feature requests, task management, and wikis for
+> every project."
 
 <p class='center'><img src='images/github.png' width='70%'></p>
 
 #### Create a free GitHub account
 
-Both group members should register on GitHub:
+Both group members should register on [GitHub][github]:
 
 <p class='center'><img src='images/github-account.jpg' width='100%'></p>
 
-#### Create an SSH key
+#### Check your SSH key
 
-To push code to GitHub, you will need to **authenticate** yourself.
-There are two methods of authentication: HTTPS username/password or SSH keys.
-We will use an **SSH key** for this tutorial.
-You can check if you have one already with this command:
+To push code to GitHub, you will need to **authenticate** yourself. There are
+two methods of authentication: HTTPS username/password or SSH keys. We will use
+an **SSH key** in this course. You can check if you have one already with this
+command:
 
 ```bash
 $> ls ~/.ssh
-id_rsa  id_rsa.pub
+id_ed25519  id_ed25519.pub
 ```
 
-If you see these files, then you already have an SSH key pair (`id_rsa` is the **private** key, `id_rsa.pub` is the **public** key).
+If you see these files, then you already have an SSH key pair (`id_ed25519` is
+the **private** key, `id_ed25519.pub` is the **public** key, or it might be
+`id_rsa` and `id_rsa.pub` for older SSH clients).
 
-If you don't (or see a *"No such file or directory"* error), use this command to generate a new key pair (press Enter at every prompt to keep the defaults):
+> Using an SSH key arguably simplifies authentication. If you don't have a
+> password on your private SSH key, you won't have to enter one when you use Git
+> over SSH either. If you have a password, you should already have learned to
+> use an SSH agent to avoid having to enter your password every time. Git will
+> also use the agent to authenticate.
+
+#### Create an SSH key
+
+If you don't have a key yet (or see a *"No such file or directory"* error), use
+the `ssh-keygen` command to generate a new key pair (press Enter at every prompt
+to keep the defaults):
 
 ```bash
 $> ssh-keygen
 Generating public/private rsa key pair.
-Enter file in which to save the key (/home/.ssh/id_rsa):
+Enter file in which to save the key (/home/.ssh/id_ed25519):
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
-Your identification has been saved in /home/.ssh/id_rsa.
-Your public key has been saved in /home/.ssh/id_rsa.pub.
+Your identification has been saved in /home/.ssh/id_ed25519.
+Your public key has been saved in /home/.ssh/id_ed25519.pub.
 The key fingerprint is:
 SHA256:ULmjUQDN4Snkh0s9u093mcva4cI94cDk name@host
 ```
+
+> Read [SSH Key Protection](../ssh/#47) again as a reminder on whether or not to
+> set a passphrase.
 
 #### Copy the SSH key
 
@@ -151,11 +168,15 @@ To authenticate using your SSH key on GitHub, you will need to copy your **publi
 You can display it on the CLI with this command:
 
 ```bash
-$> cat ~/.ssh/id_rsa.pub
+$> cat ~/.ssh/id_ed25519.pub
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQC+OMYWxBCiKa1lZuUc8sLcSBW17h
 l4VTy9DaarFC98KxS3NQao/7+eMkOS3o1II4QL7pn7WMYITWpWP9UdJKNef/KQlTpS
 1QVbhb6iJ2z2+GGt8+b0GvBRAZgab9TeOIrzN1QyknO4 name@host
 ```
+
+> The file might be `~/.ssh/id_rsa.pub` with older SSH clients that still use
+> RSA as the default algorithm. **DO NOT** copy the private key (the
+> `~/.ssh/id_ed25519` or `~/.ssh/id_rsa` file).
 
 #### Add the SSH key to your GitHub account
 
@@ -197,7 +218,7 @@ Clone repositories, push and pull commits
 
 
 
-### Bob: add B as a collaborator
+### Bob: add Alice as a collaborator
 
 For this tutorial, both team members will need push access to the repository.
 **Bob** should go to the repository's **collaborator settings**,
@@ -222,7 +243,8 @@ and add the GitHub username of **Alice** as a collaborator:
 
 ### Bob: add the remote to your local repository
 
-**Bob** should move into their local repository and add the GitHub repository as a remote:
+**Bob** should move into his local repository and add the GitHub repository as a
+remote:
 
 ```bash
 $> cd /path/to/projects/comem-archidep-git-branching
@@ -239,6 +261,9 @@ $> git remote -v
 origin  git@github.com:bob/github-demo.git (fetch)
 origin  git@github.com:bob/github-demo.git (push)
 ```
+
+> The `-v` (**v**erbose) option makes the `git remote` command display more
+> information. Without it, the URLs are not shown.
 
 
 
@@ -259,7 +284,8 @@ To github.com:bob/github-demo.git
  * [new branch]      main -> main
 ```
 
-The command `git push [remote] [branch]` tells Git to push the commit pointed to by `[branch]` to the remote named `[remote]`.
+The command `git push <remote> <branch>` tells Git to push the commit pointed to
+by `<branch>` to the remote named `<remote>`.
 
 The `-u` option (or `--set-upstream`) tells Git to remember that you have linked this branch to that remote.
 
@@ -298,7 +324,7 @@ It tells you where the **main** branch points to on the **origin** remote (the G
 
 ### Alice: clone the shared repository
 
-**Alice** can now get a copy of the shared GitHub repository on their machine.
+**Alice** can now get a copy of the shared GitHub repository on her machine.
 This is done using the `git clone` command:
 
 ```bash
@@ -336,13 +362,13 @@ so that you can know what the current state of the remote is.
 
 ### Alice: make local changes
 
-**Alice** thinks that the project's filenames are too long. Let's fix that:
+**Alice** thinks that the project's file names are too long. Let's fix that:
 
 ```bash
 $> mv addition.js add.js
 $> mv subtraction.js sub.js
 $> git add .
-$> git commit -m "Shorter filenames"
+$> git commit -m "Shorter file names"
 ```
 
 
@@ -388,9 +414,9 @@ but that the remote-tracking branch origin/main **is not up-to-date** in **Bob**
 
 <!-- slide-container -->
 
-Git does not automatically sync repositories.
-**As far as Bob knows** looking at information from their local repository,
-the main branch still points to `4f94ga` in the shared repository.
+Git does not automatically synchronize repositories. **As far as Bob knows**
+looking at information from his local repository, the main branch still points
+to `4f94ba` in the shared repository.
 
 
 
@@ -405,7 +431,7 @@ remote: Compressing objects: 100% (1/1), done.
 remote: Total 2 (delta 1), reused 2 (delta 1), pack-reused 0
 Unpacking objects: 100% (2/2), done.
 From github.com:bob/github-demo
-   4f94ga..92fb8c  main     -> origin/main
+   4f94ba..92fb8c  main     -> origin/main
 ```
 
 <!-- slide-column 70 -->
@@ -491,8 +517,8 @@ $> git push origin main
 
 **Alice**, not having noticed the bug, proceeds to make 2 changes on `index.html`:
 
-* Add an `<h2>` title before each computation
-* Put the two last `<script>` tags on one line
+* Add an `<h2>` title before each computation.
+* Put the two last `<script>` tags on one line.
 
 ```html
 *<h2>Addition</h2>
@@ -509,15 +535,18 @@ $> git push origin main
 
 ### Alice: push the other changes
 
-Commit and push the changes:
+Commit and then push the changes:
 
 ```bash
 $> git add index.html
 $> git commit -m "Improve layout"
-$> git push origin main
 ```
 
 <git-memoir name='github' chapter='alice-fix' svg-height='250px'></git-memoir>
+
+```bash
+$> git push origin main
+```
 
 
 
@@ -588,8 +617,8 @@ This is the state of **Alice**'s repository right now.
 
 <!-- slide-column -->
 
-It's for the same reason as in the previous tutorial:
-**Bob** and **Alice**'s work have diverged from a common ancestor.
+It's for the same reason as in the previous tutorial: **Bob** and **Alice**'s
+work have diverged from a common ancestor (`92fb8c` in this example).
 
 A remote repository will **only accept fast-forward pushes** by default.
 
@@ -614,7 +643,11 @@ CONFLICT (content): Merge conflict in index.html
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-The fetch succeeded, but the merge failed because of a **conflict** on `index.html`.
+The fetch succeeded, but the merge failed because of a **conflict** on
+`index.html`.
+
+> As we've seen before, a `pull` is equivalent to a `fetch` followed by a
+> `merge`.
 
 
 
@@ -631,7 +664,8 @@ The fetch succeeded, but the merge failed because of a **conflict** on `index.ht
 >>>>>>> 3ff5311406e73c7d2cc1691f9535214c2543937f
 ```
 
-Let's make sure we keep it on one line while still renaming the files, and remove the conflict markers::
+Let's make sure we keep it on one line while still renaming the files, and
+remove the conflict markers:
 
 ```txt
     <script src="add.js"></script><script src="sub.js"></script>
@@ -648,8 +682,9 @@ $> git commit -m "Merge origin/main"
 
 ### Alice: check the state of branches
 
-Now the state of **Alice**'s local repository is consistent with the state of the shared repository:
-the commit pointed to by **main** is ahead of the commit pointed to by **origin/main**.
+Now the state of **Alice**'s local repository is consistent with the state of
+the shared repository: the commit pointed to by `main` is ahead of the commit
+pointed to by `origin/main`.
 
 <git-memoir name='github' chapter='alice-pull-changes' svg-height='325px'></git-memoir>
 
@@ -676,6 +711,13 @@ $> git pull origin main
 ```
 
 <git-memoir name='github' chapter='bob-pull-merge' svg-height='335px'></git-memoir>
+
+
+
+## Resources
+
+* [Git Branching - Remote Branches](https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches)
+* [Distributed Git](https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows)
 
 
 

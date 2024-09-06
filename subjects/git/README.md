@@ -1,4 +1,4 @@
-# Git Introduction
+# Version Control with Git
 
 Learn the basics of [Git][git], one of the most popular distributed version control systems.
 This is a condensed version of the first chapters of the [Git Book](https://git-scm.com/book/en/v2), which you should read if you want more detailed information on the subject.
@@ -71,18 +71,21 @@ This is a condensed version of the first chapters of the [Git Book](https://git-
 
 <a href='https://git-scm.com'><img src='images/git-logo.png' width='30%' /></a>
 
-Git is a **version control system (VCS)** originally developed by Linus Torvalds, the creator of Linux.
+Git is a [**version control system (VCS)**][vcs] originally developed by Linus
+Torvalds, the creator of Linux, to manage the source code of the Linux kernel.
+
 Its goals are:
 
 * **Speed**
 * **Simple** design
 * Strong support for **non-linear development** (thousands of parallel branches)
 * Fully **distributed**
-* Able to handle **large projects** like the Linux kernel efficiently (speed and data size)
+* Able to handle **large projects** like the Linux kernel efficiently (speed and
+  data size)
 
 
 
-## What is version control?
+## What is a version control system?
 
 > A system that records changes to a file or set of files over time so that you can recall specific versions later.
 
@@ -90,11 +93,12 @@ Its goals are:
 
 What can I do with it?
 
-* **Revert** specific files (or an entire project) back to a previous state.
-* **Compare** changes over time.
-* See who last modified something that might be causing a problem, when the issue was introduced, and more.
-* **Recover** if you screw things up or lose files.
-* **Collaborate** on a project as a distributed team.
+* **Revert** specific files (or an entire project) back to a previous state
+* **Compare** changes over time
+* See who last modified something that might be causing a problem, when the
+  issue was introduced, and more
+* **Recover** if you screw things up or lose files
+* **Collaborate** on a project as a distributed team
 
 
 
@@ -104,13 +108,16 @@ What can I do with it?
 
 
 
-### **Local** version control systems
+### **Local** version control systems (1980s)
 
 <!-- slide-column -->
 
 Basically, you **manually** copy your files into other directories to keep old versions.
 
-Systems such as [RCS][rcs] automate this process.
+Systems such as [**R**evision **C**ontrol **S**ystem (RCS)][rcs] automate this
+process.
+
+> RCS was first released in 1982.
 
 <!-- slide-column -->
 
@@ -120,21 +127,24 @@ Systems such as [RCS][rcs] automate this process.
 
 **But:**
 
-* It's easy to accidentally edit the wrong files
-* It's hard to **collaborate** on different versions with other people
+* It's easy to accidentally edit the wrong files.
+* It's hard to **collaborate** on different versions with other people.
 
 
 
-### **Centralized** version control systems
+### **Centralized** version control systems (1990s)
 
 <!-- slide-column -->
 
-Systems such as [CVS][cvs] and [Subversion][svn] use a **single central server** that keeps all the versioned files.
-and clients get files from there.
+Systems such as [**C**oncurrent **V**ersion **S**ystems (CVS)][cvs] and
+[**S**ub**v**ersio**n** (SVN)][svn] use a **single central server** that keeps
+all the versioned files, and clients get files from there.
 
 Administrators have **fine-grained control** over who can do what.
 
-<!-- slide-column -->
+> CVS and SVN were first released in 1990 and 2000, respectively.
+
+<!-- slide-column 45 -->
 
 <img src='images/centralized-vcs.png' width='100%' />
 
@@ -142,23 +152,29 @@ Administrators have **fine-grained control** over who can do what.
 
 **But:**
 
-* The centralized server is a **single point of failure**
-* If proper backups are not kept, the history of the project **can be lost**
+* Most operations are **slow** since they require connecting to a server.
+* The centralized server is a **single point of failure**.
+* If proper backups are not kept, the history of the project **can be lost**.
 
-> (You could also consider storing your files in a shared Dropbox, Google Drive, etc. to be a kind of centralized version control system.
-> However, it's doesn't have as many tools for **consulting and manipulating the history** of your project, or to **collaborate on source code**.)
+> You could also consider storing your files in a shared Dropbox, Google Drive,
+> etc. to be a kind of centralized version control system. However, it doesn't
+> have as many tools for **consulting and manipulating the history** of your
+> project, or to **collaborate on source code**.
 
 
 
-### **Distributed** version control systems
+### **Distributed** version control systems (2000+)
 
 <!-- slide-column -->
 
 Systems such as [Git][git] and [Mercurial][mercurial] are **distributed**.
 Clients **fully mirror** the repository, not just the latest snapshot.
 
-* Each client has a **full backup** of the project
-* Different [types of collaborative workflows][distributed-workflows] can be used
+* Each client has a **full backup** of the project.
+* Different [types of collaborative workflows][distributed-workflows] can be
+  used.
+
+> Git and Mercurial were first released in 2005.
 
 <!-- slide-column -->
 
@@ -299,9 +315,11 @@ These files are pulled out of the compressed database in the Git directory and p
 
 #### The staging area (also called the index)
 
-The staging area is a file, generally contained in your Git directory, that stores information about **what will go into the next commit (or version)**.
+The staging area is a file in your Git directory, that stores information about
+**what will go into the next commit (or version)**.
 
-Before file snapshots are **committed** in the Git directory, they must go through the *staging area*:
+Before file snapshots are **committed** in the Git directory, they must go
+through the *staging area*:
 
 ```txt
 my-project:
@@ -370,7 +388,7 @@ CLI to make sure:
 
 ```bash
 $> git --version
-git version 2.11.0
+git version 2.46.0
 ```
 
 #### Installing Git
@@ -384,6 +402,13 @@ $> xcode-select --install
 
 On **Windows**, you should have Git if you have Git Bash installed. If not, you
 can download it directly from https://git-scm.com/download/win
+
+On **Linux**, Git may already be installed. If not, you can install it using
+your distribution's package manager, for example on APT-based systems:
+
+```bash
+$> sudo apt install git-all
+```
 
 Otherwise, follow the [official installation instructions][install-git].
 
@@ -460,7 +485,7 @@ Go into the directory and run `git init` to create a Git repository:
 ```bash
 $> cd hello-project
 $> git init
-Initialized empty Git repository in ~/hello-project
+Initialized empty Git repository in /path/to/projects/hello-project
 ```
 
 This creates a Git directory (`.git`) with an empty object database.
@@ -541,10 +566,12 @@ Changes to be committed:
 
 The files are now **staged**: they will be in the next commit.
 
-**Tips:**
-
-* `git add *.txt` would have added the two files in one command.
-* `git add .` would have added all the files in the current directory (recursively).
+> **Tips:**
+>
+> * `git add *.txt` would have added all files with the `.txt` extension in one
+>   command.
+> * `git add .` would have added all the files in the current directory
+>   (recursively).
 
 #### Checking staged changes
 
@@ -566,7 +593,7 @@ index 0000000..e5db1d9
 --- /dev/null
 +++ b/hi.txt
 @@ -0,0 +1 @@
-+Hello Bob
++Hi Bob
 ```
 
 It shows you each staged file and the changes in those files.
@@ -716,19 +743,20 @@ index e5db1d9..f74a87a 100644
 --- a/hi.txt
 +++ b/hi.txt
 @@ -1 +1,2 @@
- Hello Bob
+ Hi Bob
 +Hi Jane
 ```
 
 #### Staging area versus working directory
 
-This example shows you that the working directory and the staging area and really two separate steps.
+This example shows you that the working directory and the staging area are
+really two separate steps:
 
-* The version of `hello.txt` you have **staged** contains two lines of text ("Hello World" and "You are beautiful").
-  This is what will be committed.
-
-* The version of `hello.txt` in the **working directory** has an additional line of text ("I see trees of green") which you added later.
-  It will not be included in the next commit unless you stage the file again.
+* The version of `hello.txt` you have **staged** contains two lines of text
+  ("Hello World" and "You are beautiful"). This is what will be committed.
+* The version of `hello.txt` in the **working directory** has an additional line
+  of text ("I see trees of green") which you added later. It will not be
+  included in the next commit unless you stage the file again.
 
 <p class='center'><img src='images/areas.png' width='60%' /></p>
 
@@ -770,9 +798,10 @@ $> git commit -m "New lines in hello.txt and hi.txt"
 
 ### Moving and removing files
 
-Git has a `git mv` and `git rm` command, but nobody uses them for day-to-day
-work on files. It's simpler to just move or remove the files yourself. Rename
-`hi.txt` to `people.txt` in your editor or with this command:
+Git has a `git mv` (**m**o**v**e) and `git rm` (**r**e**m**ove) command, but
+nobody uses them for day-to-day work on files. It's simpler to just move or
+remove the files yourself. Rename `hi.txt` to `people.txt` in your editor or
+with this command:
 
 ```bash
 $> mv hi.txt people.txt
@@ -878,7 +907,7 @@ index e5db1d9..f74a87a 100644
 --- a/hi.txt
 +++ b/hi.txt
 @@ -1 +1,2 @@
- Hello Bob
+ Hi Bob
 +Hi Jane
 ```
 
@@ -1091,6 +1120,31 @@ want, but you do not have to. Simply save and exit the editor. The changes to
 
 
 
+## Best practices
+
+* [**Commit early and often, perfect later** (Seth
+  Robertson)](https://sethrobertson.github.io/GitBestPractices/)
+
+  Git only takes full responsibility for your data when you commit. If you fail
+  to commit and then do something poorly thought out, you can run into trouble.
+  Additionally, having periodic checkpoints means that you can understand how
+  you broke something.
+* [**Writing a good commit message**
+  (GitKraken)](https://www.gitkraken.com/learn/git/best-practices/git-commit-message)
+
+  If by taking a quick look at previous commit messages, you can discern what
+  each commit does and why the change was made, you’re on the right track. But
+  if your commit messages are confusing or disorganized, then you can help your
+  future self and your team by improving your commit message practices with help
+  from this article.
+* [**Conventional Commits**](https://www.conventionalcommits.org)
+
+  If you want to go further, look at *Conventional Commits*, a specification for
+  adding human and machine readable meaning to commit messages.
+
+
+
+
 
 [cvs]: https://en.wikipedia.org/wiki/Concurrent_Versions_System
 [distributed-workflows]: https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows
@@ -1104,3 +1158,4 @@ want, but you do not have to. Simply save and exit the editor. The changes to
 [rcs]: https://en.wikipedia.org/wiki/Revision_Control_System
 [sha1]: https://en.wikipedia.org/wiki/SHA-1
 [svn]: https://subversion.apache.org/
+[vcs]: https://en.wikipedia.org/wiki/Version_control
