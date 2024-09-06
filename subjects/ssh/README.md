@@ -31,6 +31,7 @@ Learn about the SSH cryptographic network protocol and how to use the SSH comman
     - [Example: asymmetric encryption with RSA (decryption)](#example-asymmetric-encryption-with-rsa-decryption)
     - [Asymmetric encryption and forward secrecy](#asymmetric-encryption-and-forward-secrecy)
   - [Asymmetric key exchange](#asymmetric-key-exchange)
+    - [What can we do to improve upon asymmetric encryption?](#what-can-we-do-to-improve-upon-asymmetric-encryption)
     - [Diffie-Hellman key exchange](#diffie-hellman-key-exchange)
   - [Man-in-the-Middle attack on Diffie-Hellman](#man-in-the-middle-attack-on-diffie-hellman)
   - [Asymmetric digital signature](#asymmetric-digital-signature)
@@ -59,6 +60,7 @@ Learn about the SSH cryptographic network protocol and how to use the SSH comman
   - [How does public key authentication work?](#how-does-public-key-authentication-work)
   - [Using multiple keys](#using-multiple-keys)
   - [Key management](#key-management)
+  - [Key protection](#key-protection)
 - [SSH for other network services](#ssh-for-other-network-services)
 - [References](#references)
 
@@ -70,11 +72,11 @@ Learn about the SSH cryptographic network protocol and how to use the SSH comman
 
 <!-- slide-front-matter class: center, middle -->
 
-> SSH is a **cryptographic network protocol** for operating network services
-> **securely over an unsecured network**.
+SSH is a **cryptographic network protocol** for operating network services
+**securely over an unsecured network**.
 
-> Its main uses are **remote command-line login** and **securing network
-> services like Git or FTP**.
+Its main uses are **remote command-line login** and **securing network
+services like Git or FTP**.
 
 ### How does it work?
 
@@ -104,7 +106,7 @@ techniques**. This is handled automatically by the SSH client and server.
 **Step 2:** The user or service that wants to connect to the SSH server must
 **authenticate** to gain access, for example with a password.
 
-<p class='center'><img class='w65' src='images/ssh-authentication.jpg' /></p>
+<p class='center'><img class='w65' src='images/ssh-authentication.png' /></p>
 
 **Step 3:** The logged-in user or service can do stuff on the server.
 
@@ -147,7 +149,7 @@ found in the algorithm or [its implementation][enigma-operating-shortcomings]).
 > of a [bug in Git Bash](https://github.com/mintty/mintty/issues/540) which
 > causes problems with some interactive commands.
 
-Create a **plaintext** file containing the words "too many secrets":
+Create a [**plaintext**][plaintext] file containing the words "too many secrets":
 
 ```bash
 $> cd /path/to/projects
@@ -171,15 +173,18 @@ Verifying - enter aes-256-cbc encryption password:
 
 #### Example: symmetric encryption with AES (decryption)
 
-The resulting `ciphertext.aes` file cannot be decrypted without the key.
-Executing the following command pipeline and entering the same key as before
-when prompted will decrypt it:
+The resulting [**ciphertext**][ciphertext] stored in the `ciphertext.aes` file
+cannot be decrypted without the key. Executing the following command pipeline
+and entering the same key as before when prompted will decrypt it:
 
 ```bash
 $> cat ciphertext.aes | openssl aes-256-cbc -d
 enter aes-256-cbc decryption password:
 too many secrets
 ```
+
+> The `-d` option makes the command **d**ecrypt the provided contents instead of
+> encrypting it.
 
 #### Symmetric encryption over an insecure network
 
@@ -250,7 +255,7 @@ key can be openly distributed without compromising security**.
 
 One use case of asymmetric cryptography is **asymmetric encryption**, where the
 **sender encrypts a message with the recipient's public key**. The message can
-only be **decripted by the recipient using the matching private key**.
+only be **decrypted by the recipient using the matching private key**.
 
 #### Example: asymmetric encryption with RSA (key pair)
 
@@ -266,8 +271,8 @@ $> mkdir rsa-example
 
 $> cd rsa-example
 
-$> openssl genrsa -out private.pem 1024
-Generating RSA private key, 1024 bit long modulus
+$> openssl genrsa -out private.pem 2048
+Generating RSA private key, 2048 bit long modulus
 .............++++++
 .................................++++++
 e is 65537 (0x10001)
@@ -278,6 +283,9 @@ writing RSA key
 $> ls
 private.pem public.pem
 ```
+
+> By convention, we use the `.pem` extension after the [Privacy-Enhanced Mail
+> (PEM) format][pem], a de facto standard format to store cryptographic data.
 
 #### Example: asymmetric encryption with RSA (encryption)
 
@@ -290,9 +298,17 @@ $> echo 'too many secrets' > plaintext.txt
 **Encrypt it with the public key** using the OpenSSL library:
 
 ```bash
-$> openssl rsautl -encrypt -inkey public.pem -pubin \
-   -in plaintext.txt -out ciphertext.rsa
+$> openssl pkeyutl -encrypt -in plaintext.txt \
+   -inkey public.pem -pubin -out ciphertext.rsa
 ```
+
+> This command will read the plaintext file `plaintext.txt` specified with the
+> `-in` (**in**put) option. It will also read the public key in the `public.pem`
+> file with the `-inkey` (**in**put **key**) and `-pubin` (**pub**lic **in**)
+> options.
+>
+> It will then write the encrypted ciphertext to the `ciphertext.rsa` file with
+> the `-out` (**out**put) option.
 
 In addition to your key pair, you should have two additional files containing
 the plaintext and ciphertext:
@@ -307,14 +323,14 @@ ciphertext.rsa plaintext.txt private.pem public.pem
 The ciphertext can now be **decrypted with the corresponding private key**:
 
 ```bash
-$> openssl rsautl -decrypt -inkey private.pem -in ciphertext.rsa
+$> openssl pkeyutl -decrypt -inkey private.pem -in ciphertext.rsa
 too many secrets
 ```
 
 Note that you **cannot decrypt the ciphertext using the public key**:
 
 ```bash
-$> openssl rsautl -decrypt -inkey public.pem -in ciphertext.rsa
+$> openssl pkeyutl -decrypt -inkey public.pem -in ciphertext.rsa
 unable to load Private Key [...]
 ```
 
@@ -324,7 +340,7 @@ Of course, a hacker using **another private key cannot decrypt it either**:
 $> openssl genrsa -out hacker-private.pem 1024
 Generating RSA private key, 1024 bit long modulus [...]
 
-$> openssl rsautl -decrypt -inkey hacker-private.pem -in ciphertext.rsa
+$> openssl pkeyutl -decrypt -inkey hacker-private.pem -in ciphertext.rsa
 RSA operation error [...]
 ```
 
@@ -339,7 +355,7 @@ attackers, but **only as long as the private keys remain private**. It does not
 provide **forward secrecy**, meaning that if the private keys are compromised in
 the future, all data encrypted in the past is also compromised.
 
-<img class='w100' src='images/asymmetric-encryption-forward-secrecy.jpg' />
+<img class='w100' src='images/asymmetric-encryption-forward-secrecy.png' />
 
 ### Asymmetric key exchange
 
@@ -355,6 +371,21 @@ than asymmetric encryption**. It's also less complex and can easily be
 implemented as hardware (most modern processors support hardware-accelerated AES
 encryption).
 
+<!-- slide-column -->
+
+<img class='w100' src='images/hsm.jpg' />
+
+<!-- slide-column 60 -->
+
+> This is a [hardware security module][hsm], a physical computing device that
+> safeguards and manages secrets, performs encryption and decryption functions
+> for digital signatures, strong authentication and other cryptographic
+> functions
+
+#### What can we do to improve upon asymmetric encryption?
+
+<!-- slide-column -->
+
 Ideally, we would want to be able to share a fast symmetric encryption key
 without transmitting it physically or over the network. This is where asymmetric
 cryptography comes to the rescue again. Encryption is not all it can do; it can
@@ -365,17 +396,21 @@ Martin Hellman, was one of the first public key exchange protocols allowing
 users to **securely exchange secret keys** even if an attacker is monitoring the
 communication channel.
 
+<!-- slide-column 40 -->
+
+<img class='w100' src='images/asymmetric-cryptography-key-exchange.png' />
+
 #### Diffie-Hellman key exchange
 
 <!-- slide-column -->
 
 This conceptual diagram illustrates the general idea behind the protocol:
 
-* Alice and Bob choose a **random, public starting color** (yellow).
-* Then they choose a **secret color known only to themselves** (orange and
-  blue-green).
-* Then they **mix their own secret color with the mutually shared color**,
-  (resulting in orange-tan and light-blue), and **publicly exchange** the two
+* Alice and Bob choose a **random, public starting color** (yellow) together.
+* Then they each separately choose a **secret color known only to themselves**
+  (orange and blue-green).
+* Then they **mix their own secret color with the mutually shared color**
+  (resulting in orange-tan and light-blue) and **publicly exchange** the two
   mixed colors.
 * Finally, Alice and Bob **mix the color he or she received** from each other
   **with his or her own private color** (yellow-brown).
@@ -530,7 +565,7 @@ is genuine.
 
 #### Threats not countered
 
-SSH does not counter the following threats
+SSH does not counter the following threats:
 
 <!-- slide-column -->
 
@@ -546,13 +581,14 @@ SSH does not counter the following threats
 <!-- slide-container -->
 
 * **IP/TCP denial of service:** since SSH operates on top of TCP, it is
-  vulnerable to some attacks against weaknesses in TCP and IP, such as [SYN
+  vulnerable to attacks against weaknesses in TCP and IP, such as [SYN
   flood][syn-flood].
 * **Traffic analysis:** although the encrypted traffic cannot be read, an
   attacker can still glean a great deal of information by simply analyzing the
   amount of data, the source and target addresses, and the timing.
 * **Carelessness and coffee spills:** SSH doesn't protect you if you write your
   password on a post-it note and paste it on your computer screen.
+* **Genius mathematicians:** did you see [Sneakers][sneakers]?
 
 
 
@@ -653,8 +689,11 @@ The format of each line in this file is `[domain],[ipaddr] algorithm pubkey`.
 
 The line above means that when SSH connects to `example.com` at IP address
 `192.168.50.4`, it expects the server to send this specific public key
-(`eTJtK2wrRzhW5RQzUHprbFJa...`) using the [ECDSA][ecdsa] algorithm (another
-asymmetric algorithm like RSA, based on elliptic curve cryptography).
+(`eTJtK2wrRzhW5RQzUHprbFJa...`) using the [ECDSA][ecdsa] algorithm.
+
+> ECDSA is another asymmetric algorithm like RSA, although ECDSA is based on
+> [elliptic curve cryptography][elliptic-curve] while RSA is based on prime
+> numbers.
 
 #### Adding public keys to the known hosts file
 
@@ -739,7 +778,7 @@ $> ssh jdoe@192.168.50.4
 jdoe@192.168.50.4's password:
 Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-33-generic x86_64)
 
-  System information as of Fri Sep  7 13:16:56 UTC 2018
+  System information as of Wed Oct 21 04:29:00 UTC 2015
   ...
 
 $
@@ -752,10 +791,10 @@ $
 
 You are now **connected to a Bash shell running on the server**. Anything you
 type is encrypted through SSH's secure channel and interpreted by that shell.
-Any data it outputs is sent back through the channel and displayed in your
-terminal.
+Any data that Bash outputs is also encrypted, sent back through the channel and
+displayed in your terminal.
 
-<p class='center'><img class='w95' src='images/ssh-channel-and-processes.jpg' /></p>
+<p class='center'><img class='w90' src='images/ssh-channel-and-processes.jpg' /></p>
 
 ### Disconnecting
 
@@ -844,8 +883,8 @@ server that you are the owner of that public key**.
 
 This has advantages over password authentication:
 
-* It's virtually impossible to brute-force (it is larger and probably has much
-  more [entropy][entropy] than your password).
+* It's virtually impossible to [brute-force][brute-force] (it is larger and
+  probably has much more [entropy][entropy] than your password).
 * Your private key will not be compromised by a man-in-the-middle attack or if
   the server is compromised, as it is never transmitted to the server, only used
   to solve mathematical problems based on the public key.
@@ -871,16 +910,16 @@ You may have multiple key pairs.
 
 Some key pairs may have been generated by other programs or web services. For
 example, some Git user interfaces generate a key pair to access GitHub, or
-Amazon Web Services' Elastic Compute Cloud (EC2) generates key pairs to give you
-access to their virtual machines.
+Amazon Web Services's Elastic Compute Cloud (EC2) generates key pairs to give
+you access to their virtual machines.
 
 Having multiple key pairs may be part of a security strategy to limit the access
 an attacker might gain if one of them is compromised.
 
-To generate a key with a custom name, use the `-f` option when generating the
-key with the `ssh-keygen` command. To use a specific key pair, use the `ssh`
-command's `-i` option, which allows you to choose the private key file you want
-to use:
+To generate a key with a custom name, use the `-f` (**f**ile) option when
+generating the key with the `ssh-keygen` command. To use a specific key pair,
+use the `ssh` command's `-i` (**i**dentity) option, which allows you to choose
+the private key file you want to use:
 
 ```bash
 $> ssh-keygen -f custom_key
@@ -900,30 +939,48 @@ A few tips on managing your key pairs:
 * **NEVER give your private key to anyone**.
 * Conversely, you may copy your private key to another computer of yours if you
   want it to have the same access to other computers or services.
-* You may want to **back up your private and public key files** (`id_rsa` and
-  `id_rsa.pub`) so that you don't have to regenerate a pair if you lose your
-  computer or switch to another computer. (You would then have to replace the
+* **Back up your private and public key files** (`id_rsa` and `id_rsa.pub`) to
+  avoid having to regenerate a pair if you lose your computer or switch to
+  another computer. (If you create a new key pair, you will have to replace the
   old public key with the new one everywhere you used it.)
-* Use `ssh-copy-id` to copy your public key to other computers to use public key
-  authentication instead of password authentication.
+* Use [the `ssh-copy-id` command][ssh-copy-id] to copy your public key to other
+  computers to use public key authentication instead of password authentication.
+
+  > You will see how to do that in the SSH exercises.
 * For web services using public key authentication (e.g. GitHub), you usually
   have to manually copy the public key file's contents (`id_rsa.pub`) and
   provide it to them in your account's settings.
-* **If a private key is compromised** (e.g. your computer is stolen), you should
-  **remove the corresponding public key** from computers and web services you
-  have copied it to.
+
+### Key protection
+
+It's good practice to [protect your private key with a
+**passphrase**][ssh-passphrase]. You can enter a passphrase when generating
+your key pair with the `ssh-keygen` command. You can also [add a passphrase to
+an existing key][ssh-passphrase-add] later.
+
+* **Without a passphrase, anyone who gains access to your computer has the
+  potential to copy your private key.** For example, family members,
+  coworkers, system administrators and hostile actors could gain access.
+* The **downside** to using a passphrase is that **you need to enter it every
+  time you use SSH**. You can temporarily cache your passphrase using
+  [ssh-agent][ssh-agent] so you don't have to enter it every time you connect.
+
+  <p class='center'><img class='w70' src='images/ssh-agent.png' /></p>
+* **If a private key is compromised** (e.g. your computer is hacked or stolen),
+  you should **remove the corresponding public key** from computers and web
+  services you have copied it to.
 
 
 
 ## SSH for other network services
 
-As mentionned initially, SSH is a network protocol. It can be used not only for
+As mentioned initially, SSH is a network protocol. It can be used not only for
 command line login, but to secure other network services.
 
 A few examples are:
 
-* [Secure Copy (`scp`)][scp] - A means of securely transferring computer files
-  between a local and remote host.
+* [**S**ecure **C**o**p**y (`scp`)][scp] - A means of securely transferring
+  computer files between a local and remote host.
 * [rsync][rsync] - Utility for efficiently transferring and synchronizing files
   across computer systems.
 * [SSH File Transfer Protocol (SFTP)][sftp] - Network protocol that provides
@@ -948,6 +1005,7 @@ A few examples are:
 [authorized_keys]: https://www.ssh.com/ssh/authorized_keys/openssh
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
 [brute-force]: https://en.wikipedia.org/wiki/Brute-force_attack
+[ciphertext]: https://en.wikipedia.org/wiki/Ciphertext
 [dh]: https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange
 [discrete-logarithm]: https://en.wikipedia.org/wiki/Discrete_logarithm
 [ecdsa]: https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm
@@ -961,11 +1019,14 @@ A few examples are:
 [hash]: https://en.wikipedia.org/wiki/Cryptographic_hash_function
 [hash-non-crypto]: https://en.wikipedia.org/wiki/Hash_function
 [hmac]: https://en.wikipedia.org/wiki/HMAC
+[hsm]: https://en.wikipedia.org/wiki/Hardware_security_module
 [integer-factorization]: https://en.wikipedia.org/wiki/Integer_factorization
 [key-exchange]: https://en.wikipedia.org/wiki/Key_exchange
 [mac]: https://en.wikipedia.org/wiki/Message_authentication_code
 [mitm]: https://en.wikipedia.org/wiki/Man-in-the-middle_attack
 [openssl]: https://www.openssl.org
+[pem]: https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail
+[plaintext]: https://en.wikipedia.org/wiki/Plaintext
 [pubkey]: https://en.wikipedia.org/wiki/Public-key_cryptography
 [pubkey-math]: https://www.onebigfluke.com/2013/11/public-key-crypto-math-explained.html
 [rsa]: https://en.wikipedia.org/wiki/RSA_(cryptosystem)
@@ -974,5 +1035,10 @@ A few examples are:
 [sftp]: https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol
 [shell]: https://en.wikipedia.org/wiki/Shell_(computing)
 [side-channel]: https://en.wikipedia.org/wiki/Cryptanalysis#Side-channel_attacks
+[sneakers]: https://en.wikipedia.org/wiki/Sneakers_(1992_film)
+[ssh-agent]: https://www.cyberciti.biz/faq/how-to-use-ssh-agent-for-authentication-on-linux-unix/
+[ssh-copy-id]: https://www.ssh.com/academy/ssh/copy-id
+[ssh-passphrase]: https://learn.microsoft.com/en-us/azure/devops/repos/git/gcm-ssh-passphrase?view=azure-devops
+[ssh-passphrase-add]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases
 [symmetric-encryption]: https://en.wikipedia.org/wiki/Symmetric-key_algorithm
 [syn-flood]: https://en.wikipedia.org/wiki/SYN_flood
