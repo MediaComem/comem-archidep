@@ -296,7 +296,8 @@ They are used by system processes that provide widely used types of network serv
 
 <!-- slide-column -->
 
-On Unix-like operating systems, a process must execute with **superuser privileges** to be able to bind a network socket on a well-known port.
+On Unix operating systems, a process must execute with **superuser privileges**
+to be able to bind a network socket on a well-known port.
 
 <!-- slide-column 70 -->
 

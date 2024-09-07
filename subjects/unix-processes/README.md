@@ -115,9 +115,8 @@ For example, most modern browsers will run at least one child process per tab.
 
 ### Unix processes
 
-Processes work differently depending on the operating system.
-We will focus on processes in Unix-like systems,
-which have the following features:
+Processes work differently depending on the operating system. We will focus on
+processes in Unix systems, which have the following features:
 
 | Feature                     | Description                                                                                                         |
 | :---                        | :---                                                                                                                |
@@ -127,8 +126,8 @@ which have the following features:
 | [Standard streams][streams] | Preconnected input and output communication channels between a process and its environment.                         |
 | [Pipelines][pipes]          | A way to chain processes in sequence by their standard streams, a form of [inter-process communication (IPC)][ipc]. |
 
-> These features have been standardized for Unix-like systems
-> as the [Portable Operating System Interface (POSIX)][posix].
+> These features have been standardized for Unix systems as the [Portable
+> Operating System Interface (POSIX)][posix].
 
 
 
@@ -142,9 +141,9 @@ which have the following features:
 
 ### What is a process identifier?
 
-Any process that is created in a Unix-like system is assigned an **identifier (or PID)**.
-This ID can be used to reference the process, for example to terminate it with the `kill` command.
-Each new process gets the next available PID.
+Any process that is created in a Unix system is assigned an **identifier (or
+PID)**. This ID can be used to reference the process, for example to terminate
+it with the `kill` command. Each new process gets the next available PID.
 
 PIDs are sometimes reused as processes die and are created again,
 but **at any given time, a PID uniquely identifies a specific process**.
@@ -826,8 +825,10 @@ You don't want to have to delete a useless file either.
 
 #### The `/dev/null` device
 
-The file `/dev/null` is available on all Unix-like systems and is a [**null device**][null-device] (sometimes also called a *black hole*).
-It's a [Unix device file][device-file] that you can write anything to, but that will discard all received data.
+The file `/dev/null` is available on all Unix systems and is a [**null
+device**][null-device] (sometimes also called a *black hole*). It's a [Unix
+device file][device-file] that you can write anything to, but that will discard
+all received data.
 
 It never contains anything:
 
@@ -1049,7 +1050,7 @@ This **redirects (pipes) the output of the `ls` command into the input of the `w
 
 ### The Unix philosophy
 
-Pipelines are one of the core features of Unix-like systems.
+Pipelines are one of the core features of Unix systems.
 
 Because **Unix programs** can be easily chained together,
 they **tend to be simpler and smaller**.

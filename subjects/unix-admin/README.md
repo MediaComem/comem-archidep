@@ -47,6 +47,11 @@
 Learn the basics of Unix and Unix-like operating systems like Linux, and how to
 manage them from the command line.
 
+> In many respects, the basics of Unix are the same for the original Unix
+> operating system and Unix-like operating systems like Linux or macOS derived
+> from Unix. From here on, when we refer to "Unix", we will in fact be talking
+> about all Unix and Unix-like systems in general.
+
 <!-- slide-include ../../BANNER.md -->
 
 
@@ -89,8 +94,8 @@ It is important to know this difference when you are transferring files between 
 
 ### File hierarchy
 
-In Unix-like systems, the file system is said to be **rooted**,
-meaning that there is **always one root**, denoted by the path `/`.
+In Unix systems, the file system is said to be **rooted**, meaning that there is
+**always one root**, denoted by the path `/`.
 
 Separate volumes such as disk partitions, removable media and network shares belong to the same file hierarchy
 (unlike Windows for example, where each drive has a letter that is the root of its file system tree).
@@ -121,21 +126,21 @@ The [`/etc/fstab` file (**f**ile **s**ystems **tab**le)][fstab] defines mounted 
 
 #### Common Unix directories
 
-| Directory | Description                                                 |
-| :---      | :---                                                        |
-| `/bin`    | Fundamental binaries like `ls` or `cp`.                     |
-| `/boot`   | Files required to successfully boot.                        |
-| `/dev`    | Devices, i.e. file representations of (pseudo-)peripherals. |
-| `/etc`    | System-wide configuration files.                            |
-| `/home`   | User home directories.                                      |
-| `/lib`    | Shared libraries needed by programs in `/bin`.              |
-| `/media`  | Default mount point for removable devices (USB, etc).       |
-| `/opt`    | Locally installed software.                                 |
-| `/root`   | Home directory of the `root` superuser.                     |
-| `/sbin`   | System binaries (for system administration).                |
-| `/tmp`    | Temporary files not expected to survive a reboot.           |
-| `/usr`    | Non-system-critical executables, libraries and resources.   |
-| `/var`    | Variable files (e.g. lock/log files, databases).            |
+| Directory | Description                                                |
+| :-------- | :--------------------------------------------------------- |
+| `/bin`    | Fundamental binaries like `ls` or `cp`                     |
+| `/boot`   | Files required to successfully boot                        |
+| `/dev`    | Devices, i.e. file representations of (pseudo-)peripherals |
+| `/etc`    | System-wide configuration files                            |
+| `/home`   | User home directories                                      |
+| `/lib`    | Shared libraries needed by programs in `/bin`              |
+| `/media`  | Default mount point for removable devices (USB, etc)       |
+| `/opt`    | Locally installed software                                 |
+| `/root`   | Home directory of the `root` superuser                     |
+| `/sbin`   | System binaries (for system administration)                |
+| `/tmp`    | Temporary files not expected to survive a reboot           |
+| `/usr`    | Non-system-critical executables, libraries and resources   |
+| `/var`    | Variable files (e.g. lock/log files, databases)            |
 
 > From [Unix Filesystem Conventional Directory Layout][unix-layout].
 
@@ -143,19 +148,19 @@ The [`/etc/fstab` file (**f**ile **s**ystems **tab**le)][fstab] defines mounted 
 
 > ["Everything is a file."][unix-everything-is-a-file]
 
-Unix-like systems have regular files and directories like most other systems.
-But in addition to these, it represents various other things as files:
+Unix systems have regular files and directories like most other systems. But in
+addition to these, it represents various other things as files:
 
 .unbreakable-first-column[
 
-| Type                          | Description                                                           |
-| :---------------------------- | :-------------------------------------------------------------------- |
-| File                          | A regular file.                                                       |
-| Directory                     | A directory containing any number of files.                           |
-| [Symbolic link][unix-symlink] | A reference to another file.                                          |
-| [Named pipe][unix-named-pipe] | A connector from the output of one process to the input of another.   |
-| [Socket][unix-socket]         | A bidirectional endpoint for inter-process communication.             |
-| [Device][unix-device-file]    | Representations of physical or logical peripherals (e.g. hard drive). |
+| Type                          | Description                                                          |
+| :---------------------------- | :------------------------------------------------------------------- |
+| File                          | A regular file                                                       |
+| Directory                     | A directory containing any number of files                           |
+| [Symbolic link][unix-symlink] | A reference to another file                                          |
+| [Named pipe][unix-named-pipe] | A connector from the output of one process to the input of another   |
+| [Socket][unix-socket]         | A bidirectional endpoint for inter-process communication             |
+| [Device][unix-device-file]    | Representations of physical or logical peripherals (e.g. hard drive) |
 
 ]
 
@@ -163,14 +168,13 @@ But in addition to these, it represents various other things as files:
 
 ## Unix users
 
-Unix and Unix-like systems like Linux are multi-user systems,
+Unix operating systems like Linux are multi-user systems,
 meaning that more than one user can have access to the system at the same time.
 
-A **user** is **anyone who uses the system**.
-This may be:
+A **user** is **anyone who uses the system**. This may be:
 
-* A **person**, like Alice or Bob.
-* A **system service**, like a MySQL database or an SSH server.
+* A **person**, like Alice or Bob
+* A **system service**, like a MySQL database or an SSH server
 
 A Unix system maintains a list of user accounts representing these people and system services,
 each with a different **name** such as `alice`, `bob` or `sshd`.
