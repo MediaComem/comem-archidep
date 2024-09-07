@@ -23,7 +23,7 @@
     "azure:inventory": "node scripts/generate-azure-inventory.js",
     "build": "courses-md build",
     "deploy": "courses-md publish",
-    "doctoc": "doctoc --notitle --github README.md CLI-CHEATSHEET.md GIT-CHEATSHEET.md SETUP.md SYSADMIN-CHEATSHEET.md TEST-MATTER.md ex subjects",
+    "doctoc": "doctoc --notitle --github README.md CLI-CHEATSHEET.md GIT-CHEATSHEET.md SETUP.md SYSADMIN-CHEATSHEET.md ex subjects",
     "format": "prettier --check .",
     "format:write": "prettier --write .",
     "mails": "node scripts/send-students-data.js",

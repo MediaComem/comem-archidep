@@ -35,9 +35,6 @@ This course is a [Media Engineering][comem] web development course taught at
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## :collision: Exam
-Your exam will take place on **Thursday February 8th at 13:15**. No material but pen and paper will be allowed for this exam. We have prepared a [document highlighting all the things you *must* know to succeed](TEST-MATTER.md).
-
 ## Legend
 
 Parts of this guide are annotated with the following icons:
