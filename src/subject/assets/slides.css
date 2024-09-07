@@ -137,6 +137,10 @@ p.shadow { width: 100%; }
   white-space: nowrap;
 }
 
+.unbreakable-first-column table td:first-child {
+  white-space: nowrap;
+}
+
 .slide-logo {
   margin: 17px 0 0 1rem;
 }

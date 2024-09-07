@@ -42,9 +42,10 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# Unix Administration
+# Unix Basics & Administration
 
-Learn the basics of Unix and Unix-like operating systems like Linux, and how to manage them from the command line.
+Learn the basics of Unix and Unix-like operating systems like Linux, and how to
+manage them from the command line.
 
 <!-- slide-include ../../BANNER.md -->
 
@@ -56,7 +57,7 @@ The **file system** controls how data is stored and retrieved.
 Without it, information on a storage medium such as a hard drive would be one large body of data,
 with no way to tell where one piece of information stops and the next begins.
 
-Various file systems exit:
+Various file systems exist:
 
 | Operating system or device type | Common file systems |
 | :---                            | :---                |
@@ -67,21 +68,22 @@ Various file systems exit:
 
 ### Case-sensitivity
 
-One of the differences between File systems is how they would treat these file names:
+One of the differences between file systems is how they would treat these file names:
 
 * `a-file.txt`
 * `A-file.txt`
 * `A-fIlE.txt`
 * `A-FILE.txt`
 
-When you use macOS or Windows, your file system is probably HFS, APFS or NTFS.
-These file systems are **case-insensitive**, meaning that all the file names above represent the same file.
-You **cannot create both `a-file.txt` and `A-FILE.txt` in the same directory**.
-As far as the file system is concerned, that's the same file.
+When you use macOS or Windows, your file system is probably [HFS][hfs],
+[APFS][apfs] or [NTFS][ntfs]. These file systems are **case-insensitive**,
+meaning that the four file names above represent the same file. You **cannot
+create both `a-file.txt` and `A-FILE.txt` in the same directory**. As far as the
+file system is concerned, that's the same file.
 
 When you use Linux, your file system is probably in the [Extended File System (ext)][ext] family.
 It is a **case-sensitive** file system.
-The 4 names above represent **4 different files**.
+The four names above represent **4 different files**.
 
 It is important to know this difference when you are transferring files between different file systems.
 
@@ -139,17 +141,23 @@ The [`/etc/fstab` file (**f**ile **s**ystems **tab**le)][fstab] defines mounted 
 
 ### Unix file types
 
+> ["Everything is a file."][unix-everything-is-a-file]
+
 Unix-like systems have regular files and directories like most other systems.
-But in addition to these, it represents various other things as files.
+But in addition to these, it represents various other things as files:
+
+.unbreakable-first-column[
 
 | Type                          | Description                                                           |
-| :---                          | :---                                                                  |
+| :---------------------------- | :-------------------------------------------------------------------- |
 | File                          | A regular file.                                                       |
-| Directory                     | A directory containing one or more files.                             |
+| Directory                     | A directory containing any number of files.                           |
 | [Symbolic link][unix-symlink] | A reference to another file.                                          |
 | [Named pipe][unix-named-pipe] | A connector from the output of one process to the input of another.   |
 | [Socket][unix-socket]         | A bidirectional endpoint for inter-process communication.             |
 | [Device][unix-device-file]    | Representations of physical or logical peripherals (e.g. hard drive). |
+
+]
 
 
 
@@ -761,6 +769,7 @@ $> sudo chmod 640 secret.txt
 
 
 
+[apfs]: https://en.wikipedia.org/wiki/Apple_File_System
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
 [chmod]: https://en.wikipedia.org/wiki/Chmod
 [etc-group]: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Introduction_To_System_Administration/s3-acctspgrps-group.html
@@ -769,11 +778,14 @@ $> sudo chmod 640 secret.txt
 [etc-shadow]: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Introduction_To_System_Administration/s3-acctsgrps-shadow.html
 [ext]: https://en.wikipedia.org/wiki/Extended_file_system
 [fstab]: https://en.wikipedia.org/wiki/Fstab
+[hfs]: https://en.wikipedia.org/wiki/Hierarchical_File_System_(Apple)
+[ntfs]: https://en.wikipedia.org/wiki/NTFS
 [octal-modes]: https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation
 [sh]: https://en.wikipedia.org/wiki/Bourne_shell
 [sudoers]: http://toroid.org/sudoers-syntax
 [ubuntu]: https://www.ubuntu.com/
 [unix-device-file]: https://en.wikipedia.org/wiki/Device_file
+[unix-everything-is-a-file]: https://en.wikipedia.org/wiki/Everything_is_a_file
 [unix-file-types]: https://en.wikipedia.org/wiki/Unix_file_types
 [unix-layout]: https://en.wikipedia.org/wiki/Unix_filesystem#Conventional_directory_layout
 [unix-named-pipe]: https://en.wikipedia.org/wiki/Named_pipe
