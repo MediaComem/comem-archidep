@@ -1,7 +1,7 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Unix Administration](#unix-administration)
+- [Unix Basics & Administration](#unix-basics--administration)
   - [File system](#file-system)
     - [Case-sensitivity](#case-sensitivity)
     - [File hierarchy](#file-hierarchy)
@@ -24,6 +24,7 @@
       - [The `/etc/group` file](#the-etcgroup-file)
       - [The shadow files](#the-shadow-files)
   - [User management](#user-management)
+    - [Types of users](#types-of-users)
     - [Creating a login user](#creating-a-login-user)
       - [Checking the created login user](#checking-the-created-login-user)
     - [Creating a system user](#creating-a-system-user)
@@ -33,12 +34,11 @@
   - [Permission management](#permission-management)
     - [The `chown` command](#the-chown-command)
     - [The `chmod` command](#the-chmod-command)
-      - [Symbolic modes](#symbolic-modes)
-      - [Using symbolic modes](#using-symbolic-modes)
-      - [Octal modes](#octal-modes)
-      - [Using octal modes](#using-octal-modes)
+      - [Symbolic mode](#symbolic-mode)
+      - [Using symbolic mode](#using-symbolic-mode)
+      - [Octal mode](#octal-mode)
+      - [Using octal mode](#using-octal-mode)
   - [References](#references)
-  - [TODO](#todo)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -48,8 +48,8 @@ Learn the basics of Unix and Unix-like operating systems like Linux, and how to
 manage them from the command line.
 
 > In many respects, the basics of Unix are the same for the original Unix
-> operating system and Unix-like operating systems like Linux or macOS derived
-> from Unix. From here on, when we refer to "Unix", we will in fact be talking
+> operating system and Unix-like operating systems derived from Unix like Linux
+> or macOS. From here on, when we refer to "Unix", we will in fact be talking
 > about all Unix and Unix-like systems in general.
 
 <!-- slide-include ../../BANNER.md -->
@@ -171,7 +171,7 @@ addition to these, it represents various other things as files:
 Unix operating systems like Linux are multi-user systems,
 meaning that more than one user can have access to the system at the same time.
 
-A **user** is **anyone who uses the system**. This may be:
+A **user** is **any entity that uses the system**. This may be:
 
 * A **person**, like Alice or Bob
 * A **system service**, like a MySQL database or an SSH server
@@ -212,14 +212,14 @@ which grants that user all privileges assigned to each group.
 Someone who logs in on a Unix system can use any file their user account is permitted to access.
 The system determines whether or not a user or group can access a file based on the permissions assigned to it.
 
-There are **three different permissions** for file, directories and executables.
-They are represented by one character:
+There are **three different permissions** for files and directories. They are
+represented by one character:
 
-| Permission | For files                                            | For directories                                  |
-| :--------- | :--------------------------------------------------- | :----------------------------------------------- |
-| `r`        | **Read** the contents of the file.                   | **List** the directory.                          |
-| `w`        | **Write** to the file (modify it).                   | **Create** or **delete** files in the directory. |
-| `x`        | **Execute** the file (if it's a binary or a script). | **Traverse** the directory.                      |
+| Permission | For files                                           | For directories                                       |
+| :--------- | :-------------------------------------------------- | :---------------------------------------------------- |
+| `r`        | **Read** the contents of the file                   | **List** the directory                                |
+| `w`        | **Write** to the file (modify it)                   | **Create** or **delete** files in the directory       |
+| `x`        | **Execute** the file (if it's a binary or a script) | **Traverse** the directory (to access a subdirectory) |
 
 The symbol `-` (a hyphen) indicates that no access is permitted.
 
@@ -227,16 +227,16 @@ The symbol `-` (a hyphen) indicates that no access is permitted.
 
 Each of the three permissions are assigned to three different categories of users:
 
-| Category | Description                                                |
-| :---     | :---                                                       |
-| `owner`  | The **user** who owns the file.                            |
-| `group`  | The **group** that owns the file (any user in that group). |
-| `other`  | Any other user with access to the system.                  |
+| Category | Description                                               |
+| :------- | :-------------------------------------------------------- |
+| `owner`  | The **user** who owns the file                            |
+| `group`  | The **group** that owns the file (any user in that group) |
+| `other`  | Any other user with access to the system                  |
 
 #### Checking file permissions
 
-When you run the `ls` command with the **`-l` option** (long format),
-you can see more information about files, including their **type and permissions**:
+When you run the `ls` command with the `-l` option (**l**ong format), you can
+see more information about files, including their **type and permissions**:
 
 ```bash
 $> ls -l
@@ -258,8 +258,10 @@ d     rwx         r-x         r-x         root   root  ... some-directory
 l     rwx         rwx         rwx         bob    bob   ... some-link -> some-file
 ```
 
-> There are [other file types][unix-file-types] like named pipes (`p`), sockets (`s`) and device files (`b` or `c`),
-> but they are outside the scope of this course.
+> The [file types][unix-file-types] you will most often handle are `-` for
+> files, `d` for directories and `l` for links. There are others like `p` for
+> named pipes, `s` for sockets and `b` or `c` for device files, but they are
+> outside the scope of this course.
 
 
 
@@ -275,17 +277,18 @@ It is **dangereous to log in as `root`**.
 One wrong move and you could irreversibly damage the system.
 For example:
 
-* Delete a system-critical file or files.
-* Change permissions on system-critical executables.
-* Lock yourself out of the system (e.g. by disabling SSH on a server).
+* Delete a system-critical file or files
+* Change permissions on system-critical executables
+* Lock yourself out of the system (e.g. by disabling SSH on a server)
 
 ### The `sudo` command
 
-The `sudo` command (which means "**s**uper**user** **do**") offers another approach to giving users administrative access.
+The `sudo` command (which means "**s**uper**u**ser **do**") offers another
+approach to give users administrative access.
 
-When **trusted users** precede an administrative command with `sudo`,
-they are prompted for **their own password**.
-Once authenticated, the administrative command is **executed as if by the `root` user**.
+When **trusted users** precede an administrative command with `sudo`, they are
+prompted for **their own password**. Once authenticated, the administrative
+command is **executed as if by the `root` user**.
 
 ```bash
 $> ls -la /root
@@ -416,7 +419,7 @@ These files define what user accounts and groups are available on a Unix system:
 
 You should **never edit these files by hand**.
 
-Unix systems provides various **system administration commands** for this purpose, such as `useradd`, `passwd` and `groupadd` for Linux.
+Unix systems provide various **system administration commands** for this purpose, such as `useradd`, `passwd` and `groupadd` for Linux.
 
 #### The `/etc/passwd` file
 
@@ -426,14 +429,16 @@ Each line in [`/etc/passwd`][etc-passwd] defines a user account, with data separ
 jdoe:x:500:500:jdoe:/home/jdoe:/bin/bash
 ```
 
-* **Username** (`jdoe`) - The name of the user account (used to log in).
-* **Password** (`x`) - User password (or `x` if the password is stored in `/etc/shadow`).
-* **User ID (UID)** (`500`) - The numerical equivalent of the username.
-* **Group ID (GID)** (`500`) - The numerical equivalent of the user's primary group name (often the same as the UID for most users, on a Unix system with default settings).
-* **GECOS** (`jdoe`) - Historical field used to store extra information (usually the user's full name).
-* **Home directory** (`/home/jdoe`) - The absolute path to the user's home directory.
-* **Shell** (`/bin/bash`) - The program automatically launched whenever the user logs in (e.g. on a terminal or through SSH).
-  This can be used to prevent some users, like system users, from logging in (e.g. by using `/bin/false` or `/usr/sbin/nologin`).
+* **Username** (`jdoe`) - The name of the user account (used to log in)
+* **Password** (`x`) - User password (or `x` if it is stored in `/etc/shadow`)
+* **User ID (UID)** (`500`) - The numerical equivalent of the username
+* **Group ID (GID)** (`500`) - The numerical equivalent of the user's primary group name (often the same as the UID for most users, on a Unix system with default settings)
+* **GECOS** (`jdoe`) - Historical field used to store extra information (usually the user's full name)
+* **Home directory** (`/home/jdoe`) - Absolute path to the user's home directory
+* **Shell** (`/bin/bash`) - The program automatically launched whenever the user logs in (e.g. on a terminal or through SSH)
+
+  > This can be used to prevent some users, like system users, from logging in
+  > (e.g. by using `/bin/false` or `/usr/sbin/nologin`).
 
 #### The `/etc/group` file
 
@@ -443,11 +448,11 @@ Each line in [`/etc/group`][etc-group] defines a group, also semicolon-separated
 vip:x:512:bob,eve
 ```
 
-* **Group name** (`vip`) - The name of the group.
-* **Group password** (`x`) - Optional group password (or `x` if the password is stored in `/etc/gshadow`).
-  If specified, allows users not part of the group to join it with the correct password.
-* **Group ID (GID)** (`512`) - The numerical equivalent of the group name.
-* **Member list** (`bob,eve`) - A comma-separated list of the users belonging to the group.
+* **Group name** (`vip`) - The name of the group
+* **Group password** (`x`) - Optional group password (or `x` if the password is stored in `/etc/gshadow`)
+  If specified, allows users not part of the group to join it with the correct password
+* **Group ID (GID)** (`512`) - The numerical equivalent of the group name
+* **Member list** (`bob,eve`) - A comma-separated list of the users belonging to the group
 
 #### The shadow files
 
@@ -460,7 +465,7 @@ Any user might copy them and attempt a brute-force attack (which could be done o
 Therefore, the corresponding shadow files exist:
 
 * [`/etc/shadow`][etc-shadow] stores password hashes for user accounts, and other security-related data such as password expiration dates.
-* [`/etc/gshadow`][etc-gshadow] stores password hashes for groups, and other security-related such as who is the group administrator.
+* [`/etc/gshadow`][etc-gshadow] stores password hashes for groups, and other security-related data such as who is the group administrator.
 
 These files are only readable by the `root` user
 (or any user that belongs to the `root` or `shadow` groups).
@@ -471,26 +476,42 @@ These files are only readable by the `root` user
 
 The following commands can be used to create, modify and delete users:
 
-| Command    | Purpose                                                                                            |
-| :---       | :---                                                                                               |
-| `useradd`  | Create a new user account (and by default, a corresponding group).                                 |
-| `usermod`  | Modify an existing user account.                                                                   |
-| `userdel`  | Delete a user account.                                                                             |
-| `deluser`  | Friendlier frontend to the `userdel` command. Delete a user account or remove a user from a group. |
-| `groupadd` | Create a new group.                                                                                |
-| `groupmod` | Modify an existing group.                                                                          |
-| `groupdel` | Delete a group.                                                                                    |
-| `passwd`   | Change (or set) a user's password.                                                                 |
+| Command    | Purpose                                                                                           |
+| :--------- | :------------------------------------------------------------------------------------------------ |
+| `useradd`  | Create a user account (and by default, a corresponding group)                                     |
+| `usermod`  | Modify an existing user account                                                                   |
+| `passwd`   | Change (or set) a user's password                                                                 |
+| `userdel`  | Delete a user account                                                                             |
+| `deluser`  | Friendlier frontend to the `userdel` command. Delete a user account or remove a user from a group |
+| `groupadd` | Create a new group                                                                                |
+| `groupmod` | Modify an existing group                                                                          |
+| `groupdel` | Delete a group                                                                                    |
 
-Use `man COMMAND` to read their manual, e.g. `man useradd`.
+Use `man <command>` to read their manual, e.g. `man useradd`.
 
 > Note that these commands are specific to [Ubuntu][ubuntu].
 > They might differ slightly in other Linux distributions or other Unix systems.
 
+### Types of users
+
+As we said at the beginning of this section, a user can be a **login user**
+representing a person or a **system user** generally representing a service.
+
+You may wonder why we even need system users? In Unix systems, users are the
+fundamental access control mechanism, so we need system users to limit the
+permissions of people using the system, but also of services running on that
+system. For example:
+
+* Alice should not be able to access Bob's files without his permission, and
+  vice-versa.
+* A database server like MySQL needs to access some files for storage, but it
+  doesn't need to access Alice's or Bob's files. It also doesn't need to be able
+  to log in since it's a service and not a person.
+
 ### Creating a login user
 
 To create a **login user** (e.g. a user that can be used by an actual person to log in to the machine),
-you will need to use the `useradd` and `passwd` command:
+you will need to use the `useradd` and `passwd` commands:
 
 ```bash
 $> sudo useradd -m -s /bin/bash jdoe
@@ -501,15 +522,16 @@ Retype new UNIX password:
 passwd: password updated successfully
 ```
 
-The `-m` option to the `useradd` commands instructs it to also create a home directory for the user,
-which by default will be `/home/jdoe` in this case.
+The `-m` option to the `useradd` command instructs it to also create a ho**m**e
+directory for the user, which by default will be `/home/jdoe` in this case.
 
-The `-s` option specifies the user's login shell.
-Since it defaults to a simple [Bourne shell][sh] (`/bin/sh`) on most systems,
-in this example we use the more advanced [Bash shell][bash] (`/bin/bash`) for the user's convenience.
+The `-s` option specifies the user's login **s**hell. Since it defaults to a
+simple [Bourne shell][sh] (`/bin/sh`) on most systems, in this example we use
+the more advanced [Bash shell][bash] (`/bin/bash`) for the user's convenience.
 
-> It is possible to give an encrypted password directly to the `useradd` command with the `-p` option instead of using `passwd`,
-> but it's bad practice because running commands can be seen by other users with `ps`.
+> It is possible to give an encrypted **p**assword directly to the `useradd`
+> command with the `-p` option instead of using `passwd`, but it's bad practice
+> because running commands can be seen by other users with `ps`.
 
 #### Checking the created login user
 
@@ -524,25 +546,29 @@ $> tail -n 1 /etc/group
 jdoe:x:1004:
 ```
 
-> Note that on a typical Linux, regular users will have UIDs starting at 1000 and incremented every time a new user is created.
-> This is defined by the `UID_MIN` and `UID_MAX` options in the `/etc/login.defs` file.
+> The `tail` command displays the last 10 lines of a file. With the `-n` option
+> (**n**umber) set to 1, it only displays the last line.
+>
+> Note that on a typical Linux system, regular users will have UIDs starting at
+> 1000 and incremented every time a new user is created. This is defined by the
+> `UID_MIN` and `UID_MAX` options in the `/etc/login.defs` file.
 
 ### Creating a system user
 
-To create a **system user** (e.g. a technical user that will need to run an application or service, but does not need to log in),
-the `useradd` command is sufficient:
+To create a **system user** (e.g. a technical user that will need to run an
+application or service, but does not need to log in), the `useradd` command is
+sufficient:
 
 ```bash
-$> sudo useradd --system -s /usr/sbin/nologin jdoe
+$> sudo useradd --system -s /usr/sbin/nologin myapp
 ```
 
-The user is created a bit differently with the `--system` option:
+The user is created a bit differently with the `--system` option. Notably, the
+UID is chosen in a different range, to help quickly differentiate system users
+from login users.
 
-* No aging information is stored in `/etc/shadow`.
-* The UID/GID is chosen in a different range, to help quickly differentiate system users from login users.
-
-> You can also add the `-m` option if necessary.
-> Some applications or services might expect the user to have a home directory.
+> You can also add the `-m` (ho**m**e) option if necessary. Some applications or
+> services might expect the user to have a home directory.
 
 #### Checking the created system user
 
@@ -556,11 +582,13 @@ $> tail -n 1 /etc/group
 myapp:x:999:
 ```
 
-(Note that a home directory is configured even if it wasn't created.
-This is not an issue.)
-
-> System users use a different UID range by default,
-> specified by the `SYS_UID_MIN` and `SYS_UID_MAX` options in the `/etc/login.defs` file.
+> Note that a home directory is configured even if it wasn't created. This is
+> not an issue.
+>
+> System users use a different UID range by default, specified by the
+> `SYS_UID_MIN` and `SYS_UID_MAX` options in the `/etc/login.defs` file. On
+> Ubuntu, for example, it will start at 999 and be decremented by 1 for each new
+> user.
 
 You can try to use `su` to try to switch to that user.
 It won't work:
@@ -587,37 +615,39 @@ It's simply an organizational distinction to make life easier for system adminis
   (This difference can be utilized by the GUI,
   for example to omit system users when populating a username dropdown list at login.)
 
-> You can even transform a login user into a system user and vice-versa through judicious use of the `usermod` command.
+> You can even transform a login user into a system user and vice-versa through
+> judicious use of the `usermod` command.
 
 ### Other useful user management commands
 
 Here's a few command examples for common administrative tasks:
 
-| Example                             | Effect                                                                                                                                                     |
-| :---                                | :---                                                                                                                                                       |
-| `usermod -a -G vip jdoe`            | Add user `jdoe` to group `vip`.                                                                                                                            |
-| `deluser jdoe vip`                  | Remove user `jdoe` from group `vip`.                                                                                                                       |
-| `userdel -r jdoe`                   | Remove user `jdoe` and its home directory.                                                                                                                 |
-| `passwd --lock jdoe`                | Remove the password for user `jdoe` (note that it may still be possible for that user to log in using other authentication methods, such as a public key). |
-| `usermod -s /usr/sbin/nologin jdoe` | Lock user `jdoe` out of the system (note that this will not disconnect the user if already connected, but it prevents future logins).                      |
+| Example                                  | Effect                                                                                                                                                  |
+| :--------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `usermod -a -G vip jdoe`                 | Add (**a**ppend) user `jdoe` to **g**roup `vip`.                                                                                                        |
+| `deluser jdoe vip`                       | Remove user `jdoe` from group `vip`.                                                                                                                    |
+| `userdel -r jdoe`                        | **R**emove user `jdoe` and its home directory                                                                                                           |
+| `passwd --lock jdoe`                     | Lock the password for user `jdoe` (note that it may still be possible for that user to log in using other authentication methods, such as a public key) |
+| `usermod --shell /usr/sbin/nologin jdoe` | Lock user `jdoe` out of the system (note that this will not disconnect the user if already connected, but it prevents future logins)                    |
 
 
 
 ## Permission management
 
-The following commands can be used to change the ownership or permissions of files:
+The following commands can be used to change the permissions or ownership of
+files:
 
-| Command | Purpose                                                                     |
-| :---    | :---                                                                        |
-| `chmod` | Change the **mode** (another name for file permissions) of a file or files. |
-| `chown` | Change the **owner** (and optionally the group) of a file or files.         |
+| Command | Purpose                                                                        |
+| :------ | :----------------------------------------------------------------------------- |
+| `chmod` | **Ch**ange the **mod**e (another name for file permissions) of a file or files |
+| `chown` | **Ch**ange the **own**er (and optionally the group) of a file or files         |
 
-Use `man COMMAND` to read their manual, e.g. `man chmod`.
+Use `man <command>` to read their manual, e.g. `man chmod`.
 
 ### The `chown` command
 
-The `chown` command is quite simple to use.
-The following command changes the owner of `file.txt` to `alice`:
+The [`chown` command][chown] is quite simple to use. The following command
+changes the owner of `file.txt` to `alice`:
 
 ```bash
 $> sudo chown alice file.txt
@@ -629,7 +659,8 @@ The following command changes the owner of `file.txt` to `bob` and its group to 
 $> sudo chown bob:vip file.txt
 ```
 
-You can also recursively change the owner and group of a directory and all its files:
+You can also recursively (with the `-R` option) change the owner and group of a
+directory and all its files:
 
 ```bash
 $> sudo chown -R bob:bob /home/bob
@@ -641,11 +672,13 @@ $> sudo chown -R bob:bob /home/bob
 
 ### The `chmod` command
 
-The [`chmod` command][chmod] is used to change file permissions and is a little more complicated.
-It has two syntaxes to specify which permissions you want: **symbolic modes** and **octal modes**.
+The [`chmod` command][chmod] is used to change file permissions and is a little
+more complicated. It has two syntaxes to specify which permissions you want:
+**symbolic mode** and **octal mode**.
 
-With **symbolic modes**, you specify which permissions you want with letters similar to those shown by `ls -l`,
-and you have more control over which specific permissions you want to add or remove:
+With **symbolic mode**, you specify which permissions you want with letters
+similar to those shown by `ls -l`, and you have more control over which specific
+permissions you want to add or remove:
 
 ```bash
 $> sudo chmod ug+x script.sh
@@ -653,67 +686,69 @@ $> sudo chmod a-w readonly.txt
 $> sudo chmod o-rwx secret.txt
 ```
 
-With **octal modes**, you specify all of a file's permissions at once.
-You cannot add a remove a specific permission without also setting the others:
+With **octal mode**, you specify all of a file's permissions at once.
+You cannot add or remove a specific permission without also setting the others:
 
 ```bash
 $> sudo chmod 755 executable.sh
 $> sudo chmod 640 secret.txt
 ```
 
-#### Symbolic modes
+#### Symbolic mode
 
 The symbolic syntax of the `chmod` command is:
 
 ```
-chmod [references][operator][modes] file
+chmod [reference...][operator][permission...] file
 ```
 
-The `[references]` correspond to user categories:
+Specify one or more references (`[reference...]`) to select user categories:
 
-| Reference | Category | Description                               |
-| :-------- | :------- | :---------------------------------------- |
-| `u`       | User     | The user who owns the file (the owner).   |
-| `g`       | Group    | The group that owns the file.             |
-| `o`       | Others   | Any other user with access to the system. |
-| `a`       | All      | All three of the above, same as `ugo`.    |
+| Reference | Category | Description                              |
+| :-------- | :------- | :--------------------------------------- |
+| `u`       | User     | The user who owns the file (the owner)   |
+| `g`       | Group    | The group that owns the file             |
+| `o`       | Others   | Any other user with access to the system |
+| `a`       | All      | All three of the above, same as `ugo`    |
 
-The available `[operators]` are:
+Use one of the available operators (`[operator]`):
 
-| Operator | Description                                                    |
-| :------- | :------------------------------------------------------------- |
-| `+`      | Add permissions (modes) to the specified category of users.    |
-| `-`      | Remove permissions from the specified category of users.       |
-| `=`      | Set the exact permissions for the specified category of users. |
+| Operator | Description                                                   |
+| :------- | :------------------------------------------------------------ |
+| `+`      | Add permissions to the specified category of users            |
+| `-`      | Remove permissions from the specified category of users       |
+| `=`      | Set the exact permissions for the specified category of users |
 
-#### Using symbolic modes
+#### Using symbolic mode
 
 The symbolic syntax basically allows you to specify:
 
-* What category of user you want to change permissions for (`u`, `g`, `o` or
-  `a`).
-* What kind of change you want to do (add new permissions with `+`, remove some
-  with `-` or set exact permissions with `=`).
-* What permissions (modes) you want to change (`r`, `w` or `x`).
+* What category or categories of users you want to change permissions for (`u`,
+  `g`, `o` or `a`)
+* What kind of change you want to do (`+`, `-` or `=`)
+* What permission(s) you want to change (`r` for read, `w` for write or `x` for
+  execution/traversal)
 
-For example, the following command adds `r` (read) and `w` (write) permissions to `u` (the owner of the file):
+For example, the following command adds read and write permissions to `u` (the
+owner of the file):
 
 ```bash
 $> sudo chmod u+rw file.txt
 ```
 
-The following command sets the permissions for `g` (the group of the file) to `r` (read) and `x` (execute):
+The following command sets the permissions for `g` (the group of the file) to
+read and execute:
 
 ```bash
 $> sudo chmod g=rx file.txt
 ```
 
-#### Octal modes
+#### Octal mode
 
-Unix file permissions can be represented in [octal (base-8) notation][octal-modes]:
+Unix file permissions can be represented in [octal (base-8) notation][octal-mode]:
 
-| Octal | Permissions             | Modes | Binary |
-| :---  | :---                    | :---  | :---   |
+| Octal | Permissions             | Text  | Binary |
+| :---- | :---------------------- | :---- | :----- |
 | 7     | read, write and execute | `rwx` | 111    |
 | 6     | read and write          | `rw-` | 110    |
 | 5     | read and execute        | `r-x` | 101    |
@@ -729,10 +764,11 @@ You can represent an entire file's permissions with 3 octal digits:
 * `751` is equivalent to `rwxr-x--x`.
 * `640` is equivalent to `rw-r-----`.
 
-#### Using octal modes
+#### Using octal mode
 
-The octal syntax does not allow you to make a granular change to a specific permissions (e.g. `u+x`).
-However, it does allow you to easily change an entire file's permissions in one command.
+The octal syntax does not allow you to make a granular change to a specific
+permission (e.g. `u+x`). However, it does allow you to easily change an entire
+file's permissions in one command.
 
 For example, the following command sets permissions `rwxr-xr-x` to `script.sh`:
 
@@ -755,27 +791,12 @@ $> sudo chmod 640 secret.txt
 
 
 
-## TODO
-
-* https://en.wikipedia.org/wiki/Everything_is_a_file
-* Ports
-  * netcat
-  * HTTP request
-  * https://www.networkworld.com/article/2693416/unix-networking-basics-for-the-beginner.html
-* Magic files
-* POSIX (https://en.wikipedia.org/wiki/POSIX)
-* Useful commands
-  * Find files
-  * whoami
-  * id
-* Package management
-* Environment variables
-
 
 
 [apfs]: https://en.wikipedia.org/wiki/Apple_File_System
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
-[chmod]: https://en.wikipedia.org/wiki/Chmod
+[chmod]: https://linux.die.net/man/1/chmod
+[chown]: https://linux.die.net/man/1/chown
 [etc-group]: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Introduction_To_System_Administration/s3-acctspgrps-group.html
 [etc-gshadow]: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Introduction_To_System_Administration/s3-acctsgrps-gshadow.html
 [etc-passwd]: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Introduction_To_System_Administration/s2-acctsgrps-files.html
@@ -784,7 +805,7 @@ $> sudo chmod 640 secret.txt
 [fstab]: https://en.wikipedia.org/wiki/Fstab
 [hfs]: https://en.wikipedia.org/wiki/Hierarchical_File_System_(Apple)
 [ntfs]: https://en.wikipedia.org/wiki/NTFS
-[octal-modes]: https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation
+[octal-mode]: https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation
 [sh]: https://en.wikipedia.org/wiki/Bourne_shell
 [sudoers]: http://toroid.org/sudoers-syntax
 [ubuntu]: https://www.ubuntu.com/

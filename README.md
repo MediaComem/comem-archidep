@@ -19,7 +19,6 @@ This course is a [Media Engineering][comem] web development course taught at
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [:collision: Exam](#collision-exam)
 - [Legend](#legend)
 - [What you will need](#what-you-will-need)
 - [Plan](#plan)

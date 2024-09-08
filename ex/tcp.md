@@ -143,7 +143,7 @@ Press `Enter` twice and you should receive the HTML for Google's home page.
 
 Once you're done, you can close the connection with `Ctrl-C`.
 
-If you open your browser, visit `http://www.google.com`, and display the source
+If you open your browser, visit `http://www.google.com` and display the source
 code of the page, you should see the same result.
 
 Congratulations! You now know how to speak HTTP to Google's web server directly.
