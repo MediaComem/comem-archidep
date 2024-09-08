@@ -1,5 +1,9 @@
 # Unix Permissions Solutions
 
+Here are some solutions to the Unix permissions exercise. Note that this is not
+an exhaustive list of solutions. There are often several ways to achieve the
+same result with different Unix commands.
+
 <!-- START doctoc -->
 <!-- END doctoc -->
 
@@ -27,7 +31,7 @@
   # Give the file to alice.
   $> sudo chown alice /home/alice/file.txt
   # Remove read permissions for other users (including yours).
-  $> sudo chmod o-rwx /home/alice/file.txt
+  $> sudo chmod o-r /home/alice/file.txt
   ```
 
   **Setting the permissions in octal mode**

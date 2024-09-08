@@ -1,3 +1,15 @@
+# Unix Basics & Administration
+
+Learn the basics of Unix and Unix-like operating systems like Linux, and how to
+manage them from the command line.
+
+> In many respects, the basics of Unix are the same for the original Unix
+> operating system and Unix-like operating systems derived from Unix like Linux
+> or macOS. From here on, when we refer to "Unix", we will in fact be talking
+> about all Unix and Unix-like systems in general.
+
+<!-- slide-include ../../BANNER.md -->
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -41,19 +53,6 @@
   - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# Unix Basics & Administration
-
-Learn the basics of Unix and Unix-like operating systems like Linux, and how to
-manage them from the command line.
-
-> In many respects, the basics of Unix are the same for the original Unix
-> operating system and Unix-like operating systems derived from Unix like Linux
-> or macOS. From here on, when we refer to "Unix", we will in fact be talking
-> about all Unix and Unix-like systems in general.
-
-<!-- slide-include ../../BANNER.md -->
-
 
 
 ## File system
