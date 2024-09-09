@@ -315,13 +315,16 @@ Mem:            985          90         534           0         359         751
 Swap:             0           0           0
 ```
 
+> The `-m` option of the `free` command displays memory size in
+> [mebibytes][mebibyte], a more human-readable quantity, instead of bytes.
+
 
 
 ## Exit status
 
 <!-- slide-front-matter class: center, middle -->
 
-> How children indicate success to their parent.
+> How children indicate success to their parent
 
 <p class='center'><img class='w40' src='images/exit-status.png' /></p>
 
@@ -357,14 +360,17 @@ $> echo $?
 
 ### Retrieving the exit status in code
 
-This is not a feature that is limited to command line use.
-When running a program from an application, you can also obtain the exit status.
+Exit codes are not a feature that is limited to command line use. When running a
+program from an application, you can also obtain the exit status.
 
 For example:
 
-* By using the `&$return_var` reference when calling PHP's [`exec` function][php-exec].
-* By calling the [`Process#exitValue()` method][java-process-exit-value] after calling `Runtime#exec(String command)` in Java.
-* By listening to the `close` event when calling Node.js's [`spawn` function][node-spawn].
+* By using the `&$return_var` reference when calling PHP's [`exec`
+  function][php-exec]
+* By calling the [`Process#exitValue()` method][java-process-exit-value] after
+  calling `Runtime#exec(String command)` in Java
+* By listening to the `close` event when calling Node.js's [`spawn`
+  function][node-spawn]
 
 ### Meaning of exit statuses
 
@@ -389,13 +395,15 @@ is that **0 is good, anything else is probably bad**.
 
 <!-- slide-front-matter class: center, middle -->
 
-> Sending notifications to processes, and then killing them.
+> Sending notifications to processes, and then killing them
 
 <p class='center'><img class='w40' src='images/kill-9.jpg' /></p>
 
 ### What is a signal?
 
-A signal is an **asynchronous notification sent to a process** to notify it that an event has occurred.
+A signal is an **[asynchronous][asynchrony] notification sent to a process** to
+notify it that an event has occurred. Signals are sent by other processes or by
+the system (i.e. the kernel).
 
 <p class='center'><img class='w80' src='images/sighup-diagram.jpg' /></p>
 
@@ -408,16 +416,16 @@ A signal is defined by the `SIG` prefix followed by a mnemonic name for the sign
 Some signals also have a standard number assigned to them.
 Here are the most commonly encountered Unix signals:
 
-Signal     | Number | Default handler       | Description
-:---       | ---:   | :---                  | :---
-`SIGHUP`   | 1      | Terminate             | Hangup.
-`SIGINT`   | 2      | Terminate             | Terminal interrupt signal.
-`SIGKILL`  | 9      | Terminate             | Kill (cannot be caught or ignored).
-`SIGQUIT`  | 3      | Terminate (core dump) | Terminal quit signal.
-`SIGTERM`  | 15     | Terminate             | Termination signal.
-`SIGUSR1`  | -      | Terminate             | User-defined signal 1.
-`SIGUSR2`  | -      | Terminate             | User-defined signal 2.
-`SIGWINCH` | -      | Ignore                | Terminal window size changed.
+Signal     | Number | Default handler                    | Description
+:--------- | -----: | :--------------------------------- | :---------------------------------
+`SIGHUP`   |      1 | Terminate                          | Hangup
+`SIGINT`   |      2 | Terminate                          | Terminal interrupt signal
+`SIGKILL`  |      9 | Terminate                          | Kill (cannot be caught or ignored)
+`SIGQUIT`  |      3 | Terminate ([core dump][core-dump]) | Terminal quit signal
+`SIGTERM`  |     15 | Terminate                          | Termination signal
+`SIGUSR1`  |      - | Terminate                          | User-defined signal 1
+`SIGUSR2`  |      - | Terminate                          | User-defined signal 2
+`SIGWINCH` |      - | Ignore                             | Terminal window size changed
 
 Here's a more complete list: [POSIX signals][signals-list].
 
@@ -1131,7 +1139,9 @@ The final result is a list of file extensions and the number of files with that 
 
 
 
+[asynchrony]: https://en.wikipedia.org/wiki/Asynchrony_(computer_programming)
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
+[core-dump]: https://en.wikipedia.org/wiki/Core_dump
 [daemon]: https://en.wikipedia.org/wiki/Daemon_(computing)
 [device-file]: https://en.wikipedia.org/wiki/Device_file
 [exit-status]: https://en.wikipedia.org/wiki/Exit_status
@@ -1144,6 +1154,7 @@ The final result is a list of file extensions and the number of files with that 
 [ipc]: https://en.wikipedia.org/wiki/Inter-process_communication
 [java-process-exit-value]: https://docs.oracle.com/javase/7/docs/api/java/lang/Process.html#exitValue()
 [jcl]: https://en.wikipedia.org/wiki/Job_Control_Language
+[mebibyte]: https://simple.wikipedia.org/wiki/Mebibyte
 [nginx-signals]: http://nginx.org/en/docs/control.html
 [node-spawn]: https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options
 [null-device]: https://en.wikipedia.org/wiki/Null_device
