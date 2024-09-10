@@ -12,6 +12,8 @@ This guide describes how to establish and use raw TCP connections with the
   - [:exclamation: **Alice:** connect to Bob's server](#exclamation-alice-connect-to-bobs-server)
   - [:exclamation: Communicate!](#exclamation-communicate)
 - [:exclamation: Talk ~~dirty~~ HTTP to Google](#exclamation-talk-dirty-http-to-google)
+- [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
+  - [:classical_building: Architecture](#classical_building-architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -57,8 +59,8 @@ port 3000:
 $> nc -l 3000
 ```
 
-> :books: At this point, `nc` will take over the console, waiting for a TCP
-> client to connect.
+> :books: At this point, `nc` will start **l**istening on port 3000 and take
+> over the console, waiting for a TCP client to connect.
 
 ### :exclamation: **Alice:** connect to Bob's server
 
@@ -74,8 +76,8 @@ $> nc W.X.Y.Z 3000
 
 ### :exclamation: Communicate!
 
-If Bob types some text and presses Enter to send it,
-it should be displayed in Alice's terminal.
+If Bob types some text and presses `Enter` to send it, it should be displayed in
+Alice's terminal.
 
 ```bash
 $> nc -l 3000
@@ -106,7 +108,7 @@ command][ping]:
 ```bash
 $> ping -c 1 google.com
 PING google.com (`O.P.Q.R`) 56(84) bytes of data.
-64 bytes from example.net (O.P.Q.R): icmp_seq=1 ttl=53 time=0.890 ms
+64 bytes from google.com (O.P.Q.R): icmp_seq=1 ttl=53 time=0.890 ms
 ...
 ```
 
@@ -146,8 +148,39 @@ Once you're done, you can close the connection with `Ctrl-C`.
 If you open your browser, visit `http://www.google.com` and display the source
 code of the page, you should see the same result.
 
-Congratulations! You now know how to speak HTTP to Google's web server directly.
-Now you can appreciate what your browser does for you every day.
+
+
+## :checkered_flag: What have I done?
+
+Contratulations!
+
+Like the pioneers of the 1970s who developed the TCP/IP suite, you have
+established a TCP connection between two machines and exchanged some (hopefully
+nice) words with your classmate.
+
+You have also spoken HTTP directly to Google's web server on a TCP connection,
+demonstrating the layering of the OSI model:
+
+* You have hand-written an HTTP request, a level 7 application protocol. As
+  you've seen, this is simply text written in the correct format.
+* You have sent this request through a TCP connection, a level 4 transport
+  protocol.
+* To reach the correct host, you have used an address of the **I**nternet
+  **P**rotocol (IP), a level-3 network protocol.
+
+> :books: There are other protocols in other layers at work, but these are the
+> ones that interest us in the context of this course.
+
+You can also now fully appreciate what your browser does for you every day.
+
+### :classical_building: Architecture
+
+This is a simplified architecture of the main running processes and
+communication flow during this exercise:
+
+![Architecture diagram](tcp-architecture.png)
+
+> [Architecture diagram PDF](tcp-architecture.pdf).
 
 
 
