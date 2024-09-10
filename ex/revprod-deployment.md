@@ -40,7 +40,7 @@ Parts of this guide are annotated with the following icons:
 - :warning: **Critically important information about the exercise.**
 - :gem: Tips on the exercise, reminders about previous exercises, or
   explanations about how this exercise differs from the previous one.
-- :space_invader: More advanced tips on how to save some time.
+- :space_invader: More advanced tips on how to save some time. Challenges.
 - :books: Additional information about the exercise or the commands and tools
   used.
 - :checkered_flag: The end of the exercise.
