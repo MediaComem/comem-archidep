@@ -405,38 +405,45 @@ A signal is an **[asynchronous][asynchrony] notification sent to a process** to
 notify it that an event has occurred. Signals are sent by other processes or by
 the system (i.e. the kernel).
 
-<p class='center'><img class='w80' src='images/sighup-diagram.jpg' /></p>
+<p class='center'><img class='w80' src='images/sighup-diagram.png' /></p>
 
 If the process has registered a **signal handler** for that specific signal, it is executed.
 Otherwise the **default signal handler** is executed.
 
 ### Common Unix signals
 
-A signal is defined by the `SIG` prefix followed by a mnemonic name for the signal.
-Some signals also have a standard number assigned to them.
-Here are the most commonly encountered Unix signals:
+A signal is defined by the `SIG` prefix followed by a mnemonic name for the
+signal. Some signals also have a standard number assigned to them. Here are some
+of the most commonly encountered Unix signals:
 
-Signal     | Number | Default handler                    | Description
-:--------- | -----: | :--------------------------------- | :---------------------------------
-`SIGHUP`   |      1 | Terminate                          | Hangup
-`SIGINT`   |      2 | Terminate                          | Terminal interrupt signal
-`SIGKILL`  |      9 | Terminate                          | Kill (cannot be caught or ignored)
-`SIGQUIT`  |      3 | Terminate ([core dump][core-dump]) | Terminal quit signal
-`SIGTERM`  |     15 | Terminate                          | Termination signal
-`SIGUSR1`  |      - | Terminate                          | User-defined signal 1
-`SIGUSR2`  |      - | Terminate                          | User-defined signal 2
-`SIGWINCH` |      - | Ignore                             | Terminal window size changed
+.compact-table[
 
-Here's a more complete list: [POSIX signals][signals-list].
+Signal     | Number | Default handler                         | Description
+:--------- | -----: | :-------------------------------------- | :-------------------------------------------------------------
+`SIGHUP`   |      1 | Terminate                               | Hangup (i.e. connection lost)
+`SIGINT`   |      2 | Terminate                               | Interrupt signal (sent when you use `Ctrl-C`)
+`SIGTERM`  |     15 | Terminate                               | Termination signal (default signal sent by the `kill` command)
+`SIGQUIT`  |      3 | Terminate (with [core dump][core-dump]) | Termination signal
+`SIGKILL`  |      9 | Terminate                               | Kill (cannot be caught or ignored)
+`SIGUSR1`  |      - | Terminate                               | User-defined signal 1
+`SIGUSR2`  |      - | Terminate                               | User-defined signal 2
+`SIGWINCH` |      - | Ignore                                  | Terminal window size changed
+
+]
+
+> You can **l**ist available signals on your system by running `kill -l`. Here's
+> a more complete list: [POSIX signals][signals-list].
 
 #### The terminal interrupt signal (`SIGINT`)
 
-When you type `Ctrl-C` in your terminal to terminate a running process, you are actually using Unix signals.
+When you type `Ctrl-C` in your terminal to terminate a running process, you are
+actually using Unix signals.
 
-The shortcut is interpreted by your shell,
-which then sends a **terminal interrupt signal**, or **`SIGINT`**, to the running process.
+The shortcut is interpreted by your shell, which then sends a **terminal
+interrupt signal**, or **`SIGINT`**, to the running process.
 
-Most processes handle that signal by terminating (altough some don't respond to it, like some interactive helps, e.g. `man ls`).
+Most processes handle that signal by terminating (altough some don't respond to
+it, like some interactive helps, e.g. `man ls`).
 
 ### The `kill` command
 
@@ -456,10 +463,10 @@ kill [-s <SIGNAL>] <PID>
 
 Command             | Effect
 :---                | :---
-`kill 10000`        | Send the **default `SIGTERM` signal** to process with PID `10000`.
-`kill -s HUP 10000` | Send the `SIGHUP` signal to that same process.
-`kill -HUP 10000`   | Equivalent to the previous command.
-`kill -1 10000`     | Equivalent to the previous command (1 is the official POSIX number for `SIGHUP`).
+`kill 10000`        | Send the **default `SIGTERM` signal** to process with PID `10000`
+`kill -s HUP 10000` | Send the `SIGHUP` signal to that same process
+`kill -HUP 10000`   | Equivalent to the previous command
+`kill -1 10000`     | Equivalent to the previous command (1 is the official POSIX number for `SIGHUP`)
 
 ]
 
@@ -541,9 +548,9 @@ Many other tools follow this convention.
 
 ### The good old days
 
-In **pre-Unix** systems, programs had to **explicitly connect to input and output devices**.
+In **pre-Unix** (before 1970) systems, programs had to **explicitly connect to input and output devices**.
 This was done differently for each device (e.g. magnetic tape drive, disk drive, printer, etc) and operating system.
-For example, IBM mainframes used a [job control language (JCL)][jcl] to establish connections between programs and devices.
+For example, IBM mainframes used a [**J**ob **C**ontrol **L**anguage (JCL)][jcl] to establish connections between programs and devices.
 
 <!-- slide-column 25 -->
 
@@ -569,24 +576,31 @@ For example, IBM mainframes used a [job control language (JCL)][jcl] to establis
 
 ### Unix streams
 
-Unix introduced **abstract devices** and the concept of a **data stream**:
-an ordered sequence of data bytes which can be read until the end of file (EOF).
+Unix introduced **abstract devices** and the concept of a **data stream**: an
+ordered sequence of data bytes which can be read until the **e**nd **o**f
+**f**ile (EOF).
 
-A program may also write bytes as desired and need not declare how many there will be or how to group them.
-The data going through a stream may be **text** with any encoding **or binary data**.
+A program may also write bytes as desired and need not declare how many there
+will be or how to group them. The data going through a stream may be **text**
+(with any encoding) **or binary data**.
 
 This was groundbreaking at the time because a program no longer had to know or care what kind of device it is communicating with,
 as had been the case until then.
 
 #### stdin, stdout & stderr
 
-Any new Unix process is **automatically connected** to the following streams out of the box:
+Any new Unix process is **automatically connected** to the following streams by
+default:
 
-Stream          | Shorthand | Description
-:---            | :---      | :---
-Standard input  | `stdin`   | Stream **data** (often text) **going into a program**.
-Standard output | `stdout`  | Stream where a program writes its **output data**.
-Standard error  | `stderr`  | Another output stream programs can use to output **error messages or diagnostics**. It is separate from standard output, allowing output and errors to be distinguished (solving the [semipredicate problem][semipredicate]).
+.compact-table[
+
+Stream                      | Shorthand | Description
+:-------------------------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**St**an**d**ard **in**put  | `stdin`   | Stream **data** (often text) **going into a program**
+**St**an**d**ard **out**put | `stdout`  | Stream where a program writes its **output data**
+**St**an**d**ard **err**or  | `stderr`  | Another output stream programs can use to output **error messages or diagnostics** (separate from standard output, allowing output and errors to be distinguished, solving the [semipredicate problem][semipredicate])
+
+]
 
 <p class='center'><img class='w60' src='images/streams.jpg' /></p>
 
@@ -606,7 +620,7 @@ it automatically receives keyboard input, and its output data and errors are aut
 
 <!-- slide-column -->
 
-<img class='w100' src='images/streams-bash.jpg' />
+<img class='w100' src='images/streams-bash.png' />
 
 #### Stream inheritance
 
@@ -614,12 +628,19 @@ A child will **automatically inherit the standard streams of its parent process*
 (unless redirected, more on that later).
 
 For example, when you run an `ls` command,
-you do not have to specify that the resulting list of directories should be displayed in the terminal.
+you do not have to specify that the resulting list of files should be displayed in the terminal.
 The standard output of the parent process, in this case your shell (e.g. Bash) is inherited by the `ls` process.
 
-Similarly, when you run an SSH client with the `ssh` command to communicate with another machine,
+<!-- slide-column 30 -->
+
+Similarly, when you run the `ssh` command to communicate with another machine,
 you do not have to explicitly connect your keyboard input to this new process.
-As it's a child process of the shell, it inherits the same standard input.
+As the SSH client is a child process of the shell, it inherits the same standard
+input.
+
+<!-- slide-column -->
+
+<p class='center'><img class='w100' src='images/ssh-channel-and-processes.jpg' /></p>
 
 #### Optional input stream
 
@@ -627,14 +648,14 @@ A process is not obligated to use its input or output streams.
 For example, **the `ls` command** produces output (or an error) but **takes no input**
 (it has arguments, but that does not come from the input data stream).
 
-<p class='center'><img class='w70' src='images/streams-ls.jpg' /></p>
+<p class='center'><img class='w80' src='images/streams-ls.png' /></p>
 
 #### Optional output stream
 
 **The `cd` command** takes no input and **produces no output** either,
 although it can produce an error.
 
-<p class='center'><img class='w70' src='images/streams-cd.jpg' /></p>
+<p class='center'><img class='w70' src='images/streams-cd.png' /></p>
 
 ### Stream redirection
 
@@ -643,27 +664,31 @@ The standard streams can be **redirected**.
 Redirection means capturing output from a file or command,
 and sending it as input to another file or command.
 
-Any Unix process has a number of [file descriptors][fd].
-They are an abstract indicator used to access a file or other input/output resource such as a pipe or socket.
+Any Unix process has a number of [file descriptors][fd]. They are an abstract
+indicator used to access a file or other input/output resource such as a
+[pipe][pipes] (we'll talk about these later) or [socket][unix-sockets].
 
-The first 3 file descriptors correspond to the standard streams by default:
+The first three file descriptors correspond to the standard streams by default:
 
 File descriptor | Stream
-:---            | :---
-`0`             | Standard input (`stdin`)
-`1`             | Standard output (`stdout`)
-`2`             | Standard error (`stderr`)
+:-------------- | :-------------------------------------
+`0`             | **St**an**d**ard **in**put (`stdin`)
+`1`             | **St**an**d**ard **out**put (`stdout`)
+`2`             | **St**an**d**ard **err**or (`stderr`)
 
 ### Redirect standard output stream
 
 The `>` shell operator **redirects an output stream**.
 
-For example, the following line runs the `ls` command,
-but instead of displaying the result in the terminal,
-the **standard output stream (file descriptor `1`) is redirected** to the file `data.txt`.
+For example, the following line runs the `ls` command, but instead of displaying
+the result in the terminal, the **standard output stream (file descriptor `1`)
+is redirected** to the file `data.txt`:
 
 ```bash
 $> ls -a `1> data.txt`
+
+$> ls
+data.txt
 
 $> cat data.txt
 .
@@ -700,12 +725,16 @@ If you specify no file descriptor, **standard output is redirected by default**:
 ```bash
 $> echo Hello `> data.txt`
 $> echo Again `>> data.txt`
+$> cat data.txt
+Hello
+Again
 ```
 
 ### Redirect standard error stream
 
-Note that error messages are not redirected using the redirect operator like in the previous example.
-They are still displayed in the terminal and the file remains empty:
+Note that error messages are not redirected using the redirect operator (`>`)
+like in the previous example. Errors are still displayed in the terminal and the
+file remains empty:
 
 ```bash
 $> ls unknown-file `> error.txt`
@@ -730,9 +759,10 @@ ls: unknown-file: No such file or directory
 Some commands will **send data to both output streams** (standard output and standard error).
 As we've seen, both are displayed in the terminal by default.
 
-For example, the `curl` (**C**lient **URL**) command is used to make HTTP requests.
-By default, it only outputs the HTTP response body to the standard output stream,
-but with the `-v` option it also prints diagnostics information to the standard error stream:
+For example, the `curl` (**C**lient **URL**) command is used to make HTTP
+requests. By default, it only outputs the HTTP response body to the standard
+output stream, but with the `-v` (**v**erbose) option it also prints diagnostics
+information to the standard error stream:
 
 ```bash
 $> `curl -L -v https://git.io/fAp8D`
@@ -750,11 +780,10 @@ Here, `Hello World` is the output data, while the rest of the output is the diag
 
 #### Redirect standard output stream (curl)
 
-This example demonstrates how the **standard output and error streams** can be **redirected separately**.
+This example demonstrates how the **standard output and error streams** can be
+**redirected separately**.
 
-The following version redirects standard output to the file `curl-output.txt`.
-As you can see, the `Hello World` output data is no longer displayed since it has been redirected to the file,
-but the diagnostics information printed on the standard error stream is still displayed:
+The following version redirects standard output to the file `curl-output.txt`:
 
 ```bash
 $> curl -L -v https://git.io/fAp8D `> curl-output.txt`
@@ -765,25 +794,21 @@ $> curl -L -v https://git.io/fAp8D `> curl-output.txt`
  Connected to git.io (54.152.127.232) port 443 (#0)
 ...
 
-$> ls
-curl-output.txt
-
 $> cat curl-output.txt
 Hello World
 ```
 
+As you can see, the `Hello World` output data is no longer displayed since it
+has been redirected to the file, but the diagnostics information printed on the
+standard error stream is still displayed.
+
 #### Redirect standard error stream (curl)
 
-The following version redirects standard error to the file `curl-error.txt`.
-This time, the `Hello World` output data is displayed in the terminal as with the initial command,
-but the diagnostics information has been redirected to the file:
+The following version redirects standard error to the file `curl-error.txt`:
 
 ```bash
 $> curl -L -v https://git.io/fAp8D `2> curl-error.txt`
 Hello World
-
-$> ls
-curl-error.txt curl-output.txt
 
 $> cat curl-error.txt
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -794,15 +819,16 @@ $> cat curl-error.txt
 ...
 ```
 
+This time, the `Hello World` output data is displayed in the terminal as with
+the initial command, but the diagnostics information has been redirected to the
+file.
+
 #### Redirect both standard output and error streams (curl)
 
 You can **perform both redirections at once** in one command:
 
 ```bash
 $> curl -L -v https://git.io/fAp8D `> curl-output.txt 2> curl-error.txt`
-
-$> ls
-curl-error.txt curl-output.txt
 
 $> cat curl-error.txt
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -870,9 +896,8 @@ $> cat /dev/null
 
 #### Redirect a stream to the null device
 
-When you don't care about an output stream, you can simply **redirect it to the null device**.
-In this example, the standard output stream is redirected to the null device, and therefore discarded,
-while the standard error stream is displayed normally:
+When you don't care about an output stream, you can simply **redirect it to the
+null device**:
 
 ```bash
 $> curl -L -v https://git.io/fAp8D `> /dev/null`
@@ -884,7 +909,8 @@ $> curl -L -v https://git.io/fAp8D `> /dev/null`
 ...
 ```
 
-> Please send complaints to `/dev/null`.
+In this example, the standard output stream is redirected to the null device,
+and therefore discarded, while the standard error stream is displayed normally.
 
 #### Other redirections to the null device
 
@@ -901,6 +927,8 @@ In this case, all output, diagnostics information and error messages will be dis
 ```bash
 $> curl -L -v https://git.io/fAp8D `&> /dev/null`
 ```
+
+> Please send complaints to `/dev/null`.
 
 ### Redirect one output stream to another
 
@@ -944,8 +972,8 @@ $> echo Hello World `2> /dev/null 1>&2`
 
 <!-- slide-container -->
 
-> This can be useful if you're writing a shell script
-and want to print error messages to the standard error stream.
+> This can be useful if you're writing a shell script and want to print error
+> messages to the standard error stream.
 
 ### Redirect standard input stream
 
@@ -999,30 +1027,30 @@ foo
 
 #### Here documents
 
-The `<<` operator also performs **standard input stream redirection** but is a bit different.
-It's called a [**here document**][here-document]
-and can be used to to send multiline input to a command,
-preserving line breaks and other whitespace.
+The `<<` operator also performs **standard input stream redirection** but is a
+bit different. It's called a [**here document**][here-document] and can be used
+to send multiline input to a command or script, preserving line breaks and other
+whitespace. For example, you could use it to send a list of names or a set of
+commands to be executed to a script.
 
-Typing the following command `cat` command starts a here document delimited by the string `EOF`:
+Typing the following `cat` command starts a here document delimited by the
+string `EOF`:
 
 ```bash
 $> cat `<< EOF`
+heredoc> Hello
+heredoc> World
+heredoc> EOF
 Hello
 World
-EOF
 ```
 
 > After you type the first line, you won't get a prompt back.
 > The here document remains open and you can type more text.
 > Typing `EOF` again and pressing `Enter` closes the document.
 
-The same text you typed will be printed by `cat`, with line breaks preserved:
-
-```
-Hello
-World
-```
+As you can see, the text you typed is printed by `cat`, with line breaks
+preserved.
 
 
 
@@ -1044,56 +1072,70 @@ Remember that all Unix systems standardize the following:
 
 Therefore, the **standard output stream** of process A can be **connected to the standard input stream** of another process B.
 
-<p class='center'><img class='w70' src='images/pipe-stdout-stdin.png' /></p>
+<p class='center'><img class='w65' src='images/pipe-stdout-stdin.png' /></p>
+
+<!-- slide-column 50 -->
 
 Processes can be **chained into a pipeline, each process transforming data and passing it to the next process**.
+
+> Imagine a production chain, where the parts (data) go from one person
+> (process) to the next until the final product is assembled.
+
+<!-- slide-column -->
+
+<p class='center'><img class='w100' src='images/modern-times.jpg' /></p>
 
 ### A simple pipeline
 
 The `|` operator (a vertical pipe) is used to connect two processes together.
 
-Let's use two commands, one that prints text as output and one that reads text as input:
+Let's use two commands, one that prints text as output and one that reads text
+as input:
 
 <!-- slide-column -->
 
-* The `ls` (**l**i**s**t) command produces a list of files and directories.
-* The `wc` (**w**ord **c**ount) command can count words, lines, characters or bytes.
-  With the `-l` option, it counts the number of lines in its input.
+* The `ls` (**l**i**s**t) command produces a list of files, one by line with the
+  `-1` option.
+* The `wc` (**w**ord **c**ount) command can count words, lines (with the `-l`
+  option), characters or bytes in its input.
 
 You can pipe them together like this:
 
 ```bash
-$> ls -a | wc -l
+$> ls -1 | wc -l
 ```
 
-This **redirects (pipes) the output of the `ls` command into the input of the `wc` command**.
+This **redirects (pipes) the output of the `ls` command into the input of the
+`wc` command**.
 
 <!-- slide-column -->
 
-<img class='w100' src='images/pipes-ls-wc.jpg' />
+<img class='w100' src='images/pipes-ls-wc.png' />
 
 ### The Unix philosophy
 
 Pipelines are one of the core features of Unix systems.
 
-Because **Unix programs** can be easily chained together,
-they **tend to be simpler and smaller**.
-Complex tasks can be achieved by chaining many small programs together.
+Because **Unix programs** can be easily chained together, they **tend to be
+simpler and smaller**. Complex tasks can be achieved by chaining many small
+programs together.
 
 This is, in a few words, the [Unix philosophy][unix-philosophy]:
 
-* Write programs that **do one thing and do it well**.
-* Write programs to **work together**.
-* Write programs to **handle text streams**, because that is a universal interface.
+* Write programs that **do one thing and do it well**
+* Write programs to **work together**
+* Write programs to **handle text streams**, because that is a universal
+  interface
 
 > Although many programs handle text streams, others also handle binary streams.
-> For example, the [ImageMagick][imagemagick] library can process images.
+> For example, the [ImageMagick][imagemagick] library can process images and the
+> [FFmpeg][ffmpeg] library can process videos.
 
 ### A more complex pipeline
 
-This command pipeline combines 5 different commands,
-processing the text data at each step and passing it along to the next command to arrive at the final result.
-**Each of these commands only knows how to do one thing**:
+This command pipeline combines five different commands, processing the text data
+at each step and passing it along to the next command to arrive at the final
+result. **Each of these commands only knows how to do one job**:
 
 <!-- slide-column 40 -->
 
@@ -1113,16 +1155,18 @@ $> `find . -type f | \`
 1515 md
 ```
 
+The final result is a list of file extensions and the number of files with that
+extension.
+
 <!-- slide-column -->
 
 * `find` is used to recursively list all files in the current directory.
 * `sed` (**s**tream **ed**itor) is used to obtain the files' basenames.
-* `egrep` is used to filter out names that do not have an extension.
+* `egrep` (**e**xtended **g**lobal **r**egular **e**xpression search and
+  **p**rint) is used to filter out names that do not have an extension.
 * `sed` is used again to transform basenames into just their extension.
 * `sort` is used to sort the resulting list alphabetically.
 * `uniq` is used to group identical adjacent lines and count them.
-
-The final result is a list of file extensions and the number of files with that extension.
 
 
 
@@ -1131,6 +1175,7 @@ The final result is a list of file extensions and the number of files with that 
 * [The Linux Process Journey - PID 0 (swapper) - Shlomi Boutnaru](https://medium.com/@boutnaru/the-linux-process-journey-pid-0-swapper-7868d1131316)
 * [The Linux Process Journey - PID 1 (init) - Shlomi Boutnaru](https://medium.com/@boutnaru/the-linux-process-journey-pid-1-init-60765a069f17)
 * [The Linux Process Journey - PID 2 (kthreadd) - Shlomi Boutnaru](https://medium.com/@boutnaru/the-linux-process-journey-pid-2-kthreadd-38657c2f0fa2)
+* [SIGINT And Other Termination Signals in Linux](https://www.baeldung.com/linux/sigint-and-other-termination-signals)
 * [What is the main purpose of the swapper process in Unix? - superuser][pid-0]
 * [I/O Redirection (The Linux Documentation Project)](https://www.tldp.org/LDP/abs/html/io-redirection.html)
 * [Here Documents (The Linux Documentation Project)][here-document]
@@ -1146,6 +1191,7 @@ The final result is a list of file extensions and the number of files with that 
 [device-file]: https://en.wikipedia.org/wiki/Device_file
 [exit-status]: https://en.wikipedia.org/wiki/Exit_status
 [fd]: https://en.wikipedia.org/wiki/File_descriptor
+[ffmpeg]: https://en.wikipedia.org/wiki/FFmpeg
 [free]: https://www.howtoforge.com/linux-free-command/
 [here-document]: http://tldp.org/LDP/abs/html/here-docs.html
 [htop]: https://hisham.hm/htop/
@@ -1175,3 +1221,4 @@ The final result is a list of file extensions and the number of files with that 
 [streams]: https://en.wikipedia.org/wiki/Standard_streams
 [top]: https://linux.die.net/man/1/top
 [unix-philosophy]: https://en.wikipedia.org/wiki/Unix_philosophy
+[unix-sockets]: https://en.wikipedia.org/wiki/Unix_domain_socket

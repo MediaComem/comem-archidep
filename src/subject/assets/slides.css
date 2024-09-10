@@ -124,7 +124,7 @@ blockquote {
 .x3 { font-size: 3em; }
 .x4 { font-size: 4em; }
 
-.compact-table table td {
+.compact-table table th, .compact-table table td {
   font-size: 0.9em;
 }
 
