@@ -11,7 +11,7 @@ Learn the basics of Unix networking and how to make TCP connections.
 
 **Recommended reading**
 
-* [Unix Administration](../unix-admin/)
+* [Unix Basics & Administration](../unix-admin/)
 * [Unix Processes](../unix-processes/)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -64,24 +64,31 @@ Learn the basics of Unix networking and how to make TCP connections.
 
 <img class='w70' src='images/first-internetworked-connection.jpg' />
 
+> This is a diagram of the first internetworked TCP connection made between
+> sites in the US, the UK and Norway in 1977.
+
 ### OSI model
 
-The [Open Systems Interconnection (OSI) model][osi] standardizes communications between computing system, allowing interoperability with standard protocols.
+The [**O**pen **S**ystems **I**nterconnection (OSI) model][osi] standardizes
+communications between computing systems, allowing interoperability with
+standard protocols.
 
-<p class='center'><img class='w70' src='images/osi.jpg' /></p>
+<p class='center'><img class='w65' src='images/osi.jpg' /></p>
 
 A layer serves the layer above it and is served by the layer below it.
 
 ### TCP/IP model
 
-The [internet protocol suite][tcp-ip] is the conceptual model used on the Internet and similar computer networks.
-It is commonly known as TCP/IP since the Transmission Control Protocol (TCP) and the Internet Protocol (IP) are its foundational protocols.
+The [internet protocol suite][tcp-ip] is the conceptual model used on the
+Internet and on similar computer networks. It is commonly known as TCP/IP since
+the **T**ransmission **C**ontrol **P**rotocol (TCP) and the **I**nternet
+**P**rotocol (IP) are its foundational protocols.
 
 <p class='center'><img class='w50' src='images/tcp-ip.png' /></p>
 
-It was originally developed for [ARPANET][arpanet].
+> It was originally developed for [ARPANET][arpanet].
 
-### OSI vs. TCP/IP
+### OSI vs TCP/IP
 
 The OSI and TCP/IP models describe the same technologies, but categorize them a little differently.
 
@@ -92,28 +99,58 @@ while the TCP/IP model is more in line with how Internet protocols are designed 
 
 ### IP addressing
 
-The [Internet Protocol (IP)][ip] is the principal communications protocol of the Internet.
-It allows delivering packets from a source host to a destination host based solely on IP addresses.
-It is a **network layer** protocol (OSI layer 3).
+The [**I**nternet **P**rotocol (IP)][ip] is the principal communications
+protocol of the Internet. It allows delivering packets from a source host to a
+destination host based solely on IP addresses. It is a **network layer**
+protocol (OSI layer 3).
 
-Version 4 of the protocol ([**IPv4**][ipv4]), in use since 1983, uses a 32-bit
-address space typically represented in 4 dotted decimal notation, with each
-octet (8 bits) containing a value between 0 and 255 (i.e. 2<sup>8</sup>
-possibilities):
+**V**ersion **4** of the protocol ([**IPv4**][ipv4]), in use since 1983, uses a
+32-bit address space, meaning that there are 2<sup>32</sup> or about 4.3 billion
+possible addresses.
 
-```
-    `10.199.0.5`
-```
-
-Version 6 of the protocol ([**IPv6**][ipv6]) was developed more recently because the world is running out of IPv4 addresses
-(4 billion IPv4 addresses is not enough in the [Internet of Things (IoT)][iot] world).
-It's an [internet standard][internet-standard] since 2017.
-
-It uses a 128-bit address space typically represented as 8 groups of 4 hexadecimal digits:
+That's a 32-bit IPv4 address in binary:
 
 ```
-    `2001:0db8:0000:cbad:4321:0000:0000:1234`
+    `10101100000100001111111000000001`
 ```
+
+#### IPv4 structure
+
+Of course that's a little hard to remember or even write down, so an IPv4
+address is typically represented in 4 dotted decimal notation, with each octet
+(8 bits) containing a value between 0 and 255 (i.e. 2<sup>8</sup>
+possibilities).
+
+This is the same address in dotted decimal notation: `172.16.254.1`
+
+<p class='center'><img class='w100' src='images/ipv4-structure.png' /></p>
+
+#### IPv6
+
+**V**ersion **6** of the protocol ([**IPv6**][ipv6]) was developed more recently
+because the world is running out of IPv4 addresses (~4 billion IPv4 addresses is
+not enough in the [Internet of Things (IoT)][iot] world). It's an [internet
+standard][internet-standard] since 2017.
+
+Here's a 128-bit IPv6 address in binary:
+
+```
+    `0000000100100011010001010110011110001001101010111100110111101111`
+    `0000000100100011010001010110011110001001101010111100110111101111`
+```
+
+> 2<sup>128</sup> possibilities is about 340
+> [undecillion](https://en.wikipedia.org/wiki/Undecillion) (yes, that's a word)
+> addresses, or 3.4 with 38 zeros. At least we won't have a [year 2038
+> bug](https://en.wikipedia.org/wiki/Year_2038_problem).
+
+#### IPv6 structure
+
+IPv6 adresses are typically represented as 8 groups of 4 [hexadecimal][hex]
+digits. Here's the same address in hexadecimal format:
+`0123:4567:89ab:cdef:0123:4567:89ab:cdef`
+
+<p class='center'><img class='w85' src='images/ipv6-structure.png' /></p>
 
 #### IP networks
 
@@ -122,22 +159,26 @@ To facilite routing, IP addresses are logically divided into networks.
 
 <p class='center'><img class='w60' src='images/ip-network-vs-host.png' /></p>
 
-For example, assuming we use the address `40.127.1.70` and a prefix of 16 bits:
+For example, assuming we use the address `10101100000100001111111000000001`, or
+`172.16.254.1` in dotted decimal notation, and a prefix of 16 bits:
 
-* The **network prefix or identifier** would be the first 16 bits: `40.127`.
-* The **host identifier** would be the last 16 bits: `1.70`.
+* The **network identifier or prefix** would be the first 16 bits:
+  `1010110000010000`, or in decimal notation `172.16`
+* The **host identifier** would be the last 16 bits: `1111111000000001` or in
+  decimal notation `254.1`
 
-This allows the physical routing devices that are part of the Internet to direct traffic to the correct geographical area and machine(s).
+This allows the physical routing devices that are part of the Internet to direct
+traffic to the correct geographical area and machine(s).
 
 #### IP global networks
 
-The [Internet Assigned Numbers Authority (IANA)][iana] is the organization
-responsible for dividing the Internet itself into global networks, each
-administered by regional organizations.
+The [**I**nternet **A**ssigned **N**umbers **A**uthority (IANA)][iana] is the
+organization responsible for dividing the Internet itself into global networks,
+each administered by regional organizations.
 
-The [Regional Internet Registries (RIR)][rir], in turn, follow their regional
-policies to delegate resources to their customers, which include [Internet
-Service Providers (ISP)][isp] and end-user organizations.
+The [**R**egional **I**nternet **R**egistries (RIR)][rir], in turn, follow their
+regional policies to delegate resources to their customers, which include
+[**I**nternet **S**ervice **P**roviders (ISP)][isp] (e.g. Swisscom).
 
 <p class="center"><img class="w75" src="./images/regional-internet-registries.svg" /></p>
 
@@ -157,30 +198,64 @@ This can be used to define **complex network structures** within an organization
 
 #### Reserved address spaces
 
-Certain ranges of IP addresses are **reserved for private networks**.
-In this address space you **cannot communicate with public machines** without a NAT gateway or proxy.
+There are a few [reserved IP address ranges][reserved-ip-addresses]. Some are
+**reserved for private networks**. In these ranges you **cannot communicate with
+public machines** without a NAT [gateway][gateway] or [proxy][proxy].
 
-There are three reserved ranges in the IPv4 address space:
+There are three reserved private ranges in the IPv4 address space:
 
-First address | Last address    | [Netmask][subnet] | [CIDR][cidr]
-:---          | :---            | :---              | :---
-10.0.0.0      | 10.255.255.255  | 255.0.0.0         | /8
-172.16.0.0    | 172.31.255.255  | 255.240.0.0       | /12
-192.168.0.0   | 192.168.255.255 | 255.255.0.0       | /16
+.compact-table[
+
+First address | Last address    | [Netmask][subnet] | [CIDR][cidr] | Addresses
+:------------ | :-------------- | :---------------- | :----------- | :----------------------------
+10.0.0.0      | 10.255.255.255  | 255.0.0.0         | /8           | 2<sup>24</sup> or ~16 million
+172.16.0.0    | 172.31.255.255  | 255.240.0.0       | /12          | 2<sup>20</sup> or ~1 million
+192.168.0.0   | 192.168.255.255 | 255.255.0.0       | /16          | 2<sup>16</sup> or 65536
+
+]
 
 Additionally, the following range is **reserved for a virtual network
 interface**, allowing networking applications running on the same machine to
 communicate with one another:
 
-First address | Last address    | [Netmask][subnet] | [CIDR][cidr]
-:---          | :---            | :---              | :---
-127.0.0.1     | 127.255.255.255 | 255.0.0.0         | /8
+.compact-table[
+
+First address | Last address    | [Netmask][subnet] | [CIDR][cidr] | Addresses
+:------------ | :-------------- | :---------------- | :----------- | :----------------------------
+127.0.0.0     | 127.255.255.255 | 255.0.0.0         | /8           | 2<sup>24</sup> or ~16 million
+
+]
+
+#### Netmasks and CIDRs
+
+A [netmask][subnet] is a notation to define an IPv4 network. Let's take the
+example of a random address `192.168.50.4` in the third private address range
+with the netmask `255.255.0.0`:
+
+|                 | Binary                                | Decimal        |
+| :-------------- | :------------------------------------ | :------------- |
+| IP address      | `11000000.10101000.00110010.00000100` | `192.168.50.4` |
+| **Netmask**     | `11111111.11111111.00000000.00000000` | `255.255.0.0`  |
+| Network prefix  | `11000000.10101000.00000000.00000000` | `192.168`      |
+| Host identifier | `00000000.00000000.00110010.00000100` | `50.4`         |
+
+Look at the netmask in binary form. The leading `1`s indicate the bits used for
+the network prefix and the trailing `0`s indicate the bits used for the host
+identifier. A netmask is always a sequence of `1`s followed by a sequence of
+`0`s.
+
+[CIDR][cidr] is another more compact notation that expresses the same thing.
+Writing `192.168.50.4/16` means that the first 16 bits of the address are used
+as the network prefix. It is therefore equivalent to `192.168.50.4` with the
+netmask of `255.255.0.0` above. Similarly, `10.0.0.0/8` is equivalent to
+`10.0.0.0` with a netmask of `255.0.0.0` (i.e. the first 8 bits are the network
+prefix).
 
 #### There's no place like 127.0.0.1
 
 `localhost` is a hostname that refers to the current computer used to access it.
-It normally resolves resolves to the IPv4 loopback address `127.0.0.1`, and to
-the IPv6 loopback address `::1`.
+It normally resolves to the IPv4 [loopback][loopback] address `127.0.0.1`, and
+to the IPv6 loopback address `::1`.
 
 When you or a program makes a request to `localhost` or `127.0.0.1`, you are
 contacting your own computer, bypassing network hardware but otherwise behaving
@@ -205,12 +280,16 @@ that means "**all IP addresses on the local machine**". The IPv6 equivalent is
 
 #### Network address translation
 
-[Network address translation (NAT)][nat] is a method of **remapping one IP address space into another** as traffic goes through a routing device.
+[**N**etwork **A**ddress **T**ranslation (NAT)][nat] is a method of **remapping
+one IP address space into another** as traffic goes through a routing device.
 
 <!-- slide-column 40 -->
 
-It is very commonly used for **IP masquerading**, a technique that hides an entire IP address space (such as private IP addresses) behind a single public IP address.
-The router typically translates the private IP addresses of computers in an organization's network into a single public IP address assigned to the organization.
+It is very commonly used for **IP masquerading**, a technique that hides an
+entire IP address range (such as private IP addresses) behind a single public IP
+address. The router typically translates the private IP addresses of computers
+in an organization's network into a single public IP address assigned to the
+organization and vice-versa.
 
 <!-- slide-column -->
 
@@ -218,31 +297,33 @@ The router typically translates the private IP addresses of computers in an orga
 
 <!-- slide-container -->
 
-Other computers on the Internet see the traffic as originating from the routing device with the public IP address instead of the hidden computer in the private network.
-This technique helps conserve IPv4 address space.
+Other computers on the Internet see the traffic as originating from the routing
+device with the public IP address instead of the hidden computer in the private
+network. This technique helps conserve IPv4 address space.
 
 ### Ports
 
 In computer networking, a port is an **endpoint of communication** associated
 with an IP address and protocol type. The most commonly used protocols that use
-ports are the [Transmission Control Protocol (TCP)][tcp] and the [User Datagram
-Protocol (UDP)][udp], which are **transport layer** protocols (OSI layer 4).
+ports are the [**T**ransmission **C**ontrol **P**rotocol (TCP)][tcp] and the
+[**U**ser **D**atagram **P**rotocol (UDP)][udp], which are **transport layer**
+protocols (OSI layer 4).
 
-A port is represented as an unsigned 16-bit number, from 0 to 65,535
+A port is represented as an unsigned 16-bit number, from 0 to 65535
 (2<sup>16</sup> - 1).
 
 A port number is always associated with an IP address and the type of transport
 protocol used for communication. For example, when a browser displays a web
-page, it is generally making a TCP connection to an IP address on port 80 or
-443.
+page, it is making a TCP (or UDP) connection to an IP address on port 80 (HTTP)
+or 443 (HTTPS).
 
 You can see this information if you access a web page with a command-line HTTP
 client like [cURL][curl]:
 
 ```bash
-$> curl -v http://google.com/
+$> curl -v https://google.com
 ...
-** Connected to google.com (216.58.215.238) port 80 (#0)
+** Connected to google.com (142.250.203.110) port 443
 ...
 ```
 
@@ -250,11 +331,12 @@ $> curl -v http://google.com/
 
 <!-- slide-column 45 -->
 
-A typical computer only has one IP address.
+A typical computer can be reached at one IP address.
 
 However, one client can **open many connections at the same time to a given IP
 address and server port** (up to 65535, one for each source port). A client can
-also open multiple connections to **different ports** at the same time.
+also open multiple connections to **different ports** at the same time. Ports
+allow [multiplexing][multiplexing] at one network address.
 
 <!-- slide-column -->
 
@@ -264,35 +346,43 @@ also open multiple connections to **different ports** at the same time.
 
 For example, a client may open 4 simultaneous TCP connections to a server:
 
-* On port 22 to connect with an SSH client.
-* On port 25 to retrieve mails with the SMTP protocol.
-* On port 80 to request a web page with a browser using the HTTP protocol.
-* On port 80 (again) to simultaneously retrieve a JavaScript file using the HTTP protocol.
+* On port 22 to connect with an SSH client
+* On port 25 to retrieve mails with the SMTP protocol
+* On port 443 to request a web page with a browser using the HTTPS protocol
+* On port 443 (again) to simultaneously retrieve a JavaScript file using the
+  HTTPS protocol
 
 #### Registered port numbers
 
-The [Internet Assigned Numbers Authority (IANA)][iana] maintains a list of the [official assignments of port numbers][iana-ports] for specific uses,
-although this is not always respected in practice.
+The [**I**nternet **A**ssigned **N**umbers **A**uthority (IANA)][iana] maintains
+a list of the [official assignments of port numbers][iana-ports] for specific
+uses, although this is not always respected in practice.
 
 Here are some of the most common:
 
-Port    | Use
-:---    | :---
-20, 21  | FTP
-22      | SSH
-25      | SMTP
-53      | DNS
-80, 443 | HTTP
-3306    | MySQL database
-5432    | PostgreSQL database
-27017   | MongoDB database
+.compact-table[
+
+Port  | Use
+:---- | :----------------------------------------------------------------------
+21    | [**F**ile **T**ransfer **P**rotocol (FTP)][ftp]
+22    | [**S**ecure **Sh**ell (SSH)][ssh]
+25    | [**S**imple **M**ail **T**ransfer **P**rotocol (SMTP)][smtp]
+53    | [**D**omain **N**ame **S**ystem (DNS)][dns]
+80    | [**H**yper**t**ext **T**ransfer **P**rotocol (HTTP)][http]
+443   | [**H**yper**t**ext **T**ransfer **P**rotocol **S**ecure (HTTPS)][https]
+3306  | [MySQL][mysql] database
+5432  | [PostgreSQL][postgresql] database
+27017 | [MongoDB][mongodb] database
+
+]
 
 See the [full list][registered-ports].
 
 #### Well-known & dynamic ports
 
-The port numbers in the range from 0 to 1023 are the **well-known ports** or **system ports**.
-They are used by system processes that provide widely used types of network services, such as SSH or DNS.
+The port numbers in the range from 0 to 1023 are the **well-known ports** or
+**system ports**. They are used by system processes that provide widely used
+types of network services, such as SSH or DNS.
 
 <!-- slide-column -->
 
@@ -305,27 +395,35 @@ to be able to bind a network socket on a well-known port.
 
 <!-- slide-container -->
 
-> The port numbers in the range from 49152 to 65535 contains **dynamic or
-> private ports** that cannot be registered with IANA. This range is used for
-> private or customized services, for temporary purposes, and for automatic
-> allocation of [ephemeral ports][ephemeral-ports].
+> The port numbers in the range from 49152 to 65535 are **dynamic or private
+> ports** that cannot be registered with IANA. This range is used for private or
+> customized services, for temporary purposes, and for automatic allocation of
+> [ephemeral ports][ephemeral-ports].
 
 ### Domain name system
 
-The **Domain Name System (DNS)** is a hierarchical decentralized naming system for computers connected to the Internet or a private network.
-Most prominently, it **translates human-readable domain names** (like `google.com`) **to numerical IP addresses** (like `40.127.1.70`) needed for locating computers with the underlying network protocols.
-The Domain Name System has been an essential component of the functionality of the Internet since 1985.
+The [**D**omain **N**ame **S**ystem (DNS)][dns] is a hierarchical decentralized
+naming system for computers connected to the Internet or a private network. Most
+prominently, it **translates human-readable domain names** (like `google.com`)
+**to numerical IP addresses** (like `40.127.1.70`) needed for locating computers
+with the underlying network protocols. The Domain Name System has been an
+essential component of the functionality of the Internet since 1985.
 
 <p class='center'><img class='w70' src='images/dns.jpg' /></p>
 
 #### DNS hierarchy
 
-The [Internet Corporation for Assigned Names and Numbers (ICANN)][icann] is responsible for managing [top-level domains (TLDs)][tld] like `.com`.
-Management of second-level domains and so on is delegated to other organizations.
+The [**I**nternet **C**orporation for **A**ssigned **N**ames and **N**umbers
+(ICANN)][icann] is responsible for managing [**t**op-**l**evel **d**omains
+(TLDs)][tld] like `.com` or `.ch`. Management of second-level domains and so on
+is delegated to other organizations like [domain name registrars][registrar]
+(e.g. [GoDaddy][godaddy], [Infomaniak][infomaniak]).
 
 <p class='center'><img class='w80' src='images/dns-hierarchy.png' /></p>
 
-You can buy your own [generic top-level domain][gtld] since 2012 for $185,000.
+You can buy your own [generic top-level domain][gtld] since 2012 for $185000. Do
+you want a `.pizza`, `.ninja` or `.unicorn` website? Apparently [some people
+do](https://memeburn.com/2012/06/40-ridiculous-new-generic-top-level-domains/).
 
 
 
@@ -335,12 +433,12 @@ You can buy your own [generic top-level domain][gtld] since 2012 for $185,000.
 
 <img class='w50' src='images/unix.png' />
 
-> Useful commands for unix networking.
+> Useful commands for unix networking
 
 ### The `ip` command
 
-The **`ip`** command is used to manipulate and display IP network information.
-Type `ip address` to check your computer's IP address(es).
+The [**`ip`** command][ip-command] is used to manipulate and display IP network
+information:
 
 ```bash
 $> ip address
@@ -360,23 +458,26 @@ $> ip address
 
 In this sample output, there are **two network interfaces**:
 
-* The [virtual loopback interface][loopback] (`lo`) through which applications
-  can communicate on the computer itself without actually hitting the network.
-* A physical Ethernet interface (`eth0`), which has the private IP address
-  `172.31.39.219`. This is the computer's address in its local network.
+* The [virtual **lo**opback interface][loopback] (`lo`) through which
+  applications can communicate on the computer itself without actually hitting
+  the network
+* A physical **Eth**ernet interface (`eth0`) which has the private IP address
+  `172.31.39.219` (i.e. the computer's address in its local network)
 
 ### The `ping` command
 
-The [`ping` command][ping] tests the reachability of a host on an IP network.
-It measures the round-trip time for messages sent to a computer and echoed back.
-The name comes from [active sonar][ping-sonar] terminology that sends a pulse of sound and listens for the echo to detect objects under water.
+The [`ping` command][ping] tests the reachability of a host on an IP network. It
+measures the **r**ound-**t**rip **t**ime (`rtt`) for messages sent to a computer
+and echoed back. The name comes from [active sonar][ping-sonar] terminology that
+sends a pulse of sound and listens for the echo to detect objects under water.
 
-It uses the [Internet Control Message Protocol (ICMP)][icmp], a **network layer** protocol (OSI layer 3).
+It uses the [**I**nternet **C**ontrol **M**essage **P**rotocol (ICMP)][icmp], a
+**network layer** protocol (OSI layer 3).
 
 ```bash
 $> ping -c 1 google.com
 PING `google.com` (`172.217.21.238`) 56(84) bytes of data.
-64 bytes from example.net (172.217.21.238): icmp_seq=1 ttl=53 time=`1.12 ms`
+64 bytes from 172.217.21.238: icmp_seq=1 ttl=53 time=`1.12 ms`
 
 --- google.com ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
@@ -384,9 +485,10 @@ rtt min/avg/max/mdev = 1.125/1.125/1.125/0.000 ms
 ```
 
 In this example, you can see that the domain name `google.com` was translated to the public IP address `172.217.21.238` by the Domain Name System,
-and that the round-trip to that computer took 1.12 milliseconds.
+and that the round-trip to that computer took about 1.12 milliseconds.
 
-> Remove the `-c 1` option to keep pinging once per second.
+> The `-c 1` (or **c**ount) option tells ping to send only one ping. Remove it
+> to keep pinging once per second.
 
 ### The `ss` command
 
@@ -408,13 +510,15 @@ The above command lists the processes listening for TCP connections. In this
 example, we can see that there is a MySQL database listening on port 3306, a DNS
 resolver on port 53, and an SSH server on port 22.
 
-> On some systems, you may need to add the `-e` option to display process
-> information. You can remove the `-n` (or `--numeric`) option to see service
-> names (e.g. `ssh` instead of `22`).
+> On some systems, you may need to add the `-e` (**e**xtended) option to display
+> process information. You can remove the `-n` (or `--numeric`) option to see
+> service names (e.g. `ssh` instead of `22`). The other options are `-t` for
+> TCP, `-l` to only display listening sockets, and `-p` to show the processes.
 
 ### The `nc` command
 
-The [**n**et**c**at (`nc`) command][nc] can read from and write to network connections using TCP or UDP.
+The [**n**et**c**at (`nc`) command][nc] can read from and write to network
+connections using TCP or UDP.
 
 ```bash
 $> nc -zv -w 2 google.com 80
@@ -422,9 +526,16 @@ Connection to google.com 80 port [tcp/http] succeeded!
 $> nc -zv -w 2 google.com 81
 nc: connect to google.com port 81 (tcp) timed out: Operation now in progress
 nc: connect to google.com port 81 (tcp) failed: Network is unreachable
+$> nc -zv -w 2 google.com 443
+Connection to google.com 443 port [tcp/http] succeeded!
 ```
 
-For example, the above 2 commands check whether port 80 and 81 are open on the computer reached by resolving the domain name `google.com`.
+For example, the above two commands check whether ports 80, 81 and 443 are open
+on the computer reached by resolving the domain name `google.com`.
+
+> The `-z` (**z**ero bytes) option tells netcat to close the connection as soon
+> as it opens, the `-v` option enables more **v**erbose output, and the `-w 2`
+> tels netcat to **w**ait at most 2 seconds before giving up.
 
 
 
@@ -712,36 +823,53 @@ ip-172-31-39-219 (172.31.39.219)                   2018-12-05T15:55:42+0000
 [curl]: https://curl.haxx.se
 [dns]: https://en.wikipedia.org/wiki/Domain_Name_System
 [ephemeral-ports]: https://en.wikipedia.org/wiki/Ephemeral_port
+[ftp]: https://en.wikipedia.org/wiki/File_Transfer_Protocol
+[gateway]: https://en.wikipedia.org/wiki/Gateway_(telecommunications)
+[godaddy]: https://www.godaddy.com
 [gtld]: https://en.wikipedia.org/wiki/Generic_top-level_domain
+[hex]: https://en.wikipedia.org/wiki/Hexadecimal
+[http]: https://en.wikipedia.org/wiki/HTTP
 [http-301]: https://httpstatuses.com/301
 [http-headers]: https://en.wikipedia.org/wiki/List_of_HTTP_header_fields
 [http-methods]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
 [http-req]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages#HTTP_Requests
 [http-res]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages#HTTP_Responses
+[https]: https://en.wikipedia.org/wiki/HTTPS
 [iana]: https://www.iana.org
 [iana-ipv4]: https://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.xhtml
 [iana-ipv6]: https://www.iana.org/assignments/ipv6-address-space/ipv6-address-space.xhtml
 [iana-ports]: https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
 [icann]: https://en.wikipedia.org/wiki/ICANN
 [icmp]: https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol
+[infomaniak]: https://www.infomaniak.com
 [internet-standard]: https://en.wikipedia.org/wiki/Internet_Standard
 [iot]: https://en.wikipedia.org/wiki/Internet_of_things
 [ip]: https://en.wikipedia.org/wiki/Internet_Protocol
+[ip-command]: https://man7.org/linux/man-pages/man8/ip.8.html
 [ipv4]: https://en.wikipedia.org/wiki/IPv4
 [ipv6]: https://en.wikipedia.org/wiki/IPv6
 [isp]: https://en.wikipedia.org/wiki/Internet_service_provider
 [loopback]: https://en.wikipedia.org/wiki/Loopback#Virtual_loopback_interface
+[mongodb]: https://www.mongodb.com
 [mtr]: https://en.wikipedia.org/wiki/MTR_(software)
+[multiplexing]: https://en.wikipedia.org/wiki/Multiplexing
+[mysql]: https://www.mysql.com
 [nat]: https://en.wikipedia.org/wiki/Network_address_translation
 [nc]: https://en.wikipedia.org/wiki/Netcat
 [osi]: https://en.wikipedia.org/wiki/OSI_model
 [ping]: https://en.wikipedia.org/wiki/Ping_(networking_utility)
 [ping-sonar]: https://en.wikipedia.org/wiki/Sonar#Active_sonar
 [port]: https://en.wikipedia.org/wiki/Port_(computer_networking)
+[postgresql]: https://www.postgresql.org
+[proxy]: https://en.wikipedia.org/wiki/Proxy_server
 [registered-ports]: https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+[registrar]: https://en.wikipedia.org/wiki/Domain_name_registrar
+[reserved-ip-addresses]: https://en.wikipedia.org/wiki/Reserved_IP_addresses
 [rir]: https://en.wikipedia.org/wiki/Regional_Internet_registry
 [socket]: https://en.wikipedia.org/wiki/Network_socket
 [ss]: http://man7.org/linux/man-pages/man8/ss.8.html
+[ssh]: https://en.wikipedia.org/wiki/Secure_Shell
+[smtp]: https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol
 [subnet]: https://en.wikipedia.org/wiki/Subnetwork
 [tcp]: https://en.wikipedia.org/wiki/Transmission_Control_Protocol
 [tcp-ip]: https://en.wikipedia.org/wiki/Internet_protocol_suite
