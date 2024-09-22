@@ -169,7 +169,8 @@ using for the rest of the course.
 
   - Use the default **Management**, **Monitoring**, **Advanced** and **Tags**
     settings.
-  - Review your estimated monthly cost:
+  - Review your estimated monthly cost (this may not be the exact price but it
+    should be similar):
 
     ![Azure: virtual machine estimated monthly cost](../images/azure-vm-estimated-monthly-cost.png)
 
@@ -178,9 +179,9 @@ using for the rest of the course.
         <td><img src="../images/warning.gif" width="80px"></td>
         <td>
           Your estimated monthly cost <strong>MUST BE UNDER $20/month</strong>.
-          If it is higher, you have probably selected a VM size that is not the
-          recommended one and that is too expensive for the credits you have at
-          your disposal for this course.
+          If it is higher, you have probably selected the wrong region, or a VM
+          size that is not the recommended one and that is too expensive for the
+          credits you have at your disposal for this course.
         </td>
       </tr>
     </table>
