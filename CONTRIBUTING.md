@@ -17,8 +17,8 @@
 ## First-time setup
 
 ```bash
-git clone git@github.com:MediaComem/comem-archioweb.git
-cd comem-archioweb
+git clone git@github.com:MediaComem/comem-archidep.git
+cd comem-archidep
 npm install
 ```
 
@@ -42,7 +42,7 @@ This will serve the compiled slides (with live-reload) at [http://localhost:3000
 npm run deploy
 ```
 
-This will compile the slides and commit them to a [separate repository][docs-repo] that is published on GitHub Pages at [https://mediacomem.github.io/comem-archioweb/][docs].
+This will compile the slides and commit them to a [separate repository][docs-repo] that is published on GitHub Pages at [https://mediacomem.github.io/comem-archidep/][docs].
 
 **Warning:** this runs a script which requires a **Unix shell** (use Git Bash or equivalent on Windows).
 
@@ -78,14 +78,13 @@ The following environment variables can be used for customization:
 - `$PDF_BUILD_DIR` - The directory in which the generated PDF slides are saved (defaults to `pdf`)
 - `$PORT` - The port on which the slides server is run (defaults to 3000)
 - `$SOURCE_VERSION` - The branch/commit to which source links to GitHub (in the top-right corner of slides) will point to (defaults to the current branch, or the latest commit when using `npm run deploy`)
-- `$WEB_URL` - The URL to which the home link (in the top-right corner of slides) will point to (defaults to `https://mediacomem.github.io/comem-archioweb/`)
+- `$WEB_URL` - The URL to which the home link (in the top-right corner of slides) will point to (defaults to `https://mediacomem.github.io/comem-archidep/`)
 
-[docs]: https://mediacomem.github.io/comem-archioweb/
-[docs-repo]: https://github.com/MediaComem/comem-archioweb
+[docs]: https://mediacomem.github.io/comem-archidep/
+[docs-repo]: https://github.com/MediaComem/comem-archidep
 [doctoc]: https://github.com/thlorenz/doctoc
 [html-pdf]: https://www.npmjs.com/package/html-pdf
 [md2remark]: https://github.com/AlphaHydrae/md2remark#md2remark
-[phantomjs]: http://phantomjs.org
 [remark]: https://remarkjs.com
 [remark-syntax]: https://github.com/gnab/remark/wiki/Markdown
 [subject-template]: templates/README.md
