@@ -67,15 +67,15 @@ For you to succeed in this course, it is highly recommended that you read and co
 ## Plan
 
 - Introduction
-  - [:book: Command line](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
-  - [:book: Shell scripting](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Command line](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Shell scripting](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Hello Shell](ex/hello-shell.md)
-  - [:book: Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Hello SSH](ex/hello-ssh.md)
 - Version control
-  - [:hammer: :book: Version control with Git](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
-  - [:hammer: :book: Git branching](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
-  - [:hammer: :book: Collaborating with Git](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: :book: Version control with Git](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: :book: Git branching](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: :book: Collaborating with Git](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
   - **[:collision: :hammer: Collaborative exercise](https://github.com/MediaComem/comem-archidep-php-todo-exercise)**
 - Security
   - [:book: Open Web Application Security Project][owasp]
@@ -85,19 +85,19 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:book: Phishing page](https://github.com/MediaComem/phishing)
 
 - Basic deployment
-  - [:book: Cloud computing](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Cloud computing](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Run your own virtual server on Microsoft Azure](ex/azure-setup.md)
-  - [:book: Linux](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
-  - [:book: Unix basics & administration](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Linux](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Unix basics & administration](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Permissions](ex/unix-permissions.md)
     - [:key: Solutions](ex/unix-permissions-solutions.md)
-  - [:book: Unix processes](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Unix processes](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Pipeline](ex/unix-pipeline.md)
     - [:key: Solutions](ex/unix-pipeline-solutions.md)
-  - [:book: Unix networking](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Unix networking](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: TCP](ex/tcp.md)
     - [:classical_building: Architecture](ex/tcp.md#classical_building-architecture)
-  - [:book: APT](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: APT](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Deploy a PHP application with SFTP](ex/sftp-deployment.md)
     - [:classical_building: Architecture](ex/sftp-deployment.md#classical_building-architecture)
   - [:book: How to improve our basic deployment](#how-to-improve-our-basic-deployment)
@@ -106,18 +106,18 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:hammer: Deploy a PHP application with Git](ex/git-clone-deployment.md)
     - [:classical_building: Architecture](ex/git-clone-deployment.md#classical_building-architecture)
   - [:book: Twelve-factor app][12factor]
-  - [:book: Unix environment variables](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Unix environment variables](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Configure a PHP application through environment variables](ex/config-through-environment.md)
     - [:key: Solution](ex/config-through-environment-solution.md)
     - [:classical_building: Architecture](ex/config-through-environment.md#classical_building-architecture)
-  - [:book: Linux process management](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Linux process management](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md)
     - [:key: Solution](ex/systemd-deployment-solution.md)
     - [:classical_building: Architecture](ex/systemd-deployment.md#classical_building-architecture)
-  - [:book: Domain Name System (DNS)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Domain Name System (DNS)](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Configure a domain name](ex/dns-configuration.md)
     - [:classical_building: Architecture](ex/dns-configuration.md#classical_building-architecture)
-  - [:book: Reverse proxying](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Reverse proxying](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Deploy a static site with nginx](ex/nginx-static-deployment.md)
     - [:key: Solution](ex/nginx-static-deployment-solution.md)
     - [:classical_building: Architecture](ex/nginx-static-deployment.md#classical_building-architecture)
@@ -129,12 +129,12 @@ For you to succeed in this course, it is highly recommended that you read and co
     - [:classical_building: Architecture](ex/revprod-deployment.md#classical_building-architecture)
   - [:hammer: Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
     - [:classical_building: Architecture](ex/fibscale-deployment.md#classical_building-architecture)
-  - [:book: TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
     - [:classical_building: Architecture](ex/certbot-deployment.md#classical_building-architecture)
 
 - Automated deployment
-  - [:book: Git hooks](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Git hooks](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
     - [:classical_building: Architecture](ex/git-automated-deployment.md#classical_building-architecture)
 
@@ -142,14 +142,14 @@ For you to succeed in this course, it is highly recommended that you read and co
   - *Not yet available*
 
 - Managed deployments
-  - [:book: Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/paas?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/paas?home=MediaComem%2Fcomem-archidep%23readme)
     - [:hammer: Deploy a static site to GitHub Pages](./ex/github-pages-deployment.md)
     - [:hammer: Deploy a static site to Netlify](./ex/netlify-static-deployment.md)
     - [:hammer: Deploy web applications with a database to Render](./ex/render-database-deployment.md)
-  - [:book: Docker](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/docker?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Docker](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/docker?home=MediaComem%2Fcomem-archidep%23readme)
     - [:hammer: Containerize a static site using Docker](./ex/docker-static.md)
       - [:key: Solution](ex/docker-static-solution.md)
-  - [:book: Docker Compose](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/docker-compose?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:book: Docker Compose](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/docker-compose?home=MediaComem%2Fcomem-archidep%23readme)
     - [:hammer: Deploy a PHP application with Docker Compose](./ex/docker-compose-todolist.md)
       - [:key: Solution](ex/docker-compose-todolist-solution.md)
       - [:classical_building: Architecture](./ex/docker-compose-todolist.md#classical_building-architecture)
@@ -179,9 +179,9 @@ For you to succeed in this course, it is highly recommended that you read and co
 
 ## Extra
 
-- [:book: Continuous software development](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
-- [:book: Automated testing (2018)](https://mediacomem.github.io/comem-archidep/2023-2024/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
-- [:book: Automated testing (2020)](https://mediacomem.github.io/comem-archioweb/2023-2024/subjects/automated-testing/?home=MediaComem%2Fcomem-archioweb%23readme#1)
+- [:book: Continuous software development](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
+- [:book: Automated testing (2018)](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
+- [:book: Automated testing (2020)](https://mediacomem.github.io/comem-archioweb/2024-2025/subjects/automated-testing/?home=MediaComem%2Fcomem-archioweb%23readme#1)
   - [:movie_camera: YouTube: Expecting Profesionnalism – Robert C. Martin](https://youtu.be/BSaAMQVq01E)
   - [:movie_camera: YouTube: GOTO 2017 – The Scribe's Oath – Robert C. Martin](https://youtu.be/Tng6Fox8EfI)
   - [:movie_camera: YouTube: The Future of Programming – Robert C. Martin](https://youtu.be/ecIWPzGEbFc)

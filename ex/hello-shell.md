@@ -244,5 +244,5 @@ We further explored the curl command and its capabilities in interacting with th
 
 A challenge arose when trying to run the script from any directory, which led us to tinker with file permissions and the `PATH` environment variable. By modifying permissions and adjusting the `PATH`, we ensured our script was easily accessible from any location in the terminal.
 
-[command-line]: (https://mediacomem.github.io/comem-archidep/2023-2024/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
-[shell-scripting]: (https://mediacomem.github.io/comem-archidep/2023-2024/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
+[command-line]: (https://mediacomem.github.io/comem-archidep/2024-2025/subjects/cli?home=MediaComem%2Fcomem-archidep%23readme)
+[shell-scripting]: (https://mediacomem.github.io/comem-archidep/2024-2025/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
