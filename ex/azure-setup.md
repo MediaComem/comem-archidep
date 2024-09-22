@@ -20,7 +20,6 @@ Azure](https://azure.microsoft.com) cloud platform.
   - [:exclamation: Add swap space to your virtual server](#exclamation-add-swap-space-to-your-virtual-server)
 - [:exclamation: Finish](#exclamation-finish)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
-  - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: Azure does not accept by SSH public key](#boom-azure-does-not-accept-by-ssh-public-key)
 
@@ -334,15 +333,6 @@ this virtual machine for a monthly fee (using your free education credits).
 You have used what you have learned about the command line and SSH to connect to
 this virtual machine and perform some basic setup steps in preparation for
 future deployment exercises.
-
-### :classical_building: Architecture
-
-The following diagram is a detailed representation of the architecture you have
-set up, including the short-lived processes run during the exercise:
-
-![Detailed architecture](azure-setup.png)
-
-> [Detailed architecture PDF version](azure-setup.pdf).
 
 ## :boom: Troubleshooting
 
