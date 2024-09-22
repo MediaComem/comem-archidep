@@ -86,14 +86,14 @@ using for the rest of the course.
 
     <table style="width: 100%;">
       <tr>
-        <td><img src="../images/warning.gif" style="float: left; margin: 0 0.4em 0.4em 0" /></td>
+        <td><img src="../images/warning.gif" style="width: 100px /></td>
         <td style="width: 100%;">
-          <strong>MAKE SURE TO SELECT THE <code>Ubuntu 24.04</code> IMAGE AND THE
-          <code>B1s</code> SIZE.</strong> If you select a VM size that is too
-          expensive, <strong>YOU WILL RUN OUT OF FREE CREDITS BEFORE THE END OF THE
-          COURSE</strong> We will then have to provide (and pay) a new VM for you and
-          you will have to reinstall your VM from scratch (including all deployment
-          exercises you may already have completed).
+          <strong>MAKE SURE TO SELECT THE <code>Ubuntu 24.04</code> IMAGE AND
+          THE <code>B1s</code> SIZE.</strong> If you select a VM size that is
+          too expensive, <strong>YOU WILL RUN OUT OF FREE CREDITS BEFORE THE END
+          OF THE COURSE</strong> We will then have to provide (and pay 💰) a new
+          VM for you and you will have to reinstall your VM from scratch
+          (including all deployment exercises you may already have completed).
         </td>
       </tr>
     </table>
