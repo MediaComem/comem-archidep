@@ -86,7 +86,7 @@ using for the rest of the course.
 
     <table style="width: 100%;">
       <tr>
-        <td><img src="../images/warning.gif" style="width: 100px /></td>
+        <td><img src="../images/warning.gif" style="width: 100px></td>
         <td style="width: 100%;">
           <strong>MAKE SURE TO SELECT THE <code>Ubuntu 24.04</code> IMAGE AND
           THE <code>B1s</code> SIZE.</strong> If you select a VM size that is
