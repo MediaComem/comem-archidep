@@ -236,11 +236,10 @@ purposes of the course.
 
 Assuming the virtual machine's public IP address is `W.X.Y.Z` (replace with the
 IP address you copied from your virtual machine's information), and the
-administrator account you created is `john_doe`, you can connect with this
-command:
+administrator account you created is `jde`, you can connect with this command:
 
 ```bash
-$> ssh john_doe@W.X.Y.Z
+$> ssh jde@W.X.Y.Z
 ```
 
 > :books: You should be able to connect without a password. This works because
@@ -252,8 +251,8 @@ $> ssh john_doe@W.X.Y.Z
 ### :exclamation: Give the teacher access to your virtual machine
 
 Once you are connected, run the following command to give the teacher access to
-your virtual machine (be sure to copy the whole line and to replace `john_doe`
-with your username):
+your virtual machine (be sure to copy the whole line and to replace `jde` with
+your username):
 
 ```bash
 $> echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINYObb+SKAKmRiIME+bxHLRL7w8Wl2Wdjm4pr7WvaXqS archidep" | sudo tee --append /home/jde/.ssh/authorized_keys
@@ -266,23 +265,22 @@ $> echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINYObb+SKAKmRiIME+bxHLRL7w8Wl2Wdjm4
 ### :exclamation: Change the hostname of your virtual machine
 
 Choose a hostname for your virtual machine, a subdomain of `archidep.ch`. For
-example: `john-doe.archidep.ch`, `jdoe.archidep.ch` or
-`my-precious.archidep.ch`. Make sure not to pick the same name as someone else
-in the class. Again, you might want to keep it short because you will have to
-type it often during the course.
+example: `jde.archidep.ch` or `my-precious.archidep.ch`. Make sure not to pick
+the same name as someone else in the class. Again, you might want to keep it
+short because you will have to type it often during the course.
 
 > :warning: You should not use underscores (`_`) in a hostname, use hyphens
 > (`-`) instead.
 
 ```bash
-$> sudo hostname john-doe.archidep.ch
+$> sudo hostname jde.archidep.ch
 ```
 
 Also save your new hostname to the `/etc/hostname` file so that it will persist
 when you reboot the server:
 
 ```bash
-$> echo "john-doe.archidep.ch" | sudo tee /etc/hostname
+$> echo "jde.archidep.ch" | sudo tee /etc/hostname
 ```
 
 > :books: The hostname is the name of your virtual server. It can be any URL. It
@@ -291,7 +289,7 @@ $> echo "john-doe.archidep.ch" | sudo tee /etc/hostname
 >
 > For the purposes of this course, we will be using the `archidep.ch` domain, so
 > it makes sense to use a subdomain corresponding to yourself
-> (`john-doe.archidep.ch`) as the hostname.
+> (`jde.archidep.ch`) as the hostname.
 
 ### :exclamation: Reboot the server
 
@@ -303,12 +301,12 @@ _Once the server has restarted_ (it might take a couple of minutes), check that
 you can still connect and that your hostname is correct:
 
 ```bash
-$> ssh john_doe@W.X.Y.Z
+$> ssh jde@W.X.Y.Z
 Welcome to Ubuntu 24.04 LTS
 ...
 
 $> hostname
-john-doe.archidep.ch
+jde.archidep.ch
 ```
 
 ### :exclamation: Add swap space to your virtual server
@@ -323,8 +321,8 @@ during the various deployment exercises.
 Send your virtual server's **public IP address** and the **username of your
 administrator account** to both teachers.
 
-> :gem: If you connect to your server using `ssh john_doe@W.X.Y.Z`, then
-> `john_doe` is your username and `W.X.Y.Z` is your public IP address.
+> :gem: If you connect to your server using `ssh jde@W.X.Y.Z`, then `jde` is
+> your username and `W.X.Y.Z` is your public IP address.
 
 ## :checkered_flag: What have I done?
 
