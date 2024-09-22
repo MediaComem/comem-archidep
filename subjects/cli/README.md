@@ -73,6 +73,7 @@ and learn the basics of navigating and manipulating your filesystem in a Unix sh
     - [What have I done?](#what-have-i-done)
 - [Unleash your terminal](#unleash-your-terminal)
   - [Oh My Zsh](#oh-my-zsh)
+  - [Other tools for the command line lover](#other-tools-for-the-command-line-lover)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -1391,13 +1392,36 @@ Command-line shells have been worked on for a very long time. Modern shells
 such as the [Z shell (Zsh)][zsh] have a whole community that created many
 plugins to simplify your daily command-line work.
 
-On macOS, you may want to install [Oh My Zsh][oh-my-zsh] to fully unleash the
-power of your Terminal. It has [plugins][oh-my-zsh-plugins] to integrate with
-Homebrew, Git, various programming languages like Ruby, PHP, Go, and much more.
+On macOS or Linux, you may want to install [Oh My Zsh][oh-my-zsh] to fully
+unleash the power of your Terminal. It has [plugins][oh-my-zsh-plugins] to
+integrate with Homebrew, Git, various programming languages like Ruby, PHP, Go,
+and much more.
 
 On Windows, you may want to [install the Windows Subsystem for Linux][wsl] so
 you can install a Linux distribution like Ubuntu. You can then [install Zsh and
 Oh My Zsh as well][oh-my-zsh-windows].
+
+### Other tools for the command line lover
+
+* [`bat`](https://github.com/sharkdp/bat): a `cat` clone with wings
+* [`tldr`](https://github.com/tldr-pages/tldr): better `man` pages
+* [`fzf`](https://junegunn.github.io/fzf/) to quickly find files
+* [`ack`](https://beyondgrep.com) to search for text in files (`grep`
+  alternative)
+* [`rsync`](https://rsync.samba.org) for incremental file transfers (`cp` &
+  `scp` alternative)
+
+<!-- slide-column 30 -->
+
+<img class='w100' src='images/terminal-multiplexer.png' />
+
+<!-- slide-column -->
+
+A Terminal [multiplexer](https://en.wikipedia.org/wiki/Multiplexer) like:
+
+  * [tmux](https://github.com/tmux/tmux/wiki)
+  * [screen](https://www.gnu.org/software/screen/)
+  * [zellij](https://zellij.dev) 💙
 
 
 
