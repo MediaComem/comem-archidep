@@ -256,7 +256,7 @@ your virtual machine (be sure to copy the whole line and to replace `john_doe`
 with your username):
 
 ```bash
-$> echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8EFCKV787Lx138wXkVDuoLWj3JFseTutPk1i5XgPYArAhoIvrIsgblZowye6v2tfFHGkGn1F/RJzBk9lCsQVaFQtKaJjau+SGl88CwEp8HBdxyaDWrpnVhK5Z5xPtv7ZMoB6jcY9C0PyWjygqHwNkfxTlIZOergzezE6jQoKEbe6X7jEWTK4CGW1jFiO/m0IdQ7Y8/qrPJtx4+/LnVq3HEzT16A1hba8VxRayXj1EVvfckVAd/oUeNaHl9TiKPLcmlks/hBQ/hRBwdvnnm/tVYpljEzEPTy0vwyXNfBSr+CA8PkN+vLJ3HZSbOtPuRxre91/XN+JyhWg8b9LKq9O3 archidep" | sudo tee --append /home/john_doe/.ssh/authorized_keys
+$> echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINYObb+SKAKmRiIME+bxHLRL7w8Wl2Wdjm4pr7WvaXqS archidep" | sudo tee --append /home/jde/.ssh/authorized_keys
 ```
 
 > :books: This adds the teacher's public SSH key to your user's
