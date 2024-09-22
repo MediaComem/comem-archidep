@@ -1,5 +1,5 @@
 bcc: [teacher@example.com]
-sendgrid_api_key: SG.CHANGEME
-sendgrid_from_email: no-reply@example.com
-sendgrid_from_name: ArchiDep
+from: no-reply@example.com
+aws_access_key_id: changeme
+aws_secret_access_key: changeme
 vm_base_domain: example.com

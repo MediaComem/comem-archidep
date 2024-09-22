@@ -32,24 +32,23 @@
     "watch": "courses-md watch"
   },
   "dependencies": {
-    "@sendgrid/mail": "^7.7.0",
+    "@aws-sdk/client-ses": "^3.654.0",
     "chalk": "^5.0.1",
-    "commander": "^11.0.0",
     "courses-md": "~0.7.5",
     "csv-parse": "^5.3.0",
     "doctoc": "^2.0.1",
     "font-awesome": "^4.7.0",
     "git-memoir": "~0.4.0",
-    "inquirer": "^9.1.1",
+    "inquirer": "^11.0.2",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.20",
-    "ora": "^7.0.0",
+    "ora": "^8.1.0",
     "prettier": "^3.0.3",
     "table": "^6.0.3",
     "tippy.js": "^6.2.6",
-    "uuid": "^9.0.0"
+    "uuid": "^10.0.0"
   },
   "engines": {
-    "node": "^20.0.0"
+    "node": "^22.0.0"
   }
 }

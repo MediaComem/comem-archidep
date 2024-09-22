@@ -1,4 +1,4 @@
-import sendgrid from '@sendgrid/mail';
+import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import chalk from 'chalk';
 import { createHmac } from 'crypto';
 import { parse as parseCsvNode } from 'csv-parse';
@@ -11,7 +11,6 @@ import { dirname, join as joinPath, resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
 
 let dataCache;
-let mailTransporterCache;
 let processedDataCache;
 
 const contentCache = {};
@@ -24,6 +23,8 @@ export const root = resolvePath(
 export const configFile = joinPath(root, 'config.yml');
 export const secretFile = 'secret.txt';
 export const studentsFile = joinPath(root, 'students.csv');
+
+const awsSesPromise = loadSesClient();
 
 export async function confirm(message) {
   const answers = await inquirer.prompt([
@@ -199,18 +200,38 @@ export async function readFile(absolutePath, options = 'utf8') {
 }
 
 export async function sendMail(options) {
-  const apiKey = await loadConfigProperty('sendgrid_api_key');
-  sendgrid.setApiKey(apiKey);
+  const [client, from, bcc] = await Promise.all([
+    awsSesPromise,
+    loadConfigProperty('from'),
+    loadConfigProperty('bcc')
+  ]);
 
-  const fromName = await loadConfigProperty('sendgrid_from_name');
-  const fromEmail = await loadConfigProperty('sendgrid_from_email');
-  const bcc = await loadConfigProperty('bcc');
-
-  return sendgrid.send({
-    from: `${fromName} <${fromEmail}>`,
-    bcc: bcc.filter(email => email !== options.to),
-    ...options
-  });
+  await delay(250);
+  await client.send(
+    new SendEmailCommand({
+      Source: options.from ?? from,
+      Destination: {
+        ToAddresses: [options.to],
+        CcAddresses: (options.cc ?? []).filter(email => email !== options.to),
+        BccAddresses: (options.bcc ?? toArray(bcc)).filter(
+          email => email !== options.to
+        )
+      },
+      Message: {
+        Subject: {
+          Charset: 'UTF-8',
+          Data: options.subject
+        },
+        Body: {
+          Text: {
+            Charset: 'UTF-8',
+            Data: options.text
+          }
+        }
+      },
+      ReplyToAddresses: toArray(options.replyTo)
+    })
+  );
 }
 
 function getDefaultStudentUsername({ email }) {
@@ -241,6 +262,21 @@ function getDefaultStudentUsername({ email }) {
   return username;
 }
 
+async function loadSesClient() {
+  const [accessKeyId, secretAccessKey] = await Promise.all([
+    loadConfigProperty('aws_access_key_id'),
+    loadConfigProperty('aws_secret_access_key')
+  ]);
+
+  return new SESClient({
+    region: 'eu-central-1',
+    credentials: {
+      accessKeyId,
+      secretAccessKey
+    }
+  });
+}
+
 async function loadConfig() {
   return readContent(configFile, loadYaml);
 }
@@ -249,4 +285,16 @@ async function parseCsv(...args) {
   return new Promise((resolve, reject) =>
     parseCsvNode(...args, (err, data) => (err ? reject(err) : resolve(data)))
   );
+}
+
+function delay(milliseconds) {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+
+function toArray(value) {
+  if (value === undefined || value == null) {
+    return [];
+  }
+
+  return Array.isArray(value) ? value : [value];
 }
