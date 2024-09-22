@@ -41,10 +41,10 @@ We're already familiar with the `pwd`, `cd`, `ls`, `mkdir`, `touch`, `echo`, and
 - Within the `treasure_hunt` directory, craft three additional directories: `cave`, `forest`, and `lake`.
 - Create the following files: `cave/echo.txt`, `lake/fish.txt`, and `forest/tree.txt`.
 
-> :books: In Unix-like operating systems, the tilde (~) symbol is a shorthand representation for a user's home directory. It's a convenient way to refer to this directory without needing to know or type the full path. For instance, if a user's home directory is `/home/username`, typing `cd ~` in the terminal would navigate them directly to that location. The tilde is recognized and expanded to the full path by the shell, making it an efficient shortcut. Additionally, the tilde can be combined with other directory or file names, such as `~/Documents`, to quickly reference subdirectories or files within the home directory. The adoption of the tilde as a shortcut has become a deeply ingrained convention in the command-line world, providing users with a quick and consistent way to access their personal files and settings.
-
 > :space_invader: As an added challenge: find a way to perform this step of the
 > exercise using no more than two commands.
+
+> :books: In Unix-like operating systems, the tilde (~) symbol is a shorthand representation for a user's home directory. It's a convenient way to refer to this directory without needing to know or type the full path. For instance, if a user's home directory is `/home/username`, typing `cd ~` in the terminal would navigate them directly to that location. The tilde is recognized and expanded to the full path by the shell, making it an efficient shortcut. Additionally, the tilde can be combined with other directory or file names, such as `~/Documents`, to quickly reference subdirectories or files within the home directory. The adoption of the tilde as a shortcut has become a deeply ingrained convention in the command-line world, providing users with a quick and consistent way to access their personal files and settings.
 
 ## :exclamation: Adding clues
 Using your preferred method, update the files we just created with the specified content:
