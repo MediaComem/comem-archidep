@@ -93,13 +93,15 @@ using for the rest of the course.
     > are) will reduce latency, and the North/West European regions are among
     > the cheapest.
 
-    Under the **Administrator account** settings, choose a username, for example
-    `john_doe`, `john` or `jde`.
+    Under the **Administrator account** settings, choose a username. For
+    example, if your name is "John Doe", you might choose `jde` as a short,
+    easy-to-type username.
 
-    > :warning: Your Unix username should **NOT** contain spaces, accented
-    > characters (e.g. `é`), hyphens (`-`) or dots (`.`). It should start with a
-    > letter (a-z) and contain only alphanumeric characters (a-z and 0-9) and
-    > underscores (`_`).
+    > :warning: **Your Unix username MUST NOT** contain spaces, accented
+    > characters (e.g. `é`), hyphens (`-`) or dots (`.`). If you use the same
+    > name later in the course as a subdomain, it **MUST NOT** contain any
+    > underscores (`_`). We suggest you choose a name that starts with a letter
+    > (a-z) and contains only alphanumeric characters (a-z and 0-9).
     >
     > :gem: Choose a username that is simple to type because you will need to
     > type it often. If necessary, you can [change it
