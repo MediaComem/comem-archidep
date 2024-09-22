@@ -8,14 +8,11 @@
 /data.yml
 /.envrc
 /heroku.csv
-/id_ed25519*
-/id_rsa*
+/id_*
 /*.log
 /node_modules
 /*.retry
 /secret.txt
-/ssh/data.yml
-/ssh/inventory*
 /tmp
 /*.tmp
 /.vagrant

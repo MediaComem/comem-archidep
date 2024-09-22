@@ -32,7 +32,7 @@
 ## Set up a virtual machine for SSH exercises
 
 ```bash
-ansible-playbook -i ssh/inventory -vv -D ssh/playbook.yml
+ansible-playbook -i ssh-vm/inventory -vv -D ssh-vm/playbook.yml
 ```
 
 ### Send credentials to students
@@ -45,10 +45,10 @@ npm run mails
 
 ```bash
 # Enable
-ansible-playbook -i ssh/inventory -vv -D -t ssh -e ssh_password_authentication=true ssh/playbook.yml
+ansible-playbook -i ssh-vm/inventory -vv -D -t ssh -e ssh_password_authentication=true ssh-vm/playbook.yml
 
 # Disable
-ansible-playbook -i ssh/inventory -vv -D -t ssh -e ssh_password_authentication=false ssh/playbook.yml
+ansible-playbook -i ssh-vm/inventory -vv -D -t ssh -e ssh_password_authentication=false ssh-vm/playbook.yml
 ```
 
 ### List a server's SSH key fingerprints
@@ -60,7 +60,7 @@ $> find /etc/ssh -name "*.pub" -exec ssh-keygen -l -f {} \;
 ### Renegerate SSH host keys
 
 ```bash
-ansible-playbook -i ssh/inventory -vv -D -t ssh -e ssh_regenerate_host_keys=true ssh/playbook.yml
+ansible-playbook -i ssh-vm/inventory -vv -D -t ssh -e ssh_regenerate_host_keys=true ssh-vm/playbook.yml
 ```
 
 ## Configure Azure virtual machines for students

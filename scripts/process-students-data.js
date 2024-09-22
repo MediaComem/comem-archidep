@@ -5,7 +5,7 @@ import { join as joinPath, relative as relativePath } from 'path';
 
 import { loadData, root, studentsFile } from './utils.js';
 
-const targetDirs = [root, joinPath(root, 'ssh')];
+const targetDirs = [root, joinPath(root, 'ssh-vm')];
 const targetBasename = 'data.yml';
 
 Promise.resolve()

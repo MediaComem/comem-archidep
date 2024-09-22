@@ -12,29 +12,25 @@
     - ./data.yml
 
   tasks:
-    # Make sure python 2 is installed before doing anything
-    # (this is not the case by default on Ubuntu Bionic).
-    - name: Install Python
-      raw: command -v python3 || { apt-get update && apt-get install -y python3; }
-      changed_when: false
-      tags: [always]
-
-    # Gather ansible facts (requires python).
-    # Facts are required for many Ansible modules to work correctly.
-    - name: Gather facts
-      setup:
-      tags: [always]
-
     - name: Upgrade all packages
       apt:
         name: '*'
         autoremove: true
         force_apt_get: true
         state: latest
+      tags: [upgrade]
 
     - name: Set hostname
       hostname:
         name: '{{ server_name }}'
+      tags: [hostname]
+
+    - name: Set up MOTD
+      copy:
+        src: motd
+        dest: /etc/motd
+      become: true
+      tags: [motd]
 
     - name: Create students
       user:
@@ -45,20 +41,29 @@
       loop_control:
         label: '{{ student.username }}'
         loop_var: student
+      tags: [users]
 
     - name: Enable SSH password authentication
       lineinfile:
-        path: /etc/ssh/sshd_config
+        path: '{{ item }}'
         regexp: '^PasswordAuthentication '
         line: 'PasswordAuthentication {{ "yes" if (ssh_password_authentication | bool) else "no" }}'
+      with_items:
+        - /etc/ssh/sshd_config
+        - /etc/ssh/sshd_config.d/50-cloud-init.conf
+        - /etc/ssh/sshd_config.d/60-cloudimg-settings.conf
       when: ssh_password_authentication is defined
       tags: [ssh]
 
     - name: Enable SSH password authentication
       lineinfile:
-        path: /etc/ssh/sshd_config
+        path: '{{ item }}'
         regexp: '^ChallengeResponseAuthentication '
         line: 'ChallengeResponseAuthentication {{ "yes" if (ssh_password_authentication | bool) else "no" }}'
+      with_items:
+        - /etc/ssh/sshd_config
+        - /etc/ssh/sshd_config.d/50-cloud-init.conf
+        - /etc/ssh/sshd_config.d/60-cloudimg-settings.conf
       when: ssh_password_authentication is defined
       tags: [ssh]
 
@@ -80,6 +85,8 @@
 
     - name: Regenerate SSH server host keys
       command: dpkg-reconfigure openssh-server
+      environment:
+        DEBIAN_FRONTEND: noninteractive
       when: ssh_regenerate_host_keys is defined and ssh_regenerate_host_keys | bool
       tags: [ssh]
 

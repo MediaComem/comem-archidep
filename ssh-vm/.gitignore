@@ -1,0 +1,3 @@
+# https://git-scm.com/docs/gitignore
+/data.yml
+/inventory
