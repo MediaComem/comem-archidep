@@ -11,9 +11,6 @@ Learn the basics of shell scripting with Bash.
 **Recommended reading**
 
 * [Command Line Introduction](../cli/)
-* [Unix basics](../unix-admin/)
-  * [Unix environment variables](../unix-env-vars/)
-  * [Unix processes](../unix-processes/)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -45,8 +42,8 @@ Learn the basics of shell scripting with Bash.
 
 ## What is a script?
 
-In a Unix-like operating system, a file that can be executed (someone has the
-`x` permission on it) should be one of the following:
+In a Unix-like operating system, a file that can be executed should be one of
+the following:
 
 * A **binary file**, which contains machine-readable binary code that has been
   compiled from source code.
@@ -54,8 +51,8 @@ In a Unix-like operating system, a file that can be executed (someone has the
 
 ### How is a script executed?
 
-When an executable text file is run, a Unix-like operating system looks for a **shebang** on the first line.
-A shebang is a line with the following format:
+When an executable text file is run, a Unix-like operating system looks for a
+**shebang** on the first line. A shebang is a line with the following format:
 
 ```
 #!`interpreter` optional-args
@@ -67,8 +64,8 @@ For example, the following is a valid shebang:
 #!/bin/bash
 ```
 
-In this example, it tells the operating system that the **interpreter** which should run this file is `/bin/bash`,
-meaning that this is a [Bash][bash] script.
+In this example, it tells the operating system that the **interpreter** which
+should run this file is `/bin/bash`, meaning that this is a [Bash][bash] script.
 
 > Note that there must not be any space between `#!` and the path of the
 > interpreter `/bin/bash`.
@@ -131,8 +128,9 @@ Shebang             | Script contents
 `#!/usr/bin/python` | [Python][python] code
 `#!/usr/bin/ruby`   | [Ruby][ruby] code
 
-> Of course, the path to the interpreter must correspond to the actual path of the command used (`sh`, `bash`, `php`, etc).
-> It might differ on your machine. Use `which bash` to find the location of the Bash executable, for example.
+> Of course, the path to the interpreter must correspond to the actual path of
+> the command used (`sh`, `bash`, `php`, etc). It might differ on your machine.
+> Use `which bash` to find the location of the Bash executable, for example.
 
 
 
@@ -152,8 +150,7 @@ Any script with a shell as the interpreter is a "shell script".
 
 <!-- slide-front-matter class: center, middle -->
 
-> A few pointers on writing Bash scripts
-> (compatible with most POSIX shells).
+> A few pointers on writing Bash scripts (compatible with most POSIX shells).
 
 ### Commands
 
@@ -335,9 +332,11 @@ echo Hello $1
 
 ### The `set` built-in command
 
-The `set` command is specific to Bash and can be used to toggle its [option flags][bash-option-flags].
+The `set` command is specific to Bash and can be used to toggle its [option
+flags][bash-option-flags].
 
-For example, the `-e` option aborts the script if an error occurs, while the `-x` option prints commands before executing them:
+For example, the `-e` option aborts the script if an error occurs, while the
+`-x` option prints commands before executing them:
 
 ```bash
 #!/bin/bash
@@ -362,8 +361,8 @@ cat: file-that-does-not-exist: No such file or directory
 
 ### Functions
 
-You can isolate pieces of code in a function.
-The special argument variables `$1`, `$2`, etc represent the arguments to the function:
+You can isolate pieces of code in a function. The special argument variables
+`$1`, `$2`, etc represent the arguments to the function:
 
 ```bash
 #!/bin/bash
@@ -379,7 +378,8 @@ This script would print `Hello World`.
 
 #### Variable scope
 
-Note that normal Bash variables have no scope, i.e. they are available in the whole file and every function.
+Note that normal Bash variables have no scope, i.e. they are available in the
+whole file and every function.
 
 To declare a variable that is local to a function, use the `local` keyword:
 
@@ -402,6 +402,7 @@ since `$name` is only defined within the `print_hello` function.
 
 ## References
 
+* [Shell Style Guide](https://google.github.io/styleguide/shellguide.html)
 * [Advanced Bash Scripting Guide](https://www.tldp.org/LDP/abs/html/)
   * [Test Constructs][bash-test-constructs]
   * [File Test Operators][bash-file-test-operators]
