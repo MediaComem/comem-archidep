@@ -3,7 +3,7 @@
   <head>
     <title>Command Line Introduction (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/de42f226895d9637b23f9a1a2c4bdf6a0c544890/subjects/cli/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/547c5e99aee9e1b1a6f5f79ba811f27f756b5f76/subjects/cli/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -1618,13 +1618,41 @@ Command-line shells have been worked on for a very long time. Modern shells
 such as the [Z shell (Zsh)][zsh] have a whole community that created many
 plugins to simplify your daily command-line work.
 
-On macOS, you may want to install [Oh My Zsh][oh-my-zsh] to fully unleash the
-power of your Terminal. It has [plugins][oh-my-zsh-plugins] to integrate with
-Homebrew, Git, various programming languages like Ruby, PHP, Go, and much more.
+On macOS or Linux, you may want to install [Oh My Zsh][oh-my-zsh] to fully
+unleash the power of your Terminal. It has [plugins][oh-my-zsh-plugins] to
+integrate with Homebrew, Git, various programming languages like Ruby, PHP, Go,
+and much more.
 
 On Windows, you may want to [install the Windows Subsystem for Linux][wsl] so
 you can install a Linux distribution like Ubuntu. You can then [install Zsh and
 Oh My Zsh as well][oh-my-zsh-windows].
+
+---
+### Other tools for the command line lover
+
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#65">Unleash your terminal</a>]
+
+* [`bat`](https://github.com/sharkdp/bat): a `cat` clone with wings
+* [`tldr`](https://github.com/tldr-pages/tldr): better `man` pages
+* [`fzf`](https://junegunn.github.io/fzf/) to quickly find files
+* [`ack`](https://beyondgrep.com) to search for text in files (`grep`
+  alternative)
+* [`rsync`](https://rsync.samba.org) for incremental file transfers (`cp` &
+  `scp` alternative)
+
+.grid-30[
+
+<img class='w100' src='images/terminal-multiplexer.png' />
+
+
+]
+.grid-70[
+
+A Terminal [multiplexer](https://en.wikipedia.org/wiki/Multiplexer) like:
+
+  * [tmux](https://github.com/tmux/tmux/wiki)
+  * [screen](https://www.gnu.org/software/screen/)
+  * [zellij](https://zellij.dev) 💙
 
 
 
@@ -1690,6 +1718,8 @@ Oh My Zsh as well][oh-my-zsh-windows].
 [wsl]: https://learn.microsoft.com/en-us/windows/wsl/install
 [zsh]: https://en.wikipedia.org/wiki/Z_shell
 [zsh-site]: http://zsh.sourceforge.net/
+
+]
 
     </textarea>
     <script src='../../subject-b46dd158740b5c168516.js'></script>
