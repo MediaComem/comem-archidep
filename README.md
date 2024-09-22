@@ -139,7 +139,7 @@ For you to succeed in this course, it is highly recommended that you read and co
     - [:classical_building: Architecture](ex/git-automated-deployment.md#classical_building-architecture)
 
 - Graded deployment exercise
-  - *Not yet available*
+  - :collision: :hammer: *Not yet available*
 
 - Managed deployments
   - [:book: Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/paas?home=MediaComem%2Fcomem-archidep%23readme)
