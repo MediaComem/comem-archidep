@@ -169,7 +169,23 @@ using for the rest of the course.
 
   - Use the default **Management**, **Monitoring**, **Advanced** and **Tags**
     settings.
-  - Review and create your virtual machine.
+  - Review your estimated monthly cost:
+
+    ![Azure: virtual machine estimated monthly cost](../images/azure-vm-estimated-monthly-cost.png)
+
+    <table style="width: 100%;">
+      <tr>
+        <td><img src="../images/warning.gif" width="80px"></td>
+        <td>
+          Your estimated monthly cost <strong>MUST BE UNDER $20/month</strong>.
+          If it is higher, you have probably selected a VM size that is not the
+          recommended one and that is too expensive for the credits you have at
+          your disposal for this course.
+        </td>
+      </tr>
+    </table>
+
+    Create your virtual machine.
   - Once your deployment is complete, go to the virtual machine source:
 
     ![Azure: virtual machine deployment complete](../images/azure-vm-deployment-complete.png)
