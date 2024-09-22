@@ -122,7 +122,10 @@ using for the rest of the course.
     > server. For the purposes of this course, it's simpler to allow anyone to
     > connect from any source IP address.
 
-  - Use the default **Disks** settings.
+  - In the **Disks** settings, select a cheaper disk than the default. We won't
+    need that much I/O performance:
+
+    ![Azure: virtual machine disks](../images/azure-vm-disks.png)
   - In the **Networking** settings, select the **Advanced** security group
     option, and create a new security group:
 
@@ -149,7 +152,8 @@ using for the rest of the course.
     > Port 22 is for SSH connections. Ports 3000 and 3001 will be used in
     > various exercises.
 
-  - Use the default **Management**, **Advanced** and **Tags** settings.
+  - Use the default **Management**, **Monitoring**, **Advanced** and **Tags**
+    settings.
   - Review and create your virtual machine.
   - Once your deployment is complete, go to the virtual machine source:
 
