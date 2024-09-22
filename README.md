@@ -53,7 +53,7 @@ For you to succeed in this course, it is highly recommended that you read and co
 - A Unix CLI
   - Linux/macOS users can use their standard Terminal
   - Windows users should install [Git for Windows][git-for-windows] which
-    includes Git Bash
+    includes Git Bash (or the [WSL][wsl] for more advanced users)
 - [Git][git-downloads]
   - macOS users should [install the command-line tools][macos-cli]
   - Windows users should install [Git for Windows][git-for-windows]
@@ -270,3 +270,4 @@ and related articles:
 [php-dev-server]: https://www.php.net/manual/en/features.commandline.webserver.php
 [php-fpm]: https://www.php.net/manual/en/install.fpm.php
 [render]: https://render.com
+[wsl]: https://learn.microsoft.com/en-us/windows/wsl/about
