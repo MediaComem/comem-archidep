@@ -84,8 +84,15 @@ using for the rest of the course.
 
     ![Azure: virtual machine instance details](../images/azure-vm-instance-details.png)
 
-    Be sure to select the **Ubuntu 24.04** image and the **B1s** size. You can
-    select this size from the complete list of VM sizes:
+    <img src="../images/warning.gif" style="float: left; margin: 0 0.4em 0.4em 0" />
+    **MAKE SURE TO SELECT THE `Ubuntu 24.04` IMAGE AND THE `B1s` SIZE.** If you
+    select a VM size that is too expensive, **YOU WILL RUN OUT OF FREE CREDITS
+    BEFORE THE END OF THE COURSE**. We will then have to provide (and pay
+    :moneybag:) a new VM for you and you will have to reinstall your VM from
+    scratch (including all deployment exercises you may already have completed).
+
+    If the correct size is not selected, you can select it from the complete
+    list of VM sizes:
 
     ![Azure: virtual machine size](../images/azure-vm-size.png)
 
