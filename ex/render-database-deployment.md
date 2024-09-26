@@ -160,7 +160,6 @@ Unpacking objects: 100% (11/11), 3.20 KiB | 545.00 KiB/s, done.
 From https://github.com/MediaComem/comem-archidep-php-todo-exercise
  * [new branch]      docker-postgres -> upstream/docker-postgres
  * [new branch]      main            -> upstream/main
- * [new branch]      master          -> upstream/master
 ```
 
 As you can see, this gives you access to upstream branches, including one called

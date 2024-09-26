@@ -120,10 +120,10 @@ Create your new repository [on GitHub](http://github.com), copy the SSH clone UR
 $> git remote add origin git@github.com:MyUser/my-project.git
 ```
 
-Push your master branch and track it (with the `-u` option):
+Push your `main` branch and track it (with the `-u` option):
 
 ```bash
-$> git push -u origin master
+$> git push -u origin main
 ```
 
 
@@ -135,7 +135,7 @@ Commit and push your changes:
 ```bash
 $> git add --all
 $> git commit -m "My changes"
-$> git push origin master
+$> git push origin main
 ```
 
 **If GitHub rejects your push**, you should **pull the latest changes** first.

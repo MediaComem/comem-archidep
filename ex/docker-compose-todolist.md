@@ -88,10 +88,10 @@ Your inescapable references for this exercise are the following documents:
 
   **If you performed the [Render deployment
   exercise](https://github.com/MediaComem/comem-archidep/blob/main/ex/render-database-deployment.md)**,
-  switch back to the `main` (or `master`) branch:
+  switch back to the `main` branch:
 
   ```bash
-  $> git checkout main  # (or master)
+  $> git checkout main
   ```
 
   > :books: In the Render deployment exercise, a `Dockerfile` was provided for

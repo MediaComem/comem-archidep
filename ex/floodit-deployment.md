@@ -1168,8 +1168,8 @@ You can then connect to your server and perform the following actions:
 [angular]: https://angular.io
 [api]: https://en.wikipedia.org/wiki/API
 [archidep-exercises]: https://github.com/MediaComem/comem-archidep#exercises
-[auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md
-[automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md#update-the-todolist-nginx-configuration
+[auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md
+[automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md#exclamation-update-the-todolist-nginx-configuration
 [automated-tests]: https://en.wikipedia.org/wiki/Test_automation
 [certbot-ex]: certbot-deployment.md
 [composer]: https://getcomposer.org

@@ -610,8 +610,8 @@ correct address and port. Are you sure your application is actually listening on
 that port?
 
 [app]: https://wopr.archidep.ch
-[auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md
-[automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md#update-the-todolist-nginx-configuration
+[auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md
+[automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md#exclamation-update-the-todolist-nginx-configuration
 [bundler]: https://bundler.io
 [certbot-ex]: certbot-deployment.md
 [change]: https://github.com/MediaComem/comem-wopr/blob/4b75cc6c2c83c2fce1723ce655a12d5537c0bfbd/src/app.svelte#L26-L30

@@ -450,7 +450,7 @@ $> npm run build:precompiled
 >
 > **On your local machine,** clone your own RPS repository (replacing `JohnDoe`
 > with your GitHub username), add the original RPS repository as a remote, merge
-> the latest changes into your master branch, and push those changes to update
+> the latest changes into your `main` branch, and push those changes to update
 > your fork on GitHub:
 >
 > ```bash
@@ -458,9 +458,9 @@ $> npm run build:precompiled
 > $> git clone git@github.com:JohnDoe/rps.git
 > $> cd rps
 > $> git remote add upstream https://github.com/MediaComem/rps.git
-> $> git checkout master
-> $> git merge upstream/master
-> $> git push origin master
+> $> git checkout main
+> $> git merge upstream/main
+> $> git push origin main
 > ```
 >
 > Then, **connect to your server** and perform the same instructions as
@@ -528,8 +528,8 @@ defined. Check your nginx configuration to make sure that you are using the
 correct address and port. Are you sure your application is actually listening on
 that port?
 
-[auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md
-[automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md#update-the-todolist-nginx-configuration
+[auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md
+[automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md#exclamation-update-the-todolist-nginx-configuration
 [certbot-ex]: certbot-deployment.md
 [change]: https://github.com/MediaComem/rps/blob/369c511ce013b760fba8d2f9663b5d951370ae7e/package.json#L3
 [express]: https://expressjs.com

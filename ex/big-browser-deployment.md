@@ -258,18 +258,18 @@ For example, you may change the title in the navbar, which is in [in the
 file](https://github.com/mediacomem/big-browser/blob/8c38c2b3a2438374d7747169a52cf30669dab6c1/public/index.html#L14).
 
 [app]: https://big-browser.herokuapp.com
-[auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md
+[auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md
 [certbot-ex]: certbot-deployment.md
 [nest]: https://nestjs.com
 [nginx-install]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#18
-[nginx-php-fpm-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/nginx-php-fpm-deployment.md
+[nginx-php-fpm-ex]: https://github.com/MediaComem/comem-archidep/blob/main/ex/nginx-php-fpm-deployment.md
 [nginx-rp-conf]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29
 [node]: https://nodejs.org
 [nosql]: https://en.wikipedia.org/wiki/NoSQL
 [readme]: https://github.com/mediacomem/big-browser#readme
 [redis]: https://redis.io
 [repo]: https://github.com/mediacomem/big-browser
-[systemd-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/systemd-deployment.md
+[systemd-ex]: https://github.com/MediaComem/comem-archidep/blob/main/ex/systemd-deployment.md
 [systemd-reload]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/linux-process-management/?home=MediaComem%2Fcomem-archidep%23readme#10
 [ts]: https://www.typescriptlang.org
 [vue]: https://vuejs.org

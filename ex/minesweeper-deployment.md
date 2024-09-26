@@ -1190,8 +1190,8 @@ to take your changes into account.
 [app-config]: https://github.com/MediaComem/minesweeper#configuration
 [app-deps]: https://github.com/MediaComem/minesweeper/blob/ca3e6fb2956afc751274ce2589ff9490c90c5e00/mix.exs#L40-L57
 [archidep-exercises]: https://github.com/MediaComem/comem-archidep#exercises
-[auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md
-[automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/master/ex/git-automated-deployment.md#update-the-todolist-nginx-configuration
+[auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md
+[automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md#exclamation-update-the-todolist-nginx-configuration
 [automated-tests]: https://en.wikipedia.org/wiki/Test_automation
 [beam]: https://en.wikipedia.org/wiki/BEAM_(Erlang_virtual_machine)
 [certbot-ex]: certbot-deployment.md
