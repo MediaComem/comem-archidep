@@ -1,0 +1,25 @@
+accessLog: {}
+
+api:
+  dashboard: true
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: simon.oulevay@heig-vd.ch
+      # caServer: https://acme-staging-v02.api.letsencrypt.org
+      storage: /var/lib/traefik/acme.json
+      tlsChallenge: {}
+
+entryPoints:
+  public-http:
+    address: ':80'
+  public-https:
+    address: ':443'
+
+log:
+  level: DEBUG
+
+providers:
+  docker:
+    exposedByDefault: false

@@ -1,0 +1,114 @@
+---
+- name: Install setfacl for privilege escalation
+  apt:
+    name: acl
+    state: present
+  tags: [archidep]
+
+- name: Create ArchiDep user
+  user:
+    name: archidep
+    state: present
+  tags: [archidep]
+
+- name: Create ArchiDep directories
+  file:
+    path: '{{ item.path }}'
+    owner: archidep
+    group: archidep
+    mode: '{{ item.mode | default("750") }}'
+    state: directory
+  with_items:
+    - path: /srv/archidep
+    - path: /srv/archidep/rp
+    - path: /srv/archidep/todolist-app
+    - path: /srv/archidep/todolist-app/.ssh
+      mode: '700'
+    - path: /srv/archidep/todolist-db
+    - path: /srv/archidep/todolist-rp
+  tags: [archidep]
+
+- name: Copy ArchiDep Docker Compose file
+  copy:
+    src: compose.yml
+    dest: /srv/archidep/compose.yml
+    owner: archidep
+    group: archidep
+    mode: 0640
+  tags: [archidep, deploy]
+
+- name: Set up ArchiDep environment file
+  template:
+    src: .env
+    dest: /srv/archidep/.env
+    mode: 0640
+    owner: archidep
+    group: archidep
+  tags: [archidep, deploy]
+
+- name: Copy ArchiDep service configuration files
+  copy:
+    src: '{{ item }}'
+    dest: '/srv/archidep/{{ item }}'
+    owner: archidep
+    group: archidep
+  with_items:
+    - rp/traefik.yml
+    - todolist-db/todolist.sql
+    - todolist-rp/site.conf
+  tags: [archidep, deploy]
+
+- name: Copy ArchiDep reverse proxy service password file
+  copy:
+    content: '{{ archidep_rp_htpasswd }}'
+    dest: '/srv/archidep/rp/htpasswd'
+    mode: 0644
+    owner: archidep
+    group: archidep
+  with_items:
+    - traefik.yml
+  tags: [archidep, deploy]
+
+- name: Create ArchiDep todolist app service SSH key pair
+  copy:
+    content: '{{ item.content }}'
+    dest: '/srv/archidep/todolist-app/.ssh/{{ item.name }}'
+    owner: archidep
+    group: archidep
+    mode: 0600
+  with_items:
+    - content: '{{ archidep_todolist_app_ssh_private_key }}'
+      name: id_deploy
+    - content: '{{ archidep_todolist_app_ssh_public_key }}'
+      name: id_deploy.pub
+  tags: [archidep, deploy]
+
+- name: Add GitHub to known SSH hosts
+  known_hosts:
+    name: github.com
+    key: 'github.com {{ item }}'
+    path: /home/archidep/.ssh/known_hosts
+    state: present
+  with_items:
+    # https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
+    - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+    - ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEiiphnt+VTTvDP6mHBL9j1aNUkY4Ue1gvwnGLVlOhGeYrnZaMgRK6+PKCUXaDbC7qtbW8gIkhL7aGCsOr/C56SJMy/BCZfxd1nWzAOxSDPgVsmerOBYfNqltV9/hWCqBywINIR+5dIg6JTJ72pcEpEjcYgXkE2YEFXV1JHnsKgbLWNlhScqb2UmyRkQyytRLtL+38TGxkxCflmO+5Z8CSSNY7GidjMIZ7Q4zMjA2n1nGrlTDkzwDCsw+wqFPGQA179cnfGWOWRVruj16z6XyvxvjJwbz0wQZ75XK5tKSb7FNyeIEs4TT4jk+S4dhPeAUC5y+bDYirYgM4GC7uEnztnZyaVWQ7B381AK4Qdrwt51ZqExKbQpTUNn+EjqoTwvqNj4kqx5QUCI0ThS/YkOxJCXmPUWZbhjpCg56i+2aB6CmK2JGhn57K5mj0MNdBXA4/WnwH6XoPWJzK5Nyu2zB3nAZp+S5hpQs+p1vN1/wsjk=
+  tags: [archidep]
+
+- name: Clone ArchiDep todolist repository
+  git:
+    repo: '{{ archidep_todolist_repo_url }}'
+    dest: /srv/archidep/todolist-app/repo
+    version: '{{ archidep_todolist_repo_branch }}'
+    key_file: /srv/archidep/todolist-app/.ssh/id_deploy
+  become: true
+  become_user: archidep
+  tags: [archidep, deploy]
+
+- name: Deploy ArchiDep services
+  community.docker.docker_compose_v2:
+    project_src: /srv/archidep
+    remove_orphans: true
+    state: present
+  tags: [archidep, deploy]

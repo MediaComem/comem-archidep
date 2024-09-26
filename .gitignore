@@ -6,6 +6,7 @@
 /*.csv
 /*.csv.*
 /data.yml
+/.DS_Store
 /.envrc
 /heroku.csv
 /id_*
@@ -15,5 +16,5 @@
 /secret.txt
 /tmp
 /*.tmp
+/.vault-password
 /.vscode
-.DS_Store

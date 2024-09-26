@@ -1,0 +1,97 @@
+name: archidep
+
+services:
+  rp:
+    image: 'traefik:v3.1'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.rp-dashboard.entrypoints=public-https'
+      - 'traefik.http.routers.rp-dashboard.rule=Host(`rp.archidep.ch`)'
+      - 'traefik.http.routers.rp-dashboard.middlewares=rp-dashboard-auth'
+      - 'traefik.http.routers.rp-dashboard.service=api@internal'
+      - 'traefik.http.routers.rp-dashboard.tls=true'
+      - 'traefik.http.routers.rp-dashboard.tls.certresolver=letsencrypt'
+      - 'traefik.http.middlewares.rp-dashboard-auth.basicauth.usersFile=/etc/traefik/htpasswd'
+      - 'traefik.http.middlewares.rp-dashboard-auth.basicauth.realm=Protected'
+      # Dummy service for Swarm port detection. The port can be any valid
+      # integer value.
+      - 'traefik.http.services.rp-dashboard.loadbalancer.server.port=9999'
+    networks:
+      - todolist-web
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: unless-stopped
+    volumes:
+      - 'rp-data:/var/lib/traefik:rw'
+      - '/srv/archidep/rp/htpasswd:/etc/traefik/htpasswd:ro'
+      - '/srv/archidep/rp/traefik.yml:/etc/traefik/traefik.yml:ro'
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+
+  todolist-rp:
+    image: nginx:1.27.1-alpine
+    depends_on:
+      - todolist-app
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=archidep_todolist-web'
+
+      - 'traefik.http.routers.archidep-todolist-insecure.entrypoints=public-http'
+      - 'traefik.http.routers.archidep-todolist-insecure.rule=Host(`todolist.archidep.ch`)'
+      - 'traefik.http.routers.archidep-todolist-insecure.middlewares=archidep-todolist-insecure-redirect'
+      - 'traefik.http.middlewares.archidep-todolist-insecure-redirect.redirectscheme.scheme=https'
+      - 'traefik.http.middlewares.archidep-todolist-insecure-redirect.redirectscheme.permanent=true'
+
+      - 'traefik.http.routers.archidep-todolist.entrypoints=public-https'
+      - 'traefik.http.routers.archidep-todolist.rule=Host(`todolist.archidep.ch`)'
+      - 'traefik.http.routers.archidep-todolist.tls=true'
+      - 'traefik.http.routers.archidep-todolist.tls.certresolver=letsencrypt'
+    networks:
+      - todolist-app
+      - todolist-web
+    restart: unless-stopped
+    volumes:
+      - /srv/archidep/todolist-rp/site.conf:/etc/nginx/conf.d/default.conf:ro
+
+  todolist-app:
+    image: archidep/todolist
+    build:
+      context: /srv/archidep/todolist-app/repo
+      dockerfile: Dockerfile
+    depends_on:
+      - todolist-db
+    environment:
+      TODOLIST_BASE_URL: https://todolist.archidep.ch
+      TODOLIST_DB_USER: todolist
+      TODOLIST_DB_PASS: ${ARCHIDEP_TODOLIST_DB_PASSWORD}
+      TODOLIST_DB_NAME: todolist
+      TODOLIST_DB_HOST: todolist-db
+      TODOLIST_DB_PORT: 3306
+    init: true
+    networks:
+      - todolist-app
+      - todolist-db
+    restart: unless-stopped
+
+  todolist-db:
+    image: mysql:9.0.1
+    environment:
+      MYSQL_DATABASE: todolist
+      MYSQL_USER: todolist
+      MYSQL_PASSWORD: ${ARCHIDEP_TODOLIST_DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${ARCHIDEP_TODOLIST_DB_ROOT_PASSWORD}
+    networks:
+      - todolist-db
+    restart: unless-stopped
+    volumes:
+      - todolist-db-data:/var/lib/mysql
+      - /srv/archidep/todolist-db/todolist.sql:/docker-entrypoint-initdb.d/todolist.sql:ro
+
+networks:
+  todolist-app:
+  todolist-db:
+  todolist-web:
+
+volumes:
+  rp-data:
+  todolist-db-data:

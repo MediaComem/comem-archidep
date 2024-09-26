@@ -1,0 +1,34 @@
+---
+- hosts: all
+  become: true
+
+  vars:
+    server_name: archidep.ch
+  vars_files:
+    - vars/secrets.vault
+
+  roles:
+    - role: ufw
+      vars:
+        ufw_allow:
+          - proto: tcp
+            port: '{{ server_ssh_port }}'
+          - proto: tcp
+            port: 80
+          - proto: tcp
+            port: 443
+    - role: archidep
+
+  tasks:
+    - name: Set hostname
+      hostname:
+        name: '{{ server_name }}'
+
+    - name: Set up motd
+      copy:
+        src: motd
+        dest: /etc/motd
+        owner: root
+        group: root
+        mode: 0644
+      tags: [motd]
