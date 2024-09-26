@@ -15,6 +15,5 @@
 /secret.txt
 /tmp
 /*.tmp
-/.vagrant
 /.vscode
 .DS_Store
