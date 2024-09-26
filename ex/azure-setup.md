@@ -137,10 +137,7 @@ using for the rest of the course.
     > server. For the purposes of this course, it's simpler to allow anyone to
     > connect from any source IP address.
 
-  - In the **Disks** settings, select a cheaper disk than the default. We won't
-    need that much I/O performance:
-
-    ![Azure: virtual machine disks](../images/azure-vm-disks.png)
+  - Use the default **Disks** settings.
   - In the **Networking** settings, select the **Advanced** security group
     option, and create a new security group:
 
