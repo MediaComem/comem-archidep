@@ -1,0 +1,17 @@
+pane_frames true
+
+layout {
+  default_tab_template {
+    children
+    pane size=1 borderless=true {
+      plugin location="zellij:compact-bar"
+    }
+  }
+
+  tab name="main" split_direction="vertical" {
+    pane size="65%" borderless=true
+    pane command="npm" {
+      args "start"
+    }
+  }
+}
