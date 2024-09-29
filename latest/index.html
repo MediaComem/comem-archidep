@@ -77,6 +77,7 @@ Azure</a>).</li>
 <li><a href="#how-do-i-do-x-with-the-command-line">How do I do <em>X</em> with the command line?</a></li>
 <li><a href="#how-do-i-connect-to-my-server-and-stuff">How do I connect to my server and stuff?</a></li>
 <li><a href="#how-do-i-do-y-with-git">How do I do <em>Y</em> with Git?</a></li>
+<li><a href="#how-do-i-choose-a-password">How do I choose a password?</a></li>
 </ul>
 </li>
 <li><a href="#references">References</a></li>
@@ -100,7 +101,7 @@ exercise.</li>
 <li>A Unix CLI<ul>
 <li>Linux/macOS users can use their standard Terminal</li>
 <li>Windows users should install <a href="https://gitforwindows.org">Git for Windows</a> which
-includes Git Bash</li>
+includes Git Bash (or the <a href="https://learn.microsoft.com/en-us/windows/wsl/about">WSL</a> for more advanced users)</li>
 </ul>
 </li>
 <li><a href="https://git-scm.com/downloads">Git</a><ul>
@@ -148,15 +149,9 @@ distributions&#39; package managers.</li>
 <li><a href="ex/azure-setup.md">:hammer: Run your own virtual server on Microsoft Azure</a></li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2024-2025/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme">:book: Linux</a></li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2024-2025/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme">:book: Unix basics &amp; administration</a></li>
-<li><a href="ex/unix-permissions.md">:hammer: Permissions</a><ul>
-<li><a href="ex/unix-permissions-solutions.md">:key: Solutions</a></li>
-</ul>
-</li>
+<li><a href="ex/unix-permissions.md">:hammer: Permissions</a></li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2024-2025/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme">:book: Unix processes</a></li>
-<li><a href="ex/unix-pipeline.md">:hammer: Pipeline</a><ul>
-<li><a href="ex/unix-pipeline-solutions.md">:key: Solutions</a></li>
-</ul>
-</li>
+<li><a href="ex/unix-pipeline.md">:hammer: Pipeline</a></li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2024-2025/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme">:book: Unix networking</a></li>
 <li><a href="ex/tcp.md">:hammer: TCP</a><ul>
 <li><a href="ex/tcp.md#classical_building-architecture">:classical_building: Architecture</a></li>
@@ -179,13 +174,11 @@ distributions&#39; package managers.</li>
 <li><a href="https://12factor.net">:book: Twelve-factor app</a></li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2024-2025/subjects/unix-env-vars?home=MediaComem%2Fcomem-archidep%23readme">:book: Unix environment variables</a></li>
 <li><a href="ex/config-through-environment.md">:hammer: Configure a PHP application through environment variables</a><ul>
-<li><a href="ex/config-through-environment-solution.md">:key: Solution</a></li>
 <li><a href="ex/config-through-environment.md#classical_building-architecture">:classical_building: Architecture</a></li>
 </ul>
 </li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2024-2025/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme">:book: Linux process management</a></li>
 <li><a href="ex/systemd-deployment.md">:hammer: Manage a PHP application with systemd as a Process Manager</a><ul>
-<li><a href="ex/systemd-deployment-solution.md">:key: Solution</a></li>
 <li><a href="ex/systemd-deployment.md#classical_building-architecture">:classical_building: Architecture</a></li>
 </ul>
 </li>
@@ -196,17 +189,14 @@ distributions&#39; package managers.</li>
 </li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2024-2025/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme">:book: Reverse proxying</a></li>
 <li><a href="ex/nginx-static-deployment.md">:hammer: Deploy a static site with nginx</a><ul>
-<li><a href="ex/nginx-static-deployment-solution.md">:key: Solution</a></li>
 <li><a href="ex/nginx-static-deployment.md#classical_building-architecture">:classical_building: Architecture</a></li>
 </ul>
 </li>
 <li><a href="ex/nginx-php-fpm-deployment.md">:hammer: Deploy a PHP application with nginx and the FastCGI process manager</a><ul>
-<li><a href="ex/nginx-php-fpm-deployment-solution.md">:key: Solution</a></li>
 <li><a href="ex/nginx-php-fpm-deployment.md#classical_building-architecture">:classical_building: Architecture</a></li>
 </ul>
 </li>
 <li><a href="./ex/revprod-deployment.md">:hammer: Deploy a multi-component web application with nginx</a><ul>
-<li><a href="ex/revprod-deployment-solution.md">:key: Solution</a></li>
 <li><a href="ex/revprod-deployment.md#classical_building-architecture">:classical_building: Architecture</a></li>
 </ul>
 </li>
@@ -232,7 +222,7 @@ distributions&#39; package managers.</li>
 </li>
 <li><p>Graded deployment exercise</p>
 <ul>
-<li><em>Not yet available</em></li>
+<li>:collision: :hammer: <em>Not yet available</em></li>
 </ul>
 </li>
 <li><p>Managed deployments</p>
@@ -244,20 +234,15 @@ distributions&#39; package managers.</li>
 </ul>
 </li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2024-2025/subjects/docker?home=MediaComem%2Fcomem-archidep%23readme">:book: Docker</a><ul>
-<li><a href="./ex/docker-static.md">:hammer: Containerize a static site using Docker</a><ul>
-<li><a href="ex/docker-static-solution.md">:key: Solution</a></li>
-</ul>
-</li>
+<li><a href="./ex/docker-static.md">:hammer: Containerize a static site using Docker</a></li>
 </ul>
 </li>
 <li><a href="https://mediacomem.github.io/comem-archidep/2024-2025/subjects/docker-compose?home=MediaComem%2Fcomem-archidep%23readme">:book: Docker Compose</a><ul>
 <li><a href="./ex/docker-compose-todolist.md">:hammer: Deploy a PHP application with Docker Compose</a><ul>
-<li><a href="ex/docker-compose-todolist-solution.md">:key: Solution</a></li>
 <li><a href="./ex/docker-compose-todolist.md#classical_building-architecture">:classical_building: Architecture</a></li>
 </ul>
 </li>
 <li><a href="./ex/docker-compose-wopr.md">:hammer: Deploy a more complex web application with Docker Compose</a><ul>
-<li><a href="ex/docker-compose-wopr-solution.md">:key: Solution</a></li>
 <li><a href="./ex/docker-compose-wopr.md#classical_building-architecture">:classical_building: Architecture</a></li>
 </ul>
 </li>
@@ -310,6 +295,10 @@ distributions&#39; package managers.</li>
 <p><a href="SYSADMIN-CHEATSHEET.md">Read the system administration cheatsheet</a></p>
 <h3 id="how-do-i-do-y-with-git">How do I do <em>Y</em> with Git?</h3>
 <p><a href="GIT-CHEATSHEET.md">Read the Git cheatsheet</a></p>
+<h3 id="how-do-i-choose-a-password">How do I choose a password?</h3>
+<p><a href="https://xkcd.com/936/">Don&#39;t use something that is hard to remember</a>. You&#39;re
+better off <a href="https://www.useapassphrase.com">using a passphrase</a> (here&#39;s a
+<a href="https://passwordcreator.org/fr.html#good">French version</a>).</p>
 <h2 id="references">References</h2>
 <p>These are the main references used throughout this course. More detailed and
 additional links to various online articles and documentation can be found at
