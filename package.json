@@ -21,20 +21,21 @@
   "type": "module",
   "scripts": {
     "azure:inventory": "node scripts/generate-azure-inventory.js",
-    "build": "courses-md build",
-    "deploy": "courses-md publish",
+    "build": "cross-env DEBUG=courses-md:* courses-md build",
+    "deploy": "cross-env DEBUG=courses-md:* courses-md publish",
     "doctoc": "doctoc --notitle --github README.md CLI-CHEATSHEET.md GIT-CHEATSHEET.md SETUP.md SYSADMIN-CHEATSHEET.md ex subjects",
     "format": "prettier --check .",
     "format:write": "prettier --write .",
     "mails": "node scripts/send-students-data.js",
     "setup": "node scripts/process-students-data.js",
-    "start": "courses-md",
-    "watch": "courses-md watch"
+    "start": "cross-env DEBUG=courses-md:* courses-md",
+    "watch": "cross-env DEBUG=courses-md:* courses-md watch"
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.654.0",
     "chalk": "^5.0.1",
     "courses-md": "~0.7.5",
+    "cross-env": "^7.0.3",
     "csv-parse": "^5.3.0",
     "doctoc": "^2.0.1",
     "font-awesome": "^4.7.0",
