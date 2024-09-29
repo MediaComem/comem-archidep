@@ -168,10 +168,15 @@ $> sudo apt install php-fpm php-mysql
 ## :exclamation: Use a real password
 
 The `todolist.sql` files creates a `todolist` user with the password
-`chAngeMeN0w!` by default. You should change the password to a more secure
+`change-me-now` by default. You should change the password to a more secure
 value. Make sure that the password you choose is strong enough per the minimum
 password requirements you chose when you secured the MySQL installation.
 
+> :gem: Need help choosing a good password? [Don't use something that is hard to
+> remember](https://xkcd.com/936/). You're better off [using a
+> passphrase](https://www.useapassphrase.com) (here's a [French
+> version](https://passwordcreator.org/fr.html#good)).
+>
 > :books: It is good practice to create a different user and password for each
 > application that connects to the MySQL database server. That way, if one of
 > the applications is compromised, it cannot access or modify the databases of

@@ -30,6 +30,7 @@ This course is a [Media Engineering][comem] web development course taught at
   - [How do I do *X* with the command line?](#how-do-i-do-x-with-the-command-line)
   - [How do I connect to my server and stuff?](#how-do-i-connect-to-my-server-and-stuff)
   - [How do I do *Y* with Git?](#how-do-i-do-y-with-git)
+  - [How do I choose a password?](#how-do-i-choose-a-password)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -193,6 +194,12 @@ For you to succeed in this course, it is highly recommended that you read and co
 ### How do I do *Y* with Git?
 
 [Read the Git cheatsheet](GIT-CHEATSHEET.md)
+
+### How do I choose a password?
+
+[Don't use something that is hard to remember](https://xkcd.com/936/). You're
+better off [using a passphrase](https://www.useapassphrase.com) (here's a
+[French version](https://passwordcreator.org/fr.html#good)).
 
 ## References
 
