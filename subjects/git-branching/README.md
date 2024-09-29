@@ -802,6 +802,11 @@ And you're done!
 * [Git branching][branching]
 * [Advanced merging][advanced-merging]
 * [Understanding branches in Git][understanding-branches]
+* [Branching workflows](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows)
+  * [A successful branching model](http://nvie.com/posts/a-successful-git-branching-model/) (for large teams)
+  * [A successful branching model considered harmful](https://barro.github.io/2016/02/a-succesful-git-branching-model-considered-harmful/)
+  * [Branch-per-feature](http://dymitruk.com/blog/2012/02/05/branch-per-feature/)
+  * [Trunk-based development](https://trunkbaseddevelopment.com)
 
 
 
