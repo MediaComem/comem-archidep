@@ -179,8 +179,10 @@ $> git graph
 
 ### Create a new branch
 
-> **Exercise:** our JavaScript calculator is missing some code.
-> Let's create a branch to implement subtraction.
+.exercise[
+> **Exercise:** our JavaScript calculator is missing some code. Let's create a
+> branch to implement subtraction.
+]
 
 It's very fast and simple to create a new branch. Run the following command to
 create a branch called "feature-sub":
@@ -224,7 +226,9 @@ This moves `HEAD` to point to the `feature-sub` branch.
 
 Nothing else happened because `HEAD` is still pointing to the same commit as `main`.
 
+.exercise[
 > **Exercise:** you can now implement the subtraction in `subtraction.js`.
+]
 
 
 
@@ -249,9 +253,11 @@ to the new commit:
 
 ### Switch back to `main`
 
+.exercise[
 > **Exercise:** oops, you just noticed that addition is not working correctly.
 > You need to make a bug fix, but you don't want to mix that code with the new
 > subtraction feature. Let's **go back to `main`**:
+]
 
 ```bash
 $> git checkout main
@@ -273,7 +279,9 @@ You have essentially **rewinded** the work you've done in `feature-sub`, and are
 
 ### Create another branch
 
+.exercise[
 > **Exercise:** let's create a new branch to fix the bug.
+]
 
 You can create a new branch *and* switch to it in one command with the `-b` (new
 **b**ranch) option of the `checkout` command:
@@ -291,7 +299,9 @@ Nothing has changed yet because `fix-add` still points to the same commit as `ma
 
 ### Work on a separate branch
 
+.exercise[
 > **Exercise:** fix addition in `addition.js` and commit your changes.
+]
 
 ```bash
 $> git add addition.js
@@ -361,9 +371,11 @@ This is what is called a **fast-forward**.
 
 ### Delete a branch
 
+.exercise[
 > **Exercise:** now that we've brought our fix back into `main`, we don't need
 > the `fix-add` branch anymore. Let's delete it with the `-d` (**d**elete)
 > option of the `branch` command:
+]
 
 ```bash
 $> git branch -d fix-add
@@ -376,8 +388,10 @@ Deleted branch fix-add (was 2817bc).
 
 ### Continue working on a feature branch
 
-> **Exercise:** let's switch back to our `feature-sub` branch and finish our work.
-  Write a comment for the subtract function and commit your changes.
+.exercise[
+> **Exercise:** let's switch back to our `feature-sub` branch and finish our
+> work. Write a comment for the subtract function and commit your changes.
+]
 
 ```bash
 $> git checkout feature-sub
@@ -406,7 +420,10 @@ A **new commit** will be created representing that state.
 
 #### Merge commit message
 
-> **Exercise:** switch back to the `main` branch and merge `feature-sub` into it.
+.exercise[
+> **Exercise:** switch back to the `main` branch and merge `feature-sub` into
+> it.
+]
 
 ```bash
 $> git checkout main
