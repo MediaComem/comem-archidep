@@ -72,8 +72,8 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:book: Shell scripting](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/shell-scripting?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Hello Shell](ex/hello-shell.md)
   - [:book: Secure Shell (SSH)](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/ssh?home=MediaComem%2Fcomem-archidep%23readme)
+    - [:book: The Birth (or Death) of an SSH Connection](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/ssh/images/ssh-connection.png) ([PDF Version](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/ssh/images/ssh-connection.pdf))
   - [:hammer: Hello SSH](ex/hello-ssh.md)
-  - [:book: The Birth (or Death) of an SSH Connection](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/ssh/images/ssh-connection.png) ([PDF Version](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/ssh/images/ssh-connection.pdf))
 - Version control
   - [:hammer: :book: Version control with Git](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/git?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: :book: Git branching](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
