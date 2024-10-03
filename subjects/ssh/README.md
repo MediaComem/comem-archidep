@@ -998,6 +998,7 @@ A few examples are:
 * [Diffie-Hellman Key Exchange][dh]
 * [Simplest Explanation of the Math Behind Public Key Cryptography][pubkey-math]
 * [SSH, The Secure Shell: The Definitive Guide](https://books.google.ch/books/about/SSH_The_Secure_Shell_The_Definitive_Guid.html?id=9FSaScltd-kC&redir_esc=y)
+* [SSH Authentication Sequence and Key Files](https://serverfault.com/a/935667)
 
 
 
