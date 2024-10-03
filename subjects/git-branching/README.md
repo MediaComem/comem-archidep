@@ -216,15 +216,14 @@ $> git branch
 Now let's switch to the `feature-sub` branch:
 
 ```bash
-$> git checkout feature-sub
+$> git switch feature-sub  # or git checkout feature-sub
 Switched to branch 'feature-sub'
 ```
 
 <git-memoir name='branchingOneLine' chapter='checkout' svg-height='137px'></git-memoir>
 
-This moves `HEAD` to point to the `feature-sub` branch.
-
-Nothing else happened because `HEAD` is still pointing to the same commit as `main`.
+This moves `HEAD` to point to the `feature-sub` branch. Nothing else happened
+because `HEAD` is still pointing to the same commit as `main`.
 
 .exercise[
 > **Exercise:** you can now implement the subtraction in `subtraction.js`.
@@ -260,13 +259,13 @@ to the new commit:
 ]
 
 ```bash
-$> git checkout main
+$> git switch main  # or git checkout main
 Switched to branch 'main'
 ```
 
-#### Checkout behavior
+#### Switch/checkout behavior
 
-Two things happened when you ran `git checkout main`:
+Two things happened when you ran `git switch main` (or `git checkout main`):
 
 * The `HEAD` pointer was **moved** back to the `main` branch.
 * The files in your working directory were **reverted** back to the snapshot that `main` points to.
@@ -283,17 +282,18 @@ You have essentially **rewinded** the work you've done in `feature-sub`, and are
 > **Exercise:** let's create a new branch to fix the bug.
 ]
 
-You can create a new branch *and* switch to it in one command with the `-b` (new
-**b**ranch) option of the `checkout` command:
+You can create a new branch *and* switch to it in one command with the `-c`
+(**c**reate) option of the `switch` command or the `-b` (new **b**ranch) option
+of the `checkout` command:
 
 ```bash
-$> git checkout -b fix-add
+$> git switch -c fix-add  # or git checkout -b fix-add
 Switched to a new branch 'fix-add'
 ```
 
 <git-memoir name='branchingOneLine' chapter='another-branch' svg-height='137px'></git-memoir>
 
-Nothing has changed yet because `fix-add` still points to the same commit as `main`.
+Nothing changed yet because `fix-add` still points to the same commit as `main`.
 
 
 
@@ -316,12 +316,12 @@ $> git commit -m "Fix addition"
 
 Now your project history has **diverged**.
 
-The changes in `feature-sub` and `fix-add` are **isolated**.
-You can **switch back and forth** between the branches with `git checkout`.
+The changes in `feature-sub` and `fix-add` are **isolated**. You can **switch
+back and forth** between the branches with `git switch` or `git checkout`:
 
 <git-memoir name='branching' chapter='switch-branches' svg-height='250px'></git-memoir>
 
-Every time you check out one of these branches, the files in your **working
+Every time you switch to one of these branches, the files in your **working
 directory** are updated to reflect the state of the corresponding commit, or
 snapshot.
 
@@ -329,17 +329,15 @@ snapshot.
 
 ### Merging
 
-Now that you've tested your fix and made sure it works,
-you want to **bring those changes** back **into the `main` branch**.
+Now that you've tested your fix and made sure it works, you want to **bring
+those changes** back **into the `main` branch**.
 
-Git's `merge` command can do that for you,
-but it can only **bring changes** from another branch **into the current branch**,
-not the other way around.
-
-So you must first switch to the `main` branch:
+Git's `merge` command can do that for you, but it can only **bring changes**
+from another branch **into the current branch**, not the other way around. So
+you must first switch to the `main` branch:
 
 ```bash
-$> git checkout main
+$> git switch main  # or git checkout main
 ```
 
 <git-memoir name='branching' chapter='fast-forward-merge-checkout' svg-height='200px'></git-memoir>
@@ -394,7 +392,7 @@ Deleted branch fix-add (was 2817bc).
 ]
 
 ```bash
-$> git checkout feature-sub
+$> git switch feature-sub  # or git checkout feature-sub
 (Write your comment...)
 $> git add subtraction.js
 $> git commit -m "Comment subtract function"
@@ -426,7 +424,7 @@ A **new commit** will be created representing that state.
 ]
 
 ```bash
-$> git checkout main
+$> git switch main  # or git checkout main
 $> git merge feature-sub
 Merge made by the 'recursive' strategy.
  subtraction.js | 5 ++++-
@@ -508,10 +506,10 @@ Make a copy of that commit hash.
 ### Create a branch "in the past"
 
 You can create a branch at any point in the project's history by passing an
-additional commit reference to `git checkout`:
+additional commit reference to `git switch` or `git checkout`:
 
 ```bash
-$> git checkout -b better-sub 4f94fa
+$> git switch -c better-sub 4f94fa  # or git checkout -b better-sub 4f94fa
 ```
 
 <git-memoir name='branching' chapter='checkout-past' svg-height='250px'></git-memoir>
@@ -535,7 +533,7 @@ Note that if you try to check out the `main` branch at this point,
 Git won't let you do it because the state of `subtraction.js` is different in that branch:
 
 ```bash
-$> git checkout main
+$> git switch main  # or git checkout main
 error: Your local changes to the following files would be overwritten by checkout:
   subtraction.js
 Please commit your changes or stash them before you switch branches.
@@ -562,7 +560,7 @@ Viewing the graph of commits, it's clear that the change has been made **in para
 Go back to `main` and merge the `better-sub` branch:
 
 ```bash
-$> git checkout main
+$> git switch main  # or git checkout main
 $> git merge better-sub
 Auto-merging subtraction.js
 CONFLICT (content): Merge conflict in subtraction.js
@@ -707,7 +705,7 @@ you could have **modified the file** in your branch, and a colleague could have 
 Let's again pretend to be another colleague starting from the same point:
 
 ```bash
-$> git checkout -b cleanup 4f94fa
+$> git switch -c cleanup 4f94fa  # or git checkout -b cleanup 4f94fa
 ```
 
 <git-memoir name='branching' chapter='conflicting-file-change-checkout' svg-height='250px'></git-memoir>
@@ -733,7 +731,7 @@ $> git commit -m "Remove incomplete implementation"
 Let's try to merge that branch into `main`:
 
 ```bash
-$> git checkout main
+$> git switch main  # or git checkout main
 $> git merge cleanup
 CONFLICT (modify/delete): subtraction.js deleted in cleanup
   and modified in HEAD. Version HEAD of subtraction.js left in tree.

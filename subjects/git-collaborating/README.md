@@ -353,9 +353,11 @@ The `git clone [url]` command copies the **remote** repository to your machine.
 
 <!-- slide-column 40 -->
 
-The entire history of the project is **pulled** (or downloaded) from the GitHub repository.
+The entire history of the project is **pulled** (or downloaded) from the GitHub
+repository.
 
-Git will also automatically checkout the **main** branch in the working directory so you have something to work from.
+Git will also automatically switch to the **main** branch in the working
+directory so you have something to work from.
 
 Again, Git has created a **remote-tracking branch** in Alice's repository,
 so that you can know what the current state of the remote is.

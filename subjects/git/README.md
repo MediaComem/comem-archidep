@@ -345,8 +345,8 @@ This is one of the **most important things to remember about Git**:
 
 <p class='center'><img src='images/workflow.png' width='60%' /></p>
 
-* You **check out** a specific version of your files into the *working
-  directory*.
+* You **check out** (or **switch to**) a specific version of your files into the
+  *working directory*.
 * You **modify** files (or add new files) in your *working directory*.
 * You **stage** the files, adding snapshots of them to your *staging area*.
 * You make a **commit**, which takes the files as they are in the *staging area*
