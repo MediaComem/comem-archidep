@@ -460,7 +460,7 @@ fork:
 - Merge the latest changes from the original repository into your main branch:
 
   ```bash
-  $> git checkout main
+  $> git switch main
   $> git merge upstream/master
   ```
 

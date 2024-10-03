@@ -167,7 +167,7 @@ As you can see, this gives you access to upstream branches, including one called
 that upstream branch into your own branch.
 
 ```bash
-$> git checkout -b docker-postgres upstream/docker-postgres
+$> git switch -c docker-postgres upstream/docker-postgres
 branch 'docker-postgres' set up to track 'upstream/docker-postgres'.
 Switched to a new branch 'docker-postgres'
 ```
@@ -264,7 +264,7 @@ $> git branch --show-current
 docker-postgres
 ```
 
-If not, check out the correct branch with the `git checkout docker-postgres`
+If not, check out the correct branch with the `git switch docker-postgres`
 command.
 
 Next, connect to your PostgreSQL database from the command line. On the Render

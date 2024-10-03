@@ -91,7 +91,7 @@ Your inescapable references for this exercise are the following documents:
   switch back to the `main` branch:
 
   ```bash
-  $> git checkout main
+  $> git switch main
   ```
 
   > :books: In the Render deployment exercise, a `Dockerfile` was provided for

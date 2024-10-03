@@ -458,7 +458,7 @@ $> npm run build:precompiled
 > $> git clone git@github.com:JohnDoe/rps.git
 > $> cd rps
 > $> git remote add upstream https://github.com/MediaComem/rps.git
-> $> git checkout main
+> $> git switch main
 > $> git merge upstream/main
 > $> git push origin main
 > ```
