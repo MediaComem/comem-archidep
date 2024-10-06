@@ -6,6 +6,7 @@ Useful commands to manage a Unix system.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [How to I connect to my server with SSH? (`ssh`)](#how-to-i-connect-to-my-server-with-ssh-ssh)
+- [Who am I? (`whoami` & `id`)](#who-am-i-whoami--id)
 - [How do I change my password? (`passwd`)](#how-do-i-change-my-password-passwd)
 - [Administration](#administration)
   - [How do I change my username? (`usermod`)](#how-do-i-change-my-username-usermod)
@@ -30,6 +31,25 @@ Connect to the server at the domain `example.com` as the `john_doe` user:
 
 ```bash
 $> ssh john_doe@example.com
+```
+
+## Who am I? (`whoami` & `id`)
+
+If you don't remember who you are currently logged in (and have forgotten that
+this information is generally displayed at the very start of your prompt), you
+can use the `whoami` command:
+
+```bash
+$> whoami
+jde
+```
+
+You can also use the `id` command which also shows the GID (**g**roup **ID**) of
+your user's main group, and also the other groups your user may belong to:
+
+```bash
+$> id
+uid=1000(jde) gid=1000(jde) groups=1000(jde),4(adm),24(cdrom),27(sudo),30(dip),105(lxd)
 ```
 
 ## How do I change my password? (`passwd`)
