@@ -33,7 +33,7 @@ which you should read if you want more detailed information on the subject.
   - [Switch branches](#switch-branches)
   - [Commit on a branch](#commit-on-a-branch)
   - [Switch back to `main`](#switch-back-to-main)
-    - [Checkout behavior](#checkout-behavior)
+    - [Switch/checkout behavior](#switchcheckout-behavior)
   - [Create another branch](#create-another-branch)
   - [Work on a separate branch](#work-on-a-separate-branch)
     - [Divergent history](#divergent-history)
