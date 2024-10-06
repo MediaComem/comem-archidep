@@ -244,9 +244,10 @@ drwxr-xr-x 2 root root 4096 Sep  7 12:16 some-directory
 lrwxrwxrwx 1 bob  bob   39  Jan 18  2018 some-link -> some-file
 ```
 
-Column 1 represents the permissions assigned to the file, while columns 3 and 4 represent their ownership.
-The first 10-letter column can be separated into one letter for the type of file,
-and three 3-letter groups for owner, group and other permissions respectively:
+Column 1 represents the permissions assigned to the file, while columns 3 and 4
+represent their ownership. The first 10-letter column can be separated into one
+letter for the type of file, and three 3-letter groups for owner, group and
+other permissions respectively:
 
 ```
 TYPE  OWNER PERM  GROUP PERM  OTHER PERM  OWNER  GROUP
@@ -257,9 +258,9 @@ l     rwx         rwx         rwx         bob    bob   ... some-link -> some-fil
 ```
 
 > The [file types][unix-file-types] you will most often handle are `-` for
-> files, `d` for directories and `l` for links. There are others like `p` for
-> named pipes, `s` for sockets and `b` or `c` for device files, but they are
-> outside the scope of this course.
+> files, `d` for **d**irectories and `l` for **l**inks. There are others like
+> `p` for named **p**ipes, `s` for **s**ockets and `b` or `c` for **b**lock or
+> **c**haracter device files, but they are outside the scope of this course.
 
 
 
@@ -316,7 +317,7 @@ Defaults        env_reset
 Defaults        secure_path="/usr/local/sbin:/usr/local/bin:..."
 
 root    ALL=(ALL:ALL) ALL
-%admin ALL=(ALL) ALL
+%admin  ALL=(ALL) ALL
 %sudo   ALL=(ALL:ALL) ALL
 ```
 
