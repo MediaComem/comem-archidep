@@ -49,6 +49,7 @@ manage them from the command line.
     - [Using symbolic mode](#using-symbolic-mode)
     - [Octal mode](#octal-mode)
     - [Using octal mode](#using-octal-mode)
+- [Welcome to the future](#welcome-to-the-future)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -119,8 +120,9 @@ tmpfs           493M     0  493M   0% /sys/fs/cgroup
 You can see that **there is only one root (`/`)**,
 and that all other volumes are **mounted** somewhere in the file hierarchy.
 
-For example, the last line represents a network drive mounted under the `/network-drive` directory.
-The [`/etc/fstab` file (**f**ile **s**ystems **tab**le)][fstab] defines mounted volumes.
+For example, the last line represents a network drive mounted under the
+`/network-drive` directory. The [`/etc/fstab` file (**f**ile **s**ystems
+**tab**le)][fstab] defines mounted volumes.
 
 #### Common Unix directories
 
@@ -783,6 +785,17 @@ $> sudo chmod 640 secret.txt
 
 
 
+## Welcome to the future
+
+Some of the commands mentioned in this course may be older than you, although
+they are regularly updated. But new command line tools are also being developed
+today:
+
+* The [`duf` command][duf] is a modern alternative to `df` to list free disk
+  space, written in [Rust][rust], a modern systems programming language.
+
+
+
 ## References
 
 * [Red Hat Enterprise Linux - Introduction to System Administration](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Introduction_To_System_Administration/)
@@ -796,6 +809,7 @@ $> sudo chmod 640 secret.txt
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
 [chmod]: https://linux.die.net/man/1/chmod
 [chown]: https://linux.die.net/man/1/chown
+[duf]: https://github.com/muesli/duf
 [etc-group]: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Introduction_To_System_Administration/s3-acctspgrps-group.html
 [etc-gshadow]: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Introduction_To_System_Administration/s3-acctsgrps-gshadow.html
 [etc-passwd]: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Introduction_To_System_Administration/s2-acctsgrps-files.html
@@ -805,6 +819,7 @@ $> sudo chmod 640 secret.txt
 [hfs]: https://en.wikipedia.org/wiki/Hierarchical_File_System_(Apple)
 [ntfs]: https://en.wikipedia.org/wiki/NTFS
 [octal-mode]: https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation
+[rust]: https://www.rust-lang.org
 [sh]: https://en.wikipedia.org/wiki/Bourne_shell
 [sudoers]: http://toroid.org/sudoers-syntax
 [ubuntu]: https://www.ubuntu.com/

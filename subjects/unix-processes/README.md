@@ -28,6 +28,7 @@ Learn about processes in Unix operating systems, as well as how to manage them a
   - [Running more processes](#running-more-processes)
     - [Sleeping process](#sleeping-process)
   - [Other monitoring commands](#other-monitoring-commands)
+    - [Welcome to the future](#welcome-to-the-future)
 - [Exit status](#exit-status)
   - [What is an exit status?](#what-is-an-exit-status)
   - [Retrieving the exit status in a shell](#retrieving-the-exit-status-in-a-shell)
@@ -300,11 +301,9 @@ You can stop it with `Ctrl-C` (in the terminal when it's running) when you're do
 
 Here are other ways to inspect processes and have more information on their resource consumption:
 
-* The [`top` command][top] (meaning **t**able **o**f **p**rocesses) shows
-  processes along with CPU and memory consumption. It's an interactive command
-  you can exit with `q`.
-* The [`htop` command][htop] does the same thing, but is prettier
-  (although not all Linux distributions have it installed by default).
+* The [`htop` command][htop] (or the older [`top` command][top], meaning
+  **t**able **o**f **p**rocesses), shows processes along with CPU and memory
+  consumption. It's an interactive command you can exit with `q` (**q**uit).
 * The [`free` command][free] is not directly related to processes,
   but it helps you know how much memory is remaining on your system.
 
@@ -317,6 +316,18 @@ Swap:             0           0           0
 
 > The `-m` option of the `free` command displays memory size in
 > [mebibytes][mebibyte], a more human-readable quantity, instead of bytes.
+
+#### Welcome to the future
+
+Some of the previously-mentioned commands may be older than you, although they
+are regularly updated. But new command line tools are also being developed
+today:
+
+* The [`procs` command][procs] command is a modern interactive alternative to
+  the `ps` command for listing processes, written in [Rust][rust], a modern
+  systems programming language.
+* The [`btm` command][bottom] is a modern alternative to `htop` and `top` with
+  more features, also written in [Rust][rust].
 
 
 
@@ -1186,6 +1197,7 @@ extension.
 
 [asynchrony]: https://en.wikipedia.org/wiki/Asynchrony_(computer_programming)
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
+[bottom]: https://github.com/ClementTsang/bottom
 [core-dump]: https://en.wikipedia.org/wiki/Core_dump
 [daemon]: https://en.wikipedia.org/wiki/Daemon_(computing)
 [device-file]: https://en.wikipedia.org/wiki/Device_file
@@ -1212,7 +1224,9 @@ extension.
 [posix]: https://en.wikipedia.org/wiki/POSIX
 [postgres-signals]: https://www.postgresql.org/docs/current/static/app-postgres.html#id-1.9.5.14.9
 [process]: https://en.wikipedia.org/wiki/Process_(computing)
+[procs]: https://github.com/dalance/procs
 [ps-fields]: https://kb.iu.edu/d/afnv
+[rust]: https://www.rust-lang.org
 [semipredicate]: https://en.wikipedia.org/wiki/Semipredicate_problem
 [signals]: https://en.wikipedia.org/wiki/Signal_(IPC)
 [signals-list]: https://en.wikipedia.org/wiki/Signal_(IPC)#POSIX_signals
