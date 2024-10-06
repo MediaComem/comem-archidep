@@ -197,6 +197,8 @@ Use the following commands to create and mount a 2-gigabyte swap file:
 $> sudo fallocate -l 2G /swapfile
 $> sudo chmod 600 /swapfile
 $> sudo mkswap /swapfile
+Setting up swapspace version 1, size = 2 GiB (2147479552 bytes)
+no label, UUID=3c263053-41cc-4757-0000-13de0644cf97
 $> sudo swapon /swapfile
 ```
 
@@ -221,8 +223,8 @@ not be exactly the same):
 ```bash
 $> cat /etc/fstab
 # CLOUD_IMG: This file was created/modified by the Cloud Image build process
-UUID=b1983cef-43a3-46ac-a083-b5e06a61c9fd       /        ext4   defaults,discard        0 1
-UUID=0BC7-08EF  /boot/efi       vfat    umask=0077      0 1
+UUID=b1983cef-43a3-46ac-0000-b5e06a61c9fd       /        ext4   defaults,discard        0 1
+UUID=0BC7-0000  /boot/efi       vfat    umask=0077      0 1
 /dev/disk/cloud/azure_resource-part1    /mnt    auto    defaults,nofail,x-systemd.requires=cloud-init.service,comment=cloudconfig       0       2
 ```
 
@@ -244,13 +246,35 @@ if you display its contents again:
 ```bash
 $> cat /etc/fstab
 # CLOUD_IMG: This file was created/modified by the Cloud Image build process
-UUID=b1983cef-43a3-46ac-a083-b5e06a61c9fd       /        ext4   defaults,discard        0 1
+UUID=b1983cef-43a3-46ac-0000-b5e06a61c9fd       /        ext4   defaults,discard        0 1
 UUID=0BC7-08EF  /boot/efi       vfat    umask=0077      0 1
 /dev/disk/cloud/azure_resource-part1    /mnt    auto    defaults,nofail,x-systemd.requires=cloud-init.service,comment=cloudconfig       0       2
 /swapfile none swap sw 0 0
 ```
 
-**IF it looks correct**, reboot your server:
+You can run the following command to check that you did not make any mistakes.
+It's okay if you have a couple of warnings about the swap file. These are
+expected since you've just added it and have not rebooted yet.
+
+```bash
+$> sudo findmnt --verify --verbose
+/
+   [ ] target exists
+   [ ] FS options: discard,commit=30,errors=remount-ro
+   [ ] UUID=bf171e20-4158-4861-0000-1443ece8c413 translated to /dev/sda1
+   [ ] source /dev/sda1 exists
+   [ ] FS type is ext4
+...
+none
+   [W] non-bind mount source /swapfile is a directory or regular file
+   [ ] FS type is swap
+   [W] your fstab has been modified, but systemd still uses the old version;
+       use 'systemctl daemon-reload' to reload
+
+0 parse errors, 0 errors, 2 warnings
+```
+
+**IF everything looks ok**, reboot your server:
 
 ```bash
 $> sudo reboot
