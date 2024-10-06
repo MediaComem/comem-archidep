@@ -5,20 +5,20 @@ Useful commands to manage a Unix system.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [How to I connect to my server with SSH?](#how-to-i-connect-to-my-server-with-ssh)
-- [How do I change my password?](#how-do-i-change-my-password)
+- [How to I connect to my server with SSH? (`ssh`)](#how-to-i-connect-to-my-server-with-ssh-ssh)
+- [How do I change my password? (`passwd`)](#how-do-i-change-my-password-passwd)
 - [Administration](#administration)
-  - [How do I change my username?](#how-do-i-change-my-username)
-  - [How do I create another user?](#how-do-i-create-another-user)
-  - [How do I find and kill a naughty process?](#how-do-i-find-and-kill-a-naughty-process)
-  - [The changes to my systemd service are not taken into account!](#the-changes-to-my-systemd-service-are-not-taken-into-account)
-  - [My systemd service is not working!](#my-systemd-service-is-not-working)
+  - [How do I change my username? (`usermod`)](#how-do-i-change-my-username-usermod)
+  - [How do I create another user? (`useradd`)](#how-do-i-create-another-user-useradd)
+  - [How do I find and kill a naughty process? (`ps`, `kill`)](#how-do-i-find-and-kill-a-naughty-process-ps-kill)
+  - [The changes to my systemd service are not taken into account! (`systemctl daemon-reload`)](#the-changes-to-my-systemd-service-are-not-taken-into-account-systemctl-daemon-reload)
+  - [My systemd service is not working! (`systemctl status` & `journalctl`)](#my-systemd-service-is-not-working-systemctl-status--journalctl)
 - [My `post-receive` Git hook is not executing!](#my-post-receive-git-hook-is-not-executing)
 - [Add swap space to your cloud server](#add-swap-space-to-your-cloud-server)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## How to I connect to my server with SSH?
+## How to I connect to my server with SSH? (`ssh`)
 
 Connect to the server at the IP address `W.X.Y.Z` as the `john_doe` user:
 
@@ -32,7 +32,7 @@ Connect to the server at the domain `example.com` as the `john_doe` user:
 $> ssh john_doe@example.com
 ```
 
-## How do I change my password?
+## How do I change my password? (`passwd`)
 
 ```bash
 $> passwd
@@ -43,7 +43,7 @@ $> passwd
 You must be an administrator (have `sudo` access) to perform the following
 operations.
 
-### How do I change my username?
+### How do I change my username? (`usermod`)
 
 The following command renames the `oldname` user account into `newname` and also
 renames the user's home directory at the same time:
@@ -58,13 +58,13 @@ You also have to rename the associated group:
 $> sudo groupmod --new-name newname oldname
 ```
 
-### How do I create another user?
+### How do I create another user? (`useradd`)
 
 ```bash
 $> useradd --create-home --shell /bin/bash jane_doe
 ```
 
-### How do I find and kill a naughty process?
+### How do I find and kill a naughty process? (`ps`, `kill`)
 
 You might need this if you lost your SSH connection after you launched a process
 which listens on a port, e.g. 3000. If the process still runs, the port is no
@@ -100,7 +100,7 @@ does not want to die, you can kill it more violently:
 $> kill -KILL 26378
 ```
 
-### The changes to my systemd service are not taken into account!
+### The changes to my systemd service are not taken into account! (`systemctl daemon-reload`)
 
 Every time you change a systemd unit file, you must tell systemd to reload its
 configuration with the following command:
@@ -116,7 +116,7 @@ You should also restart your service. Assuming it is defined by the file
 sudo systemctl restart foo
 ```
 
-### My systemd service is not working!
+### My systemd service is not working! (`systemctl status` & `journalctl`)
 
 Assuming your service is defined by the file `/etc/systemd/system/foo.service`,
 you should first check its status with the following command:
