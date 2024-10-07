@@ -137,7 +137,14 @@ using for the rest of the course.
     > server. For the purposes of this course, it's simpler to allow anyone to
     > connect from any source IP address.
 
+    Next, go to the **Disks** settings (**DO NOT** create the machine just yet):
+
+    ![Azure: go to the disk settings](../images/azure-vm-go-to-disks.png)
   - Use the default **Disks** settings.
+
+    Go to the **Networking** settings:
+
+    ![Azure: go to the networking settings](../images/azure-vm-go-to-networking.png)
   - In the **Networking** settings, select the **Advanced** security group
     option, and create a new security group:
 
