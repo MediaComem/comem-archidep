@@ -76,18 +76,32 @@ $> nc W.X.Y.Z 3000
 
 ### :exclamation: Communicate!
 
-If Bob types some text and presses `Enter` to send it, it should be displayed in
-Alice's terminal.
+Bob should type "Hello" and press `Enter` to send this text:
 
 ```bash
 $> nc -l 3000
 Hello
 ```
 
-Similarly, if Alice types and sends some text, it should appear in Bob's terminal:
+It should be immediately displayed in Alice's terminal:
 
 ```bash
 $> nc W.X.Y.Z 3000
+Hello
+```
+
+Similarly, if Alice types "World" after that and presses `Enter`:
+
+```bash
+$> nc W.X.Y.Z 3000
+Hello
+World
+```
+
+It should appear in Bob's terminal:
+
+```bash
+$> nc -l 3000
 Hello
 World
 ```
