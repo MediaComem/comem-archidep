@@ -132,11 +132,6 @@ using for the rest of the course.
 
     ![Azure: virtual machine inbound port rules](../images/azure-vm-inbound-port-rules.png)
 
-    > :books: You may ignore the security warning. It indicates that it's good
-    > practice to limit the IP addresses authorized to access your virtual
-    > server. For the purposes of this course, it's simpler to allow anyone to
-    > connect from any source IP address.
-
     Next, go to the **Disks** settings (**DO NOT** create the machine just yet):
 
     ![Azure: go to the disk settings](../images/azure-vm-go-to-disks.png)
