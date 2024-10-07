@@ -202,7 +202,7 @@ acpid/bionic,now 1:2.0.28-1ubuntu1 amd64 [installed]
 ...
 ```
 
-Find something more specific by combining with `grep`:
+Find something more specific by piping through `grep`:
 
 ```bash
 $> apt list --installed | grep ssh
@@ -261,11 +261,12 @@ Need to get 17.7 kB of archives.
 After this operation, 89.1 kB of additional disk space will be used.
 ```
 
-> :books: More complex packages with list their dependencies and ask you to
+> :books: More complex packages will list their dependencies and ask you to
 > confirm that you really want to install everything.
 
 If the package provides a command, you can then use it to make sure your
-installation worked:
+installation worked. In this example, the (very useful) `cowsay` command was
+installed:
 
 ```bash
 $> cowsay hello
@@ -430,8 +431,6 @@ They are mostly equivalent:
 `apt update`       | `apt-get update`
 `apt upgrade`      | `apt-get upgrade`
 `apt full-upgrade` | `apt-get dist-upgrade`
-
-> :gem: You can also see these equivalent commands with `man apt`.
 
 ## My `post-receive` Git hook is not executing!
 
