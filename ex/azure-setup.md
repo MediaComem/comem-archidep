@@ -135,7 +135,7 @@ using for the rest of the course.
     Next, go to the **Disks** settings (**DO NOT** create the machine just yet):
 
     ![Azure: go to the disk settings](../images/azure-vm-go-to-disks.png)
-  - Use the default **Disks** settings.
+  - Keep the default **Disks** settings.
 
     Go to the **Networking** settings:
 
@@ -166,7 +166,7 @@ using for the rest of the course.
     > Port 22 is for SSH connections. Ports 3000 and 3001 will be used in
     > various exercises.
 
-  - Use the default **Management**, **Monitoring**, **Advanced** and **Tags**
+  - Keep the default **Management**, **Monitoring**, **Advanced** and **Tags**
     settings.
   - Review your estimated monthly cost (this may not be the exact price but it
     should be similar):
