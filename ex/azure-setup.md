@@ -18,6 +18,7 @@ Azure](https://azure.microsoft.com) cloud platform.
   - [:exclamation: Change the hostname of your virtual machine](#exclamation-change-the-hostname-of-your-virtual-machine)
   - [:exclamation: Reboot the server](#exclamation-reboot-the-server)
   - [:exclamation: Add swap space to your virtual server](#exclamation-add-swap-space-to-your-virtual-server)
+- [:question: (Optionally) save your credits!](#question-optionally-save-your-credits)
 - [:exclamation: Finish](#exclamation-finish)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
 - [:boom: Troubleshooting](#boom-troubleshooting)
@@ -355,6 +356,26 @@ Follow [this
 guide](https://github.com/MediaComem/comem-archidep/blob/main/SYSADMIN-CHEATSHEET.md#add-swap-space-to-your-cloud-server)
 to add more swap space to your server. This will help prevent memory issues
 during the various deployment exercises.
+
+## :question: (Optionally) save your credits!
+
+You will keep paying (out of your free credits) for your Azure virtual machine
+as long as it is running. If you wish to save as many of your free credits as
+you can, you should stop the virtual machine any time you are not using it:
+
+![Azure: stop the virtual machine](../images/azure-vm-stop.png)
+
+If you wish, you can also configure an automatic shutdown every day at a time of
+your choosing:
+
+![Azure: virtual machine auto shutdown](../images/azure-vm-auto-shutdown.png)
+
+Of course, you will then have to manually start the machine every time you want
+to use it.
+
+> :gem: Note that you will keep paying even for a stopped virtual machine,
+> because you are still renting a disk to store data, and a fixed public IP
+> address.
 
 ## :exclamation: Finish
 
