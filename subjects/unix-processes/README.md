@@ -988,7 +988,8 @@ $> echo Hello World `2> /dev/null 1>&2`
 
 ### Redirect standard input stream
 
-Just as a command's output can be redirected to a file, its **input can be redirected from a file**.
+Just as a command's output can be redirected to a file, its **input can be
+redirected from a file**.
 
 Let's create a file for this example:
 
@@ -996,45 +997,15 @@ Let's create a file for this example:
 $> echo foo > bar.txt
 ```
 
-<!-- slide-column -->
-
-The `cat` command can read a file by having it specified as an argument:
-
-<!-- slide-column -->
+The `gzip` command **reads data from its standard input stream**, and with the
+`--stdout` option outputs the result to its standard output stream:
 
 ```bash
-$> cat bar.txt
-foo
+gzip --stdout < bar.txt > bar.txt.gz
 ```
 
-<!-- slide-container -->
-
-<!-- slide-column -->
-
-If given no argument, it will **read and display the data from its standard input stream** (as you type on your keyboard and press `Enter`):
-
-<!-- slide-column -->
-
-```bash
-$> cat
-Hello
-Hello
-World
-World
-```
-
-<!-- slide-container -->
-
-<!-- slide-column -->
-
-The `<` operator will **redirect a file into a command's standard input stream**:
-
-<!-- slide-column -->
-
-```bash
-$> cat `< bar.txt`
-foo
-```
+> The above command combines two redirections to compress the contents of the
+> `bar.txt` file and save the result into `bar.txt.gz`.
 
 #### Here documents
 
