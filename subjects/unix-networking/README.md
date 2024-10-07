@@ -606,7 +606,7 @@ Find out Google's IP address (`O.P.Q.R` in this example):
 ```bash
 $> ping -c 1 google.com
 PING google.com (`O.P.Q.R`) 56(84) bytes of data.
-64 bytes from example.net (O.P.Q.R): icmp_seq=1 ttl=53 time=0.890 ms
+64 bytes from google.com (O.P.Q.R): icmp_seq=1 ttl=53 time=0.890 ms
 ...
 ```
 
@@ -790,7 +790,7 @@ traceroute to google.com (172.217.22.78), 30 hops max, 60 byte packets
  8  74.125.49.104 (74.125.49.104)  0.740 ms ...
  9  108.170.251.129 (108.170.251.129)  1.636 ms ...
 10  72.14.232.35 (72.14.232.35)  0.689 ms ...
-11  example.net (172.217.22.78) 0.583 ms ...
+11  google.com (172.217.22.78) 0.583 ms ...
 ```
 
 <!-- slide-column -->
@@ -823,7 +823,7 @@ ip-172-31-39-219 (172.31.39.219)                   2018-12-05T15:55:42+0000
  8. 209.85.149.182               0.0%    13    3.2   3.9   1.5  22.5   5.8
  9. 108.170.252.1                0.0%    13    2.4   2.3   2.1   3.0   0.2
 10. 66.249.95.169                0.0%    13    2.2   2.2   1.8   3.4   0.5
-11. example.net                  0.0%    13    1.2   1.2   1.2   1.5   0.1
+11. google.com                   0.0%    13    1.2   1.2   1.2   1.5   0.1
 ```
 
 
