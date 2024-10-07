@@ -3,7 +3,7 @@
   <head>
     <title>Unix Processes (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/f3c3ef0420369a1d5822a8afb79e9bd26a4caa88/subjects/unix-processes/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/c3a3178b609a3e5065b8778827a2739a2f5fb949/subjects/unix-processes/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -292,11 +292,9 @@ You can stop it with `Ctrl-C` (in the terminal when it's running) when you're do
 
 Here are other ways to inspect processes and have more information on their resource consumption:
 
-* The [`top` command][top] (meaning **t**able **o**f **p**rocesses) shows
-  processes along with CPU and memory consumption. It's an interactive command
-  you can exit with `q`.
-* The [`htop` command][htop] does the same thing, but is prettier
-  (although not all Linux distributions have it installed by default).
+* The [`htop` command][htop] (or the older [`top` command][top], meaning
+  **t**able **o**f **p**rocesses), shows processes along with CPU and memory
+  consumption. It's an interactive command you can exit with `q` (**q**uit).
 * The [`free` command][free] is not directly related to processes,
   but it helps you know how much memory is remaining on your system.
 
@@ -309,6 +307,21 @@ Swap:             0           0           0
 
 > The `-m` option of the `free` command displays memory size in
 > [mebibytes][mebibyte], a more human-readable quantity, instead of bytes.
+
+---
+#### Welcome to the future
+
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#4">Process ID</a> > <a href="#12">Other monitoring commands</a>]
+
+Some of the previously-mentioned commands may be older than you, although they
+are regularly updated. But new command line tools are also being developed
+today:
+
+* The [`procs` command][procs] command is a modern interactive alternative to
+  the `ps` command for listing processes, written in [Rust][rust], a modern
+  systems programming language.
+* The [`btm` command][bottom] is a modern alternative to `htop` and `top` with
+  more features, also written in [Rust][rust].
 
 
 
@@ -327,7 +340,7 @@ class: center, middle
 ---
 ### What is an exit status?
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#13">Exit status</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#14">Exit status</a>]
 
 The **exit status** of a process is a small number (typically from 0 to 255) passed
 from a child process to its parent process when it has finished executing.
@@ -341,7 +354,7 @@ and **greater than 0 to indicate an error**
 ---
 ### Retrieving the exit status in a shell
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#13">Exit status</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#14">Exit status</a>]
 
 In a typical shell like [Bash][bash],
 you can retrieve the exit status of last executed command from the special variable `$?`:
@@ -363,7 +376,7 @@ $> echo $?
 ---
 ### Retrieving the exit status in code
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#13">Exit status</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#14">Exit status</a>]
 
 Exit codes are not a feature that is limited to command line use. When running a
 program from an application, you can also obtain the exit status.
@@ -380,7 +393,7 @@ For example:
 ---
 ### Meaning of exit statuses
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#13">Exit status</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#14">Exit status</a>]
 
 The meaning of exit statuses is unique to the program you are running.
 For example, the manual of the `ls` command documents the following values:
@@ -414,7 +427,7 @@ class: center, middle
 ---
 ### What is a signal?
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#18">Signals</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#19">Signals</a>]
 
 A signal is an **[asynchronous][asynchrony] notification sent to a process** to
 notify it that an event has occurred. Signals are sent by other processes or by
@@ -428,7 +441,7 @@ Otherwise the **default signal handler** is executed.
 ---
 ### Common Unix signals
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#18">Signals</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#19">Signals</a>]
 
 A signal is defined by the `SIG` prefix followed by a mnemonic name for the
 signal. Some signals also have a standard number assigned to them. Here are some
@@ -455,7 +468,7 @@ Signal     | Number | Default handler                         | Description
 ---
 #### The terminal interrupt signal (`SIGINT`)
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#18">Signals</a> > <a href="#20">Common Unix signals</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#19">Signals</a> > <a href="#21">Common Unix signals</a>]
 
 When you type `Ctrl-C` in your terminal to terminate a running process, you are
 actually using Unix signals.
@@ -469,7 +482,7 @@ it, like some interactive helps, e.g. `man ls`).
 ---
 ### The `kill` command
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#18">Signals</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#19">Signals</a>]
 
 The `kill` command **sends a signal to a process**.
 
@@ -497,7 +510,7 @@ Command             | Effect
 ---
 #### Trapping signals
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#18">Signals</a> > <a href="#22">The `kill` command</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#19">Signals</a> > <a href="#23">The `kill` command</a>]
 
 This command will run a
 [badly behaved script](https://gist.github.com/AlphaHydrae/162f28e3e2bd9355a95914e04cd4dd0c/91dda64d9e0ca26168d25195a189ca6a69a14ee6)
@@ -527,7 +540,7 @@ The script will simply log that it is ignoring your signal and continue executin
 ---
 #### The `KILL` signal
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#18">Signals</a> > <a href="#22">The `kill` command</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#19">Signals</a> > <a href="#23">The `kill` command</a>]
 
 There is one signal that cannot be ignored: **the `KILL` signal**.
 
@@ -546,7 +559,7 @@ The script will finally have the decency to die.
 ---
 ### Unix signals in the real world
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#18">Signals</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#19">Signals</a>]
 
 Many widely-used programs react to Unix signals, for example:
 
@@ -590,7 +603,7 @@ class: center, middle
 ---
 ### The good old days
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a>]
 
 In **pre-Unix** (before 1970) systems, programs had to **explicitly connect to input and output devices**.
 This was done differently for each device (e.g. magnetic tape drive, disk drive, printer, etc) and operating system.
@@ -625,7 +638,7 @@ For example, IBM mainframes used a [**J**ob **C**ontrol **L**anguage (JCL)][jcl]
 ---
 ### Unix streams
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a>]
 
 Unix introduced **abstract devices** and the concept of a **data stream**: an
 ordered sequence of data bytes which can be read until the **e**nd **o**f
@@ -641,7 +654,7 @@ as had been the case until then.
 ---
 #### stdin, stdout & stderr
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a> > <a href="#28">Unix streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a> > <a href="#29">Unix streams</a>]
 
 Any new Unix process is **automatically connected** to the following streams by
 default:
@@ -661,7 +674,7 @@ Stream                      | Shorthand | Description
 ---
 #### Streams, the keyboard, and the terminal
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a> > <a href="#28">Unix streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a> > <a href="#29">Unix streams</a>]
 
 .grid-45[
 
@@ -686,7 +699,7 @@ it automatically receives keyboard input, and its output data and errors are aut
 ---
 #### Stream inheritance
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a> > <a href="#28">Unix streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a> > <a href="#29">Unix streams</a>]
 
 A child will **automatically inherit the standard streams of its parent process**
 (unless redirected, more on that later).
@@ -713,7 +726,7 @@ input.
 ---
 #### Optional input stream
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a> > <a href="#28">Unix streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a> > <a href="#29">Unix streams</a>]
 
 A process is not obligated to use its input or output streams.
 For example, **the `ls` command** produces output (or an error) but **takes no input**
@@ -724,7 +737,7 @@ For example, **the `ls` command** produces output (or an error) but **takes no i
 ---
 #### Optional output stream
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a> > <a href="#28">Unix streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a> > <a href="#29">Unix streams</a>]
 
 **The `cd` command** takes no input and **produces no output** either,
 although it can produce an error.
@@ -734,7 +747,7 @@ although it can produce an error.
 ---
 ### Stream redirection
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a>]
 
 The standard streams can be **redirected**.
 
@@ -756,7 +769,7 @@ File descriptor | Stream
 ---
 ### Redirect standard output stream
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a>]
 
 The `>` shell operator **redirects an output stream**.
 
@@ -781,7 +794,7 @@ directory1
 ---
 #### How to use standard output redirection
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a> > <a href="#35">Redirect standard output stream</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a> > <a href="#36">Redirect standard output stream</a>]
 
 You can do the same with any command that produces output:
 
@@ -816,7 +829,7 @@ Again
 ---
 ### Redirect standard error stream
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a>]
 
 Note that error messages are not redirected using the redirect operator (`>`)
 like in the previous example. Errors are still displayed in the terminal and the
@@ -843,7 +856,7 @@ ls: unknown-file: No such file or directory
 ---
 ### Both standard output and error streams
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a>]
 
 Some commands will **send data to both output streams** (standard output and standard error).
 As we've seen, both are displayed in the terminal by default.
@@ -870,7 +883,7 @@ Here, `Hello World` is the output data, while the rest of the output is the diag
 ---
 #### Redirect standard output stream (curl)
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a> > <a href="#38">Both standard output and error streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a> > <a href="#39">Both standard output and error streams</a>]
 
 This example demonstrates how the **standard output and error streams** can be
 **redirected separately**.
@@ -897,7 +910,7 @@ standard error stream is still displayed.
 ---
 #### Redirect standard error stream (curl)
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a> > <a href="#38">Both standard output and error streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a> > <a href="#39">Both standard output and error streams</a>]
 
 The following version redirects standard error to the file `curl-error.txt`:
 
@@ -921,7 +934,7 @@ file.
 ---
 #### Redirect both standard output and error streams (curl)
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a> > <a href="#38">Both standard output and error streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a> > <a href="#39">Both standard output and error streams</a>]
 
 You can **perform both redirections at once** in one command:
 
@@ -943,7 +956,7 @@ Hello World
 ---
 #### Combine standard output and error streams (curl)
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a> > <a href="#38">Both standard output and error streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a> > <a href="#39">Both standard output and error streams</a>]
 
 In some situations, you might want to **redirect all of a command's output**
 (both the standard output stream and error stream) to the same file.
@@ -969,7 +982,7 @@ Hello World
 ---
 ### Discard an output stream
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a>]
 
 Sometimes you might not be interested in one of the output streams.
 
@@ -980,7 +993,7 @@ You don't want to have to delete a useless file either.
 ---
 #### The `/dev/null` device
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a> > <a href="#43">Discard an output stream</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a> > <a href="#44">Discard an output stream</a>]
 
 The file `/dev/null` is available on all Unix systems and is a [**null
 device**][null-device] (sometimes also called a *black hole*). It's a [Unix
@@ -1004,7 +1017,7 @@ $> cat /dev/null
 ---
 #### Redirect a stream to the null device
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a> > <a href="#43">Discard an output stream</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a> > <a href="#44">Discard an output stream</a>]
 
 When you don't care about an output stream, you can simply **redirect it to the
 null device**:
@@ -1025,7 +1038,7 @@ and therefore discarded, while the standard error stream is displayed normally.
 ---
 #### Other redirections to the null device
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a> > <a href="#43">Discard an output stream</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a> > <a href="#44">Discard an output stream</a>]
 
 You can also redirect the standard error stream to the null device:
 
@@ -1046,7 +1059,7 @@ $> curl -L -v https://git.io/fAp8D `&> /dev/null`
 ---
 ### Redirect one output stream to another
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a>]
 
 You can also redirect one output stream into another output stream.
 
@@ -1106,7 +1119,7 @@ $> echo Hello World `2> /dev/null 1>&2`
 ---
 ### Redirect standard input stream
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a>]
 
 Just as a command's output can be redirected to a file, its **input can be redirected from a file**.
 
@@ -1175,7 +1188,7 @@ foo
 ---
 #### Here documents
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#26">Standard streams</a> > <a href="#48">Redirect standard input stream</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a> > <a href="#49">Redirect standard input stream</a>]
 
 The `<<` operator also performs **standard input stream redirection** but is a
 bit different. It's called a [**here document**][here-document] and can be used
@@ -1219,7 +1232,7 @@ class: center, middle
 ---
 ### What is a pipeline?
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#50">Pipelines</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#51">Pipelines</a>]
 
 Remember that all Unix systems standardize the following:
 
@@ -1249,7 +1262,7 @@ Processes can be **chained into a pipeline, each process transforming data and p
 ---
 ### A simple pipeline
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#50">Pipelines</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#51">Pipelines</a>]
 
 The `|` operator (a vertical pipe) is used to connect two processes together.
 
@@ -1283,7 +1296,7 @@ This **redirects (pipes) the output of the `ls` command into the input of the
 ---
 ### The Unix philosophy
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#50">Pipelines</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#51">Pipelines</a>]
 
 Pipelines are one of the core features of Unix systems.
 
@@ -1305,7 +1318,7 @@ This is, in a few words, the [Unix philosophy][unix-philosophy]:
 ---
 ### A more complex pipeline
 
-.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#50">Pipelines</a>]
+.breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#51">Pipelines</a>]
 
 This command pipeline combines five different commands, processing the text data
 at each step and passing it along to the next command to arrive at the final
@@ -1367,6 +1380,7 @@ extension.
 
 [asynchrony]: https://en.wikipedia.org/wiki/Asynchrony_(computer_programming)
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
+[bottom]: https://github.com/ClementTsang/bottom
 [core-dump]: https://en.wikipedia.org/wiki/Core_dump
 [daemon]: https://en.wikipedia.org/wiki/Daemon_(computing)
 [device-file]: https://en.wikipedia.org/wiki/Device_file
@@ -1393,7 +1407,9 @@ extension.
 [posix]: https://en.wikipedia.org/wiki/POSIX
 [postgres-signals]: https://www.postgresql.org/docs/current/static/app-postgres.html#id-1.9.5.14.9
 [process]: https://en.wikipedia.org/wiki/Process_(computing)
+[procs]: https://github.com/dalance/procs
 [ps-fields]: https://kb.iu.edu/d/afnv
+[rust]: https://www.rust-lang.org
 [semipredicate]: https://en.wikipedia.org/wiki/Semipredicate_problem
 [signals]: https://en.wikipedia.org/wiki/Signal_(IPC)
 [signals-list]: https://en.wikipedia.org/wiki/Signal_(IPC)#POSIX_signals

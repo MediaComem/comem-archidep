@@ -3,7 +3,7 @@
   <head>
     <title>Unix Basics &amp; Administration (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/f3c3ef0420369a1d5822a8afb79e9bd26a4caa88/subjects/unix-admin/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/c3a3178b609a3e5065b8778827a2739a2f5fb949/subjects/unix-admin/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -100,8 +100,9 @@ tmpfs           493M     0  493M   0% /sys/fs/cgroup
 You can see that **there is only one root (`/`)**,
 and that all other volumes are **mounted** somewhere in the file hierarchy.
 
-For example, the last line represents a network drive mounted under the `/network-drive` directory.
-The [`/etc/fstab` file (**f**ile **s**ystems **tab**le)][fstab] defines mounted volumes.
+For example, the last line represents a network drive mounted under the
+`/network-drive` directory. The [`/etc/fstab` file (**f**ile **s**ystems
+**tab**le)][fstab] defines mounted volumes.
 
 ---
 #### Common Unix directories
@@ -250,9 +251,10 @@ drwxr-xr-x 2 root root 4096 Sep  7 12:16 some-directory
 lrwxrwxrwx 1 bob  bob   39  Jan 18  2018 some-link -> some-file
 ```
 
-Column 1 represents the permissions assigned to the file, while columns 3 and 4 represent their ownership.
-The first 10-letter column can be separated into one letter for the type of file,
-and three 3-letter groups for owner, group and other permissions respectively:
+Column 1 represents the permissions assigned to the file, while columns 3 and 4
+represent their ownership. The first 10-letter column can be separated into one
+letter for the type of file, and three 3-letter groups for owner, group and
+other permissions respectively:
 
 ```
 TYPE  OWNER PERM  GROUP PERM  OTHER PERM  OWNER  GROUP
@@ -263,9 +265,9 @@ l     rwx         rwx         rwx         bob    bob   ... some-link -> some-fil
 ```
 
 > The [file types][unix-file-types] you will most often handle are `-` for
-> files, `d` for directories and `l` for links. There are others like `p` for
-> named pipes, `s` for sockets and `b` or `c` for device files, but they are
-> outside the scope of this course.
+> files, `d` for **d**irectories and `l` for **l**inks. There are others like
+> `p` for named **p**ipes, `s` for **s**ockets and `b` or `c` for **b**lock or
+> **c**haracter device files, but they are outside the scope of this course.
 
 
 
@@ -331,7 +333,7 @@ Defaults        env_reset
 Defaults        secure_path="/usr/local/sbin:/usr/local/bin:..."
 
 root    ALL=(ALL:ALL) ALL
-%admin ALL=(ALL) ALL
+%admin  ALL=(ALL) ALL
 %sudo   ALL=(ALL:ALL) ALL
 ```
 
@@ -864,6 +866,20 @@ $> sudo chmod 640 secret.txt
 
 
 ---
+## Welcome to the future
+
+.breadcrumbs[<a href="#1">Unix Basics & Administration</a>]
+
+Some of the commands mentioned in this course may be older than you, although
+they are regularly updated. But new command line tools are also being developed
+today:
+
+* The [`duf` command][duf] is a modern alternative to `df` to list free disk
+  space, written in [Rust][rust], a modern systems programming language.
+
+
+
+---
 ## References
 
 .breadcrumbs[<a href="#1">Unix Basics & Administration</a>]
@@ -879,6 +895,7 @@ $> sudo chmod 640 secret.txt
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
 [chmod]: https://linux.die.net/man/1/chmod
 [chown]: https://linux.die.net/man/1/chown
+[duf]: https://github.com/muesli/duf
 [etc-group]: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Introduction_To_System_Administration/s3-acctspgrps-group.html
 [etc-gshadow]: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Introduction_To_System_Administration/s3-acctsgrps-gshadow.html
 [etc-passwd]: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Introduction_To_System_Administration/s2-acctsgrps-files.html
@@ -888,6 +905,7 @@ $> sudo chmod 640 secret.txt
 [hfs]: https://en.wikipedia.org/wiki/Hierarchical_File_System_(Apple)
 [ntfs]: https://en.wikipedia.org/wiki/NTFS
 [octal-mode]: https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation
+[rust]: https://www.rust-lang.org
 [sh]: https://en.wikipedia.org/wiki/Bourne_shell
 [sudoers]: http://toroid.org/sudoers-syntax
 [ubuntu]: https://www.ubuntu.com/
