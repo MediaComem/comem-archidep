@@ -21,6 +21,7 @@ Learn the basics of Unix networking and how to make TCP connections.
   - [OSI model](#osi-model)
   - [TCP/IP model](#tcpip-model)
   - [OSI vs TCP/IP](#osi-vs-tcpip)
+    - [ARPANET circa 1977](#arpanet-circa-1977)
   - [IP addressing](#ip-addressing)
     - [IPv4 structure](#ipv4-structure)
     - [IPv6](#ipv6)
@@ -100,6 +101,12 @@ The OSI and TCP/IP models describe the same technologies, but categorize them a 
 
 The OSI model is used more as a theoretical construct to reason about networking systems,
 while the TCP/IP model is more in line with how Internet protocols are designed and used in practice.
+
+### ARPANET circa 1977
+
+<!-- slide-front-matter class: center, middle, image-header -->
+
+<img class='w100' src='images/arpanet-logical-map.png' />
 
 ### IP addressing
 
