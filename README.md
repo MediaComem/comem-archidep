@@ -63,6 +63,7 @@ For you to succeed in this course, it is highly recommended that you read and co
     distributions' package managers.
 - A free [GitHub][github] account
 - [Google Chrome][chrome] (recommended, any browser with developer tools will do)
+  - [Firefox][firefox] (optional, required for one network exercise)
 - A free [Render][render] account
 
 ## Plan
@@ -257,6 +258,7 @@ and related articles:
 [azure]: https://azure.microsoft.com
 [chrome]: https://www.google.com/chrome/
 [comem]: http://www.heig-vd.ch/comem
+[firefox]: https://www.mozilla.org/en-US/firefox/
 [git-downloads]: https://git-scm.com/downloads
 [git-for-windows]: https://gitforwindows.org
 [github]: https://github.com
