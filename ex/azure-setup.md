@@ -341,6 +341,16 @@ jde.archidep.ch
 
 ### :exclamation: Add swap space to your virtual server
 
+:warning: The cloud servers used in this course do not have enough memory (RAM)
+to run/compile many things at once. But you can easily add **swap space** to
+solve this issue.
+
+> [Swap
+> space](https://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment_Guide-en-US/ch-swapspace.html)
+> in Linux is used when there is no more available physical memory (RAM). If the
+> system needs more memory resources and the RAM is full, inactive pages in
+> memory are moved to the swap space (on disk).
+
 Follow [this
 guide](https://github.com/MediaComem/comem-archidep/blob/main/SYSADMIN-CHEATSHEET.md#add-swap-space-to-your-cloud-server)
 to add more swap space to your server. This will help prevent memory issues

@@ -196,9 +196,9 @@ this issue.
 
 > [Swap
 > space](https://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment_Guide-en-US/ch-swapspace.html)
-> in Linux is used when the amount of physical memory (RAM) is full. If the
+> in Linux is used when there is no more available physical memory (RAM). If the
 > system needs more memory resources and the RAM is full, inactive pages in
-> memory are moved to the swap space.
+> memory are moved to the swap space (on disk).
 
 Adding 2 gigabytes of swap space should be enough for our purposes.
 
