@@ -21,7 +21,7 @@ Learn the basics of Unix networking and how to make TCP connections.
   - [OSI model](#osi-model)
   - [TCP/IP model](#tcpip-model)
   - [OSI vs TCP/IP](#osi-vs-tcpip)
-    - [ARPANET circa 1977](#arpanet-circa-1977)
+  - [ARPANET circa 1977](#arpanet-circa-1977)
   - [IP addressing](#ip-addressing)
     - [IPv4 structure](#ipv4-structure)
     - [IPv6](#ipv6)
