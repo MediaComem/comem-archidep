@@ -3,7 +3,7 @@
   <head>
     <title>Unix Networking (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/c3a3178b609a3e5065b8778827a2739a2f5fb949/subjects/unix-networking/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/3971131d0ebbed442212ab38d25b6fb5d8bb18a6/subjects/unix-networking/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -625,23 +625,14 @@ class: center, middle
 
 .breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#29">Making connections</a>]
 
-Assuming Bob's server has the public IP address `W.X.Y.Z` and Alice's server has the public IP address `S.T.U.V`.
+Let's assume Bob's server has the public IP address `W.X.Y.Z`.
 
 .grid-50[
 
-Bob should use `nc` to listen for TCP connections on port 3000:
+Bob should use `nc` to **l**isten (`-l`) for TCP connections on port 3000:
 
 ```bash
 $> nc -l 3000
-```
-
-If Bob types some text and presses Enter to send it,
-it should be displayed in Alice's terminal.
-
-```bash
-$> nc -l 3000
-*Hello
-World
 ```
 
 
@@ -654,7 +645,26 @@ Alice should use `nc` to connect to TCP port 3000 on Bob's server:
 $> nc W.X.Y.Z 3000
 ```
 
-Similarly, if Alice types and sends some text, it should appear in Bob's terminal:
+
+]
+.container[
+
+If Bob types some text ("Hello", highlighted in yellow) and presses `Enter` to
+send it, it should be displayed in Alice's terminal. Similarly, if Alice types
+and sends some text ("World", also highlighted), it should appear in Bob's
+terminal:
+
+.grid-50[
+
+```bash
+$> nc -l 3000
+*Hello
+World
+```
+
+
+]
+.grid-50[
 
 ```bash
 $> nc W.X.Y.Z 3000
@@ -662,6 +672,8 @@ Hello
 *World
 ```
 
+
+]
 
 ]
 .container[
@@ -709,7 +721,8 @@ Open a TCP connection to the Google IP address you previously found:
 $> nc O.P.Q.R 80
 ```
 
-Type the following lines exactly, followed by **two new lines** to terminate the message:
+Type the following lines exactly, **followed by two new empty lines** to
+terminate the message:
 
 ```
 GET / HTTP/1.1
@@ -726,25 +739,27 @@ Location: http://www.google.com/
 ...
 ```
 
-By responding with the HTTP status code [301 Moved Permanently][http-301],
-Google's server is telling you that the website `google.com` has permanently moved to `www.google.com`.
+By responding with the HTTP status code [`301 Moved Permanently`][http-301],
+Google's server is telling you that the website `google.com` has permanently
+moved to `www.google.com`.
 
 ---
 #### Following Google's redirect
 
 .breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#29">Making connections</a> > <a href="#31">HTTP request</a>]
 
-The connection should still be open.
-You can make another request, this time to `www.google.com`,
-by typing the following lines exactly, again followed by **two new lines**:
+The connection should still be open. You can make another request, this time to
+`www.google.com`, by typing the following lines exactly, again **followed by two
+new empty lines**:
 
 ```
 GET / HTTP/1.1
 Host: www.google.com
 ```
 
-This time the server should send you Google's home page,
-in HTML format as indicated by the `Content-Type` header:
+This time the server should send you Google's home page with the HTTP status
+[`200 OK`][http-200] to indicate that everything is fine, in HTML format as
+indicated by the [`Content-Type` header][http-content-type]:
 
 ```
 HTTP/1.1 200 OK
@@ -753,7 +768,7 @@ Content-Type: text/html; charset=ISO-8859-1
 ...
 
 <!doctype html>
-<html itemscope="" itemtype="http://schema.org/WebPage" lang="de">
+<html itemscope="" itemtype="http://schema.org/WebPage" lang="en">
 ...
 </html>
 ```
@@ -784,18 +799,24 @@ You should see the request in the terminal where netcat is running:
 
 ```
 GET / HTTP/1.1
-Host: 3.121.150.168:3000
+Host: K.L.M.N:3000
 Connection: keep-alive
 Cache-Control: max-age=0
 Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6)
+            AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110
+            Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,
+        image/webp,image/apng,*/*;q=0.8
 Accept-Encoding: gzip, deflate
 Accept-Language: en-US,en;q=0.9,fr;q=0.8,pt;q=0.7
 ```
 
+> ⚠️ This currently works with Firefox but not with Chrome (because the latter
+> fires a non-human-readable HTTP 2 request which appears as binary).
+
 ---
-#### Sending a plain text HTTP response
+#### Sending an HTTP response with plain text
 
 .breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#29">Making connections</a> > <a href="#34">HTTP response</a>]
 
@@ -808,8 +829,10 @@ Content-Type: text/plain
 Hello World
 ```
 
-Stop netcat with Ctrl-C.
-The client should display the text once the connection has been closed.
+Stop netcat with `Ctrl-C`. The client should display the text once the
+connection has been closed:
+
+<p class="center"><img class="w65" src="./images/nc-plain-text.png" /></p>
 
 ---
 #### Sending an HTTP response with HTML
@@ -825,6 +848,8 @@ $> nc -l 3000
 Re-visit `http://K.L.M.N:3000` in your browser,
 then type or copy-paste the following text into the terminal once you have received the request:
 
+.grid-55[
+
 ```
 HTTP/1.1 200 OK
 Content-Type: text/html
@@ -837,16 +862,24 @@ Content-Type: text/html
     <style>body { color: red; }</style>
   </head>
   <body>
-    <h1>This is HTML</h1>
+    <h1>This is HTML.</h1>
   &lt;/body&gt;
 &lt;/html&gt;
 ```
 
-Stop netcat with Ctrl-C.
-You should see the HTML text appear in your browser.
+
+]
+.grid-45[
+
+<img class="w100" src="./images/nc-html.png" />
+
+Stop netcat with `Ctrl-C`. You should see the red HTML text appear in your
+browser.
 
 
 
+
+]
 ---
 class: center, middle
 ## Other useful commands
@@ -896,7 +929,9 @@ This example shows a request from New Zealand to an IP in Massachusetts which ta
 
 .breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#38">Other useful commands</a>]
 
-The `mtr` command, originally named **M**att's **tr**aceroute, combines the `ping` and `traceroute` utilities into a single network diagnostic tool.
+The [`mtr` command][mtr], originally named **M**att's **t**race**r**oute,
+combines the `ping` and `traceroute` utilities into a single network diagnostic
+tool.
 
 ```bash
 $> mtr google.com
@@ -951,7 +986,9 @@ ip-172-31-39-219 (172.31.39.219)                   2018-12-05T15:55:42+0000
 [gtld]: https://en.wikipedia.org/wiki/Generic_top-level_domain
 [hex]: https://en.wikipedia.org/wiki/Hexadecimal
 [http]: https://en.wikipedia.org/wiki/HTTP
+[http-200]: https://httpstatuses.com/200
 [http-301]: https://httpstatuses.com/301
+[http-content-type]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
 [http-headers]: https://en.wikipedia.org/wiki/List_of_HTTP_header_fields
 [http-methods]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
 [http-req]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages#HTTP_Requests
