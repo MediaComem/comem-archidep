@@ -9,6 +9,10 @@ Useful commands to manage a Unix system.
 - [How to I connect to my server with SSH? (`ssh`)](#how-to-i-connect-to-my-server-with-ssh-ssh)
 - [Who am I? (`whoami` & `id`)](#who-am-i-whoami--id)
 - [How do I change my password? (`passwd`)](#how-do-i-change-my-password-passwd)
+- [What's happening?](#whats-happening)
+  - [Where's all my CPU and/or memory gone? (`htop` or `btm`)](#wheres-all-my-cpu-andor-memory-gone-htop-or-btm)
+  - [What's running? (`ps` or `procs`)](#whats-running-ps-or-procs)
+  - [How much disk space is left? (`df` or `duf`)](#how-much-disk-space-is-left-df-or-duf)
 - [Administration](#administration)
   - [How do I change my username? (`usermod`)](#how-do-i-change-my-username-usermod)
   - [How do I create another user? (`useradd`)](#how-do-i-create-another-user-useradd)
@@ -77,6 +81,148 @@ uid=1000(jde) gid=1000(jde) groups=1000(jde),4(adm),24(cdrom),27(sudo),30(dip),1
 
 ```bash
 $> passwd
+```
+
+## What's happening?
+
+These commands allow you to see (and control) what is happening on your server.
+
+### Where's all my CPU and/or memory gone? (`htop` or `btm`)
+
+Run `htop` to see an interactive summary of the state of your server:
+
+![htop](./images/htop.png)
+
+> :gem: Exit with `q` (**q**uit) or `Ctrl-C`.
+
+Install [bottom][bottom] and run `btm` for a more complete and modern
+alternative:
+
+![btm](./images/btm.png)
+
+> :gem: Exit with `q` (**q**uit) or `Ctrl-C`.
+
+### What's running? (`ps` or `procs`)
+
+Run `ps` to list running interactive processes that belong to your user:
+
+```bash
+$> ps
+    PID TTY          TIME CMD
+   9909 pts/1    00:00:00 bash
+   9936 pts/1    00:00:00 ps
+```
+
+ADd the `-f` (**f**ull format) option for more information on these processes:
+
+```bash
+$> ps -f
+UID          PID    PPID  C STIME TTY          TIME CMD
+soy         9909    9908  0 23:40 pts/1    00:00:00 -bash
+soy         9937    9909  0 23:44 pts/1    00:00:00 ps -f
+```
+
+Add the `-e` (**e**very) option to include every process, not just yours:
+
+```bash
+$> ps -ef
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 Oct06 ?        00:00:04 /sbin/init
+root           2       0  0 Oct06 ?        00:00:00 [kthreadd]
+root           3       2  0 Oct06 ?        00:00:00 [pool_workqueue_release]
+root           4       2  0 Oct06 ?        00:00:00 [kworker/R-rcu_g]
+root           5       2  0 Oct06 ?        00:00:00 [kworker/R-rcu_p]
+```
+
+> :gem: Add the `--forest` option to see the hierarchical relationship between
+> parent processes and their children.
+
+Pipe this through `grep` to find specific processes:
+
+```bash
+$> ps -ef | grep ssh
+root        1074       1  0 Oct06 ?        00:00:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+root        8852    1074  0 22:27 ?        00:00:00 sshd: soy [priv]
+soy         8985    8852  0 22:27 ?        00:00:00 sshd: soy@pts/0
+root        9791    1074  0 23:40 ?        00:00:00 sshd: soy [priv]
+soy         9908    9791  0 23:40 ?        00:00:00 sshd: soy@pts/1
+```
+
+Install [procs][procs] if you want a modern alternative to `ps`. Running `procs`
+is equivalent to `ps -ef` but it is also interactive:
+
+```bash
+ PID:▲ User            │ TTY   CPU MEM CPU Time │ Command
+                       │       [%] [%]          │
+ 1     root            │       0.0 1.6 00:00:04 │ systemd
+ 2     root            │       0.0 0.0 00:00:00 │ kthreadd
+ 3     root            │       0.0 0.0 00:00:00 │ pool_workqueue_release
+ 4     root            │       0.0 0.0 00:00:00 │ kworker/R-rcu_g
+ 5     root            │       0.0 0.0 00:00:00 │ kworker/R-rcu_p
+```
+
+> :gem: Exit with `q` (**q**uit).
+
+Running `procs --tree` is equivalent to running `ps -ef --forest` but it is also
+interactive:
+
+```bash
+$> procs --tree
+             PID     User            │ TTY   CPU MEM CPU Time │ Command
+                                     │       [%] [%]          │
+ ├┬───────── 1       root            │       0.0 1.6 00:00:04 │ systemd
+ │├───────── 129     root            │       0.0 2.1 00:00:01 │ systemd-journal
+ │├┬──────── 195     root            │       0.0 3.2 00:00:07 │ multipathd
+ ││├──────── [201]   root            │       0.0 3.2 00:00:00 │ multipathd
+ ││├──────── [203]   root            │       0.0 3.2 00:00:00 │ multipathd
+```
+
+### How much disk space is left? (`df` or `duf`)
+
+List storage devices, mounts and available space:
+
+```bash
+$> df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        29G  3.8G   25G  14% /
+tmpfs           422M     0  422M   0% /dev/shm
+tmpfs           169M  1.7M  167M   1% /run
+tmpfs           5.0M     0  5.0M   0% /run/lock
+efivarfs        128K   35K   89K  29% /sys/firmware/efi/efivars
+/dev/sda16      881M   59M  761M   8% /boot
+/dev/sda15      105M  6.1M   99M   6% /boot/efi
+/dev/sdb1       3.9G   28K  3.7G   1% /mnt
+tmpfs            85M   12K   85M   1% /run/user/1000
+```
+
+You can also install [duf][duf] if you want a modern alternative to the `df`
+command:
+
+```bash
+$> duf
+╭──────────────────────────────────────────────────────────────────────────────────────────╮
+│ 4 local devices                                                                          │
+├────────────┬────────┬───────┬────────┬───────────────────────────────┬──────┬────────────┤
+│ MOUNTED ON │   SIZE │  USED │  AVAIL │              USE%             │ TYPE │ FILESYSTEM │
+├────────────┼────────┼───────┼────────┼───────────────────────────────┼──────┼────────────┤
+│ /          │  28.0G │  3.8G │  24.2G │ [##..................]  13.5% │ ext4 │ /dev/root  │
+│ /boot      │ 880.4M │ 58.5M │ 760.2M │ [#...................]   6.6% │ ext4 │ /dev/sda16 │
+│ /boot/efi  │ 104.3M │  6.1M │  98.2M │ [#...................]   5.8% │ vfat │ /dev/sda15 │
+│ /mnt       │   3.9G │ 28.0K │   3.6G │ [....................]   0.0% │ ext4 │ /dev/sdb1  │
+╰────────────┴────────┴───────┴────────┴───────────────────────────────┴──────┴────────────╯
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ 7 special devices                                                                                           │
+├───────────────────────────┬────────┬───────┬────────┬───────────────────────────────┬──────────┬────────────┤
+│ MOUNTED ON                │   SIZE │  USED │  AVAIL │              USE%             │ TYPE     │ FILESYSTEM │
+├───────────────────────────┼────────┼───────┼────────┼───────────────────────────────┼──────────┼────────────┤
+│ /dev                      │ 418.7M │    0B │ 418.7M │                               │ devtmpfs │ devtmpfs   │
+│ /dev/shm                  │ 421.4M │    0B │ 421.4M │                               │ tmpfs    │ tmpfs      │
+│ /run                      │ 168.6M │  1.6M │ 166.9M │ [....................]   1.0% │ tmpfs    │ tmpfs      │
+│ /run/lock                 │   5.0M │    0B │   5.0M │                               │ tmpfs    │ tmpfs      │
+│ /run/snapd/ns             │ 168.6M │  1.6M │ 166.9M │ [....................]   1.0% │ tmpfs    │ tmpfs      │
+│ /run/user/1000            │  84.3M │ 12.0K │  84.3M │ [....................]   0.0% │ tmpfs    │ tmpfs      │
+│ /sys/firmware/efi/efivars │ 128.0K │ 34.4K │  88.6K │ [#####...............]  26.9% │ efivarfs │ efivarfs   │
+╰───────────────────────────┴────────┴───────┴────────┴───────────────────────────────┴──────────┴────────────╯
 ```
 
 ## Administration
@@ -588,4 +734,7 @@ Swap:         2.0Gi       200Mi       1.8Gi
 > Space on Ubuntu
 > 20.04](https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-20-04).
 
+[bottom]: https://github.com/ClementTsang/bottom
+[duf]: https://github.com/muesli/duf
+[procs]: https://github.com/dalance/procs
 [sftp-deploy-ex]: ./ex/sftp-deployment.md
