@@ -113,7 +113,7 @@ $> ps
    9936 pts/1    00:00:00 ps
 ```
 
-ADd the `-f` (**f**ull format) option for more information on these processes:
+Add the `-f` (**f**ull format) option for more information on these processes:
 
 ```bash
 $> ps -f
