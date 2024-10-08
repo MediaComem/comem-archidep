@@ -1188,7 +1188,7 @@ You can then connect to your server and perform the following actions:
 [json]: https://en.wikipedia.org/wiki/JSON
 [jvm]: https://en.wikipedia.org/wiki/Java_virtual_machine
 [laravel]: https://laravel.com
-[linux-add-swap]: https://github.com/MediaComem/comem-archidep/blob/main/SYSADMIN-CHEATSHEET.md#add-swap-space-to-your-cloud-server
+[linux-add-swap]: https://github.com/MediaComem/comem-archidep/blob/main/SWAP.md
 [linux-unattended-upgrades]: https://wiki.debian.org/UnattendedUpgrades
 [mvc]: https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
 [mvn]: https://maven.apache.org

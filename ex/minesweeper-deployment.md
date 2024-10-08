@@ -1111,7 +1111,7 @@ It might mean your server does not have enough memory (RAM) to perform the
 compilation of some dependencies. Adding a few gigabytes of swap space should solve
 the issue. Follow the instructions in the sysadmin cheatsheet to do so:
 
-- [Add swap space to your cloud server](../SYSADMIN-CHEATSHEET.md#add-swap-space-to-your-cloud-server)
+- [Add swap space to your cloud server](../SWAP.md)
 
 ### :boom: `Error creating new order :: too many certificates already issued for: archidep.ch`
 

@@ -353,9 +353,9 @@ solve this issue.
 > memory are moved to the swap space (on disk).
 
 Follow [this
-guide](https://github.com/MediaComem/comem-archidep/blob/main/SYSADMIN-CHEATSHEET.md#add-swap-space-to-your-cloud-server)
-to add more swap space to your server. This will help prevent memory issues
-during the various deployment exercises.
+guide](https://github.com/MediaComem/comem-archidep/blob/main/SWAP.md) to add
+more swap space to your server. This will help prevent memory issues during the
+various deployment exercises.
 
 ## :question: (Optionally) save your credits!
 
