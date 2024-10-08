@@ -98,7 +98,6 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:book: Unix networking](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/unix-networking?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Transmission Control Protocol (TCP)](ex/tcp.md)
     - [:classical_building: Architecture](ex/tcp.md#classical_building-architecture)
-  - [:book: Advanced Packaging Tool (APT)](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/apt?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Deploy a PHP application with SFTP](ex/sftp-deployment.md)
     - [:classical_building: Architecture](ex/sftp-deployment.md#classical_building-architecture)
   - [:book: How to improve our basic deployment](#how-to-improve-our-basic-deployment)

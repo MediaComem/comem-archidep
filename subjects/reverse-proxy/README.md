@@ -13,7 +13,6 @@ Learn what a reverse proxy is, and put it in practice using nginx.
 
 * [Unix Administration](../unix-admin/)
 * [Unix Networking](../unix-networking/)
-* [APT](../apt/)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
