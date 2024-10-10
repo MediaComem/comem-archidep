@@ -104,6 +104,9 @@ using for the rest of the course.
 
     ![Azure: virtual machine size](../images/azure-vm-size.png)
 
+    > :boom: If you cannot select the `B1s` size, try selecting another
+    > availability zone (or another region that is not too expensive).
+    >
     > :gem: Any region will do. Closer to where you are (or where your customers
     > are) will reduce latency, and the North/West European regions are among
     > the cheapest.
