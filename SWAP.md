@@ -5,7 +5,7 @@ run/compile many things at once. But you can easily add **swap space** to solve
 this issue.
 
 > [Swap
-> space](https://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment_Guide-en-US/ch-swapspace.html)
+> space](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-swapspace#ch-swapspace)
 > in Linux is used when there is no more available physical memory (RAM). If the
 > system needs more memory resources and the RAM is full, inactive pages in
 > memory are moved to the swap space (on disk).
