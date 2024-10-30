@@ -29,10 +29,20 @@ You will launch a virtual server to deploy the vulnerable application.
   machines** section:
 
   ![Azure Portal](../images/azure-portal.png)
-
-- Create a new virtual machine with these settings:
+- Create a new virtual machine with these settings, then go to the
+  **Disks** settings:
 
   ![Gallery virtual machine](../images/ex-gallery-azure.png)
+- Keep the default **Disks** settings.
+
+  Go to the **Networking** settings:
+
+  ![Azure: go to the networking settings](../images/azure-vm-go-to-networking.png)
+- In the **Networking** settings, enable the option to automatically **Delete
+  public IP and NIC when VM is deleted**:
+
+  ![Gallery virtual machine](../images/ex-gallery-azure-networking.png)
+- Create the VM.
 
 ## Set up the image gallery application
 
