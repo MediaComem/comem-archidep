@@ -16,6 +16,7 @@ This guide describes how to create a [systemd][systemd] service to run the PHP a
   - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: My systemd service is not running](#boom-my-systemd-service-is-not-running)
+  - [:boom: `code=exited, status=203/EXEC`](#boom-codeexited-status203exec)
   - [:boom: Failed to resolve unit specifiers](#boom-failed-to-resolve-unit-specifiers)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -282,6 +283,35 @@ systemctl restart todolist` to restart your application.
 If the status command does not give you enough information, you can get more of
 your service's logs with the `sudo journalctl -u todolist` command.
 
+### :boom: `code=exited, status=203/EXEC`
+
+If you see an error like this when getting the status of your service:
+
+```bash
+$> sudo systemctl status todolist
+× todolist.service - PHP TodoList
+     Loaded: loaded (/etc/systemd/system/todolist.service; enabled; preset: enabled)
+     Active: failed (Result: exit-code) since Mon 2024-11-04 19:17:24 UTC; 1s ago
+   Duration: 6ms
+    Process: 302966 ExecStart=php -S 0.0.0.0:3000 (code=exited, status=203/EXEC)
+   Main PID: 302966 (code=exited, status=203/EXEC)
+        CPU: 2ms
+
+Nov 04 19:17:24 jde.archidep.ch systemd[1]: todolist.service: Scheduled restart job, restart counter is at 5.
+Nov 04 19:17:24 jde.archidep.ch systemd[1]: todolist.service: Start request repeated too quickly.
+Nov 04 19:17:24 jde.archidep.ch systemd[1]: todolist.service: Failed with result 'exit-code'.
+Nov 04 19:17:24 jde.archidep.ch systemd[1]: Failed to start todolist.service - PHP TodoList.
+```
+
+It means that systemd failed to run the command you specified with the
+`ExecStart` key. Make sure you are using the correct command and that you are
+using `ExecStart` with the correct syntax.
+
+Look at the [documentation for `ExecStart`][systemd-exec-start], look at
+[service examples in the documentation][systemd-service-examples], and look at
+existing unit files (e.g. `/lib/systemd/system/mysql.service` or
+`/lib/systemd/system/ssh.service`) to determine what you might have done wrong.
+
 ### :boom: Failed to resolve unit specifiers
 
 If you have a `%` (percent character) in the password you provide with the
@@ -295,3 +325,5 @@ You must escape it by adding another `%` character, e.g.
 
 
 [systemd]: https://en.wikipedia.org/wiki/Systemd
+[systemd-exec-start]: https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html#ExecStart=
+[systemd-service-examples]: https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html#Examples
