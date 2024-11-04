@@ -50,7 +50,7 @@ same result with different Unix commands.
   # Create the directory.
   $> sudo mkdir /tmp/for_alice
   # Give the directory to your user and alice's group.
-  $> sudo chown jde:alice for_alice
+  $> sudo chown jde:alice /tmp/for_alice
   # Specify that the group can only traverse the directory and (optionally) that
   # other users have no permissions.
   $> sudo chmod g=x,o-rwx /tmp/for_alice
