@@ -429,7 +429,7 @@ $> cowsay hello
 
 You might have noticed that the `list` and `show` commands are quite fast.
 That's because they **don't fetch any data from the network**: the package lists
-and package information is stored locally on the computer.
+and package information are stored locally on the computer.
 
 Of course, **this local information becomes out of date** as new package
 versions are released to the official package repositories. You can update your
@@ -479,8 +479,8 @@ each of them, but there are also two helpful commands that can do it for you:
   automatically remove any packages that were dependencies of previous versions
   of your packages but are no longer needed by the new versions.
 
-The second is "more dangerous" as you have to make sure that none of the removed
-packages will impact your computer. Use it with caution.
+The second command is "more dangerous" as you have to make sure that none of the
+removed packages will impact your computer. Use it with caution.
 
 > :warning: **A word of caution:** do not install or upgrade packages without at
 > least a basic understanding of what they do and how they might be used by your
@@ -543,7 +543,7 @@ Processing triggers for man-db (2.12.0-4build2) ...
 ```
 
 > :gem: This command will uninstall binaries but not configuration files. Use
-> `apt purge <name>` to also remove the configuration files.
+> `apt purge <name>...` to also remove the configuration files.
 
 The `apt autoremove` command cleans up packages that were previously required
 but are no longer useful. Most of the time, there will probably be nothing to
@@ -563,10 +563,10 @@ Reading state information... Done
 ### What about `apt-get` and `apt-cache`?
 
 The `apt` command is actually a higher-level frontend to the older and
-lower-level `apt-get` and `apt-cache` command. `apt` is simpler to user, but you
+lower-level `apt-get` and `apt-cache` commands. `apt` is simpler to use, but you
 will find many examples of these older commands on the internet.
 
-They are mostly equivalent:
+These are mostly equivalent commands:
 
 `apt` command      | older equivalent
 :---               | :---
