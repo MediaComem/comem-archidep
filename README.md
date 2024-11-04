@@ -93,6 +93,7 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:book: Linux](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
   - [:book: Unix basics & administration](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/unix-admin?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Permissions](ex/unix-permissions.md)
+    - [:key: Solutions](ex/unix-permissions-solutions.md)
   - [:book: Unix processes](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/unix-processes?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Pipeline](ex/unix-pipeline.md)
     - [:key: Solutions](ex/unix-pipeline-solutions.md)
