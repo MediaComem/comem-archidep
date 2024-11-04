@@ -16,6 +16,7 @@ This guide describes how to create a [systemd][systemd] service to run the PHP a
   - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: My systemd service is not running](#boom-my-systemd-service-is-not-running)
+  - [:boom: `code=exited, status=200/CHDIR`](#boom-codeexited-status200chdir)
   - [:boom: `code=exited, status=203/EXEC`](#boom-codeexited-status203exec)
   - [:boom: Failed to resolve unit specifiers](#boom-failed-to-resolve-unit-specifiers)
 
@@ -283,6 +284,32 @@ systemctl restart todolist` to restart your application.
 If the status command does not give you enough information, you can get more of
 your service's logs with the `sudo journalctl -u todolist` command.
 
+### :boom: `code=exited, status=200/CHDIR`
+
+If you see an error like this when getting the status of your service:
+
+```bash
+$> sudo systemctl status todolist
+× todolist.service - PHP TodoList
+     Loaded: loaded (/etc/systemd/system/todolist.service; enabled; preset: enabled)
+     Active: failed (Result: exit-code) since Mon 2024-11-04 19:25:12 UTC; 193ms ago
+   Duration: 6ms
+    Process: 303126 ExecStart=/usr/bin/php -S 0.0.0.0:3000 (code=exited, status=200/CHDIR)
+   Main PID: 303126 (code=exited, status=200/CHDIR)
+        CPU: 3ms
+
+...
+Nov 04 19:25:12 jde.archidep.ch systemd[1]: Failed to start todolist.service - PHP TodoList.
+```
+
+It means that systemd failed to move into the directory you specified with the
+`WorkingDirectory` key. Make sure that you are using the correct directory. This
+should be the same directory that you were moving into before executing the `php
+-S 0.0.0.0:3000` command manually in previous exercises.
+
+If you are not sure what the full path to that directory is, go into it and run
+the `pwd` (**p**rint **w**orking **d**irectory) command.
+
 ### :boom: `code=exited, status=203/EXEC`
 
 If you see an error like this when getting the status of your service:
@@ -297,9 +324,7 @@ $> sudo systemctl status todolist
    Main PID: 302966 (code=exited, status=203/EXEC)
         CPU: 2ms
 
-Nov 04 19:17:24 jde.archidep.ch systemd[1]: todolist.service: Scheduled restart job, restart counter is at 5.
-Nov 04 19:17:24 jde.archidep.ch systemd[1]: todolist.service: Start request repeated too quickly.
-Nov 04 19:17:24 jde.archidep.ch systemd[1]: todolist.service: Failed with result 'exit-code'.
+...
 Nov 04 19:17:24 jde.archidep.ch systemd[1]: Failed to start todolist.service - PHP TodoList.
 ```
 
