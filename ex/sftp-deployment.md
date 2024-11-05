@@ -49,8 +49,8 @@ Parts of this guide are annotated with the following icons:
 ## :exclamation: Setup
 
 Use the previous PHP Todolist Exercice. Clone the [PHP Todolist
-Exercice][php-todolist] on your machine if you do not have it. Be sure to use a
-version with the three SQL queries implemented.
+Exercice][php-todolist] on your local machine if you do not have it. Be sure to
+use a version with the three SQL queries implemented.
 
 ### :exclamation: Install MySQL
 
@@ -190,7 +190,7 @@ password requirements you chose when you secured the MySQL installation.
 > the other applications (provided you configured appropriate access
 > privileges).
 >
-> Notably, you should never use the MySQL root password to connect an
+> Notably, you should never use the MySQL `root` password to connect an
 > application to its database. You, the system administrator, should be the only
 > person who knows that password.
 
@@ -237,7 +237,7 @@ $> cd ~/todolist
 ```
 
 Execute the project's SQL file to create the database and table (it will ask you
-for the MySQL root user's password you defined earlier):
+for the MySQL `root` user's password you defined earlier):
 
 ```bash
 $> sudo mysql < todolist.sql
@@ -318,10 +318,13 @@ server][php-dev-server] on port 3000:
 $> php -S 0.0.0.0:3000
 ```
 
-> :books: You **must really use `0.0.0.0` for the `php -S` command, and not your
+> :books: The `-S <addr:port>` option of the `php` command starts the [built-in
+> web **s**erver][php-dev-server] on the given local address and port.
+>
+> :gem: You **must really use `0.0.0.0` for the `php -S` command, and not your
 > server's IP address**. `0.0.0.0` is not an actual IP address; it is a special
-> notation that tells the PHP development server to accept connections on any IP
-> address.
+> notation that tells the PHP development server to accept connections from any
+> IP address.
 
 You (and everbody else) should be able to access the application in a browser at
 your server's IP address and the correct port (e.g. `http://W.X.Y.Z:3000`).
@@ -341,17 +344,10 @@ communication flow at the end of this exercise:
 
 ![Simplified architecture](sftp-deployment-simplified.png)
 
-> [Simplified architecture PDF version](sftp-deployment-simplified.pdf).
+> [Simplified architecture PDF version](sftp-deployment-simplified.pdf)
 
 Compare this with [the same exercise deployed on your local
 machine](https://github.com/MediaComem/comem-archidep-php-todo-exercise#architecture).
-
-The following diagram is a more detailed representation also including the
-short-lived processes run during the exercise:
-
-![Detailed architecture](sftp-deployment.png)
-
-> [Detailed architecture PDF version](sftp-deployment.pdf).
 
 ## :boom: Troubleshooting
 
@@ -430,9 +426,9 @@ You can now re-run the original command:
 $> sudo mysql_secure_installation
 ```
 
-Once is is done, you can reconfigure MySQL to use passwordless
-[socket authentication][mysql-socket-auth] (it will ask you for the MySQL root
-password you just defined):
+Once it is done, you can reconfigure MySQL to use passwordless
+[socket authentication][mysql-socket-auth] (it will ask you for the MySQL `root`
+password you have just defined):
 
 ```bash
 $> sudo mysql -p
@@ -443,7 +439,7 @@ mysql> exit
 ```
 
 If socket authentication is correctly configured, you should now be able to
-connect as the MySQL root user **without a password** with `sudo`:
+connect as the MySQL `root` user **without a password** with `sudo`:
 
 ```bash
 $> sudo mysql
@@ -451,18 +447,22 @@ $> sudo mysql
 mysql> exit
 ```
 
+<div id="unix-socket-authentication"></div>
+
 > :books: This does not mean that anyone can access MySQL without a password.
 > You can do so because you are using `sudo` and have just configured MySQL to
 > use [socket authentication][mysql-socket-auth] for its `root` user.
 >
-> There are two sets of users here: your server has a number of Unix users
-> (defined in `/etc/passwd`), one of them being the Unix `root` user. The MySQL
-> database server has its own list of MySQL users independent of the system.
-> There is also a MySQL user named `root` by default.
+> There are two sets of users here:
 >
-> By default, the MySQL command will attempt to connect as the MySQL user with
+> * Your server has a number of Unix users (defined in `/etc/passwd`), one of
+>   them being the Unix `root` user.
+> * The MySQL database server has its own list of MySQL users independent of the
+>   system. There is also a MySQL user named `root` by default.
+>
+> By default, the `mysql` command will attempt to connect as the MySQL user with
 > the same name as the Unix user running the command. You can also specify which
-> user to connect as with the `-u` (user) option:
+> user to connect as with the `-u` (**u**ser) option:
 >
 > ```bash
 > $> whoami
@@ -479,7 +479,7 @@ mysql> exit
 > $> sudo mysql -u root  # equivalent to the previous command
 > ```
 >
-> The first two commands will probably fail:
+> The first two `mysql` commands will probably fail:
 >
 > ```
 > ERROR 1045 (28000): Access denied for user 'john_doe'@'localhost' (using password: NO)
@@ -488,17 +488,18 @@ mysql> exit
 >
 > This is because MySQL has no `john_doe` or `alice` users (unless you created
 > them yourself). It may also be because you are trying to connect as a MySQL
-> user who has a password. In this case, you should add the `-p` option to have
-> MySQL prompt you for the password when connecting (e.g. `mysql -u alice -p`).
+> user who has a password. In this case, you should add the `-p` (**p**assword)
+> option to have MySQL prompt you for the password when connecting (e.g. `mysql
+> -u alice -p`).
 >
 > If you followed the instructions above, you have replaced password
 > authentication for the MySQL `root` user with the [socket authentication
 > method][mysql-socket-auth] which delegates authentication to the Unix system.
 > With this method, MySQL will compare the username of the Unix user running the
 > `mysql` command with the MySQL user you are trying to connect as. It will only
-> allow the connection if both are the same. In this case, you are the Unix
-> `root` user when using `sudo`, so it will allow a connection as the MySQL
-> `root` user without the need for a password.
+> allow the connection if both are the same. In this case, since you are the
+> Unix `root` user when using `sudo`, the MySQL server will allow a connection
+> as the MySQL `root` user (you will not have to enter a password).
 >
 > (Source of the solution:
 > https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04)
@@ -511,14 +512,14 @@ If you see this error after running a `sudo mysql` command:
 ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
 ```
 
-It means that your MySQL server is configured to require a password for the root
-user. You have two choices:
+It means that your MySQL server is configured to require a password for the
+`root` user. You have two choices:
 
 * **Either** add the `-p` option to all `mysql` commands. It will then prompt
   you for the MySQL `root` password (that you defined when running
   `mysql_secure_installation`).
 * **Or**, configure MySQL to use [socket authentication][mysql-socket-auth] for
-  the `root` user (the following command will ask you for the MySQL root
+  the `root` user (the following command will ask you for the MySQL `root`
   password you defined when running `mysql_secure_installation`):
 
   ```bash
@@ -530,7 +531,7 @@ user. You have two choices:
   ```
 
   If socket authentication is correctly configured, you should now be able to
-  connect as the MySQL root user **without a password** with `sudo`:
+  connect as the MySQL `root` user **without a password** with `sudo`:
 
   ```bash
   $> sudo mysql
@@ -538,8 +539,8 @@ user. You have two choices:
   mysql> exit
   ```
 
-> :books: See the explanations in the previous troubleshooting section for more
-> information about socket authentication.
+> :books: See the [explanations in the previous troubleshooting section for more
+> information about socket authentication](#unix-socket-authentication).
 
 ### :boom: Error when running `todolist.sql`
 
@@ -566,9 +567,9 @@ $> sudo mysql
 >
 > `ERROR 1051 (42S02): Unknown table 'todolist.todo'`
 >
-> That's fine. Running the 3 queries will make sure you have nothing left that
-> may have been created by the `todolist.sql` script, so you can start over with
-> a clean state.
+> That's fine. Running the three queries will make sure you have nothing left
+> that may have been created by the `todolist.sql` script, so you can start over
+> with a clean state.
 
 Once you have dropped everything, you can resume the exercise from the [database
 initialization step](#exclamation-initialize-the-database).
