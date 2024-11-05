@@ -1,7 +1,8 @@
 # Deploy a PHP application with SFTP
 
-This guide describes how to deploy a PHP application over SFTP on a server with PHP and MySQL installed,
-using the PHP development server.
+This guide describes how to deploy a [PHP][php] application over [SFTP][sftp] on
+a server with PHP and [MySQL][mysql] installed, using the PHP development
+server.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -49,7 +50,7 @@ Parts of this guide are annotated with the following icons:
 
 Use the previous PHP Todolist Exercice. Clone the [PHP Todolist
 Exercice][php-todolist] on your machine if you do not have it. Be sure to use a
-version with the 3 SQL queries implemented.
+version with the three SQL queries implemented.
 
 ### :exclamation: Install MySQL
 
@@ -63,6 +64,12 @@ $> sudo apt update
 $> sudo apt install mysql-server
 ```
 
+> :books: [**A**dvanced **P**ackaging **T**ool (APT)][apt] is the [package
+> manager][package-manager] for Ubuntu (and some other Linux distributions). We
+> will not discuss this tool, but you can read more about it in the
+> [installation & upgrading section of the system administration
+> cheatsheet](sysadmin-cheatsheet-apt).
+>
 > :gem: APT may prompt you to restart some services. See the troubleshooting
 > section about [:boom: Daemons using outdated
 > libraries](#boom-daemons-using-outdated-libraries) if necessary.
@@ -149,8 +156,8 @@ All done!
 
 Here you will install the bare minimum:
 
-- The PHP FastCGI process manager.
-- The PHP MySQL extension.
+- The [PHP **F**astCGI **p**rocess **m**anager (FPM)][php-fpm]
+- The [PHP MySQL extension][php-mysql]
 
 Simply run this command to install both:
 
@@ -167,7 +174,7 @@ $> sudo apt install php-fpm php-mysql
 
 ## :exclamation: Use a real password
 
-The `todolist.sql` files creates a `todolist` user with the password
+The `todolist.sql` file creates a `todolist` user with the password
 `change-me-now` by default. You should change the password to a more secure
 value. Make sure that the password you choose is strong enough per the minimum
 password requirements you chose when you secured the MySQL installation.
@@ -202,8 +209,11 @@ FileZilla, open the Site Manager and configure your connection like this:
 > when you use SSH on the command line, FileZilla will use your private key to
 > prove to the server that you are the owner of your public key.
 >
-> :gem: On macOS, you can display hidden files and directories (like `.ssh` in
-> your home directory) with the shortcut `Cmd-Shift-.`.
+> :gem: On Windows, you can toggle the display of hidden files in the View tab
+> of the explorer to access your `.ssh` directory manually. On macOS, type `open
+> ~/.ssh` in your Terminal or use the `Cmd-Shift-.` shortcut to display hidden
+> files. On most Linux distributions, the file manager will have an option to
+> show hidden files under its menu.
 >
 > :gem: On Windows, FileZilla may ask you to convert your private key to another
 > format. You can do so.
@@ -601,14 +611,22 @@ be the password that was in the `todolist.sql` file when you executed it.
 > re-create the database, user and password.
 
 [apache]: https://www.apache.org
+[apt]: https://en.wikipedia.org/wiki/APT_(software)
 [cyberduck]: https://cyberduck.io
 [filezilla]: https://filezilla-project.org
 [http-500]: https://www.webfx.com/web-development/glossary/http-status-codes/what-is-a-500-status-code/
 [linux-unattended-upgrades]: https://wiki.debian.org/UnattendedUpgrades
+[mysql]: https://www.mysql.com
 [mysql-socket-auth]: https://dev.mysql.com/doc/refman/8.0/en/socket-pluggable-authentication.html
+[package-manager]: https://en.wikipedia.org/wiki/Package_manager
+[php]: https://www.php.net
 [php-dev-server]: https://www.php.net/manual/en/features.commandline.webserver.php
+[php-fpm]: https://www.php.net/manual/en/install.fpm.php
+[php-mysql]: https://www.php.net/manual/en/set.mysqlinfo.php
 [php-todolist]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
 [reverse-proxy]: https://en.wikipedia.org/wiki/Reverse_proxy
+[sftp]: https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol
+[sysadmin-cheatsheet-apt]: https://github.com/MediaComem/comem-archidep/blob/main/SYSADMIN-CHEATSHEET.md#installing--upgrading
 [unix-input-stream]: https://en.wikipedia.org/wiki/Standard_streams#Standard_input_(stdin)
 [unix-redirection]: https://www.guru99.com/linux-redirection.html
 [web-server]: https://en.wikipedia.org/wiki/Web_server
