@@ -240,7 +240,7 @@ cNo..lXXXXXXXXXOolkXXXXXXXXXkl,..;:';.
 
 In this exercise, we navigated through basic Unix commands. We started by creating directories and files, and then crafted a "treasure hunt", where we used these commands to create and modify files.
 
-We further explored the curl command and its capabilities in interacting with the internet directly from the command line. Transitioning to shell scripting, we automated the treasure hunt sequence with the `auto_hunt` script.
+We further explored the curl command and its capabilities in interacting with the Internet directly from the command line. Transitioning to shell scripting, we automated the treasure hunt sequence with the `auto_hunt` script.
 
 A challenge arose when trying to run the script from any directory, which led us to tinker with file permissions and the `PATH` environment variable. By modifying permissions and adjusting the `PATH`, we ensured our script was easily accessible from any location in the terminal.
 

@@ -131,7 +131,7 @@ The application uses the following ~~buzzword salad~~ technologies:
     to build massively scalable soft real-time systems with requirements on high
     availability. Erlang's runtime system has built-in support for concurrency,
     distribution and fault tolerance. Some of its uses are in telecoms (90% of
-    all internet traffic goes through routers and switches that use Erlang),
+    all Internet traffic goes through routers and switches that use Erlang),
     banking, e-commerce, computer telephony and instant messaging (for example,
     WhatApp uses Erlang).
 - The frontend has been developed with [Alpine.js][alpinejs], a lightweight

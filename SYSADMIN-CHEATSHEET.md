@@ -564,7 +564,7 @@ Reading state information... Done
 
 The `apt` command is actually a higher-level frontend to the older and
 lower-level `apt-get` and `apt-cache` commands. `apt` is simpler to use, but you
-will find many examples of these older commands on the internet.
+will find many examples of these older commands on the Internet.
 
 These are mostly equivalent commands:
 

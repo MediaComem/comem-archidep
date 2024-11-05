@@ -84,7 +84,7 @@ A layer serves the layer above it and is served by the layer below it.
 
 ### TCP/IP model
 
-The [internet protocol suite][tcp-ip] is the conceptual model used on the
+The [Internet protocol suite][tcp-ip] is the conceptual model used on the
 Internet and on similar computer networks. It is commonly known as TCP/IP since
 the **T**ransmission **C**ontrol **P**rotocol (TCP) and the **I**nternet
 **P**rotocol (IP) are its foundational protocols.
@@ -140,7 +140,7 @@ This is the same address in dotted decimal notation: `172.16.254.1`
 
 **V**ersion **6** of the protocol ([**IPv6**][ipv6]) was developed more recently
 because the world is running out of IPv4 addresses (~4 billion IPv4 addresses is
-not enough in the [Internet of Things (IoT)][iot] world). It's an [internet
+not enough in the [Internet of Things (IoT)][iot] world). It's an [Internet
 standard][internet-standard] since 2017.
 
 Here's a 128-bit IPv6 address in binary:

@@ -117,7 +117,7 @@ techniques**. This is handled automatically by the SSH client and server.
 ## Secure channel
 
 SSH establishes a **secure channel** between two computers **over an insecure
-network** (e.g. a local network or the internet).
+network** (e.g. a local network or the Internet).
 
 <p class='center'><img class='w70' src='images/ssh-secure-channel.png' /></p>
 
