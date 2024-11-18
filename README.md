@@ -114,6 +114,7 @@ For you to succeed in this course, it is highly recommended that you read and co
     - [:classical_building: Architecture](ex/config-through-environment.md#classical_building-architecture)
   - [:book: Linux process management](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/linux-process-management?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Manage a PHP application with systemd as a Process Manager](ex/systemd-deployment.md)
+    - [:key: Solution](ex/systemd-deployment-solution.md)
     - [:classical_building: Architecture](ex/systemd-deployment.md#classical_building-architecture)
   - [:book: Domain Name System (DNS)](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/dns?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Configure a domain name](ex/dns-configuration.md)
