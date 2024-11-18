@@ -136,7 +136,7 @@ environment variables:
   environment variables with suitable values.
 
 > :gem: You can execute a command with additional environment variables using
-> the following syntax: `EXAMPLE="value" ANOTHER="one" command arg1 arg2`.
+> the following syntax: `EXAMPLE='value' ANOTHER='one' command arg1 arg2`.
 
 You (and everybody else) should be able to access the application in a browser
 at the correct IP address and port (e.g. `W.X.Y.Z:3000`) and it should work.
