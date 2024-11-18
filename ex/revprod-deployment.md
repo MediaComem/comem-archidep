@@ -6,7 +6,7 @@ multi-component web application, and how a reverse proxy like nginx can help.
 This guide assumes that you are familiar with [reverse proxying][slides], that
 you have nginx installed and running on a server, and that you have a DNS
 wildcard entry preconfigured to make various subdomains
-(`*.john-doe.archidep.ch` in this guide) point to that server.
+(`*.jde.archidep.ch` in this guide) point to that server.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -52,7 +52,7 @@ Parts of this guide are annotated with the following icons:
 
 The following requirements must be installed on your server:
 
-- [Node.js][node] 20.x ([installation instructions][node-install])
+- [Node.js][node] 22.x ([installation instructions][node-install])
 
 ## :gem: The application
 
@@ -98,11 +98,11 @@ The **disadvantages** are:
 ## :exclamation: Deploy the components separately
 
 Let's start by deploying the revprod backend and frontend separately at these
-URLs (replacing `john-doe` with your name as you configured it during the DNS
+URLs (replacing `jde` with your name as you configured it during the DNS
 exercise):
 
-- `http://revprod-backend.john-doe.archidep.ch`
-- `http://revprod-landing.john-doe.archidep.ch`
+- `http://revprod-backend.jde.archidep.ch`
+- `http://revprod-landing.jde.archidep.ch`
 
 ### :exclamation: Deploy the revprod landing page
 
@@ -125,19 +125,19 @@ Description=Landing page for The Revolutionary Product
 
 [Service]
 ExecStart=/usr/bin/node bin.js
-WorkingDirectory=/home/john_doe/revprod-landing-page
+WorkingDirectory=/home/jde/revprod-landing-page
 Environment="REVPROD_LISTEN_PORT=4201"
 # Public URL at which the backend can be accessed
-Environment="REVPROD_BACKEND_BASE_URL=http://revprod-backend.john-doe.archidep.ch"
-User=john_doe
+Environment="REVPROD_BACKEND_BASE_URL=http://revprod-backend.jde.archidep.ch"
+User=jde
 Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-> :gem: Replace `john_doe` with your name in the `WorkingDirectory` and `User`
-> options, as well as `john-doe` in the second `Environment` option indicating
+> :gem: Replace `jde` with your name in the `WorkingDirectory` and `User`
+> options, as well as `jde` in the second `Environment` option indicating
 > the URL of the landing page.
 
 Enable and start your new service:
@@ -157,8 +157,8 @@ component:
 ```conf
 server {
   listen 80;
-  server_name revprod-landing.john-doe.archidep.ch;
-  root /home/john_doe/revprod-landing-page/public;
+  server_name revprod-landing.jde.archidep.ch;
+  root /home/jde/revprod-landing-page/public;
 
   location / {
     proxy_pass http://127.0.0.1:4201;
@@ -166,8 +166,8 @@ server {
 }
 ```
 
-> :gem: Replace `john-doe` with your name in the `server_name` directive, as
-> well as `john_doe` in the `root` directive.
+> :gem: Replace `jde` with your name in the `server_name` directive, as
+> well as `jde` in the `root` directive.
 
 Enable that configuration with the following command:
 
@@ -183,7 +183,7 @@ $> sudo nginx -s reload
 ```
 
 You should then be able to access the revprod landing page at
-http://revprod-landing.john-doe.archidep.ch.
+http://revprod-landing.jde.archidep.ch.
 
 ![Revprod landing page](../images/revprod-landing.png)
 
@@ -208,19 +208,19 @@ Description=Backend for The Revolutionary Product
 
 [Service]
 ExecStart=/usr/bin/node bin.js
-WorkingDirectory=/home/john_doe/revprod-backend
+WorkingDirectory=/home/jde/revprod-backend
 Environment="REVPROD_LISTEN_PORT=4200"
 # Public URL at which the frontend can be accessed
-Environment="REVPROD_LANDING_PAGE_BASE_URL=http://revprod-landing.john-doe.archidep.ch"
-User=john_doe
+Environment="REVPROD_LANDING_PAGE_BASE_URL=http://revprod-landing.jde.archidep.ch"
+User=jde
 Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-> :gem: Replace `john_doe` with your name in the `WorkingDirectory` and `User`
-> options, as well as `john-doe` in the second `Environment` option indicating
+> :gem: Replace `jde` with your name in the `WorkingDirectory` and `User`
+> options, as well as `jde` in the second `Environment` option indicating
 > the URL of the landing page.
 
 Enable and start your new service:
@@ -240,8 +240,8 @@ component:
 ```conf
 server {
   listen 80;
-  server_name revprod-backend.john-doe.archidep.ch;
-  root /home/john_doe/revprod-backend/public;
+  server_name revprod-backend.jde.archidep.ch;
+  root /home/jde/revprod-backend/public;
 
   location / {
     proxy_pass http://127.0.0.1:4200;
@@ -249,8 +249,8 @@ server {
 }
 ```
 
-> :gem: Replace `john-doe` with your name in the `server_name` directive, as
-> well as `john_doe` in the `root` directive.
+> :gem: Replace `jde` with your name in the `server_name` directive, as
+> well as `jde` in the `root` directive.
 
 Enable that configuration with the following command:
 
@@ -266,7 +266,7 @@ $> sudo nginx -s reload
 ```
 
 You should then be able to access the revprod backend at
-http://revprod-backend.john-doe.archidep.ch.
+http://revprod-backend.jde.archidep.ch.
 
 ![Revprod backend](../images/revprod-backend.png)
 
@@ -280,8 +280,8 @@ If you have followed the instructions so far, you should be able to access the
 revprod backend and landing page in your browser, you should be able to create
 testimonials in the backend page.
 
-Note that the URL switches from `http://revprod-landing.john-doe.archidep.ch` to
-`http://revprod-backend.john-doe.archidep.ch` (and back) when you navigate from
+Note that the URL switches from `http://revprod-landing.jde.archidep.ch` to
+`http://revprod-backend.jde.archidep.ch` (and back) when you navigate from
 the landing page to the Share page. Both components use exactly the same theme
 so that the transition is seamless, however by looking at **the URL** the user
 can clearly see that these are **two separate sites**.
@@ -299,7 +299,7 @@ something like this:
 
 ```
 Cross-Origin Request Blocked: The Same Origin Policy disallows reading the
-remote resource at http://revprod-backend.john-doe.archidep.ch/comments.
+remote resource at http://revprod-backend.jde.archidep.ch/comments.
 (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 200.
 ```
 
@@ -309,8 +309,8 @@ remote resource at http://revprod-backend.john-doe.archidep.ch/comments.
 
 The landing page's AJAX request to fetch the comments from the backend has been
 blocked by the browser because the request is to a different **origin**: the
-landing page is at `http://revprod-landing.john-doe.archidep.ch` and is
-attempting to access `http://revprod-backend.john-doe.archidep.ch` which is
+landing page is at `http://revprod-landing.jde.archidep.ch` and is
+attempting to access `http://revprod-backend.jde.archidep.ch` which is
 **another domain entirely**.
 
 This is called the [**Same-Origin Policy**][sop]. It is a critical security
@@ -338,10 +338,10 @@ section to enable CORS:
 
 ```conf
 Environment="REVPROD_CORS=true"
-Environment="REVPROD_CORS_ORIGINS=http://revprod-landing.john-doe.archidep.ch"
+Environment="REVPROD_CORS_ORIGINS=http://revprod-landing.jde.archidep.ch"
 ```
 
-> :gem: Replace `john-doe` with your name in the definition of the second
+> :gem: Replace `jde` with your name in the definition of the second
 > environment variable.
 
 Reload the Systemd configuration and restart the backend service:
@@ -352,7 +352,7 @@ $> sudo systemctl restart revprod-backend
 ```
 
 Refresh the revprod landing page at
-http://revprod-landing.john-doe.archidep.ch again. The comments should work
+http://revprod-landing.jde.archidep.ch again. The comments should work
 this time!
 
 If you look at your browser's developer console when refreshing the page, you
@@ -360,7 +360,7 @@ should see that the backend now sends the following header in the comments
 response:
 
 ```
-Access-Control-Allow-Origin: http://revprod-landing.john-doe.archidep.ch
+Access-Control-Allow-Origin: http://revprod-landing.jde.archidep.ch
 ```
 
 Your browser knows to check this header and let the request through if the
@@ -388,7 +388,7 @@ $> sudo systemctl restart revprod-backend
 ```
 
 Check that the comments no longer work by refreshing
-http://revprod-landing.john-doe.archidep.ch.
+http://revprod-landing.jde.archidep.ch.
 
 > :gem: You may need to force a refresh by holding the Shift key.
 
@@ -409,7 +409,7 @@ proxy to both components** depending on various criteria.
 
 Let's assume that we want the revprod application (both the backend and the
 landing page) to be accessible at one URL:
-`http://revprod.john-doe.archidep.ch`.
+`http://revprod.jde.archidep.ch`.
 
 Since the backend and landing page will be accessible at the same URL, we have
 to update their configurations to reflect that fact. Update the Systemd unit
@@ -418,7 +418,7 @@ out (or remove) the `REVPROD_LANDING_PAGE_BASE_URL` environment variable in the
 `[Service]` section:
 
 ```conf
-#Environment="REVPROD_LANDING_PAGE_BASE_URL=http://revprod-landing.john-doe.archidep.ch"
+#Environment="REVPROD_LANDING_PAGE_BASE_URL=http://revprod-landing.jde.archidep.ch"
 ```
 
 Do the same in the Systemd unit file
@@ -426,7 +426,7 @@ Do the same in the Systemd unit file
 `REVPROD_BACKEND_BASE_URL` variable:
 
 ```conf
-#Environment="REVPROD_BACKEND_BASE_URL=http://revprod-backend.john-doe.archidep.ch"
+#Environment="REVPROD_BACKEND_BASE_URL=http://revprod-backend.jde.archidep.ch"
 ```
 
 Reload Systemd's configuration and restart both services to take these changes
@@ -445,8 +445,8 @@ the following criteria:
 * There must be **only one `server` block**.
 * The `listen` directive must still use port `80` like the previous
   configurations in this exercise.
-* The `server_name` directive must be `revprod.john-doe.archidep.ch` (replacing
-  `john_doe` with your name).
+* The `server_name` directive must be `revprod.jde.archidep.ch` (replacing
+  `jde` with your name).
 * The `root` directive must be the same as the one from the landing page's site
   configuration.
 * There must be **multiple `location` blocks** in the `server` block, to serve
@@ -479,12 +479,12 @@ $> sudo nginx -s reload
 ```
 
 You should now be able to access the revprod application at
-http://revprod.john-doe.archidep.ch and everything should work!
+http://revprod.jde.archidep.ch and everything should work!
 
 If your new site configuration is correct, note that your are no longer
-switching from `http://revprod-landing.john-doe.archidep.ch` to
-`http://revprod-backend.john-doe.archidep.ch` when navigating in the
-application. Everything is served under `http://revprod.john-doe.archidep.ch`
+switching from `http://revprod-landing.jde.archidep.ch` to
+`http://revprod-backend.jde.archidep.ch` when navigating in the
+application. Everything is served under `http://revprod.jde.archidep.ch`
 because everything goes through nginx which then proxies it **internally** to
 our separate components.
 

@@ -7,7 +7,7 @@ templates and configuring nginx as a [load balancer][load-balancing].
 This guide assumes that you are familiar with [reverse proxying][slides], that
 you have nginx installed and running on a server, and that you have a DNS
 wildcard entry preconfigured to make various subdomains
-(`*.john-doe.archidep.ch` in this guide) point to that server.
+(`*.jde.archidep.ch` in this guide) point to that server.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -66,7 +66,7 @@ that computes [Fibonacci numbers][fib].
 
 The following requirements should be installed on your server:
 
-- [Ruby][ruby] 2.7.x or 3.x and compilation tools
+- [Ruby][ruby] 3.1+ and compilation tools
 
   You can install those by running the following commands:
 
@@ -90,17 +90,9 @@ The following requirements should be installed on your server:
 > following commands:
 >
 > ```bash
-> # Ruby 3.x will be installed by default on Ubuntu 22.04:
+> # Ruby 3.x will be installed by default on Ubuntu 24.04:
 > $> ruby --version
-> ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x86_64-linux-gnu]
->
-> # Ruby 2.7.x will be installed by default On Ubuntu 20.04:
-> $> ruby --version
-> ruby 2.7.0p0 (2019-12-25 revision 647ee6f091) [x86_64-linux-gnu]
->
-> # The same version of Bundler should be installed regardless of the Ruby version:
-> $> bundle --version
-> Bundler version 2.4.3
+> ruby 3.2.3 (2024-01-18 revision 52bb2ac0a6) [x86_64-linux-gnu]
 > ```
 
 ## :exclamation: Deploy the application
@@ -125,16 +117,16 @@ Description=Fibonacci calculator
 
 [Service]
 ExecStart=/usr/local/bin/bundle exec ruby fibscale.rb
-WorkingDirectory=/home/john_doe/fibscale
+WorkingDirectory=/home/jde/fibscale
 Environment="FIBSCALE_PORT=4202"
-User=john_doe
+User=jde
 Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-> :gem: Replace `john_doe` with your name in the `WorkingDirectory` and `User`
+> :gem: Replace `jde` with your name in the `WorkingDirectory` and `User`
 > options.
 
 Enable and start your new service:
@@ -152,7 +144,7 @@ with `nano`) to expose this component:
 ```conf
 server {
   listen 80;
-  server_name fibscale.john-doe.archidep.ch;
+  server_name fibscale.jde.archidep.ch;
 
   location / {
     proxy_pass http://127.0.0.1:4202;
@@ -160,7 +152,7 @@ server {
 }
 ```
 
-> :gem: Replace `john-doe` with your name in the `server_name` directive.
+> :gem: Replace `jde` with your name in the `server_name` directive.
 
 Enable that configuration with the following command:
 
@@ -176,7 +168,7 @@ $> sudo nginx -s reload
 ```
 
 You should now be able to access the FibScale application at
-http://fibscale.john-doe.archidep.ch and see how it works.
+http://fibscale.jde.archidep.ch and see how it works.
 
 ![FibScale application](../images/fibscale.png)
 
@@ -233,7 +225,7 @@ $> sudo systemctl daemon-reload
 $> sudo systemctl restart fibscale
 ```
 
-Test the application at http://fibscale.john-doe.archidep.ch again and
+Test the application at http://fibscale.jde.archidep.ch again and
 observe that every computation now takes at least one second.
 
 ![Slow FibScale application](../images/fibscale-slow.png)
@@ -302,15 +294,15 @@ After=fibscale.service
 
 [Service]
 ExecStart=/usr/local/bin/locust
-WorkingDirectory=/home/john_doe/fibscale
-User=john_doe
+WorkingDirectory=/home/jde/fibscale
+User=jde
 Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-> :gem: Replace `john_doe` with your name in the `WorkingDirectory` and `User`
+> :gem: Replace `jde` with your name in the `WorkingDirectory` and `User`
 > options.
 
 Enable and start your new service:
@@ -330,7 +322,7 @@ port 8089 by default:
 ```conf
 server {
   listen 80;
-  server_name locust.fibscale.john-doe.archidep.ch;
+  server_name locust.fibscale.jde.archidep.ch;
 
   location / {
     proxy_pass http://127.0.0.1:8089;
@@ -338,7 +330,7 @@ server {
 }
 ```
 
-> :gem: Replace `john-doe` with your name in the `server_name` directive.
+> :gem: Replace `jde` with your name in the `server_name` directive.
 
 Enable that configuration with the following command:
 
@@ -354,12 +346,12 @@ $> sudo nginx -s reload
 ```
 
 You should now be able to access Locust at
-http://locust.fibscale.john-doe.archidep.ch.
+http://locust.fibscale.jde.archidep.ch.
 
 ### :exclamation: Start load-testing the application with a small number of users
 
 The **Host** field tells Locust what the base URL for the load testing scenario
-is. Enter the address of FibScale: `http://fibscale.john-doe.archidep.ch`. Set
+is. Enter the address of FibScale: `http://fibscale.jde.archidep.ch`. Set
 the **Number of users** to 1 and the **Spawn rate** to 1 for now, and run the
 scenario.
 
@@ -517,10 +509,10 @@ PartOf=fibscales.target
 
 [Service]
 ExecStart=/usr/local/bin/bundle exec ruby fibscale.rb %i
-WorkingDirectory=/home/john_doe/fibscale
+WorkingDirectory=/home/jde/fibscale
 Environment="FIBSCALE_PORT=4200%i"
 Environment="FIBSCALE_DELAY=1"
-User=john_doe
+User=jde
 Restart=on-failure
 ```
 
@@ -578,7 +570,7 @@ upstream fibscale {
 
 server {
   listen 80;
-  server_name fibscale.john-doe.archidep.ch;
+  server_name fibscale.jde.archidep.ch;
 
   location / {
     # Proxy to the upstream.
@@ -594,7 +586,7 @@ $> sudo nginx -t
 $> sudo nginx -s reload
 ```
 
-Access the FibScale application at http://fibscale.john-doe.archidep.ch again,
+Access the FibScale application at http://fibscale.jde.archidep.ch again,
 and note that the navbar has changed color (because of the instance parameter
 passed as argument).
 
@@ -602,9 +594,9 @@ passed as argument).
 
 ### :exclamation: Load-test the new FibScale service
 
-Access Locust at http://locust.fibscale.john-doe.archidep.ch and run the same
+Access Locust at http://locust.fibscale.jde.archidep.ch and run the same
 load testing scenario as before: test the **Host**
-http://fibscale.john-doe.archidep.ch with the **Number of users** set to 10 and
+http://fibscale.jde.archidep.ch with the **Number of users** set to 10 and
 the **Spawn rate** set to 1.
 
 ![Configure Locust with 10 users again](../images/fibscale-locust-10-users-again.png)
@@ -676,7 +668,7 @@ increase to 3 and the response time decrease.
 
 ![Locust charts with 3 instances](../images/fibscale-locust-3-instances.png)
 
-If you access the FibScale application at http://fibscale.john-doe.archidep.ch
+If you access the FibScale application at http://fibscale.jde.archidep.ch
 and reload the page a few times, you will see that the navbar changes color,
 indicating that nginx correctly distributes your requests to the 3 FibScale
 instances.

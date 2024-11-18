@@ -52,12 +52,12 @@ First, select one of the following domains depending on your class:
 * Students of the M51/2 class should use `archidep2.ch`.
 
 Then, choose a subdomain of that domain. For example, you may use the same name
-as your Unix user (e.g. `john_doe` or `jde`), although you **MUST** replace any
-underscores (`_`) by hyphens (`-`), e.g. `john-doe` instead of `john_doe`.
+as your Unix user (e.g. `jde`), although you **MUST** replace any
+underscores (`_`) by hyphens (`-`) if you have any.
 Alternatively, you can call your server whatever you want, e.g. `my-precious`,
 as long as it does not conflict with the names chosen by the other students.
 
-For example, your full subdomain should look like `john-doe.archidep.ch` or
+For example, your full subdomain should look like `jde.archidep.ch` or
 `jde.archidep2.ch`. Proceed with the next steps once you have decided what it
 is.
 
@@ -72,25 +72,25 @@ is.
 * Add two new `A` records to map subdomains to **your server's public IP
   address**:
 
-  1. Assuming your personal subdomain for the course is `john-doe.archidep.ch`,
-     you should use `john-doe` as the **name of the DNS record**.
-  2. Then, create a wildcard subdomain using `*.john-doe` as the **name of the
+  1. Assuming your personal subdomain for the course is `jde.archidep.ch`,
+     you should use `jde` as the **name of the DNS record**.
+  2. Then, create a wildcard subdomain using `*.jde` as the **name of the
     DNS record**, and the same IP address. This will direct any second-level
-    subdomain like `foo.john-doe.archidep.ch` to your server.
+    subdomain like `foo.jde.archidep.ch` to your server.
 
-Assuming your server's IP address is `W.X.Y.Z` and your username is `john-doe`,
+Assuming your server's IP address is `W.X.Y.Z` and your username is `jde`,
 you should have the following DNS records (among others) in the domain's zone
 file:
 
 ```
-*.john-doe 1800 IN A W.X.Y.Z
-john-doe 1800 IN A W.X.Y.Z
+*.jde 1800 IN A W.X.Y.Z
+jde 1800 IN A W.X.Y.Z
 ```
 
 ## :exclamation: Access the domain name
 
 Once you have configured it correctly, you (and everybody else) should be able
-to access the todolist application at http://john-doe.archidep.ch:3000 in
+to access the todolist application at http://jde.archidep.ch:3000 in
 your browser (if you have completed the previous exercises).
 
 > :gem: You might have to wait a few minutes for the change to take effect.
@@ -108,18 +108,18 @@ connect over SSH but otherwise has no impact on anything else.
 However, for consistency, it is recommended that you adapt your hostname
 to match your personal subdomain.
 
-So if you chose, for example, `john-doe.archidep.ch`, run the following commands
+So if you chose, for example, `jde.archidep.ch`, run the following commands
  to update the hostname on your server:
 
 ```bash
-$> sudo hostname john-doe.archidep.ch
-$> echo "john-doe.archidep.ch" | sudo tee /etc/hostname
+$> sudo hostname jde.archidep.ch
+$> echo "jde.archidep.ch" | sudo tee /etc/hostname
 ```
 
 ## :checkered_flag: What have I done?
 
 You have created a mapping in the [domain name system][dns] between your custom
-subdomain (e.g. `john-doe.archidep.ch`) and the IP address of your server.
+subdomain (e.g. `jde.archidep.ch`) and the IP address of your server.
 
 You have done this by modifying the [DNS zone file][dns-zone-file] for the
 course's domain (`archidep.ch`). When a computer requests to know the IP
@@ -156,7 +156,7 @@ wait for the TTL to expire on your machine and all intermediaries before the
 changes take effect.
 
 > :gem: In the meantime, you can simply create a new DNS entry. For example, if
-> you created `john-doe.archidep.ch`, you can create `john-doe-2.archidep.ch`.
+> you created `jde.archidep.ch`, you can create `jde-2.archidep.ch`.
 > This new entry will work immediately. The old one you fixed will work
 > eventually once the cache has cleared.
 
