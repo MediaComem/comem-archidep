@@ -52,8 +52,8 @@ sudo apt install certbot python3-certbot-nginx
 
 ## :exclamation: Obtain a TLS certificate from Let's Encrypt
 
-Follow the [instructions for nginx and Ubuntu
-20.04](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal) **starting
+Follow the [instructions for nginx and Linux
+(snap)](https://certbot.eff.org/instructions?ws=nginx&os=snap) **starting
 at step 6**:
 
 > :gem: When the instructions ask you to "Choose how you'd like to run Certbot",
