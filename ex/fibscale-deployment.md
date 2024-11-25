@@ -264,14 +264,14 @@ $> sudo apt install python3 python3-pip
 You can then install Locust with pip:
 
 ```bash
-$> sudo pip3 install locust
+$> sudo apt install python3-locust
 ```
 
 This will add the `locust` command to your system:
 
 ```bash
 $> locust -V
-locust 2.14.2
+locust  from /usr/lib/python3/dist-packages/locust (python 3.12.3)
 ```
 
 To use Locust, you would normally [write a locustfile][locustfile] describing a
@@ -293,7 +293,7 @@ Description=Locust instance to test FibScale
 After=fibscale.service
 
 [Service]
-ExecStart=/usr/local/bin/locust
+ExecStart=/usr/bin/locust
 WorkingDirectory=/home/jde/fibscale
 User=jde
 Restart=on-failure
