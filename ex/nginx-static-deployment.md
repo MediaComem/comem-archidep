@@ -13,6 +13,7 @@ and CSS) with [nginx][nginx].
 - [:exclamation: Create an nginx configuration file to serve the website](#exclamation-create-an-nginx-configuration-file-to-serve-the-website)
   - [:exclamation: Enable the nginx configuration](#exclamation-enable-the-nginx-configuration)
   - [:exclamation: Reload the nginx configuration](#exclamation-reload-the-nginx-configuration)
+- [:exclamation: Give nginx access to the files](#exclamation-give-nginx-access-to-the-files)
 - [:exclamation: See it in action](#exclamation-see-it-in-action)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
   - [:classical_building: Architecture](#classical_building-architecture)
@@ -167,6 +168,57 @@ $> sudo nginx -s reload
 If the command indicates no errors, nginx should have reloaded its
 configuration.
 
+## :exclamation: Give nginx access to the files
+
+In recent Ubuntu versions, nginx does not have access to your home directory by
+default. When reading files, nginx uses the `www-data` user (you can see this
+configured in `/etc/nginx/nginx.conf`).
+
+If you look at the permissions for your home directory, it will probably be
+`rwxr-x---`, meaning that your user has access to it, your group has access to
+it, but other users don't.
+
+```bash
+$> ls -la /home
+total 16
+drwxr-xr-x  4 root      root      4096 Oct 19 13:01 .
+drwxr-xr-x 19 root      root      4096 Nov 23 11:23 ..
+drwxr-x--- 15 jde       jde       4096 Nov 23 15:34 jde
+```
+
+You should give permission to the `www-data` user (the user nginx runs as) to
+access your home directory. One way to quickly do this by adding the `www-data`
+user to your group (replace `jde` with your Unix username):
+
+```bash
+$> sudo usermod -a -G jde www-data
+```
+
+Then restart nginx:
+
+```bash
+$> sudo nginx -s reload
+```
+
+> :books: This is not necessarily the best solution from a security standpoint.
+> It means that nginx will likely have read/execution access to all the
+> directories and files owned by your user. This is probably more than it should
+> have.
+>
+> The clean and secure solution would be to put the files in a dedicated
+> directory with appropriate permissions, somewhere outside your home directory.
+>
+> For example, you could create a `/var/www/clock` directory owned by you and
+> clone the repository there. If you don't want other users to access this
+> directory, you could even restrict permissions further by making this
+> directory owned by you and the `www-data` group (e.g. `sudo chown
+> jde:www-data /var/www/clock`), and removing all permissions for other
+> users (e.g. with `sudo chmod o-a /var/www/clock`).
+>
+> If you don't care about security at all `(ㆆ _ ㆆ)`, you can also simply
+> revert the permissions of your home directory to what they would have been
+> before, i.e. give access to everyone with `sudo chmod o+rx /home/jde`.
+
 ## :exclamation: See it in action
 
 Visit the subdomain of your server, e.g. http://john-doe.archidep.ch
@@ -247,7 +299,7 @@ $> ls -la /home
 total 16
 drwxr-xr-x  4 root      root      4096 Oct 19 13:01 .
 drwxr-xr-x 19 root      root      4096 Nov 23 11:23 ..
-drwxr-x--- 15 john_doe  john_doe  4096 Nov 23 15:34 john_doe
+drwxr-x--- 15 jde       jde       4096 Nov 23 15:34 jde
 ```
 
 If the permissions of your home directory are `drwxr-xr-x`, then this solution
@@ -256,10 +308,10 @@ then read on.
 
 You should give permission to the `www-data` user (the user nginx runs as) to
 access your home directory. You can do this by adding it to your group (replace
-`john_doe` with your Unix username):
+`jde` with your Unix username):
 
 ```bash
-$> sudo usermod -a -G john_doe www-data
+$> sudo usermod -a -G jde www-data
 ```
 
 > :books: This is not necessarily the best solution from a security standpoint.
@@ -274,12 +326,12 @@ $> sudo usermod -a -G john_doe www-data
 > clone the repository there. If you don't want other users to access this
 > directory, you could even restrict permissions further by making this
 > directory owned by you and the `www-data` group (e.g. `sudo chown
-> john_doe:www-data /var/www/clock`), and removing all permissions for other
+> jde:www-data /var/www/clock`), and removing all permissions for other
 > users (e.g. with `sudo chmod o-a /var/www/clock`).
 >
 > If you don't care about security at all `(ㆆ _ ㆆ)`, you can also simply
 > revert the permissions of your home directory to what they would have been
-> before, i.e. give access to everyone with `sudo chmod o+rx /home/john_doe`.
+> before, i.e. give access to everyone with `sudo chmod o+rx /home/jde`.
 
 #### :boom: 404 Not Found
 
