@@ -55,25 +55,22 @@ the [systemd exercise][systemd-ex].
 During this exercise, you will use a package and service called `php-fpm` that
 you installed on your server back during the first deployment exercise. The
 version of `php-fpm` running on your server will depend on which Ubuntu version
-you chose when configuring your Azure instance. It will likely be `7.4` for
-Ubuntu 20.04 or `8.1` for Ubuntu 22.04.
+you chose when configuring your Azure instance. It will likely be `8.3` for Ubuntu 24.04.
 
 You can check which version you have by running either of the following
 commands:
 
 ```bash
 $> ls /etc/php
-8.1
+8.3
 
 $> dpkg --list | grep php-fpm
-ii  php-fpm   2:8.1+92ubuntu1   ...
+ii  php-fpm   2:8.3+93ubuntu2   ...
 ```
 
-In this case, the output indicates that version `8.1` is installed. The
+In this case, the output indicates that version `8.3` is installed. The
 remaining sections of the exercise assume that this is the case. **If not**, you
-will need to **modify the commands containing the version number accordingly**,
-for example replace `8.1` by `7.4` in every command (if that is the version you
-have installed).
+will need to **modify the commands containing the version number accordingly**.
 
 ## :books: Using PHP FPM instead of the PHP development server
 
@@ -95,18 +92,18 @@ PHP FPM is both a **process manager** and a **FastCGI server**:
   [FastCGI protocol][fastcgi].
 
 > :gem: Use the following command for more information on how PHP FPM manages
-> processes (for version 8.1):
+> processes (for version 8.3):
 >
->     $> grep -A 50 -m 1 "child processes" /etc/php/8.1/fpm/pool.d/www.conf
+>     $> grep -A 50 -m 1 "child processes" /etc/php/8.3/fpm/pool.d/www.conf
 
 The `php-fpm` package is integrated with systemd out of the box (its service
-file is `/lib/systemd/system/php8.1-fpm.service` for version 8.1). It should
+file is `/lib/systemd/system/php8.3-fpm.service` for version 8.3). It should
 already be running:
 
 ```bash
-$> sudo systemctl status php8.1-fpm
-● php8.1-fpm.service - The PHP 8.1 FastCGI Process Manager
-   Loaded: loaded (/lib/systemd/system/php8.1-fpm.service; enabled; vendor preset: enabled)
+$> sudo systemctl status php8.3-fpm
+● php8.3-fpm.service - The PHP 8.3 FastCGI Process Manager
+   Loaded: loaded (/lib/systemd/system/php8.3-fpm.service; enabled; vendor preset: enabled)
    Active: active (running) since Thu 2019-01-10 17:58:07 UTC; 27min ago
    ...
 ```
@@ -126,10 +123,10 @@ configure PHP FPM to also listen on a port rather than a domain socket for
 consistency.
 
 You will need to edit the PHP FPM web configuration file which you can find at
-`/etc/php/8.1/fpm/pool.d/www.conf` (for version 8.1). Edit this file:
+`/etc/php/8.3/fpm/pool.d/www.conf` (for version 8.3). Edit this file:
 
 ```bash
-$> sudo nano /etc/php/8.1/fpm/pool.d/www.conf
+$> sudo nano /etc/php/8.3/fpm/pool.d/www.conf
 ```
 
 Find the section configuring the listening address (the `listen = ...` key):
@@ -145,7 +142,7 @@ Find the section configuring the listening address (the `listen = ...` key):
 ;                            (IPv6 and IPv4-mapped) on a specific port;
 ;   '/path/to/unix/socket' - to listen on a unix socket.
 ; Note: This value is mandatory.
-listen = /run/php/php8.1-fpm.sock
+listen = /run/php/php8.3-fpm.sock
 ```
 
 > :gem: You can search for a specific word in nano by typing the `Ctrl-W`
@@ -154,13 +151,13 @@ listen = /run/php/php8.1-fpm.sock
 > You can find further occurrences of the word by typing `Ctrl-W` followed by
 > `Enter` again.
 
-Remove the existing `listen = /run/php/php8.1-fpm.sock` line, or comment it by
+Remove the existing `listen = /run/php/php8.3-fpm.sock` line, or comment it by
 adding a `;` comment character at the beginning of the line. Then add a new
 `listen = 9000` line. This will instruct PHP FPM to listen on port 9000 rather
 than using the Unix domain socket file:
 
 ```
-; listen = /run/php/php8.1-fpm.sock
+; listen = /run/php/php8.3-fpm.sock
 listen = 9000
 ```
 
@@ -189,7 +186,7 @@ listen.allowed_clients = 127.0.0.1
 For these changes to take effect, you must restart the PHP FPM service:
 
 ```bash
-$> sudo systemctl restart php8.1-fpm
+$> sudo systemctl restart php8.3-fpm
 ```
 
 ### :question: Optional: check something is listening on port 9000
@@ -226,7 +223,7 @@ to your application's environment.
 Edit the PHP FPM web configuration file again:
 
 ```bash
-$> sudo nano /etc/php/8.1/fpm/pool.d/www.conf
+$> sudo nano /etc/php/8.3/fpm/pool.d/www.conf
 ```
 
 Find the environment section which looks like this:
@@ -253,22 +250,22 @@ Add a line to define the `TODOLIST_DB_PASS` variable with the correct value.
 For the change to take effect, you must restart the PHP FPM service:
 
 ```bash
-$> sudo systemctl restart php8.1-fpm
+$> sudo systemctl restart php8.3-fpm
 ```
 
 Make sure it is still running:
 
 ```bash
-$> sudo systemctl status php8.1-fpm
-● php8.1-fpm.service - The PHP 8.1 FastCGI Process Manager
-   Loaded: loaded (/lib/systemd/system/php8.1-fpm.service; enabled; vendor preset: enabled)
+$> sudo systemctl status php8.3-fpm
+● php8.3-fpm.service - The PHP 8.3 FastCGI Process Manager
+   Loaded: loaded (/lib/systemd/system/php8.3-fpm.service; enabled; vendor preset: enabled)
    Active: active (running) since Thu 2019-01-10 17:58:07 UTC; 3s ago
    ...
 ```
 
 > :gem: If PHP FPM is no longer running, you may have corrupted the
 > configuration file. If the problem is not clear in the output of the `status`
-> command, check the entire logs with `sudo journalctl -u php8.1-fpm` to see if
+> command, check the entire logs with `sudo journalctl -u php8.3-fpm` to see if
 > you can find more information.
 
 ## :exclamation: Create an nginx configuration file to serve the application
