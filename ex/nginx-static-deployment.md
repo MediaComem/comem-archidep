@@ -176,7 +176,7 @@ configured in `/etc/nginx/nginx.conf`).
 
 If you look at the permissions for your home directory, it will probably be
 `rwxr-x---`, meaning that your user has access to it, your group has access to
-it, but other users don't.
+it, but other users don't:
 
 ```bash
 $> ls -la /home
@@ -186,9 +186,9 @@ drwxr-xr-x 19 root      root      4096 Nov 23 11:23 ..
 drwxr-x--- 15 jde       jde       4096 Nov 23 15:34 jde
 ```
 
-You should give permission to the `www-data` user (the user nginx runs as) to
-access your home directory. One way to quickly do this by adding the `www-data`
-user to your group (replace `jde` with your Unix username):
+You should give permission to the `www-data` user to access your home directory.
+One way to quickly do this by adding the `www-data` user to your group (replace
+`jde` with your Unix username):
 
 ```bash
 $> sudo usermod -a -G jde www-data
