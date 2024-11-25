@@ -23,6 +23,7 @@ This course is a [Media Engineering][comem] web development course taught at
 - [What you will need](#what-you-will-need)
 - [Plan](#plan)
 - [How to improve our basic deployment](#how-to-improve-our-basic-deployment)
+- [Our architecture so far](#our-architecture-so-far)
 - [More Practice](#more-practice)
 - [Extra](#extra)
 - [Frequently Asked Questions](#frequently-asked-questions)
@@ -191,6 +192,21 @@ fix during the rest of the course:
   applications in production environments. We will use the [**FastCGI Process
   Manager**][php-fpm] to perform a production-grade deployment, making our
   application more resilient and able to serve more clients concurrently.
+
+## Our architecture so far
+
+This is a simplified architecture of the main running processes and
+communication flow at the end of all the exercises we have done so far (up to
+[:hammer: Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)):
+
+![Architecture](architecture-up-to-php-fpm.png)
+
+> [Architecture PDF version](architecture-up-to-php-fpm.pdf).
+
+> :books: Note that unless you stopped it yourself, the systemd service you set
+> up during the exercise [:hammer: Manage a PHP application with systemd as a
+> Process Manager](ex/systemd-deployment.md) is still running, and the PHP
+> Todolist is still accessible on port 3000 as well as through nginx.
 
 ## More Practice
 
