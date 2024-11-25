@@ -241,16 +241,12 @@ server (your Azure instance).
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise:
 
-![Simplified architecture](nginx-static-deployment-simplified.png)
+![Architecture](nginx-static-deployment-architecture.png)
 
-> [Simplified architecture PDF version](nginx-static-deployment-simplified.pdf).
+> [Architecture PDF version](nginx-static-deployment-architecture.pdf).
 
-The following diagram is a more detailed representation also including the
-short-lived processes run during the exercise:
-
-![Detailed architecture](nginx-static-deployment.png)
-
-> [Detailed architecture PDF version](nginx-static-deployment.pdf).
+> :books: Note that this diagram only shows the processes involved in this
+> exercise, ignoring the PHP Todolist we have also deployed on the server.
 
 ## :boom: Troubleshooting
 
