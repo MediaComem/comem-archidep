@@ -128,13 +128,13 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:hammer: Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
     - [:classical_building: Architecture](ex/nginx-php-fpm-deployment.md#classical_building-architecture)
     - [:key: Solution](ex/nginx-php-fpm-deployment-solution.md)
+  - [:book: TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
+  - [:hammer: Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
+    - [:classical_building: Architecture](ex/certbot-deployment.
   - [:hammer: Deploy a multi-component web application with nginx](./ex/revprod-deployment.md)
     - [:classical_building: Architecture](ex/revprod-deployment.md#classical_building-architecture)
   - [:hammer: Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
-    - [:classical_building: Architecture](ex/fibscale-deployment.md#classical_building-architecture)
-  - [:book: TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
-  - [:hammer: Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
-    - [:classical_building: Architecture](ex/certbot-deployment.md#classical_building-architecture)
+    - [:classical_building: Architecture](ex/fibscale-deployment.md#classical_building-architecture)md#classical_building-architecture)
 
 - Automated deployment
   - [:book: Git hooks](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
