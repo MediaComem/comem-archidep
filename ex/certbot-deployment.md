@@ -96,9 +96,9 @@ encrypt communications between your browser and the server.
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise:
 
-![Simplified architecture](certbot-deployment-simplified.png)
+![Architecture](certbot-deployment-architecture.png)
 
-> [Simplified architecture PDF version](certbot-deployment-simplified.pdf).
+> [Architecture PDF version](certbot-deployment-architecture.pdf).
 
 The only thing that has changed compared to [the previous
 exercise](./nginx-php-fpm-deployment.md#architecture) is that you are now
