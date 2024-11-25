@@ -12,8 +12,8 @@ and CSS) with [nginx][nginx].
 - [:exclamation: Put the static website on the server](#exclamation-put-the-static-website-on-the-server)
 - [:exclamation: Create an nginx configuration file to serve the website](#exclamation-create-an-nginx-configuration-file-to-serve-the-website)
   - [:exclamation: Enable the nginx configuration](#exclamation-enable-the-nginx-configuration)
-  - [:exclamation: Reload the nginx configuration](#exclamation-reload-the-nginx-configuration)
 - [:exclamation: Give nginx access to the files](#exclamation-give-nginx-access-to-the-files)
+  - [:exclamation: Reload the nginx configuration](#exclamation-reload-the-nginx-configuration)
 - [:exclamation: See it in action](#exclamation-see-it-in-action)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
   - [:classical_building: Architecture](#classical_building-architecture)
@@ -80,7 +80,7 @@ Take the static configuration that was [presented during the
 course][nginx-static-conf] and put it in the file. You should modify it to:
 
 - Use the subdomain you configured for your server during the previous DNS
-  exercise (e.g. `john-doe.archidep.ch`).
+  exercise (e.g. `jde.archidep.ch`).
 
   > :gem: This is done by customizing [nginx's `server_name`
   > directive](http://nginx.org/en/docs/http/server_names.html) in your `server`
@@ -134,40 +134,6 @@ $> ls -l /etc/nginx/sites-enabled/clock
 lrwxrwxrwx 1 root root 32 Jan 10 17:07 /etc/nginx/sites-enabled/clock -> /etc/nginx/sites-available/clock
 ```
 
-### :exclamation: Reload the nginx configuration
-
-Nginx does not automatically reload its configuration files when they change.
-
-First, you should check whether the changes you have made are valid. The `nginx
--t` command loads all the nginx configuration (including files added with
-`include`) and checks that they are valid:
-
-```bash
-$> sudo nginx -t
-nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
-nginx: configuration file /etc/nginx/nginx.conf test is successful
-```
-
-> :gem: If an error occurs here, you may have made a mistake in the
-> configuration. (See [Troubleshooting](#boom-troubleshooting) if you get an
-> error about `server_names_hash_bucket_size`.)
-
-Nginx reloads its configuration [when it receives the `HUP`
-signal][nginx-signals]. You could find the process ID of the `nginx` master
-process and send the signal with `kill -s HUP <ID>`. However, the `nginx`
-command helpfully allows you to do that in a much simpler way:
-
-```bash
-$> sudo nginx -s reload
-```
-
-> You can also do the same thing through systemd with the following command:
-> `sudo systemctl nginx reload`. This will also ask nginx to reload its
-> configuration.
-
-If the command indicates no errors, nginx should have reloaded its
-configuration.
-
 ## :exclamation: Give nginx access to the files
 
 In recent Ubuntu versions, nginx does not have access to your home directory by
@@ -219,11 +185,44 @@ $> sudo nginx -s reload
 > revert the permissions of your home directory to what they would have been
 > before, i.e. give access to everyone with `sudo chmod o+rx /home/jde`.
 
+### :exclamation: Reload the nginx configuration
+
+Nginx does not automatically reload its configuration files when they change.
+
+First, you should check whether the changes you have made are valid. The `nginx
+-t` command loads all the nginx configuration (including files added with
+`include`) and checks that they are valid:
+
+```bash
+$> sudo nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+```
+
+> :gem: If an error occurs here, you may have made a mistake in the
+> configuration. (See [Troubleshooting](#boom-troubleshooting) if you get an
+> error about `server_names_hash_bucket_size`.)
+
+Nginx reloads its configuration [when it receives the `HUP`
+signal][nginx-signals]. You could find the process ID of the `nginx` master
+process and send the signal with `kill -s HUP <ID>`. However, the `nginx`
+command helpfully allows you to do that in a much simpler way:
+
+```bash
+$> sudo nginx -s reload
+```
+
+> You can also do the same thing through systemd with the following command:
+> `sudo systemctl nginx reload`. This will also ask nginx to reload its
+> configuration.
+
+If the command indicates no errors, nginx should have reloaded its
+configuration.
+
 ## :exclamation: See it in action
 
-Visit the subdomain of your server, e.g. http://john-doe.archidep.ch
-(replacing `john-doe` with your username) and you should see the website
-working.
+Visit the subdomain of your server, e.g. http://jde.archidep.ch (replacing `jde`
+with your username) and you should see the website working.
 
 ## :checkered_flag: What have I done?
 
