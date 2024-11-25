@@ -94,7 +94,7 @@ PHP FPM is both a **process manager** and a **FastCGI server**:
 > :gem: Use the following command for more information on how PHP FPM manages
 > processes (for version 8.3):
 >
->     $> grep -A 50 -m 1 "child processes" /etc/php/8.3/fpm/pool.d/www.conf
+>     $> grep -A 50 -m 1 "number of child processes" /etc/php/8.3/fpm/pool.d/www.conf
 
 The `php-fpm` package is integrated with systemd out of the box (its service
 file is `/lib/systemd/system/php8.3-fpm.service` for version 8.3). It should
