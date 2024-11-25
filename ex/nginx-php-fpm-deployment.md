@@ -284,14 +284,13 @@ but you need to make the following changes:
 
 - Like in the previous exercise, adapt the server name and root directory.
 
-  > :gem: you can use the existing `todolist-repo` directory you have been
-  > using in previous PHP todolist exercises. There is no need to clone another
-  > copy.
+  > :gem: you can use the existing `todolist-repo` directory you have been using
+  > in previous PHP todolist exercises. There is no need to clone another copy.
   >
-  > :gem: in the DNS exercise, you should have configured a wildcard domain
-  > name like `*.john-doe.archidep.ch`. This means that any subdomain you
-  > want under `john-doe.archidep.ch`, for example
-  > `todolist.john-doe.archidep.ch`, should reach your server.
+  > :gem: in the DNS exercise, you should have configured a wildcard domain name
+  > like `*.jde.archidep.ch`. This means that any subdomain you want under
+  > `jde.archidep.ch`, for example `todolist.jde.archidep.ch`, should reach your
+  > server.
 
 - PHP FPM uses the [FastCGI protocol][fastcgi] to receive requests to execute
   PHP code. This means that you cannot use [nginx's `proxy_pass`
@@ -359,8 +358,8 @@ $> sudo nginx -s reload
 
 ## :exclamation: See it in action
 
-Visit http://todolist.john-doe.archidep.ch (replacing `john-doe` with your
-username) and you should see the PHP todolist working.
+Visit http://todolist.jde.archidep.ch (replacing `jde` with your username) and
+you should see the PHP todolist working.
 
 ## :checkered_flag: What have I done?
 
