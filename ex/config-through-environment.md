@@ -166,16 +166,9 @@ communication flow at the end of this exercise. Note that it has not changed
 compared to [the previous exercises](./sftp-deployment.md#architecture) since we
 have neither created any new processes nor changed how they communicate:
 
-![Simplified architecture](sftp-deployment-simplified.png)
+![Architecture](sftp-deployment-architecture.png)
 
-> [Simplified architecture PDF version](sftp-deployment-simplified.pdf).
-
-The following diagram is a more detailed representation also including the
-short-lived processes run during the exercise:
-
-![Detailed architecture](config-through-environment.png)
-
-> [Detailed architecture PDF version](config-through-environment.pdf).
+> [Architecture PDF version](sftp-deployment-architecture.pdf).
 
 [php-shorthand-comparisons]: https://stitcher.io/blog/shorthand-comparisons-in-php
 [php-todolist]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
