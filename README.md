@@ -80,6 +80,7 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:hammer: :book: Git branching](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/git-branching?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: :book: Collaborating with Git](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/git-collaborating?home=MediaComem%2Fcomem-archidep%23readme)
   - **[:collision: :hammer: Collaborative exercise](https://github.com/MediaComem/comem-archidep-php-todo-exercise)**
+    - [:classical_building: Architecture](https://github.com/MediaComem/comem-archidep-php-todo-exercise#classical_building-architecture)
 - Security
   - [:book: Open Web Application Security Project][owasp]
   - [:book: OWASP Top 10 - The Ten Most Critical Web Application Security Risks][owasp-top10]
