@@ -135,9 +135,9 @@ human-friendly domain name instead of an IP address.
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise:
 
-![Simplified architecture](dns-configuration-simplified.png)
+![Architecture](dns-configuration-architecture.png)
 
-> [Simplified architecture PDF version](dns-configuration-simplified.pdf).
+> [Architecture PDF version](dns-configuration-architecture.pdf).
 
 The only thing that has changed compared to [the previous
 exercise](./systemd-deployment.md#architecture) is that you are now using a
