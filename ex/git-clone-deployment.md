@@ -137,16 +137,9 @@ communication flow at the end of this exercise. Note that it has not changed
 compared to [the previous exercise](./sftp-deployment.md#architecture) since we
 have neither created any new processes nor changed how they communicate:
 
-![Simplified architecture](sftp-deployment-simplified.png)
+![Architecture](sftp-deployment-architecture.png)
 
-> [Simplified architecture PDF version](sftp-deployment-simplified.pdf).
-
-The following diagram is a more detailed representation also including the
-short-lived processes run during the exercise:
-
-![Detailed architecture](git-clone-deployment.png)
-
-> [Detailed architecture PDF version](git-clone-deployment.pdf).
+> [Architecture PDF version](sftp-deployment-architecture.pdf).
 
 [github-fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [php-todolist]: https://github.com/MediaComem/comem-archidep-php-todo-exercise
