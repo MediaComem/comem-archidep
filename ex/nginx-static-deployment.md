@@ -309,6 +309,12 @@ access your home directory. You can do this by adding it to your group (replace
 $> sudo usermod -a -G jde www-data
 ```
 
+Restart nginx once you have changed the permissions:
+
+```bash
+$> sudo nginx -s reload
+```
+
 > :books: This is not necessarily the best solution from a security standpoint.
 > It means that nginx will likely have read/execution access to all the
 > directories and files owned by your user. This is probably more than it should

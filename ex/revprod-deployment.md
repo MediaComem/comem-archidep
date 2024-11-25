@@ -511,9 +511,13 @@ This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise (after completing [all previous
 course exercises][archidep-exercises]):
 
-![Simplified architecture](revprod-deployment-simplified.png)
+![Architecture](revprod-deployment-architecture.png)
 
-> [Simplified architecture PDF version](revprod-deployment-simplified.pdf).
+> [Architecture PDF version](revprod-deployment-architecture.pdf).
+
+> :books: Note that this diagram only shows the processes involved in this
+> exercise, ignoring the other applications (such as the PHP Todolist) we have
+> also deployed on the server.
 
 ## :boom: Troubleshooting
 

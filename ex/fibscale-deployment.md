@@ -848,9 +848,13 @@ This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise (after completing [all previous
 course exercises][archidep-exercises]):
 
-![Simplified architecture](fibscale-deployment-simplified.png)
+![Architecture](fibscale-deployment-architecture.png)
 
-> [Simplified architecture PDF version](fibscale-deployment-simplified.pdf).
+> [Architecture PDF version](fibscale-deployment-architecture.pdf).
+
+> :books: Note that this diagram only shows the processes involved in this
+> exercise, ignoring the other applications (such as the PHP Todolist) we have
+> also deployed on the server.
 
 ### :books: Why is the iterative algorithm much faster?
 
