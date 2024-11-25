@@ -342,9 +342,9 @@ instance's public IP address.
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise:
 
-![Simplified architecture](sftp-deployment-simplified.png)
+![Architecture](sftp-deployment-architecture.png)
 
-> [Simplified architecture PDF version](sftp-deployment-simplified.pdf)
+> [Architecture PDF version](sftp-deployment-architecture.pdf)
 
 Compare this with [the same exercise deployed on your local
 machine](https://github.com/MediaComem/comem-archidep-php-todo-exercise#architecture).

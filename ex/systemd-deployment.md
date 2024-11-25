@@ -259,16 +259,9 @@ no longer have to worry about:
 This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise:
 
-![Simplified architecture](systemd-deployment-simplified.png)
+![Architecture](systemd-deployment-architecture.png)
 
-> [Simplified architecture PDF version](systemd-deployment-simplified.pdf).
-
-The following diagram is a more detailed representation also including the
-short-lived processes run during the exercise:
-
-![Diagram](systemd-deployment.png)
-
-> [PDF version](systemd-deployment.pdf).
+> [Architecture PDF version](systemd-deployment-architecture.pdf).
 
 ## :boom: Troubleshooting
 
