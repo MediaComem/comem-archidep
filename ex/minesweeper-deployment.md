@@ -77,7 +77,7 @@ Additionally:
 As an optional bonus challenge:
 
 - Create a dedicated Unix user (e.g. `minesweeper`) other than your personal
-  user (e.g. `john_doe`) to run the application.
+  user (e.g. `jde`) to run the application.
 - This user should be a system user, not a login user. It should not
   be able to log in with a password, although you can set up SSH public key
   authentication for the automated deployment.
@@ -149,31 +149,6 @@ deployment.
 
 ## :warning: Before starting the exercise
 
-**Your Azure server has limited memory (about 1GB of RAM).** Unfortunately, this
-may not be enough memory to run the MySQL database server, the PostgreSQL
-database server, PHP-FPM, the PHP todolist and the Minesweeper application,
-mainly because MySQL unfortunately consumes a lot of memory for such a small
-server.
-
-To be safe, you should temporarily stop and disable MySQL with the following
-commands:
-
-```bash
-$> sudo systemctl stop mysql
-$> sudo systemctl disable mysql
-```
-
-Note that this will temporarily break the PHP todolist.
-
-You can also stop, disable and remove the following programs which are not
-required for this course, saving some more memory:
-
-```bash
-$> sudo systemctl stop gdm
-$> sudo systemctl disable gdm
-$> sudo apt remove snapd --purge
-```
-
 To avoid warnings later, you should also install the following packages which
 are required to install the application and some of its dependencies:
 
@@ -230,13 +205,13 @@ described in the [project's README][readme] on your server:
 
   ```bash
   $> elixir --version
-  Erlang/OTP 24 [erts-12.1.5] [source] [64-bit] [smp:1:1] [ds:1:1:10] [async-threads:1] [jit]
+  Erlang/OTP 26 [erts-14.2.5.4] [source] [64-bit] [smp:1:1] [ds:1:1:10] [async-threads:1] [jit:ns]
 
-  Elixir 1.13.0 (compiled with Erlang/OTP 24)
+  Elixir 1.17.3 (compiled with Erlang/OTP 26)
   ```
 
   > It's not a problem if you don't have these exact versions installed, as long
-  > as you have Erlang/OTP 24.x and Elixir 1.12.x or 1.13.x.
+  > as you have Erlang/OTP 26.x and Elixir 1.17.x.
 
   You can also check that Elixir is working correctly by running the following
   command:
@@ -251,7 +226,7 @@ described in the [project's README][readme] on your server:
 
   ```bash
   $> node --version
-  v16.13.1
+  v22.12.0
   ```
 
   > It's not a problem if you don't have this exact version installed, as long
@@ -270,8 +245,11 @@ described in the [project's README][readme] on your server:
 
   ```bash
   $> psql --version
-  psql (PostgreSQL) 12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)
+  psql (PostgreSQL) 16.6 (Ubuntu 16.6-0ubuntu0.24.04.1)
   ```
+
+  > It's not a problem if you don't have this exact version installed, as long
+  > as you have any version between 12.x and 17.x.
 
   You can verify that PostgreSQL is running by showing the status of its Systemd
   service:
@@ -279,15 +257,13 @@ described in the [project's README][readme] on your server:
   ```bash
   $> sudo systemctl status postgresql
   ● postgresql.service - PostgreSQL RDBMS
-      Loaded: loaded (/lib/systemd/system/postgresql.service; enabled; vendor preset: enabled)
-      Active: active (exited) since Fri 2021-12-10 20:54:52 UTC; 3 days ago
-    Main PID: 2724 (code=exited, status=0/SUCCESS)
-        Tasks: 0 (limit: 1087)
-      Memory: 0B
-      CGroup: /system.slice/postgresql.service
+      Loaded: loaded (/usr/lib/systemd/system/postgresql.service; enabled; preset: enabled)
+      Active: active (exited) since Sun 2024-12-08 16:26:29 UTC; 4min 25s ago
+    Main PID: 989048 (code=exited, status=0/SUCCESS)
+          CPU: 2ms
 
-  Dec 10 20:54:52 john-doe.archidep.ch systemd[1]: Starting PostgreSQL RDBMS...
-  Dec 10 20:54:52 john-doe.archidep.ch systemd[1]: Finished PostgreSQL RDBMS.
+  Dec 08 16:26:29 jde.archidep.ch systemd[1]: Starting postgresql.service - PostgreSQL RDBMS...
+  Dec 08 16:26:29 jde.archidep.ch systemd[1]: Finished postgresql.service - PostgreSQL RDBMS.
   ```
 
   You can also verify that PostgreSQL is working by listing available databases,
@@ -366,11 +342,14 @@ you executed when first deploying the PHP todolist.
 
 If you prefer using SQL, you could instead connect to the database as the
 `postgres` user (equivalent to MySQL's `root` user) with `sudo -u postgres psql`
-and run equivalent [`CREATE USER`](https://www.postgresql.org/docs/13/sql-createuser.html) and [`CREATE DATABASE`](https://www.postgresql.org/docs/13/sql-createdatabase.html) queries,
-as well as the [`CREATE EXTENSION`](https://www.postgresql.org/docs/13/sql-createextension.html) query.
+and run equivalent [`CREATE
+USER`](https://www.postgresql.org/docs/17/sql-createuser.html) and [`CREATE
+DATABASE`](https://www.postgresql.org/docs/17/sql-createdatabase.html) queries,
+as well as the [`CREATE
+EXTENSION`](https://www.postgresql.org/docs/17/sql-createextension.html) query.
 
 Note that on the command line, PostgreSQL uses [peer
-authentication](https://www.postgresql.org/docs/13/auth-peer.html) based on the
+authentication](https://www.postgresql.org/docs/17/auth-peer.html) based on the
 Unix username by default. This is why the commands are prefixed with `sudo -u postgres` to execute them as the `postgres` Unix user. This user was created
 when you installed PostgreSQL and has administrative privileges on the entire
 PostgreSQL cluster. You can verify the existence of this user with the command
@@ -398,9 +377,9 @@ dependency manager and build tool of the [Elixir][elixir] ecosystem, much like
   Erlang/OTP][erlang] runtime), much like [Java][java] must be compiled to [Java
   Virtual Machine][jvm] bytecode (the JVM is the Java runtime).
 - The **`mix frontend.install` command** is an
-  [alias](https://github.com/MediaComem/minesweeper/blob/ca3e6fb2956afc751274ce2589ff9490c90c5e00/mix.exs#L70)
+  [alias](https://github.com/MediaComem/minesweeper/blob/36ea279c582974c4a0a1f97293448168e57721aa/mix.exs#L71)
   for the [`scripts/install-frontend.sh`
-  script](https://github.com/MediaComem/minesweeper/blob/ca3e6fb2956afc751274ce2589ff9490c90c5e00/scripts/install-frontend.sh)
+  script](https://github.com/MediaComem/minesweeper/blob/36ea279c582974c4a0a1f97293448168e57721aa/scripts/install-frontend.sh)
   which will download the JavaScript dependencies required by the application's
   [Alpine.js][alpinejs] frontend. The script uses [npm][npm], the
   [Node.js][node] & [JavaScript][js] package manager which is installed
@@ -408,13 +387,13 @@ dependency manager and build tool of the [Elixir][elixir] ecosystem, much like
 
   The dependencies and which versions to install are [listed in the
   application's `assets/package.json`
-  file](https://github.com/MediaComem/minesweeper/blob/ca3e6fb2956afc751274ce2589ff9490c90c5e00/assets/package.json#L10-L26).
+  file](https://github.com/MediaComem/minesweeper/blob/36ea279c582974c4a0a1f97293448168e57721aa/assets/package.json#L11-L27).
   They are downloaded from the [npm repository][npm] and saved into the
   `assets/node_modules` directory.
 
 - The [`mix ecto.migrate` command][mix-ecto-migrate] command executes [the
   application's database
-  migrations](https://github.com/MediaComem/minesweeper/blob/ca3e6fb2956afc751274ce2589ff9490c90c5e00/priv/repo/migrations/20210921151550_initial_schema.exs).
+  migrations](https://github.com/MediaComem/minesweeper/blob/36ea279c582974c4a0a1f97293448168e57721aa/priv/repo/migrations/20210921151550_initial_schema.exs).
   These migrations are Elixir programs that will connect to the database and
   create the table(s) required by the application.
 
@@ -681,7 +660,7 @@ $> sudo visudo -f /etc/sudoers.d/minesweeper
 Add the following line to the file:
 
 ```
-%minesweeper ALL=(ALL:ALL) NOPASSWD: /bin/systemctl restart minesweeper, /bin/systemctl status minesweeper, /bin/systemctl start minesweeper, /bin/systemctl stop minesweeper
+%minesweeper ALL=(ALL:ALL) NOPASSWD: /usr/bin/systemctl restart minesweeper, /usr/bin/systemctl status minesweeper, /usr/bin/systemctl start minesweeper, /usr/bin/systemctl stop minesweeper
 ```
 
 > :books: This line allows any user in the `minesweeper` group to execute the
@@ -710,11 +689,11 @@ the automated deployment.
 Here's some visible changes you could easily make:
 
 - Change the [navbar title in the
-  `lib/minesweeper_web/templates/layout/app.html.eex`
-  file](https://github.com/MediaComem/minesweeper/blob/ca3e6fb2956afc751274ce2589ff9490c90c5e00/lib/minesweeper_web/templates/layout/app.html.eex#L13).
+  `lib/minesweeper_web/layout/app.html.eex`
+  file](https://github.com/MediaComem/minesweeper/blob/36ea279c582974c4a0a1f97293448168e57721aa/lib/minesweeper_web/layout/app.html.eex#L13).
 - Change the [difficulty levels in the
   `lib/minesweeper_web/templates/home/index.html.eex`
-  file](https://github.com/MediaComem/minesweeper/blob/ca3e6fb2956afc751274ce2589ff9490c90c5e00/lib/minesweeper_web/templates/home/index.html.eex#L5-L8).
+  file](https://github.com/MediaComem/minesweeper/blob/36ea279c582974c4a0a1f97293448168e57721aa/lib/minesweeper_web/controllers/home/index.html.eex#L5-L8).
 
 ## :checkered_flag: What have I done?
 
@@ -724,12 +703,11 @@ scratch, using the knowledge you acquired during previous deployment exercises.
 ### :classical_building: Architecture
 
 This is a simplified architecture of the main running processes and
-communication flow at the end of this exercise (after completing [all previous
-course exercises][archidep-exercises]):
+communication flow at the end of this exercise:
 
-![Simplified architecture](minesweeper-deployment-simplified.png)
+![Simplified architecture](minesweeper-deployment-architecture.png)
 
-> [Simplified architecture PDF version](minesweeper-deployment-simplified.pdf).
+> [Simplified architecture PDF version](minesweeper-deployment-architecture.pdf).
 
 ## :boom: Troubleshooting
 
@@ -1075,14 +1053,14 @@ node:internal/crypto/hash:67
 Error: error:0308010C:digital envelope routines::unsupported
     at new Hash (node:internal/crypto/hash:67:19)
     at Object.createHash (node:crypto:130:10)
-    at BulkUpdateDecorator.hashFactory (/home/john_doe/minesweeper/assets/node_modules/webpack/lib/util/createHash.js:145:18)
-    at BulkUpdateDecorator.update (/home/john_doe/minesweeper/assets/node_modules/webpack/lib/util/createHash.js:46:50)
-    at RawSource.updateHash (/home/john_doe/minesweeper/assets/node_modules/webpack/node_modules/webpack-sources/lib/RawSource.js:77:8)
-    at NormalModule._initBuildHash (/home/john_doe/minesweeper/assets/node_modules/webpack/lib/NormalModule.js:888:17)
-    at handleParseResult (/home/john_doe/minesweeper/assets/node_modules/webpack/lib/NormalModule.js:954:10)
-    at /home/john_doe/minesweeper/assets/node_modules/webpack/lib/NormalModule.js:1048:4
-    at processResult (/home/john_doe/minesweeper/assets/node_modules/webpack/lib/NormalModule.js:763:11)
-    at /home/john_doe/minesweeper/assets/node_modules/webpack/lib/NormalModule.js:827:5 {
+    at BulkUpdateDecorator.hashFactory (/home/jde/minesweeper/assets/node_modules/webpack/lib/util/createHash.js:145:18)
+    at BulkUpdateDecorator.update (/home/jde/minesweeper/assets/node_modules/webpack/lib/util/createHash.js:46:50)
+    at RawSource.updateHash (/home/jde/minesweeper/assets/node_modules/webpack/node_modules/webpack-sources/lib/RawSource.js:77:8)
+    at NormalModule._initBuildHash (/home/jde/minesweeper/assets/node_modules/webpack/lib/NormalModule.js:888:17)
+    at handleParseResult (/home/jde/minesweeper/assets/node_modules/webpack/lib/NormalModule.js:954:10)
+    at /home/jde/minesweeper/assets/node_modules/webpack/lib/NormalModule.js:1048:4
+    at processResult (/home/jde/minesweeper/assets/node_modules/webpack/lib/NormalModule.js:763:11)
+    at /home/jde/minesweeper/assets/node_modules/webpack/lib/NormalModule.js:827:5 {
   opensslErrorStack: [ 'error:03000086:digital envelope routines::initialization error' ],
   library: 'digital envelope routines',
   reason: 'unsupported',
@@ -1104,7 +1082,7 @@ If you see an error similar to this:
 ```
 ===> Compiling cowlib
 Killed
-** (Mix) Could not compile dependency :cowlib, "/home/john_doe/.mix/rebar3 bare compile --paths /home/john_doe/minesweeper/_build/dev/lib/*/ebin" command failed. Errors may have been logged above. You can recompile this dependency with "mix deps.compile cowlib", update it with "mix deps.update cowlib" or clean it with "mix deps.clean cowlib"
+** (Mix) Could not compile dependency :cowlib, "/home/jde/.mix/rebar3 bare compile --paths /home/jde/minesweeper/_build/dev/lib/*/ebin" command failed. Errors may have been logged above. You can recompile this dependency with "mix deps.compile cowlib", update it with "mix deps.update cowlib" or clean it with "mix deps.clean cowlib"
 ```
 
 It might mean your server does not have enough memory (RAM) to perform the
@@ -1125,9 +1103,9 @@ Plugins selected: Authenticator nginx, Installer nginx
 
 Which names would you like to activate HTTPS for?
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-1: clock.john-doe.archidep.ch
-2: minesweeper.john-doe.archidep.ch
-3: todolist.john-doe.archidep.ch
+1: clock.jde.archidep.ch
+2: minesweeper.jde.archidep.ch
+3: todolist.jde.archidep.ch
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Select the appropriate numbers separated by commas and/or spaces, or leave input
 blank to select all options shown (Enter 'c' to cancel): 2
@@ -1150,10 +1128,10 @@ exercise](https://github.com/MediaComem/comem-archidep/blob/main/ex/dns-configur
 You should add the same entries you added for `archidep.ch` to this new
 `archidep2.ch` domain:
 
-- An `A` entry for `john-doe` (replacing `john-doe` with
-  your name) pointing to your server's public IP address.
-- Another `A` entry for `*.john-doe` (replacing `john-doe` with your name)
-  pointing to the same IP address.
+- An `A` entry for `jde` (replacing `jde` with your name) pointing to your
+  server's public IP address.
+- Another `A` entry for `*.jde` (replacing `jde` with your name) pointing to the
+  same IP address.
 
 You can then connect to your server and perform the following actions:
 
@@ -1188,8 +1166,7 @@ to take your changes into account.
 
 [alpinejs]: https://alpinejs.dev
 [app-config]: https://github.com/MediaComem/minesweeper#configuration
-[app-deps]: https://github.com/MediaComem/minesweeper/blob/ca3e6fb2956afc751274ce2589ff9490c90c5e00/mix.exs#L40-L57
-[archidep-exercises]: https://github.com/MediaComem/comem-archidep#exercises
+[app-deps]: https://github.com/MediaComem/minesweeper/blob/36ea279c582974c4a0a1f97293448168e57721aa/mix.exs#L39-L58
 [auto-deploy-ex]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md
 [automated-deployment-nginx-update]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md#exclamation-update-the-todolist-nginx-configuration
 [automated-tests]: https://en.wikipedia.org/wiki/Test_automation
@@ -1198,7 +1175,7 @@ to take your changes into account.
 [composer]: https://getcomposer.org
 [ecto]: https://hexdocs.pm/ecto/Ecto.html
 [elixir]: https://elixir-lang.org
-[eloquent]: https://laravel.com/docs/8.x/eloquent
+[eloquent]: https://laravel.com/docs/11.x/eloquent
 [erlang]: https://www.erlang.org
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [hex]: https://hex.pm
@@ -1211,15 +1188,15 @@ to take your changes into account.
 [make]: https://www.gnu.org/software/make/
 [minesweeper]: https://en.wikipedia.org/wiki/Minesweeper_(video_game)
 [mix]: https://hexdocs.pm/mix/Mix.html
-[mix-compile]: https://hexdocs.pm/mix/1.12/Mix.Tasks.Compile.html
-[mix-deps-get]: https://hexdocs.pm/mix/1.12/Mix.Tasks.Deps.Get.html
+[mix-compile]: https://hexdocs.pm/mix/1.17.3/Mix.Tasks.Compile.html
+[mix-deps-get]: https://hexdocs.pm/mix/1.17.3/Mix.Tasks.Deps.Get.html
 [mix-ecto-migrate]: https://hexdocs.pm/ecto_sql/Mix.Tasks.Ecto.Migrate.html
 [mix-phx-digest]: https://hexdocs.pm/phoenix/Mix.Tasks.Phx.Digest.html
-[mix-release]: https://hexdocs.pm/mix/1.12/Mix.Tasks.Release.html
+[mix-release]: https://hexdocs.pm/mix/1.17.3/Mix.Tasks.Release.html
 [mvc]: https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
 [nginx-php-fpm-ex]: nginx-php-fpm-deployment.md
 [nginx-proxy-pass]: http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
-[nginx-rp-conf]: https://mediacomem.github.io/comem-archidep/2020-2021/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29
+[nginx-rp-conf]: https://mediacomem.github.io/comem-archidep/2024-2025/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#29
 [node]: https://nodejs.org
 [node-install]: https://github.com/nodesource/distributions/blob/master/README.md
 [node-lts]: https://nodejs.org/en/about/releases/
