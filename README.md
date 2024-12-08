@@ -133,6 +133,7 @@ For you to succeed in this course, it is highly recommended that you read and co
     - [:classical_building: Architecture](ex/certbot-deployment.md#classical_building-architecture)
   - [:hammer: Deploy a multi-component web application with nginx](./ex/revprod-deployment.md)
     - [:classical_building: Architecture](ex/revprod-deployment.md#classical_building-architecture)
+    - [:key: Solution](ex/revprod-deployment-solution.md)
   - [:hammer: Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
     - [:classical_building: Architecture](ex/fibscale-deployment.md#classical_building-architecture)
 
