@@ -403,9 +403,9 @@ This is a simplified architecture of the main running processes and
 communication flow at the end of this exercise (only including the processes
 relevant to this exercise and not those from previous exercises):
 
-![Simplified architecture](wopr-deployment-simplified.png)
+![Architecture](wopr-deployment-architecture.png)
 
-> [Simplified architecture PDF version](wopr-deployment-simplified.pdf).
+> [Architecture PDF version](wopr-deployment-architecture.pdf).
 
 ## :boom: Troubleshooting
 
