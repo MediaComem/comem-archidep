@@ -82,8 +82,8 @@ Tell nginx to reload its configuration:
 $> sudo nginx -s reload
 ```
 
-The site at http://todolist.john-doe.archidep.ch should not work anymore You
-should get a `404 Not Found` error from nginx since there are no files in the
+The site at http://todolist.jde.archidep.ch should not work anymore You should
+get a `404 Not Found` error from nginx since there are no files in the
 `todolist-automated` directory yet.
 
 ## :exclamation: Create a bare Git repository on the server
@@ -94,7 +94,7 @@ so you need to use a bare repository instead, with only its Git directory:
 ```bash
 $> cd ~/todolist-automated-repo
 $> git init --bare
-Initialized empty Git repository in /home/john_doe/todolist-automated-repo/
+Initialized empty Git repository in /home/jde/todolist-automated-repo/
 ```
 
 > :books: A bare repository is a repository with only a Git directory and no
@@ -104,15 +104,15 @@ Initialized empty Git repository in /home/john_doe/todolist-automated-repo/
 
 ### :exclamation: Add a `post-receive` hook to the Git repository
 
-Copy this script and replace `john_doe` by your username:
+Copy this script and replace `jde` by your username:
 
 ```
 #!/usr/bin/env bash
 set -e
 
 echo Checking out latest version...
-export GIT_DIR=/home/john_doe/todolist-automated-repo
-export GIT_WORK_TREE=/home/john_doe/todolist-automated
+export GIT_DIR=/home/jde/todolist-automated-repo
+export GIT_WORK_TREE=/home/jde/todolist-automated
 git checkout -f main
 cd "$GIT_WORK_TREE"
 
@@ -161,7 +161,7 @@ Make sure the permissions of the hook are correct:
 
 ```bash
 $> ls -l hooks/post-receive
--rwxrwxr-x 1 john_doe john_doe 239 Jan 10 20:55 hooks/post-receive
+-rwxrwxr-x 1 jde jde 239 Jan 10 20:55 hooks/post-receive
 ```
 
 > :gem: It should have the `x` (e**x**ecute) permission for owner, group and
@@ -183,11 +183,11 @@ limited to GitHub: you can define a remote using an SSH URL that points to your
 own server.
 
 Add an [SSH remote][git-ssh-protocol] to the bare repository you created earlier
-(replace `john_doe` with your username and `W.X.Y.Z` with your server's IP
+(replace `jde` with your username and `W.X.Y.Z` with your server's IP
 address):
 
 ```bash
-$> git remote add archidep john_doe@W.X.Y.Z:todolist-automated-repo
+$> git remote add archidep jde@W.X.Y.Z:todolist-automated-repo
 ```
 
 > :books: The format of the remote URL is `<user>@<ip-address>:<relative-path>`.
@@ -222,7 +222,7 @@ To W.X.Y.Z:todolist-automated-repo
 > output of its `echo` commands displayed when you run `git push`. In the above
 > example, they are the two lines starting with `remote:`.
 
-The site at http://todolist.john-doe.archidep.ch should work again.
+The site at http://todolist.jde.archidep.ch should work again.
 
 Additionally, if you **connect to the server**,
 the `todolist-automated` directory should contain the latest version of the project's files,
@@ -255,7 +255,7 @@ To W.X.Y.Z:todolist-automated-repo
    4ea6994..2faf028  main -> main
 ```
 
-Visit http://todolist.john-doe.archidep.ch again. Your changes should have
+Visit http://todolist.jde.archidep.ch again. Your changes should have
 been deployed automatically!
 
 ## :checkered_flag: What have I done?
