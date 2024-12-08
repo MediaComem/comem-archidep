@@ -275,16 +275,11 @@ communication flow at the end of this exercise. Note that it has not changed
 compared to [the previous exercises](./certbot-deployment.md#architecture) since
 we have neither created any new processes nor changed how they communicate:
 
-![Simplified architecture](certbot-deployment-simplified.png)
+![Architecture](certbot-deployment-architecture.png)
 
-> [Simplified architecture PDF version](certbot-deployment-simplified.pdf).
+> [Architecture PDF version](certbot-deployment-architecture.pdf).
 
-The following diagram is a more detailed representation also including the
-short-lived processes run during the exercise:
 
-![Detailed architecture](git-automated-deployment.png)
-
-> [Detailed architecture PDF version](git-automated-deployment.pdf).
 
 [git-bare]: https://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/
 [git-dir-work-tree]: https://mediacomem.github.io/comem-archidep/2024-2025/subjects/git/?home=MediaComem%2Fcomem-archidep%23readme#15
