@@ -311,6 +311,17 @@ README][readme].
 >   Shall I install Hex? (if running non-interactively, use "mix local.hex --force") [Yn] y
 >   ```
 >
+> - :gem: When compiling the application with the `mix compile` command, you
+>   can answer yes if Mix asks you to install rebar:
+>
+>   ```bash
+>   $> mix compile
+>   ...
+>   Could not find "rebar3", which is needed to build dependency :telemetry
+>   I can install a local copy which is just used by Mix
+>   Shall I install rebar3? (if running non-interactively, use "mix local.rebar --force") [Yn] y
+>   ```
+>
 > - :gem: The Minesweeper application has two configuration mechanisms:
 >   environment variables or a local configuration file. You can use either or
 >   both. It does not matter which you choose. Both are equally valid way of
