@@ -46,6 +46,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [:boom: `(BadArityError) &Function.identity/1 with arity 1 called with 2 arguments`](#boom-badarityerror-functionidentity1-with-arity-1-called-with-2-arguments)
   - [:boom: Updating your fork of the repository](#boom-updating-your-fork-of-the-repository)
   - [:boom: `(RuntimeError) error parsing file /usr/lib/erlang/lib/public_key-1.13.3.2/include/OTP-PUB-KEY.hrl, got: {:error, :enoent}`](#boom-runtimeerror-error-parsing-file-usrliberlanglibpublic_key-11332includeotp-pub-keyhrl-got-error-enoent)
+  - [:boom: `Error: test/minesweeper_web/controllers/game_controller_test.exs:13`](#boom-error-testminesweeper_webcontrollersgame_controller_testexs13)
   - [:boom: `Error: error:0308010C:digital envelope routines::unsupported`](#boom-error-error0308010cdigital-envelope-routinesunsupported)
   - [:boom: `(Mix) Could not compile dependency :cowlib`](#boom-mix-could-not-compile-dependency-cowlib)
   - [:boom: `Error creating new order :: too many certificates already issued for: archidep.ch`](#boom-error-creating-new-order--too-many-certificates-already-issued-for-archidepch)
@@ -1090,6 +1091,36 @@ could not compile dependency :phoenix, "mix compile" failed. Errors may have bee
 It means that you do not have a recent enough version of Elixir and/or
 Erlang/OTP. Make sure to check the application's requirements and the exercise's
 instructions.
+
+### :boom: `Error: test/minesweeper_web/controllers/game_controller_test.exs:13`
+
+If you see an error similar to this when running the automated tests:
+
+```bash
+$> mix test
+Generated minesweeper app
+..............................................
+
+  1) test POST /api/games starts a game (MinesweeperWeb.GameControllerTest)
+Error:      test/minesweeper_web/controllers/game_controller_test.exs:13
+     Assertion with <= failed
+     code:  assert length(uncovered) <= 99
+     left:  108
+     right: 99
+     stacktrace:
+       test/minesweeper_web/controllers/game_controller_test.exs:30: (test)
+```
+
+You have encountered a rare bug in the Minesweeper test suite which affects
+version 2.0.1 and earlier. Simply update to version 2.0.2 or later to fix this
+issue.
+
+* If you are at the beginning of the exercise and are running a clone version
+  of Minesweeper, simply run `git pull` in the repository to get the latest
+  version.
+* If you have set up the automated deployment, follow the instructions on how to
+  [update your fork of the
+  repository](#boom-updating-your-fork-of-the-repository).
 
 ### :boom: `Error: error:0308010C:digital envelope routines::unsupported`
 
