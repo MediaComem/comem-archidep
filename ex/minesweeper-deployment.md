@@ -698,9 +698,9 @@ Here's some visible changes you could easily make:
 
 ## :exclamation: Delivery instructions
 
-**:warning: Make sure that your VM keeps running until we have
+:warning: **Make sure that your VM keeps running until we have
 graded your exercise. Do not shut it down manually and [disable any automatic
-shutdown you might have configured](../images/disable-vm-auto-shutdown.png).
+shutdown you might have configured](../images/disable-vm-auto-shutdown.png).**
 
 Send an email to Simon Oulevay & Simon Pinkas with the URL to your deployed
 application (e.g. https://minesweeper.jde.archidep.ch), no later than December
