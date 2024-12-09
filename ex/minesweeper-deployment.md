@@ -1120,7 +1120,8 @@ issue.
   version.
 * If you have set up the automated deployment, follow the instructions on how to
   [update your fork of the
-  repository](#boom-updating-your-fork-of-the-repository).
+  repository](#boom-updating-your-fork-of-the-repository), then push the changes
+  to your server.
 
 ### :boom: `Error: error:0308010C:digital envelope routines::unsupported`
 
