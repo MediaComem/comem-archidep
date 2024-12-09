@@ -201,9 +201,9 @@ This is a simplified architecture of the main running processes and
 communication flow at the end of all the exercises we have done so far (up to
 [:hammer: Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md) at this time):
 
-![Architecture](./ex/architecture-up-to-php-fpm.png)
+![Architecture](./ex/architecture-up-to-fibscale.png)
 
-> [Architecture PDF version](./ex/architecture-up-to-php-fpm.pdf).
+> [Architecture PDF version](./ex/architecture-up-to-fibscale.pdf).
 
 > :books: Note that unless you stopped it yourself, the systemd service you set
 > up during the exercise [:hammer: Manage a PHP application with systemd as a
