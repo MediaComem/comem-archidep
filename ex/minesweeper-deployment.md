@@ -722,7 +722,7 @@ shutdown you might have configured](../images/disable-vm-auto-shutdown.png).**
 
 Send an email to Simon Oulevay & Simon Pinkas with the URL to your deployed
 application (e.g. https://minesweeper.jde.archidep.ch), no later than December
-16th 2024 at 08:30:00.000.
+16th 2024 at 13:15:00.000.
 
 ## :checkered_flag: What have I done?
 
