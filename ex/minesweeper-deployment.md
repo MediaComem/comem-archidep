@@ -186,8 +186,14 @@ described in the [project's README][readme] on your server:
 
 - **How to install Elixir and Erlang/OTP:** the [Elixir website][elixir] gives
   you very straightforward installation instructions to install both Elixir and
-  Erlang/OTP. You should look for installation
-  instructions specific to Ubuntu, the Linux distribution used on your server.
+  Erlang/OTP. It is recommended that you use the following instructions specific
+  to Ubuntu:
+
+  ```bash
+  $> sudo add-apt-repository ppa:rabbitmq/rabbitmq-erlang
+  $> sudo apt update
+  $> sudo apt install elixir erlang-dev erlang-xmerl
+  ```
 - **How to install Node.js:** there are several methods to install Node.js. One
   of the simplest is to use the [binary distributions provided by
   NodeSource][node-install]. You should look for installation instructions
