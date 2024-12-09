@@ -45,6 +45,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [:boom: PostgreSQL debugging](#boom-postgresql-debugging)
   - [:boom: `(BadArityError) &Function.identity/1 with arity 1 called with 2 arguments`](#boom-badarityerror-functionidentity1-with-arity-1-called-with-2-arguments)
   - [:boom: Updating your fork of the repository](#boom-updating-your-fork-of-the-repository)
+  - [:boom: `(RuntimeError) error parsing file /usr/lib/erlang/lib/public_key-1.13.3.2/include/OTP-PUB-KEY.hrl, got: {:error, :enoent}`](#boom-runtimeerror-error-parsing-file-usrliberlanglibpublic_key-11332includeotp-pub-keyhrl-got-error-enoent)
   - [:boom: `Error: error:0308010C:digital envelope routines::unsupported`](#boom-error-error0308010cdigital-envelope-routinesunsupported)
   - [:boom: `(Mix) Could not compile dependency :cowlib`](#boom-mix-could-not-compile-dependency-cowlib)
   - [:boom: `Error creating new order :: too many certificates already issued for: archidep.ch`](#boom-error-creating-new-order--too-many-certificates-already-issued-for-archidepch)
@@ -1067,6 +1068,28 @@ cd minesweeper
 # Pull the latest changes
 git pull
 ```
+
+### :boom: `(RuntimeError) error parsing file /usr/lib/erlang/lib/public_key-1.13.3.2/include/OTP-PUB-KEY.hrl, got: {:error, :enoent}`
+
+If you see an error similar to this:
+
+```bash
+$> mix compile
+...
+==> phoenix
+Compiling 71 files (.ex)
+
+== Compilation error in file lib/mix/tasks/phx.gen.cert.ex ==
+** (RuntimeError) error parsing file /usr/lib/erlang/lib/public_key-1.13.3.2/include/OTP-PUB-KEY.hrl, got: {:error, :enoent}
+    (elixir 1.14.0) lib/record/extractor.ex:84: Record.Extractor.read_file/2
+    (elixir 1.14.0) lib/record/extractor.ex:50: Record.Extractor.extract_record/2
+    lib/mix/tasks/phx.gen.cert.ex:148: (module)
+could not compile dependency :phoenix, "mix compile" failed. Errors may have been logged above. You can recompile this dependency with "mix deps.compile phoenix", update it with "mix deps.update phoenix" or clean it with "mix deps.clean phoenix"
+```
+
+It means that you do not have a recent enough version of Elixir and/or
+Erlang/OTP. Make sure to check the application's requirements and the exercise's
+instructions.
 
 ### :boom: `Error: error:0308010C:digital envelope routines::unsupported`
 
