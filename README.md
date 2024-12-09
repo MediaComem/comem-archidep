@@ -143,7 +143,8 @@ For you to succeed in this course, it is highly recommended that you read and co
     - [:classical_building: Architecture](ex/git-automated-deployment.md#classical_building-architecture)
 
 - Graded deployment exercise
-  - :collision: :hammer: *Not yet available*
+  - [:collision: :hammer: Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md)
+    - [:classical_building: Architecture](ex/minesweeper-deployment.md#classical_building-architecture)
 
 - Managed deployments
   - [:book: Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/paas?home=MediaComem%2Fcomem-archidep%23readme)
@@ -216,8 +217,6 @@ communication flow at the end of all the exercises we have done so far (up to
 **Complete deployments**
 
 - [:hammer: Deploy Flood It, a Spring Boot (Java) & Angular application with a PostgreSQL database](ex/floodit-deployment.md)
-- [:hammer: Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md)
-  - [:classical_building: Architecture](ex/minesweeper-deployment.md#classical_building-architecture)
 - [:hammer: Deploy RPS, a Node.js & Svelte web application with a PostgreSQL database](ex/rps-deployment.md)
 - [:hammer: :hammer: Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md)
   - [:classical_building: Architecture](./ex/wopr-deployment.md#classical_building-architecture)
