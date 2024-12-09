@@ -28,6 +28,7 @@ previous exercices to deploy a new application from scratch on your server.
   - [:gem: Allowing your user to restart the service without a password](#gem-allowing-your-user-to-restart-the-service-without-a-password)
   - [:space_invader: Allowing the dedicated `minesweeper` Unix user to control the Systemd service](#space_invader-allowing-the-dedicated-minesweeper-unix-user-to-control-the-systemd-service)
   - [:exclamation: Test the automated deployment](#exclamation-test-the-automated-deployment)
+- [:exclamation: Delivery instructions](#exclamation-delivery-instructions)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
   - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
@@ -694,6 +695,16 @@ Here's some visible changes you could easily make:
 - Change the [difficulty levels in the
   `lib/minesweeper_web/templates/home/index.html.eex`
   file](https://github.com/MediaComem/minesweeper/blob/36ea279c582974c4a0a1f97293448168e57721aa/lib/minesweeper_web/controllers/home/index.html.eex#L5-L8).
+
+## :exclamation: Delivery instructions
+
+**:warning: Make sure that your VM keeps running until we have
+graded your exercise. Do not shut it down manually and [disable any automatic
+shutdown you might have configured](../images/disable-vm-auto-shutdown.png).
+
+Send an email to Simon Oulevay & Simon Pinkas with the URL to your deployed
+application (e.g. https://minesweeper.jde.archidep.ch), no later than December
+16th 2024 at 08:30:00.000.
 
 ## :checkered_flag: What have I done?
 
