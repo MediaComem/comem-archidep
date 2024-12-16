@@ -46,7 +46,7 @@ Parts of this guide are annotated with the following icons:
 
 ## :gem: Requirements
 
-* [PostgreSQL][postgresql] 14.6
+* [PostgreSQL][postgresql] 16.6
 
 This guide assumes that you are familiar with [Git][git-slides] and that you
 have a basic understanding of what a Platform-as-a-Service is.
@@ -81,19 +81,19 @@ Once this is done, you can easily install packages by writing `brew install`
 followed by the name of the package:
 
 ```bash
-$> brew install postgresql
+$> brew install postgresql@16
 ```
 
 Check that you have access to the `psql` command by entering:
 
 ```bash
 $> psql --version
-psql (PostgreSQL) 14.6 (Homebrew)
+psql (PostgreSQL) 16.6 (Homebrew)
 ```
 ### Windows
 
 Go to the [PostgreSQL downloads page][postgresql-downloads] and choose version
-**14.6 for Windows x86-64**. Launch the installer and follow the installation
+**16.6 for Windows x86-64**. Launch the installer and follow the installation
 instructions. You can decide to install **only** the command-line tools. The
 following instructions assume you installed Postgres in the default directory on
 your C drive.
@@ -110,7 +110,7 @@ Check that you have access to the `psql` command by entering:
 
 ```bash
 $> psql --version
-psql (PostgreSQL) 14.6 (Homebrew)
+psql (PostgreSQL) 16.6 (Homebrew)
 ```
 
 ## :exclamation: Getting your Todolist fork up-to-date.
