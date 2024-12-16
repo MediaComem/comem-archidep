@@ -149,6 +149,7 @@ tools and frameworks, such as Express.js, to build web applications and APIs.
 > - [nvm][nvm]
 > - [n][n]
 > - [volta][volta]
+> - [mise][mise] (also supports other platforms than Node.js)
 > - [asdf][asdf] (also supports other platforms than Node.js)
 
 ### :question: Check your Node.js installation
@@ -157,7 +158,7 @@ To make sure Node.js is installed, try the following:
 
 ```bash
 $> node -v
-v18.12.1
+v22.12.0
 ```
 
 ### :exclamation: Install Netlify CLI using NPM
@@ -174,7 +175,7 @@ added 1437 packages, and audited 1438 packages in 15s
 
 ```bash
 $> netlify -v
-netlify-cli/12.5.0 darwin-arm64 node-v18.12.1
+netlify-cli/17.38.0 darwin-arm64 node-v22.10.0
 ```
 
 ### :books: What is NPM
@@ -335,6 +336,7 @@ The `npm
 install` command which previously failed should now work.
 
 [asdf]: https://asdf-vm.com
+[mise]: https://mise.jdx.dev/
 [n]:https://github.com/tj/n
 [netlify]: https://www.netlify.com/
 [netlify-cli]: https://docs.netlify.com/cli/get-started/
