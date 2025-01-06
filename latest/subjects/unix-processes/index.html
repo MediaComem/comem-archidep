@@ -3,7 +3,7 @@
   <head>
     <title>Unix Processes (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/0044fc09758f3de9499940cbc0be91fb9c2facda/subjects/unix-processes/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/682913426ee9dd4fe4f2fed67b453d4bb98bd25c/subjects/unix-processes/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -1121,7 +1121,8 @@ $> echo Hello World `2> /dev/null 1>&2`
 
 .breadcrumbs[<a href="#1">Unix Processes</a> > <a href="#27">Standard streams</a>]
 
-Just as a command's output can be redirected to a file, its **input can be redirected from a file**.
+Just as a command's output can be redirected to a file, its **input can be
+redirected from a file**.
 
 Let's create a file for this example:
 
@@ -1129,62 +1130,16 @@ Let's create a file for this example:
 $> echo foo > bar.txt
 ```
 
-.grid-50[
-
-The `cat` command can read a file by having it specified as an argument:
-
-
-]
-.grid-50[
+The `gzip` command **reads data from its standard input stream**, and with the
+`--stdout` option outputs the result to its standard output stream:
 
 ```bash
-$> cat bar.txt
-foo
+gzip --stdout < bar.txt > bar.txt.gz
 ```
 
+> The above command combines two redirections to compress the contents of the
+> `bar.txt` file and save the result into `bar.txt.gz`.
 
-]
-.container[
-
-.grid-50[
-
-If given no argument, it will **read and display the data from its standard input stream** (as you type on your keyboard and press `Enter`):
-
-
-]
-.grid-50[
-
-```bash
-$> cat
-Hello
-Hello
-World
-World
-```
-
-
-]
-
-]
-.container[
-
-.grid-50[
-
-The `<` operator will **redirect a file into a command's standard input stream**:
-
-
-]
-.grid-50[
-
-```bash
-$> cat `< bar.txt`
-foo
-```
-
-
-]
-
-]
 ---
 #### Here documents
 

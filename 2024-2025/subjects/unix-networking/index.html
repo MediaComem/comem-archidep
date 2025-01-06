@@ -3,7 +3,7 @@
   <head>
     <title>Unix Networking (Media Engineering Architecture &amp; Deployment)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/0044fc09758f3de9499940cbc0be91fb9c2facda/subjects/unix-networking/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false,&quot;navigation&quot;:{&quot;click&quot;:false,&quot;scroll&quot;:false,&quot;touch&quot;:false}},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-archidep/tree/682913426ee9dd4fe4f2fed67b453d4bb98bd25c/subjects/unix-networking/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -59,7 +59,7 @@ A layer serves the layer above it and is served by the layer below it.
 
 .breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a>]
 
-The [internet protocol suite][tcp-ip] is the conceptual model used on the
+The [Internet protocol suite][tcp-ip] is the conceptual model used on the
 Internet and on similar computer networks. It is commonly known as TCP/IP since
 the **T**ransmission **C**ontrol **P**rotocol (TCP) and the **I**nternet
 **P**rotocol (IP) are its foundational protocols.
@@ -79,6 +79,16 @@ The OSI and TCP/IP models describe the same technologies, but categorize them a 
 
 The OSI model is used more as a theoretical construct to reason about networking systems,
 while the TCP/IP model is more in line with how Internet protocols are designed and used in practice.
+
+---
+class: center, middle, image-header
+### ARPANET circa 1977
+
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a>]
+
+
+
+<img class='w100' src='images/arpanet-logical-map.png' />
 
 ---
 ### IP addressing
@@ -103,7 +113,7 @@ That's a 32-bit IPv4 address in binary:
 ---
 #### IPv4 structure
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#6">IP addressing</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#7">IP addressing</a>]
 
 Of course that's a little hard to remember or even write down, so an IPv4
 address is typically represented in 4 dotted decimal notation, with each octet
@@ -117,11 +127,11 @@ This is the same address in dotted decimal notation: `172.16.254.1`
 ---
 #### IPv6
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#6">IP addressing</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#7">IP addressing</a>]
 
 **V**ersion **6** of the protocol ([**IPv6**][ipv6]) was developed more recently
 because the world is running out of IPv4 addresses (~4 billion IPv4 addresses is
-not enough in the [Internet of Things (IoT)][iot] world). It's an [internet
+not enough in the [Internet of Things (IoT)][iot] world). It's an [Internet
 standard][internet-standard] since 2017.
 
 Here's a 128-bit IPv6 address in binary:
@@ -139,7 +149,7 @@ Here's a 128-bit IPv6 address in binary:
 ---
 #### IPv6 structure
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#6">IP addressing</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#7">IP addressing</a>]
 
 IPv6 adresses are typically represented as 8 groups of 4 [hexadecimal][hex]
 digits. Here's the same address in hexadecimal format:
@@ -150,7 +160,7 @@ digits. Here's the same address in hexadecimal format:
 ---
 #### IP networks
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#6">IP addressing</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#7">IP addressing</a>]
 
 Each computer that is publicly accessible on the Internet has a **public IP address**.
 To facilite routing, IP addresses are logically divided into networks.
@@ -171,7 +181,7 @@ traffic to the correct geographical area and machine(s).
 ---
 #### IP global networks
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#6">IP addressing</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#7">IP addressing</a>]
 
 The [**I**nternet **A**ssigned **N**umbers **A**uthority (IANA)][iana] is the
 organization responsible for dividing the Internet itself into global networks,
@@ -189,7 +199,7 @@ Registry][iana-ipv4] and [IPv6 Address Space Registry][iana-ipv6].
 ---
 #### IP local networks
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#6">IP addressing</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#7">IP addressing</a>]
 
 [Subnetting][subnet] can be used to further improve efficiency in the utilization of the relatively small address space available.
 
@@ -203,7 +213,7 @@ This can be used to define **complex network structures** within an organization
 ---
 #### Reserved address spaces
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#6">IP addressing</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#7">IP addressing</a>]
 
 There are a few [reserved IP address ranges][reserved-ip-addresses]. Some are
 **reserved for private networks**. In these ranges you **cannot communicate with
@@ -236,7 +246,7 @@ First address | Last address    | [Netmask][subnet] | [CIDR][cidr] | Addresses
 ---
 #### Netmasks and CIDRs
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#6">IP addressing</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#7">IP addressing</a>]
 
 A [netmask][subnet] is a notation to define an IPv4 network. Let's take the
 example of a random address `192.168.50.4` in the third private address range
@@ -264,7 +274,7 @@ prefix).
 ---
 #### There's no place like 127.0.0.1
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#6">IP addressing</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#7">IP addressing</a>]
 
 `localhost` is a hostname that refers to the current computer used to access it.
 It normally resolves to the IPv4 [loopback][loopback] address `127.0.0.1`, and
@@ -279,7 +289,7 @@ the same way as any other network call.
 ---
 #### 0.0.0.0 is everyone
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#6">IP addressing</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#7">IP addressing</a>]
 
 You will sometimes encounter  [`0.0.0.0`][0000]. This is not an actual IP
 address.
@@ -297,7 +307,7 @@ that means "**all IP addresses on the local machine**". The IPv6 equivalent is
 ---
 #### Network address translation
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#6">IP addressing</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#7">IP addressing</a>]
 
 [**N**etwork **A**ddress **T**ranslation (NAT)][nat] is a method of **remapping
 one IP address space into another** as traffic goes through a routing device.
@@ -358,7 +368,7 @@ $> curl -v https://google.com
 ---
 #### Multiplexing
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#18">Ports</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#19">Ports</a>]
 
 .grid-45[
 
@@ -392,7 +402,7 @@ For example, a client may open 4 simultaneous TCP connections to a server:
 ---
 #### Registered port numbers
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#18">Ports</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#19">Ports</a>]
 
 The [**I**nternet **A**ssigned **N**umbers **A**uthority (IANA)][iana] maintains
 a list of the [official assignments of port numbers][iana-ports] for specific
@@ -421,7 +431,7 @@ See the [full list][registered-ports].
 ---
 #### Well-known & dynamic ports
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#18">Ports</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#19">Ports</a>]
 
 The port numbers in the range from 0 to 1023 are the **well-known ports** or
 **system ports**. They are used by system processes that provide widely used
@@ -466,7 +476,7 @@ essential component of the functionality of the Internet since 1985.
 ---
 #### DNS hierarchy
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#22">Domain name system</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#2">Computer networking</a> > <a href="#23">Domain name system</a>]
 
 The [**I**nternet **C**orporation for **A**ssigned **N**ames and **N**umbers
 (ICANN)][icann] is responsible for managing [**t**op-**l**evel **d**omains
@@ -497,7 +507,7 @@ class: center, middle
 ---
 ### The `ip` command
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#24">Unix networking</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#25">Unix networking</a>]
 
 The [**`ip`** command][ip-command] is used to manipulate and display IP network
 information:
@@ -529,7 +539,7 @@ In this sample output, there are **two network interfaces**:
 ---
 ### The `ping` command
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#24">Unix networking</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#25">Unix networking</a>]
 
 The [`ping` command][ping] tests the reachability of a host on an IP network. It
 measures the **r**ound-**t**rip **t**ime (`rtt`) for messages sent to a computer
@@ -558,7 +568,7 @@ and that the round-trip to that computer took about 1.12 milliseconds.
 ---
 ### The `ss` command
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#24">Unix networking</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#25">Unix networking</a>]
 
 The [**s**ocket **s**tatistics (`ss`) command][ss] (or the older `netstat` command) displays information about the open [**network sockets**][socket] on the computer.
 
@@ -586,7 +596,7 @@ resolver on port 53, and an SSH server on port 22.
 ---
 ### The `nc` command
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#24">Unix networking</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#25">Unix networking</a>]
 
 The [**n**et**c**at (`nc`) command][nc] can read from and write to network
 connections using TCP or UDP.
@@ -623,7 +633,7 @@ class: center, middle
 ---
 ### Raw TCP connection
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#29">Making connections</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#30">Making connections</a>]
 
 Let's assume Bob's server has the public IP address `W.X.Y.Z`.
 
@@ -685,7 +695,7 @@ You have a two-way TCP connection running.
 ---
 ### HTTP request
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#29">Making connections</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#30">Making connections</a>]
 
 Playing with TCP is all well and good, but it's a little low level.
 Let's do something that your browser does every day: an HTTP request.
@@ -713,7 +723,7 @@ The next lines are [headers][http-headers] to send additional parameters to the 
 ---
 #### Making an HTTP request to Google
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#29">Making connections</a> > <a href="#31">HTTP request</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#30">Making connections</a> > <a href="#32">HTTP request</a>]
 
 Open a TCP connection to the Google IP address you previously found:
 
@@ -746,7 +756,7 @@ moved to `www.google.com`.
 ---
 #### Following Google's redirect
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#29">Making connections</a> > <a href="#31">HTTP request</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#30">Making connections</a> > <a href="#32">HTTP request</a>]
 
 The connection should still be open. You can make another request, this time to
 `www.google.com`, by typing the following lines exactly, again **followed by two
@@ -776,7 +786,7 @@ Content-Type: text/html; charset=ISO-8859-1
 ---
 ### HTTP response
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#29">Making connections</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#30">Making connections</a>]
 
 Let's make a real-world request with an actual browser this time.
 
@@ -789,7 +799,7 @@ $> nc -l 3000
 ---
 #### Making an HTTP request with a browser
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#29">Making connections</a> > <a href="#34">HTTP response</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#30">Making connections</a> > <a href="#35">HTTP response</a>]
 
 Assuming that your server has the public IP address `K.L.M.N`,
 visit `http://K.L.M.N:3000` in your browser.
@@ -818,7 +828,7 @@ Accept-Language: en-US,en;q=0.9,fr;q=0.8,pt;q=0.7
 ---
 #### Sending an HTTP response with plain text
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#29">Making connections</a> > <a href="#34">HTTP response</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#30">Making connections</a> > <a href="#35">HTTP response</a>]
 
 Type or copy-paste the following text into the terminal:
 
@@ -837,7 +847,7 @@ connection has been closed:
 ---
 #### Sending an HTTP response with HTML
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#29">Making connections</a> > <a href="#34">HTTP response</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#30">Making connections</a> > <a href="#35">HTTP response</a>]
 
 Re-run the netcat command on the server:
 
@@ -893,7 +903,7 @@ class: center, middle
 ---
 ### The `traceroute` command
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#38">Other useful commands</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#39">Other useful commands</a>]
 
 The [`traceroute` command][traceroute] displays the path and transit delays of packets across an IP network.
 
@@ -927,7 +937,7 @@ This example shows a request from New Zealand to an IP in Massachusetts which ta
 ---
 ### The `mtr` command
 
-.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#38">Other useful commands</a>]
+.breadcrumbs[<a href="#1">Unix Networking</a> > <a href="#39">Other useful commands</a>]
 
 The [`mtr` command][mtr], originally named **M**att's **t**race**r**oute,
 combines the `ping` and `traceroute` utilities into a single network diagnostic
