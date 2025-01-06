@@ -226,6 +226,7 @@ communication flow at the end of all the exercises we have done so far (up to
 
 ## Extra
 
+- [:book: Docker: From Hello World to Swarm](https://github.com/mediacomem/docker-brownbag)
 - [:book: Continuous software development](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
 - [:book: Automated testing (2018)](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
 - [:book: Automated testing (2020)](https://mediacomem.github.io/comem-archioweb/2024-2025/subjects/automated-testing/?home=MediaComem%2Fcomem-archioweb%23readme#1)
