@@ -89,7 +89,7 @@ To build a Docker image, you will need to create a Dockerfile at the root of the
 
 The first step when building an image is to choose a **base image**. A base image in a Dockerfile serves as the foundational layer upon which all other layers of a Docker container are built. It typically includes the operating system and essential system libraries, providing the basic environment and tools necessary for running applications and services within the container.
 
-Given that our app's only requirement is **Node.js 20+**, explore [Docker Hub][docker-hub] to find a base image fulfilling this requirement. We recommend only using **Docker Official Images**.
+Given that our app's only requirement is **Node.js 22.12**, explore [Docker Hub][docker-hub] to find a base image fulfilling this requirement. We recommend only using **Docker Official Images**.
 
 > :space_invader: Using the Node base image in Docker without specifying a tag, like `node:latest`, can lead to unpredictable behaviors, as it always pulls the latest version, which may introduce breaking changes or incompatibilities. In contrast, specifying a tag like `node:20-alpine` ensures consistency and reliability; it uses a specific Node version (20 in this case) based on the lightweight and secure Alpine Linux distribution. This approach not only provides a stable and predictable environment but also results in a smaller and more efficient Docker image, benefiting from Alpine's minimalistic footprint.
 
@@ -193,10 +193,10 @@ $> docker run lightness
 > lightness@1.1.0 start
 > vite
 
-  VITE v6.0.7  ready in 146 ms
+  VITE v6.0.7  ready in 130 ms
 
   ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
+  ➜  Network: http://172.17.0.2:5173/
 ```
 
 Beautiful, it looks like the Vite developement server is up and running in our container. Let's try to visit the website by opening [http://localhost:5173](http://localhost:5173) is our navigator...
