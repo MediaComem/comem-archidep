@@ -1,6 +1,6 @@
 # Containerize a static site using Docker
 
-In this exercise, you will apply your knowledge of Docker and Linux administration to containerize a static site built with the Parcel JavaScript bundler. The site you will be containerizing is a completed version of your final ProgWeb challenge.
+In this exercise, you will apply your knowledge of Docker and Linux administration to containerize a static site built with the Vite JavaScript bundler. The site you will be containerizing is a completed version of your final ProgWeb challenge.
 
 You can complete this exercise directly on your local machine; there is **no** need to connect to your Azure VM.
 
@@ -16,7 +16,7 @@ You can complete this exercise directly on your local machine; there is **no** n
 - [:exclamation: Create a working directory](#exclamation-create-a-working-directory)
 - [:exclamation: Copy files to the working directory and change permissions](#exclamation-copy-files-to-the-working-directory-and-change-permissions)
 - [:exclamation: Switch user and install dependencies](#exclamation-switch-user-and-install-dependencies)
-- [:exclamation: Launch the Parcel development server](#exclamation-launch-the-parcel-development-server)
+- [:exclamation: Launch the Vite development server](#exclamation-launch-the-vite-development-server)
 - [:exclamation: Building and running the image](#exclamation-building-and-running-the-image)
 - [:exclamation: Mapping Your Container's Ports](#exclamation-mapping-your-containers-ports)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
@@ -80,7 +80,7 @@ If you tested the Ligntness project in the previous step, you might have noticed
 The `node_modules` folder in a Node.js project contains all the library dependencies that the project requires. These libraries are installed based on the definitions in the project's `package.json` file and can include a vast number of files and folders, specific to the environment in which they were installed. Including this folder in a Docker image is not recommended due to the potential for compatibility issues across different environments and the significant increase in the image size, which can lead to slower and less efficient deployments.
 
 
-Excluding the `dist` folder, especially in projects built with Parcel, is recommended. The dist folder typically contains the output of the build process - bundled and optimized assets ready for deployment. When Dockerizing an application, the build process is usually performed within the Docker container itself, ensuring that the build environment matches the runtime environment. This guarantees that the application runs consistently across different environments.
+Excluding the `dist` folder, especially in projects built with Vite, is recommended. The dist folder typically contains the output of the build process - bundled and optimized assets ready for deployment. When Dockerizing an application, the build process is usually performed within the Docker container itself, ensuring that the build environment matches the runtime environment. This guarantees that the application runs consistently across different environments.
 
 **Given this information, create a `.dockerignore` file at the root of the project and exclude these irrelevant folders. The syntax is the same as `.gitignore` file.**
 
@@ -156,8 +156,8 @@ You may then install the app's dependencies with the following line in your Dock
 RUN npm ci
 ```
 
-## :exclamation: Launch the Parcel development server
-The last step in your Dockerfile will be to determine the command executed when running the container. This is done using the `CMD` instruction, which there can only be one of. In our case, this command will be launching the Parcel developement server, or: `npm start`.
+## :exclamation: Launch the Vite development server
+The last step in your Dockerfile will be to determine the command executed when running the container. This is done using the `CMD` instruction, which there can only be one of. In our case, this command will be launching the Vite developement server, or: `npm start`.
 
 :warning: **Don't confuse `RUN` with `CMD`. `RUN` actually runs a command and commits the result; `CMD` doesn't execute anything at build time, but specifies the intended command for the image.**
 
@@ -190,39 +190,38 @@ lightness      latest    44bdf838bf5b   2 minutes ago   599MB
 You can now run the image by running:
 ```bash
 $> docker run lightness
-> lightness@1.0.0 start
-> parcel src/index.html
+> lightness@1.1.0 start
+> vite
 
-Server running at http://localhost:1234
-Building...
-Bundling...
-Packaging & Optimizing...
-✨ Built in 427ms
+  VITE v6.0.7  ready in 146 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
 ```
 
-Beautiful, it looks like the Parcel developement server is up and running in our container. Let's try to visit the website by opening [http://localhost:1234](http://localhost:1234) is our navigator...
+Beautiful, it looks like the Vite developement server is up and running in our container. Let's try to visit the website by opening [http://localhost:5173](http://localhost:5173) is our navigator...
 
 💥😢 **ERR_CONNECTION_REFUSED** 😢💥
 
 Pause and think about what could possibly be wrong.
 
 ## :exclamation: Mapping Your Container's Ports
-When you run a Docker container, it operates in its own isolated network environment. This means that services running inside the container, such as your Parcel development server, aren't automatically accessible outside of it. To make your application accessible from your host machine (or outside the container's network), you need to map the container's ports to your host's ports. This is where the `-p` or `--publish` flag in the `docker run` command becomes essential.
+When you run a Docker container, it operates in its own isolated network environment. This means that services running inside the container, such as your Vite development server, aren't automatically accessible outside of it. To make your application accessible from your host machine (or outside the container's network), you need to map the container's ports to your host's ports. This is where the `-p` or `--publish` flag in the `docker run` command becomes essential.
 
-The Parcel server inside your container is set to listen on port 1234. However, this port is only exposed within the container's private network. To access your application from a web browser on your host machine, you must map the container's port 1234 to a port on your host machine. For example, if you want to access the application via port 8080 on your local machine, you would start the container with the following command:
+The Vite server inside your container is set to listen on port 5173. However, this port is only exposed within the container's private network. To access your application from a web browser on your host machine, you must map the container's port 5173 to a port on your host machine. For example, if you want to access the application via port 8080 on your local machine, you would start the container with the following command:
 
 ```bash
-$> docker run -p 8080:1234 lightness
+$> docker run -p 8080:5173 lightness
 ```
 
-Here, `-p 8080:1234` instructs Docker to forward traffic coming into your host's port 8080 to port 1234 on the container. As a result, when you navigate to [http://localhost:8080](http://localhost:8080) on your browser, Docker routes these requests to port 1234 on the container, where your Parcel server is listening. 🎉 **Success** 🎉
+Here, `-p 8080:5173` instructs Docker to forward traffic coming into your host's port 8080 to port 5173 on the container. As a result, when you navigate to [http://localhost:8080](http://localhost:8080) on your browser, Docker routes these requests to port 5173 on the container, where your Vite server is listening. 🎉 **Success** 🎉
 
 This port mapping is crucial for web development and testing with Docker, as it bridges the gap between the isolated container environment and your accessible host network, allowing you to interact with your web application as if it were running natively on your local machine. Remember, port numbers on both sides of the colon can be changed based on your needs and the availability of ports on your system.
 
 > :space_invader: For clarity and best practice, it's advisable to specify in your Dockerfile which ports the container is expected to use, by incorporating the `EXPOSE` instruction. While this instruction doesn't actually open or map any ports, it serves as an important form of documentation. It informs anyone using the image about the ports that the application within the container is set to listen on. This helps users understand how to interact with the containerized application and can guide them in setting up proper port mappings when they run the container.
 
 ## :checkered_flag: What have I done?
-Through this exercise, you've taken a static site built with the Parcel JavaScript bundler and transformed it into a containerized application, harnessing the power and flexibility of Docker. You started by setting up your environment, creating a .dockerignore file to optimize the build process, and crafting a Dockerfile with a carefully chosen base image. You've learned the importance of security by running the container as a non-root user, and you've mastered the intricacies of setting up a working directory, copying project files, and managing file permissions within the Docker environment. Launching the Parcel development server inside the container and making it accessible via port mapping were critical steps that brought your application to life. Additionally, you've documented the exposed ports in your Dockerfile, thereby enhancing the clarity and usability of your Docker image.
+Through this exercise, you've taken a static site built with the Vite JavaScript bundler and transformed it into a containerized application, harnessing the power and flexibility of Docker. You started by setting up your environment, creating a .dockerignore file to optimize the build process, and crafting a Dockerfile with a carefully chosen base image. You've learned the importance of security by running the container as a non-root user, and you've mastered the intricacies of setting up a working directory, copying project files, and managing file permissions within the Docker environment. Launching the Vite development server inside the container and making it accessible via port mapping were critical steps that brought your application to life. Additionally, you've documented the exposed ports in your Dockerfile, thereby enhancing the clarity and usability of your Docker image.
 
 
 [docker]: https://www.docker.com/
