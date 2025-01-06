@@ -102,9 +102,15 @@ Containers are an alternative that address this drawback of virtual machines. Th
 
 ### What is Docker?
 
+<!-- slide-column -->
+
 Docker is an open-source platform that automates the deployment, scaling, and management of applications inside lightweight, portable **containers**. It has revolutionized how developers build, ship, and run applications, making it simpler to create and manage consistent environments.
 
 In essence, Docker streamlines the development lifecycle by allowing developers to work in standardized environments using local containers which provide your applications and services. Docker has become a key component of many toolchains, integrating smoothly with various tools and platforms.
+
+<!-- slide-column -->
+
+<img src='images/ship-your-machine.png' class='w90' />
 
 
 
