@@ -239,7 +239,7 @@ described in the [project's README][readme] on your server:
   ```
 
   > It's not a problem if you don't have this exact version installed, as long
-  > as you have version 16.x.
+  > as you have one of the versions supported by the application.
 
   You can also check that Node.js is working correctly by running the following
   command:
