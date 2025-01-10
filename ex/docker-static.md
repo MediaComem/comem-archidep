@@ -104,10 +104,10 @@ By default, Docker containers run with the root privilege (uid 0), including the
 The next step in your Dockerfile will be to create a new user and group that cannot access the rest of the system. In a traditional Linux environment, creating a group and user can be done using the following command:
 
 ```bash
-$> addgroup -S lightness && adduser -S lightness -G lightness
+$> addgroup --system lightness && adduser --system --ingroup lightness lightness
 ```
 
-This command does two things. First, it creates a new group named `lightness` with the `-S` flag indicating it's a system group, and then it creates a new user named `lightness`, adds them to the `lightness` group with `-G lightness`, and marks them as a system user with `-S`, reducing the privileges associated with this user and group.
+This command does two things. First, it creates a new group named `lightness` with the `--system` flag indicating it's a system group, and then it creates a new user named `lightness`, adds them to the `lightness` group with `--ingroup lightness`, and marks them as a system user with `--system`, reducing the privileges associated with this user and group.
 
 **Given this information, insert the `RUN` instructions to your Dockerfile, followed by the command.**
 
