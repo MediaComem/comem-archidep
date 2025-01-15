@@ -153,6 +153,7 @@ For you to succeed in this course, it is highly recommended that you read and co
     - [:hammer: Deploy web applications with a database to Render](./ex/render-database-deployment.md)
   - [:book: Docker](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/docker?home=MediaComem%2Fcomem-archidep%23readme)
     - [:hammer: Containerize a static site using Docker](./ex/docker-static.md)
+    - [:key: Solution](ex/docker-static-solution.md)
   - [:book: Docker Compose](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/docker-compose?home=MediaComem%2Fcomem-archidep%23readme)
     - [:hammer: Deploy a PHP application with Docker Compose](./ex/docker-compose-todolist.md)
       - [:classical_building: Architecture](./ex/docker-compose-todolist.md#classical_building-architecture)
