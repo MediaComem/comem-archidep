@@ -1069,7 +1069,7 @@ server {
   server_name todolist-docker.john-doe.archidep.ch;
 
   location / {
-    proxy_pass http://localhost:12000
+    proxy_pass http://localhost:12000;
   }
 }
 ```
