@@ -123,17 +123,17 @@ For you to succeed in this course, it is highly recommended that you read and co
     - [:classical_building: Architecture](ex/dns-configuration.md#classical_building-architecture)
   - [:book: Reverse proxying](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/reverse-proxy?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Deploy a static site with nginx](ex/nginx-static-deployment.md)
-    - [:classical_building: Architecture](ex/nginx-static-deployment.md#classical_building-architecture)
     - [:key: Solution](ex/nginx-static-deployment-solution.md)
+    - [:classical_building: Architecture](ex/nginx-static-deployment.md#classical_building-architecture)
   - [:hammer: Deploy a PHP application with nginx and the FastCGI process manager](ex/nginx-php-fpm-deployment.md)
-    - [:classical_building: Architecture](ex/nginx-php-fpm-deployment.md#classical_building-architecture)
     - [:key: Solution](ex/nginx-php-fpm-deployment-solution.md)
+    - [:classical_building: Architecture](ex/nginx-php-fpm-deployment.md#classical_building-architecture)
   - [:book: TLS/SSL certificates](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/ssl?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Provision a Let's Encrypt TLS certificate with Certbot](ex/certbot-deployment.md)
     - [:classical_building: Architecture](ex/certbot-deployment.md#classical_building-architecture)
   - [:hammer: Deploy a multi-component web application with nginx](./ex/revprod-deployment.md)
-    - [:classical_building: Architecture](ex/revprod-deployment.md#classical_building-architecture)
     - [:key: Solution](ex/revprod-deployment-solution.md)
+    - [:classical_building: Architecture](ex/revprod-deployment.md#classical_building-architecture)
   - [:hammer: Horizontally scale a web application with nginx as a load balancer](./ex/fibscale-deployment.md)
     - [:classical_building: Architecture](ex/fibscale-deployment.md#classical_building-architecture)
 
@@ -148,16 +148,16 @@ For you to succeed in this course, it is highly recommended that you read and co
 
 - Managed deployments
   - [:book: Platform-as-a-Service (PaaS)](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/paas?home=MediaComem%2Fcomem-archidep%23readme)
-    - [:hammer: Deploy a static site to GitHub Pages](./ex/github-pages-deployment.md)
-    - [:hammer: Deploy a static site to Netlify](./ex/netlify-static-deployment.md)
-    - [:hammer: Deploy web applications with a database to Render](./ex/render-database-deployment.md)
+  - [:hammer: Deploy a static site to GitHub Pages](./ex/github-pages-deployment.md)
+  - [:hammer: Deploy a static site to Netlify](./ex/netlify-static-deployment.md)
+  - [:hammer: Deploy web applications with a database to Render](./ex/render-database-deployment.md)
   - [:book: Docker](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/docker?home=MediaComem%2Fcomem-archidep%23readme)
-    - [:hammer: Containerize a static site using Docker](./ex/docker-static.md)
+  - [:hammer: Containerize a static site using Docker](./ex/docker-static.md)
     - [:key: Solution](ex/docker-static-solution.md)
   - [:book: Docker Compose](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/docker-compose?home=MediaComem%2Fcomem-archidep%23readme)
-    - [:hammer: Deploy a PHP application with Docker Compose](./ex/docker-compose-todolist.md)
-      - [:classical_building: Architecture](./ex/docker-compose-todolist.md#classical_building-architecture)
+  - [:hammer: Deploy a PHP application with Docker Compose](./ex/docker-compose-todolist.md)
     - [:key: Solution](ex/docker-compose-todolist-solution.md)
+    - [:classical_building: Architecture](./ex/docker-compose-todolist.md#classical_building-architecture)
 
 ## How to improve our basic deployment
 
