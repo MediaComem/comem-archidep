@@ -157,6 +157,7 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:book: Docker Compose](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/docker-compose?home=MediaComem%2Fcomem-archidep%23readme)
     - [:hammer: Deploy a PHP application with Docker Compose](./ex/docker-compose-todolist.md)
       - [:classical_building: Architecture](./ex/docker-compose-todolist.md#classical_building-architecture)
+    - [:key: Solution](ex/docker-compose-todolist-solution.md)
 
 ## How to improve our basic deployment
 
