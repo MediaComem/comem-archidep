@@ -1,7 +1,7 @@
 # Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database
 
-The goal of this exercice is to put in practice the knowledge acquired during
-previous exercices to deploy a new application from scratch on your server.
+The goal of this exercise is to put in practice the knowledge acquired during
+previous exercises to deploy a new application from scratch on your server.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -15,7 +15,7 @@ previous exercices to deploy a new application from scratch on your server.
 - [:exclamation: Getting started](#exclamation-getting-started)
   - [:exclamation: Fork the repository](#exclamation-fork-the-repository)
   - [:exclamation: Install the requirements](#exclamation-install-the-requirements)
-    - [:question: Check that everything has been correctly installed](#question-check-that-everything-has-been-correctly-installed)
+    - [:question: Optional: check that everything has been correctly installed](#question-check-that-everything-has-been-correctly-installed)
   - [:exclamation: Perform the initial setup](#exclamation-perform-the-initial-setup)
   - [:books: What sorcery is this?](#books-what-sorcery-is-this)
   - [:question: Optional: run the automated tests](#question-optional-run-the-automated-tests)
@@ -26,7 +26,7 @@ previous exercices to deploy a new application from scratch on your server.
 - [:exclamation: Provision a TLS certificate](#exclamation-provision-a-tls-certificate)
 - [:exclamation: Set up an automated deployment with Git hooks](#exclamation-set-up-an-automated-deployment-with-git-hooks)
   - [:gem: Allowing your user to restart the service without a password](#gem-allowing-your-user-to-restart-the-service-without-a-password)
-  - [:space_invader: Allowing the dedicated `minesweeper` Unix user to control the Systemd service](#space_invader-allowing-the-dedicated-minesweeper-unix-user-to-control-the-systemd-service)
+  - [:space_invader: Allowing the dedicated `minesweeper` Unix user to control the systemd service](#space_invader-allowing-the-dedicated-minesweeper-unix-user-to-control-the-systemd-service)
   - [:exclamation: Test the automated deployment](#exclamation-test-the-automated-deployment)
 - [:exclamation: Delivery instructions](#exclamation-delivery-instructions)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
@@ -196,6 +196,7 @@ described in the [project's README][readme] on your server:
   $> sudo apt update
   $> sudo apt install elixir erlang-dev erlang-xmerl
   ```
+
 - **How to install Node.js:** there are several methods to install Node.js. One
   of the simplest is to use the [binary distributions provided by
   NodeSource][node-install]. You should look for installation instructions
@@ -207,7 +208,7 @@ described in the [project's README][readme] on your server:
   installation instructions specific to Ubuntu, the Linux distribution used on
   your server.
 
-#### :question: Check that everything has been correctly installed
+#### :question: Optional: check that everything has been correctly installed
 
 - You can check that **Elixir has been correctly installed** by displaying the
   version of the `elixir` command:
@@ -260,7 +261,7 @@ described in the [project's README][readme] on your server:
   > It's not a problem if you don't have this exact version installed, as long
   > as you have any version between 12.x and 17.x.
 
-  You can verify that PostgreSQL is running by showing the status of its Systemd
+  You can verify that PostgreSQL is running by showing the status of its systemd
   service:
 
   ```bash
@@ -295,7 +296,7 @@ described in the [project's README][readme] on your server:
   > by checking the `port` setting in its configuration file:
   >
   > ```bash
-  > $> cat /etc/postgresql/12/main/postgresql.conf | grep '^port'
+  > $> cat /etc/postgresql/16/main/postgresql.conf | grep '^port'
   > port = 5432
   > ```
 
@@ -331,7 +332,7 @@ README][readme].
 >
 >   If you choose to use environment variables as you have done with the PHP
 >   todolist, you will need to provide these environment variables through
->   Systemd later.
+>   systemd later.
 >
 >   The `export` sample commands provided in the README will only set the
 >   variables in the shell/SSH session where you run them. You will need to run
@@ -411,8 +412,8 @@ dependency manager and build tool of the [Elixir][elixir] ecosystem, much like
   They are downloaded from the [npm repository][npm] and saved into the
   `assets/node_modules` directory.
 
-- The [`mix ecto.migrate` command][mix-ecto-migrate] command executes [the
-  application's database
+- The [`mix ecto.migrate` command][mix-ecto-migrate] executes [the application's
+  database
   migrations](https://github.com/MediaComem/minesweeper/blob/36ea279c582974c4a0a1f97293448168e57721aa/priv/repo/migrations/20210921151550_initial_schema.exs).
   These migrations are Elixir programs that will connect to the database and
   create the table(s) required by the application.
@@ -567,12 +568,12 @@ The `root` directive in your nginx configuration should point to the
 contains the application's public web assets.
 
 > - :gem: Use an absolute path for the `root` directive.
-> - :gem: Do not follow steps related to PHP FPM, since they are only valid for
+> - :gem: Do not follow steps related to PHP-FPM, since they are only valid for
 >   a PHP application.
-> - :gem: The `include` and `fastcgi_pass` directives used in the PHP FPM
+> - :gem: The `include` and `fastcgi_pass` directives used in the PHP-FPM
 >   exercise make no sense for a non-PHP application. You should replace them
 >   with a [`proxy_pass`
->   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
+>   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass),
 >   as [presented during the course][nginx-rp-conf].
 > - :space_invader: You can also point the nginx configuration directly to the
 >   automated deployment structure. That way you will not have to modify it
@@ -615,10 +616,10 @@ deployment to work correctly:
   be restarted so that the program is reloaded into memory as a new process).
 
 The [project's README][readme] explains how to do all of this except restarting
-the Systemd service, which you can easily do with `sudo systemctl restart <service>`. You should run the appropriate commands in your `post-receive` hook
+the systemd service, which you can easily do with `sudo systemctl restart <service>`. You should run the appropriate commands in your `post-receive` hook
 script.
 
-> :gem: In the automated deployment exercice, it is mentionned that the
+> :gem: In the automated deployment exercise, it is mentioned that the
 > application will no longer work after changing the path to the repository in
 > the nginx configuration. In the case of the Minesweeper application, it will
 > continue to work, because the application serves its static files on its own,
@@ -650,7 +651,7 @@ run the application, it already has the right to use `sudo` without a password.
 > :books: This has been automatically configured for you in the
 > `/etc/sudoers.d/90-cloud-init-users` file.
 
-### :space_invader: Allowing the dedicated `minesweeper` Unix user to control the Systemd service
+### :space_invader: Allowing the dedicated `minesweeper` Unix user to control the systemd service
 
 If you are trying to complete the bonus challenge, you will need to allow the
 `minesweeper` user run the necessary `sudo systemctl ...` commands without a
@@ -858,7 +859,7 @@ remote: sudo: no tty present and no askpass program specified
 
 It means that you have created a dedicated Unix user but you have not performed
 the following step correctly: [Allowing the dedicated `minesweeper` Unix user to
-control the Systemd
+control the systemd
 service](#space_invader-allowing-the-dedicated-minesweeper-unix-user-to-control-the-systemd-service).
 
 Make sure that the list of authorized `systemctl` commands in the sudoers file
@@ -891,7 +892,7 @@ code=exited, status=200/CHDIR
 ```
 
 It means that systemd failed to move into the directory you specified (`CHDIR`
-means **ch**ange **dir**ectory). Check your Systemd unit file to make sure that
+means **ch**ange **dir**ectory). Check your systemd unit file to make sure that
 the working directory you have configured is the correct one and really exists.
 
 ### :boom: `502 Bad Gateway`
@@ -935,7 +936,7 @@ $> sudo -u postgres psql -c '\password minesweeper'
 
 ### :boom: System debugging
 
-You can display the last few lines of the logs of your `minesweeper` Systemd
+You can display the last few lines of the logs of your `minesweeper` systemd
 service with the following command:
 
 ```bash
@@ -953,7 +954,7 @@ $> sudo journalctl -u minesweeper
 > directly to the bottom with Shift-G (uppercase G), or back to the top with g
 > (lowercase g).
 
-If the application does not seem to work after running the Systemd service,
+If the application does not seem to work after running the systemd service,
 there might be an error message in these logs that can help you identify the
 issue.
 
@@ -1115,10 +1116,10 @@ You have encountered a rare bug in the Minesweeper test suite which affects
 version 2.0.1 and earlier. Simply update to version 2.0.2 or later to fix this
 issue.
 
-* If you are at the beginning of the exercise and are running a clone version
+- If you are at the beginning of the exercise and are running a clone version
   of Minesweeper, simply run `git pull` in the repository to get the latest
   version.
-* If you have set up the automated deployment, follow the instructions on how to
+- If you have set up the automated deployment, follow the instructions on how to
   [update your fork of the
   repository](#boom-updating-your-fork-of-the-repository), then push the changes
   to your server.

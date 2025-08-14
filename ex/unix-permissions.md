@@ -11,12 +11,10 @@ Replace `jde` by your actual username.
 - [Legend](#legend)
 - [:exclamation: Setup](#exclamation-setup)
 - [:exclamation: The exercise](#exclamation-the-exercise)
-- [:question: Check if it works](#question-check-if-it-works)
+- [:question: Optional: check if it works](#question-check-if-it-works)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-
 
 ## Legend
 
@@ -34,8 +32,6 @@ Parts of this guide are annotated with the following icons:
 - :checkered_flag: The end of the exercise.
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
-
-
 ## :exclamation: Setup
 
 Create a new `alice` user:
@@ -44,14 +40,18 @@ Create a new `alice` user:
 $> sudo useradd --create-home --shell /bin/bash alice
 ```
 
+> :gem: You can also use the equivalent short versions of these options:
+>
+> ```bash
+> $> sudo useradd -m -s /bin/bash alice
+> ```
+
 Make sure other users can access and list the contents of `alice`'s home
 directory:
 
 ```bash
 $> sudo chmod o+rx /home/alice
 ```
-
-
 
 ## :exclamation: The exercise
 
@@ -65,9 +65,7 @@ $> sudo chmod o+rx /home/alice
 - The directory must contain a `writable.txt` file that `alice` can read from
   and write to.
 
-
-
-## :question: Check if it works
+## :question: Optional: check if it works
 
 You should not be able to read the file in `alice`'s home directory:
 
@@ -137,8 +135,6 @@ Hello, I'm Alice
 > :books: As a reminder, in Bash, `>>` means to redirect the standard output of
 > a command into a file and to append to the end of that file. If you wanted to
 > overwrite the whole contents of the file, you could use `>` instead.
-
-
 
 ## :checkered_flag: What have I done?
 

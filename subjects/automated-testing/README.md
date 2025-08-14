@@ -115,8 +115,9 @@ you must regularly **test** it to make sure it works.
 whether it's a desktop or mobile application, or a website.
 You'll browse through the pages or screens, fill and submit forms, trigger actions, etc.
 
-In a large company, this might be handled by specialized [Quality Assurance (QA)][qa] engineers.
-Whether you or a QA engineer is doing it, manual testing has certain disadvantages:
+In a large company, this might be handled by specialized [**Q**uality
+**A**ssurance (QA)][qa] engineers. Whether you or a QA engineer is doing it,
+manual testing has certain disadvantages:
 
 * It is **time-consuming**.
   Testing a large software application manually can take hours or even days.
@@ -134,7 +135,7 @@ A program can do it just as well.
 * The test software is **separate from the software being tested**.
 * It **executes tests automatically** instead of manually.
 * It compares **actual outcomes** (what actually happens)
-  versus **expected** outcomes (what you expected to happen when writing the test).
+  versus **expected outcomes** (what you expected to happen when writing the test).
 
 Note that **automated tests are not a replacement for automated tests**.
 They are complementary in that they can be used to accelerate or automate tests
@@ -484,7 +485,7 @@ public function testCountWords() {
 
 ### Write JavaScript unit tests
 
-In the previous exercice, the functions you were testing were implemented in PHP.
+In the previous exercise, the functions you were testing were implemented in PHP.
 Since the tests actually execute the functions, they must be implemented in PHP as well.
 
 Now you will switch to this [sample JavaScript project][js-sample] implemented with [Node.js][node] (a server-side JavaScript runtime).
@@ -852,6 +853,8 @@ similarly to how they are used [in the `buildGreeting` function][js-sample-build
 
 * **Finding bugs is more difficult** than with unit tests.
   When an integration test fails, since multiple components are combined, it may be unclear which one is causing the bug.
+* Integration tests are **more complex and harder to write** than unit tests by definition,
+  since they combine multiple components.
 
 
 
@@ -1084,7 +1087,8 @@ await new Promise(resolve => setTimeout(resolve, 1000));
 
 ### What is test-driven development?
 
-As the name implies, [test-driven development][tdd] is **driven by tests**.
+As the name implies, [**t**est-**d**riven **d**evelopment (TDD)][tdd] is
+**driven by tests**.
 
 When you want to add a new feature to your software,
 instead of developing your code first, then writing your tests, you use this process:

@@ -76,6 +76,9 @@ Create an nginx configuration file for the website. You may name the file
 that with nano or Vim. You will need to use `sudo` as that directory is only
 writable by `root`.
 
+> :books: You can add the `.conf` extension to the file or not, as you wish.
+> Nginx does not need its configuration to have a particular extension.
+
 Take the static configuration that was [presented during the
 course][nginx-static-conf] and put it in the file. You should modify it to:
 
@@ -126,6 +129,10 @@ Enable the `clock` configuration by creating the correct symbolic link:
 ```bash
 $> sudo ln -s /etc/nginx/sites-available/clock /etc/nginx/sites-enabled/clock
 ```
+
+> :books: The `-s` option makes the `ln` (**l**i**n**k) command create a
+> **s**ymbolic link, i.e. a simple pointer to a file that resides in another
+> directory. Without the `-s` option, it would create a [hard link][hard-link].
 
 Make sure the symbolic link points to the correct file:
 
@@ -178,7 +185,7 @@ $> sudo nginx -s reload
 > clone the repository there. If you don't want other users to access this
 > directory, you could even restrict permissions further by making this
 > directory owned by you and the `www-data` group (e.g. `sudo chown
-> jde:www-data /var/www/clock`), and removing all permissions for other
+jde:www-data /var/www/clock`), and removing all permissions for other
 > users (e.g. with `sudo chmod o-a /var/www/clock`).
 >
 > If you don't care about security at all `(ㆆ _ ㆆ)`, you can also simply
@@ -190,8 +197,8 @@ $> sudo nginx -s reload
 Nginx does not automatically reload its configuration files when they change.
 
 First, you should check whether the changes you have made are valid. The `nginx
--t` command loads all the nginx configuration (including files added with
-`include`) and checks that they are valid:
+-t` command (as in **t**est) loads all the nginx configuration (including files
+added with `include`) and checks that they are valid:
 
 ```bash
 $> sudo nginx -t
@@ -212,6 +219,8 @@ command helpfully allows you to do that in a much simpler way:
 $> sudo nginx -s reload
 ```
 
+> The `-s` option sends a **s**ignal to the nginx master process.
+>
 > You can also do the same thing through systemd with the following command:
 > `sudo systemctl nginx reload`. This will also ask nginx to reload its
 > configuration.
@@ -327,7 +336,7 @@ $> sudo nginx -s reload
 > clone the repository there. If you don't want other users to access this
 > directory, you could even restrict permissions further by making this
 > directory owned by you and the `www-data` group (e.g. `sudo chown
-> jde:www-data /var/www/clock`), and removing all permissions for other
+jde:www-data /var/www/clock`), and removing all permissions for other
 > users (e.g. with `sudo chmod o-a /var/www/clock`).
 >
 > If you don't care about security at all `(ㆆ _ ㆆ)`, you can also simply
@@ -343,6 +352,7 @@ the `root` directive.
 Are you sure that the value of your `root` directive is correct? Does that
 directory actually exist?
 
+[hard-link]: https://en.wikipedia.org/wiki/Hard_link
 [nginx]: http://nginx.org/
 [nginx-install]: https://mediacomem.github.io/comem-archidep/2024-2025/subjects/reverse-proxy/?home=MediaComem%2Fcomem-archidep%23readme#18
 [nginx-signals]: http://nginx.org/en/docs/control.html

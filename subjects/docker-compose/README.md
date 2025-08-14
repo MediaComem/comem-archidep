@@ -103,6 +103,7 @@ specific area of concern and **delegate other functions to other containers**,
 Docker Compose is a tool for defining and running multi-container applications,
 making it easy to manage **services, networks, and volumes** in a single,
 comprehensible [YAML][yaml] configuration file called the **Compose file**.
+You can see an example on the right.
 
 <img class="w100" src="./images/multi-container.png" />
 
@@ -193,7 +194,7 @@ Docker Compose is also a **Docker subcommand**. Based on a Compose file, it can:
 
 <!-- slide-column -->
 
-**Networks** are the layer that allow services to communicate with each other.
+**Networks** are the layer that allows services to communicate with each other.
 Compose lets you configure named networks that can be reused across multiple
 services for greater control and security.
 
@@ -251,7 +252,7 @@ interesting to learn about if you want to go further with Docker:
   pool of resources**. You can then simply deploy Compose services to the swarm
   and containers will be automatically spawned on one of the cluster's machines.
 * If you want to go even further into large-scale Docker deployments, look at
-  [Kubernetes][k8s], an open-source system for **automating deployment, scaling,
+  [Kubernetes][k8s], an open source system for **automating deployment, scaling,
   and management of containerized applications**. It groups containers that make
   up an application into logical units for easy management and discovery.
 

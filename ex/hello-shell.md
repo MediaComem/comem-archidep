@@ -10,7 +10,7 @@ In this exercise, you'll set up a mini treasure hunt for adventurers navigating 
 - [Legend](#legend)
 - [:exclamation: Creating directories and files](#exclamation-creating-directories-and-files)
 - [:exclamation: Adding clues](#exclamation-adding-clues)
-- [:question: Test the treasure hunt](#question-test-the-treasure-hunt)
+- [:question: Optional: test the treasure hunt](#question-test-the-treasure-hunt)
 - [:exclamation: Automate the treasure hunt using shell scripting](#exclamation-automate-the-treasure-hunt-using-shell-scripting)
 - [:exclamation: Make `auto_hunt` executable](#exclamation-make-auto_hunt-executable)
 - [:exclamation: Running `auto_hunt` from any directory](#exclamation-running-auto_hunt-from-any-directory)
@@ -35,6 +35,7 @@ Parts of this guide are annotated with the following icons:
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
 ## :exclamation: Creating directories and files
+
 We're already familiar with the `pwd`, `cd`, `ls`, `mkdir`, `touch`, `echo`, and `cat` commands. Using the relevant commands, perform the tasks below:
 
 - Starting from your home (~) directory, create a new directory named `treasure_hunt`.
@@ -47,15 +48,16 @@ We're already familiar with the `pwd`, `cd`, `ls`, `mkdir`, `touch`, `echo`, and
 > :books: In Unix-like operating systems, the tilde (~) symbol is a shorthand representation for a user's home directory. It's a convenient way to refer to this directory without needing to know or type the full path. For instance, if a user's home directory is `/home/username`, typing `cd ~` in the terminal would navigate them directly to that location. The tilde is recognized and expanded to the full path by the shell, making it an efficient shortcut. Additionally, the tilde can be combined with other directory or file names, such as `~/Documents`, to quickly reference subdirectories or files within the home directory. The adoption of the tilde as a shortcut has become a deeply ingrained convention in the command-line world, providing users with a quick and consistent way to access their personal files and settings.
 
 ## :exclamation: Adding clues
+
 Using your preferred method, update the files we just created with the specified content:
 
 - `cave/echo.txt`: To uncover the next clue, explore where the water flows.
 - `lake/fish.txt`: Venture deep into the woods to discover the last hint.
 - `forest/tree.txt`: curl parrot.live
 
->:books: The `curl` command is a versatile tool used primarily for transferring data using various protocols, most commonly HTTP and HTTPS. For beginners diving into the world of command-line operations, think of `curl` as a way to communicate with websites and servers directly from the terminal without the need for a web browser. Whether you're trying to fetch the contents of a web page, download a file, or interact with APIs, `curl` is your go-to utility. Its name stands for "Client URL," underscoring its capability to work with URLs to retrieve or send data. Beginners often start with basic `curl` commands, like `curl https://example.com`, which fetches and displays the content of the specified web page in the terminal. As users become more accustomed to it, they'll find that `curl` offers a wide range of options and parameters to customize requests, making it an indispensable tool for many developers and system administrators.
+> :books: The `curl` command is a versatile tool used primarily for transferring data using various protocols, most commonly HTTP and HTTPS. For beginners diving into the world of command-line operations, think of `curl` as a way to communicate with websites and servers directly from the terminal without the need for a web browser. Whether you're trying to fetch the contents of a web page, download a file, or interact with APIs, `curl` is your go-to utility. Its name stands for "Client URL," underscoring its capability to work with URLs to retrieve or send data. Beginners often start with basic `curl` commands, like `curl https://example.com`, which fetches and displays the content of the specified web page in the terminal. As users become more accustomed to it, they'll find that `curl` offers a wide range of options and parameters to customize requests, making it an indispensable tool for many developers and system administrators.
 
-## :question: Test the treasure hunt
+## :question: Optional: test the treasure hunt
 
 Ensure your setup is in order:
 
@@ -66,7 +68,6 @@ Ensure your setup is in order:
 - Input the concluding hint into the terminal.
 - Relish your discovered treasure.
 
-
 ## :exclamation: Automate the treasure hunt using shell scripting
 
 Follow these steps to script and automate your entire treasure hunt:
@@ -75,16 +76,18 @@ Follow these steps to script and automate your entire treasure hunt:
 - Launch your go-to command-line text editor to edit the `auto_hunt` file.
 - Add the following line at the top of the file: `#!/bin/bash`
 - Systematically script the commands to journey through the treasure hunt. Introduce a theatrical pause of 2 seconds between commands using the `sleep` command for heightened suspense.
-  >:books: The sleep command is a simple yet useful utility in Unix-like operating systems that pauses the execution of a program or script for a specified duration. For beginners getting acquainted with scripting or command-line tasks, think of sleep as a way to introduce deliberate delays. By inputting sleep followed by a number, the system will pause for that many seconds. For instance, `sleep 5` will introduce a pause of five seconds.
 
-  >:gem: For a touch of efficiency, consider crafting a function that merges the file reading and short delay. This promotes reusability throughout your script.
+  > :books: The sleep command is a simple yet useful utility in Unix-like operating systems that pauses the execution of a program or script for a specified duration. For beginners getting acquainted with scripting or command-line tasks, think of sleep as a way to introduce deliberate delays. By inputting sleep followed by a number, the system will pause for that many seconds. For instance, `sleep 5` will introduce a pause of five seconds.
+
+  > :gem: For a touch of efficiency, consider crafting a function that merges the file reading and short delay. This promotes reusability throughout your script.
 
 - To execute the command found within `forest/tree.txt`, incorporate: `sh forest/tree.txt`.
 - Preserve your hard work by saving the script and gracefully exiting your text editor.
 - Jumpstart your treasure hunt automation with the command:
- ```bash
- $> sh auto_hunt
- ``````
+
+```bash
+$> sh auto_hunt
+```
 
 <details>
 <summary>Solution</summary>
@@ -106,6 +109,7 @@ read_clue forest/tree.txt
 
 sh forest/tree.txt
 ```
+
 </details>
 
 ## :exclamation: Make `auto_hunt` executable
@@ -116,13 +120,15 @@ Currently, to execute the shell script, you must use the sh command followed by 
 $> ./auto_hunt
 permission denied: ./auto_hunt
 ```
-The error message `permission denied: ./auto_hunt` that you see indicates that the shell  has been denied the permission to execute the file named `auto_hunt`. In Unix-like operating systems, files have certain permissions associated with them, determining who can read, write, or execute them. When you try to run `./auto_hunt` without the necessary execute permission, the system prevents it from being executed, leading to this error.
+
+The error message `permission denied: ./auto_hunt` that you see indicates that the shell has been denied the permission to execute the file named `auto_hunt`. In Unix-like operating systems, files have certain permissions associated with them, determining who can read, write, or execute them. When you try to run `./auto_hunt` without the necessary execute permission, the system prevents it from being executed, leading to this error.
 
 To address this, let's grant the `auto_hunt` script execute permissions:
 
 ```bash
 $> chmod +x auto_hunt
 ```
+
 :books: **At this juncture in the course, delving into the intricacies of Unix
 permissions isn't required. We'll embark on a deeper exploration of this topic
 as the semester progresses.**
@@ -143,6 +149,7 @@ Wouldn't it be convenient to execute this script without specifying its full pat
 $> auto_hunt
 command not found: auto_hunt
 ```
+
 The error message `command not found: auto_hunt` essentially means that the shell couldn't find a command or program named `auto_hunt` in the places it usually looks for such commands. When you type a command in the terminal, the shell searches for that command in a list of directories specified in a variable called `PATH`. If the command or program isn't located in any of these directories, you'll get the "command not found" error.
 
 Let's probe where our shell currently scouts for executable programs:
@@ -153,7 +160,6 @@ $> echo $PATH
 ```
 
 The above command displays the contents of the `PATH` environment variable. The response enumerates the directories where the shell scans for executable files. As evident, the `~/treasure_hunt` directory is conspicuously absent from this compilation. Consequently, our shell remains oblivious to any executable linked with the `auto_hunt` command.
-
 
 To add `auto_hunt` to your `PATH`, you need to update the `PATH` environment variable to include the directory containing the `auto_hunt` script. Here's how you can do it:
 
@@ -186,7 +192,7 @@ export PATH=$PATH:~/treasure_hunt
 
 Let's break this line down.
 
- **`export`**: This command tells the shell to make a variable available for other processes or commands that come after. When you export a variable, it's like announcing to programs and scripts you might run next, "Hey, you can use this!"
+**`export`**: This command tells the shell to make a variable available for other processes or commands that come after. When you export a variable, it's like announcing to programs and scripts you might run next, "Hey, you can use this!"
 
 **`PATH`**: This is one of the most critical environment variables in Unix-like operating systems. It tells the shell where to look for executable files in response to commands entered by the user. Its value is a list of directories separated by colons (:).
 
@@ -201,11 +207,13 @@ In this command, we merge several elements together. Firstly, `$PATH` retrieves 
 To incorporate the modifications made to the startup file without restarting your terminal, simply "source" the file:
 
 For Bash:
+
 ```bash
 $> source ~/.bash_profile
 ```
 
 For zsh:
+
 ```bash
 $> source ~/.zshrc
 ```

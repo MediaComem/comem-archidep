@@ -19,7 +19,7 @@ cloud server.
     - [:exclamation: Write the first build stage](#exclamation-write-the-first-build-stage)
     - [:exclamation: Write the final build stage](#exclamation-write-the-final-build-stage)
   - [:exclamation: Add a `.dockerignore` file](#exclamation-add-a-dockerignore-file)
-  - [:question: Build your Docker image](#question-build-your-docker-image)
+  - [:question: Optional: build your Docker image](#question-build-your-docker-image)
   - [:exclamation: Write the application service](#exclamation-write-the-application-service)
 - [:exclamation: Define the reverse proxy service](#exclamation-define-the-reverse-proxy-service)
 - [:exclamation: Run the Compose project](#exclamation-run-the-compose-project)
@@ -28,8 +28,6 @@ cloud server.
   - [:classical_building: Architecture](#classical_building-architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-
 
 ## Legend
 
@@ -49,8 +47,6 @@ Parts of this guide are annotated with the following icons:
     exercise.
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
-
-
 ## :gem: Meet the new boss, same as the old boss
 
 This exercise is basically the same as the [previous Docker Compose
@@ -62,8 +58,6 @@ exercise](./wopr-deployment.md).
 Since the basic structure of the exercise is the same, this exercise will only
 list what is different.
 
-
-
 ## :gem: Make sure you have everything you need
 
 You need a fork of the [WOPR repo][wopr-repo] on GitHub, which you should
@@ -73,26 +67,24 @@ exercise](./wopr-deployment.md).
 Make sure you have a clone of this fork somewhere **on your local machine**, and
 also **on your cloud server**. Likewise, you should already have them somewhere.
 
-
-
 ## :gem: Spot the differences
 
 The architecture of the WOPR application is basically the same as the PHP
 todolist's. There are basically 3 components:
 
-* The reverse proxy.
-* The WOPR application.
-* The database.
+- The reverse proxy.
+- The WOPR application.
+- The database.
 
 ![Simplified architecture](wopr-deployment-simplified.png)
 
 The main differences are:
 
-* Where the PHP todolist only used PHP, WOPR is an application using two
+- Where the PHP todolist only used PHP, WOPR is an application using two
   technology stacks:
-  * [Ruby][ruby] for the backend.
-  * [Node.js][node] to compile the JavaScript frontend.
-* The database is [Redis][redis] instead of MySQL.
+  - [Ruby][ruby] for the backend.
+  - [Node.js][node] to compile the JavaScript frontend.
+- The database is [Redis][redis] instead of MySQL.
 
 You may think that since there are 2 parts to the application, a Ruby backend
 and a JavaScript frontend, you need to run 2 isolated containers for them.
@@ -125,13 +117,9 @@ services:
     restart: # ...
 ```
 
-
-
 ## :exclamation: Create the Compose file
 
 Let's create this Compose file.
-
-
 
 ## :exclamation: Define the database service
 
@@ -142,9 +130,9 @@ the database required by the WOPR application.
 The database service is simpler to define this time, because Redis is a
 key-value [NoSQL][nosql] database which is:
 
-* Schemaless: you do not need to create the database structure in advance before
+- Schemaless: you do not need to create the database structure in advance before
   using it.
-* Without authentication by default. You *can* set up authentication, of course,
+- Without authentication by default. You _can_ set up authentication, of course,
   but the default configuration is not to have it.
 
 This means that the [official `redis` Docker image][redis-docker-image] requires
@@ -166,8 +154,6 @@ services:
 Fill in the blanks!
 
 > :space_invader: Use an Alpine-based image for a smaller footprint.
-
-
 
 ## :exclamation: Define the application service
 
@@ -191,9 +177,9 @@ Enter [Docker multi-stage builds][docker-multi-stage].
 A Dockerfile may actually contain **more than one `FROM` command** and use
 multiple base images:
 
-* Each `FROM` instruction can use a **different base**, and each of them begins
+- Each `FROM` instruction can use a **different base**, and each of them begins
   a new stage of the build.
-* You can **selectively copy artifacts from one stage to another**, leaving
+- You can **selectively copy artifacts from one stage to another**, leaving
   behind everything you don't want in the final image.
 
 This is great! Not only will it allow us to use both Ruby and Node.js in the
@@ -201,7 +187,7 @@ process of building our final Docker image, but it will also allow us to get rid
 of what we do not need in the final image (in this case: the Node.js
 dependencies required to build the frontend).
 
-Add a `Dockerfile` to your local WOPR repository:
+Add a Dockerfile to your local WOPR repository:
 
 ```Dockerfile
 # First stage: build the frontend
@@ -341,7 +327,7 @@ Do not forget to add a `.dockerignore` file to the WOPR repository. The main
 artifacts you want to ignore in this case are the `node_modules` and the
 `public` directories.
 
-### :question: Build your Docker image
+### :question: Optional: build your Docker image
 
 If you have written the Dockerfile correctly, you should be able to build it
 without errors:
@@ -355,6 +341,7 @@ $> docker build -t wopr/app .
 You can now add the WOPR application service to the Compose file:
 
 ...
+
 ```yml
 name: wopr
 
@@ -380,8 +367,6 @@ The value needs to be a Redis connection URL in the format
 `redis://<host>:<port>`. You can replace `<host>` with `db`, like in the
 previous exercise, and replace `<port>` by Redis's default 6379 port (or remove
 `:<port>` altogether, which will use the default).
-
-
 
 ## :exclamation: Define the reverse proxy service
 
@@ -416,8 +401,6 @@ server {
 
 Choose a different port to publish the reverse proxy service, say `14000`.
 
-
-
 ## :exclamation: Run the Compose project
 
 You now have the whole Compose architecture for this exercise: the database, the
@@ -441,7 +424,7 @@ wopr-rp-1    nginx:1.25.3-alpine   "/docker-entrypoint.…"   rp        8 second
 
 > :boom: If not everything is running, you might want to stop everything with
 > `docker compose down` and run the project in the foreground with `docker
-> compose up --build rp`. It will be easier to see errors that way. Otherwise
+compose up --build rp`. It will be easier to see errors that way. Otherwise
 > you can use `docker compose logs`.
 
 Assuming you chose port `14000` and that you have configured everything
@@ -450,8 +433,6 @@ http://localhost:14000!
 
 Yay! 🎉
 
-
-
 ## :exclamation: Deploy it on your cloud server
 
 The final deployment step of this exercise is basically [the same as in the
@@ -459,21 +440,19 @@ previous
 exercise](./docker-compose-todolist.md#exclamation-deploy-it-on-your-cloud-server),
 except that:
 
-* You must of course use the WOPR repositories on your local machine, GitHub and
+- You must of course use the WOPR repositories on your local machine, GitHub and
   your cloud server instead of the PHP todolist repositories.
-* You have already installed Docker on your cloud server, so no need to do it
+- You have already installed Docker on your cloud server, so no need to do it
   again.
-* An `.env` file is not required for WOPR since there is no sensitive value in
+- An `.env` file is not required for WOPR since there is no sensitive value in
   the configuration (although you could use one to make the project more
   configurable).
-* Choose another `server_name`, e.g. `wopr-docker.john-doe.archidep.ch`, and
+- Choose another `server_name`, e.g. `wopr-docker.jde.archidep.ch`, and
   another nginx site configuration file name, e.g. `wopr-docker`.
 
 If you follow the previous exercise's instructions and take these changes into
 account, you should be able to easily replicate your Compose WOPR deployment on
-your cloud server and access it at http://wopr-docker.john-doe.archidep.ch!
-
-
+your cloud server and access it at http://wopr-docker.jde.archidep.ch!
 
 ## :checkered_flag: What have I done?
 
@@ -491,8 +470,6 @@ relevant to this exercise and not those from previous exercises):
 ![Simplified architecture](docker-compose-wopr-simplified.png)
 
 > [Simplified architecture PDF version](docker-compose-wopr-simplified.pdf).
-
-
 
 [docker-multi-stage]: https://docs.docker.com/build/building/multi-stage/
 [dockerfile-cmd]: https://docs.docker.com/engine/reference/builder/#cmd

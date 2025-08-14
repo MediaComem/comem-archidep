@@ -10,7 +10,7 @@ The goal of this exercise is to set up a real domain name for your application.
 - [:exclamation: Choose your subdomain](#exclamation-choose-your-subdomain)
 - [:exclamation: Configure a DNS zone with Gandi.net](#exclamation-configure-a-dns-zone-with-gandinet)
 - [:exclamation: Access the domain name](#exclamation-access-the-domain-name)
-- [:question: Adapt your server's hostname](#question-adapt-your-servers-hostname)
+- [:question: Optional: adapt your server's hostname](#question-adapt-your-servers-hostname)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
   - [:classical_building: Architecture](#classical_building-architecture)
 - [:boom: Troubleshooting](#boom-troubleshooting)
@@ -48,8 +48,8 @@ this course.
 
 First, select one of the following domains depending on your class:
 
-* Students of the M51/1 class should use `archidep.ch`.
-* Students of the M51/2 class should use `archidep2.ch`.
+- Students of the M51/1 class should use `archidep.ch`.
+- Students of the M51/2 class should use `archidep2.ch`.
 
 Then, choose a subdomain of that domain. For example, you may use the same name
 as your Unix user (e.g. `jde`), although you **MUST** replace any
@@ -63,20 +63,20 @@ is.
 
 ## :exclamation: Configure a DNS zone with Gandi.net
 
-* Connect to [Gandi.net](https://gandi.net) with the user account provided to
+- Connect to [Gandi.net](https://gandi.net) with the user account provided to
   you by the teacher.
-* Go under the "Domain" tab in the left menu and select `archidep.ch` or
+- Go under the "Domain" tab in the left menu and select `archidep.ch` or
   `archidep2.ch` depending on your class (`archidep.ch` for M51/1 and
   `archidep2.ch` for M51/2).
-* Go under the "DNS Records" tab in the domain's top menu.
-* Add two new `A` records to map subdomains to **your server's public IP
+- Go under the "DNS Records" tab in the domain's top menu.
+- Add two new `A` records to map subdomains to **your server's public IP
   address**:
 
   1. Assuming your personal subdomain for the course is `jde.archidep.ch`,
      you should use `jde` as the **name of the DNS record**.
   2. Then, create a wildcard subdomain using `*.jde` as the **name of the
-    DNS record**, and the same IP address. This will direct any second-level
-    subdomain like `foo.jde.archidep.ch` to your server.
+     DNS record**, and the same IP address. This will direct any second-level
+     subdomain like `foo.jde.archidep.ch` to your server.
 
 Assuming your server's IP address is `W.X.Y.Z` and your username is `jde`,
 you should have the following DNS records (among others) in the domain's zone
@@ -98,7 +98,7 @@ your browser (if you have completed the previous exercises).
 > it. This is because DNS records are cached for a time (the TTL you
 > configured), by all intermediaries and also by your machine.
 
-## :question: Adapt your server's hostname
+## :question: Optional: adapt your server's hostname
 
 When you originally ran your Microsoft Azure server, you were asked to [set a
 hostname](https://github.com/MediaComem/comem-archidep/blob/main/ex/azure-setup.md#exclamation-change-the-hostname-of-your-virtual-machine)
@@ -109,7 +109,7 @@ However, for consistency, it is recommended that you adapt your hostname
 to match your personal subdomain.
 
 So if you chose, for example, `jde.archidep.ch`, run the following commands
- to update the hostname on your server:
+to update the hostname on your server:
 
 ```bash
 $> sudo hostname jde.archidep.ch
@@ -119,13 +119,14 @@ $> echo "jde.archidep.ch" | sudo tee /etc/hostname
 ## :checkered_flag: What have I done?
 
 You have created a mapping in the [domain name system][dns] between your custom
-subdomain (e.g. `jde.archidep.ch`) and the IP address of your server.
+subdomain (e.g. `jde.archidep.ch` or `jde.archidep2.ch`) and the IP address of
+your server.
 
 You have done this by modifying the [DNS zone file][dns-zone-file] for the
-course's domain (`archidep.ch`). When a computer requests to know the IP
-address for your subdomain, the [DNS name servers][dns-name-server] of the
-domain provider (gandi.net) will give them the IP address in the mapping you
-have configured.
+course's domain (`archidep.ch` or `archidep2.ch`). When a computer requests to
+know the IP address for your subdomain, the [DNS name servers][dns-name-server]
+of the domain provider (gandi.net) will give them the IP address in the mapping
+you have configured.
 
 This allows your applications and websites to be accessible through a
 human-friendly domain name instead of an IP address.

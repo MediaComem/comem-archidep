@@ -34,7 +34,7 @@ Which processes to run and when to run them depends on the use case:
 * On a desktop computer, you need processes to be launched to display the graphical user interface (GUI), for example.
 * On a web-facing server, you probably need to run a database and a web server at least.
 
-Some processes may have **dependencies**:
+Some processes may have **dependencies**,
 i.e. they might need other processes to be already running in order to run properly themselves.
 For example, a PHP application might need a MySQL database to store some data.
 
@@ -43,7 +43,7 @@ or to configure them to automatically restart if they crash.
 
 ### Process managers
 
-**Process managers** are programs that fulfill this role:
+**Process managers** are programs that fulfill this role,
 i.e. make sure that the correct processes are run in the correct order and are managed correctly thereafter.
 
 Most operating systems have a process manager built in:
@@ -67,7 +67,7 @@ Some of them are generic while others are specific to a programming language:
 Process manager           | Written in       | Can run
 :---                      | :---             | :---
 [God][god]                | [Ruby][ruby]     | *Any executable*
-[PHP FPM][php-fpm]        | [PHP][php]       | PHP programs
+[PHP-FPM][php-fpm]        | [PHP][php]       | PHP programs
 [PM2][pm2]                | [Node.js][node]  | Node.js programs
 [Supervisor][supervisord] | [Python][python] | *Any executable*
 
@@ -168,7 +168,8 @@ Command                          | Description
 
 Services started with systemd have their standard output and standard error streams collected and logged by [journald][systemd-journald],
 one of the default services provided by systemd itself.
-The `systemctl status` command sometimes shows you an excerpt of these logs.
+
+> The `systemctl status` command sometimes shows you an excerpt of these logs.
 
 The `journalctl` command allows you to read the full logs:
 
@@ -186,7 +187,7 @@ Command                        | Description
 * [Systemd Unit Configuration][systemd-unit]
 * [Systemd Service Configuration][systemd-service]
 * [Systemd Execution Environment Configuration][systemd-exec]
-* [Red Hat Enterprise Linux - System Administrator's Guide - Managing Services With Systemd](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/chap-managing_services_with_systemd)
+* [Red Hat Enterprise Linux - System Administrator's Guide - Managing Services With systemd](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/chap-managing_services_with_systemd)
 * [Systemd journald Service][systemd-journald]
 
 

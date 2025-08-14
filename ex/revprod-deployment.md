@@ -81,18 +81,18 @@ often split like this for various reasons.
 
 Some **advantages** of a multi-component application are:
 
-* Each component can be developed and deployed separately.
-* Each component could be developed by a separate team, using their favorite
+- Each component can be developed and deployed separately.
+- Each component could be developed by a separate team, using their favorite
   programming language and tools.
-* Each team could deploy new versions of their component independently.
+- Each team could deploy new versions of their component independently.
 
 The **disadvantages** are:
 
-* It is more complex to manage the development and
+- It is more complex to manage the development and
   deployment of a multi-component application.
-* Separate teams working together must agree on the API that the components use
+- Separate teams working together must agree on the API that the components use
   to communicate and not break that contract.
-* On the deployment side, you have to make sure that you always deploy
+- On the deployment side, you have to make sure that you always deploy
   compatible versions of all components together.
 
 ## :exclamation: Deploy the components separately
@@ -116,7 +116,7 @@ $> cd revprod-landing-page
 $> npm ci
 ```
 
-Create a Systemd unit file named `/etc/systemd/system/revprod-landing.service`
+Create a systemd unit file named `/etc/systemd/system/revprod-landing.service`
 (e.g. with `nano`) to execute this component and make it listen on port 4201:
 
 ```conf
@@ -148,7 +148,7 @@ $> sudo systemctl start revprod-landing
 ```
 
 > :gem: You can check that it is running with `sudo systemctl status
-> revprod-landing`.
+revprod-landing`.
 
 Create an nginx site configuration file
 `/etc/nginx/sites-available/revprod-landing` (e.g. with `nano`) to expose this
@@ -199,7 +199,7 @@ $> cd revprod-backend
 $> npm ci
 ```
 
-Create a Systemd unit file named `/etc/systemd/system/revprod-backend.service`
+Create a systemd unit file named `/etc/systemd/system/revprod-backend.service`
 (e.g. with `nano`) to execute this component and make it listen on port 4200:
 
 ```conf
@@ -231,7 +231,7 @@ $> sudo systemctl start revprod-backend
 ```
 
 > :gem: You can check that it is running with `sudo systemctl status
-> revprod-backend`.
+revprod-backend`.
 
 Create an nginx site configuration file
 `/etc/nginx/sites-available/revprod-backend` (e.g. with `nano`) to expose this
@@ -277,8 +277,8 @@ Take the time to share your thoughts about The Revolutionary Product!
 ## :exclamation: It's not working!
 
 If you have followed the instructions so far, you should be able to access the
-revprod backend and landing page in your browser, you should be able to create
-testimonials in the backend page.
+revprod backend and landing page in your browser. You should also be able to
+create testimonials in the backend page.
 
 Note that the URL switches from `http://revprod-landing.jde.archidep.ch` to
 `http://revprod-backend.jde.archidep.ch` (and back) when you navigate from
@@ -331,7 +331,7 @@ the backend can use HTTP response headers to indicate to the frontend that it
 can perform requests from a different origin.
 
 The revprod backend already supports sending the appropriate CORS headers to
-allow cross-origin requests. Update the Systemd unit file
+allow cross-origin requests. Update the systemd unit file
 `/etc/systemd/system/revprod-backend.service` for the backend and add the
 [appropriate environment variables][revprod-backend-config] to the `[Service]`
 section to enable CORS:
@@ -344,7 +344,7 @@ Environment="REVPROD_CORS_ORIGINS=http://revprod-landing.jde.archidep.ch"
 > :gem: Replace `jde` with your name in the definition of the second
 > environment variable.
 
-Reload the Systemd configuration and restart the backend service:
+Reload the systemd configuration and restart the backend service:
 
 ```bash
 $> sudo systemctl daemon-reload
@@ -373,14 +373,14 @@ origin matches.
 You should now disable CORS because we will explore another solution to this
 problem during the rest of this exercise.
 
-Update the Systemd unit file `/etc/systemd/system/revprod-backend.service` for
+Update the systemd unit file `/etc/systemd/system/revprod-backend.service` for
 the backend and set the value of the `REVPROD_CORS` variable to false:
 
 ```conf
 Environment="REVPROD_CORS=false"
 ```
 
-Reload the Systemd configuration and restart the backend service:
+Reload the systemd configuration and restart the backend service:
 
 ```bash
 $> sudo systemctl daemon-reload
@@ -412,7 +412,7 @@ landing page) to be accessible at one URL:
 `http://revprod.jde.archidep.ch`.
 
 Since the backend and landing page will be accessible at the same URL, we have
-to update their configurations to reflect that fact. Update the Systemd unit
+to update their configurations to reflect that fact. Update the systemd unit
 file `/etc/systemd/system/revprod-backend.service` for the backend and comment
 out (or remove) the `REVPROD_LANDING_PAGE_BASE_URL` environment variable in the
 `[Service]` section:
@@ -421,7 +421,7 @@ out (or remove) the `REVPROD_LANDING_PAGE_BASE_URL` environment variable in the
 #Environment="REVPROD_LANDING_PAGE_BASE_URL=http://revprod-landing.jde.archidep.ch"
 ```
 
-Do the same in the Systemd unit file
+Do the same in the systemd unit file
 `/etc/systemd/system/revprod-landing.service` for the landing page for the
 `REVPROD_BACKEND_BASE_URL` variable:
 
@@ -429,7 +429,7 @@ Do the same in the Systemd unit file
 #Environment="REVPROD_BACKEND_BASE_URL=http://revprod-backend.jde.archidep.ch"
 ```
 
-Reload Systemd's configuration and restart both services to take these changes
+Reload systemd's configuration and restart both services to take these changes
 into account:
 
 ```bash
@@ -442,20 +442,20 @@ You must create a new nginx site configuration file
 `/etc/nginx/sites-available/revprod`. This site configuration must fulfill
 the following criteria:
 
-* There must be **only one `server` block**.
-* The `listen` directive must still use port `80` like the previous
+- There must be **only one `server` block**.
+- The `listen` directive must still use port `80` like the previous
   configurations in this exercise.
-* The `server_name` directive must be `revprod.jde.archidep.ch` (replacing
+- The `server_name` directive must be `revprod.jde.archidep.ch` (replacing
   `jde` with your name).
-* The `root` directive must be the same as the one from the landing page's site
+- The `root` directive must be the same as the one from the landing page's site
   configuration.
-* There must be **multiple `location` blocks** in the `server` block, to serve
+- There must be **multiple `location` blocks** in the `server` block, to serve
   both the backend and frontend components, each with their own `proxy_pass`
   directive. These blocks will be similar to but not exactly the same as those
   used earlier in the exercise. You must make sure the following holds true:
 
-  * Requests to `/` are proxied to the landing page.
-  * Requests to `/comments` or `/share` are proxied to the backend.
+  - Requests to `/` are proxied to the landing page.
+  - Requests to `/comments` or `/share` are proxied to the backend.
 
   > :gem: A `location` block can match specific requests depending on how you
   > write it. Read the "Configuring Locations" section of [Configuring nginx as
@@ -541,8 +541,6 @@ configuration with `sudo nano /etc/nginx/nginx.conf` and add the following line
 ```
 server_names_hash_bucket_size 256;
 ```
-
-
 
 [archidep-exercises]: https://github.com/MediaComem/comem-archidep#exercises
 [configuring-nginx-as-a-web-server]: https://docs.nginx.com/nginx/admin-guide/web-server/web-server/

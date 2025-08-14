@@ -1,6 +1,6 @@
 # Deploy static sites to Netlify
 
-The goal of this exercice is to deploy a **static website** (only HTML,
+The goal of this exercise is to deploy a **static website** (only HTML,
 JavaScript and CSS) on the Netlify PaaS instead of your own server in the
 Infrastructure-as-a-Service (IaaS) Microsoft Azure Web Services cloud.
 
@@ -14,13 +14,13 @@ Infrastructure-as-a-Service (IaaS) Microsoft Azure Web Services cloud.
   - [:books: What is Netlify?](#books-what-is-netlify)
 - [:exclamation: Install Node.js and the Netlify CLI](#exclamation-install-nodejs-and-the-netlify-cli)
   - [:exclamation: Install Node.js](#exclamation-install-nodejs)
-  - [:books: What is Node?](#books-what-is-node)
-  - [:question: Check your Node.js installation](#question-check-your-nodejs-installation)
-  - [:exclamation: Install Netlify CLI using NPM](#exclamation-install-netlify-cli-using-npm)
-  - [:books: What is NPM](#books-what-is-npm)
+  - [:books: What is Node.js?](#books-what-is-node)
+  - [:question: Optional: check your Node.js installation](#question-check-your-nodejs-installation)
+  - [:exclamation: Install Netlify CLI using npm](#exclamation-install-netlify-cli-using-npm)
+  - [:books: What is npm?](#books-what-is-npm)
   - [:exclamation: Authenticate Netlify CLI](#exclamation-authenticate-netlify-cli)
 - [:exclamation: Launch!](#exclamation-launch)
-  - [:question: Push a change and witness continuous deployment!](#question-push-a-change-and-witness-continuous-deployment)
+  - [:question: Optional: push a change and witness continuous deployment!](#question-push-a-change-and-witness-continuous-deployment)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
 - [:boom: Troubleshooting](#boom-troubleshooting)
   - [:boom: **EACCESS** error](#boom-eaccess-error)
@@ -47,7 +47,7 @@ Parts of this guide are annotated with the following icons:
 
 ## :gem: Requirements
 
-This exercise assumees that you are familiar with the command line and Git.
+This exercise assumes that you are familiar with the command line and Git.
 
 ## :exclamation: Fork and clone the clock project
 
@@ -59,7 +59,7 @@ website repository][static-clock-repo]:
 Clone **your fork** onto your machine and move into the directory:
 
 ```bash
-$> git clone git@github.com:john-doe/static-clock-website.git
+$> git clone git@github.com:jde/static-clock-website.git
 Cloning into 'static-clock-website'...
 remote: Enumerating objects: 6, done.
 remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 6
@@ -67,7 +67,6 @@ Receiving objects: 100% (6/6), done.
 
 $> cd static-clock-website
 ```
-
 
 ## :exclamation: Create a Netlify account
 
@@ -77,7 +76,7 @@ GitHub:
 ![Register a Netlify Account](../images/netlify-signup.png)
 
 Once you are done with the registration, you will be asked to deploy your first
-project. You can try either try it out or skip this step:
+project. You can either try it out or skip this step:
 
 ![Skip onboarding deploy](../images/netlify-signup-skip.png)
 
@@ -106,7 +105,7 @@ optimize your project.
 
 You will be using the Netlify CLI to deploy your site. With the Netlify CLI, you
 can create new sites, deploy updates to your existing sites, set up continuous
-deployment, manage your team's access to sites, and more,  directly from the
+deployment, manage your team's access to sites, and more, directly from the
 command-line.
 
 ## :exclamation: Install Node.js and the Netlify CLI
@@ -118,14 +117,14 @@ will need to install Node.js to use this CLI. The easiest way to do so, is to
 head to the [Node.js Downloads][node-downloads] and choose the appropriate
 installer for your machine.
 
-### :books: What is Node?
+### :books: What is Node.js?
 
 [Node.js][node] is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 It allows developers to execute JavaScript code on the server side, rather than
 just in a web browser. This enables the creation of server-side applications
 with JavaScript, which was previously not possible.
 
-Node.js also includes a large and growing library of open-source packages
+Node.js also includes a large and growing library of open source packages
 (called "modules") that can be easily installed and used in Node.js
 applications, making it easy to add functionality without having to build it
 from scratch.
@@ -152,7 +151,7 @@ tools and frameworks, such as Express.js, to build web applications and APIs.
 > - [mise][mise] (also supports other platforms than Node.js)
 > - [asdf][asdf] (also supports other platforms than Node.js)
 
-### :question: Check your Node.js installation
+### :question: Optional: check your Node.js installation
 
 To make sure Node.js is installed, try the following:
 
@@ -161,7 +160,7 @@ $> node -v
 v22.12.0
 ```
 
-### :exclamation: Install Netlify CLI using NPM
+### :exclamation: Install Netlify CLI using npm
 
 ```bash
 $> npm install -g netlify-cli
@@ -171,21 +170,22 @@ added 1437 packages, and audited 1438 packages in 15s
 > :boom: See the troubleshooting section if you get an [**EACCES**
 > error](#boom-troubleshooting).
 
-:question: You can check the installation by executing:
+> :gem: You can check the installation by executing:
+>
+> ```bash
+> $> netlify -v
+> netlify-cli/17.38.0 darwin-arm64 node-v22.10.0
+> ```
 
-```bash
-$> netlify -v
-netlify-cli/17.38.0 darwin-arm64 node-v22.10.0
-```
+### :books: What is npm?
 
-### :books: What is NPM
-
-[npm][npm] (short for Node Package Manager) is a package manager for JavaScript.
-It is the default package manager for Node.js. npm provides a way to install and
-manage packages (libraries, frameworks, tools, etc.) that you can use in your
-own projects. When you install a package using npm, it installs the package in
-the current working directory, in a subdirectory called `node_modules`. If you
-want to use the package in your project, you can import it in your code.
+[npm][npm] (short for **N**ode **P**ackage **M**anager) is a package manager for
+JavaScript. It is the default package manager for Node.js. npm provides a way to
+install and manage packages (libraries, frameworks, tools, etc.) that you can
+use in your own projects. When you install a package using npm, it installs the
+package in the current working directory, in a subdirectory called
+`node_modules`. If you want to use the package in your project, you can import
+it in your code.
 
 In this case, you installed a global module, since you want to access the
 Netlify CLI from anywhere. Global modules are installed globally, which means
@@ -202,6 +202,7 @@ Logging into your Netlify account...
 Opening https://app.netlify.com/authorize?response_type=ticket&ticket=0b81336689cba2392265b135549df0e7
 ⠴ Waiting for authorization...
 ```
+
 This will open a page in your browser window asking you to authorize the Netlify CLI to access your account:
 
 ![Link Netlify and Netlify CLI](../images/netlify-authorize.png)
@@ -217,6 +218,7 @@ To see all available commands run: netlify help
 ## :exclamation: Launch!
 
 Make sure you are in the `static-clock-website` directory and run:
+
 ```bash
 $> netlify init
 ```
@@ -232,7 +234,7 @@ has not already been used by someone else.
 ```bash
 ? What would you like to do? +  Create & configure a new site
 ? Team: JohnDoe's team
-? Site name (leave blank for a random name; you can change it later): john-doe-static-clock-website
+? Site name (leave blank for a random name; you can change it later): jde-static-clock-website
 
 Site Created
 
@@ -267,7 +269,7 @@ Next steps:
 If you visit the **URL** printed in your terminal, you should be able to witness
 the static clock website up and running!
 
-### :question: Push a change and witness continuous deployment!
+### :question: Optional: push a change and witness continuous deployment!
 
 Open the `static-clock-website` website in your code editor and make a change.
 For example, change the `background-color` property on the `<body>` element in
@@ -314,19 +316,21 @@ $> mkdir ~/.npm-global
 $> npm config set prefix '~/.npm-global'
 ```
 
-You should now add the new NPM global installation directory to your path. The command will depend on what shell you are using. Find out with:
+You should now add the new npm global installation directory to your path. The command will depend on what shell you are using. Find out with:
 
 ```bash
 $> echo $0
 ```
 
 **If using `bash`**
+
 ```bash
 $> echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bash_profile
 $> source ~/.bash_profile
 ```
 
 **If using `zsh`**
+
 ```bash
 $> echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.zshrc
 $> source ~/.zshrc
@@ -337,7 +341,7 @@ install` command which previously failed should now work.
 
 [asdf]: https://asdf-vm.com
 [mise]: https://mise.jdx.dev/
-[n]:https://github.com/tj/n
+[n]: https://github.com/tj/n
 [netlify]: https://www.netlify.com/
 [netlify-cli]: https://docs.netlify.com/cli/get-started/
 [netlify-signup]: https://app.netlify.com/signup

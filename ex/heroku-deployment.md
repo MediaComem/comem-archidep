@@ -1,6 +1,6 @@
 # Deploy web applications with a database to Heroku
 
-The goal of this exercice is to deploy various applications with a database
+The goal of this exercise is to deploy various applications with a database
 component in the Heroku Platform-as-a-Service (PaaS) cloud instead of your own
 server in the Infrastructure-as-a-Service (IaaS) Amazon Web Services cloud. This
 illustrates the difference between the two cloud service models.
@@ -17,14 +17,14 @@ illustrates the difference between the two cloud service models.
   - [Create the `todolist` table in the database](#create-the-todolist-table-in-the-database)
 - [Deploy the Minesweeper application](#deploy-the-minesweeper-application)
   - [Create a Heroku application (if you have a credit card)](#create-a-heroku-application-if-you-have-a-credit-card)
-  - [Add the free Heroku Postgres add-on to your application](#add-the-free-heroku-postgres-add-on-to-your-application)
+  - [Add the free Heroku PostgreSQL add-on to your application](#add-the-free-heroku-postgres-add-on-to-your-application)
   - [Add the required configuration to your application](#add-the-required-configuration-to-your-application)
   - [Update your Minesweeper application to the latest version](#update-your-minesweeper-application-to-the-latest-version)
   - [Deploy the application to Heroku](#deploy-the-application-to-heroku-1)
 - [Deploy applications from previous years](#deploy-applications-from-previous-years)
   - [Deploy the RPS application](#deploy-the-rps-application)
     - [Optional: create a Heroku application (if you have a credit card)](#optional-create-a-heroku-application-if-you-have-a-credit-card-1)
-    - [Add the free Heroku Postgres add-on to your application](#add-the-free-heroku-postgres-add-on-to-your-application-1)
+    - [Add the free Heroku PostgreSQL add-on to your application](#add-the-free-heroku-postgres-add-on-to-your-application-1)
     - [Update your RPS application to the latest version](#update-your-rps-application-to-the-latest-version)
     - [Deploy the application to Heroku](#deploy-the-application-to-heroku-2)
     - [Set up the database](#set-up-the-database)
@@ -148,7 +148,7 @@ $> cd /path/to/projects/comem-archidep-php-todo-exercise
 Add the `heroku` remote to your application:
 
 ```bash
-$> heroku git:remote -a ad-john-doe-todo
+$> heroku git:remote -a ad-jde-todo
 ```
 
 Push your `main` (or `master`) branch to Heroku:
@@ -175,7 +175,7 @@ client, but you can do it with any SQL client.
 
   ```bash
   $> heroku config
-  === ad-john_doe-todo Config Vars
+  === ad-jde-todo Config Vars
   CLEARDB_DATABASE_URL: mysql://23fbfc668f39e2:letmein@eu-cdbr-west-02.cleardb.net/heroku_1a84deeaab9449e?reconnect=true
   ```
 
@@ -243,23 +243,23 @@ page once logged in:
 
 ![Create Heroku Application](../images/heroku-create-app.png)
 
-### Add the free Heroku Postgres add-on to your application
+### Add the free Heroku PostgreSQL add-on to your application
 
-Add the **free** [Heroku Postgres add-on][heroku-postgres] to your Heroku
+Add the **free** [Heroku PostgreSQL add-on][heroku-postgres] to your Heroku
 application's resources:
 
-![Add Postgres Add-on](../images/heroku-minesweeper-postgres.png)
+![Add PostgreSQL Add-on](../images/heroku-minesweeper-postgres.png)
 
 **Be sure to select the free plan:**
 
-![Choose Postgres Plan](../images/heroku-minesweeper-postgres-plan.png)
+![Choose PostgreSQL Plan](../images/heroku-minesweeper-postgres-plan.png)
 
 Go to your application's settings and reveal its configuration variables. You
 should see a `DATABASE_URL` variable there:
 
-![Postgres Database URL](../images/heroku-minesweeper-postgres-url.png)
+![PostgreSQL Database URL](../images/heroku-minesweeper-postgres-url.png)
 
-As [documented by the Heroku Postgres add-on][heroku-postgres-database-url],
+As [documented by the Heroku PostgreSQL add-on][heroku-postgres-database-url],
 this environment variable is how database connection settings are provided to
 your application.
 
@@ -294,7 +294,7 @@ environment variable to configure the port to listen on.
 
 A new version has been published which alternatively also supports the
 `$DATABASE_URL` and `$PORT` environment variables, so that it works out of the
-box with the [Heroku Postgres add-on][heroku-postgres] and Heroku itself.
+box with the [Heroku PostgreSQL add-on][heroku-postgres] and Heroku itself.
 
 Follow these instructions to update your fork of the Minesweeper repository:
 
@@ -340,17 +340,17 @@ Your fork should now be up-to-date. You can push the updates to GitHub with `git
 ### Deploy the application to Heroku
 
 Still in your local Minesweeper repository, add the `heroku` remote to your
-application (assuming your Heroku application is named `ad-john-doe-mnswpr`):
+application (assuming your Heroku application is named `ad-jde-mnswpr`):
 
 ```bash
-$> heroku git:remote -a ad-john-doe-mnswpr
+$> heroku git:remote -a ad-jde-mnswpr
 ```
 
 > Heroku will probably open your browser and ask you to log in at this point.
 
 The [initial setup of the Minesweeper application][minesweeper-initial-setup]
 indicates that you must create various things such as a database user, a
-database, and the `uuid-ossp` extension. The Heroku Postgres addon already
+database, and the `uuid-ossp` extension. The Heroku PostgreSQL addon already
 manages the user and database for you. You can use the following command to
 create the extension in the provided database:
 
@@ -405,23 +405,23 @@ You can create an application from the main Heroku page once logged in:
 
 ![Create Heroku Application](../images/heroku-create-app.png)
 
-#### Add the free Heroku Postgres add-on to your application
+#### Add the free Heroku PostgreSQL add-on to your application
 
-Add the **free** [Heroku Postgres add-on][heroku-postgres] to your Heroku
+Add the **free** [Heroku PostgreSQL add-on][heroku-postgres] to your Heroku
 application's resources:
 
-![Add Postgres Add-on](../images/heroku-postgres.png)
+![Add PostgreSQL Add-on](../images/heroku-postgres.png)
 
 **Be sure to select the free plan:**
 
-![Choose Postgres Plan](../images/heroku-postgres-plan.png)
+![Choose PostgreSQL Plan](../images/heroku-postgres-plan.png)
 
 Go to your application's settings and reveal its configuration variables. You
 should see a `DATABASE_URL` variable there:
 
-![Postgres Database URL](../images/heroku-postgres-url.png)
+![PostgreSQL Database URL](../images/heroku-postgres-url.png)
 
-As [documented by the Heroku Postgres add-on][heroku-postgres-database-url],
+As [documented by the Heroku PostgreSQL add-on][heroku-postgres-database-url],
 this environment variable is how database connection settings are provided to
 your application.
 
@@ -435,7 +435,7 @@ to configure PostgreSQL connection settings.
 A new version has been published which also supports [the `$DATABASE_URL`
 environment
 variable](https://github.com/MediaComem/rps/blob/6139da63bc2f9f382ea5beb0ffcc3aff393a54c1/src/server/config.ts#L25),
-so that it works out of the box with the [Heroku Postgres
+so that it works out of the box with the [Heroku PostgreSQL
 add-on][heroku-postgres].
 
 **If you have a clone of the [original
@@ -475,10 +475,10 @@ $> cd /path/to/projects/rps
 ```
 
 Add the `heroku` remote to your application (assuming your Heroku application is
-named `ad-john-doe-rps`):
+named `ad-jde-rps`):
 
 ```bash
-$> heroku git:remote -a ad-john-doe-rps
+$> heroku git:remote -a ad-jde-rps
 ```
 
 Push the application to Heroku:
@@ -493,7 +493,7 @@ which you have not yet performed.
 
 #### Set up the database
 
-You do not need to create a database user or a database. The [Heroku Postgres
+You do not need to create a database user or a database. The [Heroku PostgreSQL
 add-on][heroku-postgres] has taken care of this for you. However, this database
 is empty and contains neither the `uuid-ossp` extension nor the tables that are
 required for the application to work.
@@ -505,7 +505,7 @@ $> heroku psql -c 'CREATE EXTENSION "uuid-ossp";'
 ```
 
 > The `heroku psql -c '...'` command executes arbitrary SQL statements in the
-> context of the database provided by the Heroku Postgres add-on. This is
+> context of the database provided by the Heroku PostgreSQL add-on. This is
 > equivalent to when you used `sudo -u postgres psql -d rps -c 'CREATE EXTENSION "uuid-ossp"'` during the original exercise to execute SQL statements in the
 > database running on your own server.
 
@@ -589,7 +589,7 @@ $> cd /path/to/projects/comem-wopr
 Add the `heroku` remote to your application:
 
 ```bash
-$> heroku git:remote -a ad-john-doe-wopr
+$> heroku git:remote -a ad-jde-wopr
 ```
 
 The WOPR repository contains both a `Gemfile` file for Ruby packages and a

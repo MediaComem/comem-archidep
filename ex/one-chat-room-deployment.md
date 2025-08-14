@@ -1,22 +1,22 @@
 # Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database
 
-The goal of this exercice is to put in practice the knowledge acquired during
-previous exercices to deploy a new application from scratch on your server.
+The goal of this exercise is to put in practice the knowledge acquired during
+previous exercises to deploy a new application from scratch on your server.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [The goal](#the-goal)
   - [The application](#the-application)
-- [Getting started](#getting-started)
-  - [Optional: test in development mode](#optional-test-in-development-mode)
-- [Create a systemd service](#create-a-systemd-service)
-- [Serve the application through nginx](#serve-the-application-through-nginx)
-- [Provision a TLS certificate](#provision-a-tls-certificate)
-- [Set up an automated deployment with Git hooks](#set-up-an-automated-deployment-with-git-hooks)
-  - [Allow your user to restart the service without a password](#allow-your-user-to-restart-the-service-without-a-password)
-  - [Test the automated deployment](#test-the-automated-deployment)
-- [End result](#end-result)
+- [:exclamation: Getting started](#getting-started)
+  - [:question: Optional: test in development mode](#optional-test-in-development-mode)
+- [:exclamation: Create a systemd service](#create-a-systemd-service)
+- [:exclamation: Serve the application through nginx](#serve-the-application-through-nginx)
+- [:exclamation: Provision a TLS certificate](#provision-a-tls-certificate)
+- [:exclamation: Set up an automated deployment with Git hooks](#set-up-an-automated-deployment-with-git-hooks)
+  - [:exclamation: Allow your user to restart the service without a password](#allow-your-user-to-restart-the-service-without-a-password)
+  - [:exclamation: Test the automated deployment](#test-the-automated-deployment)
+- [:classical_building: End result](#end-result)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -40,8 +40,8 @@ Additionally:
   your systemd service must be enabled).
 - The application must be accessible **only through nginx**. It **must not** be
   exposed directly on a publicly accessible port other than 80 or 443 (in the
-  AWS instances used in this course, the other publicly accessible ports are 22,
-  3000 and 3001, with port 22 being already used by SSH).
+  virtual machines used in this course, the other publicly accessible ports are
+  22, 3000 and 3001, with port 22 being already used by SSH).
 - Clients accessing the application over HTTP must be redirected to HTTPS.
 
 ### The application
@@ -55,21 +55,25 @@ It is developed with:
 - [Vue.js (client-side JavaScript)][vue] for the frontend
 - [MongoDB][mongo] for the database (a non-relational, [NoSQL][nosql] database)
 
-You do not need to know any of these technologies, as your goal is only to
-install and run the application, not modify it.
+You do not need to know the specifics of these technologies. Your goal is only
+to deploy the application as indicated by the instructions. You will not need to
+modify it except for a very small change at the end to test your automated
+deployment.
 
-## Getting started
+## :exclamation: Getting started
 
 You should start by **forking** the [repository][repo] with the `Fork` button,
 and use your own copy of the repository instead of the provided one. This will
 make it easier for you to test the automated deployment at the end.
 
 You must then follow the instructions in the [project's `README`][readme] to
-install the necessary requirements and perform the initial setup. Where
-necessary, you will need to find installation instructions for Ubuntu (version
-20.04 Focal).
+install the necessary requirements and perform the initial setup. That README is
+generic: it is not written specifically for this exercise.
 
-### Optional: test in development mode
+Where necessary, you will need to find installation instructions for Ubuntu
+(version 24.04 Noble).
+
+### :question: Optional: test in development mode
 
 Before attempting to set up the systemd service, nginx configuration and
 automated deployment, you might want to simply run the application manually to
@@ -97,7 +101,7 @@ server's IP address). Stop the application with `Ctrl-C` once you are done.
 > by default, and it's also a schema-less NoSQL database (databases and
 > collections are created on-the-fly when they are accessed the first time).
 
-## Create a systemd service
+## :exclamation: Create a systemd service
 
 Create and enable a systemd unit file like in the [systemd
 exercise][systemd-ex]. Make the necessary changes to run the one chat room
@@ -122,27 +126,27 @@ next time you restart the server with `sudo reboot`.
 > your systemd configuration to the correct directory. That way you will not
 > have to modify it later.
 
-## Serve the application through nginx
+## :exclamation: Serve the application through nginx
 
 Create an nginx configuration to serve the application like in the [nginx
 PHP-FPM exercise][nginx-php-fpm-ex].
 
 > **Hints:**
 >
-> - Skip all steps related to PHP FPM, since they are only valid for a PHP
+> - Skip all steps related to PHP-FPM, since they are only valid for a PHP
 >   application.
-> - The `include` and `fastcgi_pass` directives used in the PHP FPM exercise
+> - The `include` and `fastcgi_pass` directives used in the PHP-FPM exercise
 >   make no sense for a non-PHP application. You should replace them with a
 >   [`proxy_pass`
->   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
+>   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass),
 >   as [presented during the course][nginx-rp-conf].
 
-## Provision a TLS certificate
+## :exclamation: Provision a TLS certificate
 
 Obtain and configure a TLS certificate to serve the application over HTTPS like
 in the [certbot exercise][certbot-ex].
 
-## Set up an automated deployment with Git hooks
+## :exclamation: Set up an automated deployment with Git hooks
 
 Change your deployment so that the application can be automatically updated via
 a Git hook like in the [automated deployment exercise][auto-deploy-ex].
@@ -160,7 +164,7 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 >      not reinterpreted on-the-fly as with PHP; the process must be restarted
 >      so that the code is reloaded into memory).
 
-### Allow your user to restart the service without a password
+### :exclamation: Allow your user to restart the service without a password
 
 In order for the new `post-receive` hook to work, your user must be able to run
 `sudo systemctl restart one-chat-room` (assuming you have named your service
@@ -176,10 +180,10 @@ Create a `one-chat-room` Unix group:
 $> sudo groupadd one-chat-room
 ```
 
-Add your user to that group (replacing `john_doe` with your username):
+Add your user to that group (replacing `jde` with your username):
 
 ```bash
-$> sudo usermod -a -G one-chat-room john_doe
+$> sudo usermod -a -G one-chat-room jde
 ```
 
 Make sure that your user has been added to the group successfully by looking for
@@ -187,7 +191,7 @@ it in the `/etc/group` file:
 
 ```bash
 $> cat /etc/group | grep one-chat-room
-one-chat-room:x:1005:john_doe
+one-chat-room:x:1005:jde
 ```
 
 Make sure your default editor is `nano` (or whichever you are more comfortable
@@ -223,7 +227,7 @@ Exit with `Ctrl-X` and save when prompted.
 > You can test that it works by connecting to your server and running `sudo systemctl status one-chat-room`. It should no longer ask you for your
 > password.
 
-### Test the automated deployment
+### :exclamation: Test the automated deployment
 
 Clone your fork of the repository to your local machine, make sure you have
 added a remote to your server, then commit and push a change to test the
@@ -232,7 +236,7 @@ automated deployment.
 For example, the main title of the page is [in the file
 `views/components/app.pug`][one-chat-room-title].
 
-## End result
+## :classical_building: End result
 
 ![Diagram](one-chat-room-deployment.png)
 

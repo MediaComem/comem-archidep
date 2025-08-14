@@ -6,7 +6,7 @@ Useful commands to manage a Unix system.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Legend](#legend)
-- [How to I connect to my server with SSH? (`ssh`)](#how-to-i-connect-to-my-server-with-ssh-ssh)
+- [How do I connect to my server with SSH? (`ssh`)](#how-to-i-connect-to-my-server-with-ssh-ssh)
 - [Who am I? (`whoami` & `id`)](#who-am-i-whoami--id)
 - [How do I change my password? (`passwd`)](#how-do-i-change-my-password-passwd)
 - [What's happening?](#whats-happening)
@@ -37,24 +37,24 @@ Useful commands to manage a Unix system.
 Parts of this guide are annotated with the following icons:
 
 - :warning: **Critically important information**
-- :gem: Tips.
-- :space_invader: More advanced tips on how to save some time.
+- :gem: Tips
+- :space_invader: More advanced tips on how to save some time
 - :books: Additional information that you can read if you want to know more
-  about the commands and tools mentioned.
-- :boom: Troubleshooting tips: how to fix common problems you might encounter.
+  about the commands and tools mentioned
+- :boom: Troubleshooting tips: how to fix common problems you might encounter
 
-## How to I connect to my server with SSH? (`ssh`)
+## How do I connect to my server with SSH? (`ssh`)
 
-Connect to the server at the IP address `W.X.Y.Z` as the `john_doe` user:
+Connect to the server at the IP address `W.X.Y.Z` as the `jde` user:
 
 ```bash
-$> ssh john_doe@W.X.Y.Z
+$> ssh jde@W.X.Y.Z
 ```
 
-Connect to the server at the domain `example.com` as the `john_doe` user:
+Connect to the server at the domain `example.com` as the `jde` user:
 
 ```bash
-$> ssh john_doe@example.com
+$> ssh jde@example.com
 ```
 
 ## Who am I? (`whoami` & `id`)
@@ -103,7 +103,8 @@ alternative:
 
 ### What's running? (`ps` or `procs`)
 
-Run `ps` to list running interactive processes that belong to your user:
+Run `ps` (**p**rocess **s**tatus) to list running interactive processes that
+belong to your user:
 
 ```bash
 $> ps
@@ -178,7 +179,7 @@ $> procs --tree
 
 ### How much disk space is left? (`df` or `duf`)
 
-List storage devices, mounts and available space:
+List storage devices, mounts and available space with `df` (**d**isk **f**ree):
 
 ```bash
 $> df -h
@@ -264,7 +265,7 @@ $> ps -ef | grep php
 root     20942     1  0 Dec06 ?        00:00:24 php-fpm: master process (/etc/php/7.2/fpm/php-fpm.conf)
 www-data 20960 20942  0 Dec06 ?        00:00:00 php-fpm: pool www
 www-data 20961 20942  0 Dec06 ?        00:00:00 php-fpm: pool www
-john_doe 26378 26365  0 10:02 pts/0    00:00:00 php -S 0.0.0.0:3000
+jde      26378 26365  0 10:02 pts/0    00:00:00 php -S 0.0.0.0:3000
 ```
 
 In this example based on the ["Deploy a PHP application with SFTP"
@@ -313,7 +314,7 @@ sudo systemctl status foo
 
 This shows you whether your service is active (running) and whether it is
 enabled (to restart at boot). When there is a problem, it may also show you the
-error that caused to the service to fail to start.
+error that caused the service to fail to start.
 
 If you cannot find a clear problem from the status information, you should look
 at the system logs for that service:
@@ -465,7 +466,7 @@ mdadm/noble-updates 4.3-1ubuntu2.1 amd64 [upgradable from: 4.3-1ubuntu2]
 When you have packages to upgrade, you could of course manually `apt install`
 each of them, but there are also two helpful commands that can do it for you:
 
-* `apt upgrade`
+- `apt upgrade`
 
   This command will upgrade all packages that have new versions, installing any
   new dependencies that may be required.
@@ -473,7 +474,8 @@ each of them, but there are also two helpful commands that can do it for you:
   However, it will behave conservatively and **never remove packages that are
   currently installed**. This is to avoid problems in case new versions of your
   installed packages have widely different dependencies.
-* `apt full-upgrade`
+
+- `apt full-upgrade`
 
   This command will do the same as `apt upgrade`, but in addition, it will
   automatically remove any packages that were dependencies of previous versions
@@ -488,7 +490,7 @@ removed packages will impact your computer. Use it with caution.
 
 #### :boom: Daemons using outdated libraries
 
-When you install or upgrade a package, it *may* prompt you to reboot and/or to
+When you install or upgrade a package, it _may_ prompt you to reboot and/or to
 restart outdated daemons (i.e. background services):
 
 ![Restart outdated daemons](./images/apt-outdated-daemons.png)
@@ -568,14 +570,14 @@ will find many examples of these older commands on the Internet.
 
 These are mostly equivalent commands:
 
-`apt` command      | older equivalent
-:---               | :---
-`apt list`         | `dpkg -l`
-`apt search`       | `apt-cache search`
-`apt install`      | `apt-get install`
-`apt update`       | `apt-get update`
-`apt upgrade`      | `apt-get upgrade`
-`apt full-upgrade` | `apt-get dist-upgrade`
+| `apt` command      | older equivalent       |
+| :----------------- | :--------------------- |
+| `apt list`         | `dpkg -l`              |
+| `apt search`       | `apt-cache search`     |
+| `apt install`      | `apt-get install`      |
+| `apt update`       | `apt-get update`       |
+| `apt upgrade`      | `apt-get upgrade`      |
+| `apt full-upgrade` | `apt-get dist-upgrade` |
 
 ## My `post-receive` Git hook is not executing!
 

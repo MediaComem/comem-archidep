@@ -1,7 +1,7 @@
 # Deploy WOPR, a Sinatra & Svelte web application with a Redis database
 
-The goal of this exercice is to put in practice the knowledge acquired during
-previous exercices to deploy a new application from scratch on your server.
+The goal of this exercise is to put in practice the knowledge acquired during
+previous exercises to deploy a new application from scratch on your server.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -14,16 +14,16 @@ previous exercices to deploy a new application from scratch on your server.
 - [:exclamation: Getting started](#exclamation-getting-started)
   - [:exclamation: Fork the repository](#exclamation-fork-the-repository)
   - [:exclamation: Install the requirements](#exclamation-install-the-requirements)
-    - [:question: Check that everything has been correctly installed](#question-check-that-everything-has-been-correctly-installed)
+    - [:question: Optional: check that everything has been correctly installed](#question-check-that-everything-has-been-correctly-installed)
   - [:exclamation: Install compilation tools](#exclamation-install-compilation-tools)
-  - [:question: Test in development mode](#question-test-in-development-mode)
+  - [:question: Optional: test in development mode](#question-test-in-development-mode)
   - [:exclamation: Run the application in production mode](#exclamation-run-the-application-in-production-mode)
 - [:exclamation: Create a systemd service](#exclamation-create-a-systemd-service)
 - [:exclamation: Serve the application through nginx](#exclamation-serve-the-application-through-nginx)
 - [:exclamation: Provision a TLS certificate](#exclamation-provision-a-tls-certificate)
 - [:exclamation: Set up an automated deployment with Git hooks](#exclamation-set-up-an-automated-deployment-with-git-hooks)
   - [:gem: Allow your user to restart the service without a password](#gem-allow-your-user-to-restart-the-service-without-a-password)
-  - [:space_invader: Allowing the dedicated `wopr` Unix user to control the Systemd service](#space_invader-allowing-the-dedicated-wopr-unix-user-to-control-the-systemd-service)
+  - [:space_invader: Allowing the dedicated `wopr` Unix user to control the systemd service](#space_invader-allowing-the-dedicated-wopr-unix-user-to-control-the-systemd-service)
   - [:exclamation: Test the automated deployment](#exclamation-test-the-automated-deployment)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
   - [:classical_building: Architecture](#classical_building-architecture)
@@ -68,7 +68,7 @@ Additionally:
 As an optional bonus challenge:
 
 - Create a dedicated Unix user (e.g. `wopr`) other than your personal user (e.g.
-  `john_doe`) to run the application.
+  `jde`) to run the application.
 - This user should be a system user, not a login user. It should not
   be able to log in with a password, although you can set up SSH public key
   authentication for the automated deployment.
@@ -149,9 +149,9 @@ described in the [project's README][readme] on your server.
 
 - **How to install Ruby:** there are several methods to install Ruby. You will
   find more information on the [Ruby website][ruby]. You should look for
-  installation instructions specific to your operating system (your AWS instance
-  is running either Ubuntu 20.04 Focal or Ubuntu 22.04 Jammy). Where possible,
-  you should find instructions to install with the apt package manager.
+  installation instructions specific to your operating system (your server is
+  running Ubuntu 24.04 Noble). Where possible, you should find instructions to
+  install with the apt package manager.
 
   You will also need to installer [Bundler][bundler], the package manager for
   Ruby. You can do so with the following command:
@@ -159,6 +159,7 @@ described in the [project's README][readme] on your server.
   ```bash
   $> sudo apt install ruby-bundler
   ```
+
 - **How to install Node.js:** there are several methods to install Node.js. One
   of the simplest is to use the [binary distributions provided by
   NodeSource][node-install]. You should look for installation instructions
@@ -168,9 +169,9 @@ described in the [project's README][readme] on your server.
 - **To install Redis**, you may follow step 1 of this article:
   https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-20-04.
 
-#### :question: Check that everything has been correctly installed
+#### :question: Optional: check that everything has been correctly installed
 
-- **Check your ruby installation:** you can check that Ruby has been correctly
+- **Check your Ruby installation:** you can check that Ruby has been correctly
   installed with the following command:
 
   ```bash
@@ -191,7 +192,7 @@ described in the [project's README][readme] on your server.
   $> node -e 'console.log(`Node.js ${process.version} is installed and working`)'
   ```
 
-- **Check your Redis installation:** step 2 of the article mentionned above
+- **Check your Redis installation:** step 2 of the article mentioned above
   explains how to make sure your Redis server is running.
 
 ### :exclamation: Install compilation tools
@@ -210,7 +211,7 @@ command:
 $> sudo apt install -y g++ make
 ```
 
-### :question: Test in development mode
+### :question: Optional: test in development mode
 
 Before attempting to set up the systemd service, nginx configuration and
 automated deployment, you can run the application manually in development mode
@@ -222,10 +223,10 @@ indicated in the project's README. This way you will be able to pull the updates
 you push later.
 
 You can set the `PORT` environment variable to `3001` for this simple test, as
-that is one of the ports that should be open in your AWS instance's firewall.
-Run the application on that port and visit http://W.X.Y.Z:3001 to check that it
-works (replacing `W.X.Y.Z` by your server's IP address). Stop the application
-with `Ctrl-C` once you are done.
+that is one of the ports that should be open in your server's firewall. Run the
+application on that port and visit http://W.X.Y.Z:3001 to check that it works
+(replacing `W.X.Y.Z` by your server's IP address). Stop the application with
+`Ctrl-C` once you are done.
 
 > :books: Note that you do not need to configure database access credentials as
 > with the PHP todolist. The application tries to connect to Redis with the
@@ -242,8 +243,8 @@ in production mode.
 ## :exclamation: Create a systemd service
 
 Create and enable a systemd unit file like in the [systemd
-exercise][systemd-ex]. Make the necessary changes to run the one chat room
-application instead of the PHP todolist.
+exercise][systemd-ex]. Make the necessary changes to run the WOPR application
+instead of the PHP todolist.
 
 > - :gem: You will find the correct command to run the application in [the
 >   project's `README`][readme]. Remember that systemd requires absolute paths
@@ -257,7 +258,7 @@ application instead of the PHP todolist.
 Once you have enabled and started the service, it should start automatically the
 next time you restart the server with `sudo reboot`.
 
-> :space_invader: if you know what you are doing, you can already set up the
+> :space_invader: If you know what you are doing, you can already set up the
 > automated deployment project structure at this point, so that you can point
 > your systemd configuration to the correct directory. That way you will not
 > have to modify it later.
@@ -267,12 +268,12 @@ next time you restart the server with `sudo reboot`.
 Create an nginx configuration to serve the application like in the [nginx
 PHP-FPM exercise][nginx-php-fpm-ex].
 
-> - :gem: Skip all steps related to PHP FPM, since they are only valid for a PHP
+> - :gem: Skip all steps related to PHP-FPM, since they are only valid for a PHP
 >   application.
-> - :gem: The `include` and `fastcgi_pass` directives used in the PHP FPM
+> - :gem: The `include` and `fastcgi_pass` directives used in the PHP-FPM
 >   exercise make no sense for a non-PHP application. You should replace them
 >   with a [`proxy_pass`
->   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
+>   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass),
 >   as [presented during the course][nginx-rp-conf].
 > - :space_invader: You can also point the nginx configuration directly to the
 >   automated deployment structure. That way you will not have to modify it
@@ -302,7 +303,7 @@ deployment to work correctly:
   reinterpreted on-the-fly as with PHP; the process must be restarted so that
   the code is reloaded into memory).
 
-> :gem: In the automated deployment exercice, it is mentionned that the
+> :gem: In the automated deployment exercise, it is mentioned that the
 > application will no longer work after changing the path to the repository in
 > the nginx configuration. In the case of the WOPR application, it will
 > continue to work, because the application serves its static files on its
@@ -333,7 +334,7 @@ run the application, it already has the right to use `sudo` without a password.
 > :books: This has been automatically configured for you in the
 > `/etc/sudoers.d/90-cloud-init-users` file.
 
-### :space_invader: Allowing the dedicated `wopr` Unix user to control the Systemd service
+### :space_invader: Allowing the dedicated `wopr` Unix user to control the systemd service
 
 If you are trying to complete the bonus challenge, you will need to allow the
 `wopr` user run the necessary `sudo systemctl ...` commands without a password
@@ -435,7 +436,7 @@ Try running `sudo apt update`, then try installing your package again.
 
 ### :boom: Daemons using outdated libraries
 
-When you install a package with APT (e.g. Ruby or Redis), it *may* prompt you to
+When you install a package with APT (e.g. Ruby or Redis), it _may_ prompt you to
 reboot and/or to restart outdated daemons (i.e. background services):
 
 ![Restart outdated daemons](../images/apt-outdated-daemons.png)
@@ -499,7 +500,7 @@ Could not locate Gemfile
 
 You are probably executing the `bundle install` command in the wrong directory.
 It must be executed in a directory that contains a file named `Gemfile`. This
-file describes a list of ruby packages to install, which the `bundle` command
+file describes a list of Ruby packages to install, which the `bundle` command
 will download.
 
 For this exercise, you want to run this command in the directory where the WOPR
@@ -630,3 +631,4 @@ that port?
 [sinatra]: http://sinatrarb.com
 [svelte]: https://svelte.dev
 [systemd-ex]: systemd-deployment.md
+[visudo]: https://man7.org/linux/man-pages/man8/visudo.8.html

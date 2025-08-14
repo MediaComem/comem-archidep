@@ -40,8 +40,8 @@ Additionally:
   your systemd service must be enabled).
 - The application must be accessible **only through nginx**. It **must not** be
   exposed directly on a publicly accessible port other than 80 or 443 (in the
-  AWS instances used in this course, the other publicly accessible ports are 22,
-  3000 and 3001, with port 22 being already used by SSH).
+  virtual machines used in this course, the other publicly accessible ports are
+  22, 3000 and 3001, with port 22 being already used by SSH).
 - Clients accessing the application over HTTP must be redirected to HTTPS.
 
 ### The application
@@ -51,7 +51,7 @@ GitHub][repo].
 
 It is developed with:
 
-- [nest][nest] for the backend.
+- [Nest][nest] for the backend.
 
   > Nest is a [Node.js (server-side JavaScript)][node] framework for building
   > server-side applications with [TypeScript][ts].
@@ -74,8 +74,11 @@ and use your own copy of the repository instead of the provided one. This will
 make it easier for you to test the automated deployment at the end.
 
 Then install the required dependencies and perform the required setup as
-indicated in the [project's `README`][readme]. Where necessary, you will need to
-find installation instructions for Ubuntu (version 20.04 Focal).
+indicated in the [project's `README`][readme]. That README is generic: it is not
+written specifically for this exercise.
+
+Where necessary, you will need to find installation instructions for Ubuntu
+(version 24.04 Noble).
 
 ### Optional: test in development mode
 
@@ -107,7 +110,7 @@ server's IP address). Stop the application with `Ctrl-C` once you are done.
 ## Create a systemd service
 
 Create and enable a systemd unit file like in the [systemd
-exercise][systemd-ex]. Make the necessary changes to run the one chat room
+exercise][systemd-ex]. Make the necessary changes to run the Big Browser
 application instead of the PHP todolist.
 
 > **Hints:**
@@ -136,12 +139,12 @@ PHP-FPM exercise][nginx-php-fpm-ex].
 
 > **Hints:**
 >
-> - Skip all steps related to PHP FPM, since they are only valid for a PHP
+> - Skip all steps related to PHP-FPM, since they are only valid for a PHP
 >   application.
-> - The `include` and `fastcgi_pass` directives used in the PHP FPM exercise
+> - The `include` and `fastcgi_pass` directives used in the PHP-FPM exercise
 >   make no sense for a non-PHP application. You should replace them with a
 >   [`proxy_pass`
->   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
+>   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass),
 >   as [presented during the course][nginx-rp-conf].
 
 ## Provision a TLS certificate
@@ -168,7 +171,7 @@ a Git hook like in the [automated deployment exercise][auto-deploy-ex].
 >      not reinterpreted on-the-fly as with PHP; the process must be restarted
 >      so that the code is reloaded into memory).
 >
-> - Note: in the automated deployment exercice, it is mentionned that the
+> - Note: in the automated deployment exercise, it is mentioned that the
 >   application will no longer work after changing the path to the repository in
 >   the nginx configuration. In the case of the Big Browser application, it will
 >   continue to work, because the application serves its static files on its
@@ -201,10 +204,10 @@ Create a `big-browser` Unix group:
 $> sudo groupadd big-browser
 ```
 
-Add your user to that group (replacing `john_doe` with your username):
+Add your user to that group (replacing `jde` with your username):
 
 ```bash
-$> sudo usermod -a -G big-browser john_doe
+$> sudo usermod -a -G big-browser jde
 ```
 
 Make sure that your user has been added to the group successfully by looking
@@ -212,7 +215,7 @@ for it in the `/etc/group` file:
 
 ```bash
 $> cat /etc/group | grep big-browser
-big-browser:x:1005:john_doe
+big-browser:x:1005:jde
 ```
 
 Make sure your default editor is `nano` (or whichever you are more comfortable

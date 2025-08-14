@@ -1,7 +1,7 @@
 # Horizontally scale a web application with nginx as a load balancer
 
 The goal of this exercise is to show how a web application can be
-[scaled][scaling] to handle a growing amount of work by using Systemd unit
+[scaled][scaling] to handle a growing amount of work by using systemd unit
 templates and configuring nginx as a [load balancer][load-balancing].
 
 This guide assumes that you are familiar with [reverse proxying][slides], that
@@ -17,13 +17,13 @@ wildcard entry preconfigured to make various subdomains
 - [:exclamation: Requirements](#exclamation-requirements)
 - [:exclamation: Deploy the application](#exclamation-deploy-the-application)
 - [:exclamation: Artificially slow down the application](#exclamation-artificially-slow-down-the-application)
-- [:exclamation: Load-testing the application](#exclamation-load-testing-the-application)
+- [:exclamation: Load testing the application](#exclamation-load-testing-the-application)
   - [:exclamation: Deploy a Locust instance](#exclamation-deploy-a-locust-instance)
-  - [:exclamation: Start load-testing the application with a small number of users](#exclamation-start-load-testing-the-application-with-a-small-number-of-users)
+  - [:exclamation: Start load testing the application with a small number of users](#exclamation-start-load-testing-the-application-with-a-small-number-of-users)
   - [:exclamation: Increase the load](#exclamation-increase-the-load)
 - [:gem: What to do?](#gem-what-to-do)
 - [:exclamation: Horizontally scale the FibScale application](#exclamation-horizontally-scale-the-fibscale-application)
-  - [:exclamation: Transform the FibScale Systemd unit into a template](#exclamation-transform-the-fibscale-systemd-unit-into-a-template)
+  - [:exclamation: Transform the FibScale systemd unit into a template](#exclamation-transform-the-fibscale-systemd-unit-into-a-template)
   - [:exclamation: Load-test the new FibScale service](#exclamation-load-test-the-new-fibscale-service)
   - [:exclamation: Spin up more instance of the FibScale application](#exclamation-spin-up-more-instance-of-the-fibscale-application)
   - [:exclamation: Configure nginx to balance the load among the available FibScale instances](#exclamation-configure-nginx-to-balance-the-load-among-the-available-fibscale-instances)
@@ -74,6 +74,7 @@ The following requirements should be installed on your server:
   $> sudo apt update
   $> sudo apt install ruby-full build-essential
   ```
+
 - [Bundler][bundler], a command-line tool that downloads Ruby gems (i.e.
   packages)
 
@@ -108,7 +109,7 @@ bundle config set --local deployment 'true'
 bundle install
 ```
 
-Create a Systemd unit file named `/etc/systemd/system/fibscale.service` (e.g.
+Create a systemd unit file named `/etc/systemd/system/fibscale.service` (e.g.
 with `nano`) to execute the application:
 
 ```conf
@@ -212,13 +213,13 @@ make it faster.
 > exercise](#books-not-the-solution-to-all-your-problems).
 
 Add the following line to the `[Service]` section of the
-`/etc/systemd/system/fibscale.service` Systemd unit file:
+`/etc/systemd/system/fibscale.service` systemd unit file:
 
 ```conf
 Environment="FIBSCALE_DELAY=1"
 ```
 
-Reload the Systemd configuration and restart your service:
+Reload the systemd configuration and restart your service:
 
 ```bash
 $> sudo systemctl daemon-reload
@@ -232,15 +233,15 @@ observe that every computation now takes at least one second.
 
 We now have a simulation of a slow application. Or do we? As the saying goes:
 
-* **Don't guess, measure!**
+- **Don't guess, measure!**
 
-## :exclamation: Load-testing the application
+## :exclamation: Load testing the application
 
-You will use [Locust][locust], an open-source [load testing][load-testing] tool
+You will use [Locust][locust], an open source [load testing][load-testing] tool
 written in Python, and use it to measure the performance of the FibScale
 application. **Load testing** is the process of putting demand on a system and
 measuring its response time and error rate. In this case, we will simulate
-multiple users trying to use FibScale concurrently, add see how much time it
+multiple users trying to use FibScale concurrently, and see how much time it
 takes for each user to get a response.
 
 :warning: Do not stray too far from the instructions below when load testing
@@ -284,7 +285,7 @@ As [Locust's documentation][locust-getting-started] states, you simply need to
 run the `locust` command in a directory containing a locustfile named
 `locustfile.py`, and Locust will be ready to run your load testing scenario.
 
-Let's create a Systemd unit file named
+Let's create a systemd unit file named
 `/etc/systemd/system/fibscale-locust.service` that does just that:
 
 ```conf
@@ -313,7 +314,7 @@ $> sudo systemctl start fibscale-locust
 ```
 
 > :gem: You can check that it is running with `sudo systemctl status
-> fibscale-locust`.
+fibscale-locust`.
 
 Create the nginx site configuration file
 `/etc/nginx/sites-available/fibscale-locust` to expose Locust, which listens on
@@ -348,7 +349,7 @@ $> sudo nginx -s reload
 You should now be able to access Locust at
 http://locust.fibscale.jde.archidep.ch.
 
-### :exclamation: Start load-testing the application with a small number of users
+### :exclamation: Start load testing the application with a small number of users
 
 The **Host** field tells Locust what the base URL for the load testing scenario
 is. Enter the address of FibScale: `http://fibscale.jde.archidep.ch`. Set
@@ -367,13 +368,13 @@ charts.
 
 ![Locust charts](../images/fibscale-locust-1-user-charts.png)
 
-You should quickly see the number of requests per second (RPS) stabilizing at
-~0.5, which is what we would expect with 1 user: the user requests the
-computation of the 100th Fibonacci number, which takes about 1 second with our
-artificial delay in place, and we can see that in the response time chart. Then
-the user waits 1 second before repeating the request as defined by the load
-testing scenario. Our single users ends up making 1 request every 2 seconds,
-which is 0.5 RPS.
+You should quickly see the number of **r**equests **p**er **s**econd (RPS)
+stabilizing at ~0.5, which is what we would expect with 1 user: the user
+requests the computation of the 100th Fibonacci number, which takes about 1
+second with our artificial delay in place, and we can see that in the response
+time chart. Then the user waits 1 second before repeating the request as defined
+by the load testing scenario. Our single users ends up making 1 request every 2
+seconds, which is 0.5 RPS.
 
 Click the **Edit** button in the top bar and change the **Number of users** to 2
 without changing the spawn rate.
@@ -390,11 +391,11 @@ requests per seconds stabilizing at ~1. Everything is as we expect so far.
 Now change the **Number of users** to 10 and leave the **Spawn rate** to 1. This
 will add 8 more users to our existing 2.
 
-![Configure Locust with 10 users](../images/fibscale-locust-10-users.png)
-
 > :books: The spawn rate is the number of new users added every second, meaning
 > that it will take 8 seconds (1 per new user) to reach our target number of 10
 > users starting from the 2 we already have.
+
+![Configure Locust with 10 users](../images/fibscale-locust-10-users.png)
 
 The number of requests per second should remain unchanged while the response
 time should increase to ~9 seconds.
@@ -441,9 +442,9 @@ speed it up!
 
 Let's assume that:
 
-* We don't know Ruby and cannot find a way to speed up the application by
+- We don't know Ruby and cannot find a way to speed up the application by
   changing its implementation.
-* The slowness is not caused by a lack of resources on the server (CPU, memory
+- The slowness is not caused by a lack of resources on the server (CPU, memory
   or I/O performance).
 
 > :books: These assumptions do not necessarily represent a real-world scenario,
@@ -463,11 +464,11 @@ sudo systemctl stop fibscale
 sudo systemctl disable fibscale
 ```
 
-To run multiple instances of FibScale, you could create separate Systemd
-services, but Systemd also supports **unit templates**, i.e. units that can be
+To run multiple instances of FibScale, you could create separate systemd
+services, but systemd also supports **unit templates**, i.e. units that can be
 started multiple times based on a template.
 
-### :exclamation: Transform the FibScale Systemd unit into a template
+### :exclamation: Transform the FibScale systemd unit into a template
 
 To turn the `fibscale` service into a template, you must rename the
 `fibscale.service` file to `fibscale@.service`:
@@ -496,7 +497,7 @@ Modify `/etc/systemd/system/fibscale@.service` as follows:
   port `4202` to the dynamic port `4200%i`. Since we intend on running multiple
   instances of the FibScale application, they need to listen on different ports
   (e.g. 42001, 42002).
-- Add a `PartOf=fibscales.target` option to the `[Unit]` section. A Systemd
+- Add a `PartOf=fibscales.target` option to the `[Unit]` section. A systemd
   **target** is a group of units. This `fibscales.target` group does not exist
   yet, but we will soon create it.
 
@@ -516,7 +517,7 @@ User=jde
 Restart=on-failure
 ```
 
-Let's now create the Systemd target file `/etc/systemd/system/fibscales.target`
+Let's now create the systemd target file `/etc/systemd/system/fibscales.target`
 file with the following contents:
 
 ```conf
@@ -622,7 +623,7 @@ Requires=fibscale@1.service fibscale@2.service fibscale@3.service
 WantedBy=multi-user.target
 ```
 
-To take these changes into account, reload the Systemd configuration and start
+To take these changes into account, reload the systemd configuration and start
 the `fibscales.target` group again (no need to restart it):
 
 ```bash
@@ -726,6 +727,7 @@ factors:
     things concurrently using [multithreading][multithreading], but that will
     probably not be enough change the overall throughput. Performance will start
     decreasing as you add more instances.
+
   - Does your server have multiple CPU cores?
 
     - Is the application single-threaded (i.e. it can only serve one request at
@@ -747,6 +749,7 @@ factors:
       long as you have CPU capacity to spare (i.e. all CPU cores are not yet at
       100% usage). Once all CPU cores are fully utilized, running more instances
       will only make the application (and the whole server) slower.
+
 - If your application is slow because it consumes **too much memory** (e.g. it
   keeps references to a lot of data structures in memory), **spinning up
   multiple instances may increase performance IF your server has memory capacity
@@ -755,6 +758,7 @@ factors:
   If the memory usage is already close to 100%, the only thing you will achieve
   by spinning up more instances of your application is to bring down your whole
   server due to a lack of memory.
+
 - If your application is **slow due to I/O** (e.g. it regularly stores/retrieves
   data from disk or from a database), **increasing the number of instances will
   probably increase performance, but only IF the I/O work can be parallelized**,
@@ -808,7 +812,7 @@ In summary: **performance is a very complex issue**.
 Again, before setting up anything: **don't guess, measure!**
 
 > :gem: Again, **be careful of issues such as [rate limiting][rate-limiting] and
-> [(D)DoS][dos] protection when load-testing**. Load tests can look a lot like a
+> [(D)DoS][dos] protection when load testing**. Load tests can look a lot like a
 > DoS attack. You may inadvertently be banned by your cloud provider if you're
 > not careful.
 
@@ -817,15 +821,15 @@ Again, before setting up anything: **don't guess, measure!**
 For your information, the FibScale application is very easy to scale
 horizontally on a single server because:
 
-* It consumes little CPU (when using the iterative algorithm) and is neither
+- It consumes little CPU (when using the iterative algorithm) and is neither
   memory-bound nor I/O bound. Its slowness in this exercise is artificially
   caused by a [call to Ruby's `sleep`
   function](https://github.com/AlphaHydrae/fibscale/blob/00dba541f53468c94b239b692372a714f5b919e1/fibscale.rb#L84).
   This consumes neither CPU nor memory, and does not perform any I/O.
-* It is [pre-configured to be
+- It is [pre-configured to be
   single-threaded](https://github.com/AlphaHydrae/fibscale/blob/00dba541f53468c94b239b692372a714f5b919e1/config/puma.rb#L4-L5)
   so that spreading its work among multiple processes shows a clear improvement.
-* Since each computation of a Fibonacci number is independent of the others, and
+- Since each computation of a Fibonacci number is independent of the others, and
   there is no shared resource to access (e.g. a database), there is no issue
   with running multiple instances. They never need to talk to each other or
   synchronize access to anything.
@@ -861,9 +865,9 @@ course exercises][archidep-exercises]):
 For those interested in programming, FibScale implements two algorithms to
 compute Fibonacci numbers:
 
-* The naive [recursive
+- The naive [recursive
   algorithm](https://github.com/AlphaHydrae/fibscale/blob/00dba541f53468c94b239b692372a714f5b919e1/fibscale.rb#L140-L151).
-* The [iterative
+- The [iterative
   algorithm](https://github.com/AlphaHydrae/fibscale/blob/00dba541f53468c94b239b692372a714f5b919e1/fibscale.rb#L153-L163).
 
 We call the recursive algorithm "naive" because although it is an easier

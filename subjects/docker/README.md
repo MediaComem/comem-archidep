@@ -36,7 +36,7 @@ Learn how to containerize your web applications with Docker.
   - [Docker workflow - Registry](#docker-workflow---registry)
 - [Running existing Docker images](#running-existing-docker-images)
   - [Running a pre-built image](#running-a-pre-built-image)
-  - [Wait. I thought Docker Containers did not contain an OS?](#wait-i-thought-docker-containers-did-not-contain-an-os)
+  - [Wait. I thought Docker containers did not contain an OS?](#wait-i-thought-docker-containers-did-not-contain-an-os)
   - [Container management](#container-management)
 - [Creating your own Docker images](#creating-your-own-docker-images)
   - [Dockerfile instructions](#dockerfile-instructions)
@@ -52,7 +52,7 @@ Learn how to containerize your web applications with Docker.
 <!-- slide-front-matter class: center, middle -->
 
 > Have you ever had an application work on one operating system,
-> such as MacOS, but not on another? Have you ever struggled to juggle
+> such as macOS, but not on another? Have you ever struggled to juggle
 > different Node.js versions for various web applications? Odds are, you have.
 
 > [Docker][docker] was launched in 2013 with the intent to address this critical
@@ -80,7 +80,7 @@ Portability in computing refers to the ability of software to be run on various 
 
 <!-- slide-column -->
 
-Virtual machine solve the portability problem by providing isolation and environment consistency. At its core, virtualization involves creating virtual versions of physical resources, such as servers, storage devices, and networks using a hypervisor.
+**V**irtual **m**achines (VMs) solve the portability problem by providing isolation and environment consistency. At its core, virtualization involves creating virtual versions of physical resources, such as servers, storage devices, and networks using a hypervisor.
 
 **Hypervisor**: The central component of hardware virtualization is the hypervisor, a software layer that enables multiple operating systems to share a single hardware host.
 
@@ -96,7 +96,7 @@ Virtualization forms the foundation of cloud computing and is pivotal in data ce
 <!-- slide-column -->
 While VMs are fantastic technology and incredibly useful in numerous scenarios, it doesn't necessarily make sense to package an entire operating system just to get a web application to work.
 
-Containers are an alternative that address this drawback of virtual machines. They tackle the challenges of portability by providing isolation and environment consistency, all while sharing a host system's kernel and without requiring a full operating system for each instance.
+Containers are an alternative that addresses this drawback of virtual machines. They tackle the challenges of portability by providing isolation and environment consistency, all while sharing a host system's kernel and without requiring a full operating system for each instance.
 
 
 
@@ -104,7 +104,7 @@ Containers are an alternative that address this drawback of virtual machines. Th
 
 <!-- slide-column -->
 
-Docker is an open-source platform that automates the deployment, scaling, and management of applications inside lightweight, portable **containers**. It has revolutionized how developers build, ship, and run applications, making it simpler to create and manage consistent environments.
+Docker is an open source platform that automates the deployment, scaling, and management of applications inside lightweight, portable **containers**. It has revolutionized how developers build, ship, and run applications, making it simpler to create and manage consistent environments.
 
 In essence, Docker streamlines the development lifecycle by allowing developers to work in standardized environments using local containers which provide your applications and services. Docker has become a key component of many toolchains, integrating smoothly with various tools and platforms.
 
@@ -185,11 +185,11 @@ Think of a Docker image as a recipe containing both the ingredients and the inst
 <p class='center'><img class='w100' src='images/docker-container.png' /></p>
 
 <!-- slide-column -->
-A Docker Container is a **runnable instance** of a Docker Image. A Container takes everything specified in the Docker Image and follows its instructions by executing specified commands.
+A Docker container is a **runnable instance** of a Docker image. A container takes everything specified in the Docker image and follows its instructions by executing specified commands.
 
 If the image is a recipe, then the container is the completed dish.
 
-Multiple containers can be created from a single Docker Image.
+Multiple containers can be created from a single Docker image.
 
 
 
@@ -204,7 +204,7 @@ The Docker workflow encompasses several key components that work together to man
 ### Docker workflow - Client
 <p class='center'><img class='w70' src='images/docker-desktop.png' /></p>
 
-The [Docker Client][docker-desktop] provides a **user interface** to issue commands to the **Docker Host**.
+The [Docker Client][docker-desktop] provides a **user interface** to issue commands to the **Docker host**.
 
 This interface can be used through the **command line** or with Docker Desktop (pictured above), a GUI implementation of the client.
 
@@ -220,7 +220,7 @@ It is responsible for **pulling images from Docker registries and building new i
 
 `dockerd` also handles **logging and monitoring** of container activity, providing insights into container performance and health.
 
-`dockerd` and the Docker Client are often referred to together as the **Docker Engine**.
+`dockerd` and the Docker Client together are often referred to as the **Docker Engine**.
 
 
 
@@ -229,11 +229,11 @@ It is responsible for **pulling images from Docker registries and building new i
 <p class='center'><img src='images/docker-hub.png' /></p>
 
 <!-- slide-column -->
-A Docker Registry is a **storage and content delivery system** that holds named Docker images, available in different tagged versions.
+A Docker registry is a **storage and content delivery system** that holds named Docker images, available in different tagged versions.
 
 The most well-known registry is **[Docker Hub][docker-hub]**, which is a public, cloud-based registry provided by Docker. Essentially, Docker Hub is to Docker what GitHub is to Git.
 
-Besides Docker Hub, there are other registries like [Amazon ECR (Elastic Container Registry)][amazon-ecr], [Google Artifact Registry][google-artifact-registry], and private, self-hosted options.
+Besides Docker Hub, there are other registries like [Amazon ECR (**E**lastic **C**ontainer **R**egistry)][amazon-ecr], [Google Artifact Registry][google-artifact-registry], and private, self-hosted options.
 
 
 
@@ -279,13 +279,13 @@ As you can see, you can now interact with a containerized version of Ubuntu. Try
 
 
 
-### Wait. I thought Docker Containers did not contain an OS?
+### Wait. I thought Docker containers did not contain an OS?
 In a typical **Linux distribution**, you usually get:
 
 * A **bootloader**, which loads a kernel
 * A **kernel**, which manages the system and loads an init system
 * An **init system**, which sets up and runs everything else
-* **Everything else** (binaries, shared libraries, etc.)
+* **Everything else** (binaries, shared libraries, etc)
 
 The **Docker Engine** replaces the kernel and init system, and the **container** replaces "everything else".
 
@@ -294,18 +294,18 @@ An **Ubuntu Docker image** contains the minimal set of Ubuntu binaries and share
 
 
 ### Container management
-You can manage Docker Containers by using a host of commands:
+You can manage Docker containers by using a host of commands:
 
-| Command                | Purpose                                                             |
-| :---                   | :---                                                                |
-| [`docker run IMAGE`][docker-commands-run]            | Create and start a container.         |
-| [`docker ps`][docker-commands-ps]                    | Lists running containers.             |
-| [`docker stop CONTAINER_ID`][docker-commands-stop]   | Gracefully stops a running container. |
-| [`docker start CONTAINER_ID`][docker-commands-start] | Restarts a stopped container.         |
-| [`docker rm CONTAINER_ID`][docker-commands-rm]       | Removes a container.                  |
-| [`docker exec -it CONTAINER_ID /bin/bash`][docker-commands-exec] | Provides shell access to a running container.  |
-| [`docker logs CONTAINER_ID`][docker-commands-logs] | Displays a container's logs.            |
-| [`docker stats`][docker-commands-stats]   | Shows a live stream of container(s) resource usage statistics |
+| Command                                                          | Purpose                                                      |
+| :--------------------------------------------------------------- | :----------------------------------------------------------- |
+| [`docker run IMAGE`][docker-commands-run]                        | Create and start a container.                                |
+| [`docker ps`][docker-commands-ps]                                | List running containers.                                     |
+| [`docker stop CONTAINER_ID`][docker-commands-stop]               | Gracefully stops a running container.                        |
+| [`docker start CONTAINER_ID`][docker-commands-start]             | Restart a stopped container.                                 |
+| [`docker rm CONTAINER_ID`][docker-commands-rm]                   | Remove a container.                                          |
+| [`docker exec -it CONTAINER_ID /bin/bash`][docker-commands-exec] | Provide shell access to a running container.                 |
+| [`docker logs CONTAINER_ID`][docker-commands-logs]               | Display a container's logs.                                  |
+| [`docker stats`][docker-commands-stats]                          | Show a live stream of container(s) resource usage statistics |
 
 
 
@@ -317,7 +317,7 @@ Docker can build images by reading the instructions from a [**Dockerfile**][dock
 
 There are a few rules:
 * A Dockerfile must be named **`Dockerfile`**, with no extension.
-* A Docker Image must be based on an **existing base image** from official repositories such as [`node`][docker-images-node].
+* A Docker image must be based on an **existing base image** from official repositories such as [`node`][docker-images-node].
 
 
 <!-- slide-column -->
@@ -335,18 +335,18 @@ ENTRYPOINT node app.js
 
 ### Dockerfile instructions
 
-| Instruction            | Purpose                                                          |
-| :---                   | :---                                                             |
-| `FROM image_name`           | Specifies the base image to use for the new image.          |
-| `WORKDIR /some/path`   | Sets the working directory for the instructions that follow.     |
-| `COPY <src> <dest>`    | Copies files or directories from the build context to the image. |
-| `RUN <command>`        | Executes commands in the shell during image builds.              |
-| `EXPOSE <port>`        | Port(s) Docker will be listening on at runtime.                  |
-| `ENV KEY=VALUE`        | Sets environment variables.                                      |
-| `ARG KEY=VALUE`        | Defines build time variables.                                    |
-| `USER user`            | Set user and group ID.                                           |
-| `CMD <command>`        | The default command to execute when the container starts.        |
-| `ENTRYPOINT <command>` | Similar as `CMD`, but cannot be overriden.                       |
+| Instruction            | Purpose                                                               |
+| :--------------------- | :-------------------------------------------------------------------- |
+| `FROM image_name`      | Specify the base image to use for the new image.                      |
+| `WORKDIR /some/path`   | Set the working directory for the instructions that follow.           |
+| `COPY <src> <dest>`    | Copy files or directories from the build context to the image.        |
+| `RUN <command>`        | Execute commands in the shell during image builds.                    |
+| `EXPOSE <port>`        | Port(s) Docker will be listening on at runtime.                       |
+| `ENV KEY=VALUE`        | Set environment variables.                                            |
+| `ARG KEY=VALUE`        | Define build time variables.                                          |
+| `USER user`            | Set user and group ID.                                                |
+| `CMD <command>`        | The default command to execute when the container starts.             |
+| `ENTRYPOINT <command>` | Similar as `CMD`, but cannot be overriden without an explicit option. |
 
 To see a full list of Dockerfile instructions, see the [Dockerfile reference][dockerfile-reference].
 
@@ -378,20 +378,20 @@ $> docker build -t hello-docker .
 
 
 ### Run a container based on the custom image
-Check the image has been created with `docker images`
+Check the image has been created with `docker images`:
 ```bash
 $> docker images
 REPOSITORY     TAG       IMAGE ID       CREATED       SIZE
 hello-docker   latest    9cc4ea715ff5   5 hours ago   1.1GB
 ```
 
-And create a container from it with `docker run`
+And create a container from it with `docker run`:
 ```bash
 $> docker run hello-docker
 Hello Docker!
 ```
 
-A Docker container operates by running a specific **process, defined by the `CMD` or `ENTRYPOINT` in your Dockerfile**. This process keeps the container alive. The container will remain active as long as this process is running. In our example, the container is running a Node.js script that logs "Hello Docker!" to the console. Once this script finishes executing and the Node.js runtime exits, the container will also stop running. Running `docker ps` will therefore not display the container you just executed.
+A Docker container operates by running a specific **process, defined by the `CMD` or `ENTRYPOINT` in your Dockerfile**. This process keeps the container alive. The container will remain active as long as this process is running. In our example, the container is running a Node.js script that logs "Hello Docker!" to the console. Once this script finishes executing and the Node.js runtime exits, the container will also stop running. Running `docker ps` will therefore not display the container you just executed:
 
 ```bash
 $> docker ps

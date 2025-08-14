@@ -1,7 +1,7 @@
 # Deploy Flood It, a Spring Boot (Java) & Angular (JavaScript) application with a PostgreSQL database
 
-The goal of this exercice is to put in practice the knowledge acquired during
-previous exercices to deploy a new application from scratch on your server.
+The goal of this exercise is to put in practice the knowledge acquired during
+previous exercises to deploy a new application from scratch on your server.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -15,7 +15,7 @@ previous exercices to deploy a new application from scratch on your server.
 - [:exclamation: Getting started](#exclamation-getting-started)
   - [:exclamation: Fork the repository](#exclamation-fork-the-repository)
   - [:exclamation: Install the requirements](#exclamation-install-the-requirements)
-    - [:question: Check that everything has been correctly installed](#question-check-that-everything-has-been-correctly-installed)
+    - [:question: Optional: check that everything has been correctly installed](#question-check-that-everything-has-been-correctly-installed)
   - [:exclamation: Perform the initial setup](#exclamation-perform-the-initial-setup)
   - [:books: What sorcery is this?](#books-what-sorcery-is-this)
     - [:books: The Java Virtual Machine (JVM), Java Runtime Environment (JRE) and Java Development Kit (JDK)](#books-the-java-virtual-machine-jvm-java-runtime-environment-jre-and-java-development-kit-jdk)
@@ -32,7 +32,7 @@ previous exercices to deploy a new application from scratch on your server.
 - [:exclamation: Provision a TLS certificate](#exclamation-provision-a-tls-certificate)
 - [:exclamation: Set up an automated deployment with Git hooks](#exclamation-set-up-an-automated-deployment-with-git-hooks)
   - [:gem: Allowing your user to restart the service without a password](#gem-allowing-your-user-to-restart-the-service-without-a-password)
-  - [:space_invader: Allowing the dedicated `floodit` Unix user to control the Systemd service](#space_invader-allowing-the-dedicated-floodit-unix-user-to-control-the-systemd-service)
+  - [:space_invader: Allowing the dedicated `floodit` Unix user to control the systemd service](#space_invader-allowing-the-dedicated-floodit-unix-user-to-control-the-systemd-service)
   - [:exclamation: Test the automated deployment](#exclamation-test-the-automated-deployment)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
 - [:boom: Troubleshooting](#boom-troubleshooting)
@@ -78,7 +78,7 @@ Additionally:
 As an optional bonus challenge:
 
 - Create a dedicated Unix user (e.g. `floodit`) other than your personal user
-  (e.g. `john_doe`) to run the application.
+  (e.g. `jde`) to run the application.
 - This user must be a system user, not a login user. It must not be able to log
   in with a password, although you can set up SSH public key authentication for
   the automated deployment.
@@ -117,7 +117,7 @@ Parts of this guide are annotated with the following icons:
 The application you must deploy is a small web game. Its code is [available on
 GitHub][repo].
 
-It has two components: a [backend and a frontend][frontend-and-backend]:
+It has two components, [a backend and a frontend][frontend-and-backend]:
 
 - The backend is a [Java][java] web application that handles data access
   (starting games, playing moves, etc) through a [JSON][json] [API][api]. It
@@ -132,7 +132,7 @@ The application uses the following ~~buzzword salad~~ technologies:
 
 - The backend has been developed with [Spring Boot][spring-boot], a Java
   framework that makes it easy to create stand-alone, production-grade Spring
-  based Applications that you can "just run".
+  based applications that you can "just run".
   - [Java][java] is a popular programming language and development platform. It
     reduces costs, shortens development timeframes, drives innovation, and
     improves application services. With millions of developers running more than
@@ -214,7 +214,7 @@ described in the [project's README][readme] on your server:
   [OpenJDK][openjdk], one of the most popular open source implementations
   originally released by Sun.
 
-  The OpenJDK publishes easy-to-install APT packages. You can list then with:
+  The OpenJDK publishes easy-to-install APT packages. You can list them with:
 
   ```bash
   $> apt search openjdk-
@@ -223,7 +223,7 @@ described in the [project's README][readme] on your server:
   You should install a package named `openjdk-<version>-jdk` where `<version>`
   is the Java version required by the Flood It application.
 
-- **How to install Maven:** Depending on your Ubuntu version, the version of
+- **How to install Maven:** depending on your Ubuntu version, the version of
   Maven available from APT might not be compatible with Java 17. You will
   therefore install a newer version, using a script located in the Flood It
   application's repository.
@@ -253,7 +253,7 @@ described in the [project's README][readme] on your server:
   installation instructions specific to Ubuntu, the Linux distribution used on
   your server.
 
-#### :question: Check that everything has been correctly installed
+#### :question: Optional: check that everything has been correctly installed
 
 - You can check that **Java has been correctly installed** by displaying the
   version of the `java` command:
@@ -318,7 +318,7 @@ described in the [project's README][readme] on your server:
   > requirements.
 
   You can also verify that PostgreSQL is running by showing the status of its
-  Systemd service:
+  systemd service:
 
   ```bash
   $> sudo systemctl status postgresql
@@ -330,8 +330,8 @@ described in the [project's README][readme] on your server:
       Memory: 0B
       CGroup: /system.slice/postgresql.service
 
-  Dec 10 20:54:52 john-doe.archidep.ch systemd[1]: Starting PostgreSQL RDBMS...
-  Dec 10 20:54:52 john-doe.archidep.ch systemd[1]: Finished PostgreSQL RDBMS.
+  Dec 10 20:54:52 jde.archidep.ch systemd[1]: Starting PostgreSQL RDBMS...
+  Dec 10 20:54:52 jde.archidep.ch systemd[1]: Finished PostgreSQL RDBMS.
   ```
 
   You can also verify that PostgreSQL is working by listing available databases,
@@ -375,7 +375,7 @@ fork's HTTPS clone URL**.
 > configuring the application.
 >
 > If you choose to use environment variables, you will need to provide these
-> environment variables through Systemd later, as you have done with the PHP
+> environment variables through systemd later, as you have done with the PHP
 > todolist. The `export` sample commands provided in the README are only
 > examples and will only set the variables in the shell and SSH session where
 > you run them.
@@ -451,9 +451,10 @@ The setup instructions use the **`mvn` command**. [Maven][mvn] is a software
 project management tool for the [Java][java] ecosystem, much like
 [Composer][composer] for [PHP][php] or [npm][npm] for [Node.js][node].
 
-- A Maven project has one or several Project Object Model (POM) files. These
-  `pom.xml` files describe a project's dependencies and how to build it (you can
-  look at the Flood It application's `backend/pom.xml` file as an example).
+- A Maven project has one or several **P**roject **O**bject **M**odel (POM)
+  files. These `pom.xml` files describe a project's dependencies and how to
+  build it (you can look at the Flood It application's `backend/pom.xml` file as
+  an example).
 - The **`mvn clean install -Pskip-test` command** is used to:
 
   - Download all of the Flood It application's dependencies (i.e. the Java
@@ -470,7 +471,7 @@ project management tool for the [Java][java] ecosystem, much like
 
 #### :books: Node.js
 
-[Node.js][node] is an open-source, cross-platform JavaScript runtime
+[Node.js][node] is an open source, cross-platform JavaScript runtime
 environment. Where JavaScript could traditionally only run in a browser, Node.js
 allows you to run JavaScript code on any machine, like on your Azure VM, just
 like you would any other dynamic programming language like PHP, Ruby or Python.
@@ -524,7 +525,7 @@ be displayed, indicating that all tests were successful:
 [INFO]
 [INFO]
 [INFO] --- jacoco-maven-plugin:0.8.8:report (jacoco-site) @ floodit ---
-[INFO] Loading execution data file /home/john_doe/floodit/backend/target/jacoco.exec
+[INFO] Loading execution data file /home/jde/floodit/backend/target/jacoco.exec
 [INFO] Analyzed bundle 'floodit' with 19 classes
 [INFO]
 [INFO] ------------------< ch.comem.archidep:floodit-parent >------------------
@@ -559,8 +560,8 @@ to your server: one to run the backend, and one to run the frontend.
 
 You can run the frontend application on port `3001` for this simple test, as
 that is one of the ports that should be open in your server's firewall. You must
-also make it available to external clients. The project's README explains how to
-do this.
+also make it available to external clients. The [project's README][readme]
+explains how to do this.
 
 Once you have both backend and frontend running in your two terminals, you
 should be able to visit http://W.X.Y.Z:3001 to check that the application works
@@ -573,7 +574,7 @@ Follow the instructions in the [project's README][readme] to run the application
 in production mode.
 
 > :books: To run a Maven project in production, you must install it (i.e. the
-> `mvn clean install` command), which will create a JAR file.. This is basically
+> `mvn clean install` command), which will create a JAR file. This is basically
 > a ZIP file of the compiled Java application, which can be run by any Java
 > Virtual Machine (JVM). Once you have created that JAR file, you could copy it
 > to any system that has the Java Runtime Environment (JRE) and run it there.
@@ -632,12 +633,12 @@ The `root` directive in your nginx configuration should point to the
 contains the application's public web assets.
 
 > - :gem: Use an absolute path for the `root` directive.
-> - :gem: Do not follow steps related to PHP FPM, since they are only valid for
+> - :gem: Do not follow steps related to PHP-FPM, since they are only valid for
 >   a PHP application.
-> - :gem: The `include` and `fastcgi_pass` directives used in the PHP FPM
+> - :gem: The `include` and `fastcgi_pass` directives used in the PHP-FPM
 >   exercise make no sense for a non-PHP application. You should replace them
 >   with a [`proxy_pass`
->   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
+>   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass),
 >   as [presented during the course][nginx-rp-conf] and as you have done in the
 >   [multi-component exercise](https://github.com/MediaComem/comem-archidep/blob/main/ex/revprod-deployment.md).
 > - :space_invader: You can also point the nginx configuration directly to the
@@ -685,7 +686,7 @@ deployment to work correctly:
   > into memory as a new process).
 
 The [project's README][readme] explains how to do all of this except restarting
-the Systemd service, which you can easily do with `sudo systemctl restart <service>`. You should run the appropriate commands in your `post-receive` hook
+the systemd service, which you can easily do with `sudo systemctl restart <service>`. You should run the appropriate commands in your `post-receive` hook
 script.
 
 ### :gem: Allowing your user to restart the service without a password
@@ -705,7 +706,7 @@ run the application, it already has the right to use `sudo` without a password.
 > :books: This has been automatically configured for you in the
 > `/etc/sudoers.d/90-cloud-init-users` file.
 
-### :space_invader: Allowing the dedicated `floodit` Unix user to control the Systemd service
+### :space_invader: Allowing the dedicated `floodit` Unix user to control the systemd service
 
 If you are trying to complete the bonus challenge, you will need to allow the
 `floodit` user run the necessary `sudo systemctl ...` commands without a
@@ -820,7 +821,7 @@ Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/
 [INFO] Total time:  1.467 s
 [INFO] Finished at: 2022-11-24T11:27:45Z
 [INFO] ------------------------------------------------------------------------
-[ERROR] No plugin found for prefix 'spring-boot' in the current project and in the plugin groups [org.apache.maven.plugins, org.codehaus.mojo] available from the repositories [local (/home/john_doe/.m2/repository), central (https://repo.maven.apache.org/maven2)] -> [Help 1]
+[ERROR] No plugin found for prefix 'spring-boot' in the current project and in the plugin groups [org.apache.maven.plugins, org.codehaus.mojo] available from the repositories [local (/home/jde/.m2/repository), central (https://repo.maven.apache.org/maven2)] -> [Help 1]
 [ERROR]
 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
@@ -928,7 +929,7 @@ remote: sudo: no tty present and no askpass program specified
 
 It means that you have created a dedicated Unix user but you have not performed
 the following step correctly: [Allowing the dedicated `floodit` Unix user to
-control the Systemd
+control the systemd
 service](#space_invader-allowing-the-dedicated-floodit-unix-user-to-control-the-systemd-service).
 
 Make sure that the list of authorized `systemctl` commands in the sudoers file
@@ -961,7 +962,7 @@ code=exited, status=200/CHDIR
 ```
 
 It means that systemd failed to move into the directory you specified (`CHDIR`
-means **ch**ange **dir**ectory). Check your Systemd unit file to make sure that
+means **ch**ange **dir**ectory). Check your systemd unit file to make sure that
 the working directory you have configured is the correct one and really exists.
 
 ### :boom: `502 Bad Gateway`
@@ -1005,7 +1006,7 @@ $> sudo -u postgres psql -c '\password floodit'
 
 ### :boom: System debugging
 
-You can display the last few lines of the logs of your `floodit` Systemd
+You can display the last few lines of the logs of your `floodit` systemd
 service with the following command:
 
 ```bash
@@ -1023,7 +1024,7 @@ $> sudo journalctl -u floodit
 > directly to the bottom with `Shift-G` (uppercase G), or back to the top with
 > `G` (lowercase g). Exit with `Q` or `Ctrl-C`.
 
-If the application does not seem to work after running the Systemd service,
+If the application does not seem to work after running the systemd service,
 there might be an error message in these logs that can help you identify the
 issue.
 
@@ -1123,9 +1124,9 @@ Plugins selected: Authenticator nginx, Installer nginx
 
 Which names would you like to activate HTTPS for?
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-1: clock.john-doe.archidep.ch
-2: floodit.john-doe.archidep.ch
-3: todolist.john-doe.archidep.ch
+1: clock.jde.archidep.ch
+2: floodit.jde.archidep.ch
+3: todolist.jde.archidep.ch
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Select the appropriate numbers separated by commas and/or spaces, or leave input
 blank to select all options shown (Enter 'c' to cancel): 2
@@ -1148,9 +1149,9 @@ exercise](https://github.com/MediaComem/comem-archidep/blob/main/ex/dns-configur
 You should add the same entries you added for `archidep.ch` to this new
 `archidep2.ch` domain:
 
-- An `A` entry for `john-doe` (replacing `john-doe` with
+- An `A` entry for `jde` (replacing `jde` with
   your name) pointing to your server's public IP address.
-- Another `A` entry for `*.john-doe` (replacing `john-doe` with your name)
+- Another `A` entry for `*.jde` (replacing `jde` with your name)
   pointing to the same IP address.
 
 You can then connect to your server and perform the following actions:

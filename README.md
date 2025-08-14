@@ -1,6 +1,5 @@
 # Media Engineering Architecture & Deployment course
 
-
 In this course you will learn:
 
 - How to deploy applications on a Linux server on an IaaS platform ([Microsoft
@@ -28,9 +27,9 @@ This course is a [Media Engineering][comem] web development course taught at
 - [Extra](#extra)
 - [Frequently Asked Questions](#frequently-asked-questions)
   - [What is the meaning of life?](#what-is-the-meaning-of-life)
-  - [How do I do *X* with the command line?](#how-do-i-do-x-with-the-command-line)
-  - [How do I do *Y* with Git?](#how-do-i-do-y-with-git)
-  - [How do I do *Z* with my server?](#how-do-i-do-z-with-my-server)
+  - [How do I do _X_ with the command line?](#how-do-i-do-x-with-the-command-line)
+  - [How do I do _Y_ with Git?](#how-do-i-do-y-with-git)
+  - [How do I do _Z_ with my server?](#how-do-i-do-z-with-my-server)
   - [How do I choose a password?](#how-do-i-choose-a-password)
 - [References](#references)
 
@@ -60,7 +59,7 @@ For you to succeed in this course, it is highly recommended that you read and co
   - macOS users should [install the command-line tools][macos-cli]
   - Windows users should install [Git for Windows][git-for-windows]
   - Linux users on Debian/Ubuntu-based systems can [install Git with the `sudo
-    apt install git` command][install-git-on-linux], or with their other
+apt install git` command][install-git-on-linux], or with their other
     distributions' package managers.
 - A free [GitHub][github] account
 - [Google Chrome][chrome] (recommended, any browser with developer tools will do)
@@ -83,6 +82,7 @@ For you to succeed in this course, it is highly recommended that you read and co
   - **[:collision: :hammer: Collaborative exercise](https://github.com/MediaComem/comem-archidep-php-todo-exercise)**
     - [:classical_building: Architecture](https://github.com/MediaComem/comem-archidep-php-todo-exercise#classical_building-architecture)
 - Security
+
   - [:book: Open Web Application Security Project][owasp]
   - [:book: OWASP Top 10 - The Ten Most Critical Web Application Security Risks][owasp-top10]
   - [:book: The image gallery](./ex/security-gallery.md)
@@ -90,6 +90,7 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:book: Phishing page](https://github.com/MediaComem/phishing)
 
 - Basic deployment
+
   - [:book: Cloud computing](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/cloud?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Run your own virtual server on Microsoft Azure](ex/azure-setup.md)
   - [:book: Linux](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/linux?home=MediaComem%2Fcomem-archidep%23readme)
@@ -107,6 +108,7 @@ For you to succeed in this course, it is highly recommended that you read and co
   - [:book: How to improve our basic deployment](#how-to-improve-our-basic-deployment)
 
 - Advanced deployment
+
   - [:hammer: Deploy a PHP application with Git](ex/git-clone-deployment.md)
     - [:classical_building: Architecture](ex/git-clone-deployment.md#classical_building-architecture)
   - [:book: Twelve-factor app][12factor]
@@ -138,11 +140,13 @@ For you to succeed in this course, it is highly recommended that you read and co
     - [:classical_building: Architecture](ex/fibscale-deployment.md#classical_building-architecture)
 
 - Automated deployment
+
   - [:book: Git hooks](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/git-hooks?home=MediaComem%2Fcomem-archidep%23readme)
   - [:hammer: Set up an automated deployment with Git hooks](ex/git-automated-deployment.md)
     - [:classical_building: Architecture](ex/git-automated-deployment.md#classical_building-architecture)
 
 - Graded deployment exercise
+
   - [:collision: :hammer: Deploy Minesweeper, a Phoenix (Elixir) & Alpine.js application with a PostgreSQL database](./ex/minesweeper-deployment.md)
     - [:classical_building: Architecture](ex/minesweeper-deployment.md#classical_building-architecture)
 
@@ -218,7 +222,7 @@ communication flow at the end of all the exercises we have done so far (up to
 
 - [:hammer: Deploy Flood It, a Spring Boot (Java) & Angular application with a PostgreSQL database](ex/floodit-deployment.md)
 - [:hammer: Deploy RPS, a Node.js & Svelte web application with a PostgreSQL database](ex/rps-deployment.md)
-- [:hammer: :hammer: Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md)
+- [:hammer: Deploy WOPR, a Sinatra & Svelte application with a Redis database](ex/wopr-deployment.md)
   - [:classical_building: Architecture](./ex/wopr-deployment.md#classical_building-architecture)
 - [:hammer: Deploy One Chat Room, an Express (Node.js) web application with a MongoDB database](ex/one-chat-room-deployment.md)
   - [:classical_building: Architecture](ex/end-result.pdf)
@@ -230,10 +234,9 @@ communication flow at the end of all the exercises we have done so far (up to
 - [:book: Continuous software development](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/continuous?home=MediaComem%2Fcomem-archidep%23readme)
 - [:book: Automated testing (2018)](https://mediacomem.github.io/comem-archidep/2024-2025/subjects/automated-testing?home=MediaComem%2Fcomem-archidep%23readme)
 - [:book: Automated testing (2020)](https://mediacomem.github.io/comem-archioweb/2024-2025/subjects/automated-testing/?home=MediaComem%2Fcomem-archioweb%23readme#1)
-  - [:movie_camera: YouTube: Expecting Profesionnalism – Robert C. Martin](https://youtu.be/BSaAMQVq01E)
+  - [:movie_camera: YouTube: Expecting Professionalism – Robert C. Martin](https://youtu.be/BSaAMQVq01E)
   - [:movie_camera: YouTube: GOTO 2017 – The Scribe's Oath – Robert C. Martin](https://youtu.be/Tng6Fox8EfI)
   - [:movie_camera: YouTube: The Future of Programming – Robert C. Martin](https://youtu.be/ecIWPzGEbFc)
-
 
 ## Frequently Asked Questions
 
@@ -241,15 +244,15 @@ communication flow at the end of all the exercises we have done so far (up to
 
 42
 
-### How do I do *X* with the command line?
+### How do I do _X_ with the command line?
 
 [Read the command line cheatsheet](CLI-CHEATSHEET.md)
 
-### How do I do *Y* with Git?
+### How do I do _Y_ with Git?
 
 [Read the Git cheatsheet](GIT-CHEATSHEET.md)
 
-### How do I do *Z* with my server?
+### How do I do _Z_ with my server?
 
 [Read the system administration cheatsheet](SYSADMIN-CHEATSHEET.md)
 

@@ -113,10 +113,10 @@ An environment variable is a **named value that can affect the way running proce
 
 When a process runs on a Unix system, it may query variables such as:
 
-* `HOME` - The home directory of the user running the process.
-* `LANG` - The default locale.
-* `TMP` - The directory in which to store temporary files.
-* And more.
+* [`HOME`][home] - The home directory of the user running the process
+* [`LANG`][lang] - The default locale
+* [`TMP`][tmp] - The directory in which to store temporary files
+* And more
 
 Another common example is the [`PATH`][path],
 an environment variable that indicates in which directories to look for binaries to execute when typing commands in a shell.
@@ -313,20 +313,21 @@ $FOO is not set
 
 ### Getting environment variables from code
 
-Every programming language has a simple way of retrieving the value of environment variables:
+Every programming language or runtime has a simple way of retrieving the value
+of environment variables:
 
-Language     | Code
-:---         | :---
-C            | [`getenv("PATH")`](http://man7.org/linux/man-pages/man3/getenv.3.html)
-Elixir       | [`System.get_env("FOO")`](https://hexdocs.pm/elixir/System.html#get_env/2)
-Erlang       | [`os.get_env("FOO")`](http://erlang.org/doc/man/os.html#getenv-1)
-Go           | [`os.Getenv("FOO")`](https://golang.org/pkg/os/#Getenv)
-Java         | [`System.getenv("FOO")`](https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/lang/System.html#getenv%28java.lang.String%29)
-Node.js      | [`process.env.FOO`](https://nodejs.org/api/process.html#process_process_env)
-PHP          | [`getenv("FOO")`](https://www.php.net/manual/en/function.getenv.php)
-Python       | [`os.getenv("FOO")`](https://docs.python.org/3/library/os.html#os.getenv)
-Ruby         | [`ENV["FOO"]`](https://ruby-doc.org/core-2.6.5/ENV.html#method-c-5B-5D)
-Rust         | [`env::var("FOO")`](https://doc.rust-lang.org/std/env/fn.var.html)
+Language/runtime | Code
+:--------------- | :----------------------------------------------------------------------------------------------------------------------------------------
+C                | [`getenv("PATH")`](http://man7.org/linux/man-pages/man3/getenv.3.html)
+Elixir           | [`System.get_env("FOO")`](https://hexdocs.pm/elixir/System.html#get_env/2)
+Erlang           | [`os.get_env("FOO")`](http://erlang.org/doc/man/os.html#getenv-1)
+Go               | [`os.Getenv("FOO")`](https://golang.org/pkg/os/#Getenv)
+Java             | [`System.getenv("FOO")`](https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/lang/System.html#getenv%28java.lang.String%29)
+Node.js          | [`process.env.FOO`](https://nodejs.org/api/process.html#process_process_env)
+PHP              | [`getenv("FOO")`](https://www.php.net/manual/en/function.getenv.php)
+Python           | [`os.getenv("FOO")`](https://docs.python.org/3/library/os.html#os.getenv)
+Ruby             | [`ENV["FOO"]`](https://ruby-doc.org/core-2.6.5/ENV.html#method-c-5B-5D)
+Rust             | [`env::var("FOO")`](https://doc.rust-lang.org/std/env/fn.var.html)
 
 
 
@@ -375,4 +376,7 @@ undefined
 [devops]: https://en.wikipedia.org/wiki/DevOps
 [env]: https://en.wikipedia.org/wiki/Deployment_environment
 [env-var]: https://en.wikipedia.org/wiki/Environment_variable
+[home]: https://www.baeldung.com/linux/home-variable-user-tilde
+[lang]: https://www.gnu.org/software/gettext/manual/html_node/Locale-Environment-Variables.html
 [path]: https://en.wikipedia.org/wiki/Path_(computing)
+[tmp]: https://en.wikipedia.org/wiki/TMPDIR

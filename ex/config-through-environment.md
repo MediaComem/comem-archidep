@@ -85,7 +85,7 @@ to `/` if the environment variable is not available.
 > `?:`][php-shorthand-comparisons].
 
 Do **NOT** set a default value for the password, as it is a bad practice to
-hardcode sensitive values (as mentionned in the [Config section of The
+hardcode sensitive values (as mentioned in the [Config section of The
 Twelve-Factor App](https://12factor.net/config)). The definition of the
 `DB_PASS` variable should have no default and look like this:
 

@@ -9,15 +9,15 @@ various tools.
 
 - [Legend](#legend)
 - [:exclamation: Connect to the exercise server](#exclamation-connect-to-the-exercise-server)
-- [:question: Spot the difference](#question-spot-the-difference)
+- [:exclamation: Spot the difference](#question-spot-the-difference)
 - [:exclamation: Copy a file with the `scp` command](#exclamation-copy-a-file-with-the-scp-command)
 - [:exclamation: Copy a file using the SFTP protocol](#exclamation-copy-a-file-using-the-sftp-protocol)
 - [:exclamation: Set up public key authentication](#exclamation-set-up-public-key-authentication)
-  - [:question: Do I already have a key pair?](#question-do-i-already-have-a-key-pair)
+  - [:question: Optional: do I already have a key pair?](#question-do-i-already-have-a-key-pair)
   - [:books: The `ssh-keygen` command](#books-the-ssh-keygen-command)
   - [:exclamation: Generate a private-public key pair](#exclamation-generate-a-private-public-key-pair)
   - [:exclamation: Use `ssh-copy-id` to copy your public key to the server](#exclamation-use-ssh-copy-id-to-copy-your-public-key-to-the-server)
-  - [:question: The `authorized_keys` file](#question-the-authorized_keys-file)
+  - [:books: The `authorized_keys` file](#question-the-authorized_keys-file)
 - [:exclamation: Configure your SFTP application to use public key authentication](#exclamation-configure-your-sftp-application-to-use-public-key-authentication)
 - [:space_invader: SSH agent](#space_invader-ssh-agent)
   - [:space_invader: Running an SSH agent](#space_invader-running-an-ssh-agent)
@@ -56,11 +56,11 @@ $> ssh <username>@<hostname>
 
 To connect to the server:
 
-* Determine the SSH command to connect to the exercise server. Replace the
+- Determine the SSH command to connect to the exercise server. Replace the
   `<username>` placeholder by the username you received in your email, and the
   `<hostname>` placeholder by `archidep.ch`.
-* Execute that command in your console.
-* Since you are probably connecting to this server for the first time,
+- Execute that command in your console.
+- Since you are probably connecting to this server for the first time,
   you should get the initial SSH connection warning indicating that the
   authenticity of the host cannot be established.
 
@@ -71,7 +71,8 @@ To connect to the server:
   > potential man-in-the-middle attack. An attacker could make you connect to a
   > compromised server and then intercept all traffic going through the SSH
   > connexion, including your password.
-* Enter or paste your password when prompted.
+
+- Enter or paste your password when prompted.
 
   > :books: The password's characters will not appear as you type or after
   > pasting. This is a feature, not a bug. Passwords are not displayed to make
@@ -81,12 +82,12 @@ You should now be connected to the server. You should see a welcome banner
 giving you some information about the server's operating system, and the prompt
 should have changed. Any command you type is now executed on the remote server.
 
-## :question: Spot the difference
+## :exclamation: Spot the difference
 
 Run the following commands on the server:
 
-* [`hostname`][hostname-command]
-* [`whoami`][whoami-command]
+- [`hostname`][hostname-command]
+- [`whoami`][whoami-command]
 
 Open another console and run these commands again. Since this is a fresh
 console, they will be executed on your local machine this time. Observe the
@@ -185,20 +186,24 @@ World
 
 > :gem: Here's a few additional examples of how to use the `scp` command:
 >
-> * `scp foo.txt jdoe@192.168.50.4:bar.txt`
+> - `scp foo.txt jdoe@192.168.50.4:bar.txt`
 >
 >   Copy the local file `foo.txt` to a file named `bar.txt` in `jdoe`'s home
 >   directory on the remote computer.
-> * `scp foo.txt jdoe@192.168.50.4:`
+>
+> - `scp foo.txt jdoe@192.168.50.4:`
 >
 >   Copy the file to `jdoe`'s home directory with the same file name.
-> * `scp foo.txt jdoe@192.168.50.4:/tmp/foo.txt`
+>
+> - `scp foo.txt jdoe@192.168.50.4:/tmp/foo.txt`
 >
 >   Copy the file to the absolute path `/tmp/foo.txt` on the remote computer.
-> * `scp jdoe@192.168.50.4:foo.txt jsmith@192.168.50.5:bar.txt`
+>
+> - `scp jdoe@192.168.50.4:foo.txt jsmith@192.168.50.5:bar.txt`
 >
 >   Copy the file from one remote computer to another.
-> * `scp -r foo jdoe@192.168.50.4:foo`
+>
+> - `scp -r foo jdoe@192.168.50.4:foo`
 >
 >   **R**ecursively (the `-r` option) copy the contents of directory `foo` to
 >   the remote computer (a [recursive][recursion] copy means that the directory
@@ -213,9 +218,9 @@ therefore poses fewer security risks.
 
 Most modern FTP clients support SFTP. Here's a couple:
 
-* [FileZilla][filezilla]
-* [WinSCP][winscp]
-* [Cyberduck][cyberduck]
+- [FileZilla][filezilla]
+- [WinSCP][winscp]
+- [Cyberduck][cyberduck]
 
 Many code editors also have SFTP support available through plugins.
 
@@ -223,11 +228,11 @@ Install one of these applications (or use your favorite SFTP application if you
 already have one) and connect to the SSH exercise server. You will need to
 configure a connection with the following information:
 
-* **Protocol:** SFTP
-* **Host, hostname or server address:** `archidep.ch`
-* **Username**: the username you received by email
-* **Password**: the password you received by email
-* **Port:** 22 (the standard SSH port)
+- **Protocol:** SFTP
+- **Host, hostname or server address:** `archidep.ch`
+- **Username**: the username you received by email
+- **Password**: the password you received by email
+- **Port:** 22 (the standard SSH port)
 
 > :gem: How to use these parameters depends on which application you use. They
 > may not be named exactly like this.
@@ -256,7 +261,7 @@ authentication on the SSH exercise server.
 This will improve security and avoid having to type your password on each SSH
 connection.
 
-### :question: Do I already have a key pair?
+### :question: Optional: do I already have a key pair?
 
 By default, SSH keys are stored in the `.ssh` directory in your home directory:
 
@@ -274,7 +279,7 @@ algorithm, such as an [ECDSA][ecdsa] key pair with files named `id_ecdsa` and
 
 > :gem: On Windows, you can toggle the display of hidden files in the View tab
 > of the explorer to access your `.ssh` directory manually. On macOS, type `open
-> ~/.ssh` in your Terminal or use the `Cmd-Shift-.` shortcut to display hidden
+~/.ssh` in your Terminal or use the `Cmd-Shift-.` shortcut to display hidden
 > files. On most Linux distributions, the file manager will have an option to
 > show hidden files under its menu.
 
@@ -292,10 +297,10 @@ If the directory doesn't exist or is empty, you don't have a key pair yet.
 The `ssh-keygen` command is usually installed along with SSH and can generate a
 key pair for you. It will ask you a couple of questions about the key:
 
-* Where do you want to save it? Simply press enter to use the proposed default
+- Where do you want to save it? Simply press enter to use the proposed default
   location (`~/.ssh/id_ed25519` for an Ed25519 key, `~/.ssh/id_rsa` for an RSA
   key, etc).
-* What password do you want to protect the key with? Enter a password or simply
+- What password do you want to protect the key with? Enter a password or simply
   press enter to use no password.
 
 > **Should I protect my key with a password?**
@@ -389,7 +394,7 @@ If it worked, the connection should now open without asking for a password. Your
 user account is still secured: authentication was performed transparently by
 your SSH client, using your private key.
 
-### :question: The `authorized_keys` file
+### :books: The `authorized_keys` file
 
 **Now that you are connected to the server,** you can check that your public key
 was added to your user's `authorized_keys` file:
@@ -423,8 +428,6 @@ why you no longer have to enter a password.
 > The [`chmod` command][chmod] changes the permission of files. We will learn
 > more about this command later on in the course.
 
-
-
 ## :exclamation: Configure your SFTP application to use public key authentication
 
 Most SFTP applications also support SSH public key authentication instead of
@@ -449,8 +452,6 @@ For example, Cyberduck allows you to select your default key file:
 > most Linux distributions, the file manager will have an option to show hidden
 > files under its menu.
 
-
-
 ## :space_invader: SSH agent
 
 If you use a **private key that is password-protected**, you lose part of the
@@ -470,23 +471,24 @@ entering the password again each time.
 
 There are several ways to run an SSH agent:
 
-* [How to use ssh-agent for authentication on Linux /
+- [How to use ssh-agent for authentication on Linux /
   Unix](https://www.cyberciti.biz/faq/how-to-use-ssh-agent-for-authentication-on-linux-unix/)
-* [Generating a new SSH key and adding it to the ssh-agent
+- [Generating a new SSH key and adding it to the ssh-agent
   (GitHub)][ssh-agent-run-github]
-* [Single sign-on using SSH][ssh-agent-run]
+- [Single sign-on using SSH][ssh-agent-run]
 
 You may already have an SSH agent running. Run the `ssh-add -l` command to
 **l**ist (`-l`) unlocked keys:
 
-* If you get an error message, it probably means that SSH agent is not running,
+- If you get an error message, it probably means that SSH agent is not running,
   for example:
 
   ```bash
   $> ssh-add -l
   Could not open a connection to your authentication agent.
   ```
-* If it tells you that you have no identities, it means that SSH agent is
+
+- If it tells you that you have no identities, it means that SSH agent is
   running but that you have not unlocked any keys yet:
 
   ```bash
@@ -527,8 +529,6 @@ If you want to load another key than the default one, you can specify its path:
 $> ssh-add /path/to/custom_id_25519
 ```
 
-
-
 ## :checkered_flag: What have I done?
 
 You have learned to use the `ssh` command to connect to a remote server, and
@@ -541,8 +541,6 @@ less secure password-based authentication mechanism.
 If you are more security-minded, you may have also learned to protect your
 private key with a passphrase and to use SSH agent to make it more convenient to
 use SSH.
-
-
 
 [chmod]: https://linux.die.net/man/1/chmod
 [cp-command]: https://linuxize.com/post/cp-command-in-linux/

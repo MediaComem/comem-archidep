@@ -3,7 +3,7 @@
 <!-- START doctoc -->
 <!-- END doctoc -->
 
-Once you have adapted PHP FPM's configuration as instructed, you should create
+Once you have adapted PHP-FPM's configuration as instructed, you should create
 the `/etc/nginx/sites-available/todolist` file on your server and it should look
 something this:
 

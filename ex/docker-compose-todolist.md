@@ -42,8 +42,6 @@ cloud server.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
 ## Legend
 
 Parts of this guide are annotated with the following icons:
@@ -62,25 +60,21 @@ Parts of this guide are annotated with the following icons:
     exercise.
 - :boom: Troubleshooting tips: how to fix common problems you might encounter.
 
-
-
 ## :gem: Your best friends
 
 Your inescapable references for this exercise are the following documents:
 
-* The [**Dockerfile reference**][dockerfile-reference], which describes the
-  commands you can use in a `Dockerfile`.
-* The [**Compose file reference**][compose-file-reference], which describes the
+- The [**Dockerfile reference**][dockerfile-reference], which describes the
+  commands you can use in a Dockerfile.
+- The [**Compose file reference**][compose-file-reference], which describes the
   Compose file format.
-
-
 
 ## :exclamation: Make sure you have everything you need
 
-* You need to have [Docker Desktop][docker-desktop] installed, which you should if
+- You need to have [Docker Desktop][docker-desktop] installed, which you should if
   you have performed the [previous Docker exercise](./docker-static.md).
-* You need an up-to-date PHP todolist. Move to your the PHP todolist repository
-  **on your local machine**:
+- You need an up-to-date PHP todolist. Move to your PHP todolist repository **on
+  your local machine**:
 
   ```bash
   $> cd /path/to/todolist
@@ -94,8 +88,8 @@ Your inescapable references for this exercise are the following documents:
   $> git switch main
   ```
 
-  > :books: In the Render deployment exercise, a `Dockerfile` was provided for
-  > you, In this exercise, you will write one yourself, step by step.
+  > :books: In the Render deployment exercise, a Dockerfile was provided for
+  > you. In this exercise, you will write one yourself, step by step.
 
   Make sure your `index.php` file supports configuration through environment
   variables. If you performed the [relevant
@@ -115,8 +109,6 @@ Your inescapable references for this exercise are the following documents:
   If that's not the case, adapt the `index.php` file, then commit and push your
   changes.
 
-
-
 ## :exclamation: Create a compose file to deploy the PHP todolist application
 
 Take a look at the [architecture of the PHP todolist deployment with nginx and
@@ -125,21 +117,21 @@ manager](./nginx-php-fpm-deployment.md#classical_building-architecture):
 
 ![Simplified architecture](nginx-php-fpm-deployment-simplified.png)
 
-Aside from Systemd, your server-side deployment is composed of 3 processes:
+Aside from systemd, your server-side deployment is composed of 3 processes:
 
-* Nginx, the **reverse proxy**.
-* The PHP todolist, the **application** itself.
-* A MySQL **database** server.
+- Nginx, the **reverse proxy**.
+- The PHP todolist, the **application** itself.
+- A MySQL **database** server.
 
-In a Compose deployment, you want to isolate them as separate services per the
-Docker philosophy. Therefore, your goal is to write a Compose file defining 3
-services.
+In a Compose deployment, you want to isolate them as separate services as per
+the Docker philosophy. Therefore, your goal is to write a Compose file defining
+3 services.
 
 Start by naming these services. Choose a naming convention:
 
-* Some people prefer to name each service after the tool that will be running in
+- Some people prefer to name each service after the tool that will be running in
   the container, for example: `nginx`, `php`, `mysql`.
-* Other prefer a more semantic naming convention: `reverse-proxy`, `application`
+- Other prefer a more semantic naming convention: `reverse-proxy`, `application`
   and `database` (or `rp`, `app` and `db` if you are feeling terse).
 
 > :gem: You will sometimes use these names on the command line when running
@@ -182,13 +174,12 @@ If you remember the very first [PHP todolist SFTP deployment
 exercise](./sftp-deployment.md), you had to do a few things to set up the
 database:
 
-1. Install the MySQL database server with `sudo apt install mysql-server`.
-1. Perform the base configuration with `sudo mysql_secure_installation`. This
-   includes:
-   * Setting the MySQL root password.
-   * Various other security-related settings.
+1. Install the MySQL database server with `sudo apt install mysql-server`
+1. Perform the base configuration with `sudo mysql_secure_installation`, including:
+   - Setting the MySQL root password
+   - Various other security-related settings
 1. Intialize the todolist database by running the PHP todolist's SQL script with
-   `sudo mysql < todolist.sql`.
+   `sudo mysql < todolist.sql`
 
 You will now learn to do the same in a Docker container with Docker Compose.
 
@@ -210,7 +201,7 @@ container starts.
 
 > :books: When running a container manually, you set environment variables with
 > the `-e VAR=VALUE` or `--env VAR=VALUE` options, e.g. `docker run -e
-> MYSQL_ROOT_PASSWORD=changeme mysql:8.3.0`. But you will not be doing that in
+MYSQL_ROOT_PASSWORD=changeme mysql:8.3.0`. But you will not be doing that in
 > this exercise. You will describe the configuration of the database service in
 > the Compose file, and Docker Compose will run the container for you.
 
@@ -218,7 +209,7 @@ During step 3 of the original deployment exercise, you then executed the PHP
 todolist's `todolist.sql` script. For the purposes of this exercise, this script
 can be divided into two sections:
 
-* The [database creation, user creation & privileges
+- The [database creation, user creation & privileges
   configuration](https://github.com/MediaComem/comem-archidep-php-todo-exercise/blob/83415041ddec4e61dffa5ccf7317d9d5ff1fc3aa/todolist.sql#L1-L8):
 
   ```sql
@@ -226,7 +217,8 @@ can be divided into two sections:
   CREATE USER IF NOT EXISTS 'todolist'@'localhost' IDENTIFIED WITH mysql_native_password BY 'chAngeMeN0w!';
   GRANT ALL PRIVILEGES ON todolist.* TO 'todolist'@'localhost' ;
   ```
-* The [creation of the database
+
+- The [creation of the database
   structure](https://github.com/MediaComem/comem-archidep-php-todo-exercise/blob/83415041ddec4e61dffa5ccf7317d9d5ff1fc3aa/todolist.sql#L10-L18):
 
   ```sql
@@ -245,8 +237,8 @@ If you read the **"Environment Variables"** section of the MySQL Docker image's
 documentation again, you will notice that there are 3 environment variables you
 can set that will take care of the first part of the setup for you:
 
-* Setting `$MYSQL_DATABASE` will automatically create a database with that name.
-* Setting `$MYSQL_USER` and `$MYSQL_PASSWORD` will automatically create a user
+- Setting `$MYSQL_DATABASE` will automatically create a database with that name.
+- Setting `$MYSQL_USER` and `$MYSQL_PASSWORD` will automatically create a user
   with access to that database.
 
 Simply by settings these environment variables, the container will perform the
@@ -278,7 +270,7 @@ is, without any changes.
 
 There is one last thing that you did not actually do yourself during the
 original deployment exercise, but was done for you when you installed the MySQL
-server. As indicated in the architecture diagram: MySQL is managed by Systemd,
+server. As indicated in the architecture diagram: MySQL is managed by systemd,
 which will automatically start it when your server starts, and restart it if it
 crashes. You also want this with your Compose deployment, at least for
 production deployments.
@@ -286,28 +278,28 @@ production deployments.
 > :books: When running containers with Docker Compose, the Docker daemon will
 > assume the responsibility of managing the containers, e.g. starting and
 > restarting them, depending on how you define your Compose services. The Docker
-> daemon itself will be managed by Systemd.
+> daemon itself will be managed by systemd.
 
 #### :exclamation: Write the database service
 
 So, let's recap what you need to define your MySQL Compose service:
 
-* Use the official MySQL Docker image.
-* Set a number of environment variables to perform the necessary setup (database
+- Use the official MySQL Docker image.
+- Set a number of environment variables to perform the necessary setup (database
   and user creation).
-* Execute the `todolist.sql` script when the database server is initialized.
-* Restart the database server automatically when there is an issue (Systemd's
+- Execute the `todolist.sql` script when the database server is initialized.
+- Restart the database server automatically when there is an issue (systemd's
   old job).
 
 You can now write the database service definition in your Compose file. Here's a
 few pointers:
 
-What                      | Documentation
-:------------------------ | :----------------------------------------
-Use the official image    | [`image`][compose-file-image]
-Set environment variables | [`environment`][compose-file-environment]
-Restart automatically     | [`restart`][compose-file-restart]
-Execute `todolist.sql`    | [`volumes`][compose-file-volumes]
+| What                      | Documentation                             |
+| :------------------------ | :---------------------------------------- |
+| Use the official image    | [`image`][compose-file-image]             |
+| Set environment variables | [`environment`][compose-file-environment] |
+| Restart automatically     | [`restart`][compose-file-restart]         |
+| Execute `todolist.sql`    | [`volumes`][compose-file-volumes]         |
 
 Read the documentation and fill in the definition for your `db` service:
 
@@ -323,11 +315,12 @@ services:
 ```
 
 > :gem: Use https://www.useapassphrase.com if you cannot think of a good
-> password.
+> password (here's a [French
+> version](https://passwordcreator.org/fr.html#good)).
 
 Here are a few things you want to watch out for:
 
-* When setting the `image` key, be sure to select a version, either a very
+- When setting the `image` key, be sure to select a version, either a very
   specific version (`MAJOR.MINOR.PATCH`, e.g. `1.2.3`) or a more general version
   (`MAJOR.MINOR`/`MAJOR`, e.g. `1.2` or `1`) if the Docker image supports it.
 
@@ -335,7 +328,8 @@ Here are a few things you want to watch out for:
   a version). Using the `latest` image means that a totally different (and maybe
   unsupported) version of the image may be used at different points in time,
   potentially breaking your deployment.
-* When setting variables with the `environment` key, **DO NOT** hardcode
+
+- When setting variables with the `environment` key, **DO NOT** hardcode
   sensitive secrets like passwords in the Compose file. Having secrets in your
   repositories is a bad security practice.
 
@@ -366,14 +360,15 @@ Here are a few things you want to watch out for:
   services:
     example-service:
       environment:
-        VAR1: value1  # hardcoded value
-        VAR2:         # no value, will be read from .env or the environment
+        VAR1: value1 # hardcoded value
+        VAR2: # no value, will be read from .env or the environment
   ```
 
   > :books: An even better way to manage sensitive information in a Compose
   > project is to use [Compose `secrets`][compose-secrets], but we will not go
   > that far in this exercise.
-* When you specify volume mounts, whether they are files or directories, the
+
+- When you specify volume mounts, whether they are files or directories, the
   mounts are **read-write** by default, meaning that the process running inside
   the container can modify the file and/or directories you are mounting from the
   host. But you can configure them to be **read-only** instead.
@@ -449,7 +444,7 @@ and voilà:
 $> docker run -it -v /path/to/app:/app bitnami/php-fpm
 ```
 
-That's *almost good enough* to run the PHP todolist. There's just one catch: in
+That's _almost good enough_ to run the PHP todolist. There's just one catch: in
 the FPM deployment exercise, we had to [add environment variables to
 FPM](./nginx-php-fpm-deployment.md#exclamation-add-a-the-todolist_db_pass-environment-variable-to-php-fpm).
 
@@ -466,8 +461,8 @@ env[TODOLIST_DB_PASS] = "my-super-secret-password"
 ```
 
 It just so happens that if you read the comments in the section of FPM's
-configuration file where we added that variable, it states that *"All $VARIABLEs
-are taken from the current environment."* This means that we can reference
+configuration file where we added that variable, it states that _"All $VARIABLEs
+are taken from the current environment."_ This means that we can reference
 environment variables in the file:
 
 ```
@@ -479,11 +474,11 @@ make it available to the PHP code it interprets.
 
 So, let's recap what you need in this PHP todolist Dockerfile:
 
-What to do                                                    | How to do it
-:------------------------------------------------------------ | :--------------------------------
-Use the Bitnami PHP-FPM image                                 | [`FROM` command][dockerfile-from]
-Put the todolist's code (`index.php`) in the `/app` directory | [`COPY` command][dockerfile-copy]
-Configure FPM to forward the todolist's environment variables | *Huh?*
+| What to do                                                    | How to do it                      |
+| :------------------------------------------------------------ | :-------------------------------- |
+| Use the Bitnami PHP-FPM image                                 | [`FROM` command][dockerfile-from] |
+| Put the todolist's code (`index.php`) in the `/app` directory | [`COPY` command][dockerfile-copy] |
+| Configure FPM to forward the todolist's environment variables | _Huh?_                            |
 
 Let's write that file. Create a `Dockerfile` file in the PHP todolist repository
 and fill in the `FROM` and `COPY` commands with something appropriate:
@@ -500,10 +495,10 @@ environment variables to the PHP code intepreted by FPM.
 
 There are two main ways to do that:
 
-* Replace FPM's entire configuration file in the image with your own, including
+- Replace FPM's entire configuration file in the image with your own, including
   the additional lines. In this case, you would store that file in your
   repository and use a `COPY` command.
-* Append the additional lines to the end of FPM's existing configuration file.
+- Append the additional lines to the end of FPM's existing configuration file.
   In this case, you can use a `RUN` command and simply append the lines with
   Unix's trusty `echo` command.
 
@@ -528,11 +523,11 @@ RUN echo >> "/opt/bitnami/php/etc/php-fpm.d/www.conf" && \
 > :books: How could you have known that the FPM configuration file is stored
 > under `/opt/bitnami/php/etc/php-fpm.d/www.conf` in this image?
 >
-> * Read the documentation of the [Bitnami PHP-FPM image][php-fpm-image]. It
+> - Read the documentation of the [Bitnami PHP-FPM image][php-fpm-image]. It
 >   makes several mentions of the `/opt/bitnami/php/etc` directory, clearly
 >   indicating that this is where the PHP configuration files, and therefore
 >   FPM's configuration files, are stored.
-> * Run the image with a shell and explore its file system:
+> - Run the image with a shell and explore its file system:
 >
 >   ```bash
 >   $> docker run --rm -it --entrypoint bash bitnami/php-fpm
@@ -561,14 +556,14 @@ $> docker build -t todolist/app .
 It is now finally time to define the application service. Here's what you want
 to do:
 
-* Run a container based on the Dockerfile you just created.
-  * The image might need to be built if it has never been built locally.
-* Pass some environment variables to FPM, at the very least:
-  * The host at which the database can be reached (the `$TODOLIST_DB_HOST`
+- Run a container based on the Dockerfile you just created.
+  - The image might need to be built if it has never been built locally.
+- Pass some environment variables to FPM, at the very least:
+  - The host at which the database can be reached (the `$TODOLIST_DB_HOST`
     variable).
-  * The password of the `todolist` database user (the `$TODOLIST_DB_PASS`
+  - The password of the `todolist` database user (the `$TODOLIST_DB_PASS`
     variable).
-* Restart FPM automatically when there is an issue (Systemd's old job).
+- Restart FPM automatically when there is an issue (systemd's old job).
 
 There's also one last thing that is different compared to the FPM exercise: now
 that you are running 2 isolated containers, FPM and MySQL, you need to express
@@ -576,17 +571,17 @@ the dependency that exists here. **The application service needs the database
 service.** There would be no point running the PHP todolist without its
 database. So we also need to:
 
-* Specify that the application service depends on the database service.
+- Specify that the application service depends on the database service.
 
 You can now write the application service definition in your Compose file.
 Here's a few pointers:
 
-What                             | Documentation
-:------------------------------- | :----------------------------------------
-Use/build your custom Dockerfile | [`build`][compose-file-build]
-Configure the dependency         | [`depends_on`][compose-file-depends-on]
-Set environment variables        | [`environment`][compose-file-environment]
-Restart automatically            | [`restart`][compose-file-restart]
+| What                             | Documentation                             |
+| :------------------------------- | :---------------------------------------- |
+| Use/build your custom Dockerfile | [`build`][compose-file-build]             |
+| Configure the dependency         | [`depends_on`][compose-file-depends-on]   |
+| Set environment variables        | [`environment`][compose-file-environment] |
+| Restart automatically            | [`restart`][compose-file-restart]         |
 
 Read the documentation and fill in the definition for your `app` service:
 
@@ -614,8 +609,8 @@ you cannot put it in the Compose file.
 If you read up on [Compose networking][compose-networking], you will see that
 Docker Compose performs lots of magic to help you there. It will:
 
-* Automatically create a default network that all service containers will join.
-* Give a resolvable name to each container based on the service name.
+- Automatically create a default network that all service containers will join.
+- Give a resolvable name to each container based on the service name.
 
 So this means that in your little Compose architecture, the database can be
 reached at the host `db`. Yes, `db` is actually a valid hostname, one without a
@@ -632,9 +627,9 @@ service.
 
 You can now run the application!
 
-You can run the application basically the same way as you did the database
-service, with one little addition. You need to add the `--build` option so that
-Docker Compose knows to build (or re-build) the Dockerfile for the application:
+You can run the application service the same way you did the database service,
+with one little addition. You need to add the `--build` option so that Docker
+Compose knows to build (or re-build) the Dockerfile for the application:
 
 ```bash
 $> docker compose up --build app
@@ -663,7 +658,7 @@ The last service you need is the reverse proxy. You will use [nginx][nginx],
 much like in the [FPM deployment exercise](./nginx-php-fpm-deployment.md),
 except that you will of course run it as a service in an isolated container.
 
-Since nginx is one of the most popular reverse proxies and web server, there is
+Since nginx is one of the most popular reverse proxies and web servers, there is
 of course an [official `nginx` image on Docker Hub][nginx-docker-image].
 
 So, think about what do you need your reverse proxy to do, based on the FPM
@@ -745,19 +740,19 @@ server {
 The main differences compared to the configuration that you wrote for the FPM
 deployment exercise are:
 
-* You do not need a specific `server_name` so you can use the placeholder `_`
+- You do not need a specific `server_name` so you can use the placeholder `_`
   which means "any server name". The entire purpose of this reverse proxy is to
   serve the PHP todolist and no other application, so we do not care about the
   domain name.
-* The `root` is of course `/app`, which is where you put the PHP todolist's code
+- The `root` is of course `/app`, which is where you put the PHP todolist's code
   in the PHP todolist Docker image you wrote earlier.
-* For reasons that we will not go into here, configuring the index page needs to
+- For reasons that we will not go into here, configuring the index page needs to
   be done a little differently with this extra `location / {}` block and the
   `fastcgi_index` directive. This will make nginx serve the PHP todolist's
   `index.php` page in the `/app` directory (specified by the `root` directive).
-* The `include fastcgi.conf;` directive is equivalent to what you did in the
+- The `include fastcgi.conf;` directive is equivalent to what you did in the
   other exercise, except that the path to the file is different.
-* The `fastcgi_pass app:9000;` is equivalent to what you did in the other
+- The `fastcgi_pass app:9000;` is equivalent to what you did in the other
   exercise, except that instead of proxying to an application that is running on
   `localhost`, you are proxying to the application service container which is
   reachable at the network name `app` (just like the database service container
@@ -767,23 +762,23 @@ deployment exercise are:
 
 Let's recap. Here's what the reverse proxy service needs to do:
 
-* Use the [official nginx Docker image][nginx-docker-image].
-* Publish a port on the host.
-* Specify a dependency on the application service.
-* Restart automatically in case of issues.
-* Use our nginx site configuration file instead of the image's default
+- Use the [official nginx Docker image][nginx-docker-image].
+- Publish a port on the host.
+- Specify a dependency on the application service.
+- Restart automatically in case of issues.
+- Use our nginx site configuration file instead of the image's default
   configuration.
 
 You can now write the reverse proxy service definition in your Compose file.
 Here's a few pointers:
 
-What                                            | Documentation
-:---------------------------------------------- | :--------------------------------------
-Use the official nginx Docker image             | [`image`][compose-file-image]
-Publish a port on the host                      | [`ports`][compose-file-ports]
-Specify a dependency on the application service | [`depends_on`][compose-file-depends-on]
-Restart automatically                           | [`restart`][compose-file-restart]
-Use our nginx configuration file                | [`volumes`][compose-file-volumes]
+| What                                            | Documentation                           |
+| :---------------------------------------------- | :-------------------------------------- |
+| Use the official nginx Docker image             | [`image`][compose-file-image]           |
+| Publish a port on the host                      | [`ports`][compose-file-ports]           |
+| Specify a dependency on the application service | [`depends_on`][compose-file-depends-on] |
+| Restart automatically                           | [`restart`][compose-file-restart]       |
+| Use our nginx configuration file                | [`volumes`][compose-file-volumes]       |
 
 Read the documentation and fill in the definition for your `rp` service:
 
@@ -798,9 +793,9 @@ services:
   # ...
 ```
 
-> :space_invader: Note that nginx has images based on the lightweight and secure
-> Alpine Linux distribution. Choose one of these for a smaller and more
-> efficient Docker image, benefiting from Alpine's minimalistic footprint.
+> :gem: Note that nginx has images based on the lightweight and secure Alpine
+> Linux distribution. Choose one of these for a smaller and more efficient
+> Docker image, benefiting from Alpine's minimalistic footprint.
 
 Concerning the port, choose your favorite port that is currently free on your
 local machine, let's say `12000`. You need to publish port `80` of the nginx
@@ -829,8 +824,6 @@ Assuming you chose port `12000` and that you have configured everything
 correctly, you should be able to use the PHP todolist at http://localhost:12000!
 
 Yay! 🎉
-
-
 
 ## :exclamation: Run services in the background
 
@@ -867,10 +860,8 @@ can learn about by running `docker compose help`.
 > :books: When you run Compose services in production on a server, you generally
 > want to run them in detached mode so you do not have to hang around for the
 > services to stay up. If you have configured your `restart` keys correctly, the
-> Docker daemon will make sure the services stay alive (and trusty old Systemd
+> Docker daemon will make sure the services stay alive (and trusty old systemd
 > will watch over the daemon itself).
-
-
 
 ## :exclamation: Make it persist
 
@@ -901,8 +892,8 @@ Containers should easily be destroyed and recreated as necessary.
 You must store data in a more persistent way. There are two ways to do that with
 Docker and Docker Compose:
 
-* Mount a host directory into the container.
-* Use a Docker-managed volume.
+- Mount a host directory into the container.
+- Use a Docker-managed volume.
 
 If you read the **Where to Store Data** section of the [`mysql` image's
 documentation][mysql-docker-image], you will see that the MySQL database server
@@ -916,7 +907,7 @@ services:
   db:
     # ...
     volumes:
-      - "./data:/var/lib/mysql"
+      - './data:/var/lib/mysql'
       # ...
   #...
 ```
@@ -933,7 +924,7 @@ services:
   db:
     # ...
     volumes:
-      - "db_data:/var/lib/mysql"
+      - 'db_data:/var/lib/mysql'
       # ...
   #...
 
@@ -977,8 +968,6 @@ $> docker compose up --build --detach rp
 > deleting the `data` directory yourself. If you chose volume-based storage, you
 > can add the `-v` or `--volumes` option to the `down` command to also delete
 > associated volumes: `docker compose down -v`.
-
-
 
 ## :exclamation: Deploy it on your cloud server
 
@@ -1066,7 +1055,7 @@ it:
 ```conf
 server {
   listen 80;
-  server_name todolist-docker.john-doe.archidep.ch;
+  server_name todolist-docker.jde.archidep.ch;
 
   location / {
     proxy_pass http://localhost:12000;
@@ -1074,7 +1063,7 @@ server {
 }
 ```
 
-> :gem: Replace `.john-doe.archidep.ch` with your subdomain for the course, as
+> :gem: Replace `.jde.archidep.ch` with your subdomain for the course, as
 > you did for previous deployment exercises.
 
 Link and enable that configuration:
@@ -1085,13 +1074,11 @@ $> sudo nginx -t
 $> sudo nginx -s reload
 ```
 
-You should now be able to visit http://todolist-docker.john-doe.archidep.ch in
+You should now be able to visit http://todolist-docker.jde.archidep.ch in
 your browser and see your Compose deployment live online!
 
 > :books: Note that this deployment is using an isolated database from your
-> previous deployment at http://todolist.john-doe.archidep.ch.
-
-
+> previous deployment at http://todolist.jde.archidep.ch.
 
 ## :books: Going further
 
@@ -1111,14 +1098,14 @@ So, instead of hardcoding the published port like you did before:
 
 ```yml
 ports:
-  - "12000:80"
+  - '12000:80'
 ```
 
 You might want to make it configurable:
 
 ```yml
 ports:
-  - "${TODOLIST_PORT:-12000}:80"
+  - '${TODOLIST_PORT:-12000}:80'
 ```
 
 That way, it will use port `12000` by default, but you can also change it simply
@@ -1175,7 +1162,7 @@ proxy and database cannot reach each other, as it should be.
 
 If you performed the [horizontal scaling exercise with the Fibscale
 application](./fibscale-deployment.md), you may recall that configuring
-horizontal scaling with Systemd was fairly complex.
+horizontal scaling with systemd was fairly complex.
 
 Do you know what it takes to perform horizontal scaling on your server with
 Docker Compose?
@@ -1204,8 +1191,6 @@ reverse proxy service's container to the application service's containers.
 
 Well, that was easy.
 
-
-
 ## :checkered_flag: What have I done?
 
 You have learned another way to deploy a web application: with Docker and Docker
@@ -1223,8 +1208,6 @@ relevant to this exercise and not those from previous exercises):
 ![Simplified architecture](docker-compose-todolist-simplified.png)
 
 > [Simplified architecture PDF version](docker-compose-todolist-simplified.pdf).
-
-
 
 [compose-file-build]: https://docs.docker.com/compose/compose-file/05-services/#build
 [compose-file-depends-on]: https://docs.docker.com/compose/compose-file/05-services/#depends_on

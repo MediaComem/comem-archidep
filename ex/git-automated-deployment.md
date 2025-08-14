@@ -2,7 +2,7 @@
 
 This guide describes how to automatically deploy a PHP application when pushing commits to a server.
 
-It assumes that you have performed the previous [nginx & PHP FPM exercise][php-fpm-ex].
+It assumes that you have performed the previous [nginx & PHP-FPM exercise][php-fpm-ex].
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -42,7 +42,7 @@ Parts of this guide are annotated with the following icons:
 ## :gem: Requirements
 
 This exercise assumes that you have deployed the PHP todolist application with
-PHP-FPM during previous exercices.
+PHP-FPM during previous exercises.
 
 ## :exclamation: Set up directories
 
@@ -56,7 +56,7 @@ $> mkdir todolist-automated
 $> mkdir todolist-automated-repo
 ```
 
-The `todolist-automated-repo` directory will be the Git repository, Later you
+The `todolist-automated-repo` directory will be the Git repository. Later you
 will add it as a remote in your local Git repository, so that you can push
 commits to it.
 
@@ -97,7 +97,11 @@ $> git init --bare
 Initialized empty Git repository in /home/jde/todolist-automated-repo/
 ```
 
-> :books: A bare repository is a repository with only a Git directory and no
+> :books: Remember that a Git repository has several parts: [the Git directory
+> where the project's history is stored, and the working tree which contains the
+> current version of the files you are working on][git-dir-work-tree].
+>
+> A bare repository is a repository with only a Git directory and no
 > working tree. The project's files are not checked out. It's used mostly on
 > servers for sharing or automation. Read [What is a bare repository?][git-bare]
 > for more information.
@@ -126,14 +130,9 @@ This script will take the latest version of the code in the
 :warning: If your repo has a `master` branch instead of a `main` branch, replace
 `main` by `master` in the `git checkout -f main` command in your hook.
 
-> :books: Remember that a Git repository has several parts: [the Git directory
-> where the project's history is stored, and the working tree which contains the
-> current version of the files you are working
-> on][git-dir-work-tree].
->
-> Normally, when you use the `git checkout` command in a Git repository, it will
-> use the `.git` directory of the repository as the Git directory, and the
-> repository itself as the working tree.
+> :books: Normally, when you use the `git checkout` command in a Git repository,
+> it will use the `.git` directory of the repository as the Git directory, and
+> the repository itself as the working tree.
 >
 > By setting the `GIT_DIR` environment variable, you are instructing Git to use
 > a different Git directory which could be anywhere (in this case, it is the
@@ -260,10 +259,11 @@ been deployed automatically!
 
 ## :checkered_flag: What have I done?
 
-You have create a bare Git repository on your server and pushed the PHP todolist
-to that repository. You have set up a Git hook: a shell script that is
-automatically executed every time a new commit is pushed. This script deploy the
-new version of the todolist by copying the new version to the correct directory.
+You have created a bare Git repository on your server and pushed the PHP
+todolist to that repository. You have set up a Git hook: a shell script that is
+automatically executed every time a new commit is pushed. This script deploys
+the new version of the todolist by copying the new version to the correct
+directory.
 
 This allows you to deploy new versions by simply pushing to the repository
 on your server. You could add any command you wanted to your deployment script.
@@ -278,8 +278,6 @@ we have neither created any new processes nor changed how they communicate:
 ![Architecture](certbot-deployment-architecture.png)
 
 > [Architecture PDF version](certbot-deployment-architecture.pdf).
-
-
 
 [git-bare]: https://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/
 [git-dir-work-tree]: https://mediacomem.github.io/comem-archidep/2024-2025/subjects/git/?home=MediaComem%2Fcomem-archidep%23readme#15

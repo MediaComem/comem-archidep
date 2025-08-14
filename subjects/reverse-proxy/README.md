@@ -65,7 +65,7 @@ Learn what a reverse proxy is, and put it in practice using nginx.
 
 ### Types of proxy servers
 
-There are 3 main kinds of proxy servers:
+There are three main kinds of proxy servers:
 
 * A [**tunneling proxy**][tunneling-proxy] or [**gateway**][gateway] passes **unmodified requests and responses** from a client to a server.
 * A [**forward proxy**][open-proxy] is used to retrieve data from a server usually on the Internet.
@@ -201,7 +201,7 @@ The added power will allow the server to serve more clients.
 <!-- slide-container -->
 
 **Horizontal scaling** means adding more computers to handle the same work.
-For example, 3 instances of a web application can probably handle 3 times as many clients at the same time.
+For example, three instances of a web application can probably handle three times as many clients at the same time.
 Computers or applications can be combined in [clusters][cluster] to improve performance.
 
 #### Load balancing
@@ -374,7 +374,7 @@ include /etc/nginx/sites-enabled/*;
 
 The most important include is `/etc/nginx/sites-enabled/*`.
 Any file in there will be loaded in the `http` context,
-which means they a good place to define `server` contexts in.
+which means they are a good place to define `server` contexts in.
 
 #### `sites-available` vs. `sites-enabled`
 
@@ -422,13 +422,13 @@ Nginx has many [directives][nginx-directives] that can be put in various context
 These are the most commonly used ones in the `server` context,
 used to serve websites (static or dynamic):
 
-Directive                              | Example value                              | Description
-:---                                   | :---                                       | :---
-[`listen`][nginx-directive-listen]     | `80`, `localhost:8000`                     | Port (and optional address) on which to listen and accept requests from.
-[`server_name`][nginx-server-names]    | `example.com, www.example.com`             | Comma-separated list of domain names. Determine which `server` block handles client requests.
-[`root`][nginx-directive-root]         | `/home/john_doe/www/site`, `/var/www/site` | The root directory for requests.
-[`index`][nginx-directive-index]       | `index.html`                               | Define files that will be used as an index, i.e. served by default if there is no URL path.
-[`location`][nginx-directive-location] | `/api`, `~* \.jpg$`                        | Vary configuration based on the URL.
+Directive                              | Example value                         | Description
+:------------------------------------- | :------------------------------------ | :--------------------------------------------------------------------------------------------
+[`listen`][nginx-directive-listen]     | `80`, `localhost:8000`                | Port (and optional address) on which to listen and accept requests from.
+[`server_name`][nginx-server-names]    | `example.com, www.example.com`        | Comma-separated list of domain names. Determine which `server` block handles client requests.
+[`root`][nginx-directive-root]         | `/home/jde/www/site`, `/var/www/site` | The root directory for requests.
+[`index`][nginx-directive-index]       | `index.html`                          | Define files that will be used as an index, i.e. served by default if there is no URL path.
+[`location`][nginx-directive-location] | `/api`, `~* \.jpg$`                   | Vary configuration based on the URL.
 
 
 
@@ -466,15 +466,15 @@ Each of the following examples can be put in a separate file in the `/etc/nginx/
 
 ### Static website configuration
 
-This configuration tells nginx to serve the static files in the directory `/home/john_doe/example`
-when a request arrives on port 80 for the domain `example.com`.
-This demonstrates nginx's capabilities as a basic **web server**.
+This configuration tells nginx to serve the static files in the directory
+`/home/jde/example` when a request arrives on port 80 for the domain
+`example.com`. This demonstrates nginx's capabilities as a basic **web server**.
 
 ```nginx
 server {
   listen `80`;
   server_name `example.com`;
-  root `/home/john_doe/example`;
+  root `/home/jde/example`;
   index index.html;
 
   # Cache images, icons, video, audio, HTC, etc.

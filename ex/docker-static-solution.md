@@ -12,7 +12,7 @@ dist
 README.md
 ```
 
-2. Create a `Dockerfile` at the root of the project directory with the following
+2. Create a Dockerfile at the root of the project directory with the following
    content:
 
 ```Dockerfile

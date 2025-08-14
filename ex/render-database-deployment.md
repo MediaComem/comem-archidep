@@ -1,6 +1,6 @@
 # Deploy web applications with a database to Render
 
-The goal of this exercice is to deploy the same [PHP Todolist][repo] application as in previous exercises, but this time on the Render Platform-as-a-service (PaaS) cloud instead of your own server in the Infrastructure-as-a-Service (IaaS) Microsoft Azure Web Services cloud. This illustrates the difference between the two cloud service models.
+The goal of this exercise is to deploy the same [PHP Todolist][repo] application as in previous exercises, but this time on the Render Platform-as-a-service (PaaS) cloud instead of your own server in the Infrastructure-as-a-Service (IaaS) Microsoft Azure Web Services cloud. This illustrates the difference between the two cloud service models.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -19,9 +19,9 @@ The goal of this exercice is to deploy the same [PHP Todolist][repo] application
   - [:exclamation: Create a PostgreSQL instance](#exclamation-create-a-postgresql-instance)
   - [:exclamation: Connect to the database and create tables](#exclamation-connect-to-the-database-and-create-tables)
 - [:exclamation: Deploy the application](#exclamation-deploy-the-application)
-  - [:exclamation: Create a Web Service](#exclamation-create-a-web-service)
+  - [:exclamation: Create a web service](#exclamation-create-a-web-service)
   - [:exclamation: Define environment variables](#exclamation-define-environment-variables)
-  - [:exclamation: Deploy the Web Service](#exclamation-deploy-the-web-service)
+  - [:exclamation: Deploy the web service](#exclamation-deploy-the-web-service)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -46,7 +46,7 @@ Parts of this guide are annotated with the following icons:
 
 ## :gem: Requirements
 
-* [PostgreSQL][postgresql] 16.6
+- [PostgreSQL][postgresql] 16.6
 
 This guide assumes that you are familiar with [Git][git-slides] and that you
 have a basic understanding of what a Platform-as-a-Service is.
@@ -54,7 +54,7 @@ have a basic understanding of what a Platform-as-a-Service is.
 :warning: **Work on your local machine, NOT your Azure server**. The goal of
 this exercise is to deploy on [Render][render], not your own server, to
 illustrate the difference between Platform-as-a-Service (PaaS) and
-Infrastructure-as-a-Service (IaaS). Technically, you *could* do the exercise
+Infrastructure-as-a-Service (IaaS). Technically, you _could_ do the exercise
 from your server, but you would have to set up public key SSH authentication
 all over again.
 
@@ -90,12 +90,13 @@ Check that you have access to the `psql` command by entering:
 $> psql --version
 psql (PostgreSQL) 16.6 (Homebrew)
 ```
+
 ### Windows
 
 Go to the [PostgreSQL downloads page][postgresql-downloads] and choose version
 **16.6 for Windows x86-64**. Launch the installer and follow the installation
 instructions. You can decide to install **only** the command-line tools. The
-following instructions assume you installed Postgres in the default directory on
+following instructions assume you installed PostgreSQL in the default directory on
 your C drive.
 
 The installer does not take care of adding `psql` to your shell's path. You will
@@ -124,15 +125,15 @@ By default, your fork does not track changes from the original repo, which is
 also commonly referred to as the **upstream**. Let's reconfigure our repository
 so that it can fetch data from there.
 
-:question: If you do not remember where the Todolist repository is stored on
-your local machine, you can simply clone it again from GitHub by running `git
-clone git@github.com:johndoe/comem-archidep-php-todo-exercise.git`. Don't
-forget to replace `johndoe` with your GitHub username.
+> :gem: If you do not remember where the Todolist repository is stored on your
+> local machine, you can simply clone it again from GitHub by running `git clone
+git@github.com:johndoe/comem-archidep-php-todo-exercise.git`. Don't forget to
+> replace `johndoe` with your GitHub username.
 
 ### :exclamation: Add the upstream as a remote
 
 From the terminal, move into your repository and add the upstream repository as
-a remote (this time, leave `MediaComem` in the URL, you *want* to use the
+a remote (this time, leave `MediaComem` in the URL, you _want_ to use the
 original URL and not your own):
 
 ```bash
@@ -144,7 +145,6 @@ $> git remote add upstream https://github.com/MediaComem/comem-archidep-php-todo
 will not be pushing to this remote. You couldn't anyway, as you are not a
 collaborator on the upstream repository so you do not have the right to push.
 Instead, you will use it to fetch up-to-date code from a branch.
-
 
 ### :exclamation: Fetch data from upstream
 
@@ -182,26 +182,26 @@ mysterious new `Dockerfile`.
 > applications by using containers. Containers allow a developer to package up
 > an application with all of the parts it needs, such as libraries and other
 > dependencies, and ship it all out as one package. A Dockerfile is a text file
-> that contains instructions for how to build a Docker image. Docker is beyond
-> the scope of this course, but you can learn more [on the Docker
-> website][docker].
+> that contains instructions for how to build a Docker image. We will learn more
+> about Docker later in the course, and you can of course learn more [on the
+> Docker website][docker].
 
 ### :exclamation: Push the new branch to GitHub
 
- ```bash
- $> git push origin
- ...
-  * [new branch]      docker-postgres -> docker-postgres
- ```
+```bash
+$> git push origin
+...
+ * [new branch]      docker-postgres -> docker-postgres
+```
 
- You can go check on GitHub whether your new branch has been pushed, by
- displaying the branch dropdown:
+You can go check on GitHub whether your new branch has been pushed, by
+displaying the branch dropdown:
 
- ![Check branch is on GitHub](../images/render-database-branch.png)
+![Check branch is on GitHub](../images/render-database-branch.png)
 
 :gem: Let's note that this whole step has nothing to do with PaaS deployments in
 and of themselves. It is just a corollary of some code changes that had to be
-made for the Todolist to work with Postgres and Docker.
+made for the Todolist to work with PostgreSQL and Docker.
 
 ## :exclamation: Create and configure a PostgreSQL Database on Render
 
@@ -210,7 +210,7 @@ couple of services on Render. The first is a PostgreSQL Database.
 
 ### :exclamation: Create a Render account
 
-Start by creating a [new Render account][render-register]. If you chose to
+Start by creating a [new Render account][render-register]. If you choose to
 register using GitHub, you will be able to skip linking these two accounts
 together later:
 
@@ -220,7 +220,7 @@ together later:
 
 Sign-in to your Render account and click the **new PostgreSQL** button:
 
- ![Create Postgres](../images/render-database-postgres-create.png)
+![Create PostgreSQL](../images/render-database-postgres-create.png)
 
 :warning: **You can only have 1 active PostgreSQL deployment in the free Render
 tier. If you want more, you gotta pay.**
@@ -236,14 +236,14 @@ configure:
 
 **A password will be automatically generated for you.**
 
-![Configure Postgres](../images/render-database-postgres-configure.png)
+![Configure PostgreSQL](../images/render-database-postgres-configure.png)
 
 When you are done, click **Create Database** and your PostgreSQL database will
 be provisioned automatically. Be patient, this process can take a few minutes.
 Once it is deployed you will be taken to a page with information pertaining to
 your new database and you should see the following:
 
-![Postgres Deployed](../images/render-database-postgres-created.png)
+![PostgreSQL Deployed](../images/render-database-postgres-created.png)
 
 ### :exclamation: Connect to the database and create tables
 
@@ -251,10 +251,10 @@ At this point, you have a database. Congratulations. But you still need to set
 its tables up. As you did in the first Todolist tutorial, you will be running
 the `todolist.sql` script on the database, albeit remotely.
 
-> :books: The script is a bit different because than the previous one because of
-> two factors: First, we are using PostgreSQL instead of MySQL. Second, we do
-> not need to create a database. As a matter of fact, this script is a bit
-> simpler than the previous one.
+> :books: The script is a bit different than the previous one because of two
+> factors. First, we are using PostgreSQL instead of MySQL. Second, we do not
+> need to create a database. As a matter of fact, this script is a bit simpler
+> than the previous one.
 
 Go back to your terminal and make sure you are in your repository and on the
 `docker-postgres` branch:
@@ -276,7 +276,7 @@ The information you need to connect to the database shell is located in the
 **PSQL Command** field. You can display or copy the contents of this field by
 clicking the icons to the left of the hidden characters.
 
-![Postgres Connection Information](../images/render-database-postgres-connections.png)
+![PostgreSQL Connection Information](../images/render-database-postgres-connections.png)
 
 Copy and paste the command in your terminal. This will connect you directly to
 the remote database deployed by Render.
@@ -284,7 +284,7 @@ the remote database deployed by Render.
 ```bash
 $> PGPASSWORD=your_password psql -h your_host.frankfurt-postgres.render.com -U your_user your_database
 psql (14.6 (Homebrew), server 15.1)
-WARNING: psql major version 14, server major version 15.
+WARNING: psql major version 16, server major version 16.
          Some psql features might not work.
 SSL connection (protocol: TLSv1.3, cipher: TLS_AES_128_GCM_SHA256, bits: 128, compression: off)
 Type "help" for help.
@@ -315,19 +315,19 @@ CREATE TABLE
 >
 > ```
 
-Now quit the Postgres shell by entering `\q`.
+Now quit the PostgreSQL shell by entering `\q`.
 
 ## :exclamation: Deploy the application
 
 Now that you have a database in place, it is time to deploy the web application
 itself.
 
-### :exclamation: Create a Web Service
+### :exclamation: Create a web service
 
-From your Render dashboard, hover over the purple **"new"** button and select
+From your Render dashboard, hover over the bluish **"New"** button and select
 **Web Service**.
 
-![Create a new Render Web Service](../images/render-service-add.png)
+![Create a new Render web service](../images/render-service-add.png)
 
 Render web services need to be connected to a Git repository hosted either on
 GitHub or GitLab. This step will allow you to automate deployments from your
@@ -335,7 +335,7 @@ codebase. Instead of manually setting up hooks like in the [Automated Deployment
 exercise][automated-deployment-ex], you will rely on Render to take care of this
 for you.
 
-> :books: Similar to GitHub, [GitLab][Gitlab] is both version control platform
+> :books: Similar to GitHub, [GitLab][Gitlab] is also a version control platform
 > that allows developers to manage and track changes to their codebase. They
 > both use the Git version control system. Although they share the majority of
 > their feature sets, GitLab can be self-hosted, which means that you can
@@ -345,7 +345,7 @@ for you.
 
 If you are signed up using GitHub, you should see a list of all the repositories
 that can be used to create a web service. If not, you will need to follow the
-procedure to link your GitHub account to Render. Choose to appropriate
+procedure to link your GitHub account to Render. Choose the appropriate
 repository for the purposes of this deployment and click **connect**.
 
 ![Connect GitHub repository to Render](../images/render-service-connect-repo.png)
@@ -363,16 +363,16 @@ deployment. Make sure you set the following basic options up:
 - The runtime environment (should automagically have Docker selected).
 - The pricing tier.
 
-![Render Web Service configuration](../images/render-service-configure.png)
+![Render web service configuration](../images/render-service-configure.png)
 
 ### :exclamation: Define environment variables
 
 In addition to these basic options, we will directly set up our environment
 variables on this page. Scroll down a bit and click the **Advanced** button.
 From there, you can add an arbitrary amount of envionment variables. You will
-use the following ones to connect you application to the PostgreSQL database you
-created earlier. All of the values can be found in the connection panel of your
-database's dashboard:
+use the following ones to connect your application to the PostgreSQL database
+you created earlier. All of the values can be found in the connection panel of
+your database's dashboard:
 
 | Environment variable | Description                                               |
 | :------------------- | :-------------------------------------------------------- |
@@ -386,10 +386,10 @@ database's dashboard:
 
 > :books: You can also store secret files (like .env or .npmrc files and private
 > keys) in Render. These files can be accessed during builds and in your code
-> just like regular files. You can upload those right in this configuration
+> just like regular files. You can upload them right in this configuration
 > panel or from the service's dashboard, post-deployment.
 
-### :exclamation: Deploy the Web Service
+### :exclamation: Deploy the web service
 
 Once you are done configuring your deployment, you may click the **Create Web
 Service** button at the bottom of the page. This will take you to the deployment
@@ -399,7 +399,7 @@ Render has attributed to your app.
 ![Render Environment Variables](../images/render-service-deploy.png)
 
 Once the deployment has succeeded, you will be able to visit the todolist at the
-URL provided Render. You may also use a custom domain by following [this
+URL provided by Render. You may also use a custom domain by following [this
 tutorial][render-custom-domains].
 
 > :warning: **This is a free service, so there are some obvious limitations.**
@@ -419,17 +419,17 @@ for you:
 
 - Process management with Docker & PHP-FPM
 - Reverse proxying with nginx
-- TLS/SSL encryption
+- TLS/SSL encryption with Let's Encrypt
 - Automated deployment
 
 But this isn't magic, it's building of the work of others:
 
-- First, there's the `Dockerfile`. It may not seem like a whole lot, but if you
+- First, there's the Dockerfile. It may not seem like a whole lot, but if you
   look at the first line, you might notice that we are importing something from
   [`richarvey/nginx-php-fpm`][nginx-php-fpm]. This is actually a popular (and
   fairly complex) Dockerfile build by somebody else. This is what automatically
   sets up PHP-FPM and nginx for us.
-- Second, there's Render: despite it's limitations in the free tier, we are
+- Second, there's Render: despite its limitations in the free tier, we are
   getting free hosting, automated deployments and encryption.
 - Finally, there's GitHub whose API allows the connection between your repo and
   Render to be very very easily configured.
@@ -442,8 +442,6 @@ Most of the technology and software that we have used throughout this course has
 been made possible by the contributions of others in the open community.
 Consider how you can contribute to open source projects by submitting code,
 writing documentation or reporting bugs and issues.
-
-
 
 [automated-deployment-ex]: https://github.com/MediaComem/comem-archidep/blob/main/ex/git-automated-deployment.md
 [docker]: https://www.docker.com/

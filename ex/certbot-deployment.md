@@ -1,7 +1,7 @@
 # Provision an SSL certificate using Certbot by Let's Encrypt
 
-The goal of this exercice is to provision a [Let's Encrypt][letsencrypt] [SSL
-certificate][certificate] for an application deployed in previous exercices
+The goal of this exercise is to provision a [Let's Encrypt][letsencrypt] [SSL
+certificate][certificate] for an application deployed in previous exercises
 using [Certbot][certbot].
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -39,7 +39,7 @@ Parts of this guide are annotated with the following icons:
 ## :gem: Requirements
 
 This exercise assumes that you have deployed at least one web site or
-application during previous exercices, and that you have configured nginx to
+application during previous exercises, and that you have configured nginx to
 serve it.
 
 ## :exclamation: Install Certbot
@@ -111,10 +111,9 @@ Here's a few tips about some problems you may encounter during this exercise.
 
 ### :boom: No names were found in your configuration files
 
-If Certbot tells you that you that "No names were found in your configuration
-files" but you have nginx sites that are configured, this may be because you
-have an underscore character (`_`) in your subdomains, e.g.
-`john_doe.archidep.ch`.
+If Certbot tells you that "No names were found in your configuration files" but
+you have nginx sites that are configured, this may be because you have an
+underscore character (`_`) in your subdomains, e.g. `jde.archidep.ch`.
 
 Although many tools support it, [underscore are technically not allowed in
 domain
@@ -123,16 +122,16 @@ will have to change your subdomain for Certbot to recognize it as valid.
 
 There are two things you need to do:
 
-* Log back into [Gandi.net][gandi] and add a new A record for
+- Log back into [Gandi.net][gandi] and add a new A record for
   your Azure VM just like you did during the [Configure a domain
   name](https://github.com/MediaComem/comem-archidep/blob/main/ex/dns-configuration.md)
   exercise.
 
-  This time, use `john-doe` instead of `john_doe` and `*.john-doe` instead of
-  `*.john_doe` (or something shorter like `jde` and `*.jde` as long as it does
-  not conflict with anyone else's subdomain), with the same IP address as before
-  (the public IP address of your Azure VM).
-* Replace your old subdomain by the new one in all your nginx configuration
+  Use something short like `jde` and `*.jde` (as long as it does not conflict
+  with anyone else's subdomain), with the same IP address as before (the public
+  IP address of your Azure VM).
+
+- Replace your old subdomain by the new one in all your nginx configuration
   files, for example:
 
   ```bash

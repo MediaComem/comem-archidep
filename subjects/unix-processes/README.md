@@ -301,8 +301,9 @@ You can stop it with `Ctrl-C` (in the terminal when it's running) when you're do
 
 Here are other ways to inspect processes and have more information on their resource consumption:
 
-* The [`htop` command][htop] (or the older [`top` command][top], meaning
-  **t**able **o**f **p**rocesses), shows processes along with CPU and memory
+* The [`htop` command][htop] (a better version of the older [`top`
+  command][top], meaning **t**able **o**f **p**rocesses, named after its
+  creator, **H**isham's **top**), shows processes along with CPU and memory
   consumption. It's an interactive command you can exit with `q` (**q**uit).
 * The [`free` command][free] is not directly related to processes,
   but it helps you know how much memory is remaining on your system.
@@ -323,9 +324,9 @@ Some of the previously-mentioned commands may be older than you, although they
 are regularly updated. But new command line tools are also being developed
 today:
 
-* The [`procs` command][procs] command is a modern interactive alternative to
-  the `ps` command for listing processes, written in [Rust][rust], a modern
-  systems programming language.
+* The [`procs` command][procs] is a modern interactive alternative to the `ps`
+  command for listing processes, written in [Rust][rust], a modern systems
+  programming language.
 * The [`btm` command][bottom] is a modern alternative to `htop` and `top` with
   more features, also written in [Rust][rust].
 
@@ -1070,7 +1071,6 @@ Processes can be **chained into a pipeline, each process transforming data and p
 ### A simple pipeline
 
 The `|` operator (a vertical pipe) is used to connect two processes together.
-
 Let's use two commands, one that prints text as output and one that reads text
 as input:
 
@@ -1088,7 +1088,8 @@ $> ls -1 | wc -l
 ```
 
 This **redirects (pipes) the output of the `ls` command into the input of the
-`wc` command**.
+`wc` command**, which will tell us how many files there are in the listed
+directory.
 
 <!-- slide-column -->
 
@@ -1129,12 +1130,12 @@ $> `find . -type f | \`
    `sort | \`
    `uniq -c`
 
- 147 jpg
+  147 jpg
 10925 js
-2158 json
-  15 less
-  45 map
-1515 md
+ 2158 json
+   15 less
+   45 map
+ 1515 md
 ```
 
 The final result is a list of file extensions and the number of files with that

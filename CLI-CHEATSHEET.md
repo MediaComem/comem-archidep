@@ -82,36 +82,40 @@ $> pwd
 
 ### What is there? (`ls`)
 
-| Command   | Effect                                                                                                              |
-| :-------- | :------------------------------------------------------------------------------------------------------------------ |
-| `ls`      | List the files in the current directory (invisible files are hidden).                                               |
-| `ls -a`   | List all files in the current directory, including invisible ones.                                                  |
-| `ls -ahl` | List all files in the current directory, also displaying their mode, owner, group, size and last modification date. |
-| `ls foo`  | List all files in the `foo` directory inside the current directory.                                                 |
+Use the `ls` command, meaning **l**i**s**t:
+
+| Command   | Effect                                                                                                             |
+| :-------- | :----------------------------------------------------------------------------------------------------------------- |
+| `ls`      | List the files in the current directory (invisible files are hidden)                                               |
+| `ls -a`   | List all files in the current directory, including invisible ones                                                  |
+| `ls -ahl` | List all files in the current directory, also displaying their mode, owner, group, size and last modification date |
+| `ls foo`  | List all files in the `foo` directory inside the current directory                                                 |
 
 ### Move around (`cd`)
 
-| Command        | Effect                                                                                           |
-| :------------- | :----------------------------------------------------------------------------------------------- |
-| `cd .`         | Move into the current directory ([wheeeeee][whee]).                                              |
-| `cd foo`       | Move into the `foo` directory inside the current directory.                                      |
-| `cd ./foo`     | _Same as previous._                                                                              |
-| `cd foo/bar`   | Move into the `bar` directory inside the `foo` directory inside the current directory            |
-| `cd ./foo/bar` | _Same as previous._                                                                              |
-| `cd ..`        | Move into the parent directory (e.g. into `/foo` if you are in `/foo/bar`).                      |
-| `cd ../..`     | Move into the parent directory of the parent directory (e.g. into `/` if you are in `/foo/bar`). |
-| `cd ~`         | Move into your home directory.                                                                   |
-| `cd`           | _Same as previous._                                                                              |
-| `cd /`         | Move to the root of the file system.                                                             |
+Use the `cd` command, meaning **c**hange **d**irectory:
+
+| Command        | Effect                                                                                          |
+| :------------- | :---------------------------------------------------------------------------------------------- |
+| `cd .`         | Move into the current directory ([wheeeeee][whee])                                              |
+| `cd foo`       | Move into the `foo` directory inside the current directory                                      |
+| `cd ./foo`     | _Same as previous_                                                                              |
+| `cd foo/bar`   | Move into the `bar` directory inside the `foo` directory inside the current directory           |
+| `cd ./foo/bar` | _Same as previous_                                                                              |
+| `cd ..`        | Move into the parent directory (e.g. into `/foo` if you are in `/foo/bar`)                      |
+| `cd ../..`     | Move into the parent directory of the parent directory (e.g. into `/` if you are in `/foo/bar`) |
+| `cd ~`         | Move into your home directory                                                                   |
+| `cd`           | _Same as previous_                                                                              |
+| `cd /`         | Move to the root of the file system                                                             |
 
 ### Special paths (`.`, `..`, `~`)
 
-| Path | Where                                                         |
-| :--- | :------------------------------------------------------------ |
-| `.`  | The current directory (the same as indicated by `pwd`).       |
-| `..` | The parent directory (e.g. `/foo` if you are in `/foo/bar`).  |
-| `~`  | Your user's home directory (e.g. `/Users/username` in macOS). |
-| `/`  | The file system's root directory on Unix systems.             |
+| Path | Where                                                        |
+| :--- | :----------------------------------------------------------- |
+| `.`  | The current directory (the same as indicated by `pwd`)       |
+| `..` | The parent directory (e.g. `/foo` if you are in `/foo/bar`)  |
+| `~`  | Your user's home directory (e.g. `/Users/username` in macOS) |
+| `/`  | The file system's root directory on Unix systems             |
 
 ## Reading
 
@@ -149,6 +153,8 @@ $> less file.txt
 ## Writing
 
 ### Create a directory (`mkdir`)
+
+`mkdir` stands for **m**a**k**e **dir**ectory.
 
 Create one directory in the current directory:
 
@@ -218,7 +224,7 @@ $> sudo nano /path/to/file.txt
 
 ### Copy stuff (`cp`)
 
-Copy a file to another location:
+**C**o**p**y a file to another location:
 
 ```bash
 $> cp oldname.txt newname.txt
@@ -244,7 +250,7 @@ $> mv directory /somewhere/else
 
 ### Delete stuff (`rm`)
 
-Delete a file:
+Delete (or **r**e**m**ove) a file:
 
 ```bash
 $> rm file.txt

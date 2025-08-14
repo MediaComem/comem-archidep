@@ -311,12 +311,12 @@ services provider.
 
 These are the main service models offered by cloud providers:
 
-Model                                | Acronym     | What is provided                                                    | Examples
-:---                                 | :---        | :---                                                                | :---
-[Infrastructure as a Service][iaas]  | **`IaaS`**  | Virtual machines, servers, storage, load balancers, network, etc.   | [Amazon Web Services][aws], [Google Cloud][google-cloud], [Microsoft Azure][azure]
-[Platform as a Service][paas]        | **`PaaS`**  | Execution runtime, database, web server, development tools, etc.    | [Cloud Foundry][cloud-foundry], [Heroku][heroku], [OpenShift][openshift], [Render][render]
-[Function as a Service][faas]        | **`FaaS`**  | Event-based hosting of individual functions.                        | [AWS Lambda][aws-lambda], [Azure Functions][azure-functions], [Cloud Functions][cloud-functions]
-[Software as a Service][saas]        | **`SaaS`**  | Web applications such as CMS, email, games, etc.                    | [Dropbox][dropbox], [Gmail][gmail], [Slack][slack]
+Model                               | Acronym    | What is provided                                                  | Examples
+:---------------------------------- | :--------- | :---------------------------------------------------------------- | :-----------------------------------------------------------------------------------------------
+[Infrastructure as a Service][iaas] | **`IaaS`** | Virtual machines, servers, storage, load balancers, network, etc. | [Amazon Web Services][aws], [Google Cloud][google-cloud], [Microsoft Azure][azure]
+[Platform as a Service][paas]       | **`PaaS`** | Execution runtime, database, web server, development tools, etc.  | [Cloud Foundry][cloud-foundry], [Heroku][heroku], [OpenShift][openshift], [Render][render]
+[Function as a Service][faas]       | **`FaaS`** | Event-based hosting of individual functions.                      | [AWS Lambda][aws-lambda], [Azure Functions][azure-functions], [Cloud Functions][cloud-functions]
+[Software as a Service][saas]       | **`SaaS`** | Web applications such as CMS, email, games, etc.                  | [Dropbox][dropbox], [Gmail][gmail], [Slack][slack], [WordPress][wordpress]
 
 ### On premise data center
 
@@ -490,7 +490,7 @@ of such monsters is a nightmare.
 
 In a [microservice architecture][microservices-in-practice], isolating services
 allows development to be parallelized as teams can work autonomously on separate
-services, or even individual functions. It also faciliates [continous
+services, or even individual functions. It also faciliates [continuous
 delivery][cd] as each component can be deployed independently.
 
 <!-- slide-column 25 -->
@@ -594,4 +594,5 @@ and managed by the platform provider.
 [vmware]: https://www.vmware.com
 [web-hosting]: https://en.wikipedia.org/wiki/Web_hosting_service
 [web-server]: https://en.wikipedia.org/wiki/Web_server
+[wordpress]: https://wordpress.com
 [youtube-premium]: https://www.youtube.com/premium

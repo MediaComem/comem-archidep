@@ -13,8 +13,6 @@ this:
 ```Dockerfile
 FROM bitnami/php-fpm:8.4.3
 
-ENV PHP_CONF_DIR=/opt/bitnami/php/etc
-
 COPY index.php /app/
 
 RUN echo >> "/opt/bitnami/php/etc/php-fpm.d/www.conf" && \
@@ -34,6 +32,7 @@ Here's a sample `.dockerignore` file to go with it:
 /images
 /LICENSE.txt
 /README.md
+/todolist.sql
 /update.sh
 ```
 
@@ -52,7 +51,7 @@ services:
     networks:
       - front-tier
     ports:
-      - "${TODOLIST_PORT:-12000}:80"
+      - '${TODOLIST_PORT:-12000}:80'
     restart: always
     volumes:
       # Overwrite the default configuration in the container with the site
@@ -74,8 +73,6 @@ services:
     networks:
       - front-tier
       - back-tier
-    ports:
-      - "12001:9000"
     restart: always
 
   # Database
@@ -92,7 +89,7 @@ services:
     restart: always
     volumes:
       # Persist server data in a named Docker volume.
-      - "db_data:/var/lib/mysql"
+      - 'db_data:/var/lib/mysql'
       # Run the todolist database setup script on server initialization.
       - ./todolist.sql:/docker-entrypoint-initdb.d/todolist.sql:ro
 

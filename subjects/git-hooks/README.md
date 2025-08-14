@@ -41,7 +41,7 @@ Hooks must be executable files with a specific name in the `hooks` directory
 inside a repository's Git directory (inside the `.git` directory in a normal
 repository).
 
-You can find example hook files in most Git repositores:
+You can find sample hook files in most Git repositories:
 
 ```bash
 $> cd /path/to/a/git/repository

@@ -14,7 +14,7 @@ server.
 - [:exclamation: Use a real password](#exclamation-use-a-real-password)
 - [:exclamation: Upload the application](#exclamation-upload-the-application)
 - [:exclamation: Initialize the database](#exclamation-initialize-the-database)
-  - [:question: Make sure it worked](#question-make-sure-it-worked)
+  - [:question: Optional: make sure it worked](#question-make-sure-it-worked)
 - [:exclamation: Update the configuration](#exclamation-update-the-configuration)
 - [:exclamation: Run the PHP development server](#exclamation-run-the-php-development-server)
 - [:checkered_flag: What have I done?](#checkered_flag-what-have-i-done)
@@ -197,7 +197,7 @@ password requirements you chose when you secured the MySQL installation.
 ## :exclamation: Upload the application
 
 **On your local machine**, use an SFTP client like [FileZilla][filezilla] or
-[Cyberduck][cyberduck] (macOS) to upload the application to the server.
+[Cyberduck][cyberduck] to upload the application to the server.
 
 Connect the SFTP client to your server using SSH public key authentication. In
 FileZilla, open the Site Manager and configure your connection like this:
@@ -211,7 +211,7 @@ FileZilla, open the Site Manager and configure your connection like this:
 >
 > :gem: On Windows, you can toggle the display of hidden files in the View tab
 > of the explorer to access your `.ssh` directory manually. On macOS, type `open
-> ~/.ssh` in your Terminal or use the `Cmd-Shift-.` shortcut to display hidden
+~/.ssh` in your Terminal or use the `Cmd-Shift-.` shortcut to display hidden
 > files. On most Linux distributions, the file manager will have an option to
 > show hidden files under its menu.
 >
@@ -219,7 +219,7 @@ FileZilla, open the Site Manager and configure your connection like this:
 > format. You can do so.
 
 Once you are connected to your server with your SFTP client, copy the
-application to `/home/john_doe/todolist` (replacing `john_doe` with your Unix
+application to `/home/jde/todolist` (replacing `jde` with your Unix
 username).
 
 In FileZilla, you can simply drag-and-drop the directory from your machine on
@@ -231,7 +231,7 @@ the left to the server on the right. You can then rename it if necessary.
 
 ```bash
 $> hostname
-john-doe.archidep.ch
+jde.archidep.ch
 
 $> cd ~/todolist
 ```
@@ -249,7 +249,7 @@ $> sudo mysql < todolist.sql
 > queries on its input stream, the `mysql` command will connect to the MySQL
 > server and execute them, then stop.
 
-### :question: Make sure it worked
+### :question: Optional: make sure it worked
 
 To make sure everything worked, you can check that the table was created in the
 MySQL database server. You do not have a phpMyAdmin web interface to administer
@@ -301,10 +301,10 @@ define('DB_PORT', '3306');
 > :gem: The `index.php` file **on the server** must be modified. There are
 > several ways you can do this:
 >
-> * Edit the file locally, then copy it to the server again using your SFTP
+> - Edit the file locally, then copy it to the server again using your SFTP
 >   client like FileZilla.
-> * Edit the file directly on the server with `nano` or `vim`.
-> * Some SFTP clients allow you to open a remote file in your local editor. In
+> - Edit the file directly on the server with `nano` or `vim`.
+> - Some SFTP clients allow you to open a remote file in your local editor. In
 >   FileZilla, right-click a file, select View/Edit, then choose your favorite
 >   editor. Make your changes and save the file. FileZilla should automatically
 >   prompt you to upload the changes.
@@ -355,7 +355,7 @@ Here's a few tips about some problems you may encounter during this exercise.
 
 ### :boom: Daemons using outdated libraries
 
-When you install a package with APT (e.g. MySQL), it *may* prompt you to reboot
+When you install a package with APT (e.g. MySQL), it _may_ prompt you to reboot
 and/or to restart outdated daemons (i.e. background services):
 
 ![Restart outdated daemons](../images/apt-outdated-daemons.png)
@@ -455,9 +455,9 @@ mysql> exit
 >
 > There are two sets of users here:
 >
-> * Your server has a number of Unix users (defined in `/etc/passwd`), one of
+> - Your server has a number of Unix users (defined in `/etc/passwd`), one of
 >   them being the Unix `root` user.
-> * The MySQL database server has its own list of MySQL users independent of the
+> - The MySQL database server has its own list of MySQL users independent of the
 >   system. There is also a MySQL user named `root` by default.
 >
 > By default, the `mysql` command will attempt to connect as the MySQL user with
@@ -466,9 +466,9 @@ mysql> exit
 >
 > ```bash
 > $> whoami
-> john_doe
+> jde
 >
-> $> mysql               # connect to MySQL as the MySQL "john_doe" user (because
+> $> mysql               # connect to MySQL as the MySQL "jde" user (because
 >                        # that is the name of the Unix user running the command)
 >
 > $> mysql -u alice      # connect to MySQL as the MySQL "alice" user
@@ -482,15 +482,15 @@ mysql> exit
 > The first two `mysql` commands will probably fail:
 >
 > ```
-> ERROR 1045 (28000): Access denied for user 'john_doe'@'localhost' (using password: NO)
+> ERROR 1045 (28000): Access denied for user 'jde'@'localhost' (using password: NO)
 > ERROR 1045 (28000): Access denied for user 'alice'@'localhost' (using password: NO)
 > ```
 >
-> This is because MySQL has no `john_doe` or `alice` users (unless you created
+> This is because MySQL has no `jde` or `alice` users (unless you created
 > them yourself). It may also be because you are trying to connect as a MySQL
 > user who has a password. In this case, you should add the `-p` (**p**assword)
 > option to have MySQL prompt you for the password when connecting (e.g. `mysql
-> -u alice -p`).
+-u alice -p`).
 >
 > If you followed the instructions above, you have replaced password
 > authentication for the MySQL `root` user with the [socket authentication
@@ -515,10 +515,10 @@ ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: N
 It means that your MySQL server is configured to require a password for the
 `root` user. You have two choices:
 
-* **Either** add the `-p` option to all `mysql` commands. It will then prompt
+- **Either** add the `-p` option to all `mysql` commands. It will then prompt
   you for the MySQL `root` password (that you defined when running
   `mysql_secure_installation`).
-* **Or**, configure MySQL to use [socket authentication][mysql-socket-auth] for
+- **Or**, configure MySQL to use [socket authentication][mysql-socket-auth] for
   the `root` user (the following command will ask you for the MySQL `root`
   password you defined when running `mysql_secure_installation`):
 
@@ -584,16 +584,16 @@ the `php -S 0.0.0.0:3000` command. You will probably see something like this:
 $> php -S 0.0.0.0:3000
 [Thu Oct 20 09:29:40 2022] PHP 8.1.2 Development Server (http://0.0.0.0:3000) started
 [Thu Oct 20 09:29:41 2022] 213.3.2.128:44496 Accepted
-[Thu Oct 20 09:29:41 2022] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'todolist'@'localhost' (using password: YES) in /home/john_doe/todolist/index.php:17
+[Thu Oct 20 09:29:41 2022] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'todolist'@'localhost' (using password: YES) in /home/jde/todolist/index.php:17
 Stack trace:
-#0 /home/john_doe/todolist/index.php(17): PDO->__construct()
+#0 /home/jde/todolist/index.php(17): PDO->__construct()
 #1 {main}
-  thrown in /home/john_doe/todolist/index.php on line 17
-[Thu Oct 20 09:29:41 2022] 213.3.2.128:44496 [500]: GET / - Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'todolist'@'localhost' (using password: YES) in /home/john_doe/todolist/index.php:17
+  thrown in /home/jde/todolist/index.php on line 17
+[Thu Oct 20 09:29:41 2022] 213.3.2.128:44496 [500]: GET / - Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'todolist'@'localhost' (using password: YES) in /home/jde/todolist/index.php:17
 Stack trace:
-#0 /home/john_doe/todolist/index.php(17): PDO->__construct()
+#0 /home/jde/todolist/index.php(17): PDO->__construct()
 #1 {main}
-  thrown in /home/john_doe/todolist/index.php on line 17
+  thrown in /home/jde/todolist/index.php on line 17
 [Thu Oct 20 09:29:41 2022] 213.3.2.128:44496 Closing
 [Thu Oct 20 09:29:41 2022] 213.3.2.128:44495 Accepted
 ```

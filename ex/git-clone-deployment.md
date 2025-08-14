@@ -59,7 +59,7 @@ you can modify it independently.
 Instead of manually uploading files through SFTP, you will connect to the server
 through SSH and clone the repository from GitHub.
 
-Copy your repository's public HTTP URL:
+Copy your repository's public HTTPS URL:
 
 ![HTTP Clone URL](../images/github-http-clone-url.png)
 
@@ -79,12 +79,12 @@ example, you could clone it to the `todolist-repo` directory in your home
 directory.
 
 > :gem: The command to clone a Git repository is `git clone <url>
-> [<directory-name>]`. The directory name is optional, and defaults to the last
+[<directory-name>]`. The directory name is optional, and defaults to the last
 > component of the URL's path without the ".git" extension. For example:
 >
-> * `git clone https://github.com/bob/awesome-repo.git` will create a directory
+> - `git clone https://github.com/bob/awesome-repo.git` will create a directory
 >   named "awesome-repo".
-> * `git clone https://github.com/bob/awesome-repo.git foo` will create a
+> - `git clone https://github.com/bob/awesome-repo.git foo` will create a
 >   directory named "foo".
 
 ## :exclamation: Update the configuration
@@ -95,10 +95,10 @@ lines of `index.php` with the same configuration as for the previous exercise
 
 There are several ways you can do this:
 
-* Clone the repository locally (if you haven't already), make the change on your
+- Clone the repository locally (if you haven't already), make the change on your
   local machine and commit and push it to GitHub. Then connect to your server,
   move into the cloned repository and pull the latest changes from GitHub.
-* Go into the cloned repository on the server and edit `index.php` with nano or
+- Go into the cloned repository on the server and edit `index.php` with nano or
   Vim, or edit it on your machine and overwrite it with FileZilla, as you
   prefer.
 

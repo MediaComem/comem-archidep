@@ -58,12 +58,14 @@ that proves the ownership of a public key using [public key cryptography][pubkey
 A [**TLS or SSL certificate**][tls-certificate] is a type of public key certificate
 that allows a computer such as a **web server** to prove that it owns a public key.
 
-> SSL is the original Secure Sockets Layer protocol first published in 1995 and which is now deprecated.
-> TLS is the newer and more secure [Transport Layer Security][tls] protocol first published in 1999,
+> SSL is the original **S**ecure **S**ockets **L**ayer protocol first published
+> in 1995 and which is now deprecated. TLS is the newer and more secure
+> [**T**ransport **L**ayer **S**ecurity][tls] protocol first published in 1999,
 > its latest version being TLS 1.3 published in 2018 (at the time of writing).
-> Although TLS is used today, TLS certificates are sometimes still called "SSL certificates".
+> Although TLS is used today, TLS certificates are sometimes still called "SSL
+> certificates".
 
-A TLS certificate is linked to one or multiple domain name:
+A TLS certificate is linked to one or multiple domain names:
 
 * For example `google.com` or `www.microsoft.com`.
 * It could also be `*.example.com`.
@@ -107,7 +109,7 @@ State or Province Name (full name) [Some-State]:Vaud
 Locality Name (eg, city) []:Yverdon
 Organization Name (eg, company) [Internet Widgits Pty Ltd]:HEIG-VD
 Organizational Unit Name (eg, section) []:
-Common Name (e.g. server FQDN or YOUR name) []:john-doe.archidep.ch
+Common Name (e.g. server FQDN or YOUR name) []:jde.archidep.ch
 Email Address []:john.doe@heig-vd.ch
 ```
 
@@ -147,8 +149,8 @@ Certificate:
             ef:ea:3a:93:c5:74:a8:e7
     Signature Algorithm: sha256WithRSAEncryption
         Issuer: C = CH, ST = Vaud, L = Yverdon, O = HEIG-VD,
-                CN = john-doe.archidep.ch,
-                emailAddress = john-doe@heig-vd.ch
+                CN = jde.archidep.ch,
+                emailAddress = jde@heig-vd.ch
         Validity
             Not Before: Jan 15 14:28:11 2019 GMT
             Not After : Jan 15 14:28:11 2020 GMT
@@ -164,13 +166,13 @@ server {
 
   listen 80;
 * listen 443 ssl;
-* ssl_certificate /home/john_doe/certificate/certificate.pem;
-* ssl_certificate_key /home/john_doe/certificate/key.pem;
+* ssl_certificate /home/jde/certificate/certificate.pem;
+* ssl_certificate_key /home/jde/certificate/key.pem;
 * ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 * ssl_ciphers HIGH:!aNULL:!MD5;
 
-  server_name john-doe.archidep.ch;
-  root /home/john_doe/my-website;
+  server_name jde.archidep.ch;
+  root /home/jde/my-website;
   index index.html;
 }
 ```
@@ -188,12 +190,12 @@ If you access your website with this configuration, you will see the following:
 
 <p class='center'><img class='w80' src='images/invalid-certificate.png' /></p>
 
-In this example, Chrome indicates that there is an error of type `NET::ERR_CERT_AUTHORITY_INVALID` error.
+In this example, Chrome indicates that there is an error of type `NET::ERR_CERT_AUTHORITY_INVALID`.
 This means that there is no valid **certificate authority** that guarantees that this certificate is valid.
 
 #### Self-signed root certificate
 
-Your TLS certificate is not valid because is is a **self-signed** certificate.
+Your TLS certificate is not valid because it is a **self-signed** certificate.
 
 <p class='center'><img class='w80' src='images/invalid-certificate-details.png' /></p>
 
@@ -279,7 +281,7 @@ in their programs:
 ## Obtaining a TLS certificate
 
 To obtain a valid TLS certificate, you need to request one from a [**certification authority (CA)**][ca].
-In 2018, the 3 most popular CAs are:
+In 2018, the three most popular CAs are:
 
 * [IdenTrust][identrust]
 * [Comodo][comodo]

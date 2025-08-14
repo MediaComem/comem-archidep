@@ -7,7 +7,7 @@ This guide describes how to create a [systemd][systemd] service to run the PHP a
 
 - [Legend](#legend)
 - [:gem: Requirements](#gem-requirements)
-- [:books: What you have done so far do to run your application](#books-what-you-have-done-so-far-do-to-run-your-application)
+- [:books: What you have done so far to run your application](#books-what-you-have-done-so-far-do-to-run-your-application)
 - [:exclamation: Create a systemd unit configuration file](#exclamation-create-a-systemd-unit-configuration-file)
   - [:gem: What's in a systemd unit configuration file](#gem-whats-in-a-systemd-unit-configuration-file)
 - [:exclamation: Enable and start the todolist service](#exclamation-enable-and-start-the-todolist-service)
@@ -50,15 +50,15 @@ Stop your `php -S` command if it is still running.
 > :gem: You can use Ctrl-C to stop any command currently running in your
 > terminal.
 
-## :books: What you have done so far do to run your application
+## :books: What you have done so far to run your application
 
 Running the PHP todolist manually in the previous exercises basically consists
 of these steps:
 
-- Connect to the server with SSH as your user, e.g. `john_doe`:
+- Connect to the server with SSH as your user, e.g. `jde`:
 
   ```bash
-  $> ssh john_doe@W.X.Y.Z
+  $> ssh jde@W.X.Y.Z
   ```
 
 - _The first time,_ install MySQL and check that it is running:
@@ -105,7 +105,7 @@ Create your own unit file for the PHP todolist at
 create and edit this file directly on the server. You cannot use an SFTP client.
 
 > :gem: You can edit a file with nano by running the following command: `sudo
-> nano <path>`. If the file does not exist, it will be created by nano when you
+nano <path>`. If the file does not exist, it will be created by nano when you
 > exit and save. The `sudo` is necessary because the `/etc/systemd/system`
 > directory is only writable by `root`.
 >
@@ -154,8 +154,8 @@ Here are a few hints:
     the `WorkingDirectory` option. This must be an absolute path.
 
     > :gem: Go in the application directory on the server and execute the `pwd`
-    > (print working directory) command if you are not sure what the absolute
-    > path is.
+    > (**p**rint **w**orking **d**irectory) command if you are not sure what the
+    > absolute path is.
 
   - You should tell systemd which user must run the command with the `User`
     option. Use your own username.
@@ -193,7 +193,7 @@ Here's another way to look at this information:
 
 | Things you do to run the application                  | How to do it manually             | How to tell systemd to do it                                                    |
 | :---------------------------------------------------- | :-------------------------------- | :------------------------------------------------------------------------------ |
-| Run commands as user `john_doe`                       | Connect as `john_doe` with SSH    | `User=john_doe` in the `[Service]` section                                      |
+| Run commands as user `jde`                            | Connect as `jde` with SSH         | `User=jde` in the `[Service]` section                                           |
 | Make sure a service is started                        | `sudo systemctl status <service>` | `After=<service>` in the `[Unit]` section                                       |
 | Move into a directory                                 | `cd <path>`                       | `WorkingDirectory=<path>` in the `[Service]` section                            |
 | Set an environment variable                           | `KEY=value ...`                   | `Environment="KEY=value"` in the `[Service]` section                            |
@@ -339,8 +339,6 @@ systemd.
 
 You must escape it by adding another `%` character, e.g.
 `TODOLIST_DB_PASS=foo%%bar` instead of `TODOLIST_DB_PASS=foo%bar`.
-
-
 
 [systemd]: https://en.wikipedia.org/wiki/Systemd
 [systemd-exec-start]: https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html#ExecStart=

@@ -1,7 +1,7 @@
 # Deploy a PHP website with nginx and the FastCGI process manager
 
 This guide describes how to deploy the same [PHP Todolist][repo] as in previous
-exercises, but this time behind nginx acting a reverse proxy, and with the
+exercises, but this time behind nginx acting as a reverse proxy, and with the
 [FastCGI Process Manager (FPM)][php-fpm] instead of the [PHP development
 server][php-dev-server], which is much more suitable for a production
 deployment.
@@ -11,12 +11,12 @@ deployment.
 
 - [Legend](#legend)
 - [:gem: Requirements](#gem-requirements)
-- [:warning: Identify your PHP FPM version](#warning-identify-your-php-fpm-version)
-- [:books: Using PHP FPM instead of the PHP development server](#books-using-php-fpm-instead-of-the-php-development-server)
-- [:exclamation: Configure PHP FPM to listen on a port](#exclamation-configure-php-fpm-to-listen-on-a-port)
+- [:warning: Identify your PHP-FPM version](#warning-identify-your-php-fpm-version)
+- [:books: Using PHP-FPM instead of the PHP development server](#books-using-php-fpm-instead-of-the-php-development-server)
+- [:exclamation: Configure PHP-FPM to listen on a port](#exclamation-configure-php-fpm-to-listen-on-a-port)
   - [:question: Optional: check something is listening on port 9000](#question-optional-check-something-is-listening-on-port-9000)
-- [:exclamation: Add a the `TODOLIST_DB_PASS` environment variable to PHP FPM](#exclamation-add-a-the-todolist_db_pass-environment-variable-to-php-fpm)
-  - [:exclamation: Reload PHP FPM](#exclamation-reload-php-fpm)
+- [:exclamation: Add the `TODOLIST_DB_PASS` environment variable to PHP-FPM](#exclamation-add-a-the-todolist_db_pass-environment-variable-to-php-fpm)
+  - [:exclamation: Reload PHP-FPM](#exclamation-reload-php-fpm)
 - [:exclamation: Create an nginx configuration file to serve the application](#exclamation-create-an-nginx-configuration-file-to-serve-the-application)
   - [:exclamation: Enable the nginx configuration](#exclamation-enable-the-nginx-configuration)
   - [:exclamation: Reload the nginx configuration](#exclamation-reload-the-nginx-configuration)
@@ -50,7 +50,7 @@ This guide assumes that you are familiar with [reverse proxying][slides], that
 you have nginx installed, and that you have done the [DNS exercise][dns-ex] and
 the [systemd exercise][systemd-ex].
 
-## :warning: Identify your PHP FPM version
+## :warning: Identify your PHP-FPM version
 
 During this exercise, you will use a package and service called `php-fpm` that
 you installed on your server back during the first deployment exercise. The
@@ -72,26 +72,26 @@ In this case, the output indicates that version `8.3` is installed. The
 remaining sections of the exercise assume that this is the case. **If not**, you
 will need to **modify the commands containing the version number accordingly**.
 
-## :books: Using PHP FPM instead of the PHP development server
+## :books: Using PHP-FPM instead of the PHP development server
 
 When you did the [systemd exercise][systemd-ex], you used the PHP development
 server (with the command `/usr/bin/php -S 0.0.0.0:3000`). As [its documentation
 states][php-dev-server], it is meant for development, not to be used on a
 production server. One of the main reasons it's a bad idea to use it on a server
-is beacuse it is **single-threaded**, and can only serve _one request at a
+is because it is **single-threaded**, and can only serve _one request at a
 time_.
 
 During the [SFTP exercise][sftp-ex], you installed the `php-fpm` package,
 which provides the PHP [FastCGI Process Manager (FPM)][php-fpm].
 
-PHP FPM is both a **process manager** and a **FastCGI server**:
+PHP-FPM is both a **process manager** and a **FastCGI server**:
 
 - It will run multiple PHP processes to be able to serve requests from multiple
   clients at the same time.
 - A web server (such as nginx) can ask it to execute PHP files using the
   [FastCGI protocol][fastcgi].
 
-> :gem: Use the following command for more information on how PHP FPM manages
+> :gem: Use the following command for more information on how PHP-FPM manages
 > processes (for version 8.3):
 >
 >     $> grep -A 50 -m 1 "number of child processes" /etc/php/8.3/fpm/pool.d/www.conf
@@ -108,7 +108,7 @@ $> sudo systemctl status php8.3-fpm
    ...
 ```
 
-## :exclamation: Configure PHP FPM to listen on a port
+## :exclamation: Configure PHP-FPM to listen on a port
 
 The PHP [FastCGI Process Manager (FPM)][php-fpm] can accept connections either
 on a local TCP port or by default through a Unix domain socket.
@@ -119,10 +119,10 @@ on a local TCP port or by default through a Unix domain socket.
 > from that file.
 
 Because we've been making TCP (HTTP/SSH/SFTP) connections so far, we'll
-configure PHP FPM to also listen on a port rather than a domain socket for
+configure PHP-FPM to also listen on a port rather than a domain socket for
 consistency.
 
-You will need to edit the PHP FPM web configuration file which you can find at
+You will need to edit the PHP-FPM web configuration file which you can find at
 `/etc/php/8.3/fpm/pool.d/www.conf` (for version 8.3). Edit this file:
 
 ```bash
@@ -153,7 +153,7 @@ listen = /run/php/php8.3-fpm.sock
 
 Remove the existing `listen = /run/php/php8.3-fpm.sock` line, or comment it by
 adding a `;` comment character at the beginning of the line. Then add a new
-`listen = 9000` line. This will instruct PHP FPM to listen on port 9000 rather
+`listen = 9000` line. This will instruct PHP-FPM to listen on port 9000 rather
 than using the Unix domain socket file:
 
 ```
@@ -164,9 +164,9 @@ listen = 9000
 > :books: Why port 9000, you ask? Why not? It does not matter which port you
 > choose, as long as another process does not already listen on that port.
 
-By default, PHP FPM will accept connections from anywhere, including outside the
+By default, PHP-FPM will accept connections from anywhere, including outside the
 server if the firewall lets the client through. For the sake of security, it is
-better to configure PHP FPM to only accept local connections, i.e. from
+better to configure PHP-FPM to only accept local connections, i.e. from
 processes running on the same machine like nginx.
 
 Find the section configuring allowed clients (the `listen.allowed_clients = ...`
@@ -183,7 +183,7 @@ sure the value is set to `127.0.0.1` (local clients only):
 listen.allowed_clients = 127.0.0.1
 ```
 
-For these changes to take effect, you must restart the PHP FPM service:
+For these changes to take effect, you must restart the PHP-FPM service:
 
 ```bash
 $> sudo systemctl restart php8.3-fpm
@@ -207,7 +207,7 @@ LISTEN  0       128           0.0.0.0:22         0.0.0.0:*     (sshd IPv4)
 LISTEN  0       128              [::]:22            [::]:*     (sshd IPv6)
 ```
 
-## :exclamation: Add a the `TODOLIST_DB_PASS` environment variable to PHP FPM
+## :exclamation: Add the `TODOLIST_DB_PASS` environment variable to PHP-FPM
 
 The PHP todolist application requires the `TODOLIST_DB_PASS` environment
 variable to successfully connect to its database. You previously set that
@@ -215,12 +215,12 @@ variable in the systemd service file you created during the [systemd
 exercise][systemd-ex]: `/etc/systemd/system/todolist.service`.
 
 In this exercise, systemd will no longer be running your application directly.
-It runs [PHP FPM][php-fpm], which will in turn execute your application's PHP
-code. By default, PHP FPM does not pass environment variables from systemd to
+It runs [PHP-FPM][php-fpm], which will in turn execute your application's PHP
+code. By default, PHP-FPM does not pass environment variables from systemd to
 the application. Therefore, you need to configure PHP-FPM to add this variable
 to your application's environment.
 
-Edit the PHP FPM web configuration file again:
+Edit the PHP-FPM web configuration file again:
 
 ```bash
 $> sudo nano /etc/php/8.3/fpm/pool.d/www.conf
@@ -245,9 +245,9 @@ Add a line to define the `TODOLIST_DB_PASS` variable with the correct value.
 > special characters. Also, be sure to remove the leading `;` which makes the
 > line a comment.
 
-### :exclamation: Reload PHP FPM
+### :exclamation: Reload PHP-FPM
 
-For the change to take effect, you must restart the PHP FPM service:
+For the change to take effect, you must restart the PHP-FPM service:
 
 ```bash
 $> sudo systemctl restart php8.3-fpm
@@ -263,7 +263,7 @@ $> sudo systemctl status php8.3-fpm
    ...
 ```
 
-> :gem: If PHP FPM is no longer running, you may have corrupted the
+> :gem: If PHP-FPM is no longer running, you may have corrupted the
 > configuration file. If the problem is not clear in the output of the `status`
 > command, check the entire logs with `sudo journalctl -u php8.3-fpm` to see if
 > you can find more information.
@@ -274,8 +274,8 @@ Create an nginx configuration file named `todolist` for the application. Put it
 in nginx's `/etc/nginx/sites-available` directory like in the previous exercise.
 
 In this exercise, you want to configure nginx as a reverse proxy: when it
-receives a request for the PHP todolist, it should proxy it to PHP FPM (in other
-words, nginx should ask PHP FPM to execute the application's PHP code, because
+receives a request for the PHP todolist, it should proxy it to PHP-FPM (in other
+words, nginx should ask PHP-FPM to execute the application's PHP code, because
 nginx itself does not know how to execute PHP code).
 
 You can start with the [reverse proxy
@@ -292,7 +292,7 @@ but you need to make the following changes:
   > `jde.archidep.ch`, for example `todolist.jde.archidep.ch`, should reach your
   > server.
 
-- PHP FPM uses the [FastCGI protocol][fastcgi] to receive requests to execute
+- PHP-FPM uses the [FastCGI protocol][fastcgi] to receive requests to execute
   PHP code. This means that you cannot use [nginx's `proxy_pass`
   directive][nginx-proxy-pass] to define your proxy since it works with the HTTP
   protocol. Instead, you must **replace** it with two other directives:
@@ -315,14 +315,14 @@ but you need to make the following changes:
     This allows you to proxy requests either to a domain and IP address (e.g.
     `localhost:9000`) or to a [Unix domain socket][unix-socket].
 
-    You have previously configured PHP FPM to listen on a port. Therefore,
+    You have previously configured PHP-FPM to listen on a port. Therefore,
     according to the [documentation][nginx-fastcgi-pass], you should configure a
-    FastCGI proxy to `localhost` or `127.0.0.1` (since PHP FPM is running on the
-    same machine as nginx) and the same port you used in the PHP FPM web
+    FastCGI proxy to `localhost` or `127.0.0.1` (since PHP-FPM is running on the
+    same machine as nginx) and the same port you used in the PHP-FPM web
     configuration file for the `listen` key.
 
-    This will make nginx proxy HTTP requests to PHP FPM through that local port.
-    PHP FPM will then execute the PHP code and give the result to nginx, which
+    This will make nginx proxy HTTP requests to PHP-FPM through that local port.
+    PHP-FPM will then execute the PHP code and give the result to nginx, which
     will send it back to the client in the HTTP response.
 
 ### :exclamation: Enable the nginx configuration
@@ -364,31 +364,31 @@ you should see the PHP todolist working.
 ## :checkered_flag: What have I done?
 
 You have replaced the [PHP development server][php-dev-server] you had been
-using until now with [PHP FPM][php-fpm], a production-grade PHP process manager
+using until now with [PHP-FPM][php-fpm], a production-grade PHP process manager
 and FastCGI implementation which is much more optimized and supports concurrent
 requests. This means, among other things, that many more clients can now access
 the PHP todolist at the same time without having to wait on each other.
 
 You have also configured nginx to act as a reverse proxy, forwarding requests
-for the PHP todolist application to PHP FPM. When it receives an HTTP request,
-nginx will forward it to PHP FPM using the FastCGI protocol. PHP FPM will
+for the PHP todolist application to PHP-FPM. When it receives an HTTP request,
+nginx will forward it to PHP-FPM using the FastCGI protocol. PHP-FPM will
 execute your application's PHP code and give the result to nginx, which will
 send it back to the client. The communication flow looks something like this:
 
-    Browser ↔ Nginx ↔ PHP FPM
+    Browser ↔ Nginx ↔ PHP-FPM
 
 This is a bit more complex than what you had before:
 
     Browser ↔ PHP development server
 
-But on the other hand, you are using PHP FPM which is much more suitable for a
+But on the other hand, you are using PHP-FPM which is much more suitable for a
 production deployment. You are also using nginx, which allows you to deploy
 other applications and websites on the same server in addition to the PHP
 todolist.
 
 In real production deployments, you will often find several processes plugged
 together to achieve the same goal. Here, nginx receives and dispatches the
-clients' requests, while PHP FPM manages your PHP application(s), and your
+clients' requests, while PHP-FPM manages your PHP application(s), and your
 application does what it's supposed to do. This allows each process to focus on
 one thing and do it well. The PHP todolist application does not have to know
 about the other applications and websites that might be running on the server.

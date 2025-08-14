@@ -1,6 +1,6 @@
 # Deploy static sites to GitHub Pages
 
-The goal of this exercice is to deploy a **static website** (only HTML,
+The goal of this exercise is to deploy a **static website** (only HTML,
 JavaScript and CSS) on [GitHub Pages][github-pages], a static site hosting
 service, instead of your own server in the Infrastructure-as-a-Service (IaaS)
 Microsoft Azure Web Services cloud.
@@ -50,7 +50,7 @@ under your GitHub username:
 
 ## :exclamation: Configure GitHub Pages
 
-Go the the **Pages Settings** and configure GitHub Pages to deploy the **root of
+Go to the **Pages Settings** and configure GitHub Pages to deploy the **root of
 the `main` branch**:
 
 ![Configure GitHub Pages](../images/github-pages-configure.png)

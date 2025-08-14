@@ -89,7 +89,7 @@ It has been adopted by many software development companies to improve the qualit
 There are various [agile frameworks][agile-frameworks] you can use to organize your work.
 Each has a slightly different focus:
 
-* [eXtreme Programming (XP)][xp] (focus on practices)
+* [e**X**treme **P**rogramming (XP)][xp] (focus on practices)
 * [Kanban][kanban] (focus on workflow)
 * [Scrum][scrum] (focus on workflow)
 
@@ -101,17 +101,17 @@ you **must be able to move and react quickly**.
 Hence these various so-called "continuous" practices which help achieve this:
 
 Practice                                  | Description
-:---                                      | :---
+:---------------------------------------- | :-------------------------------------------------------------------------------
 [**C**ontinuous **I**ntegration (CI)][ci] | Regularly merge developer work to a shared mainline to avoid "integration hell".
 [**C**ontinuous **T**esting (CT)][ct]     | Automate testing to reduce feedback waiting time for developers.
-[**C**ontinous **D**elivery (CDE)][cde]   | Automate software delivery so that it can be reliably released at any time.
+[**C**ontinous **D**elivery (CD)][cde]    | Automate software delivery so that it can be reliably released at any time.
 [**C**ontinous **D**eployment (CD)][cd]   | Automate software deployment to regularly provide new features to users.
 
 
 
 ## Continuous Integration (CI)
 
-[**C**ontinuous **I**ntegration (CI)][ci] is the practice of merging all developer work to a shared mainline regularly,
+[**C**ontinuous **I**ntegration (CI)][ci] is the practice of **merging all developer work to a shared mainline regularly**,
 instead of having each developer work independently for days or weeks on end, and suffering when the time comes to integrate their work back into the mainline.
 
 <p class='center'><img class='w80' src='images/git-workflow.png' /></p>
@@ -186,7 +186,7 @@ Tool                   | Description
 :---                   | :---
 [Jenkins][jenkins]     | Open source automation server
 [Travis CI][travis]    | Free continuous integration and testing service
-[GitLab CI][gitlab-ci] | Continous integration and delivery service
+[GitLab CI][gitlab-ci] | Continuous integration and delivery service
 [Codacy][codacy]       | Automated code review service
 
 
@@ -200,8 +200,8 @@ Tool                   | Description
      * [A Successful Git Branching Model][git-model]
      * [A Successful Git Branching Model Considered Harmful][git-model-harmful]
 * [Continuous Testing][ct]
-* [Continous Delivery][cde]
-* [Continous Deployment][cd]
+* [Continuous Delivery][cde]
+* [Continuous Deployment][cd]
 
 
 

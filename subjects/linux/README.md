@@ -21,7 +21,7 @@ Learn about the history of the Linux operating system.
 
 <!-- slide-column -->
 
-[Linux][linux] is a family of free and open-source software operating systems built around the [Linux kernel][linux-kernel],
+[Linux][linux] is a family of free and open source software operating systems built around the [Linux kernel][linux-kernel],
 an [operating system kernel][kernel] first released in 1991, by [Linus Torvalds][linus].
 
 <!-- slide-column 40 -->

@@ -1,8 +1,8 @@
 # Platform-as-a-Service (PaaS)
 
-Learn to deploy web applications on Platform-as-a-Service (PaaS) cloud
-application platforms such as [GitHub Pages][github-pages], [Netlify][netlify]
-and [Render][render].
+Learn to deploy web applications on **P**latform-**a**s-**a**-**S**ervice (PaaS)
+cloud application platforms such as [GitHub Pages][github-pages],
+[Netlify][netlify] and [Render][render].
 
 <!-- slide-include ../../BANNER.md -->
 
@@ -42,9 +42,8 @@ and [Render][render].
 
 > [Heroku][heroku], one of the first cloud platforms, has been in development
 > since June 2007, when it supported only the Ruby programming language, but now
-> supports Java, **Node.js**, Scala, Clojure, Python, PHP, and Go. Today there
-> are many alternatives such as [Netlify][netlify], [Fly][fly] or
-> [Render][render].
+> supports Java, Node.js, Scala, Clojure, Python, PHP, and Go. Today there are
+> many alternatives such as [Netlify][netlify], [Fly][fly] or [Render][render].
 
 
 
@@ -52,12 +51,12 @@ and [Render][render].
 
 Cloud-computing providers offer their services according to **different models**, some of which are listed below:
 
-| Service models                      | What they provide         | Examples                                 |
-| :---------------------------------- | :------------------------ | :--------------------------------------- |
-| [Infrastructure as a Service][iaas] | Servers, virtual machines | Amazon EC2, Azure (Microsoft), Rackspace |
-| [*Platform as a Service*][paas]     | *Runtime environments*    | Heroku, OpenShift, Netlify, Fly, Render  |
-| [Software as a Service][saas]       | Online services           | Gmail                                    |
-| [Functions as a Service][faas]      | Serverless environments   | Amazon Lambda, OpenWhisk (IBM)           |
+| Service models                             | What they provide         | Examples                                 |
+| :----------------------------------------- | :------------------------ | :--------------------------------------- |
+| [Infrastructure as a Service][iaas] (IaaS) | Servers, virtual machines | Amazon EC2, Azure (Microsoft), Rackspace |
+| [*Platform as a Service*][paas] (PaaS)     | *Runtime environments*    | Heroku, OpenShift, Netlify, Fly, Render  |
+| [Software as a Service][saas] (SaaS)       | Online services           | Gmail                                    |
+| [Functions as a Service][faas] (FaaS)      | Serverless environments   | Amazon Lambda, OpenWhisk (IBM)           |
 
 
 
@@ -115,8 +114,8 @@ application, many PaaS platforms assume:
   install`.
 * Your application can be run by executing `npm start`.
 
-Similar conventions exist for each language supported by Heroku (e.g. using
-Maven for Java, Composer for PHP, Bundler for Ruby).
+Similar conventions exist for each language supported by PaaS platforms (e.g.
+using Maven for Java, Composer for PHP, Bundler for Ruby).
 
 As for automation, it is usually achieved through [Git hooks][git-hooks]. New
 versions of your application will be **automatically deployed every time you

@@ -85,8 +85,8 @@ name   ttl   record class   record type   record data
 The meaning of each field is:
 
 * `name` - Subdomain name (or `@` for the domain itself).
-* `ttl` - Time during which DNS resolution of this record should be cached.
-* `record class` - Namespace of the record information, usually `IN` for the Internet.
+* `ttl` - Time (in seconds) during which DNS resolution of this record should be cached.
+* `record class` - Namespace of the record information, usually `IN` for the **In**ternet.
 * `record type` - Type of record.
 * `record data` - Record data (depending on the record type).
 
@@ -95,14 +95,14 @@ The meaning of each field is:
 There are multiple [**record types**][dns-record-types].
 These are some of the most common:
 
-Type    | Description           | Function
-:---    | :---                  | :---
-`A`     | Address record        | Maps a domain name to an IPv4 address.
-`AAAA`  | IPv6 address record   | Maps a domain name to an IPv6 address.
-`CNAME` | Canonical name record | Alias of one name to another (e.g. `www`).
-`MX`    | Mail exchange record  | Maps a domain name to a list of message transfer agents.
-`SOA`   | Start of authority    | Authoritative information about the zone, e.g. primary name server & email of the domain administrator.
-`TXT`   | Text record           | Arbitrary machine-readable data.
+Type    | Description                    | Function
+:------ | :----------------------------- | :------------------------------------------------------------------------------------------------------
+`A`     | **A**ddress record             | Maps a domain name to an IPv4 address (32 bits).
+`AAAA`  | IPv6 **a**ddress record        | Maps a domain name to an IPv6 address (128 bits, hence why four times the letter `A` instead of once).
+`CNAME` | **C**anonical **name** record  | Alias of one name to another (e.g. `www`).
+`MX`    | **M**ail e**x**change record   | Maps a domain name to a list of message transfer agents.
+`SOA`   | **S**tart **o**f **a**uthority | Authoritative information about the zone, e.g. primary name server & email of the domain administrator.
+`TXT`   | **T**e**xt** record            | Arbitrary machine-readable data.
 
 #### DNS record example
 
@@ -115,7 +115,7 @@ Let's look at a real example which you might find in a zone file:
 Assuming this is the zone file for the domain `example.com`,
 here is how to read that record:
 
-* It is an Internet record (`IN`).
+* It is an **In**ternet record (`IN`).
 * The `@` name indicates that it concerns the domain `example.com` itself.
 * It is an `A` record, meaning that it maps `example.com` to the IPv4 address `18.213.200.101`.
 * It defines a cache time of 1800 seconds (30 minutes) during which clients will not perform DNS resolution again if they have the mapping already.
@@ -131,7 +131,7 @@ blog   1800   IN   A   3.120.180.32
 Assuming this is the zone file for the domain `example.com`,
 here is how to read that record:
 
-* It is an Internet record (`IN`).
+* It is an **In**ternet record (`IN`).
 * It concerns the subdomain `blog.example.com`.
 * It is an `A` record, meaning that it maps `blog.example.com` to the IPv4 address `3.120.180.32`.
 * It defines a cache time of 1800 seconds (30 minutes) during which clients will not perform DNS resolution again if they have the mapping already.

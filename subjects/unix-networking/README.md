@@ -524,7 +524,8 @@ resolver on port 53, and an SSH server on port 22.
 > On some systems, you may need to add the `-e` (**e**xtended) option to display
 > process information. You can remove the `-n` (or `--numeric`) option to see
 > service names (e.g. `ssh` instead of `22`). The other options are `-t` for
-> TCP, `-l` to only display listening sockets, and `-p` to show the processes.
+> **T**CP, `-l` to only display listening sockets, and `-p` to show the
+> **p**rocesses.
 
 ### The `nc` command
 

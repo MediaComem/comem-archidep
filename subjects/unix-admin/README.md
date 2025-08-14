@@ -121,8 +121,10 @@ You can see that **there is only one root (`/`)**,
 and that all other volumes are **mounted** somewhere in the file hierarchy.
 
 For example, the last line represents a network drive mounted under the
-`/network-drive` directory. The [`/etc/fstab` file (**f**ile **s**ystems
-**tab**le)][fstab] defines mounted volumes.
+`/network-drive` directory.
+
+Mounted volumes are defined in the [`/etc/fstab` file (**f**ile **s**ystems
+**tab**le)][fstab].
 
 #### Common Unix directories
 
@@ -311,7 +313,7 @@ drwxr-xr-x 24 root root 4096 Sep 12 14:44 ..
 
 #### The sudoers file
 
-The `/etc/sudoers` file defines which users are trusted to use sudo.
+The `/etc/sudoers` file defines which users are trusted to use `sudo`.
 This is a classic example (the basic syntax is [described here][sudoers]):
 
 ```
@@ -403,7 +405,7 @@ $> whoami
 bob
 ```
 
-> **WARNING:** as mentionned before, be careful not to break the system when you are `root`.
+> **WARNING:** as mentioned before, be careful not to break the system when you are `root`.
 
 
 
@@ -450,8 +452,8 @@ vip:x:512:bob,eve
 ```
 
 * **Group name** (`vip`) - The name of the group
-* **Group password** (`x`) - Optional group password (or `x` if the password is stored in `/etc/gshadow`)
-  If specified, allows users not part of the group to join it with the correct password
+* **Group password** (`x`) - Optional group password (or `x` if the password is stored in `/etc/gshadow`);
+  if specified, allows users not part of the group to join it with the correct password
 * **Group ID (GID)** (`512`) - The numerical equivalent of the group name
 * **Member list** (`bob,eve`) - A comma-separated list of the users belonging to the group
 
